@@ -2,7 +2,7 @@
 /.vscode/
 bin/
 obj/
-packages/
+nupkgs/
 coverage-report/
 coverage.cobertura.xml
 */__snapshots__/__mismatch__/
