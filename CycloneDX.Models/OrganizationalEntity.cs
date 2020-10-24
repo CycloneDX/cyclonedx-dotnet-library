@@ -15,13 +15,17 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     public class OrganizationalEntity
     {
+        [XmlElement("name")]
         public string Name { get; set; }
+        [XmlElement("url")]
         public List<string> Url { get; set; }
+        [XmlElement("contact")]
         public List<OrganizationalContact> Contact { get; set; }
     }
 }

@@ -17,18 +17,26 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    [XmlRoot("bom", Namespace="http://cyclonedx.org/schema/bom/1.2", IsNullable=false)]
     public class Bom
     {
+        [XmlIgnore]
         public string BomFormat => "CycloneDX";
+        [XmlIgnore]
         public string SpecVersion { get; set; } = "1.2";
+        [XmlAttribute("serialNumber")]
         public string SerialNumber { get; set; }
+        [XmlAttribute("version")]
         public int Version { get; set; } = 1;
+        [XmlElement("metadata")]
         public Metadata Metadata { get; set; }
+        [XmlArray("components")]
         public List<Component> Components { get; set; }
         //TODO externalReferences
         //TODO dependencies

@@ -14,12 +14,18 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Xml.Serialization;
+
 namespace CycloneDX.Models
 {
+    [XmlType("license")]
     public class License
     {
+        [XmlElement("id")]
         public string Id { get; set; }
+        [XmlElement("name")]
         public string Name { get; set; }
+        [XmlElement("url")]
         public string Url { get; set; }
     }
 }

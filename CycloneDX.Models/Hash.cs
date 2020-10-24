@@ -14,11 +14,16 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Xml.Serialization;
+
 namespace CycloneDX.Models
 {
+    [XmlType("hash")]
     public class Hash
     {
+        [XmlAttribute("alg")]
         public string Alg { get; set; }
+        [XmlText]
         public string Content { get; set; }
     }
 }

@@ -15,14 +15,20 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Diagnostics.CodeAnalysis;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     public class ExternalReference
     {
+        [XmlElement("url")]
         public string Url { get; set; }
+
+        [XmlAttribute("type")]
         public string Type { get; set; }
+
+        [XmlElement("comment")]
         public string Comment { get; set; }
 
         public const string VCS = "vcs";
