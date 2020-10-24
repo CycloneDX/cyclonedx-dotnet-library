@@ -23,5 +23,6 @@ namespace CycloneDX.Models
     {
         [XmlElement("license")]
         public License License { get; set; }
+        public string Expression { get; set; }
     }
 }
