@@ -14,33 +14,17 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
-using System.Diagnostics.Contracts;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
-using Bom = CycloneDX.Models.Bom;
-
-namespace CycloneDX.Json
+namespace CycloneDX.Models
 {
-
-    public static class JsonBomSerializer
+    public class Pedigree
     {
-        public static string Serialize(Bom bom)
-        {
-            Contract.Requires(bom != null);
-
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                IgnoreNullValues = true,
-            };
-
-            Utils.AddJsonConverters(options);
-
-            var jsonBom = JsonSerializer.Serialize(bom, options);
-
-            return jsonBom;
-        }
+        public List<Component> Ancestors { get; set; }
+        public List<Component> Descendants { get; set; }
+        public List<Component> Variants { get; set; }
+        public List<Patch> Patches { get; set; }
+        public string Notes { get; set; }
     }
 }

@@ -21,8 +21,35 @@ namespace CycloneDX.Models
     [XmlType("hash")]
     public class Hash
     {
+        public enum HashAlgorithm
+        {
+            MD5,
+            [XmlEnum(Name = "SHA-1")]
+            SHA_1,
+            [XmlEnum(Name = "SHA-256")]
+            SHA_256,
+            [XmlEnum(Name = "SHA-384")]
+            SHA_384,
+            [XmlEnum(Name = "SHA-512")]
+            SHA_512,
+            [XmlEnum(Name = "SHA3-256")]
+            SHA3_256,
+            [XmlEnum(Name = "SHA3-384")]
+            SHA3_384,
+            [XmlEnum(Name = "SHA3-512")]
+            SHA3_512,
+            [XmlEnum(Name = "BLAKE2b-256")]
+            BLAKE2b_256,
+            [XmlEnum(Name = "BLAKE2b-384")]
+            BLAKE2b_384,
+            [XmlEnum(Name = "BLAKE2b-512")]
+            BLAKE2b_512,
+            BLAKE3
+        }
+
         [XmlAttribute("alg")]
-        public string Alg { get; set; }
+        public HashAlgorithm Alg { get; set; }
+        
         [XmlText]
         public string Content { get; set; }
     }

@@ -51,9 +51,16 @@ namespace CycloneDX.Models
         [XmlAttribute("type")]
         public ComponentType Type { get; set; }
 
+        [JsonPropertyName("mime-type")]
+        [XmlAttribute("mime-type")]
+        public string MimeType { get; set; }
+
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]
         public string BomRef { get; set; }
+
+        [XmlElement("supplier")]
+        public OrganizationalEntity Supplier { get; set; }
 
         [XmlElement("author")]
         public string Author { get; set; }
@@ -85,11 +92,35 @@ namespace CycloneDX.Models
         [XmlElement("copyright")]
         public string Copyright { get; set; }
 
+        [Obsolete("DEPRECATED - DO NOT USE. This will be removed in a future version.")]
+        [XmlElement("cpe")]
+        public string Cpe { get; set; }
+
         [XmlElement("purl")]
         public string Purl { get; set; }
 
         [XmlElement("swid")]
         public Swid Swid { get; set; }
+
+        [Obsolete("DEPRECATED - DO NOT USE. This will be removed in a future version.")]
+        [XmlIgnore]
+        public bool? Modified { get; set; }
+        [XmlElement("modified")]
+        [JsonIgnore]
+        [Obsolete("Do not use directly, this is a serialization workaround.")]
+        public bool NonNullableModified
+        {
+            get
+            {
+                return Modified.HasValue && Modified.Value;
+            }
+            set
+            {
+                Modified = value;
+            }
+        }
+
+        public Pedigree Pedigree { get; set; }
 
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]

@@ -14,23 +14,20 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
-    [XmlType("license")]
-    public class License
+    public enum DataFlow
     {
-        [XmlElement("id")]
-        public string Id { get; set; }
-
-        [XmlElement("name")]
-        public string Name { get; set; }
-        
-        [XmlElement("text")]
-        public string Text { get; set; }
-        
-        [XmlElement("url")]
-        public string Url { get; set; }
+        [XmlEnum(Name = "inbound")]
+        Inbound,
+        [XmlEnum(Name = "outbound")]
+        Outbound,
+        [XmlEnum(Name = "bi-directional")]
+        Bidirectional,
+        [XmlEnum(Name = "unknown")]
+        Unknown
     }
 }

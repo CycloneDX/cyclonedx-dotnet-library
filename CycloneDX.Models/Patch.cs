@@ -14,23 +14,29 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
-    [XmlType("license")]
-    public class License
+    public class Patch
     {
-        [XmlElement("id")]
-        public string Id { get; set; }
+        public enum PatchType
+        {
+            [XmlEnum(Name = "unofficial")]
+            Unofficial,
+            [XmlEnum(Name = "monkey")]
+            Monkey,
+            [XmlEnum(Name = "backport")]
+            Backport,
+            [XmlEnum(Name = "cherry-pick")]
+            CherryPick
+        }
 
-        [XmlElement("name")]
-        public string Name { get; set; }
+        public PatchType Type { get; set; }
+
+        public Diff Diff { get; set; }
         
-        [XmlElement("text")]
-        public string Text { get; set; }
-        
-        [XmlElement("url")]
-        public string Url { get; set; }
+        public List<Issue> Resolves { get; set; }
     }
 }

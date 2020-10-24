@@ -14,6 +14,8 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
@@ -22,16 +24,52 @@ namespace CycloneDX.Models
     {
         [XmlAttribute("tagId")]
         public string TagId { get; set; }
+
         [XmlAttribute("name")]
         public string Name { get; set; }
+
         [XmlAttribute("version")]
         public string Version { get; set; }
+
+        [XmlIgnore]
+        public int? TagVersion { get; set; }
         [XmlAttribute("tagVersion")]
-        public string TagVersion { get; set; }
+        [JsonIgnore]
+        [Obsolete("Do not use directly, this is a serialization workaround.")]
+        public int NonNullableTagVersion
+        { 
+            get
+            {
+                return TagVersion.HasValue ? TagVersion.Value : 0;
+            }
+            set
+            {
+                TagVersion = value;
+            }
+        }
+        public bool ShouldSerializeNonNullableTagVersion() { return TagVersion.HasValue; }
+
+        [XmlIgnore]
+        public bool? Patch { get; set; }
         [XmlAttribute("patch")]
-        public string Patch { get; set; }
+        [JsonIgnore]
+        [Obsolete("Do not use directly, this is a serialization workaround.")]
+        public bool NonNullablePatch
+        { 
+            get
+            {
+                return Patch.HasValue ? Patch.Value : false;
+            }
+            set
+            {
+                Patch = value;
+            }
+        }
+        public bool ShouldSerializeNonNullablePatch() { return Patch.HasValue; }
+
         [XmlElement("text")]
         public AttachedText Text { get; set; }
+        
         [XmlAttribute("url")]
         public string Url { get; set; }
     }

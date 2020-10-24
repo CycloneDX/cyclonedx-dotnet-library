@@ -14,23 +14,33 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
-    [XmlType("license")]
-    public class License
+    public class Issue
     {
-        [XmlElement("id")]
+        public enum IssueType
+        {
+            [XmlEnum(Name = "defect")]
+            Defect,
+            [XmlEnum(Name = "enhancement")]
+            Enhancement,
+            [XmlEnum(Name = "security")]
+            Security
+        }
+
+        public IssueType Type { get; set; }
+
         public string Id { get; set; }
 
-        [XmlElement("name")]
         public string Name { get; set; }
-        
-        [XmlElement("text")]
-        public string Text { get; set; }
-        
-        [XmlElement("url")]
-        public string Url { get; set; }
+
+        public string Description { get; set; }
+
+        public Source Source { get; set; }
+
+        public List<string> References { get; set; }
     }
 }

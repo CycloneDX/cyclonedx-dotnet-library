@@ -18,19 +18,16 @@ using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
-    [XmlType("license")]
-    public class License
+    public class Commit
     {
-        [XmlElement("id")]
-        public string Id { get; set; }
+        public string Uid { get; set; }
 
-        [XmlElement("name")]
-        public string Name { get; set; }
-        
-        [XmlElement("text")]
-        public string Text { get; set; }
-        
-        [XmlElement("url")]
         public string Url { get; set; }
+        
+        public IdentifiableAction Author { get; set; }
+
+        public IdentifiableAction Committer { get; set; }
+        
+        public string Message { get; set; }
     }
 }
