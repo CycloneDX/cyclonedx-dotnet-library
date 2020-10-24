@@ -15,14 +15,19 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     public class Tool
     {
+        [XmlElement("vendor")]
         public string Vendor { get; set; }
+        [XmlElement("name")]
         public string Name { get; set; }
+        [XmlElement("version")]
         public string Version { get; set; }
+        [XmlArray("hashes")]
         public List<Hash> Hashes { get; set; }
     }
 }

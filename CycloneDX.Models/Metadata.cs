@@ -16,16 +16,31 @@
 
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     public class Metadata
     {
+        [XmlElement("timestamp")]
         public DateTime? Timestamp { get; set; } = null;
+        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
+
+        [XmlArray("tools")]
+        [XmlArrayItem("tool")]
         public List<Tool> Tools { get; set; }
+
+        [XmlArray("authors")]
+        [XmlArrayItem("author")]
         public List<OrganizationalContact> Authors { get; set; }
+
+        [XmlElement("component")]
         public Component Component { get; set; }
+
+        [XmlElement("manufacture")]
         public OrganizationalEntity Manufacture { get; set; }
+
+        [XmlElement("supplier")]
         public OrganizationalEntity Supplier { get; set; }
     }
 }

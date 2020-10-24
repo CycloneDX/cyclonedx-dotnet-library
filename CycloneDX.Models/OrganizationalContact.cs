@@ -14,12 +14,17 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Xml.Serialization;
+
 namespace CycloneDX.Models
 {
     public class OrganizationalContact
     {
+        [XmlElement("name")]
         public string Name { get; set; }
+        [XmlElement("email")]
         public string Email { get; set; }
+        [XmlElement("phone")]
         public string Phone { get; set; }
     }
 }

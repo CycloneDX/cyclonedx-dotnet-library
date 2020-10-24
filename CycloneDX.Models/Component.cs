@@ -18,54 +18,65 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     // This suppression should maybe be revisited when/if a CycloneDX library is published
     [SuppressMessage("Microsoft.Design", "CA1036:OverrideMethodsOnComparableTypes")]
+    [XmlType("component")]
     public class Component : IComparable<Component>
     {
+        [XmlAttribute("type")]
         public string Type { get; set; }
+
         [JsonPropertyName("bom-ref")]
+        [XmlAttribute("bom-ref")]
         public string BomRef { get; set; }
+
+        [XmlElement("author")]
         public string Author { get; set; }
+
+        [XmlElement("publisher")]
         public string Publisher { get; set; }
+
+        [XmlElement("group")]
         public string Group { get; set; }
+
+        [XmlElement("name")]
         public string Name { get; set; }
+
+        [XmlElement("version")]
         public string Version { get; set; }
+
+        [XmlElement("description")]
         public string Description { get; set; }
+
+        [XmlElement("scope")]
         public string Scope { get; set; }
+
+        [XmlArray("hashes")]
         public List<Hash> Hashes { get; set; }
+
+        [XmlElement("licenses")]
         public List<ComponentLicense> Licenses { get; set; }
+
+        [XmlElement("copyright")]
         public string Copyright { get; set; }
+
+        [XmlElement("purl")]
         public string Purl { get; set; }
+
+        [XmlElement("swid")]
         public Swid Swid { get; set; }
+
+        [XmlArray("externalReferences")]
+        [XmlArrayItem("reference")]
         public List<ExternalReference> ExternalReferences { get; set; }
+        
+        [XmlArray("components")]
         public List<Component> Components { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            var other = obj as Component;
-            return this.Equals(other);
-        }
-
-        public bool Equals(Component other)
-        {
-            if (other == null)
-            {
-                return false;
-            }
-            else
-            {
-                return this.Name == other.Name && this.Version == other.Version;
-            }
-        }
-
-        public override int GetHashCode()
-        {
-            return Utils.GeneratePackageUrl(Name, Version).GetHashCode();
-        }
 
         public int CompareTo(Component other)
         {

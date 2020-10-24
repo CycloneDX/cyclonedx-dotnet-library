@@ -14,16 +14,25 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Xml.Serialization;
+
 namespace CycloneDX.Models
 {
     public class Swid
     {
+        [XmlAttribute("tagId")]
         public string TagId { get; set; }
+        [XmlAttribute("name")]
         public string Name { get; set; }
+        [XmlAttribute("version")]
         public string Version { get; set; }
+        [XmlAttribute("tagVersion")]
         public string TagVersion { get; set; }
+        [XmlAttribute("patch")]
         public string Patch { get; set; }
+        [XmlElement("text")]
         public AttachedText Text { get; set; }
+        [XmlAttribute("url")]
         public string Url { get; set; }
     }
 }
