@@ -67,6 +67,8 @@ namespace CycloneDX.Xml
             if (bom.Components != null)
             foreach (var component in bom.Components)
                 CleanupEmptyXmlArrays(component);
+            
+            if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
         }
 
         public static void CleanupEmptyXmlArrays(Component component)

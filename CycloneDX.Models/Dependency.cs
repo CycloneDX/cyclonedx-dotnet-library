@@ -17,33 +17,17 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
-    [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-    [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    [XmlRoot("bom", Namespace="http://cyclonedx.org/schema/bom/1.2", IsNullable=false)]
-    public class Bom
+    [XmlType("dependency")]
+    public class Dependency
     {
-        [XmlIgnore]
-        public string BomFormat => "CycloneDX";
+        [XmlAttribute("ref")]
+        public string Ref { get; set; }
 
-        [XmlIgnore]
-        public string SpecVersion { get; set; } = "1.2";
-
-        [XmlAttribute("serialNumber")]
-        public string SerialNumber { get; set; }
-
-        [XmlAttribute("version")]
-        public int Version { get; set; } = 1;
-
-        [XmlElement("metadata")]
-        public Metadata Metadata { get; set; }
-
-        [XmlArray("components")]
-        public List<Component> Components { get; set; }
-
-        public List<Dependency> Dependencies { get; set; }
+        public List<string> DependsOn { get; set; }
     }
 }
