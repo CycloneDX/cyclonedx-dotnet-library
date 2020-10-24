@@ -28,8 +28,28 @@ namespace CycloneDX.Models
     [XmlType("component")]
     public class Component : IComparable<Component>
     {
+        public enum ComponentType
+        {
+            [XmlEnum(Name = "application")]
+            Application,
+            [XmlEnum(Name = "framework")]
+            Framework,
+            [XmlEnum(Name = "library")]
+            Library,
+            [XmlEnum(Name = "container")]
+            Container,
+            [XmlEnum(Name = "operating-system")]
+            OperationSystem,
+            [XmlEnum(Name = "device")]
+            Device,
+            [XmlEnum(Name = "firmware")]
+            Firmware,
+            [XmlEnum(Name = "file")]
+            File
+        }
+
         [XmlAttribute("type")]
-        public string Type { get; set; }
+        public ComponentType Type { get; set; }
 
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]

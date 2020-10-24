@@ -16,6 +16,7 @@
 
 using System.Diagnostics.Contracts;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 using Bom = CycloneDX.Models.Bom;
 
@@ -35,6 +36,7 @@ namespace CycloneDX.Json
 
             options.Converters.Add(new DateTimeConverter());
             options.Converters.Add(new LicenseConverter());
+            options.Converters.Add(new ComponentTypeConverter());
 
             var bom = JsonSerializer.Deserialize<Bom>(jsonBom, options);
 
