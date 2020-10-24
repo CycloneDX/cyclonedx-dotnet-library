@@ -18,19 +18,10 @@ using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
-    [XmlType("license")]
-    public class License
+    public class Source
     {
-        [XmlElement("id")]
-        public string Id { get; set; }
-
-        [XmlElement("name")]
         public string Name { get; set; }
-        
-        [XmlElement("text")]
-        public string Text { get; set; }
-        
-        [XmlElement("url")]
+
         public string Url { get; set; }
     }
 }

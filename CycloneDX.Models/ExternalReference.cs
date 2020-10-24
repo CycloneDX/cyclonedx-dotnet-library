@@ -22,29 +22,47 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     public class ExternalReference
     {
+        public enum ExternalReferenceType
+        {
+            [XmlEnum(Name = "vcs")]
+            Vcs,
+            [XmlEnum(Name = "issue-tracker")]
+            IssueTracker,
+            [XmlEnum(Name = "website")]
+            Website,
+            [XmlEnum(Name = "advisories")]
+            Advisories,
+            [XmlEnum(Name = "bom")]
+            Bom,
+            [XmlEnum(Name = "mailing-list")]
+            MailingList,
+            [XmlEnum(Name = "social")]
+            Social,
+            [XmlEnum(Name = "chat")]
+            Chat,
+            [XmlEnum(Name = "documentation")]
+            Documentation,
+            [XmlEnum(Name = "support")]
+            Support,
+            [XmlEnum(Name = "distribution")]
+            Distribution,
+            [XmlEnum(Name = "license")]
+            License,
+            [XmlEnum(Name = "build-meta")]
+            BuildMeta,
+            [XmlEnum(Name = "build-system")]
+            BuildSystem,
+            [XmlEnum(Name = "other")]
+            Other
+        }
+
         [XmlElement("url")]
         public string Url { get; set; }
 
         [XmlAttribute("type")]
-        public string Type { get; set; }
+        public ExternalReferenceType Type { get; set; }
 
         [XmlElement("comment")]
         public string Comment { get; set; }
-
-        public const string VCS = "vcs";
-        public const string ISSUE_TRACKER = "issue-tracker";
-        public const string WEBSITE = "website";
-        public const string ADVISORIES = "advisories";
-        public const string BOM = "bom";
-        public const string MAILING_LIST = "mailing-list";
-        public const string SOCIAL = "social";
-        public const string CHAT = "chat";
-        public const string DOCUMENTATION = "documentation";
-        public const string SUPPORT = "support";
-        public const string DISTRIBUTION = "distribution";
-        public const string LICENSE = "license";
-        public const string BUILD_META = "build-meta";
-        public const string BUILD_SYSTEM = "build-system";
-        public const string OTHER = "other";
     }
 }

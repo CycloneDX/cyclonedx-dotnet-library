@@ -30,7 +30,7 @@ namespace CycloneDX.Models
         public string BomFormat => "CycloneDX";
 
         [XmlIgnore]
-        public string SpecVersion { get; set; } = "1.2";
+        public string SpecVersion => "1.2";
 
         [XmlAttribute("serialNumber")]
         public string SerialNumber { get; set; }
@@ -44,6 +44,13 @@ namespace CycloneDX.Models
         [XmlArray("components")]
         public List<Component> Components { get; set; }
 
+        [XmlArray("services")]
+        public List<Service> Services { get; set; }
+
+        [XmlArray("externalReferences")]
+        public List<ExternalReference> ExternalReferences { get; set; }
+
+        [XmlArray("dependencies")]
         public List<Dependency> Dependencies { get; set; }
     }
 }
