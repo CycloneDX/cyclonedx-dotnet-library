@@ -21,7 +21,7 @@ namespace CycloneDX.Models
 {
     public class Patch
     {
-        public enum PatchType
+        public enum PatchClassification
         {
             [XmlEnum(Name = "unofficial")]
             Unofficial,
@@ -33,10 +33,14 @@ namespace CycloneDX.Models
             CherryPick
         }
 
-        public PatchType Type { get; set; }
+        [XmlAttribute("type")]
+        public PatchClassification Type { get; set; }
 
+        [XmlElement("diff")]
         public Diff Diff { get; set; }
-        
+
+        [XmlArray("resolves")]        
+        [XmlArrayItem("issue")]        
         public List<Issue> Resolves { get; set; }
     }
 }

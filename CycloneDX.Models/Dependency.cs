@@ -28,6 +28,7 @@ namespace CycloneDX.Models
         [XmlAttribute("ref")]
         public string Ref { get; set; }
 
-        public List<string> DependsOn { get; set; }
+        [XmlElement("dependency")]
+        public List<Dependency> Dependencies { get; set; }
     }
 }

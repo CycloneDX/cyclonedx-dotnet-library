@@ -20,8 +20,9 @@ namespace CycloneDX.Models
 {
     public class Source
     {
+        [XmlElement("name")]
         public string Name { get; set; }
-
+        [XmlElement("url")]
         public string Url { get; set; }
     }
 }

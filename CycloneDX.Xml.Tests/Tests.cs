@@ -18,7 +18,6 @@ namespace CycloneDX.Xml.Tests
         [InlineData("valid-component-types-1.2")]
         [InlineData("valid-dependency-1.2")]
         [InlineData("valid-empty-components-1.2")]
-        [InlineData("valid-external-elements-1.2")]
         [InlineData("valid-license-expression-1.2")]
         [InlineData("valid-license-id-1.2")]
         [InlineData("valid-license-name-1.2")]
@@ -29,10 +28,8 @@ namespace CycloneDX.Xml.Tests
         [InlineData("valid-metadata-tool-1.2")]
         [InlineData("valid-minimal-viable-1.2")]
         [InlineData("valid-patch-1.2")]
-        [InlineData("valid-random-attributes-1.2")]
         [InlineData("valid-service-1.2")]
         [InlineData("valid-service-empty-objects-1.2")]
-        [InlineData("valid-xml-signature-1.2")]
         public void XmlRoundTripTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", filename + ".xml");

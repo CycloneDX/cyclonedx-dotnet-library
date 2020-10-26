@@ -23,27 +23,34 @@ namespace CycloneDX.Models
 {
     public class Service
     {
-        [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]
+        [JsonPropertyName("bom-ref")]
         public string BomRef { get; set; }
 
+        [XmlElement("provider")]
         public OrganizationalEntity Provider { get; set; }
 
+        [XmlElement("group")]
         public string Group { get; set; }
 
+        [XmlElement("name")]
         public string Name { get; set; }
 
+        [XmlElement("version")]
         public string Version { get; set; }
 
+        [XmlElement("description")]
         public string Description { get; set; }
 
+        [XmlArray("endpoints")]
+        [XmlArrayItem("endpoint")]
         public List<string> Endpoints { get; set; }
 
         [XmlIgnore]
         public bool? Authenticated { get; set; }
         [XmlElement("authenticated")]
         [JsonIgnore]
-        [Obsolete("Do not use directly, this is a serialization workaround.")]
+        // This is a serialization workaround
         public bool NonNullableAuthenticated
         {
             get
@@ -62,7 +69,7 @@ namespace CycloneDX.Models
         public bool? XTrustBoundary { get; set; }
         [XmlElement("x-trust-boundary")]
         [JsonIgnore]
-        [Obsolete("Do not use directly, this is a serialization workaround.")]
+        // This is a serialization workaround
         public bool NonNullableXTrustBoundary
         {
             get
@@ -76,10 +83,19 @@ namespace CycloneDX.Models
         }
         public bool ShouldSerializeNonNullableXTrustBoundary() { return XTrustBoundary.HasValue; }
 
+        [XmlArray("data")]
+        [XmlArrayItem("classification")]
         public List<DataClassification> Data { get; set; }
 
+        [XmlElement("licenses")]
         public List<ComponentLicense> Licenses { get; set; }
 
+        [XmlArray("externalReferences")]
+        [XmlArrayItem("reference")]
         public List<ExternalReference> ExternalReferences { get; set; }
+
+        [XmlArray("services")]
+        [XmlArrayItem("service")]
+        public List<Service> Services { get; set; }
     }
 }

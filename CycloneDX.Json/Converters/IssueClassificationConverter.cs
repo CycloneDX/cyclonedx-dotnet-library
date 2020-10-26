@@ -18,14 +18,14 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using PatchType = CycloneDX.Models.Patch.PatchType;
+using IssueClassification = CycloneDX.Models.Issue.IssueClassification;
 
 namespace CycloneDX.Json
 {
 
-    public class PatchTypeConverter : JsonConverter<PatchType>
+    public class IssueClassificationConverter : JsonConverter<IssueClassification>
     {
-        public override PatchType Read(
+        public override IssueClassification Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -36,42 +36,27 @@ namespace CycloneDX.Json
                 throw new JsonException();
             }
 
-            var patchTypeString = reader.GetString();
+            var issueTypeString = reader.GetString();
 
-            if (patchTypeString == "cherry-pick")
+            IssueClassification issueType;
+            var success = Enum.TryParse<IssueClassification>(issueTypeString, ignoreCase: true, out issueType);
+            if (success)
             {
-                return PatchType.CherryPick;
+                return issueType;
             }
             else
             {
-                PatchType patchType;
-                var success = Enum.TryParse<PatchType>(patchTypeString, ignoreCase: true, out patchType);
-                if (success)
-                {
-                    return patchType;
-                }
-                else
-                {
-                    throw new JsonException();
-                }
+                throw new JsonException();
             }
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            PatchType value,
+            IssueClassification value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
-
-            if (value == PatchType.CherryPick)
-            {
-                writer.WriteStringValue("cherry-pick");
-            }
-            else
-            {
-                writer.WriteStringValue(value.ToString().ToLowerInvariant());
-            }
+            writer.WriteStringValue(value.ToString().ToLowerInvariant());
         }
     }
 }

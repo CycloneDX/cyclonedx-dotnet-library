@@ -21,8 +21,10 @@ namespace CycloneDX.Models
 {
     public class DataClassification
     {
+        [XmlAttribute("flow")]
         public DataFlow Flow { get; set; }
 
+        [XmlText]
         public string Classification { get; set; }
     }
 }

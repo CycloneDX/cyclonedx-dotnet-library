@@ -20,14 +20,19 @@ namespace CycloneDX.Models
 {
     public class Commit
     {
+        [XmlElement("uid")]
         public string Uid { get; set; }
 
+        [XmlElement("url")]
         public string Url { get; set; }
         
+        [XmlElement("author")]
         public IdentifiableAction Author { get; set; }
 
+        [XmlElement("committer")]
         public IdentifiableAction Committer { get; set; }
         
+        [XmlElement("message")]
         public string Message { get; set; }
     }
 }

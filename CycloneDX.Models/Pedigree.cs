@@ -21,10 +21,23 @@ namespace CycloneDX.Models
 {
     public class Pedigree
     {
+        [XmlArray("ancestors")]
+        [XmlArrayItem("component")]
         public List<Component> Ancestors { get; set; }
+
+        [XmlArray("descendants")]
+        [XmlArrayItem("component")]
         public List<Component> Descendants { get; set; }
+
+        [XmlArray("variants")]
+        [XmlArrayItem("component")]
         public List<Component> Variants { get; set; }
+
+        [XmlArray("patches")]
+        [XmlArrayItem("patch")]
         public List<Patch> Patches { get; set; }
+
+        [XmlElement("notes")]
         public string Notes { get; set; }
     }
 }
