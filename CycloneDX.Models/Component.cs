@@ -23,10 +23,8 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    // This suppression should maybe be revisited when/if a CycloneDX library is published
-    [SuppressMessage("Microsoft.Design", "CA1036:OverrideMethodsOnComparableTypes")]
     [XmlType("component")]
-    public class Component : IComparable<Component>
+    public class Component
     {
         public enum ComponentType
         {
@@ -129,26 +127,5 @@ namespace CycloneDX.Models
         
         [XmlArray("components")]
         public List<Component> Components { get; set; }
-
-        public int CompareTo(Component other)
-        {
-            if (other == null)
-            {
-                return 1;
-            }
-            else
-            {
-                var nameComparison = string.Compare(this.Name.ToUpperInvariant(), other.Name.ToUpperInvariant(), StringComparison.Ordinal);
-                return nameComparison == 0
-                    ? string.Compare(this.Version, other.Version, StringComparison.Ordinal)
-                    : nameComparison;
-            }
-        }
-
-        public int CompareTo(object obj)
-        {
-            var other = obj as Component;
-            return CompareTo(other);
-        }
     }
 }
