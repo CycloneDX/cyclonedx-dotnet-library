@@ -18,14 +18,14 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using IssueType = CycloneDX.Models.Issue.IssueType;
+using PatchClassification = CycloneDX.Models.Patch.PatchClassification;
 
 namespace CycloneDX.Json
 {
 
-    public class IssueTypeConverter : JsonConverter<IssueType>
+    public class PatchClassificationConverter : JsonConverter<PatchClassification>
     {
-        public override IssueType Read(
+        public override PatchClassification Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -36,27 +36,42 @@ namespace CycloneDX.Json
                 throw new JsonException();
             }
 
-            var issueTypeString = reader.GetString();
+            var patchTypeString = reader.GetString();
 
-            IssueType issueType;
-            var success = Enum.TryParse<IssueType>(issueTypeString, ignoreCase: true, out issueType);
-            if (success)
+            if (patchTypeString == "cherry-pick")
             {
-                return issueType;
+                return PatchClassification.CherryPick;
             }
             else
             {
-                throw new JsonException();
+                PatchClassification patchType;
+                var success = Enum.TryParse<PatchClassification>(patchTypeString, ignoreCase: true, out patchType);
+                if (success)
+                {
+                    return patchType;
+                }
+                else
+                {
+                    throw new JsonException();
+                }
             }
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            IssueType value,
+            PatchClassification value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
-            writer.WriteStringValue(value.ToString().ToLowerInvariant());
+
+            if (value == PatchClassification.CherryPick)
+            {
+                writer.WriteStringValue("cherry-pick");
+            }
+            else
+            {
+                writer.WriteStringValue(value.ToString().ToLowerInvariant());
+            }
         }
     }
 }

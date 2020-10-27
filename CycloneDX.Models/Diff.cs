@@ -20,8 +20,9 @@ namespace CycloneDX.Models
 {
     public class Diff
     {
+        [XmlElement("text")]
         public AttachedText Text { get; set; }
-
+        [XmlElement("url")]
         public string Url { get; set; }
     }
 }

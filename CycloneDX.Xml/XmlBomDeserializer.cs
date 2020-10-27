@@ -65,12 +65,16 @@ namespace CycloneDX.Xml
             if (bom.Components?.Count == 0) bom.Components = null;   
             if (bom.Services?.Count == 0) bom.Services = null;   
             if (bom.ExternalReferences?.Count == 0) bom.ExternalReferences = null;   
-            if (bom.Dependencies?.Count == 0) bom.Dependencies = null;   
+            if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
 
             if (bom.Components != null)
             foreach (var component in bom.Components)
                 CleanupEmptyXmlArrays(component);
             
+            if (bom.Dependencies != null)
+            foreach (var dependency in bom.Dependencies)
+                if (dependency.Dependencies?.Count == 0) dependency.Dependencies = null;
+
             if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
         }
 
@@ -83,6 +87,26 @@ namespace CycloneDX.Xml
             if (component.Components != null)
             foreach (var subComponent in component.Components)
                 CleanupEmptyXmlArrays(subComponent);
+            
+            if (component.Pedigree != null) CleanupEmptyXmlArrays(component.Pedigree);
+        }
+
+        public static void CleanupEmptyXmlArrays(Pedigree pedigree)
+        {
+            if (pedigree.Ancestors?.Count == 0) pedigree.Ancestors = null;
+            if (pedigree.Ancestors != null)
+            foreach (var component in pedigree.Ancestors)
+                CleanupEmptyXmlArrays(component);
+
+            if (pedigree.Descendants?.Count == 0) pedigree.Descendants = null;
+            if (pedigree.Descendants != null)
+            foreach (var component in pedigree.Descendants)
+                CleanupEmptyXmlArrays(component);
+
+            if (pedigree.Variants?.Count == 0) pedigree.Variants = null;
+            if (pedigree.Variants != null)
+            foreach (var component in pedigree.Variants)
+                CleanupEmptyXmlArrays(component);
         }
     }
 }

@@ -21,10 +21,11 @@ namespace CycloneDX.Models
 {
     public class IdentifiableAction
     {
+        [XmlElement("timestamp")]
         public DateTime? Timestamp { get; set; }
-
+        [XmlElement("name")]
         public string Name { get; set; }
-
+        [XmlElement("email")]
         public string Email { get; set; }
     }
 }

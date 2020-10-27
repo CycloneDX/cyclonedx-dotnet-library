@@ -21,7 +21,7 @@ namespace CycloneDX.Models
 {
     public class Issue
     {
-        public enum IssueType
+        public enum IssueClassification
         {
             [XmlEnum(Name = "defect")]
             Defect,
@@ -31,16 +31,23 @@ namespace CycloneDX.Models
             Security
         }
 
-        public IssueType Type { get; set; }
+        [XmlAttribute("type")]
+        public IssueClassification Type { get; set; }
 
+        [XmlElement("id")]
         public string Id { get; set; }
 
+        [XmlElement("name")]
         public string Name { get; set; }
 
+        [XmlElement("description")]
         public string Description { get; set; }
 
+        [XmlElement("source")]
         public Source Source { get; set; }
 
+        [XmlArray("references")]
+        [XmlArrayItem("url")]
         public List<string> References { get; set; }
     }
 }

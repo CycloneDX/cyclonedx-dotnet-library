@@ -45,12 +45,14 @@ namespace CycloneDX.Models
         public List<Component> Components { get; set; }
 
         [XmlArray("services")]
+        [XmlArrayItem("service")]
         public List<Service> Services { get; set; }
 
         [XmlArray("externalReferences")]
         public List<ExternalReference> ExternalReferences { get; set; }
 
         [XmlArray("dependencies")]
+        [XmlArrayItem("dependency")]
         public List<Dependency> Dependencies { get; set; }
     }
 }

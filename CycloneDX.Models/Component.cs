@@ -120,6 +120,7 @@ namespace CycloneDX.Models
             }
         }
 
+        [XmlElement("pedigree")]
         public Pedigree Pedigree { get; set; }
 
         [XmlArray("externalReferences")]
