@@ -26,7 +26,8 @@ namespace CycloneDX.Models
 
         [XmlElement("name")]
         public string Name { get; set; }
-        
+        public bool ShouldSerializeName() { return string.IsNullOrEmpty(Id); }
+
         [XmlElement("text")]
         public string Text { get; set; }
         
