@@ -23,6 +23,10 @@
         {
           "url": "https://github.com/natemcmaster/CommandLineUtils",
           "type": "website"
+        },
+        {
+          "url": "https://github.com/natemcmaster/CommandLineUtils/issues",
+          "type": "issue-tracker"
         }
       ]
     },
