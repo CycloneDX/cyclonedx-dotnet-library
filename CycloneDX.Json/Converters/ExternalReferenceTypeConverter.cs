@@ -16,6 +16,7 @@
 
 using System;
 using System.Diagnostics.Contracts;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using ExternalReferenceType = CycloneDX.Models.ExternalReference.ExternalReferenceType;
@@ -36,7 +37,7 @@ namespace CycloneDX.Json
                 throw new JsonException();
             }
 
-            var externalReferenceTypeString = reader.GetString().Replace('-', '_');
+            var externalReferenceTypeString = reader.GetString().Replace("-", "");
 
             ExternalReferenceType externalReferenceType;
             var success = Enum.TryParse<ExternalReferenceType>(externalReferenceTypeString, ignoreCase: true, out externalReferenceType);
@@ -56,7 +57,19 @@ namespace CycloneDX.Json
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
-            writer.WriteStringValue(value.ToString().ToLowerInvariant().Replace('_', '-'));
+
+            var s = value.ToString();
+            var sb = new StringBuilder();
+            for (var i=0; i<s.Length; i++)
+            {
+                if (i != 0 && s[i] == char.ToUpperInvariant(s[i]))
+                {
+                    sb.Append('-');
+                }
+                sb.Append(char.ToLowerInvariant(s[i]));
+            }
+            
+            writer.WriteStringValue(sb.ToString());
         }
     }
 }
