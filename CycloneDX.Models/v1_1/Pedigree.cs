@@ -33,6 +33,10 @@ namespace CycloneDX.Models.v1_1
         [XmlArrayItem("component")]
         public List<Component> Variants { get; set; }
 
+        [XmlArray("commits")]
+        [XmlArrayItem("commit")]
+        public List<Commit> Commits { get; set; }
+        
         [XmlElement("notes")]
         public string Notes { get; set; }
     }
