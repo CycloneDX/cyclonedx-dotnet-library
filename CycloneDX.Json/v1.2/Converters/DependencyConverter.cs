@@ -21,7 +21,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Dependency = CycloneDX.Models.v1_2.Dependency;
 
-namespace CycloneDX.Json
+namespace CycloneDX.Json.v1_2.Converters
 {
 
     public class DependencyConverter : JsonConverter<Dependency>

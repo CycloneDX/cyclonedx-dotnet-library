@@ -18,60 +18,39 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using DataFlow = CycloneDX.Models.v1_2.DataFlow;
 
-namespace CycloneDX.Json
+namespace CycloneDX.Json.v1_2.Converters
 {
 
-    public class DataFlowConverter : JsonConverter<DataFlow>
+    public class DateTimeConverter : JsonConverter<DateTime?>
     {
-        public override DataFlow Read(
+        public override DateTime? Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
         {
-            if (reader.TokenType == JsonTokenType.Null
-                || reader.TokenType != JsonTokenType.String)
+            if (reader.TokenType == JsonTokenType.Null)
+            {
+                return null;
+            }
+            else if (reader.TokenType != JsonTokenType.String)
             {
                 throw new JsonException();
             }
 
-            var dataFlowString = reader.GetString();
-
-            if (dataFlowString == "bi-directional")
-            {
-                return DataFlow.Bidirectional;
-            }
-            else
-            {
-                DataFlow dataFlow;
-                var success = Enum.TryParse<DataFlow>(dataFlowString, ignoreCase: true, out dataFlow);
-                if (success)
-                {
-                    return dataFlow;
-                }
-                else
-                {
-                    throw new JsonException();
-                }
-            }
+            var valueString = reader.GetString();
+            var value = DateTime.Parse(valueString);
+            return value;
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            DataFlow value,
+            DateTime? value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
 
-            if (value == DataFlow.Bidirectional)
-            {
-                writer.WriteStringValue("bi-directional");
-            }
-            else
-            {
-                writer.WriteStringValue(value.ToString().ToLowerInvariant());
-            }
+            writer.WriteStringValue(value?.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
         }
     }
 }

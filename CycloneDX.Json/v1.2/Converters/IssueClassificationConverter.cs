@@ -16,17 +16,16 @@
 
 using System;
 using System.Diagnostics.Contracts;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ExternalReferenceType = CycloneDX.Models.v1_2.ExternalReference.ExternalReferenceType;
+using IssueClassification = CycloneDX.Models.v1_2.Issue.IssueClassification;
 
-namespace CycloneDX.Json
+namespace CycloneDX.Json.v1_2.Converters
 {
 
-    public class ExternalReferenceTypeConverter : JsonConverter<ExternalReferenceType>
+    public class IssueClassificationConverter : JsonConverter<IssueClassification>
     {
-        public override ExternalReferenceType Read(
+        public override IssueClassification Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -37,13 +36,13 @@ namespace CycloneDX.Json
                 throw new JsonException();
             }
 
-            var externalReferenceTypeString = reader.GetString().Replace("-", "");
+            var issueTypeString = reader.GetString();
 
-            ExternalReferenceType externalReferenceType;
-            var success = Enum.TryParse<ExternalReferenceType>(externalReferenceTypeString, ignoreCase: true, out externalReferenceType);
+            IssueClassification issueType;
+            var success = Enum.TryParse<IssueClassification>(issueTypeString, ignoreCase: true, out issueType);
             if (success)
             {
-                return externalReferenceType;
+                return issueType;
             }
             else
             {
@@ -53,23 +52,11 @@ namespace CycloneDX.Json
 
         public override void Write(
             Utf8JsonWriter writer,
-            ExternalReferenceType value,
+            IssueClassification value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
-
-            var s = value.ToString();
-            var sb = new StringBuilder();
-            for (var i=0; i<s.Length; i++)
-            {
-                if (i != 0 && s[i] == char.ToUpperInvariant(s[i]))
-                {
-                    sb.Append('-');
-                }
-                sb.Append(char.ToLowerInvariant(s[i]));
-            }
-            
-            writer.WriteStringValue(sb.ToString());
+            writer.WriteStringValue(value.ToString().ToLowerInvariant());
         }
     }
 }

@@ -18,14 +18,14 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using HashAlgorithm = CycloneDX.Models.v1_2.Hash.HashAlgorithm;
+using DataFlow = CycloneDX.Models.v1_2.DataFlow;
 
-namespace CycloneDX.Json
+namespace CycloneDX.Json.v1_2.Converters
 {
 
-    public class HashAlgorithmConverter : JsonConverter<HashAlgorithm>
+    public class DataFlowConverter : JsonConverter<DataFlow>
     {
-        public override HashAlgorithm Read(
+        public override DataFlow Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -36,27 +36,42 @@ namespace CycloneDX.Json
                 throw new JsonException();
             }
 
-            var algorithmString = reader.GetString().Replace('-', '_');
+            var dataFlowString = reader.GetString();
 
-            HashAlgorithm hashAlgorithm;
-            var success = Enum.TryParse<HashAlgorithm>(algorithmString, ignoreCase: true, out hashAlgorithm);
-            if (success)
+            if (dataFlowString == "bi-directional")
             {
-                return hashAlgorithm;
+                return DataFlow.Bidirectional;
             }
             else
             {
-                throw new JsonException();
+                DataFlow dataFlow;
+                var success = Enum.TryParse<DataFlow>(dataFlowString, ignoreCase: true, out dataFlow);
+                if (success)
+                {
+                    return dataFlow;
+                }
+                else
+                {
+                    throw new JsonException();
+                }
             }
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            HashAlgorithm value,
+            DataFlow value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
-            writer.WriteStringValue(value.ToString().Replace('_', '-'));
+
+            if (value == DataFlow.Bidirectional)
+            {
+                writer.WriteStringValue("bi-directional");
+            }
+            else
+            {
+                writer.WriteStringValue(value.ToString().ToLowerInvariant());
+            }
         }
     }
 }

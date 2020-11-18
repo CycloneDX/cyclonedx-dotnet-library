@@ -16,16 +16,15 @@
 
 using System.Diagnostics.Contracts;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
-using Bom = CycloneDX.Models.v1_2.Bom;
+using CycloneDX;
 
 namespace CycloneDX.Json
 {
 
     public static class JsonBomDeserializer
     {
-        public static Bom Deserialize(string jsonBom)
+        public static Models.v1_2.Bom Deserialize_v1_2(string jsonBom)
         {
             Contract.Requires(jsonBom != null);
 
@@ -34,11 +33,16 @@ namespace CycloneDX.Json
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
             };
 
-            Utils.AddJsonConverters(options);
+            Utils.AddJsonConverters_v1_2(options);
 
-            var bom = JsonSerializer.Deserialize<Bom>(jsonBom, options);
+            var bom = JsonSerializer.Deserialize<Models.v1_2.Bom>(jsonBom, options);
 
             return bom;
+        }
+
+        public static Models.v1_2.Bom Deserialize(string jsonBom)
+        {
+            return Deserialize_v1_2(jsonBom);
         }
     }
 }

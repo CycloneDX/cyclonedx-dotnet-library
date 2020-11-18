@@ -18,14 +18,14 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using IssueClassification = CycloneDX.Models.v1_2.Issue.IssueClassification;
+using HashAlgorithm = CycloneDX.Models.v1_2.Hash.HashAlgorithm;
 
-namespace CycloneDX.Json
+namespace CycloneDX.Json.v1_2.Converters
 {
 
-    public class IssueClassificationConverter : JsonConverter<IssueClassification>
+    public class HashAlgorithmConverter : JsonConverter<HashAlgorithm>
     {
-        public override IssueClassification Read(
+        public override HashAlgorithm Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -36,13 +36,13 @@ namespace CycloneDX.Json
                 throw new JsonException();
             }
 
-            var issueTypeString = reader.GetString();
+            var algorithmString = reader.GetString().Replace('-', '_');
 
-            IssueClassification issueType;
-            var success = Enum.TryParse<IssueClassification>(issueTypeString, ignoreCase: true, out issueType);
+            HashAlgorithm hashAlgorithm;
+            var success = Enum.TryParse<HashAlgorithm>(algorithmString, ignoreCase: true, out hashAlgorithm);
             if (success)
             {
-                return issueType;
+                return hashAlgorithm;
             }
             else
             {
@@ -52,11 +52,11 @@ namespace CycloneDX.Json
 
         public override void Write(
             Utf8JsonWriter writer,
-            IssueClassification value,
+            HashAlgorithm value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
-            writer.WriteStringValue(value.ToString().ToLowerInvariant());
+            writer.WriteStringValue(value.ToString().Replace('_', '-'));
         }
     }
 }

@@ -20,7 +20,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using PatchClassification = CycloneDX.Models.v1_2.Patch.PatchClassification;
 
-namespace CycloneDX.Json
+namespace CycloneDX.Json.v1_2.Converters
 {
 
     public class PatchClassificationConverter : JsonConverter<PatchClassification>

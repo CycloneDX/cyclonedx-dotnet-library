@@ -16,16 +16,17 @@
 
 using System;
 using System.Diagnostics.Contracts;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ComponentType = CycloneDX.Models.v1_2.Component.ComponentType;
+using ExternalReferenceType = CycloneDX.Models.v1_2.ExternalReference.ExternalReferenceType;
 
-namespace CycloneDX.Json
+namespace CycloneDX.Json.v1_2.Converters
 {
 
-    public class ComponentTypeConverter : JsonConverter<ComponentType>
+    public class ExternalReferenceTypeConverter : JsonConverter<ExternalReferenceType>
     {
-        public override ComponentType Read(
+        public override ExternalReferenceType Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -36,42 +37,39 @@ namespace CycloneDX.Json
                 throw new JsonException();
             }
 
-            var componentTypeString = reader.GetString();
+            var externalReferenceTypeString = reader.GetString().Replace("-", "");
 
-            if (componentTypeString == "operating-system")
+            ExternalReferenceType externalReferenceType;
+            var success = Enum.TryParse<ExternalReferenceType>(externalReferenceTypeString, ignoreCase: true, out externalReferenceType);
+            if (success)
             {
-                return ComponentType.OperationSystem;
+                return externalReferenceType;
             }
             else
             {
-                ComponentType componentType;
-                var success = Enum.TryParse<ComponentType>(componentTypeString, ignoreCase: true, out componentType);
-                if (success)
-                {
-                    return componentType;
-                }
-                else
-                {
-                    throw new JsonException();
-                }
+                throw new JsonException();
             }
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            ComponentType value,
+            ExternalReferenceType value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
 
-            if (value == ComponentType.OperationSystem)
+            var s = value.ToString();
+            var sb = new StringBuilder();
+            for (var i=0; i<s.Length; i++)
             {
-                writer.WriteStringValue("operating-system");
+                if (i != 0 && s[i] == char.ToUpperInvariant(s[i]))
+                {
+                    sb.Append('-');
+                }
+                sb.Append(char.ToLowerInvariant(s[i]));
             }
-            else
-            {
-                writer.WriteStringValue(value.ToString().ToLowerInvariant());
-            }
+            
+            writer.WriteStringValue(sb.ToString());
         }
     }
 }
