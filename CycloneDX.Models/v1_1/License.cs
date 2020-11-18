@@ -29,7 +29,7 @@ namespace CycloneDX.Models.v1_1
         public bool ShouldSerializeName() { return string.IsNullOrEmpty(Id); }
 
         [XmlElement("text")]
-        public string Text { get; set; }
+        public LicenseText Text { get; set; }
         
         [XmlElement("url")]
         public string Url { get; set; }
