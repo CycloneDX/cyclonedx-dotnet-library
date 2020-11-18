@@ -46,6 +46,7 @@ namespace CycloneDX.Xml
         public static Models.v1_2.Bom Deserialize(Stream stream)
         {
             return Deserialize_v1_2(stream);
+            //TODO attempt to deserialize previous versions and upgrade models to v1.2
         }
 
         public static Models.v1_2.Bom Deserialize_v1_2(string bom)
@@ -77,6 +78,35 @@ namespace CycloneDX.Xml
             return bom;
         }
 
+        public static Models.v1_1.Bom Deserialize_v1_1(string bom)
+        {
+            Contract.Requires(bom != null);
+
+            using (var stream = new MemoryStream())
+            {
+                var writer = new StreamWriter(stream);
+                writer.Write(bom);
+                writer.Flush();
+                stream.Position = 0;
+                return Deserialize_v1_1(stream);
+            }
+        }
+
+        public static Models.v1_1.Bom Deserialize_v1_1(Stream stream)
+        {
+            Contract.Requires(stream != null);
+
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+
+            var serializer = new XmlSerializer(typeof(Models.v1_1.Bom));
+            var bom = (Models.v1_1.Bom)serializer.Deserialize(stream);
+
+            CleanupEmptyXmlArrays(bom);
+
+            return bom;
+        }
+
         public static void CleanupEmptyXmlArrays(Models.v1_2.Bom bom)
         {
             if (bom.Metadata?.Authors?.Count == 0) bom.Metadata.Authors = null;   
@@ -97,7 +127,30 @@ namespace CycloneDX.Xml
             if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
         }
 
+        public static void CleanupEmptyXmlArrays(Models.v1_1.Bom bom)
+        {
+            if (bom.Components?.Count == 0) bom.Components = null;   
+            if (bom.ExternalReferences?.Count == 0) bom.ExternalReferences = null;   
+
+            if (bom.Components != null)
+            foreach (var component in bom.Components)
+                CleanupEmptyXmlArrays(component);
+        }
+
         public static void CleanupEmptyXmlArrays(Models.v1_2.Component component)
+        {
+            if (component.Hashes?.Count == 0) component.Hashes = null;
+            if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
+            if (component.Components?.Count == 0) component.Components = null;
+
+            if (component.Components != null)
+            foreach (var subComponent in component.Components)
+                CleanupEmptyXmlArrays(subComponent);
+            
+            if (component.Pedigree != null) CleanupEmptyXmlArrays(component.Pedigree);
+        }
+
+        public static void CleanupEmptyXmlArrays(Models.v1_1.Component component)
         {
             if (component.Hashes?.Count == 0) component.Hashes = null;
             if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
@@ -112,6 +165,29 @@ namespace CycloneDX.Xml
 
         public static void CleanupEmptyXmlArrays(Models.v1_2.Pedigree pedigree)
         {
+            if (pedigree.Commits?.Count == 0) pedigree.Commits = null;
+            if (pedigree.Patches?.Count == 0) pedigree.Patches = null;
+
+            if (pedigree.Ancestors?.Count == 0) pedigree.Ancestors = null;
+            if (pedigree.Ancestors != null)
+            foreach (var component in pedigree.Ancestors)
+                CleanupEmptyXmlArrays(component);
+
+            if (pedigree.Descendants?.Count == 0) pedigree.Descendants = null;
+            if (pedigree.Descendants != null)
+            foreach (var component in pedigree.Descendants)
+                CleanupEmptyXmlArrays(component);
+
+            if (pedigree.Variants?.Count == 0) pedigree.Variants = null;
+            if (pedigree.Variants != null)
+            foreach (var component in pedigree.Variants)
+                CleanupEmptyXmlArrays(component);
+        }
+
+        public static void CleanupEmptyXmlArrays(Models.v1_1.Pedigree pedigree)
+        {
+            if (pedigree.Commits?.Count == 0) pedigree.Commits = null;
+
             if (pedigree.Ancestors?.Count == 0) pedigree.Ancestors = null;
             if (pedigree.Ancestors != null)
             foreach (var component in pedigree.Ancestors)

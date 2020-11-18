@@ -11,31 +11,51 @@ namespace CycloneDX.Xml.Tests
     {
         [Theory] 
         [InlineData("bom")]
-        [InlineData("valid-component-hashes-1.2")]
-        [InlineData("valid-component-ref-1.2")]
-        [InlineData("valid-component-swid-1.2")]
-        [InlineData("valid-component-swid-full-1.2")]
-        [InlineData("valid-component-types-1.2")]
-        [InlineData("valid-dependency-1.2")]
-        [InlineData("valid-empty-components-1.2")]
-        [InlineData("valid-license-expression-1.2")]
-        [InlineData("valid-license-id-1.2")]
-        [InlineData("valid-license-name-1.2")]
-        [InlineData("valid-metadata-author-1.2")]
-        [InlineData("valid-metadata-manufacture-1.2")]
-        [InlineData("valid-metadata-supplier-1.2")]
-        [InlineData("valid-metadata-timestamp-1.2")]
-        [InlineData("valid-metadata-tool-1.2")]
-        [InlineData("valid-minimal-viable-1.2")]
-        [InlineData("valid-patch-1.2")]
-        [InlineData("valid-service-1.2")]
-        [InlineData("valid-service-empty-objects-1.2")]
-        public void XmlRoundTripTest(string filename)
+        [InlineData("valid-component-ref")]
+        [InlineData("valid-component-types")]
+        [InlineData("valid-empty-components")]
+        [InlineData("valid-license-expression")]
+        [InlineData("valid-license-id")]
+        [InlineData("valid-license-name")]
+        [InlineData("valid-minimal-viable")]
+        public void XmlRoundTripTest_v1_1(string filename)
         {
-            var resourceFilename = Path.Join("Resources", filename + ".xml");
+            var resourceFilename = Path.Join("Resources", filename + "-1.1.xml");
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var bom = XmlBomDeserializer.Deserialize(xmlBom);
+            var bom = XmlBomDeserializer.Deserialize_v1_1(xmlBom);
+            xmlBom = XmlBomSerializer.Serialize(bom);
+
+            Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
+        }
+
+        [Theory] 
+        [InlineData("bom")]
+        [InlineData("valid-component-hashes")]
+        [InlineData("valid-component-ref")]
+        [InlineData("valid-component-swid")]
+        [InlineData("valid-component-swid-full")]
+        [InlineData("valid-component-types")]
+        [InlineData("valid-dependency")]
+        [InlineData("valid-empty-components")]
+        [InlineData("valid-license-expression")]
+        [InlineData("valid-license-id")]
+        [InlineData("valid-license-name")]
+        [InlineData("valid-metadata-author")]
+        [InlineData("valid-metadata-manufacture")]
+        [InlineData("valid-metadata-supplier")]
+        [InlineData("valid-metadata-timestamp")]
+        [InlineData("valid-metadata-tool")]
+        [InlineData("valid-minimal-viable")]
+        [InlineData("valid-patch")]
+        [InlineData("valid-service")]
+        [InlineData("valid-service-empty-objects")]
+        public void XmlRoundTripTest_v1_2(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", filename + "-1.2.xml");
+            var xmlBom = File.ReadAllText(resourceFilename);
+
+            var bom = XmlBomDeserializer.Deserialize_v1_2(xmlBom);
             xmlBom = XmlBomSerializer.Serialize(bom);
 
             Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
