@@ -22,14 +22,14 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using CycloneDX.Models.v1_2;
+using CycloneDX;
 
 namespace CycloneDX.Xml
 {
 
     public static class XmlBomDeserializer
     {
-        public static Bom Deserialize(string bom)
+        public static Models.v1_2.Bom Deserialize(string bom)
         {
             Contract.Requires(bom != null);
 
@@ -43,22 +43,41 @@ namespace CycloneDX.Xml
             }
         }
 
-        public static Bom Deserialize(Stream stream)
+        public static Models.v1_2.Bom Deserialize(Stream stream)
+        {
+            return Deserialize_v1_2(stream);
+        }
+
+        public static Models.v1_2.Bom Deserialize_v1_2(string bom)
+        {
+            Contract.Requires(bom != null);
+
+            using (var stream = new MemoryStream())
+            {
+                var writer = new StreamWriter(stream);
+                writer.Write(bom);
+                writer.Flush();
+                stream.Position = 0;
+                return Deserialize_v1_2(stream);
+            }
+        }
+
+        public static Models.v1_2.Bom Deserialize_v1_2(Stream stream)
         {
             Contract.Requires(stream != null);
 
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
 
-            var serializer = new XmlSerializer(typeof(Bom));
-            var bom = (Bom)serializer.Deserialize(stream);
+            var serializer = new XmlSerializer(typeof(Models.v1_2.Bom));
+            var bom = (Models.v1_2.Bom)serializer.Deserialize(stream);
 
             CleanupEmptyXmlArrays(bom);
 
             return bom;
         }
 
-        public static void CleanupEmptyXmlArrays(Bom bom)
+        public static void CleanupEmptyXmlArrays(Models.v1_2.Bom bom)
         {
             if (bom.Metadata?.Authors?.Count == 0) bom.Metadata.Authors = null;   
             if (bom.Metadata?.Tools?.Count == 0) bom.Metadata.Tools = null;   
@@ -78,7 +97,7 @@ namespace CycloneDX.Xml
             if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
         }
 
-        public static void CleanupEmptyXmlArrays(Component component)
+        public static void CleanupEmptyXmlArrays(Models.v1_2.Component component)
         {
             if (component.Hashes?.Count == 0) component.Hashes = null;
             if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
@@ -91,7 +110,7 @@ namespace CycloneDX.Xml
             if (component.Pedigree != null) CleanupEmptyXmlArrays(component.Pedigree);
         }
 
-        public static void CleanupEmptyXmlArrays(Pedigree pedigree)
+        public static void CleanupEmptyXmlArrays(Models.v1_2.Pedigree pedigree)
         {
             if (pedigree.Ancestors?.Count == 0) pedigree.Ancestors = null;
             if (pedigree.Ancestors != null)

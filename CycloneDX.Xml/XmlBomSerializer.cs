@@ -20,18 +20,18 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using CycloneDX.Models.v1_2;
+using CycloneDX;
 
 namespace CycloneDX.Xml
 {
 
     public static class XmlBomSerializer
     {
-        public static string Serialize(Bom bom)
+        public static string Serialize(Models.v1_2.Bom bom)
         {
             Contract.Requires(bom != null);
 
-            var serializer = new XmlSerializer(typeof(Bom));
+            var serializer = new XmlSerializer(typeof(Models.v1_2.Bom));
 
             using (var writer = new Utf8StringWriter())
             {
