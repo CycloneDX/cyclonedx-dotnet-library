@@ -20,7 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using CycloneDX.Models;
+using CycloneDX.Models.v1_2;
 
 namespace CycloneDX.Xml
 {

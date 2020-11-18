@@ -16,13 +16,15 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class Diff
+    public class AttachedText
     {
-        [XmlElement("text")]
-        public AttachedText Text { get; set; }
-        [XmlElement("url")]
-        public string Url { get; set; }
+        [XmlAttribute("content-type")]
+        public string ContentType { get; set; }
+        [XmlAttribute("encoding")]
+        public string Encoding { get; set; }
+        [XmlText]
+        public string Content { get; set; }
     }
 }

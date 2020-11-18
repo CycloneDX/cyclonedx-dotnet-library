@@ -16,7 +16,7 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
     [XmlType("hash")]
     public class Hash

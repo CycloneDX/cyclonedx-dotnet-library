@@ -18,7 +18,7 @@ using System;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
     public class Swid
     {

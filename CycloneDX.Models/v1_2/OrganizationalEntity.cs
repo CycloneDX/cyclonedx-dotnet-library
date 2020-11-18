@@ -17,27 +17,15 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class Pedigree
+    public class OrganizationalEntity
     {
-        [XmlArray("ancestors")]
-        [XmlArrayItem("component")]
-        public List<Component> Ancestors { get; set; }
-
-        [XmlArray("descendants")]
-        [XmlArrayItem("component")]
-        public List<Component> Descendants { get; set; }
-
-        [XmlArray("variants")]
-        [XmlArrayItem("component")]
-        public List<Component> Variants { get; set; }
-
-        [XmlArray("patches")]
-        [XmlArrayItem("patch")]
-        public List<Patch> Patches { get; set; }
-
-        [XmlElement("notes")]
-        public string Notes { get; set; }
+        [XmlElement("name")]
+        public string Name { get; set; }
+        [XmlElement("url")]
+        public List<string> Url { get; set; }
+        [XmlElement("contact")]
+        public List<OrganizationalContact> Contact { get; set; }
     }
 }

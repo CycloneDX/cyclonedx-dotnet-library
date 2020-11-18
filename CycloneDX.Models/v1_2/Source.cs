@@ -16,23 +16,13 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class Commit
+    public class Source
     {
-        [XmlElement("uid")]
-        public string Uid { get; set; }
-
+        [XmlElement("name")]
+        public string Name { get; set; }
         [XmlElement("url")]
         public string Url { get; set; }
-        
-        [XmlElement("author")]
-        public IdentifiableAction Author { get; set; }
-
-        [XmlElement("committer")]
-        public IdentifiableAction Committer { get; set; }
-        
-        [XmlElement("message")]
-        public string Message { get; set; }
     }
 }

@@ -14,17 +14,17 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class AttachedText
+    public class DataClassification
     {
-        [XmlAttribute("content-type")]
-        public string ContentType { get; set; }
-        [XmlAttribute("encoding")]
-        public string Encoding { get; set; }
+        [XmlAttribute("flow")]
+        public DataFlow Flow { get; set; }
+
         [XmlText]
-        public string Content { get; set; }
+        public string Classification { get; set; }
     }
 }

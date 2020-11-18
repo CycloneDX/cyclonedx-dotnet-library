@@ -18,7 +18,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ComponentType = CycloneDX.Models.Component.ComponentType;
+using ComponentType = CycloneDX.Models.v1_2.Component.ComponentType;
 
 namespace CycloneDX.Json
 {

@@ -16,19 +16,31 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    [XmlType("dependency")]
-    public class Dependency
+    public class Metadata
     {
-        [XmlAttribute("ref")]
-        public string Ref { get; set; }
+        [XmlElement("timestamp")]
+        public DateTime? Timestamp { get; set; } = null;
+        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
-        [XmlElement("dependency")]
-        public List<Dependency> Dependencies { get; set; }
+        [XmlArray("tools")]
+        [XmlArrayItem("tool")]
+        public List<Tool> Tools { get; set; }
+
+        [XmlArray("authors")]
+        [XmlArrayItem("author")]
+        public List<OrganizationalContact> Authors { get; set; }
+
+        [XmlElement("component")]
+        public Component Component { get; set; }
+
+        [XmlElement("manufacture")]
+        public OrganizationalEntity Manufacture { get; set; }
+
+        [XmlElement("supplier")]
+        public OrganizationalEntity Supplier { get; set; }
     }
 }

@@ -19,7 +19,7 @@ using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using License = CycloneDX.Models.License;
+using License = CycloneDX.Models.v1_2.License;
 
 namespace CycloneDX.Json
 {

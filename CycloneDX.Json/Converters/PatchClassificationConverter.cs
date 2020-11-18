@@ -18,7 +18,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using PatchClassification = CycloneDX.Models.Patch.PatchClassification;
+using PatchClassification = CycloneDX.Models.v1_2.Patch.PatchClassification;
 
 namespace CycloneDX.Json
 {

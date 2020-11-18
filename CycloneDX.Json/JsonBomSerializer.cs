@@ -18,7 +18,7 @@ using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using Bom = CycloneDX.Models.Bom;
+using Bom = CycloneDX.Models.v1_2.Bom;
 
 namespace CycloneDX.Json
 {

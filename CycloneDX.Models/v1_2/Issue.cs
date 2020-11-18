@@ -17,30 +17,37 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class Patch
+    public class Issue
     {
-        public enum PatchClassification
+        public enum IssueClassification
         {
-            [XmlEnum(Name = "unofficial")]
-            Unofficial,
-            [XmlEnum(Name = "monkey")]
-            Monkey,
-            [XmlEnum(Name = "backport")]
-            Backport,
-            [XmlEnum(Name = "cherry-pick")]
-            CherryPick
+            [XmlEnum(Name = "defect")]
+            Defect,
+            [XmlEnum(Name = "enhancement")]
+            Enhancement,
+            [XmlEnum(Name = "security")]
+            Security
         }
 
         [XmlAttribute("type")]
-        public PatchClassification Type { get; set; }
+        public IssueClassification Type { get; set; }
 
-        [XmlElement("diff")]
-        public Diff Diff { get; set; }
+        [XmlElement("id")]
+        public string Id { get; set; }
 
-        [XmlArray("resolves")]        
-        [XmlArrayItem("issue")]        
-        public List<Issue> Resolves { get; set; }
+        [XmlElement("name")]
+        public string Name { get; set; }
+
+        [XmlElement("description")]
+        public string Description { get; set; }
+
+        [XmlElement("source")]
+        public Source Source { get; set; }
+
+        [XmlArray("references")]
+        [XmlArrayItem("url")]
+        public List<string> References { get; set; }
     }
 }

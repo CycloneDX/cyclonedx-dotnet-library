@@ -18,7 +18,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using HashAlgorithm = CycloneDX.Models.Hash.HashAlgorithm;
+using HashAlgorithm = CycloneDX.Models.v1_2.Hash.HashAlgorithm;
 
 namespace CycloneDX.Json
 {

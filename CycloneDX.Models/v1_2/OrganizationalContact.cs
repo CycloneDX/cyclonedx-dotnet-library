@@ -1,4 +1,4 @@
-﻿// This file is part of the CycloneDX Tool for .NET
+// This file is part of the CycloneDX Tool for .NET
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,13 +16,15 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class Source
+    public class OrganizationalContact
     {
         [XmlElement("name")]
         public string Name { get; set; }
-        [XmlElement("url")]
-        public string Url { get; set; }
+        [XmlElement("email")]
+        public string Email { get; set; }
+        [XmlElement("phone")]
+        public string Phone { get; set; }
     }
 }

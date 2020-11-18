@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Dependency = CycloneDX.Models.Dependency;
+using Dependency = CycloneDX.Models.v1_2.Dependency;
 
 namespace CycloneDX.Json
 {

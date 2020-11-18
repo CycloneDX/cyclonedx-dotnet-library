@@ -14,18 +14,24 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
-using System;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class IdentifiableAction
+    [XmlType("license")]
+    public class License
     {
-        [XmlElement("timestamp")]
-        public DateTime? Timestamp { get; set; }
+        [XmlElement("id")]
+        public string Id { get; set; }
+
         [XmlElement("name")]
         public string Name { get; set; }
-        [XmlElement("email")]
-        public string Email { get; set; }
+        public bool ShouldSerializeName() { return string.IsNullOrEmpty(Id); }
+
+        [XmlElement("text")]
+        public string Text { get; set; }
+        
+        [XmlElement("url")]
+        public string Url { get; set; }
     }
 }

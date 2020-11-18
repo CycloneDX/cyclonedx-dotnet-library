@@ -19,7 +19,7 @@ using System.Diagnostics.Contracts;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ExternalReferenceType = CycloneDX.Models.ExternalReference.ExternalReferenceType;
+using ExternalReferenceType = CycloneDX.Models.v1_2.ExternalReference.ExternalReferenceType;
 
 namespace CycloneDX.Json
 {

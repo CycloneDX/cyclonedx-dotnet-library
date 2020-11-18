@@ -17,17 +17,30 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public enum DataFlow
+    public class Patch
     {
-        [XmlEnum(Name = "inbound")]
-        Inbound,
-        [XmlEnum(Name = "outbound")]
-        Outbound,
-        [XmlEnum(Name = "bi-directional")]
-        Bidirectional,
-        [XmlEnum(Name = "unknown")]
-        Unknown
+        public enum PatchClassification
+        {
+            [XmlEnum(Name = "unofficial")]
+            Unofficial,
+            [XmlEnum(Name = "monkey")]
+            Monkey,
+            [XmlEnum(Name = "backport")]
+            Backport,
+            [XmlEnum(Name = "cherry-pick")]
+            CherryPick
+        }
+
+        [XmlAttribute("type")]
+        public PatchClassification Type { get; set; }
+
+        [XmlElement("diff")]
+        public Diff Diff { get; set; }
+
+        [XmlArray("resolves")]        
+        [XmlArrayItem("issue")]        
+        public List<Issue> Resolves { get; set; }
     }
 }

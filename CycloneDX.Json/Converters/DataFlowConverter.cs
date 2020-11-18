@@ -18,7 +18,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using DataFlow = CycloneDX.Models.DataFlow;
+using DataFlow = CycloneDX.Models.v1_2.DataFlow;
 
 namespace CycloneDX.Json
 {

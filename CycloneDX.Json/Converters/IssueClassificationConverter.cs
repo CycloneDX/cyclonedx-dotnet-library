@@ -18,7 +18,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using IssueClassification = CycloneDX.Models.Issue.IssueClassification;
+using IssueClassification = CycloneDX.Models.v1_2.Issue.IssueClassification;
 
 namespace CycloneDX.Json
 {

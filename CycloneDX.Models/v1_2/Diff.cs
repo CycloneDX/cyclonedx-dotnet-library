@@ -14,17 +14,15 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class DataClassification
+    public class Diff
     {
-        [XmlAttribute("flow")]
-        public DataFlow Flow { get; set; }
-
-        [XmlText]
-        public string Classification { get; set; }
+        [XmlElement("text")]
+        public AttachedText Text { get; set; }
+        [XmlElement("url")]
+        public string Url { get; set; }
     }
 }

@@ -14,33 +14,30 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
-using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class Metadata
+    public class Pedigree
     {
-        [XmlElement("timestamp")]
-        public DateTime? Timestamp { get; set; } = null;
-        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
+        [XmlArray("ancestors")]
+        [XmlArrayItem("component")]
+        public List<Component> Ancestors { get; set; }
 
-        [XmlArray("tools")]
-        [XmlArrayItem("tool")]
-        public List<Tool> Tools { get; set; }
+        [XmlArray("descendants")]
+        [XmlArrayItem("component")]
+        public List<Component> Descendants { get; set; }
 
-        [XmlArray("authors")]
-        [XmlArrayItem("author")]
-        public List<OrganizationalContact> Authors { get; set; }
+        [XmlArray("variants")]
+        [XmlArrayItem("component")]
+        public List<Component> Variants { get; set; }
 
-        [XmlElement("component")]
-        public Component Component { get; set; }
+        [XmlArray("patches")]
+        [XmlArrayItem("patch")]
+        public List<Patch> Patches { get; set; }
 
-        [XmlElement("manufacture")]
-        public OrganizationalEntity Manufacture { get; set; }
-
-        [XmlElement("supplier")]
-        public OrganizationalEntity Supplier { get; set; }
+        [XmlElement("notes")]
+        public string Notes { get; set; }
     }
 }

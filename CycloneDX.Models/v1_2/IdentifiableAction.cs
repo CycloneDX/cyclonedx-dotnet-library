@@ -14,40 +14,18 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
-using System.Collections.Generic;
+using System;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class Issue
+    public class IdentifiableAction
     {
-        public enum IssueClassification
-        {
-            [XmlEnum(Name = "defect")]
-            Defect,
-            [XmlEnum(Name = "enhancement")]
-            Enhancement,
-            [XmlEnum(Name = "security")]
-            Security
-        }
-
-        [XmlAttribute("type")]
-        public IssueClassification Type { get; set; }
-
-        [XmlElement("id")]
-        public string Id { get; set; }
-
+        [XmlElement("timestamp")]
+        public DateTime? Timestamp { get; set; }
         [XmlElement("name")]
         public string Name { get; set; }
-
-        [XmlElement("description")]
-        public string Description { get; set; }
-
-        [XmlElement("source")]
-        public Source Source { get; set; }
-
-        [XmlArray("references")]
-        [XmlArrayItem("url")]
-        public List<string> References { get; set; }
+        [XmlElement("email")]
+        public string Email { get; set; }
     }
 }

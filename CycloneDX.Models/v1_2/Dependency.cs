@@ -14,18 +14,21 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Models.v1_2
 {
-    public class OrganizationalEntity
+    [XmlType("dependency")]
+    public class Dependency
     {
-        [XmlElement("name")]
-        public string Name { get; set; }
-        [XmlElement("url")]
-        public List<string> Url { get; set; }
-        [XmlElement("contact")]
-        public List<OrganizationalContact> Contact { get; set; }
+        [XmlAttribute("ref")]
+        public string Ref { get; set; }
+
+        [XmlElement("dependency")]
+        public List<Dependency> Dependencies { get; set; }
     }
 }
