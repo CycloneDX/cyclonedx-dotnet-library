@@ -18,14 +18,14 @@ using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using Bom = CycloneDX.Models.Bom;
+using CycloneDX;
 
 namespace CycloneDX.Json
 {
 
     public static class JsonBomSerializer
     {
-        public static string Serialize(Bom bom)
+        public static string Serialize(Models.v1_2.Bom bom)
         {
             Contract.Requires(bom != null);
 
@@ -36,7 +36,7 @@ namespace CycloneDX.Json
                 IgnoreNullValues = true,
             };
 
-            Utils.AddJsonConverters(options);
+            Utils.AddJsonConverters_v1_2(options);
 
             var jsonBom = JsonSerializer.Serialize(bom, options);
 
