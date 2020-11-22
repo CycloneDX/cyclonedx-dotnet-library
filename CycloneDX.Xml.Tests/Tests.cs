@@ -9,7 +9,20 @@ namespace CycloneDX.Xml.Tests
 {
     public class XmlBomDeserializerTests
     {
-        [Theory] 
+        [Theory]
+        [InlineData("bom")]
+        public void XmlRoundTripTest_v1_0(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", "v1.0", filename + "-1.0.xml");
+            var xmlBom = File.ReadAllText(resourceFilename);
+
+            var bom = XmlBomDeserializer.Deserialize_v1_0(xmlBom);
+            xmlBom = XmlBomSerializer.Serialize(bom);
+
+            Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
+        }
+
+        [Theory]
         [InlineData("bom")]
         [InlineData("valid-component-ref")]
         [InlineData("valid-component-types")]
@@ -29,7 +42,7 @@ namespace CycloneDX.Xml.Tests
             Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
         }
 
-        [Theory] 
+        [Theory]
         [InlineData("bom")]
         [InlineData("valid-component-hashes")]
         [InlineData("valid-component-ref")]
@@ -59,6 +72,21 @@ namespace CycloneDX.Xml.Tests
             xmlBom = XmlBomSerializer.Serialize(bom);
 
             Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
+        }
+
+        [Theory]
+        [InlineData("1.0")]
+        [InlineData("1.1")]
+        [InlineData("1.2")]
+        public void Can_Deserialize(string version)
+        {
+            var resourceFilename = Path.Join("Resources", "v" + version, "bom-" + version + ".xml");
+            var xmlBom = File.ReadAllText(resourceFilename);
+
+            var bom = XmlBomDeserializer.Deserialize(xmlBom);
+            xmlBom = XmlBomSerializer.Serialize(bom);
+
+            Snapshot.Match(xmlBom, SnapshotNameExtension.Create(version));
         }
     }
 }

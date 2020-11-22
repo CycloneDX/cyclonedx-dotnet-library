@@ -15,14 +15,10 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Linq;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
-using CycloneDX;
 
 namespace CycloneDX.Xml
 {
@@ -45,8 +41,23 @@ namespace CycloneDX.Xml
 
         public static Models.v1_2.Bom Deserialize(Stream stream)
         {
-            return Deserialize_v1_2(stream);
-            //TODO attempt to deserialize previous versions and upgrade models to v1.2
+            try
+            {
+                return Deserialize_v1_2(stream);
+            }
+            catch (InvalidOperationException) {}
+
+            stream.Position = 0;
+            try
+            {
+                return new Models.v1_2.Bom(Deserialize_v1_1(stream));
+            }
+            catch (InvalidOperationException) {}
+
+            stream.Position = 0;
+            var v1_0_sbom = Deserialize_v1_0(stream);
+            var v1_1_sbom = new Models.v1_1.Bom(v1_0_sbom);
+            return new Models.v1_2.Bom(v1_1_sbom);
         }
 
         public static Models.v1_2.Bom Deserialize_v1_2(string bom)
@@ -107,6 +118,35 @@ namespace CycloneDX.Xml
             return bom;
         }
 
+        public static Models.v1_0.Bom Deserialize_v1_0(string bom)
+        {
+            Contract.Requires(bom != null);
+
+            using (var stream = new MemoryStream())
+            {
+                var writer = new StreamWriter(stream);
+                writer.Write(bom);
+                writer.Flush();
+                stream.Position = 0;
+                return Deserialize_v1_0(stream);
+            }
+        }
+
+        public static Models.v1_0.Bom Deserialize_v1_0(Stream stream)
+        {
+            Contract.Requires(stream != null);
+
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+
+            var serializer = new XmlSerializer(typeof(Models.v1_0.Bom));
+            var bom = (Models.v1_0.Bom)serializer.Deserialize(stream);
+
+            CleanupEmptyXmlArrays(bom);
+
+            return bom;
+        }
+
         public static void CleanupEmptyXmlArrays(Models.v1_2.Bom bom)
         {
             if (bom.Metadata?.Authors?.Count == 0) bom.Metadata.Authors = null;   
@@ -137,6 +177,15 @@ namespace CycloneDX.Xml
                 CleanupEmptyXmlArrays(component);
         }
 
+        public static void CleanupEmptyXmlArrays(Models.v1_0.Bom bom)
+        {
+            if (bom.Components?.Count == 0) bom.Components = null;   
+
+            if (bom.Components != null)
+            foreach (var component in bom.Components)
+                CleanupEmptyXmlArrays(component);
+        }
+
         public static void CleanupEmptyXmlArrays(Models.v1_2.Component component)
         {
             if (component.Hashes?.Count == 0) component.Hashes = null;
@@ -161,6 +210,16 @@ namespace CycloneDX.Xml
                 CleanupEmptyXmlArrays(subComponent);
             
             if (component.Pedigree != null) CleanupEmptyXmlArrays(component.Pedigree);
+        }
+
+        public static void CleanupEmptyXmlArrays(Models.v1_0.Component component)
+        {
+            if (component.Hashes?.Count == 0) component.Hashes = null;
+            if (component.Components?.Count == 0) component.Components = null;
+
+            if (component.Components != null)
+            foreach (var subComponent in component.Components)
+                CleanupEmptyXmlArrays(subComponent);
         }
 
         public static void CleanupEmptyXmlArrays(Models.v1_2.Pedigree pedigree)

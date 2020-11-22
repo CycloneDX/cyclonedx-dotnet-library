@@ -37,5 +37,17 @@ namespace CycloneDX.Models.v1_1
 
         [XmlArray("externalReferences")]
         public List<ExternalReference> ExternalReferences { get; set; }
+
+        public Bom() {}
+        
+        public Bom(v1_0.Bom bom)
+        {
+            Version = bom.Version;
+            Components = new List<Component>();
+            foreach (var component in bom.Components)
+            {
+                Components.Add(new Component(component));
+            }
+        }
     }
 }

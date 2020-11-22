@@ -35,7 +35,6 @@ namespace CycloneDX.Models.v1_2
         public int? TagVersion { get; set; }
         [XmlAttribute("tagVersion")]
         [JsonIgnore]
-        [Obsolete("Do not use directly, this is a serialization workaround.")]
         public int NonNullableTagVersion
         { 
             get
@@ -53,7 +52,6 @@ namespace CycloneDX.Models.v1_2
         public bool? Patch { get; set; }
         [XmlAttribute("patch")]
         [JsonIgnore]
-        [Obsolete("Do not use directly, this is a serialization workaround.")]
         public bool NonNullablePatch
         { 
             get

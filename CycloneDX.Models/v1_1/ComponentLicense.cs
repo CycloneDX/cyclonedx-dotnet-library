@@ -25,5 +25,19 @@ namespace CycloneDX.Models.v1_1
         public License License { get; set; }
         [XmlElement("expression")]
         public string Expression { get; set; }
+
+        public ComponentLicense() {}
+
+        public ComponentLicense(v1_0.ComponentLicense componentLicense)
+        {
+            if (componentLicense.License != null)
+            {
+                License = new License(componentLicense.License);
+            }
+            else if (componentLicense.Expression != null)
+            {
+                Expression = componentLicense.Expression;
+            }
+        }
     }
 }

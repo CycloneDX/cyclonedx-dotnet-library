@@ -43,5 +43,13 @@ namespace CycloneDX.Models.v1_1
         
         [XmlText]
         public string Content { get; set; }
+
+        public Hash() {}
+
+        public Hash(v1_0.Hash hash)
+        {
+            Alg = (HashAlgorithm)(int)hash.Alg;
+            Content = hash.Content;
+        }
     }
 }

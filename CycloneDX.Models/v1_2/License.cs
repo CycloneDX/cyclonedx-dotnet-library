@@ -29,9 +29,27 @@ namespace CycloneDX.Models.v1_2
         public bool ShouldSerializeName() { return string.IsNullOrEmpty(Id); }
 
         [XmlElement("text")]
-        public string Text { get; set; }
+        public AttachedText Text { get; set; }
         
         [XmlElement("url")]
         public string Url { get; set; }
+
+        public License() {}
+
+        public License(v1_1.License license)
+        {
+            Id = license.Id;
+            Name = license.Name;
+            if (license.Text != null)
+            {
+                Text = new AttachedText
+                {
+                    Content = license.Text.Content,
+                    ContentType = license.Text.ContentType,
+                    Encoding = license.Text.Encoding
+                };
+            }
+            Url = license.Url;
+        }
     }
 }

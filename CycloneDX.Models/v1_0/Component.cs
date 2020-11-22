@@ -73,19 +73,17 @@ namespace CycloneDX.Models.v1_0
         [XmlElement("copyright")]
         public string Copyright { get; set; }
 
-        [Obsolete("DEPRECATED - DO NOT USE. This will be removed in a future version.")]
         [XmlElement("cpe")]
         public string Cpe { get; set; }
 
         [XmlElement("purl")]
         public string Purl { get; set; }
 
-        [Obsolete("DEPRECATED - DO NOT USE. This will be removed in a future version.")]
+        // XML serialization doesn't like nullable value types
         [XmlIgnore]
         public bool? Modified { get; set; }
         [XmlElement("modified")]
         [JsonIgnore]
-        [Obsolete("Do not use directly, this is a serialization workaround.")]
         public bool NonNullableModified
         {
             get
@@ -97,6 +95,7 @@ namespace CycloneDX.Models.v1_0
                 Modified = value;
             }
         }
+        public bool ShouldSerializeNonNullableModified() { return Modified.HasValue; }
 
         [XmlArray("components")]
         public List<Component> Components { get; set; }

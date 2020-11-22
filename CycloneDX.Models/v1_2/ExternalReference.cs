@@ -64,5 +64,14 @@ namespace CycloneDX.Models.v1_2
 
         [XmlElement("comment")]
         public string Comment { get; set; }
+
+        public ExternalReference() {}
+
+        public ExternalReference(v1_1.ExternalReference externalReference)
+        {
+            Url = externalReference.Url;
+            Type = (ExternalReferenceType)(int)externalReference.Type;
+            Comment = externalReference.Comment;
+        }
     }
 }
