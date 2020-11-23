@@ -31,5 +31,24 @@ namespace CycloneDX.Models.v1_0
 
         [XmlArray("components")]
         public List<Component> Components { get; set; }
+
+        public Bom() {}
+        
+        public Bom(v1_1.Bom bom)
+        {
+            Version = bom.Version;
+            if (bom.Components != null)
+            {
+                Components = new List<Component>();
+                foreach (var component in bom.Components)
+                {
+                    var convertedComponent = new Component(component);
+                    if (Enum.IsDefined(typeof(Component.ComponentType), convertedComponent.Type))
+                    {
+                        Components.Add(convertedComponent);
+                    }
+                }
+            }
+        }
     }
 }

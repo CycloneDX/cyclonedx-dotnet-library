@@ -43,10 +43,39 @@ namespace CycloneDX.Models.v1_1
         public Bom(v1_0.Bom bom)
         {
             Version = bom.Version;
-            Components = new List<Component>();
-            foreach (var component in bom.Components)
+            if (bom.Components != null)
             {
-                Components.Add(new Component(component));
+                Components = new List<Component>();
+                foreach (var component in bom.Components)
+                {
+                    Components.Add(new Component(component));
+                }
+            }
+        }
+
+        public Bom(v1_2.Bom bom)
+        {
+            SerialNumber = bom.SerialNumber;
+            Version = bom.Version;
+            if (bom.Components != null)
+            {
+                Components = new List<Component>();
+                foreach (var component in bom.Components)
+                {
+                    var convertedComponent = new Component(component);
+                    if (Enum.IsDefined(typeof(Component.ComponentType), convertedComponent.Type))
+                    {
+                        Components.Add(convertedComponent);
+                    }
+                }
+            }
+            if (bom.ExternalReferences != null)
+            {
+                ExternalReferences = new List<ExternalReference>();
+                foreach (var externalReference in bom.ExternalReferences)
+                {
+                    ExternalReferences.Add(new ExternalReference(externalReference));
+                }
             }
         }
     }

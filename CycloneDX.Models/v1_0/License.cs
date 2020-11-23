@@ -33,5 +33,16 @@ namespace CycloneDX.Models.v1_0
         
         [XmlElement("url")]
         public string Url { get; set; }
+
+        public License() {}
+
+        public License(v1_1.License license)
+        {
+            Id = license.Id;
+            Name = license.Name;
+            if (license.Text != null)
+                Text = license.Text.Content;
+            Url = license.Url;
+        }
     }
 }
