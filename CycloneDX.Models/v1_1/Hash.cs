@@ -51,5 +51,11 @@ namespace CycloneDX.Models.v1_1
             Alg = (HashAlgorithm)(int)hash.Alg;
             Content = hash.Content;
         }
+
+        public Hash(v1_2.Hash hash)
+        {
+            Alg = (HashAlgorithm)(int)hash.Alg;
+            Content = hash.Content;
+        }
     }
 }

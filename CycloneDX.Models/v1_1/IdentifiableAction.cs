@@ -27,5 +27,14 @@ namespace CycloneDX.Models.v1_1
         public string Name { get; set; }
         [XmlElement("email")]
         public string Email { get; set; }
+
+        public IdentifiableAction() {}
+
+        public IdentifiableAction(v1_2.IdentifiableAction identifiableAction)
+        {
+            Timestamp = identifiableAction.Timestamp;
+            Name = identifiableAction.Name;
+            Email = identifiableAction.Email;
+        }
     }
 }

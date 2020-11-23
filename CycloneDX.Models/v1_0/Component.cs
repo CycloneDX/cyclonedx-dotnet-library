@@ -99,5 +99,51 @@ namespace CycloneDX.Models.v1_0
 
         [XmlArray("components")]
         public List<Component> Components { get; set; }
-    }
+
+        public Component() {}
+
+        public Component(v1_1.Component component)
+        {
+            Type = (ComponentType)(int)component.Type;
+            Author = component.Author;
+            Publisher = component.Publisher;
+            Group = component.Group;
+            Name = component.Name;
+            Version = component.Version;
+            Description = component.Description;
+            Scope = component.Scope;
+            if (component.Hashes != null)
+            {
+                Hashes = new List<Hash>();
+                foreach (var hash in component.Hashes)
+                {
+                    var convertedHash = new Hash(hash);
+                    if (Enum.IsDefined(typeof(Hash.HashAlgorithm), convertedHash.Alg))
+                    {
+                        Hashes.Add(convertedHash);
+                    }
+
+                }
+            }
+            if (component.Licenses != null)
+            {
+                Licenses = new List<ComponentLicense>();
+                foreach (var componentLicense in component.Licenses)
+                {
+                    Licenses.Add(new ComponentLicense(componentLicense));
+                }
+            }
+            Copyright = component.Copyright;
+            Cpe = component.Cpe;
+            Purl = component.Purl;
+            Modified = component.Modified;
+            if (component.Components != null)
+            {
+                Components = new List<Component>();
+                foreach (var subComponent in component.Components)
+                {
+                    Components.Add(new Component(subComponent));
+                }
+            }
+        }    }
 }

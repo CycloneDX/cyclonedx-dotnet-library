@@ -39,5 +39,17 @@ namespace CycloneDX.Models.v1_1
                 Expression = componentLicense.Expression;
             }
         }
+
+        public ComponentLicense(v1_2.ComponentLicense componentLicense)
+        {
+            if (componentLicense.License != null)
+            {
+                License = new License(componentLicense.License);
+            }
+            else if (componentLicense.Expression != null)
+            {
+                Expression = componentLicense.Expression;
+            }
+        }
     }
 }

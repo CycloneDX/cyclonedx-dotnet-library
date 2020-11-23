@@ -154,5 +154,60 @@ namespace CycloneDX.Models.v1_1
                 }
             }
         }
+
+        public Component(v1_2.Component component)
+        {
+            Type = (ComponentType)(int)component.Type;
+            BomRef = component.BomRef;
+            Author = component.Author;
+            Publisher = component.Publisher;
+            Group = component.Group;
+            Name = component.Name;
+            Version = component.Version;
+            Description = component.Description;
+            Scope = component.Scope;
+            if (component.Hashes != null)
+            {
+                Hashes = new List<Hash>();
+                foreach (var hash in component.Hashes)
+                {
+                    var convertedHash = new Hash(hash);
+                    if (Enum.IsDefined(typeof(Hash.HashAlgorithm), convertedHash.Alg))
+                    {
+                        Hashes.Add(convertedHash);
+                    }
+                }
+            }
+            if (component.Licenses != null)
+            {
+                Licenses = new List<ComponentLicense>();
+                foreach (var componentLicense in component.Licenses)
+                {
+                    Licenses.Add(new ComponentLicense(componentLicense));
+                }
+            }
+            Copyright = component.Copyright;
+            Cpe = component.Cpe;
+            Purl = component.Purl;
+            Modified = component.Modified;
+            if (component.Pedigree != null)
+                Pedigree = new Pedigree(component.Pedigree);
+            if (component.ExternalReferences != null)
+            {
+                ExternalReferences = new List<ExternalReference>();
+                foreach (var externalReference in component.ExternalReferences)
+                {
+                    ExternalReferences.Add(new ExternalReference(externalReference));
+                }
+            }
+            if (component.Components != null)
+            {
+                Components = new List<Component>();
+                foreach (var subComponent in component.Components)
+                {
+                    Components.Add(new Component(subComponent));
+                }
+            }
+        }
     }
 }
