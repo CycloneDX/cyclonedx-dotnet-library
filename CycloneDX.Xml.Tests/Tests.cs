@@ -11,6 +11,7 @@ namespace CycloneDX.Xml.Tests
     {
         [Theory]
         [InlineData("bom")]
+        [InlineData("valid-component-hashes")]
         public void XmlRoundTripTest_v1_0(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.0", filename + "-1.0.xml");
@@ -24,6 +25,7 @@ namespace CycloneDX.Xml.Tests
 
         [Theory]
         [InlineData("bom")]
+        [InlineData("valid-component-hashes")]
         [InlineData("valid-component-ref")]
         [InlineData("valid-component-types")]
         [InlineData("valid-empty-components")]
