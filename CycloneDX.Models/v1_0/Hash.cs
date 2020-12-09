@@ -28,14 +28,14 @@ namespace CycloneDX.Models.v1_0
             SHA_1,
             [XmlEnum(Name = "SHA-256")]
             SHA_256,
+            [XmlEnum(Name = "SHA-384")]
+            SHA_384,
             [XmlEnum(Name = "SHA-512")]
             SHA_512,
-            [XmlEnum(Name = "BLAKE2b-256")]
-            BLAKE2b_256,
-            [XmlEnum(Name = "BLAKE2b-384")]
-            BLAKE2b_384,
-            [XmlEnum(Name = "BLAKE2b-512")]
-            BLAKE2b_512
+            [XmlEnum(Name = "SHA3-256")]
+            SHA3_256,
+            [XmlEnum(Name = "SHA3-512")]
+            SHA3_512,
         }
 
         [XmlAttribute("alg")]
