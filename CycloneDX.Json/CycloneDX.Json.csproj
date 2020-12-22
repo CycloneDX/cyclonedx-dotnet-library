@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Product>CycloneDX.Json</Product>
-    <Authors>Steve Springett</Authors>
+    <Authors>Patrick Dwyer &amp; Steve Springett</Authors>
     <Copyright>Copyright (c) Steve Springett</Copyright>
     <Description>A .NET Standard library for serializing and deserializing JSON format CycloneDX bill-of-material documents.</Description>
     <PackageId>CycloneDX.Json</PackageId>
