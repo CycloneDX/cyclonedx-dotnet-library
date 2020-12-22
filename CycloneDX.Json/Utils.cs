@@ -3,10 +3,16 @@ using CycloneDX.Json;
 
 namespace CycloneDX.Json
 {
-    internal static class Utils
+    public static class Utils
     {
-        public static void AddJsonConverters_v1_2(JsonSerializerOptions options)
+        public static JsonSerializerOptions GetJsonSerializerOptions_v1_2()
         {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                IgnoreNullValues = true,
+            };
             options.Converters.Add(new v1_2.Converters.ComponentTypeConverter());
             options.Converters.Add(new v1_2.Converters.DataFlowConverter());
             options.Converters.Add(new v1_2.Converters.DateTimeConverter());
@@ -16,6 +22,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new v1_2.Converters.IssueClassificationConverter());
             options.Converters.Add(new v1_2.Converters.LicenseConverter());
             options.Converters.Add(new v1_2.Converters.PatchClassificationConverter());
+            return options;
         }
     }
 }

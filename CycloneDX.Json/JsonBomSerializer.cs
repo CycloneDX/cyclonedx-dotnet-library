@@ -29,16 +29,7 @@ namespace CycloneDX.Json
         {
             Contract.Requires(bom != null);
 
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                IgnoreNullValues = true,
-            };
-
-            Utils.AddJsonConverters_v1_2(options);
-
-            var jsonBom = JsonSerializer.Serialize(bom, options);
+            var jsonBom = JsonSerializer.Serialize(bom, Utils.GetJsonSerializerOptions_v1_2());
 
             return jsonBom;
         }
