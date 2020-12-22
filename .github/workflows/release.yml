@@ -40,8 +40,7 @@ jobs:
         run: |
           VERSION=`cat semver.txt`
           echo "##[set-output name=version;]$VERSION"
-          dotnet build --configuration Release
-          dotnet pack --configuration Release --version-suffix $VERSION --output ./nupkgs
+          dotnet pack --configuration Release /p:Version=$VERSION --output ./nupkgs
 
       - name: Publish packages to NuGet
         env:

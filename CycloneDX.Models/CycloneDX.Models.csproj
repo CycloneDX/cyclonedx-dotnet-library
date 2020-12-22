@@ -9,7 +9,6 @@
     <PackageId>CycloneDX.Models</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library</PackageProjectUrl>
-    <PackageVersion>$(VersionSuffix)</PackageVersion>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library.git</RepositoryUrl>
   </PropertyGroup>
