@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <!-- MSBuild Reserved and Well-Known Properties https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties -->
+
+    <!-- Do not consider items from obj or bin folder within the project folder -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)/obj/**/*</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)/bin/**/*</DefaultItemExcludes>
+
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
+
+    <OsEnvironment Condition="$([MSBuild]::IsOSPlatform('windows'))">windows</OsEnvironment>
+    <OsEnvironment Condition="$([MSBuild]::IsOSPlatform('linux'))">linux</OsEnvironment>
+    <OsEnvironment Condition="$([MSBuild]::IsOSPlatform('osx'))">osx</OsEnvironment>
+
+    <!-- use command "dotnet new globaljson" for local develpment environment -->
+    
+    <!-- .NET 5.0 SDK includes Microsoft.CodeAnalysis.NetAnalyzers which replaces Microsoft.CodeAnalysis.FxCopAnalyzers -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnableByDefault</AnalysisMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="AsyncFixer" Version="1.5.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- <SignAssembly>false</SignAssembly> -->
+    <Authors>Patrick Dwyer &amp; Steve Springett</Authors>
+    <Copyright>Copyright (c) Steve Springett</Copyright>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageProjectUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library</PackageProjectUrl>
+    <PackageReleaseNotes>See $(PackageProjectUrl)/blob/master/CHANGELOG.md#$(VersionSuffix.Replace('.','')) for release notes.</PackageReleaseNotes>
+    <PackageVersion>$(VersionSuffix)</PackageVersion>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library.git</RepositoryUrl>
+    <!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!-- Optional: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+</Project>
