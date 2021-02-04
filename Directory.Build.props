@@ -3,17 +3,9 @@
   <PropertyGroup>
     <!-- MSBuild Reserved and Well-Known Properties https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties -->
 
-    <!-- Do not consider items from obj or bin folder within the project folder -->
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)/obj/**/*</DefaultItemExcludes>
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)/bin/**/*</DefaultItemExcludes>
-
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <UpdateAssemblyInfo>true</UpdateAssemblyInfo>
-
-    <OsEnvironment Condition="$([MSBuild]::IsOSPlatform('windows'))">windows</OsEnvironment>
-    <OsEnvironment Condition="$([MSBuild]::IsOSPlatform('linux'))">linux</OsEnvironment>
-    <OsEnvironment Condition="$([MSBuild]::IsOSPlatform('osx'))">osx</OsEnvironment>
 
     <!-- use command "dotnet new globaljson" for local develpment environment -->
     
