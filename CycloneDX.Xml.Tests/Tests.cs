@@ -14,7 +14,7 @@ namespace CycloneDX.Xml.Tests
         [InlineData("valid-component-hashes")]
         public void XmlRoundTripTest_v1_0(string filename)
         {
-            var resourceFilename = Path.Join("Resources", "v1.0", filename + "-1.0.xml");
+            var resourceFilename = Path.Join("Resources", filename + "-1.0.xml");
             var xmlBom = File.ReadAllText(resourceFilename);
 
             var bom = XmlBomDeserializer.Deserialize_v1_0(xmlBom);
@@ -35,7 +35,7 @@ namespace CycloneDX.Xml.Tests
         [InlineData("valid-minimal-viable")]
         public void XmlRoundTripTest_v1_1(string filename)
         {
-            var resourceFilename = Path.Join("Resources", "v1.1", filename + "-1.1.xml");
+            var resourceFilename = Path.Join("Resources", filename + "-1.1.xml");
             var xmlBom = File.ReadAllText(resourceFilename);
 
             var bom = XmlBomDeserializer.Deserialize_v1_1(xmlBom);
@@ -67,7 +67,7 @@ namespace CycloneDX.Xml.Tests
         [InlineData("valid-service-empty-objects")]
         public void XmlRoundTripTest_v1_2(string filename)
         {
-            var resourceFilename = Path.Join("Resources", "v1.2", filename + "-1.2.xml");
+            var resourceFilename = Path.Join("Resources", filename + "-1.2.xml");
             var xmlBom = File.ReadAllText(resourceFilename);
 
             var bom = XmlBomDeserializer.Deserialize_v1_2(xmlBom);
@@ -82,7 +82,7 @@ namespace CycloneDX.Xml.Tests
         [InlineData("1.2")]
         public void Can_Deserialize(string version)
         {
-            var resourceFilename = Path.Join("Resources", "v" + version, "bom-" + version + ".xml");
+            var resourceFilename = Path.Join("Resources", "bom-" + version + ".xml");
             var xmlBom = File.ReadAllText(resourceFilename);
 
             var bom = XmlBomDeserializer.Deserialize(xmlBom);
