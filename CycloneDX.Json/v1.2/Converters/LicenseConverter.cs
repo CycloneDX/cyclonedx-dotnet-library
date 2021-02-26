@@ -55,17 +55,61 @@ namespace CycloneDX.Json.v1_2.Converters
                 }
 
                 var propertyName = reader.GetString();
-                reader.Read();
-                var propertyValue = reader.GetString();
 
-                if (propertyName == "id")
-                    license.Id = propertyValue;
-                else if (propertyName == "name")
-                    license.Name = propertyValue;
-                else if (propertyName == "url")
-                    license.Url = propertyValue;
+                if (propertyName == "text")
+                {
+                    reader.Read();
+                    if (reader.TokenType != JsonTokenType.StartObject
+                        && reader.TokenType != JsonTokenType.Null)
+                    {
+                        throw new JsonException();
+                    }
+
+                    if (reader.TokenType != JsonTokenType.Null)
+                    {
+                        license.Text = new Models.v1_2.AttachedText();
+
+                        while (reader.Read())
+                        {
+                            if (reader.TokenType == JsonTokenType.EndObject)
+                            {
+                                break;
+                            }
+
+                            if (reader.TokenType != JsonTokenType.PropertyName)
+                            {
+                                throw new JsonException();
+                            }
+
+                            var textPropertyName = reader.GetString();
+                            reader.Read();
+                            var textPropertyValue = reader.GetString();
+
+                            if (textPropertyName == "content")
+                                license.Text.Content = textPropertyValue;
+                            else if (textPropertyName == "contentType")
+                                license.Text.ContentType = textPropertyValue;
+                            else if (textPropertyName == "encoding")
+                                license.Text.Encoding = textPropertyValue;
+                            else
+                                throw new JsonException($"Invalid property name: {textPropertyName}");
+                        }
+                    }
+                }
                 else
-                    throw new JsonException($"Invalid property name: {propertyName}");
+                {
+                    reader.Read();
+                    var propertyValue = reader.GetString();
+
+                    if (propertyName == "id")
+                        license.Id = propertyValue;
+                    else if (propertyName == "name")
+                        license.Name = propertyValue;
+                    else if (propertyName == "url")
+                        license.Url = propertyValue;
+                    else
+                        throw new JsonException($"Invalid property name: {propertyName}");
+                }
             }
 
             throw new JsonException();
@@ -90,6 +134,28 @@ namespace CycloneDX.Json.v1_2.Converters
             {
                 writer.WritePropertyName("name");
                 writer.WriteStringValue(value.Name);
+            }
+
+            if (value.Text != null)
+            {
+                writer.WritePropertyName("text");
+                writer.WriteStartObject();
+                if (!string.IsNullOrEmpty(value.Text.ContentType))
+                {
+                    writer.WritePropertyName("contentType");
+                    writer.WriteStringValue(value.Text.ContentType);
+                }
+                if (!string.IsNullOrEmpty(value.Text.Encoding))
+                {
+                    writer.WritePropertyName("encoding");
+                    writer.WriteStringValue(value.Text.Encoding);
+                }
+                if (!string.IsNullOrEmpty(value.Text.Content))
+                {
+                    writer.WritePropertyName("content");
+                    writer.WriteStringValue(value.Text.Content);
+                }
+                writer.WriteEndObject();
             }
 
             if (!string.IsNullOrEmpty(value.Url))
