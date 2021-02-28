@@ -17,4 +17,8 @@
     <ProjectReference Include="..\CycloneDX.Models\CycloneDX.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Schemas\*" />
+  </ItemGroup>
+
 </Project>
