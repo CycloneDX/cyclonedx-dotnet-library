@@ -14,9 +14,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JsonSchema.Net" Version="1.9.1" />
     <PackageReference Include="System.Text.Json" Version="5.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Schemas\*" />
+  </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\CycloneDX.Models\CycloneDX.Models.csproj" />
   </ItemGroup>

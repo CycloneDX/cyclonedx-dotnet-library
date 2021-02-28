@@ -9,7 +9,6 @@ namespace CycloneDX.Xml.Tests
     public class ValidationTests
     {
         [Theory]
-        [InlineData("bom")]
         [InlineData("valid-component-hashes")]
         public async Task ValidXmlTest_v1_0(string filename)
         {
@@ -22,7 +21,6 @@ namespace CycloneDX.Xml.Tests
         }
 
         [Theory]
-        [InlineData("bom")]
         [InlineData("valid-component-hashes")]
         [InlineData("valid-component-ref")]
         [InlineData("valid-component-types")]
@@ -70,7 +68,6 @@ namespace CycloneDX.Xml.Tests
         }
 
         [Theory]
-        [InlineData("bom")]
         [InlineData("valid-component-hashes")]
         [InlineData("valid-component-ref")]
         [InlineData("valid-component-swid")]
