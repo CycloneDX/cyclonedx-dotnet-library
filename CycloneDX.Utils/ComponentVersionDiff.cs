@@ -14,13 +14,6 @@ namespace CycloneDX.Utils
 
     public static partial class CycloneDXUtils
     {
-        private static string ComponentDiffIdentifier(Component component)
-        {
-            var componentIdentifier = $"{component.Group}:{component.Name}";
-            if (componentIdentifier.StartsWith(":")) componentIdentifier = componentIdentifier.Substring(1);
-            return componentIdentifier;
-        }
-
         public static Dictionary<string, DiffItem<Component>> ComponentVersionDiff(Bom fromBom, Bom toBom)
         {
             var result = new Dictionary<string, DiffItem<Component>>();
@@ -40,7 +33,7 @@ namespace CycloneDX.Utils
                         && toComponent.Version == fromComponent.Version
                     ) > 0)
                 {
-                    var componentIdentifier = ComponentDiffIdentifier(fromComponent);
+                    var componentIdentifier = ComponentAnalysisIdentifier(fromComponent);
 
                     if (!result.ContainsKey(componentIdentifier))
                     {
@@ -57,7 +50,7 @@ namespace CycloneDX.Utils
             // added component versions
             foreach (var component in new List<Component>(toComponents))
             {
-                var componentIdentifier = ComponentDiffIdentifier(component);
+                var componentIdentifier = ComponentAnalysisIdentifier(component);
                 if (!result.ContainsKey(componentIdentifier))
                 {
                     result.Add(componentIdentifier, new DiffItem<Component>());
@@ -69,7 +62,7 @@ namespace CycloneDX.Utils
             // removed components versions
             foreach (var component in new List<Component>(fromComponents))
             {
-                var componentIdentifier = ComponentDiffIdentifier(component);
+                var componentIdentifier = ComponentAnalysisIdentifier(component);
                 if (!result.ContainsKey(componentIdentifier))
                 {
                     result.Add(componentIdentifier, new DiffItem<Component>());
