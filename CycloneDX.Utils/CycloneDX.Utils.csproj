@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\CycloneDX.Models\CycloneDX.Models.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Product>CycloneDX.Utils</Product>
+    <Authors>Patrick Dwyer</Authors>
+    <Copyright>Copyright (c) Patrick Dwyer</Copyright>
+    <Description>A .NET Standard library of utility methods for CycloneDX bill-of-material documents.</Description>
+    <PackageId>CycloneDX.Utils</PackageId>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library.git</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>

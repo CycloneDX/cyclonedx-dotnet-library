@@ -47,6 +47,7 @@ jobs:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Models.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
           dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Json.${{ steps.package_release.outputs.version }}.nupkg
           dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Xml.${{ steps.package_release.outputs.version }}.nupkg
 
@@ -69,6 +70,16 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./nupkgs/CycloneDX.Models.${{ steps.package_release.outputs.version }}.nupkg
           asset_name: CycloneDX.Models.${{ steps.package_release.outputs.version }}.nupkg
+          asset_content_type: application/zip
+
+      - name: Upload package to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
+          asset_name: CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
           asset_content_type: application/zip
 
       - name: Upload package to github release
