@@ -13,6 +13,7 @@
                 <hash alg="SHA3-256">7478c7cf41c883a04ee89f1813f687886d53fa86f791fff90690c6221e3853aa</hash>
                 <hash alg="SHA3-512">7d584825bc1767dfabe7e82b45ccb7a1119b145fa17e76b885e71429c706cef0a3171bc6575b968eec5da56a7966c02fec5402fcee55097ac01d40c550de9d20</hash>
             </hashes>
+            <modified>false</modified>
         </component>
     </components>
 </bom>

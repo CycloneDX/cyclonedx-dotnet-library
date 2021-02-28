@@ -32,7 +32,7 @@ namespace CycloneDX.Json.Tests
         [InlineData("valid-service-empty-objects")]
         public void JsonRoundTripTest_v1_2(string filename)
         {
-            var resourceFilename = Path.Join("Resources", "v1.2", filename + "-1.2.json");
+            var resourceFilename = Path.Join("Resources", filename + "-1.2.json");
             var jsonBom = File.ReadAllText(resourceFilename);
 
             var bom = JsonBomDeserializer.Deserialize_v1_2(jsonBom);
