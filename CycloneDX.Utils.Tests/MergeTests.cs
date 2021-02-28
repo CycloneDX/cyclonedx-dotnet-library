@@ -10,6 +10,43 @@ namespace CycloneDX.Utils.Tests
     public class MergeTests
     {
         [Fact]
+        public void MergeToolsTest()
+        {
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Tools = new List<Tool>
+                    {
+                        new Tool
+                        {
+                            Name = "Tool1",
+                            Version = "1"
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Tools = new List<Tool>
+                    {
+                        new Tool
+                        {
+                            Name = "Tool2",
+                            Version = "1"
+                        }
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.Merge(sbom1, sbom2);
+
+            Assert.Equal(2, result.Metadata.Tools.Count);
+        }
+
+        [Fact]
         public void MergeComponentsTest()
         {
             var sbom1 = new Bom

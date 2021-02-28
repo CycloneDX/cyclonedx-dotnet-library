@@ -4,54 +4,52 @@ using CycloneDX.Models.v1_2;
 
 namespace CycloneDX.Utils
 {
-    public class MergeOptions
+    class ListMergeHelper<T>
     {
-        public bool Components { get; set; } = true;
+        public List<T> Merge(List<T> list1, List<T> list2)
+        {
+            if (list1 == null) return list2;
+            if (list2 == null) return list1;
+
+            var result = new List<T>(list1);
+            result.AddRange(list2);
+
+            return result;
+        }
     }
 
     public static partial class CycloneDXUtils
     {
         public static Bom Merge(IEnumerable<Bom> sboms)
         {
-            return Merge(sboms, new MergeOptions());
-        }
-
-        public static Bom Merge(IEnumerable<Bom> sboms, MergeOptions options)
-        {
-            var result = new Bom();
-
-            foreach (var sbom in sboms)
-            {
-                result = Merge(result, sbom, options);
-            }
-
-            return result;
+            return Merge(sboms);
         }
 
         public static Bom Merge(Bom sbom1, Bom sbom2)
         {
-            return Merge(sbom1, sbom2, new MergeOptions());
-        }
-
-        public static Bom Merge(Bom sbom1, Bom sbom2, MergeOptions options)
-        {
             var result = new Bom();
 
-            if (options.Components)
+            var toolsMerger = new ListMergeHelper<Tool>();
+            var tools = toolsMerger.Merge(sbom1.Metadata?.Tools, sbom2.Metadata?.Tools);
+            if (tools != null)
             {
-                if (sbom1.Components != null)
+                result.Metadata = new Metadata
                 {
-                    result.Components = sbom1.Components;
-                    if (sbom2.Components != null)
-                    {
-                        result.Components.AddRange(sbom2.Components);
-                    }
-                }
-                else
-                {
-                    result.Components = sbom2.Components;
-                }
+                    Tools = tools
+                };
             }
+
+            var componentsMerger = new ListMergeHelper<Component>();
+            result.Components = componentsMerger.Merge(sbom1.Components, sbom2.Components);
+
+            var servicesMerger = new ListMergeHelper<Service>();
+            result.Services = servicesMerger.Merge(sbom1.Services, sbom2.Services);
+
+            var extRefsMerger = new ListMergeHelper<ExternalReference>();
+            result.ExternalReferences = extRefsMerger.Merge(sbom1.ExternalReferences, sbom2.ExternalReferences);
+
+            var dependenciesMerger = new ListMergeHelper<Dependency>();
+            result.Dependencies = dependenciesMerger.Merge(sbom1.Dependencies, sbom2.Dependencies);
 
             return result;
         }
