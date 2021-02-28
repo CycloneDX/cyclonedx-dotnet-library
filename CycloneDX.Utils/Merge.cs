@@ -20,11 +20,6 @@ namespace CycloneDX.Utils
 
     public static partial class CycloneDXUtils
     {
-        public static Bom Merge(IEnumerable<Bom> sboms)
-        {
-            return Merge(sboms);
-        }
-
         public static Bom Merge(Bom sbom1, Bom sbom2)
         {
             var result = new Bom();
