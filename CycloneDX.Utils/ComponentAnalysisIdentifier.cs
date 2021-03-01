@@ -7,7 +7,7 @@ namespace CycloneDX.Utils
 {
     public static partial class CycloneDXUtils
     {
-        private static string ComponentAnalysisIdentifier(Component component)
+        public static string ComponentAnalysisIdentifier(Component component)
         {
             var componentIdentifier = $"{component.Group}:{component.Name}";
             if (componentIdentifier.StartsWith(":")) componentIdentifier = componentIdentifier.Substring(1);
