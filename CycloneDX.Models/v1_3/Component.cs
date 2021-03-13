@@ -20,7 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
@@ -180,7 +180,7 @@ namespace CycloneDX.Models.v1_2
             }
         }
 
-        public Component(v1_3.Component component)
+        public Component(v1_2.Component component)
         {
             Type = (ComponentType)(int)component.Type;
             MimeType = component.MimeType;

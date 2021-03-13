@@ -17,7 +17,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class Pedigree
     {
@@ -83,7 +83,7 @@ namespace CycloneDX.Models.v1_2
             Notes = pedigree.Notes;
         }
 
-        public Pedigree(v1_3.Pedigree pedigree)
+        public Pedigree(v1_2.Pedigree pedigree)
         {
             if (pedigree.Ancestors != null)
             {

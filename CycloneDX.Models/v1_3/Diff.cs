@@ -16,21 +16,22 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
-    public class Source
+    public class Diff
     {
-        [XmlElement("name")]
-        public string Name { get; set; }
+        [XmlElement("text")]
+        public AttachedText Text { get; set; }
         [XmlElement("url")]
         public string Url { get; set; }
 
-        public Source() {}
-        
-        public Source(v1_3.Source source)
+        public Diff() {}
+
+        public Diff(v1_2.Diff diff)
         {
-            Name = source.Name;
-            Url = source.Url;
+            if (diff.Text != null)
+                Text = new AttachedText(diff.Text);
+            Url = diff.Url;
         }
     }
 }

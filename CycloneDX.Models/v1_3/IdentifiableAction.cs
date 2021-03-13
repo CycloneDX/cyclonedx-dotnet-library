@@ -14,23 +14,34 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
-    public class Source
+    public class IdentifiableAction
     {
+        [XmlElement("timestamp")]
+        public DateTime? Timestamp { get; set; }
         [XmlElement("name")]
         public string Name { get; set; }
-        [XmlElement("url")]
-        public string Url { get; set; }
+        [XmlElement("email")]
+        public string Email { get; set; }
 
-        public Source() {}
-        
-        public Source(v1_3.Source source)
+        public IdentifiableAction() {}
+
+        public IdentifiableAction(v1_1.IdentifiableAction identifiableAction)
         {
-            Name = source.Name;
-            Url = source.Url;
+            Timestamp = identifiableAction.Timestamp;
+            Name = identifiableAction.Name;
+            Email = identifiableAction.Email;
+        }
+
+        public IdentifiableAction(v1_2.IdentifiableAction identifiableAction)
+        {
+            Timestamp = identifiableAction.Timestamp;
+            Name = identifiableAction.Name;
+            Email = identifiableAction.Email;
         }
     }
 }

@@ -17,29 +17,32 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
-    public class OrganizationalEntity
+    public class Tool
     {
+        [XmlElement("vendor")]
+        public string Vendor { get; set; }
         [XmlElement("name")]
         public string Name { get; set; }
-        [XmlElement("url")]
-        public List<string> Url { get; set; }
-        [XmlElement("contact")]
-        public List<OrganizationalContact> Contact { get; set; }
+        [XmlElement("version")]
+        public string Version { get; set; }
+        [XmlArray("hashes")]
+        public List<Hash> Hashes { get; set; }
 
-        public OrganizationalEntity() {}
+        public Tool() {}
 
-        public OrganizationalEntity(v1_3.OrganizationalEntity organizationalEntity)
+        public Tool(v1_2.Tool tool)
         {
-            Name = organizationalEntity.Name;
-            Url = organizationalEntity.Url;
-            if (organizationalEntity.Contact != null)
+            Vendor = tool.Vendor;
+            Name = tool.Name;
+            Version = tool.Version;
+            if (tool.Hashes != null)
             {
-                Contact = new List<OrganizationalContact>();
-                foreach (var contact in organizationalEntity.Contact)
+                Hashes = new List<Hash>();
+                foreach (var hash in tool.Hashes)
                 {
-                    Contact.Add(new OrganizationalContact(contact));
+                    Hashes.Add(new Hash(hash));
                 }
             }
         }

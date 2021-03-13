@@ -16,7 +16,7 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     [XmlType("license")]
     public class License
@@ -52,7 +52,7 @@ namespace CycloneDX.Models.v1_2
             Url = license.Url;
         }
 
-        public License(v1_3.License license)
+        public License(v1_2.License license)
         {
             Id = license.Id;
             Name = license.Name;

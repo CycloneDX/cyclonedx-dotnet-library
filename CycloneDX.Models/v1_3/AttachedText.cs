@@ -16,21 +16,24 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
-    public class Source
+    public class AttachedText
     {
-        [XmlElement("name")]
-        public string Name { get; set; }
-        [XmlElement("url")]
-        public string Url { get; set; }
+        [XmlAttribute("content-type")]
+        public string ContentType { get; set; }
+        [XmlAttribute("encoding")]
+        public string Encoding { get; set; }
+        [XmlText]
+        public string Content { get; set; }
 
-        public Source() {}
-        
-        public Source(v1_3.Source source)
+        public AttachedText() {}
+
+        public AttachedText(v1_2.AttachedText attachedText)
         {
-            Name = source.Name;
-            Url = source.Url;
+            ContentType = attachedText.ContentType;
+            Encoding = attachedText.Encoding;
+            Content = attachedText.Content;
         }
     }
 }

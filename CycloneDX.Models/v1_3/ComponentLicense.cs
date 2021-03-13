@@ -16,7 +16,7 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
 
     public class ComponentLicense
@@ -40,7 +40,7 @@ namespace CycloneDX.Models.v1_2
             }
         }
 
-        public ComponentLicense(v1_3.ComponentLicense componentLicense)
+        public ComponentLicense(v1_2.ComponentLicense componentLicense)
         {
             if (componentLicense.License != null)
             {

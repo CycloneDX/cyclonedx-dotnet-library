@@ -14,32 +14,34 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
-    public class OrganizationalEntity
+    [XmlType("dependency")]
+    public class Dependency
     {
-        [XmlElement("name")]
-        public string Name { get; set; }
-        [XmlElement("url")]
-        public List<string> Url { get; set; }
-        [XmlElement("contact")]
-        public List<OrganizationalContact> Contact { get; set; }
+        [XmlAttribute("ref")]
+        public string Ref { get; set; }
 
-        public OrganizationalEntity() {}
+        [XmlElement("dependency")]
+        public List<Dependency> Dependencies { get; set; }
 
-        public OrganizationalEntity(v1_3.OrganizationalEntity organizationalEntity)
+        public Dependency() {}
+
+        public Dependency(v1_2.Dependency dependency)
         {
-            Name = organizationalEntity.Name;
-            Url = organizationalEntity.Url;
-            if (organizationalEntity.Contact != null)
+            Ref = dependency.Ref;
+            if (dependency.Dependencies != null)
             {
-                Contact = new List<OrganizationalContact>();
-                foreach (var contact in organizationalEntity.Contact)
+                Dependencies = new List<Dependency>();
+                foreach (var dep in dependency.Dependencies)
                 {
-                    Contact.Add(new OrganizationalContact(contact));
+                    Dependencies.Add(new Dependency(dep));
                 }
             }
         }

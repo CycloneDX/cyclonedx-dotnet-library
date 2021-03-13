@@ -16,7 +16,7 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     [XmlType("hash")]
     public class Hash
@@ -61,7 +61,7 @@ namespace CycloneDX.Models.v1_2
             Content = hash.Content;
         }
 
-        public Hash(v1_3.Hash hash)
+        public Hash(v1_2.Hash hash)
         {
             Alg = (HashAlgorithm)(int)hash.Alg;
             Content = hash.Content;

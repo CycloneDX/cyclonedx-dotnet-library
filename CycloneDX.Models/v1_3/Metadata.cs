@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class Metadata
     {
@@ -45,7 +45,7 @@ namespace CycloneDX.Models.v1_2
 
         public Metadata() {}
         
-        public Metadata(v1_3.Metadata metadata)
+        public Metadata(v1_2.Metadata metadata)
         {
             Timestamp = metadata.Timestamp;
             if (metadata.Tools != null)

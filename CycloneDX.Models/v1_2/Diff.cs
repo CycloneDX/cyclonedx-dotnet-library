@@ -24,5 +24,14 @@ namespace CycloneDX.Models.v1_2
         public AttachedText Text { get; set; }
         [XmlElement("url")]
         public string Url { get; set; }
+
+        public Diff() {}
+
+        public Diff(v1_3.Diff diff)
+        {
+            if (diff.Text != null)
+                Text = new AttachedText(diff.Text);
+            Url = diff.Url;
+        }
     }
 }

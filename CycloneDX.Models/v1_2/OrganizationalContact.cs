@@ -26,5 +26,14 @@ namespace CycloneDX.Models.v1_2
         public string Email { get; set; }
         [XmlElement("phone")]
         public string Phone { get; set; }
+
+        public OrganizationalContact() {}
+
+        public OrganizationalContact(v1_3.OrganizationalContact organizationalContact)
+        {
+            Name = organizationalContact.Name;
+            Email = organizationalContact.Email;
+            Phone = organizationalContact.Phone;
+        }
     }
 }

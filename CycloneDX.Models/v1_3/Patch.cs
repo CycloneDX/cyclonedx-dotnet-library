@@ -17,7 +17,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class Patch
     {
@@ -45,7 +45,7 @@ namespace CycloneDX.Models.v1_2
 
         public Patch() {}
 
-        public Patch(v1_3.Patch patch)
+        public Patch(v1_2.Patch patch)
         {
             Type = (PatchClassification)patch.Type;
             if (patch.Diff != null)

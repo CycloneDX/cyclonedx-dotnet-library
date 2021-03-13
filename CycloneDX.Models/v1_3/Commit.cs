@@ -16,7 +16,7 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class Commit
     {
@@ -48,7 +48,7 @@ namespace CycloneDX.Models.v1_2
             Message = commit.Message;
         }
 
-        public Commit(v1_3.Commit commit)
+        public Commit(v1_2.Commit commit)
         {
             Uid = commit.Uid;
             Url = commit.Url;

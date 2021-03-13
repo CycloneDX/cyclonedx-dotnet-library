@@ -26,5 +26,13 @@ namespace CycloneDX.Models.v1_2
 
         [XmlText]
         public string Classification { get; set; }
+
+        public DataClassification() {}
+
+        public DataClassification(v1_3.DataClassification dataClassification)
+        {
+            Flow = (DataFlow)dataClassification.Flow;
+            Classification = dataClassification.Classification;
+        }
     }
 }

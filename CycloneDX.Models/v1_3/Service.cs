@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class Service
     {
@@ -100,7 +100,7 @@ namespace CycloneDX.Models.v1_2
 
         public Service() {}
 
-        public Service(v1_3.Service service)
+        public Service(v1_2.Service service)
         {
             BomRef = service.BomRef;
             if (service.Provider != null)

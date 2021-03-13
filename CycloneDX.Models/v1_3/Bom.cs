@@ -19,18 +19,18 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    [XmlRoot("bom", Namespace="http://cyclonedx.org/schema/bom/1.2", IsNullable=false)]
+    [XmlRoot("bom", Namespace="http://cyclonedx.org/schema/bom/1.3", IsNullable=false)]
     public class Bom
     {
         [XmlIgnore]
         public string BomFormat => "CycloneDX";
 
         [XmlIgnore]
-        public string SpecVersion => "1.2";
+        public string SpecVersion => "1.3";
 
         [XmlAttribute("serialNumber")]
         public string SerialNumber { get; set; }
@@ -79,7 +79,7 @@ namespace CycloneDX.Models.v1_2
             }
         }
         
-        public Bom(v1_3.Bom bom)
+        public Bom(v1_2.Bom bom)
         {
             SerialNumber = bom.SerialNumber;
             Version = bom.Version;

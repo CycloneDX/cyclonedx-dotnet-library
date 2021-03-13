@@ -30,5 +30,20 @@ namespace CycloneDX.Models.v1_2
 
         [XmlElement("dependency")]
         public List<Dependency> Dependencies { get; set; }
+
+        public Dependency() {}
+
+        public Dependency(v1_3.Dependency dependency)
+        {
+            Ref = dependency.Ref;
+            if (dependency.Dependencies != null)
+            {
+                Dependencies = new List<Dependency>();
+                foreach (var dep in dependency.Dependencies)
+                {
+                    Dependencies.Add(new Dependency(dep));
+                }
+            }
+        }
     }
 }

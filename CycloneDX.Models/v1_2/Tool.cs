@@ -29,5 +29,22 @@ namespace CycloneDX.Models.v1_2
         public string Version { get; set; }
         [XmlArray("hashes")]
         public List<Hash> Hashes { get; set; }
+
+        public Tool() {}
+
+        public Tool(v1_3.Tool tool)
+        {
+            Vendor = tool.Vendor;
+            Name = tool.Name;
+            Version = tool.Version;
+            if (tool.Hashes != null)
+            {
+                Hashes = new List<Hash>();
+                foreach (var hash in tool.Hashes)
+                {
+                    Hashes.Add(new Hash(hash));
+                }
+            }
+        }
     }
 }

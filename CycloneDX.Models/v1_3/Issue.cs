@@ -17,7 +17,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class Issue
     {
@@ -52,7 +52,7 @@ namespace CycloneDX.Models.v1_2
 
         public Issue() {}
 
-        public Issue(v1_3.Issue issue)
+        public Issue(v1_2.Issue issue)
         {
             Type = (IssueClassification)issue.Type;
             Id = issue.Id;

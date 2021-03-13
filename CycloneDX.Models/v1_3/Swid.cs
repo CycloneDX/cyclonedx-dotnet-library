@@ -18,7 +18,7 @@ using System;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class Swid
     {
@@ -73,7 +73,7 @@ namespace CycloneDX.Models.v1_2
 
         public Swid() {}
 
-        public Swid(v1_3.Swid swid)
+        public Swid(v1_2.Swid swid)
         {
             TagId = swid.TagId;
             Name = swid.Name;

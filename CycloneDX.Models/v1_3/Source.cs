@@ -16,7 +16,7 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class Source
     {
@@ -27,7 +27,7 @@ namespace CycloneDX.Models.v1_2
 
         public Source() {}
         
-        public Source(v1_3.Source source)
+        public Source(v1_2.Source source)
         {
             Name = source.Name;
             Url = source.Url;

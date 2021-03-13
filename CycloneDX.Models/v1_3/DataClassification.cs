@@ -14,23 +14,25 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
-    public class Source
+    public class DataClassification
     {
-        [XmlElement("name")]
-        public string Name { get; set; }
-        [XmlElement("url")]
-        public string Url { get; set; }
+        [XmlAttribute("flow")]
+        public DataFlow Flow { get; set; }
 
-        public Source() {}
-        
-        public Source(v1_3.Source source)
+        [XmlText]
+        public string Classification { get; set; }
+
+        public DataClassification() {}
+
+        public DataClassification(v1_2.DataClassification dataClassification)
         {
-            Name = source.Name;
-            Url = source.Url;
+            Flow = (DataFlow)dataClassification.Flow;
+            Classification = dataClassification.Classification;
         }
     }
 }

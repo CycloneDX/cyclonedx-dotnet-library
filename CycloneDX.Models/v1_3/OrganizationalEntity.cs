@@ -17,7 +17,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     public class OrganizationalEntity
     {
@@ -30,7 +30,7 @@ namespace CycloneDX.Models.v1_2
 
         public OrganizationalEntity() {}
 
-        public OrganizationalEntity(v1_3.OrganizationalEntity organizationalEntity)
+        public OrganizationalEntity(v1_2.OrganizationalEntity organizationalEntity)
         {
             Name = organizationalEntity.Name;
             Url = organizationalEntity.Url;

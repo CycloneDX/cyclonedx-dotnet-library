@@ -14,34 +14,26 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
-    public class OrganizationalEntity
+    public class OrganizationalContact
     {
         [XmlElement("name")]
         public string Name { get; set; }
-        [XmlElement("url")]
-        public List<string> Url { get; set; }
-        [XmlElement("contact")]
-        public List<OrganizationalContact> Contact { get; set; }
+        [XmlElement("email")]
+        public string Email { get; set; }
+        [XmlElement("phone")]
+        public string Phone { get; set; }
 
-        public OrganizationalEntity() {}
+        public OrganizationalContact() {}
 
-        public OrganizationalEntity(v1_3.OrganizationalEntity organizationalEntity)
+        public OrganizationalContact(v1_2.OrganizationalContact organizationalContact)
         {
-            Name = organizationalEntity.Name;
-            Url = organizationalEntity.Url;
-            if (organizationalEntity.Contact != null)
-            {
-                Contact = new List<OrganizationalContact>();
-                foreach (var contact in organizationalEntity.Contact)
-                {
-                    Contact.Add(new OrganizationalContact(contact));
-                }
-            }
+            Name = organizationalContact.Name;
+            Email = organizationalContact.Email;
+            Phone = organizationalContact.Phone;
         }
     }
 }

@@ -26,5 +26,14 @@ namespace CycloneDX.Models.v1_2
         public string Encoding { get; set; }
         [XmlText]
         public string Content { get; set; }
+
+        public AttachedText() {}
+
+        public AttachedText(v1_3.AttachedText attachedText)
+        {
+            ContentType = attachedText.ContentType;
+            Encoding = attachedText.Encoding;
+            Content = attachedText.Content;
+        }
     }
 }

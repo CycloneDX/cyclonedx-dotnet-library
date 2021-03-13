@@ -17,7 +17,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_2
+namespace CycloneDX.Models.v1_3
 {
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     public class ExternalReference
@@ -74,7 +74,7 @@ namespace CycloneDX.Models.v1_2
             Comment = externalReference.Comment;
         }
 
-        public ExternalReference(v1_3.ExternalReference externalReference)
+        public ExternalReference(v1_2.ExternalReference externalReference)
         {
             Url = externalReference.Url;
             Type = (ExternalReferenceType)(int)externalReference.Type;
