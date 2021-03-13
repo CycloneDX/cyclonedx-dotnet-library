@@ -57,28 +57,6 @@ namespace CycloneDX.Models.v1_3
 
         public Bom() {}
         
-        public Bom(v1_1.Bom bom)
-        {
-            SerialNumber = bom.SerialNumber;
-            Version = bom.Version;
-            if (bom.Components != null)
-            {
-                Components = new List<Component>();
-                foreach (var component in bom.Components)
-                {
-                    Components.Add(new Component(component));
-                }
-            }
-            if (bom.ExternalReferences != null)
-            {
-                ExternalReferences = new List<ExternalReference>();
-                foreach (var externalReference in bom.ExternalReferences)
-                {
-                    ExternalReferences.Add(new ExternalReference(externalReference));
-                }
-            }
-        }
-        
         public Bom(v1_2.Bom bom)
         {
             SerialNumber = bom.SerialNumber;

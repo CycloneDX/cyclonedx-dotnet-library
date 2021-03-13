@@ -27,6 +27,19 @@ namespace CycloneDX.Xml
 
     public static class XmlBomSerializer
     {
+        public static string Serialize(Models.v1_3.Bom bom)
+        {
+            Contract.Requires(bom != null);
+
+            var serializer = new XmlSerializer(typeof(Models.v1_3.Bom));
+
+            using (var writer = new Utf8StringWriter())
+            {
+                serializer.Serialize(writer, bom);
+                return writer.ToString();
+            }
+        }
+
         public static string Serialize(Models.v1_2.Bom bom)
         {
             Contract.Requires(bom != null);
