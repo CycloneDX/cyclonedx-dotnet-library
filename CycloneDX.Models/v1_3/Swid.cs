@@ -17,21 +17,27 @@
 using System;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class Swid
     {
         [XmlAttribute("tagId")]
+        [ProtoMember(1)]
         public string TagId { get; set; }
 
         [XmlAttribute("name")]
+        [ProtoMember(2)]
         public string Name { get; set; }
 
         [XmlAttribute("version")]
+        [ProtoMember(3)]
         public string Version { get; set; }
 
         [XmlIgnore]
+        [ProtoMember(4)]
         public int? TagVersion { get; set; }
         [XmlAttribute("tagVersion")]
         [JsonIgnore]
@@ -49,6 +55,7 @@ namespace CycloneDX.Models.v1_3
         public bool ShouldSerializeNonNullableTagVersion() { return TagVersion.HasValue; }
 
         [XmlIgnore]
+        [ProtoMember(5)]
         public bool? Patch { get; set; }
         [XmlAttribute("patch")]
         [JsonIgnore]
@@ -66,9 +73,11 @@ namespace CycloneDX.Models.v1_3
         public bool ShouldSerializeNonNullablePatch() { return Patch.HasValue; }
 
         [XmlElement("text")]
+        [ProtoMember(6)]
         public AttachedText Text { get; set; }
         
         [XmlAttribute("url")]
+        [ProtoMember(7)]
         public string Url { get; set; }
 
         public Swid() {}

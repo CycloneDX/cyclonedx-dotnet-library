@@ -15,24 +15,31 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class Commit
     {
         [XmlElement("uid")]
+        [ProtoMember(1)]
         public string Uid { get; set; }
 
         [XmlElement("url")]
+        [ProtoMember(2)]
         public string Url { get; set; }
         
         [XmlElement("author")]
+        [ProtoMember(3)]
         public IdentifiableAction Author { get; set; }
 
         [XmlElement("committer")]
+        [ProtoMember(4)]
         public IdentifiableAction Committer { get; set; }
         
         [XmlElement("message")]
+        [ProtoMember(5)]
         public string Message { get; set; }
 
         public Commit() {}

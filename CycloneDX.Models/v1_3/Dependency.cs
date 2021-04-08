@@ -19,16 +19,20 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
     [XmlType("dependency")]
+    [ProtoContract]
     public class Dependency
     {
         [XmlAttribute("ref")]
+        [ProtoMember(1)]
         public string Ref { get; set; }
 
         [XmlElement("dependency")]
+        [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
 
         public Dependency() {}

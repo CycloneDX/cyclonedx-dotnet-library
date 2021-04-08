@@ -17,30 +17,38 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class Metadata
     {
         [XmlElement("timestamp")]
+        [ProtoMember(1)]
         public DateTime? Timestamp { get; set; } = null;
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
         [XmlArray("tools")]
         [XmlArrayItem("tool")]
+        [ProtoMember(2)]
         public List<Tool> Tools { get; set; }
 
         [XmlArray("authors")]
         [XmlArrayItem("author")]
+        [ProtoMember(3)]
         public List<OrganizationalContact> Authors { get; set; }
 
         [XmlElement("component")]
+        [ProtoMember(4)]
         public Component Component { get; set; }
 
         [XmlElement("manufacture")]
+        [ProtoMember(5)]
         public OrganizationalEntity Manufacture { get; set; }
 
         [XmlElement("supplier")]
+        [ProtoMember(6)]
         public OrganizationalEntity Supplier { get; set; }
 
         public Metadata() {}

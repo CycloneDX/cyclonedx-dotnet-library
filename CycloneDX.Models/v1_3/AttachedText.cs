@@ -15,16 +15,21 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class AttachedText
     {
         [XmlAttribute("content-type")]
+        [ProtoMember(1)]
         public string ContentType { get; set; }
         [XmlAttribute("encoding")]
+        [ProtoMember(2)]
         public string Encoding { get; set; }
         [XmlText]
+        [ProtoMember(3)]
         public string Content { get; set; }
 
         public AttachedText() {}

@@ -18,14 +18,14 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using ComponentType = CycloneDX.Models.v1_3.Component.ComponentType;
+using Classification = CycloneDX.Models.v1_3.Component.Classification;
 
 namespace CycloneDX.Json.v1_3.Converters
 {
 
-    public class ComponentTypeConverter : JsonConverter<ComponentType>
+    public class ComponentTypeConverter : JsonConverter<Classification>
     {
-        public override ComponentType Read(
+        public override Classification Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -40,12 +40,12 @@ namespace CycloneDX.Json.v1_3.Converters
 
             if (componentTypeString == "operating-system")
             {
-                return ComponentType.OperationSystem;
+                return Classification.OperationSystem;
             }
             else
             {
-                ComponentType componentType;
-                var success = Enum.TryParse<ComponentType>(componentTypeString, ignoreCase: true, out componentType);
+                Classification componentType;
+                var success = Enum.TryParse<Classification>(componentTypeString, ignoreCase: true, out componentType);
                 if (success)
                 {
                     return componentType;
@@ -59,12 +59,12 @@ namespace CycloneDX.Json.v1_3.Converters
 
         public override void Write(
             Utf8JsonWriter writer,
-            ComponentType value,
+            Classification value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
 
-            if (value == ComponentType.OperationSystem)
+            if (value == Classification.OperationSystem)
             {
                 writer.WriteStringValue("operating-system");
             }

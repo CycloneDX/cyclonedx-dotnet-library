@@ -18,35 +18,45 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class Service
     {
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
+        [ProtoMember(1)]
         public string BomRef { get; set; }
 
         [XmlElement("provider")]
+        [ProtoMember(2)]
         public OrganizationalEntity Provider { get; set; }
 
         [XmlElement("group")]
+        [ProtoMember(3)]
         public string Group { get; set; }
 
         [XmlElement("name")]
+        [ProtoMember(4)]
         public string Name { get; set; }
 
         [XmlElement("version")]
+        [ProtoMember(5)]
         public string Version { get; set; }
 
         [XmlElement("description")]
+        [ProtoMember(6)]
         public string Description { get; set; }
 
         [XmlArray("endpoints")]
         [XmlArrayItem("endpoint")]
+        [ProtoMember(7)]
         public List<string> Endpoints { get; set; }
 
         [XmlIgnore]
+        [ProtoMember(8)]
         public bool? Authenticated { get; set; }
         [XmlElement("authenticated")]
         [JsonIgnore]
@@ -66,6 +76,7 @@ namespace CycloneDX.Models.v1_3
 
         [XmlIgnore]
         [JsonPropertyName("x-trust-boundary")]
+        [ProtoMember(9)]
         public bool? XTrustBoundary { get; set; }
         [XmlElement("x-trust-boundary")]
         [JsonIgnore]
@@ -85,17 +96,21 @@ namespace CycloneDX.Models.v1_3
 
         [XmlArray("data")]
         [XmlArrayItem("classification")]
+        [ProtoMember(10)]
         public List<DataClassification> Data { get; set; }
 
         [XmlElement("licenses")]
+        [ProtoMember(11)]
         public List<ComponentLicense> Licenses { get; set; }
 
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
+        [ProtoMember(12)]
         public List<ExternalReference> ExternalReferences { get; set; }
 
         [XmlArray("services")]
         [XmlArrayItem("service")]
+        [ProtoMember(13)]
         public List<Service> Services { get; set; }
 
         public Service() {}

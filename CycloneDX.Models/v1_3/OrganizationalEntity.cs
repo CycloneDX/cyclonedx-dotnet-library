@@ -16,16 +16,23 @@
 
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class OrganizationalEntity
     {
         [XmlElement("name")]
+        [ProtoMember(1)]
         public string Name { get; set; }
+
         [XmlElement("url")]
+        [ProtoMember(2)]
         public List<string> Url { get; set; }
+
         [XmlElement("contact")]
+        [ProtoMember(3)]
         public List<OrganizationalContact> Contact { get; set; }
 
         public OrganizationalEntity() {}

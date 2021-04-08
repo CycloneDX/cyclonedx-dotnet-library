@@ -15,23 +15,29 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
     [XmlType("license")]
+    [ProtoContract]
     public class License
     {
         [XmlElement("id")]
+        [ProtoMember(1)]
         public string Id { get; set; }
 
         [XmlElement("name")]
+        [ProtoMember(2)]
         public string Name { get; set; }
         public bool ShouldSerializeName() { return string.IsNullOrEmpty(Id); }
 
         [XmlElement("text")]
+        [ProtoMember(3)]
         public AttachedText Text { get; set; }
         
         [XmlElement("url")]
+        [ProtoMember(4)]
         public string Url { get; set; }
 
         public License() {}

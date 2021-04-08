@@ -16,16 +16,23 @@
 
 using System;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class IdentifiableAction
     {
         [XmlElement("timestamp")]
+        [ProtoMember(1)]
         public DateTime? Timestamp { get; set; }
+
         [XmlElement("name")]
+        [ProtoMember(2)]
         public string Name { get; set; }
+
         [XmlElement("email")]
+        [ProtoMember(3)]
         public string Email { get; set; }
 
         public IdentifiableAction() {}

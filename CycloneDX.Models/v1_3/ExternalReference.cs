@@ -16,12 +16,15 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
+    [ProtoContract]
     public class ExternalReference
     {
+        [ProtoContract]
         public enum ExternalReferenceType
         {
             [XmlEnum(Name = "vcs")]
@@ -57,12 +60,15 @@ namespace CycloneDX.Models.v1_3
         }
 
         [XmlElement("url")]
+        [ProtoMember(2)]
         public string Url { get; set; }
 
         [XmlAttribute("type")]
+        [ProtoMember(1, IsRequired=true)]
         public ExternalReferenceType Type { get; set; }
 
         [XmlElement("comment")]
+        [ProtoMember(3)]
         public string Comment { get; set; }
 
         public ExternalReference() {}

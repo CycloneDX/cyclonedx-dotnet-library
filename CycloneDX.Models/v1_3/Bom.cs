@@ -18,12 +18,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
     [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlRoot("bom", Namespace="http://cyclonedx.org/schema/bom/1.3", IsNullable=false)]
+    [ProtoContract]
     public class Bom
     {
         [XmlIgnore]
@@ -33,26 +35,33 @@ namespace CycloneDX.Models.v1_3
         public string SpecVersion => "1.3";
 
         [XmlAttribute("serialNumber")]
+        [ProtoMember(2)]
         public string SerialNumber { get; set; }
 
         [XmlAttribute("version")]
+        [ProtoMember(1)]
         public int Version { get; set; } = 1;
 
         [XmlElement("metadata")]
+        [ProtoMember(3)]
         public Metadata Metadata { get; set; }
 
         [XmlArray("components")]
+        [ProtoMember(4)]
         public List<Component> Components { get; set; }
 
         [XmlArray("services")]
         [XmlArrayItem("service")]
+        [ProtoMember(5)]
         public List<Service> Services { get; set; }
 
         [XmlArray("externalReferences")]
+        [ProtoMember(6)]
         public List<ExternalReference> ExternalReferences { get; set; }
 
         [XmlArray("dependencies")]
         [XmlArrayItem("dependency")]
+        [ProtoMember(7)]
         public List<Dependency> Dependencies { get; set; }
 
         public Bom() {}

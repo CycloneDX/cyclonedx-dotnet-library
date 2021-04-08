@@ -15,14 +15,18 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class Diff
     {
         [XmlElement("text")]
+        [ProtoMember(1)]
         public AttachedText Text { get; set; }
         [XmlElement("url")]
+        [ProtoMember(2)]
         public string Url { get; set; }
 
         public Diff() {}

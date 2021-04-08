@@ -19,14 +19,17 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
+    [ProtoContract]
     public class Component
     {
-        public enum ComponentType
+        [ProtoContract]
+        public enum Classification
         {
             [XmlEnum(Name = "application")]
             Application,
@@ -46,61 +49,104 @@ namespace CycloneDX.Models.v1_3
             Firmware
         }
 
+        [ProtoContract]
+        public enum ComponentScope
+        {
+            [XmlEnum(Name = "required")]
+            Required,
+            [XmlEnum(Name = "optional")]
+            Optional,
+            [XmlEnum(Name = "excluded")]
+            Excluded
+        }
+
         [XmlAttribute("type")]
-        public ComponentType Type { get; set; }
+        [ProtoMember(1, IsRequired=true)]
+        public Classification Type { get; set; }
 
         [JsonPropertyName("mime-type")]
         [XmlAttribute("mime-type")]
+        [ProtoMember(2)]
         public string MimeType { get; set; }
 
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]
+        [ProtoMember(3)]
         public string BomRef { get; set; }
 
         [XmlElement("supplier")]
+        [ProtoMember(4)]
         public OrganizationalEntity Supplier { get; set; }
 
         [XmlElement("author")]
+        [ProtoMember(5)]
         public string Author { get; set; }
 
         [XmlElement("publisher")]
+        [ProtoMember(6)]
         public string Publisher { get; set; }
 
         [XmlElement("group")]
+        [ProtoMember(7)]
         public string Group { get; set; }
 
         [XmlElement("name")]
+        [ProtoMember(8)]
         public string Name { get; set; }
 
         [XmlElement("version")]
+        [ProtoMember(9)]
         public string Version { get; set; }
 
         [XmlElement("description")]
+        [ProtoMember(10)]
         public string Description { get; set; }
 
+        [XmlIgnore]
+        [ProtoMember(11)]
+        public ComponentScope? Scope { get; set; }
         [XmlElement("scope")]
-        public string Scope { get; set; }
+        [JsonIgnore]
+        public ComponentScope NonNullableScope
+        {
+            get
+            {
+                return Scope.Value;
+            }
+            set
+            {
+                Scope = value;
+            }
+        }
+        public bool ShouldSerializeNonNullableScope() { return Scope.HasValue; }
 
         [XmlArray("hashes")]
+        [ProtoMember(12)]
         public List<Hash> Hashes { get; set; }
 
         [XmlElement("licenses")]
+        [ProtoMember(13)]
         public List<ComponentLicense> Licenses { get; set; }
 
         [XmlElement("copyright")]
+        [ProtoMember(14)]
         public string Copyright { get; set; }
 
         [XmlElement("cpe")]
+        [ProtoMember(15)]
         public string Cpe { get; set; }
 
         [XmlElement("purl")]
+        [ProtoMember(16)]
         public string Purl { get; set; }
 
         [XmlElement("swid")]
+        [ProtoMember(17)]
         public Swid Swid { get; set; }
 
         // XML serialization doesn't like nullable value types
         [XmlIgnore]
+        [ProtoMember(18)]
         public bool? Modified { get; set; }
         [XmlElement("modified")]
         [JsonIgnore]
@@ -118,20 +164,23 @@ namespace CycloneDX.Models.v1_3
         public bool ShouldSerializeNonNullableModified() { return Modified.HasValue; }
 
         [XmlElement("pedigree")]
+        [ProtoMember(19)]
         public Pedigree Pedigree { get; set; }
 
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
+        [ProtoMember(20)]
         public List<ExternalReference> ExternalReferences { get; set; }
         
         [XmlArray("components")]
+        [ProtoMember(21)]
         public List<Component> Components { get; set; }
 
         public Component() {}
 
         public Component(v1_1.Component component)
         {
-            Type = (ComponentType)(int)component.Type;
+            Type = (Classification)(int)component.Type;
             BomRef = component.BomRef;
             Author = component.Author;
             Publisher = component.Publisher;
@@ -139,7 +188,7 @@ namespace CycloneDX.Models.v1_3
             Name = component.Name;
             Version = component.Version;
             Description = component.Description;
-            Scope = component.Scope;
+            if (component.Scope.HasValue) Scope = (ComponentScope)(int)component.Scope;
             if (component.Hashes != null)
             {
                 Hashes = new List<Hash>();
@@ -182,7 +231,7 @@ namespace CycloneDX.Models.v1_3
 
         public Component(v1_2.Component component)
         {
-            Type = (ComponentType)(int)component.Type;
+            Type = (Classification)(int)component.Type;
             MimeType = component.MimeType;
             BomRef = component.BomRef;
             if (component.Supplier != null)
@@ -193,7 +242,7 @@ namespace CycloneDX.Models.v1_3
             Name = component.Name;
             Version = component.Version;
             Description = component.Description;
-            Scope = component.Scope;
+            if (component.Scope.HasValue) Scope = (ComponentScope)(int)component.Scope;
             if (component.Hashes != null)
             {
                 Hashes = new List<Hash>();

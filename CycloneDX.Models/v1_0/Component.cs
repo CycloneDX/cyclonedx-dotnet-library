@@ -40,6 +40,16 @@ namespace CycloneDX.Models.v1_0
             Device
         }
 
+        public enum ComponentScope
+        {
+            [XmlEnum(Name = "required")]
+            Required,
+            [XmlEnum(Name = "optional")]
+            Optional,
+            [XmlEnum(Name = "excluded")]
+            Excluded
+        }
+
         [XmlAttribute("type")]
         public ComponentType Type { get; set; }
 
@@ -61,8 +71,22 @@ namespace CycloneDX.Models.v1_0
         [XmlElement("description")]
         public string Description { get; set; }
 
+        [XmlIgnore]
+        public ComponentScope? Scope { get; set; }
         [XmlElement("scope")]
-        public string Scope { get; set; }
+        [JsonIgnore]
+        public ComponentScope NonNullableScope
+        {
+            get
+            {
+                return Scope.Value;
+            }
+            set
+            {
+                Scope = value;
+            }
+        }
+        public bool ShouldSerializeNonNullableScope() { return Scope.HasValue; }
 
         [XmlArray("hashes")]
         public List<Hash> Hashes { get; set; }
@@ -111,7 +135,7 @@ namespace CycloneDX.Models.v1_0
             Name = component.Name;
             Version = component.Version;
             Description = component.Description;
-            Scope = component.Scope;
+            if (component.Scope.HasValue) Scope = (ComponentScope)(int)component.Scope;
             if (component.Hashes != null)
             {
                 Hashes = new List<Hash>();

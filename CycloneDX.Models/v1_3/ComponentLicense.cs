@@ -15,15 +15,19 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
-
+    [ProtoContract]
     public class ComponentLicense
     {
         [XmlElement("license")]
+        [ProtoMember(1)]
         public License License { get; set; }
+
         [XmlElement("expression")]
+        [ProtoMember(2)]
         public string Expression { get; set; }
 
         public ComponentLicense() {}

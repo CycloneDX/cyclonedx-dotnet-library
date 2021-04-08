@@ -186,7 +186,7 @@ namespace CycloneDX.Xml
             return bom;
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_3.Bom bom)
+        private static void CleanupEmptyXmlArrays(Models.v1_3.Bom bom)
         {
             if (bom.Metadata?.Authors?.Count == 0) bom.Metadata.Authors = null;
             if (bom.Metadata?.Tools?.Count == 0) bom.Metadata.Tools = null;
@@ -206,7 +206,7 @@ namespace CycloneDX.Xml
             if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_2.Bom bom)
+        private static void CleanupEmptyXmlArrays(Models.v1_2.Bom bom)
         {
             if (bom.Metadata?.Authors?.Count == 0) bom.Metadata.Authors = null;   
             if (bom.Metadata?.Tools?.Count == 0) bom.Metadata.Tools = null;   
@@ -226,7 +226,7 @@ namespace CycloneDX.Xml
             if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_1.Bom bom)
+        private static void CleanupEmptyXmlArrays(Models.v1_1.Bom bom)
         {
             if (bom.Components?.Count == 0) bom.Components = null;   
             if (bom.ExternalReferences?.Count == 0) bom.ExternalReferences = null;   
@@ -236,7 +236,7 @@ namespace CycloneDX.Xml
                 CleanupEmptyXmlArrays(component);
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_0.Bom bom)
+        private static void CleanupEmptyXmlArrays(Models.v1_0.Bom bom)
         {
             if (bom.Components?.Count == 0) bom.Components = null;   
 
@@ -245,7 +245,7 @@ namespace CycloneDX.Xml
                 CleanupEmptyXmlArrays(component);
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_3.Component component)
+        private static void CleanupEmptyXmlArrays(Models.v1_3.Component component)
         {
             if (component.Hashes?.Count == 0) component.Hashes = null;
             if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
@@ -258,7 +258,7 @@ namespace CycloneDX.Xml
             if (component.Pedigree != null) CleanupEmptyXmlArrays(component.Pedigree);
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_2.Component component)
+        private static void CleanupEmptyXmlArrays(Models.v1_2.Component component)
         {
             if (component.Hashes?.Count == 0) component.Hashes = null;
             if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
@@ -271,7 +271,7 @@ namespace CycloneDX.Xml
             if (component.Pedigree != null) CleanupEmptyXmlArrays(component.Pedigree);
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_1.Component component)
+        private static void CleanupEmptyXmlArrays(Models.v1_1.Component component)
         {
             if (component.Hashes?.Count == 0) component.Hashes = null;
             if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
@@ -284,7 +284,7 @@ namespace CycloneDX.Xml
             if (component.Pedigree != null) CleanupEmptyXmlArrays(component.Pedigree);
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_0.Component component)
+        private static void CleanupEmptyXmlArrays(Models.v1_0.Component component)
         {
             if (component.Hashes?.Count == 0) component.Hashes = null;
             if (component.Components?.Count == 0) component.Components = null;
@@ -294,7 +294,7 @@ namespace CycloneDX.Xml
                 CleanupEmptyXmlArrays(subComponent);
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_3.Pedigree pedigree)
+        private static void CleanupEmptyXmlArrays(Models.v1_3.Pedigree pedigree)
         {
             if (pedigree.Commits?.Count == 0) pedigree.Commits = null;
             if (pedigree.Patches?.Count == 0) pedigree.Patches = null;
@@ -315,7 +315,7 @@ namespace CycloneDX.Xml
                 CleanupEmptyXmlArrays(component);
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_2.Pedigree pedigree)
+        private static void CleanupEmptyXmlArrays(Models.v1_2.Pedigree pedigree)
         {
             if (pedigree.Commits?.Count == 0) pedigree.Commits = null;
             if (pedigree.Patches?.Count == 0) pedigree.Patches = null;
@@ -336,7 +336,7 @@ namespace CycloneDX.Xml
                 CleanupEmptyXmlArrays(component);
         }
 
-        public static void CleanupEmptyXmlArrays(Models.v1_1.Pedigree pedigree)
+        private static void CleanupEmptyXmlArrays(Models.v1_1.Pedigree pedigree)
         {
             if (pedigree.Commits?.Count == 0) pedigree.Commits = null;
 

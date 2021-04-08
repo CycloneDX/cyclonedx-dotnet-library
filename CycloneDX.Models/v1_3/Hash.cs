@@ -15,14 +15,18 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
     [XmlType("hash")]
+    [ProtoContract]
     public class Hash
     {
+        [ProtoContract]
         public enum HashAlgorithm
         {
+            [XmlEnum(Name = "MD5")]
             MD5,
             [XmlEnum(Name = "SHA-1")]
             SHA_1,
@@ -44,13 +48,16 @@ namespace CycloneDX.Models.v1_3
             BLAKE2b_384,
             [XmlEnum(Name = "BLAKE2b-512")]
             BLAKE2b_512,
+            [XmlEnum(Name = "BLAKE3")]
             BLAKE3,
         }
 
         [XmlAttribute("alg")]
+        [ProtoMember(1, IsRequired=true)]
         public HashAlgorithm Alg { get; set; }
         
         [XmlText]
+        [ProtoMember(2)]
         public string Content { get; set; }
 
         public Hash() {}

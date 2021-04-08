@@ -16,11 +16,14 @@
 
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class Issue
     {
+        [ProtoContract]
         public enum IssueClassification
         {
             [XmlEnum(Name = "defect")]
@@ -32,22 +35,28 @@ namespace CycloneDX.Models.v1_3
         }
 
         [XmlAttribute("type")]
+        [ProtoMember(1, IsRequired=true)]
         public IssueClassification Type { get; set; }
 
         [XmlElement("id")]
+        [ProtoMember(2)]
         public string Id { get; set; }
 
         [XmlElement("name")]
+        [ProtoMember(3)]
         public string Name { get; set; }
 
         [XmlElement("description")]
+        [ProtoMember(4)]
         public string Description { get; set; }
 
         [XmlElement("source")]
+        [ProtoMember(5)]
         public Source Source { get; set; }
 
         [XmlArray("references")]
         [XmlArrayItem("url")]
+        [ProtoMember(6)]
         public List<string> References { get; set; }
 
         public Issue() {}

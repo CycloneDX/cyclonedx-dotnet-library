@@ -15,16 +15,23 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class OrganizationalContact
     {
         [XmlElement("name")]
+        [ProtoMember(1)]
         public string Name { get; set; }
+
         [XmlElement("email")]
+        [ProtoMember(2)]
         public string Email { get; set; }
+
         [XmlElement("phone")]
+        [ProtoMember(3)]
         public string Phone { get; set; }
 
         public OrganizationalContact() {}

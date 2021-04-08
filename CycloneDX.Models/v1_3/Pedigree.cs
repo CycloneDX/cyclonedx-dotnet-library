@@ -16,32 +16,40 @@
 
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class Pedigree
     {
         [XmlArray("ancestors")]
         [XmlArrayItem("component")]
+        [ProtoMember(1)]
         public List<Component> Ancestors { get; set; }
 
         [XmlArray("descendants")]
         [XmlArrayItem("component")]
+        [ProtoMember(2)]
         public List<Component> Descendants { get; set; }
 
         [XmlArray("variants")]
         [XmlArrayItem("component")]
+        [ProtoMember(3)]
         public List<Component> Variants { get; set; }
 
         [XmlArray("commits")]
         [XmlArrayItem("commit")]
+        [ProtoMember(4)]
         public List<Commit> Commits { get; set; }
 
         [XmlArray("patches")]
         [XmlArrayItem("patch")]
+        [ProtoMember(5)]
         public List<Patch> Patches { get; set; }
 
         [XmlElement("notes")]
+        [ProtoMember(6)]
         public string Notes { get; set; }
 
         public Pedigree() {}

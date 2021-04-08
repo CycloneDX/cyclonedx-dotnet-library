@@ -16,11 +16,14 @@
 
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class Patch
     {
+        [ProtoContract]
         public enum PatchClassification
         {
             [XmlEnum(Name = "unofficial")]
@@ -34,13 +37,16 @@ namespace CycloneDX.Models.v1_3
         }
 
         [XmlAttribute("type")]
+        [ProtoMember(1, IsRequired=true)]
         public PatchClassification Type { get; set; }
 
         [XmlElement("diff")]
+        [ProtoMember(2)]
         public Diff Diff { get; set; }
 
         [XmlArray("resolves")]        
         [XmlArrayItem("issue")]        
+        [ProtoMember(3)]
         public List<Issue> Resolves { get; set; }
 
         public Patch() {}

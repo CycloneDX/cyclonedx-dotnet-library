@@ -16,15 +16,19 @@
 
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using ProtoBuf;
 
 namespace CycloneDX.Models.v1_3
 {
+    [ProtoContract]
     public class DataClassification
     {
         [XmlAttribute("flow")]
+        [ProtoMember(1, IsRequired=true)]
         public DataFlow Flow { get; set; }
 
         [XmlText]
+        [ProtoMember(2)]
         public string Classification { get; set; }
 
         public DataClassification() {}
