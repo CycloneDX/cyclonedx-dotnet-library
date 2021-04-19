@@ -60,6 +60,7 @@ namespace CycloneDX.Xml.Tests
         [InlineData("valid-metadata-manufacture")]
         [InlineData("valid-metadata-supplier")]
         [InlineData("valid-metadata-timestamp")]
+        [InlineData("valid-metadata-timestamp-with-offset")]
         [InlineData("valid-metadata-tool")]
         [InlineData("valid-minimal-viable")]
         [InlineData("valid-patch")]

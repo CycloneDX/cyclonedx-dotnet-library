@@ -22,8 +22,31 @@ namespace CycloneDX.Models.v1_2
 {
     public class Metadata
     {
+        private DateTime? _timestamp;
         [XmlElement("timestamp")]
-        public DateTime? Timestamp { get; set; } = null;
+        public DateTime? Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                if (value == null)
+                {
+                    _timestamp = null;
+                }
+                else if (value.Value.Kind == DateTimeKind.Unspecified)
+                {
+                    _timestamp = DateTime.SpecifyKind(value.Value, DateTimeKind.Utc);
+                }
+                else if (value.Value.Kind == DateTimeKind.Local)
+                {
+                    _timestamp = value.Value.ToUniversalTime();
+                }
+                else
+                {
+                    _timestamp = value;
+                }
+            }
+        }
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
         [XmlArray("tools")]
