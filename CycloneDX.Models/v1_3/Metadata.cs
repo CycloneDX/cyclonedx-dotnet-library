@@ -25,9 +25,37 @@ namespace CycloneDX.Models.v1_3
     public class Metadata
     {
         [XmlElement("timestamp")]
-        [ProtoMember(1)]
         public DateTime? Timestamp { get; set; } = null;
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
+        [ProtoMember(1)]
+        private UInt64? ProtoBufTimestamp
+        {
+            get
+            {
+                if (Timestamp != null)
+                {
+                    var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                    return (UInt64)(Timestamp.Value.ToUniversalTime() - epoch).TotalSeconds;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (value != null)
+                {
+                    var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                    var timeSpan = TimeSpan.FromSeconds(value.Value);
+                    Timestamp = epoch.Add(timeSpan);
+                }
+                else
+                {
+                    Timestamp = null;
+                }
+            }
+        }
 
         [XmlArray("tools")]
         [XmlArrayItem("tool")]
