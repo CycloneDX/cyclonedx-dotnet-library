@@ -26,6 +26,8 @@ namespace CycloneDX.Models.v1_3
         [ProtoContract]
         public enum HashAlgorithm
         {
+            // to make working with protobuf easier
+            Null,
             [XmlEnum(Name = "MD5")]
             MD5,
             [XmlEnum(Name = "SHA-1")]
@@ -62,15 +64,9 @@ namespace CycloneDX.Models.v1_3
 
         public Hash() {}
 
-        public Hash(v1_1.Hash hash)
-        {
-            Alg = (HashAlgorithm)(int)hash.Alg;
-            Content = hash.Content;
-        }
-
         public Hash(v1_2.Hash hash)
         {
-            Alg = (HashAlgorithm)(int)hash.Alg;
+            Alg = (HashAlgorithm)((int)hash.Alg + 1);
             Content = hash.Content;
         }
     }

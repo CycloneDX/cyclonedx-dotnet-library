@@ -54,7 +54,7 @@ namespace CycloneDX.Models.v1_2
 
         public Issue(v1_3.Issue issue)
         {
-            Type = (IssueClassification)issue.Type;
+            Type = (IssueClassification)((int)issue.Type - 1);
             Id = issue.Id;
             Name = issue.Name;
             Description = issue.Description;

@@ -206,7 +206,7 @@ namespace CycloneDX.Models.v1_2
 
         public Component(v1_3.Component component)
         {
-            Type = (ComponentType)(int)component.Type;
+            Type = (ComponentType)((int)component.Type - 1);
             MimeType = component.MimeType;
             BomRef = component.BomRef;
             if (component.Supplier != null)
@@ -217,7 +217,7 @@ namespace CycloneDX.Models.v1_2
             Name = component.Name;
             Version = component.Version;
             Description = component.Description;
-            if (component.Scope.HasValue) Scope = (ComponentScope)(int)component.Scope;
+            if (component.Scope.HasValue) Scope = (ComponentScope)((int)component.Scope - 1);
             if (component.Hashes != null)
             {
                 Hashes = new List<Hash>();

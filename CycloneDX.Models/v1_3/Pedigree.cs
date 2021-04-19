@@ -54,43 +54,6 @@ namespace CycloneDX.Models.v1_3
 
         public Pedigree() {}
 
-        public Pedigree(v1_1.Pedigree pedigree)
-        {
-            if (pedigree.Ancestors != null)
-            {
-                Ancestors = new List<Component>();
-                foreach (var ancestor in pedigree.Ancestors)
-                {
-                    Ancestors.Add(new Component(ancestor));
-                }
-            }
-            if (pedigree.Descendants != null)
-            {
-                Descendants = new List<Component>();
-                foreach (var descendant in pedigree.Descendants)
-                {
-                    Descendants.Add(new Component(descendant));
-                }
-            }
-            if (pedigree.Variants != null)
-            {
-                Variants = new List<Component>();
-                foreach (var variant in pedigree.Variants)
-                {
-                    Variants.Add(new Component(variant));
-                }
-            }
-            if (pedigree.Commits != null)
-            {
-                Commits = new List<Commit>();
-                foreach (var commit in pedigree.Commits)
-                {
-                    Commits.Add(new Commit(commit));
-                }
-            }
-            Notes = pedigree.Notes;
-        }
-
         public Pedigree(v1_2.Pedigree pedigree)
         {
             if (pedigree.Ancestors != null)

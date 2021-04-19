@@ -23,6 +23,8 @@ namespace CycloneDX.Models.v1_3
     [ProtoContract]
     public enum DataFlow
     {
+        // to make working with protobuf easier
+        Null,
         [XmlEnum(Name = "inbound")]
         Inbound,
         [XmlEnum(Name = "outbound")]

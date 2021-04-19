@@ -31,7 +31,7 @@ namespace CycloneDX.Models.v1_2
 
         public DataClassification(v1_3.DataClassification dataClassification)
         {
-            Flow = (DataFlow)dataClassification.Flow;
+            Flow = (DataFlow)((int)dataClassification.Flow + 1);
             Classification = dataClassification.Classification;
         }
     }

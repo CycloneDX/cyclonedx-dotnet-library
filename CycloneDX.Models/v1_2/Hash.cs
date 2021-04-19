@@ -63,7 +63,7 @@ namespace CycloneDX.Models.v1_2
 
         public Hash(v1_3.Hash hash)
         {
-            Alg = (HashAlgorithm)(int)hash.Alg;
+            Alg = (HashAlgorithm)((int)hash.Alg - 1);
             Content = hash.Content;
         }
     }

@@ -44,17 +44,6 @@ namespace CycloneDX.Models.v1_3
 
         public Commit() {}
 
-        public Commit(v1_1.Commit commit)
-        {
-            Uid = commit.Uid;
-            Url = commit.Url;
-            if (commit.Author != null)
-                Author = new IdentifiableAction(commit.Author);
-            if (commit.Committer != null)
-                Committer = new IdentifiableAction(commit.Committer);
-            Message = commit.Message;
-        }
-
         public Commit(v1_2.Commit commit)
         {
             Uid = commit.Uid;

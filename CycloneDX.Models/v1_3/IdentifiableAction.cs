@@ -37,13 +37,6 @@ namespace CycloneDX.Models.v1_3
 
         public IdentifiableAction() {}
 
-        public IdentifiableAction(v1_1.IdentifiableAction identifiableAction)
-        {
-            Timestamp = identifiableAction.Timestamp;
-            Name = identifiableAction.Name;
-            Email = identifiableAction.Email;
-        }
-
         public IdentifiableAction(v1_2.IdentifiableAction identifiableAction)
         {
             Timestamp = identifiableAction.Timestamp;

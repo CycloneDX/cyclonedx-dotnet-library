@@ -30,6 +30,7 @@ namespace CycloneDX.ProtoBuf
             Contract.Requires(bom != null);
             
             Serializer.Serialize(destination, bom);
+            destination.Position = 0;
         }
     }
 }

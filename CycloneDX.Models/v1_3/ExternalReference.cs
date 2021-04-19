@@ -73,13 +73,6 @@ namespace CycloneDX.Models.v1_3
 
         public ExternalReference() {}
 
-        public ExternalReference(v1_1.ExternalReference externalReference)
-        {
-            Url = externalReference.Url;
-            Type = (ExternalReferenceType)(int)externalReference.Type;
-            Comment = externalReference.Comment;
-        }
-
         public ExternalReference(v1_2.ExternalReference externalReference)
         {
             Url = externalReference.Url;

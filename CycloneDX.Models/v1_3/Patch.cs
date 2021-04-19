@@ -26,6 +26,8 @@ namespace CycloneDX.Models.v1_3
         [ProtoContract]
         public enum PatchClassification
         {
+            // to make working with protobuf easier
+            Null,
             [XmlEnum(Name = "unofficial")]
             Unofficial,
             [XmlEnum(Name = "monkey")]
@@ -53,7 +55,7 @@ namespace CycloneDX.Models.v1_3
 
         public Patch(v1_2.Patch patch)
         {
-            Type = (PatchClassification)patch.Type;
+            Type = (PatchClassification)((int)patch.Type + 1);
             if (patch.Diff != null)
                 Diff = new Diff(patch.Diff);
             if (patch.Resolves != null)

@@ -48,7 +48,7 @@ namespace CycloneDX.Models.v1_3
 
         [XmlArray("components")]
         [ProtoMember(4)]
-        public List<Component> Components { get; set; }
+        public List<Component> Components { get; set; } = new List<Component>();
 
         [XmlArray("services")]
         [XmlArrayItem("service")]

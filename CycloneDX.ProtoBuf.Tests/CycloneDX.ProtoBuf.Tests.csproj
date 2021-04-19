@@ -32,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CycloneDX.ProtoBuf\CycloneDX.ProtoBuf.csproj" />
     <ProjectReference Include="..\CycloneDX.Xml\CycloneDX.Xml.csproj" />
+    <ProjectReference Include="..\CycloneDX.Json\CycloneDX.Json.csproj" />
   </ItemGroup>
 
 </Project>

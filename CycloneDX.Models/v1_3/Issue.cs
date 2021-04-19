@@ -26,6 +26,8 @@ namespace CycloneDX.Models.v1_3
         [ProtoContract]
         public enum IssueClassification
         {
+            // to make working with protobuf easier
+            Null,
             [XmlEnum(Name = "defect")]
             Defect,
             [XmlEnum(Name = "enhancement")]
@@ -63,7 +65,7 @@ namespace CycloneDX.Models.v1_3
 
         public Issue(v1_2.Issue issue)
         {
-            Type = (IssueClassification)issue.Type;
+            Type = (IssueClassification)((int)issue.Type + 1);
             Id = issue.Id;
             Name = issue.Name;
             Description = issue.Description;
