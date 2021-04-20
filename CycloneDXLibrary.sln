@@ -7,10 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 		LICENSE = LICENSE
-		build.sh = build.sh
-		push.sh = push.sh
 		semver.txt = semver.txt
-		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CycloneDX.Json", "CycloneDX.Json\CycloneDX.Json.csproj", "{60250E21-18CA-4C71-AA6F-E22DBA185AC9}"
