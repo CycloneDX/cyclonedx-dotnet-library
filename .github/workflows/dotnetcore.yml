@@ -50,5 +50,10 @@ jobs:
       run: |
         sudo apt-get install protobuf-compiler
 
+    - name: Install protocol buffers compiler on Mac
+      if: matrix.os == 'macos-latest'
+      run: |
+        brew install protobuf
+
     - name: Tests
       run: dotnet test --framework netcoreapp${{ matrix.framework }}
