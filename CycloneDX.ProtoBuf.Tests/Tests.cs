@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -154,7 +155,24 @@ namespace CycloneDX.ProtoBuf.Tests
         {
             internal ProtocResult Run(string workingDirectory, byte[] input, string[] arguments)
             {
-                var psi = new ProcessStartInfo("protoc", string.Join(" ", arguments))
+                var protocFilename = "protoc";
+
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    var enviromentPath = Environment.GetEnvironmentVariable("PATH");
+                    var paths = enviromentPath.Split(';');
+                    foreach (var path in paths)
+                    {
+                        var filename = Path.Combine(path, "protoc.exe");
+                        if (File.Exists(filename))
+                        {
+                            protocFilename = filename;
+                            break;
+                        }
+                    }
+                }
+                
+                var psi = new ProcessStartInfo(protocFilename, string.Join(" ", arguments))
                 {
                     WorkingDirectory = workingDirectory,
                     UseShellExecute = false,

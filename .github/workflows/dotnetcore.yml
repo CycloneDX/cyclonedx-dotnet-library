@@ -45,6 +45,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2.3.4
 
+    - name: Download protocol buffers compiler on Windows
+      if: matrix.os == 'windows-latest'
+      run: |
+        Invoke-WebRequest https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protoc-3.15.8-win64.zip -O protoc.zip
+      shell: pwsh
+
+    - name: Extract protocol buffers compiler on Windows
+      if: matrix.os == 'windows-latest'
+      run: |
+        7z x protoc.zip -oprotoc
+        copy protoc\bin\protoc.exe C:\Windows\protoc.exe
+      shell: cmd
+
     - name: Install protocol buffers compiler on Linux
       if: matrix.os == 'ubuntu-latest'
       run: |
