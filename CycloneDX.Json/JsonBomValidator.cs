@@ -33,7 +33,7 @@ namespace CycloneDX.Json
         {
             if (schemaVersion == SchemaVersion.v1_0 || schemaVersion == SchemaVersion.v1_1)
             {
-                throw new UnsupportedSchemaVersionException($"JSON format is not supported by schema {schemaVersion}");
+                throw new UnsupportedSchemaVersionException($"JSON format is not supported by schema version {schemaVersion}");
             }
 
             var validationMessages = new List<string>();

@@ -106,10 +106,7 @@ components {
     commits {
       uid: "123"
       author {
-        1 {
-          1: 3084280878
-          2: 3
-        }
+        timestamp: 1542140439
       }
     }
   }

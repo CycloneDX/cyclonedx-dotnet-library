@@ -90,12 +90,12 @@
             <uid>7638417db6d59f3c431d3e1f261cc637155684cd</uid>
             <url>https://location/to/7638417db6d59f3c431d3e1f261cc637155684cd</url>
             <author>
-              <timestamp>2018-11-07T22:01:45</timestamp>
+              <timestamp>2018-11-07T22:01:45Z</timestamp>
               <name>John Doe</name>
               <email>john.doe@example.com</email>
             </author>
             <committer>
-              <timestamp>2018-11-07T22:01:45</timestamp>
+              <timestamp>2018-11-07T22:01:45Z</timestamp>
               <name>Jane Doe</name>
               <email>jane.doe@example.com</email>
             </committer>

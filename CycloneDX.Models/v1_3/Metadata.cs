@@ -101,6 +101,10 @@ namespace CycloneDX.Models.v1_3
         [XmlElement("supplier")]
         [ProtoMember(6)]
         public OrganizationalEntity Supplier { get; set; }
+        
+        [XmlElement("licenses")]
+        [ProtoMember(7)]
+        public List<ComponentLicense> Licenses { get; set; }
 
         public Metadata() {}
         

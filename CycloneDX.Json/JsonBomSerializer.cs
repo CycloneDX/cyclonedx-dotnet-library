@@ -25,6 +25,15 @@ namespace CycloneDX.Json
 
     public static class JsonBomSerializer
     {
+        public static string Serialize(Models.v1_3.Bom bom)
+        {
+            Contract.Requires(bom != null);
+
+            var jsonBom = JsonSerializer.Serialize(bom, Utils.GetJsonSerializerOptions_v1_3());
+
+            return jsonBom;
+        }
+        
         public static string Serialize(Models.v1_2.Bom bom)
         {
             Contract.Requires(bom != null);

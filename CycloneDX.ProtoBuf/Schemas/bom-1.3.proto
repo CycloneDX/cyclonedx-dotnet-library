@@ -269,6 +269,8 @@ message Metadata {
   OrganizationalEntity manufacture = 5;
   // The organization that supplied the component that the BOM describes. The supplier may often be the manufacture, but may also be a distributor or repackager.
   OrganizationalEntity supplier = 6;
+  // The license information for the BOM document
+  ComponentLicense licenses = 7;
 }
 
 message OrganizationalContact {

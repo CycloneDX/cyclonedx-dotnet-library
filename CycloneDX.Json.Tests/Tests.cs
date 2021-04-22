@@ -41,5 +41,18 @@ namespace CycloneDX.Json.Tests
 
             Snapshot.Match(jsonBom, SnapshotNameExtension.Create(filename));
         }
+        
+        [Theory]
+        [InlineData("valid-metadata-license")]
+        public void JsonRoundTripTest_v1_3(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", filename + "-1.3.json");
+            var jsonBom = File.ReadAllText(resourceFilename);
+
+            var bom = JsonBomDeserializer.Deserialize_v1_3(jsonBom);
+            jsonBom = JsonBomSerializer.Serialize(bom);
+
+            Snapshot.Match(jsonBom, SnapshotNameExtension.Create(filename));
+        }
     }
 }

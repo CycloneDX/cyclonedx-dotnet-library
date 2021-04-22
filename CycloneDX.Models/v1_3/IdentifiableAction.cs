@@ -23,9 +23,61 @@ namespace CycloneDX.Models.v1_3
     [ProtoContract]
     public class IdentifiableAction
     {
+        private DateTime? _timestamp;
         [XmlElement("timestamp")]
+        public DateTime? Timestamp
+        { 
+            get => _timestamp;
+            set
+            {
+                if (value == null)
+                {
+                    _timestamp = null;
+                }
+                else if (value.Value.Kind == DateTimeKind.Unspecified)
+                {
+                    _timestamp = DateTime.SpecifyKind(value.Value, DateTimeKind.Local).ToUniversalTime();
+                }
+                else if (value.Value.Kind == DateTimeKind.Local)
+                {
+                    _timestamp = value.Value.ToUniversalTime();
+                }
+                else
+                {
+                    _timestamp = value;
+                }
+            }
+        }
+
         [ProtoMember(1)]
-        public DateTime? Timestamp { get; set; }
+        private UInt64? ProtoBufTimestamp
+        {
+            get
+            {
+                if (Timestamp != null)
+                {
+                    var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                    return (UInt64)(Timestamp.Value.ToUniversalTime() - epoch).TotalSeconds;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (value != null)
+                {
+                    var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                    var timeSpan = TimeSpan.FromSeconds(value.Value);
+                    Timestamp = epoch.Add(timeSpan);
+                }
+                else
+                {
+                    Timestamp = null;
+                }
+            }
+        }
 
         [XmlElement("name")]
         [ProtoMember(2)]

@@ -71,5 +71,28 @@ namespace CycloneDX.Json.Tests
             Assert.False(validationResult.Valid);
         }
 
+        [Theory]
+        [InlineData("valid-metadata-license")]
+        public async Task ValidJsonTest_v1_3(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", filename + "-1.3.json");
+            var jsonBom = File.ReadAllText(resourceFilename);
+
+            var validationResult = await JsonBomValidator.Validate(jsonBom, Models.SchemaVersion.v1_3);
+
+            Assert.True(validationResult.Valid);
+        }
+
+        [Theory]
+        [InlineData("invalid-metadata-license")]
+        public async Task InvalidJsonTest_v1_3(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", filename + "-1.3.json");
+            var jsonBom = File.ReadAllText(resourceFilename);
+
+            var validationResult = await JsonBomValidator.Validate(jsonBom, Models.SchemaVersion.v1_3);
+
+            Assert.False(validationResult.Valid);
+        }
     }
 }
