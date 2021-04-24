@@ -102,6 +102,8 @@ message Component {
   repeated ExternalReference external_references = 20;
   // Specifies optional sub-components. This is not a dependency tree. It provides a way to specify a hierarchical representation of component assemblies, similar to system -> subsystem -> parts assembly in physical supply chains.
   repeated Component components = 21;
+  // Specifies optional, custom, properties
+  repeated Property properties = 22;
 }
 
 // Specifies the data classification.
@@ -271,6 +273,8 @@ message Metadata {
   OrganizationalEntity supplier = 6;
   // The license information for the BOM document
   ComponentLicense licenses = 7;
+  // Specifies optional, custom, properties
+  repeated Property properties = 8;
 }
 
 message OrganizationalContact {
@@ -362,6 +366,8 @@ message Service {
   repeated ExternalReference external_references = 12;
   // Specifies optional sub-service. This is not a dependency tree. It provides a way to specify a hierarchical representation of service assemblies, similar to system -> subsystem -> parts assembly in physical supply chains.
   repeated Service services = 13;
+  // Specifies optional, custom, properties
+  repeated Property properties = 14;
 }
 
 message Swid {
@@ -390,4 +396,10 @@ message Tool {
   // The version of the tool used to create the BOM.
   string version = 3;
   repeated Hash hashes = 4;
+}
+
+// Specifies a property
+message Property {
+  string name = 1;
+  string value = 2;
 }

@@ -113,6 +113,10 @@ namespace CycloneDX.Models.v1_3
         [ProtoMember(13)]
         public List<Service> Services { get; set; }
 
+        [XmlElement("properties")]
+        [ProtoMember(14)]
+        public List<Property> Properties { get; set; }
+
         public Service() {}
 
         public Service(v1_2.Service service)

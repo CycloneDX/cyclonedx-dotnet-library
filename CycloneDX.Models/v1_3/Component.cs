@@ -180,6 +180,10 @@ namespace CycloneDX.Models.v1_3
         [ProtoMember(21)]
         public List<Component> Components { get; set; }
 
+        [XmlElement("properties")]
+        [ProtoMember(22)]
+        public List<Property> Properties { get; set; }
+        
         public Component() {}
 
         public Component(v1_2.Component component)

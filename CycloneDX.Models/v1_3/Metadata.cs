@@ -105,6 +105,10 @@ namespace CycloneDX.Models.v1_3
         [XmlElement("licenses")]
         [ProtoMember(7)]
         public List<ComponentLicense> Licenses { get; set; }
+        
+        [XmlElement("properties")]
+        [ProtoMember(8)]
+        public List<Property> Properties { get; set; }
 
         public Metadata() {}
         
