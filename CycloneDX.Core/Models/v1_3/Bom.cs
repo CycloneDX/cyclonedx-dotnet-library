@@ -32,41 +32,42 @@ namespace CycloneDX.Models.v1_3
         public string BomFormat => "CycloneDX";
 
         [XmlIgnore]
-        public string SpecVersion => "1.3";
+        [ProtoMember(1)]
+        public string SpecVersion { get; set; } = "1.3";
 
         [XmlAttribute("serialNumber")]
-        [ProtoMember(2)]
+        [ProtoMember(3)]
         public string SerialNumber { get; set; }
 
         [XmlAttribute("version")]
-        [ProtoMember(1)]
+        [ProtoMember(2)]
         public int Version { get; set; } = 1;
 
         [XmlElement("metadata")]
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public Metadata Metadata { get; set; }
 
         [XmlArray("components")]
-        [ProtoMember(4)]
+        [ProtoMember(5)]
         public List<Component> Components { get; set; } = new List<Component>();
 
         [XmlArray("services")]
         [XmlArrayItem("service")]
-        [ProtoMember(5)]
+        [ProtoMember(6)]
         public List<Service> Services { get; set; }
 
         [XmlArray("externalReferences")]
-        [ProtoMember(6)]
+        [ProtoMember(7)]
         public List<ExternalReference> ExternalReferences { get; set; }
 
         [XmlArray("dependencies")]
         [XmlArrayItem("dependency")]
-        [ProtoMember(7)]
+        [ProtoMember(8)]
         public List<Dependency> Dependencies { get; set; }
         
         [XmlArray("compositions")]
         [XmlArrayItem("composition")]
-        [ProtoMember(8)]
+        [ProtoMember(9)]
         public List<Composition> Compositions { get; set; }
         
         public Bom() {}
