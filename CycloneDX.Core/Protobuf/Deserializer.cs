@@ -30,7 +30,7 @@ namespace CycloneDX.Protobuf
 
             stream.Position = 0;
 
-            var bom = Serializer.Deserialize<CycloneDX.Models.v1_3.Bom>(stream);
+            var bom = ProtoBuf.Serializer.Deserialize<CycloneDX.Models.v1_3.Bom>(stream);
 
             if (bom.Metadata?.Timestamp != null)
             {

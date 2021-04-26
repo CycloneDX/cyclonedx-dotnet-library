@@ -20,7 +20,7 @@ using System.IO;
 using ProtoBuf;
 using CycloneDX;
 
-namespace CycloneDX.ProtoBuf
+namespace CycloneDX.Protobuf
 {
 
     public static class Serializer
@@ -30,7 +30,7 @@ namespace CycloneDX.ProtoBuf
             Contract.Requires(destination != null);
             Contract.Requires(bom != null);
             
-            Serializer.Serialize(destination, bom);
+            ProtoBuf.Serializer.Serialize(destination, bom);
             destination.Position = 0;
         }
     }

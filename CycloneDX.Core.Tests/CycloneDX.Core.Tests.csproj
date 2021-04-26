@@ -37,7 +37,6 @@
     <Folder Include="Models\v1.0" />
     <Folder Include="Models\v1.1" />
     <Folder Include="Models\v1.3" />
-    <Folder Include="Protobuf" />
   </ItemGroup>
 
 </Project>
