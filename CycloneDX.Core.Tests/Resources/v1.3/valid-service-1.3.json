@@ -63,7 +63,7 @@
           "flow": "outbound"
         },
         {
-          "classification": "pubic",
+          "classification": "public",
           "flow": "bi-directional"
         },
         {
