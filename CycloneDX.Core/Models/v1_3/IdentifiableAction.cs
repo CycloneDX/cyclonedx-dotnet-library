@@ -25,6 +25,7 @@ namespace CycloneDX.Models.v1_3
     {
         private DateTime? _timestamp;
         [XmlElement("timestamp")]
+        [ProtoMember(1)]
         public DateTime? Timestamp
         { 
             get => _timestamp;
@@ -36,7 +37,7 @@ namespace CycloneDX.Models.v1_3
                 }
                 else if (value.Value.Kind == DateTimeKind.Unspecified)
                 {
-                    _timestamp = DateTime.SpecifyKind(value.Value, DateTimeKind.Local).ToUniversalTime();
+                    _timestamp = DateTime.SpecifyKind(value.Value, DateTimeKind.Utc);
                 }
                 else if (value.Value.Kind == DateTimeKind.Local)
                 {
@@ -48,37 +49,7 @@ namespace CycloneDX.Models.v1_3
                 }
             }
         }
-
-        [ProtoMember(1)]
-        private UInt64? ProtoBufTimestamp
-        {
-            get
-            {
-                if (Timestamp != null)
-                {
-                    var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                    return (UInt64)(Timestamp.Value.ToUniversalTime() - epoch).TotalSeconds;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            set
-            {
-                if (value != null)
-                {
-                    var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                    var timeSpan = TimeSpan.FromSeconds(value.Value);
-                    Timestamp = epoch.Add(timeSpan);
-                }
-                else
-                {
-                    Timestamp = null;
-                }
-            }
-        }
-
+        
         [XmlElement("name")]
         [ProtoMember(2)]
         public string Name { get; set; }
