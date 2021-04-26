@@ -19,36 +19,36 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models.v1_2
 {
 
-    public class ComponentLicense
+    public class LicenseChoice
     {
         [XmlElement("license")]
         public License License { get; set; }
         [XmlElement("expression")]
         public string Expression { get; set; }
 
-        public ComponentLicense() {}
+        public LicenseChoice() {}
 
-        public ComponentLicense(v1_1.ComponentLicense componentLicense)
+        public LicenseChoice(v1_1.LicenseChoice licenseChoice)
         {
-            if (componentLicense.License != null)
+            if (licenseChoice.License != null)
             {
-                License = new License(componentLicense.License);
+                License = new License(licenseChoice.License);
             }
-            else if (componentLicense.Expression != null)
+            else if (licenseChoice.Expression != null)
             {
-                Expression = componentLicense.Expression;
+                Expression = licenseChoice.Expression;
             }
         }
 
-        public ComponentLicense(v1_3.ComponentLicense componentLicense)
+        public LicenseChoice(v1_3.LicenseChoice licenseChoice)
         {
-            if (componentLicense.License != null)
+            if (licenseChoice.License != null)
             {
-                License = new License(componentLicense.License);
+                License = new License(licenseChoice.License);
             }
-            else if (componentLicense.Expression != null)
+            else if (licenseChoice.Expression != null)
             {
-                Expression = componentLicense.Expression;
+                Expression = licenseChoice.Expression;
             }
         }
     }

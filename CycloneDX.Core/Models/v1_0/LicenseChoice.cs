@@ -16,39 +16,27 @@
 
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models.v1_1
+namespace CycloneDX.Models.v1_0
 {
 
-    public class ComponentLicense
+    public class LicenseChoice
     {
         [XmlElement("license")]
         public License License { get; set; }
         [XmlElement("expression")]
         public string Expression { get; set; }
 
-        public ComponentLicense() {}
+        public LicenseChoice() {}
 
-        public ComponentLicense(v1_0.ComponentLicense componentLicense)
+        public LicenseChoice(v1_1.LicenseChoice licenseChoice)
         {
-            if (componentLicense.License != null)
+            if (licenseChoice.License != null)
             {
-                License = new License(componentLicense.License);
+                License = new License(licenseChoice.License);
             }
-            else if (componentLicense.Expression != null)
+            else if (licenseChoice.Expression != null)
             {
-                Expression = componentLicense.Expression;
-            }
-        }
-
-        public ComponentLicense(v1_2.ComponentLicense componentLicense)
-        {
-            if (componentLicense.License != null)
-            {
-                License = new License(componentLicense.License);
-            }
-            else if (componentLicense.Expression != null)
-            {
-                Expression = componentLicense.Expression;
+                Expression = licenseChoice.Expression;
             }
         }
     }

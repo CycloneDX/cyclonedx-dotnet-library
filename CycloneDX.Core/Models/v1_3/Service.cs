@@ -101,7 +101,7 @@ namespace CycloneDX.Models.v1_3
 
         [XmlElement("licenses")]
         [ProtoMember(11)]
-        public List<ComponentLicense> Licenses { get; set; }
+        public List<LicenseChoice> Licenses { get; set; }
 
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
@@ -142,10 +142,10 @@ namespace CycloneDX.Models.v1_3
             }
             if (service.Licenses != null)
             {
-                Licenses = new List<ComponentLicense>();
+                Licenses = new List<LicenseChoice>();
                 foreach (var license in service.Licenses)
                 {
-                    Licenses.Add(new ComponentLicense(license));
+                    Licenses.Add(new LicenseChoice(license));
                 }
             }
             if (service.ExternalReferences != null)

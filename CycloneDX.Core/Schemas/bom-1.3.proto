@@ -87,7 +87,7 @@ message Component {
   // Specifies the scope of the component. If scope is not specified, 'runtime' scope should be assumed by the consumer of the BOM
   Scope scope = 11;
   repeated Hash hashes = 12;
-  repeated ComponentLicense licenses = 13;
+  repeated LicenseChoice licenses = 13;
   // An optional copyright notice informing users of the underlying claims to copyright ownership in a published work.
   string copyright = 14;
   // DEPRECATED - DO NOT USE. This will be removed in a future version. Specifies a well-formed CPE name. See https://nvd.nist.gov/products/cpe
@@ -106,6 +106,8 @@ message Component {
   repeated Component components = 21;
   // Specifies optional, custom, properties
   repeated Property properties = 22;
+  // Specifies optional license and copyright evidence
+  repeated Evidence evidence = 23;
 }
 
 // Specifies the data classification.
@@ -244,7 +246,7 @@ message Source {
   string url = 2;
 }
 
-message ComponentLicense {
+message LicenseChoice {
   License license = 1;
   string expression = 2;
 }
@@ -274,7 +276,7 @@ message Metadata {
   // The organization that supplied the component that the BOM describes. The supplier may often be the manufacture, but may also be a distributor or repackager.
   OrganizationalEntity supplier = 6;
   // The license information for the BOM document
-  ComponentLicense licenses = 7;
+  LicenseChoice licenses = 7;
   // Specifies optional, custom, properties
   repeated Property properties = 8;
 }
@@ -363,7 +365,7 @@ message Service {
   // A boolean value indicating if use of the service crosses a trust zone or boundary. A value of true indicates that by using the service, a trust boundary is crossed. A value of false indicates that by using the service, a trust boundary is not crossed.
   bool x_trust_boundary = 9;
   repeated DataClassification data = 10;
-  repeated ComponentLicense licenses = 11;
+  repeated LicenseChoice licenses = 11;
   // Provides the ability to document external references related to the service.
   repeated ExternalReference external_references = 12;
   // Specifies optional sub-service. This is not a dependency tree. It provides a way to specify a hierarchical representation of service assemblies, similar to system -> subsystem -> parts assembly in physical supply chains.
@@ -428,4 +430,14 @@ message Composition {
   repeated string assemblies = 2;
   // The dependencies the aggregate completeness applies to
   repeated string dependencies = 3;
+}
+
+message EvidenceCopyright {
+  // Copyright text
+  string text = 1;
+}
+
+message Evidence {
+  repeated LicenseChoice licenses = 1;
+  repeated EvidenceCopyright copyright = 2;
 }

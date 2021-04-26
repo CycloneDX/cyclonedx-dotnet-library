@@ -15,32 +15,40 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
-using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_1
 {
-    [ProtoContract]
-    public class ComponentLicense
+
+    public class LicenseChoice
     {
         [XmlElement("license")]
-        [ProtoMember(1)]
         public License License { get; set; }
-
         [XmlElement("expression")]
-        [ProtoMember(2)]
         public string Expression { get; set; }
 
-        public ComponentLicense() {}
+        public LicenseChoice() {}
 
-        public ComponentLicense(v1_2.ComponentLicense componentLicense)
+        public LicenseChoice(v1_0.LicenseChoice licenseChoice)
         {
-            if (componentLicense.License != null)
+            if (licenseChoice.License != null)
             {
-                License = new License(componentLicense.License);
+                License = new License(licenseChoice.License);
             }
-            else if (componentLicense.Expression != null)
+            else if (licenseChoice.Expression != null)
             {
-                Expression = componentLicense.Expression;
+                Expression = licenseChoice.Expression;
+            }
+        }
+
+        public LicenseChoice(v1_2.LicenseChoice licenseChoice)
+        {
+            if (licenseChoice.License != null)
+            {
+                License = new License(licenseChoice.License);
+            }
+            else if (licenseChoice.Expression != null)
+            {
+                Expression = licenseChoice.Expression;
             }
         }
     }

@@ -17,7 +17,37 @@
           }
         }
       ],
-      "purl": "pkg:maven/com.google.code.findbugs/findbugs-project@3.0.0"
+      "purl": "pkg:maven/com.google.code.findbugs/findbugs-project@3.0.0",
+      "evidence": {
+        "licenses": [
+          {
+            "license": {
+              "id": "Apache-2.0",
+              "url": "http://www.apache.org/licenses/LICENSE-2.0"
+            }
+          },
+          {
+            "license": {
+              "id": "LGPL-2.1-only",
+              "url": "https://opensource.org/licenses/LGPL-2.1"
+            }
+          }
+        ],
+        "copyright": [
+          {
+            "text": "Copyright 2012 Google Inc. All Rights Reserved."
+          },
+          {
+            "text": "Copyright (C) 2004,2005 Dave Brosius \u003Cdbrosius@users.sourceforge.net\u003E"
+          },
+          {
+            "text": "Copyright (C) 2005 William Pugh"
+          },
+          {
+            "text": "Copyright (C) 2004,2005 University of Maryland"
+          }
+        ]
+      }
     }
   ]
 }

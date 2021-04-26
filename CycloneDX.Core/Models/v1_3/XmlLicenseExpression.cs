@@ -15,29 +15,16 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Xml.Serialization;
+using ProtoBuf;
 
-namespace CycloneDX.Models.v1_0
+namespace CycloneDX.Models.v1_3
 {
-
-    public class ComponentLicense
+    [XmlType("expression")]
+    internal class XmlLicenseExpression
     {
-        [XmlElement("license")]
-        public License License { get; set; }
-        [XmlElement("expression")]
-        public string Expression { get; set; }
+        [XmlText]
+        public string Value { get; set; }
 
-        public ComponentLicense() {}
-
-        public ComponentLicense(v1_1.ComponentLicense componentLicense)
-        {
-            if (componentLicense.License != null)
-            {
-                License = new License(componentLicense.License);
-            }
-            else if (componentLicense.Expression != null)
-            {
-                Expression = componentLicense.Expression;
-            }
-        }
+        public XmlLicenseExpression() {}
     }
 }

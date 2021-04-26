@@ -130,7 +130,7 @@ namespace CycloneDX.Models.v1_3
 
         [XmlElement("licenses")]
         [ProtoMember(13)]
-        public List<ComponentLicense> Licenses { get; set; }
+        public List<LicenseChoice> Licenses { get; set; }
 
         [XmlElement("copyright")]
         [ProtoMember(14)]
@@ -185,6 +185,10 @@ namespace CycloneDX.Models.v1_3
         [ProtoMember(22)]
         public List<Property> Properties { get; set; }
         
+        [XmlElement("evidence")]
+        [ProtoMember(23)]
+        public Evidence Evidence { get; set; }
+        
         public Component() {}
 
         public Component(v1_2.Component component)
@@ -211,10 +215,10 @@ namespace CycloneDX.Models.v1_3
             }
             if (component.Licenses != null)
             {
-                Licenses = new List<ComponentLicense>();
+                Licenses = new List<LicenseChoice>();
                 foreach (var componentLicense in component.Licenses)
                 {
-                    Licenses.Add(new ComponentLicense(componentLicense));
+                    Licenses.Add(new LicenseChoice(componentLicense));
                 }
             }
             Copyright = component.Copyright;

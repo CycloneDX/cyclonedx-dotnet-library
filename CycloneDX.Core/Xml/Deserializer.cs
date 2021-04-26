@@ -265,6 +265,8 @@ namespace CycloneDX.Xml
             if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
             if (component.Components?.Count == 0) component.Components = null;
             if (component.Properties?.Count == 0) component.Properties = null;
+            if (component.Evidence?.Copyright?.Count == 0) component.Evidence.Copyright = null;
+            if (component.Evidence?.Licenses?.Count == 0) component.Evidence.Licenses = null;
 
             if (component.Components != null)
                 foreach (var subComponent in component.Components)

@@ -98,7 +98,7 @@ namespace CycloneDX.Models.v1_1
         public List<Hash> Hashes { get; set; }
 
         [XmlElement("licenses")]
-        public List<ComponentLicense> Licenses { get; set; }
+        public List<LicenseChoice> Licenses { get; set; }
 
         [XmlElement("copyright")]
         public string Copyright { get; set; }
@@ -159,10 +159,10 @@ namespace CycloneDX.Models.v1_1
             }
             if (component.Licenses != null)
             {
-                Licenses = new List<ComponentLicense>();
+                Licenses = new List<LicenseChoice>();
                 foreach (var componentLicense in component.Licenses)
                 {
-                    Licenses.Add(new ComponentLicense(componentLicense));
+                    Licenses.Add(new LicenseChoice(componentLicense));
                 }
             }
             Copyright = component.Copyright;
@@ -204,10 +204,10 @@ namespace CycloneDX.Models.v1_1
             }
             if (component.Licenses != null)
             {
-                Licenses = new List<ComponentLicense>();
+                Licenses = new List<LicenseChoice>();
                 foreach (var componentLicense in component.Licenses)
                 {
-                    Licenses.Add(new ComponentLicense(componentLicense));
+                    Licenses.Add(new LicenseChoice(componentLicense));
                 }
             }
             Copyright = component.Copyright;
