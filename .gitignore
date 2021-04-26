@@ -6,5 +6,5 @@ obj/
 nupkgs/
 coverage-report/
 coverage.cobertura.xml
-*/__snapshots__/__mismatch__/
+**/__snapshots__/__mismatch__/
 /CycloneDXLibrary.sln.DotSettings.user
