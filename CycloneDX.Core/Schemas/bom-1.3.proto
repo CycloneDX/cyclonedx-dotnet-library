@@ -263,6 +263,7 @@ message License {
     // If SPDX does not define the license used, this field may be used to provide the license name
     string name = 2;
   }
+  // Specifies the optional full text of the attachment
   AttachedText text = 3;
   // The URL to the attachment file. If the attachment is a license or BOM, an externalReference should also be specified for completeness.
   string url = 4;
