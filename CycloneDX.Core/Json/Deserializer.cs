@@ -24,6 +24,9 @@ namespace CycloneDX.Json
 
     public static class Deserializer
     {
+        private static JsonSerializerOptions _options_v1_3;
+        private static JsonSerializerOptions _options_v1_2;
+        
         public static Models.v1_3.Bom Deserialize(string jsonBom)
         {
             return Deserialize_v1_3(jsonBom);
@@ -33,7 +36,9 @@ namespace CycloneDX.Json
         {
             Contract.Requires(jsonBom != null);
 
-            var bom = JsonSerializer.Deserialize<Models.v1_3.Bom>(jsonBom, Utils.GetJsonSerializerOptions_v1_3());
+            if (_options_v1_3 == null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
+
+            var bom = JsonSerializer.Deserialize<Models.v1_3.Bom>(jsonBom, _options_v1_3);
 
             return bom;
         }
@@ -42,7 +47,9 @@ namespace CycloneDX.Json
         {
             Contract.Requires(jsonBom != null);
 
-            var bom = JsonSerializer.Deserialize<Models.v1_2.Bom>(jsonBom, Utils.GetJsonSerializerOptions_v1_2());
+            if (_options_v1_2 == null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
+
+            var bom = JsonSerializer.Deserialize<Models.v1_2.Bom>(jsonBom, _options_v1_2);
 
             return bom;
         }
