@@ -21,6 +21,7 @@ namespace CycloneDX.Tests.Json.v1_3
         [InlineData("valid-dependency-1.3.json")]
         [InlineData("valid-empty-components-1.3.json")]
         [InlineData("valid-evidence-1.3.json")]
+        [InlineData("valid-external-reference-1.3.json")]
         [InlineData("valid-license-expression-1.3.json")]
         [InlineData("valid-license-id-1.3.json")]
         [InlineData("valid-license-name-1.3.json")]

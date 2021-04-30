@@ -77,7 +77,14 @@ namespace CycloneDX.Models.v1_2
         public ExternalReference(v1_3.ExternalReference externalReference)
         {
             Url = externalReference.Url;
-            Type = (ExternalReferenceType)(int)externalReference.Type;
+            if (externalReference.Type == v1_3.ExternalReference.ExternalReferenceType.Other)
+            {
+                Type = ExternalReferenceType.Other;
+            }
+            else
+            {
+                Type = (ExternalReferenceType)((int)externalReference.Type-1);
+            }
             Comment = externalReference.Comment;
         }
     }

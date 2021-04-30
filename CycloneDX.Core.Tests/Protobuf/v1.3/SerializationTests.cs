@@ -22,6 +22,7 @@ namespace CycloneDX.Tests.Protobuf.v1_3
         [InlineData("valid-empty-components-1.3.xml")]
         // [InlineData("valid-evidence-1.3.xml")]
         // [InlineData("valid-external-elements-1.3.xml")]
+        [InlineData("valid-external-reference-1.3.xml")]
         [InlineData("valid-license-expression-1.3.xml")]
         [InlineData("valid-license-id-1.3.xml")]
         [InlineData("valid-license-name-1.3.xml")]

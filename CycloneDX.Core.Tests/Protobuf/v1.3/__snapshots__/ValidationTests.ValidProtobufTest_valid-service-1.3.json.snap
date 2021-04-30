@@ -60,11 +60,11 @@ services {
     }
   }
   external_references {
-    type: EXTERNAL_REFERENCE_TYPE_ISSUE_TRACKER
+    type: EXTERNAL_REFERENCE_TYPE_WEBSITE
     url: "http://partner.org"
   }
   external_references {
-    type: EXTERNAL_REFERENCE_TYPE_CHAT
+    type: EXTERNAL_REFERENCE_TYPE_DOCUMENTATION
     url: "http://api.partner.org/swagger"
   }
 }

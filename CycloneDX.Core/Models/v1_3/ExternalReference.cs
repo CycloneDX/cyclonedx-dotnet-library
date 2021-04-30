@@ -14,6 +14,7 @@
 //
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -27,6 +28,8 @@ namespace CycloneDX.Models.v1_3
         [ProtoContract]
         public enum ExternalReferenceType
         {
+            [XmlEnum(Name = "other")]
+            Other,
             [XmlEnum(Name = "vcs")]
             Vcs,
             [XmlEnum(Name = "issue-tracker")]
@@ -54,9 +57,7 @@ namespace CycloneDX.Models.v1_3
             [XmlEnum(Name = "build-meta")]
             BuildMeta,
             [XmlEnum(Name = "build-system")]
-            BuildSystem,
-            [XmlEnum(Name = "other")]
-            Other
+            BuildSystem
         }
 
         [XmlElement("url")]
@@ -71,12 +72,24 @@ namespace CycloneDX.Models.v1_3
         [ProtoMember(3)]
         public string Comment { get; set; }
 
+        [XmlArray("hashes")]
+        [ProtoMember(4)]
+        public List<Hash> Hashes { get; set; }
+        public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
+
         public ExternalReference() {}
 
         public ExternalReference(v1_2.ExternalReference externalReference)
         {
             Url = externalReference.Url;
-            Type = (ExternalReferenceType)(int)externalReference.Type;
+            if (externalReference.Type == v1_2.ExternalReference.ExternalReferenceType.Other)
+            {
+                Type = ExternalReferenceType.Other;
+            }
+            else
+            {
+                Type = (ExternalReferenceType)((int)externalReference.Type+1);
+            }
             Comment = externalReference.Comment;
         }
     }
