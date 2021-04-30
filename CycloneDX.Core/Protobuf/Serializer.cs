@@ -33,5 +33,12 @@ namespace CycloneDX.Protobuf
             ProtoBuf.Serializer.Serialize(destination, bom);
             destination.Position = 0;
         }
+
+        public static byte[] Serialize(Models.v1_3.Bom bom)
+        {
+            var ms = new MemoryStream();
+            Serialize(ms, bom);
+            return ms.ToArray();
+        }
     }
 }

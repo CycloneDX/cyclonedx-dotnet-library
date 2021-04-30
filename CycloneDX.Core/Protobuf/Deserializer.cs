@@ -41,6 +41,15 @@ namespace CycloneDX.Protobuf
             
             return bom;
         }
+
+        public static CycloneDX.Models.v1_3.Bom Deserialize(byte[] bytes)
+        {
+            Contract.Requires(bytes != null);
+
+            var ms = new MemoryStream(bytes);
+            var bom = Deserialize(ms);
+            return bom;
+        }
         
         private static void CleanupEmptyArrays(CycloneDX.Models.v1_3.Bom bom)
         {
