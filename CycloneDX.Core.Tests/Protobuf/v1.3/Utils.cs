@@ -12,6 +12,18 @@ using Xunit;
 
 namespace CycloneDX.Tests.Protobuf.v1_3.Utils
 {
+    public sealed class LinuxOnlyForCITheory : TheoryAttribute
+    {
+        public LinuxOnlyForCITheory() {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && IsCI()) {
+                Skip = "Skip on non-Linux when running in CI";
+            }
+        }
+        
+        private static bool IsCI()
+            => Environment.GetEnvironmentVariable("CI") == "true";
+    }
+    
     public class TempDirectory : IDisposable
     {
         private readonly string _tempPath;

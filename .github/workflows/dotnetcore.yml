@@ -21,18 +21,6 @@ jobs:
       - name: Build
         run: dotnet build /WarnAsError
 
-  # Fail if there are any failed tests
-  #
-  # We support all current LTS versions of .NET Core and Windows, Mac and Linux.
-  #
-  # To check for failing tests locally run `dotnet test`.
-  #
-  # Although you can build previous versions of .NET Core projects with the
-  # latest SDK you can't run them. So to run tests for all target versions you
-  # will need all current LTS version runtimes installed.
-  #
-  # If installing all required runtimes is problematic you can specify a
-  # particular version like this `dotnet test --framework netcoreapp2.1`.
   test:
     name: Tests for .net core ${{ matrix.framework }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -45,28 +33,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2.3.4
 
-    - name: Download protocol buffers compiler on Windows
-      if: matrix.os == 'windows-latest'
-      run: |
-        Invoke-WebRequest https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protoc-3.15.8-win64.zip -O protoc.zip
-      shell: pwsh
-
-    - name: Extract protocol buffers compiler on Windows
-      if: matrix.os == 'windows-latest'
-      run: |
-        7z x protoc.zip -oprotoc
-        copy protoc\bin\protoc.exe C:\Windows\protoc.exe
-      shell: cmd
-
     - name: Install protocol buffers compiler on Linux
       if: matrix.os == 'ubuntu-latest'
       run: |
-        sudo apt-get install protobuf-compiler
-
-    - name: Install protocol buffers compiler on Mac
-      if: matrix.os == 'macos-latest'
-      run: |
-        brew install protobuf
+        wget -O protoc.zip https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protoc-3.15.8-linux-x86_64.zip
+        unzip protoc.zip -d $HOME/.local
+        export PATH="$PATH:$HOME/.local/bin"
 
     - name: Tests
       run: dotnet test --framework netcoreapp${{ matrix.framework }}

@@ -16,7 +16,9 @@ namespace CycloneDX.Tests.Protobuf.v1_3
             this.output = output;
         }
 
-        [Theory]
+        // I can't be bothered setting up protoc in the github workflow for all platforms
+        // if anyone wants to have a crack at it please go for it
+        [Utils.LinuxOnlyForCITheory]
         [InlineData("valid-assembly-1.3.json")]
         [InlineData("valid-bom-1.3.json")]
         [InlineData("valid-component-hashes-1.3.json")]
