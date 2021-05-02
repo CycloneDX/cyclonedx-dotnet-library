@@ -109,11 +109,14 @@ components {
     }
     commits {
       uid: "123"
+      url: ""
       author {
         timestamp {
           seconds: 3084280878
           nanos: 3
         }
+        name: ""
+        email: ""
       }
     }
   }
