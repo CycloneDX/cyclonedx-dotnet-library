@@ -62,7 +62,7 @@ namespace CycloneDX.Tests.Protobuf.v1_3
                 var result = runner.Run(tempDir.DirectoryPath, protoBom, new string[]
                 {
                     "--proto_path=./",
-                    "--decode=org.cyclonedx.schema.bom.v1_3.Bom",
+                    "--decode=cyclonedx.v1_3.Bom",
                     "bom-1.3.proto"
                 });
 
