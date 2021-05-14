@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 using CycloneDX;
-using CycloneDX.Models.v1_2;
+using CycloneDX.Models.v1_3;
 using CycloneDX.Utils;
 
 namespace CycloneDX.Utils.Tests
