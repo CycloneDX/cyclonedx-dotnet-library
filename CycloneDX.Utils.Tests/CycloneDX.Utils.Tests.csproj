@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CycloneDX.Utils\CycloneDX.Utils.csproj" />
-    <ProjectReference Include="..\CycloneDX.Models\CycloneDX.Models.csproj" />
+    <ProjectReference Include="..\CycloneDX.Core\CycloneDX.Core.csproj" />
   </ItemGroup>
 
 </Project>

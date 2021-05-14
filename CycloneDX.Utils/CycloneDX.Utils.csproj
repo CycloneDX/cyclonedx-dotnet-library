@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\CycloneDX.Models\CycloneDX.Models.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Product>CycloneDX.Utils</Product>
@@ -16,5 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library.git</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CycloneDX.Core\CycloneDX.Core.csproj" />
+  </ItemGroup>
 
 </Project>

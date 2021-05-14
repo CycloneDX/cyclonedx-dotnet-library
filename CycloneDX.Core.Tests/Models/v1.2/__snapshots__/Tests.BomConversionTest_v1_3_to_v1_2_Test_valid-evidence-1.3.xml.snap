@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serialNumber="urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79" version="1" xmlns="http://cyclonedx.org/schema/bom/1.2">
+  <components>
+    <component type="application">
+      <group>com.google.code.findbugs</group>
+      <name>findbugs-project</name>
+      <version>3.0.0</version>
+      <licenses>
+        <license>
+          <id>LGPL-3.0-or-later</id>
+          <url>https://www.gnu.org/licenses/lgpl-3.0-standalone.html</url>
+        </license>
+      </licenses>
+      <purl>pkg:maven/com.google.code.findbugs/findbugs-project@3.0.0</purl>
+    </component>
+  </components>
+</bom>
