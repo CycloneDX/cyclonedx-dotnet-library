@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models.v1_0
@@ -26,8 +27,22 @@ namespace CycloneDX.Models.v1_0
     [XmlRoot("bom", Namespace="http://cyclonedx.org/schema/bom/1.0", IsNullable=false)]
     public class Bom
     {
+        [XmlIgnore]
+        public int? Version { get; set; }
         [XmlAttribute("version")]
-        public int Version { get; set; } = 1;
+        [JsonIgnore]
+        public int NonNullableVersion
+        {
+            get
+            {
+                return Version.Value;
+            }
+            set
+            {
+                Version = value;
+            }
+        }
+        public bool ShouldSerializeNonNullableVersion() { return Version.HasValue; }
 
         [XmlArray("components")]
         public List<Component> Components { get; set; }
