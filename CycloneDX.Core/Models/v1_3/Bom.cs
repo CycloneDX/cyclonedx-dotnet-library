@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -39,9 +40,23 @@ namespace CycloneDX.Models.v1_3
         [ProtoMember(3)]
         public string SerialNumber { get; set; }
 
-        [XmlAttribute("version")]
+        [XmlIgnore]
         [ProtoMember(2)]
-        public int Version { get; set; } = 1;
+        public int? Version { get; set; }
+        [XmlAttribute("version")]
+        [JsonIgnore]
+        public int NonNullableVersion
+        {
+            get
+            {
+                return Version.Value;
+            }
+            set
+            {
+                Version = value;
+            }
+        }
+        public bool ShouldSerializeNonNullableVersion() { return Version.HasValue; }
 
         [XmlElement("metadata")]
         [ProtoMember(4)]
