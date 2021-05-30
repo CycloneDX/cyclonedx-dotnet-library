@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		LICENSE = LICENSE
 		semver.txt = semver.txt
+		NOTICE = NOTICE
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CycloneDX.Utils", "CycloneDX.Utils\CycloneDX.Utils.csproj", "{DF6C4B2A-5914-4D8F-BEA7-CAC63CBC22F4}"
