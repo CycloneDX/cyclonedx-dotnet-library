@@ -29,8 +29,6 @@ namespace CycloneDX.Protobuf
         {
             Contract.Requires(stream != null);
 
-            stream.Position = 0;
-
             var bom = ProtoBuf.Serializer.Deserialize<CycloneDX.Models.v1_3.Bom>(stream);
 
             if (bom.Metadata?.Timestamp != null)
