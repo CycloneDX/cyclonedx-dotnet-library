@@ -1,0 +1,54 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.2",
+  "serialNumber": "urn:uuid:902efe30-2f5f-4350-93b3-702e85c1497d",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:golang/github.com/paketo-buildpacks/samples/go/mod",
+      "type": "application",
+      "name": "github.com/paketo-buildpacks/samples/go/mod",
+      "version": "",
+      "purl": "pkg:golang/github.com/paketo-buildpacks/samples/go/mod",
+      "externalReferences": [
+        {
+          "url": "https://github.com/paketo-buildpacks/samples/go/mod",
+          "type": "vcs"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "pkg:golang/github.com/gorilla/mux@v1.8.0",
+      "type": "library",
+      "name": "github.com/gorilla/mux",
+      "version": "v1.8.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8b8d1aa9f911d61d9294df61a23c15e5903dd7071714ebe474d21e1433f99282"
+        }
+      ],
+      "purl": "pkg:golang/github.com/gorilla/mux@v1.8.0",
+      "externalReferences": [
+        {
+          "url": "https://github.com/gorilla/mux",
+          "type": "vcs"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:golang/github.com/gorilla/mux@v1.8.0"
+    },
+    {
+      "ref": "pkg:golang/github.com/paketo-buildpacks/samples/go/mod",
+      "dependsOn": [
+        "pkg:golang/github.com/gorilla/mux@v1.8.0"
+      ]
+    }
+  ]
+}

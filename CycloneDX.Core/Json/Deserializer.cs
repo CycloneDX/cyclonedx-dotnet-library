@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) Steve Springett. All Rights Reserved.
 
+using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 
@@ -30,7 +31,13 @@ namespace CycloneDX.Json
         
         public static Models.v1_3.Bom Deserialize(string jsonBom)
         {
-            return Deserialize_v1_3(jsonBom);
+            try
+            {
+                return Deserialize_v1_3(jsonBom);
+            }
+            catch (JsonException) {}
+
+            return new Models.v1_3.Bom(Deserialize_v1_2(jsonBom));
         }
 
         public static Models.v1_3.Bom Deserialize_v1_3(string jsonBom)
