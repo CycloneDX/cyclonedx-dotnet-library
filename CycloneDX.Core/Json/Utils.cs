@@ -30,6 +30,7 @@ namespace CycloneDX.Json
                 IgnoreNullValues = true,
             };
             options.Converters.Add(new Converters.v1_3.AggregateTypeConverter());
+            options.Converters.Add(new Converters.v1_3.ComponentScopeConverter());
             options.Converters.Add(new Converters.v1_3.ComponentTypeConverter());
             options.Converters.Add(new Converters.v1_3.DataFlowConverter());
             options.Converters.Add(new Converters.v1_3.DateTimeConverter());
@@ -50,6 +51,7 @@ namespace CycloneDX.Json
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 IgnoreNullValues = true,
             };
+            options.Converters.Add(new Converters.v1_2.ComponentScopeConverter());
             options.Converters.Add(new Converters.v1_2.ComponentTypeConverter());
             options.Converters.Add(new Converters.v1_2.DataFlowConverter());
             options.Converters.Add(new Converters.v1_2.DateTimeConverter());
