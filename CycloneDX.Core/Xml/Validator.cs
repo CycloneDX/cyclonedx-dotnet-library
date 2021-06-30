@@ -29,18 +29,16 @@ namespace CycloneDX.Xml
 {
     public static class Validator
     {
-        public static async Task<Models.ValidationResult> Validate(string sbom, SchemaVersion schemaVersion)
+        public static Models.ValidationResult Validate(Stream xmlStream, SchemaVersion schemaVersion)
         {
             var validationMessages = new List<string>();
 
             var schemaVersionString = schemaVersion.ToString().Substring(1).Replace('_', '.');
-            var expectedNamespaceURI = $"http://cyclonedx.org/schema/bom/{schemaVersionString}";
+            var expectedNamespaceUri = $"http://cyclonedx.org/schema/bom/{schemaVersionString}";
 
             var assembly = typeof(Validator).GetTypeInfo().Assembly;
             using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{schemaVersionString}.xsd"))
             using (var spdxStream = assembly.GetManifestResourceStream("CycloneDX.Core.Schemas.spdx.xsd"))
-            using (var stream = new MemoryStream())
-            using (var writer = new StreamWriter(stream))
             {
                 var settings = new XmlReaderSettings();
 
@@ -48,11 +46,7 @@ namespace CycloneDX.Xml
                 settings.Schemas.Add(XmlSchema.Read(spdxStream, null));
                 settings.ValidationType = ValidationType.Schema;
             
-                await writer.WriteAsync(sbom);
-                await writer.FlushAsync();
-                stream.Position = 0;
-
-                using (var reader = XmlReader.Create(stream, settings))
+                using (var reader = XmlReader.Create(xmlStream, settings))
                 {
                     var document = new XmlDocument();
 
@@ -60,9 +54,9 @@ namespace CycloneDX.Xml
                     {
                         document.Load(reader);
 
-                        if (document.DocumentElement.NamespaceURI != expectedNamespaceURI)
+                        if (document.DocumentElement.NamespaceURI != expectedNamespaceUri)
                         {
-                            validationMessages.Add($"Invalid namespace URI: expected {expectedNamespaceURI} actual {document.DocumentElement.NamespaceURI}");
+                            validationMessages.Add($"Invalid namespace URI: expected {expectedNamespaceUri} actual {document.DocumentElement.NamespaceURI}");
                         }
                     }
                     catch (XmlSchemaValidationException exc)
@@ -73,7 +67,7 @@ namespace CycloneDX.Xml
                         }
                         else
                         {
-                            validationMessages.Add($"Validation failed at position {stream.Position}: {exc.Message}");
+                            validationMessages.Add($"Validation failed at position {xmlStream.Position}: {exc.Message}");
                         }
                     }
                 }
@@ -84,6 +78,18 @@ namespace CycloneDX.Xml
                 Valid = validationMessages.Count == 0,
                 Messages = validationMessages
             };
+        }
+
+        public static async Task<Models.ValidationResult> Validate(string xmlString, SchemaVersion schemaVersion)
+        {
+            using (var stream = new MemoryStream())
+            using (var writer = new StreamWriter(stream))
+            {
+                await writer.WriteAsync(xmlString);
+                await writer.FlushAsync();
+                stream.Position = 0;
+                return Validate(stream, schemaVersion);
+            }
         }
     }
 }

@@ -16,6 +16,8 @@
 // Copyright (c) Steve Springett. All Rights Reserved.
 
 using System.Diagnostics.Contracts;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -28,6 +30,20 @@ namespace CycloneDX.Json
     {
         private static JsonSerializerOptions _options_v1_3;
         private static JsonSerializerOptions _options_v1_2;
+
+        public static void Serialize(Models.v1_3.Bom bom, Stream outputStream)
+        {
+            var jsonString = Serialize(bom);
+            var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
+            outputStream.Write(jsonBytes, 0, jsonBytes.Length);
+        }
+        
+        public static void Serialize(Models.v1_2.Bom bom, Stream outputStream)
+        {
+            var jsonString = Serialize(bom);
+            var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
+            outputStream.Write(jsonBytes, 0, jsonBytes.Length);
+        }
         
         public static string Serialize(Models.v1_3.Bom bom)
         {

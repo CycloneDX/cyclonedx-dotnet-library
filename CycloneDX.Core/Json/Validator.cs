@@ -17,8 +17,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Json.Schema;
@@ -29,7 +31,7 @@ namespace CycloneDX.Json
 {
     public static class Validator
     {
-        public static async Task<ValidationResult> Validate(string sbom, SchemaVersion schemaVersion)
+        public static async Task<ValidationResult> Validate(Stream jsonStream, SchemaVersion schemaVersion)
         {
             if (schemaVersion == SchemaVersion.v1_0 || schemaVersion == SchemaVersion.v1_1)
             {
@@ -49,7 +51,7 @@ namespace CycloneDX.Json
 
                 SchemaRegistry.Global.Register(new Uri("file://spdx.schema.json"), spdxSchema);
 
-                var jsonDocument = JsonDocument.Parse(sbom);
+                var jsonDocument = await JsonDocument.ParseAsync(jsonStream);
                 var validationOptions = new ValidationOptions
                 {
                     OutputFormat = OutputFormat.Detailed,
@@ -110,6 +112,17 @@ namespace CycloneDX.Json
                 Valid = validationMessages.Count == 0,
                 Messages = validationMessages
             };
+        }
+        
+        public static async Task<ValidationResult> Validate(string jsonString, SchemaVersion schemaVersion)
+        {
+            using (var ms = new MemoryStream())
+            {
+                var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
+                await ms.WriteAsync(jsonBytes, 0, jsonBytes.Length);
+                ms.Position = 0;
+                return await Validate(ms, schemaVersion);
+            }
         }
     }
 }

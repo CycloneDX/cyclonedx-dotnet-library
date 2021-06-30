@@ -71,7 +71,7 @@ namespace CycloneDX.Tests.Protobuf.v1_3
                 var inputBom = CycloneDX.Json.Deserializer.Deserialize_v1_3(jsonBom);
 
                 var stream = new MemoryStream();
-                CycloneDX.Protobuf.Serializer.Serialize(stream, inputBom);
+                CycloneDX.Protobuf.Serializer.Serialize(inputBom, stream);
 
                 var protoBom = stream.ToArray();
 

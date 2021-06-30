@@ -26,19 +26,25 @@ namespace CycloneDX.Protobuf
 
     public static class Serializer
     {
-        public static void Serialize(Stream destination, Models.v1_3.Bom bom)
+        public static void Serialize(Models.v1_3.Bom bom, Stream outputStream)
         {
-            Contract.Requires(destination != null);
+            Contract.Requires(outputStream != null);
             Contract.Requires(bom != null);
             
-            ProtoBuf.Serializer.Serialize(destination, bom);
-            destination.Position = 0;
+            ProtoBuf.Serializer.Serialize(outputStream, bom);
+            outputStream.Position = 0;
+        }
+
+        [Obsolete("Serialize(Stream, Models.v1_3.Bom) is deprecated, use Serialize(Models.v1_3.Bom, Stream) instead.")]
+        public static void Serialize(Stream outputStream, Models.v1_3.Bom bom)
+        {
+            Serialize(bom, outputStream);
         }
 
         public static byte[] Serialize(Models.v1_3.Bom bom)
         {
             var ms = new MemoryStream();
-            Serialize(ms, bom);
+            Serialize(bom, ms);
             return ms.ToArray();
         }
     }
