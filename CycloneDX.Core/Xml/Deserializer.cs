@@ -27,161 +27,161 @@ namespace CycloneDX.Xml
 
     public static class Deserializer
     {
-        public static Models.v1_3.Bom Deserialize(string bom)
+        public static Models.v1_3.Bom Deserialize(string xmlString)
         {
-            Contract.Requires(bom != null);
+            Contract.Requires(xmlString != null);
 
             using (var stream = new MemoryStream())
             {
                 var writer = new StreamWriter(stream);
-                writer.Write(bom);
+                writer.Write(xmlString);
                 writer.Flush();
                 stream.Position = 0;
                 return Deserialize(stream);
             }
         }
 
-        public static Models.v1_3.Bom Deserialize(Stream stream)
+        public static Models.v1_3.Bom Deserialize(Stream xmlStream)
         {
             try
             {
-                return Deserialize_v1_3(stream);
+                return Deserialize_v1_3(xmlStream);
             }
             catch (InvalidOperationException) {}
 
-            stream.Position = 0;
+            xmlStream.Position = 0;
             try
             {
-                return new Models.v1_3.Bom(Deserialize_v1_2(stream));
+                return new Models.v1_3.Bom(Deserialize_v1_2(xmlStream));
             }
             catch (InvalidOperationException) {}
 
-            stream.Position = 0;
+            xmlStream.Position = 0;
             try
             {
-                return new Models.v1_3.Bom(new Models.v1_2.Bom(Deserialize_v1_1(stream)));
+                return new Models.v1_3.Bom(new Models.v1_2.Bom(Deserialize_v1_1(xmlStream)));
 
             }
             catch (InvalidOperationException) {}
 
-            stream.Position = 0;
-            var v1_0_sbom = Deserialize_v1_0(stream);
+            xmlStream.Position = 0;
+            var v1_0_sbom = Deserialize_v1_0(xmlStream);
             var v1_1_sbom = new Models.v1_1.Bom(v1_0_sbom);
             var v1_2_sbom = new Models.v1_2.Bom(v1_1_sbom);
             var v1_3_sbom = new Models.v1_3.Bom(v1_2_sbom);
             return v1_3_sbom;
         }
 
-        public static Models.v1_3.Bom Deserialize_v1_3(string bom)
+        public static Models.v1_3.Bom Deserialize_v1_3(string xmlString)
         {
-            Contract.Requires(bom != null);
+            Contract.Requires(xmlString != null);
 
             using (var stream = new MemoryStream())
             {
                 var writer = new StreamWriter(stream);
-                writer.Write(bom);
+                writer.Write(xmlString);
                 writer.Flush();
                 stream.Position = 0;
                 return Deserialize_v1_3(stream);
             }
         }
 
-        public static Models.v1_3.Bom Deserialize_v1_3(Stream stream)
+        public static Models.v1_3.Bom Deserialize_v1_3(Stream xmlStream)
         {
-            Contract.Requires(stream != null);
+            Contract.Requires(xmlStream != null);
 
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
 
             var serializer = new XmlSerializer(typeof(Models.v1_3.Bom));
-            var bom = (Models.v1_3.Bom)serializer.Deserialize(stream);
+            var bom = (Models.v1_3.Bom)serializer.Deserialize(xmlStream);
 
             CleanupEmptyXmlArrays(bom);
 
             return bom;
         }
 
-        public static Models.v1_2.Bom Deserialize_v1_2(string bom)
+        public static Models.v1_2.Bom Deserialize_v1_2(string xmlString)
         {
-            Contract.Requires(bom != null);
+            Contract.Requires(xmlString != null);
 
             using (var stream = new MemoryStream())
             {
                 var writer = new StreamWriter(stream);
-                writer.Write(bom);
+                writer.Write(xmlString);
                 writer.Flush();
                 stream.Position = 0;
                 return Deserialize_v1_2(stream);
             }
         }
 
-        public static Models.v1_2.Bom Deserialize_v1_2(Stream stream)
+        public static Models.v1_2.Bom Deserialize_v1_2(Stream xmlStream)
         {
-            Contract.Requires(stream != null);
+            Contract.Requires(xmlStream != null);
 
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
 
             var serializer = new XmlSerializer(typeof(Models.v1_2.Bom));
-            var bom = (Models.v1_2.Bom)serializer.Deserialize(stream);
+            var bom = (Models.v1_2.Bom)serializer.Deserialize(xmlStream);
 
             CleanupEmptyXmlArrays(bom);
 
             return bom;
         }
 
-        public static Models.v1_1.Bom Deserialize_v1_1(string bom)
+        public static Models.v1_1.Bom Deserialize_v1_1(string xmlString)
         {
-            Contract.Requires(bom != null);
+            Contract.Requires(xmlString != null);
 
             using (var stream = new MemoryStream())
             {
                 var writer = new StreamWriter(stream);
-                writer.Write(bom);
+                writer.Write(xmlString);
                 writer.Flush();
                 stream.Position = 0;
                 return Deserialize_v1_1(stream);
             }
         }
 
-        public static Models.v1_1.Bom Deserialize_v1_1(Stream stream)
+        public static Models.v1_1.Bom Deserialize_v1_1(Stream xmlStream)
         {
-            Contract.Requires(stream != null);
+            Contract.Requires(xmlStream != null);
 
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
 
             var serializer = new XmlSerializer(typeof(Models.v1_1.Bom));
-            var bom = (Models.v1_1.Bom)serializer.Deserialize(stream);
+            var bom = (Models.v1_1.Bom)serializer.Deserialize(xmlStream);
 
             CleanupEmptyXmlArrays(bom);
 
             return bom;
         }
 
-        public static Models.v1_0.Bom Deserialize_v1_0(string bom)
+        public static Models.v1_0.Bom Deserialize_v1_0(string xmlString)
         {
-            Contract.Requires(bom != null);
+            Contract.Requires(xmlString != null);
 
             using (var stream = new MemoryStream())
             {
                 var writer = new StreamWriter(stream);
-                writer.Write(bom);
+                writer.Write(xmlString);
                 writer.Flush();
                 stream.Position = 0;
                 return Deserialize_v1_0(stream);
             }
         }
 
-        public static Models.v1_0.Bom Deserialize_v1_0(Stream stream)
+        public static Models.v1_0.Bom Deserialize_v1_0(Stream xmlStream)
         {
-            Contract.Requires(stream != null);
+            Contract.Requires(xmlStream != null);
 
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
 
             var serializer = new XmlSerializer(typeof(Models.v1_0.Bom));
-            var bom = (Models.v1_0.Bom)serializer.Deserialize(stream);
+            var bom = (Models.v1_0.Bom)serializer.Deserialize(xmlStream);
 
             CleanupEmptyXmlArrays(bom);
 

@@ -25,11 +25,11 @@ namespace CycloneDX.Protobuf
 
     public static class Deserializer
     {
-        public static CycloneDX.Models.v1_3.Bom Deserialize(Stream stream)
+        public static CycloneDX.Models.v1_3.Bom Deserialize(Stream protobufStream)
         {
-            Contract.Requires(stream != null);
+            Contract.Requires(protobufStream != null);
 
-            var bom = ProtoBuf.Serializer.Deserialize<CycloneDX.Models.v1_3.Bom>(stream);
+            var bom = ProtoBuf.Serializer.Deserialize<CycloneDX.Models.v1_3.Bom>(protobufStream);
 
             if (bom.Metadata?.Timestamp != null)
             {

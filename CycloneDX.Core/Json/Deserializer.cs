@@ -17,6 +17,8 @@
 
 using System;
 using System.Diagnostics.Contracts;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 
 using CycloneDX;
@@ -28,36 +30,60 @@ namespace CycloneDX.Json
     {
         private static JsonSerializerOptions _options_v1_3;
         private static JsonSerializerOptions _options_v1_2;
+
+        public static Models.v1_3.Bom Deserialize(Stream jsonStream)
+        {
+            var ms = new MemoryStream();
+            jsonStream.CopyTo(ms);
+            var jsonString = Encoding.UTF8.GetString(ms.ToArray());
+            return Deserialize(jsonString);
+        }
         
-        public static Models.v1_3.Bom Deserialize(string jsonBom)
+        public static Models.v1_3.Bom Deserialize_v1_3(Stream jsonStream)
+        {
+            var ms = new MemoryStream();
+            jsonStream.CopyTo(ms);
+            var jsonString = Encoding.UTF8.GetString(ms.ToArray());
+            return Deserialize_v1_3(jsonString);
+        }
+        
+        public static Models.v1_2.Bom Deserialize_v1_2(Stream jsonStream)
+        {
+            var ms = new MemoryStream();
+            jsonStream.CopyTo(ms);
+            var jsonString = Encoding.UTF8.GetString(ms.ToArray());
+            return Deserialize_v1_2(jsonString);
+        }
+        
+        public static Models.v1_3.Bom Deserialize(string jsonString)
         {
             try
             {
-                return Deserialize_v1_3(jsonBom);
+                return Deserialize_v1_3(jsonString);
             }
             catch (JsonException) {}
 
-            return new Models.v1_3.Bom(Deserialize_v1_2(jsonBom));
+            return new Models.v1_3.Bom(Deserialize_v1_2(jsonString));
         }
 
-        public static Models.v1_3.Bom Deserialize_v1_3(string jsonBom)
+        public static Models.v1_3.Bom Deserialize_v1_3(string jsonString)
         {
-            Contract.Requires(jsonBom != null);
+            Contract.Requires(jsonString != null);
 
             if (_options_v1_3 == null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
 
-            var bom = JsonSerializer.Deserialize<Models.v1_3.Bom>(jsonBom, _options_v1_3);
+            var bom = JsonSerializer.Deserialize<Models.v1_3.Bom>(jsonString, _options_v1_3);
 
             return bom;
         }
 
-        public static Models.v1_2.Bom Deserialize_v1_2(string jsonBom)
+        public static Models.v1_2.Bom Deserialize_v1_2(string jsonString)
         {
-            Contract.Requires(jsonBom != null);
+            Contract.Requires(jsonString != null);
 
             if (_options_v1_2 == null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
 
-            var bom = JsonSerializer.Deserialize<Models.v1_2.Bom>(jsonBom, _options_v1_2);
+            var bom = JsonSerializer.Deserialize<Models.v1_2.Bom>(jsonString, _options_v1_2);
 
             return bom;
         }

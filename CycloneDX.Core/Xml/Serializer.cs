@@ -28,6 +28,38 @@ namespace CycloneDX.Xml
 
     public static class Serializer
     {
+        public static void Serialize(Models.v1_3.Bom bom, Stream outputStream)
+        {
+            Contract.Requires(bom != null);
+
+            var serializer = new XmlSerializer(typeof(Models.v1_3.Bom));
+            serializer.Serialize(outputStream, bom);
+        }
+
+        public static void Serialize(Models.v1_2.Bom bom, Stream outputStream)
+        {
+            Contract.Requires(bom != null);
+
+            var serializer = new XmlSerializer(typeof(Models.v1_2.Bom));
+            serializer.Serialize(outputStream, bom);
+        }
+
+        public static void Serialize(Models.v1_1.Bom bom, Stream outputStream)
+        {
+            Contract.Requires(bom != null);
+
+            var serializer = new XmlSerializer(typeof(Models.v1_1.Bom));
+            serializer.Serialize(outputStream, bom);
+        }
+
+        public static void Serialize(Models.v1_0.Bom bom, Stream outputStream)
+        {
+            Contract.Requires(bom != null);
+
+            var serializer = new XmlSerializer(typeof(Models.v1_0.Bom));
+            serializer.Serialize(outputStream, bom);
+        }
+
         public static string Serialize(Models.v1_3.Bom bom)
         {
             Contract.Requires(bom != null);
