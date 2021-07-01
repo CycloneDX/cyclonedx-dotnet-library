@@ -19,6 +19,8 @@ using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using CycloneDX;
@@ -28,12 +30,21 @@ namespace CycloneDX.Xml
 
     public static class Serializer
     {
+        private static readonly XmlWriterSettings WriterSettings = new XmlWriterSettings
+        {
+            Indent = true,
+            Encoding = Encoding.UTF8
+        };
+        
         public static void Serialize(Models.v1_3.Bom bom, Stream outputStream)
         {
             Contract.Requires(bom != null);
 
             var serializer = new XmlSerializer(typeof(Models.v1_3.Bom));
-            serializer.Serialize(outputStream, bom);
+            using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
+            {
+                serializer.Serialize(xmlWriter, bom);
+            }
         }
 
         public static void Serialize(Models.v1_2.Bom bom, Stream outputStream)
@@ -41,7 +52,10 @@ namespace CycloneDX.Xml
             Contract.Requires(bom != null);
 
             var serializer = new XmlSerializer(typeof(Models.v1_2.Bom));
-            serializer.Serialize(outputStream, bom);
+            using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
+            {
+                serializer.Serialize(xmlWriter, bom);
+            }
         }
 
         public static void Serialize(Models.v1_1.Bom bom, Stream outputStream)
@@ -49,7 +63,10 @@ namespace CycloneDX.Xml
             Contract.Requires(bom != null);
 
             var serializer = new XmlSerializer(typeof(Models.v1_1.Bom));
-            serializer.Serialize(outputStream, bom);
+            using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
+            {
+                serializer.Serialize(xmlWriter, bom);
+            }
         }
 
         public static void Serialize(Models.v1_0.Bom bom, Stream outputStream)
@@ -57,7 +74,10 @@ namespace CycloneDX.Xml
             Contract.Requires(bom != null);
 
             var serializer = new XmlSerializer(typeof(Models.v1_0.Bom));
-            serializer.Serialize(outputStream, bom);
+            using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
+            {
+                serializer.Serialize(xmlWriter, bom);
+            }
         }
 
         public static string Serialize(Models.v1_3.Bom bom)
