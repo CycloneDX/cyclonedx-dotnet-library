@@ -17,6 +17,7 @@
 
 using System;
 using System.IO;
+using System.Text;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
@@ -48,6 +49,31 @@ namespace CycloneDX.Tests.Xml.v1_1
             xmlBom = Serializer.Serialize(bom);
 
             Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
+        }
+
+        [Theory]
+        [InlineData("valid-bom-1.1.xml")]
+        [InlineData("valid-component-hashes-1.1.xml")]
+        [InlineData("valid-component-ref-1.1.xml")]
+        [InlineData("valid-component-types-1.1.xml")]
+        [InlineData("valid-empty-components-1.1.xml")]
+        // [InlineData("valid-external-elements-1.1.xml")]
+        [InlineData("valid-license-expression-1.1.xml")]
+        [InlineData("valid-license-id-1.1.xml")]
+        [InlineData("valid-license-name-1.1.xml")]
+        [InlineData("valid-minimal-viable-1.1.xml")]
+        // [InlineData("valid-random-attributes-1.1.xml")]
+        // [InlineData("valid-xml-signature-1.1.xml")]
+        public void XmlRoundTripStreamTest(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", "v1.1", filename);
+            var xmlBom = File.ReadAllText(resourceFilename);
+
+            var bom = Deserializer.Deserialize_v1_1(xmlBom);
+            using var ms = new MemoryStream();
+            Serializer.Serialize(bom, ms);
+
+            Snapshot.Match(Encoding.UTF8.GetString(ms.ToArray()), SnapshotNameExtension.Create(filename));
         }
     }
 }
