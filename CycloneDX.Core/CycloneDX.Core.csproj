@@ -7,10 +7,6 @@
     <Copyright>Copyright (c) Steve Springett</Copyright>
     <Description>A .NET Standard library for CycloneDX bill-of-material documents.</Description>
     <PackageId>CycloneDX.Core</PackageId>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library</PackageProjectUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library.git</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
