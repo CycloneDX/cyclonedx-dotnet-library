@@ -25,8 +25,8 @@ namespace CycloneDX.Utils
     {
         public List<T> Merge(List<T> list1, List<T> list2)
         {
-            if (list1 == null) return list2;
-            if (list2 == null) return list1;
+            if (list1 is null) return list2;
+            if (list2 is null) return list1;
 
             var result = new List<T>(list1);
             result.AddRange(list2);
