@@ -34,7 +34,7 @@ namespace CycloneDX.Models.v1_3
 
         [XmlElement("dependency")]
         [ProtoMember(2)]
-        public List<Dependency> Dependencies { get; set; } = new List<Dependency>();
+        public List<Dependency> Dependencies { get; set; }
 
         public Dependency() {}
 

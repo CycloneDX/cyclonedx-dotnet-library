@@ -1,0 +1,153 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "1.3",
+  "SerialNumber": null,
+  "Version": null,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "System1@1:System1@1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "System1",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Hashes": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "ExternalReferences": null,
+      "Components": [
+        {
+          "Type": "Null",
+          "MimeType": null,
+          "BomRef": "System1@1:Component1@1",
+          "Supplier": null,
+          "Author": null,
+          "Publisher": null,
+          "Group": null,
+          "Name": "Component1",
+          "Version": "1",
+          "Description": null,
+          "Scope": null,
+          "Hashes": null,
+          "Licenses": null,
+          "Copyright": null,
+          "Cpe": null,
+          "Purl": null,
+          "Swid": null,
+          "Modified": null,
+          "Pedigree": null,
+          "ExternalReferences": null,
+          "Components": null,
+          "Properties": null,
+          "Evidence": null
+        }
+      ],
+      "Properties": null,
+      "Evidence": null
+    },
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "System2@1:System2@1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "System2",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Hashes": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "ExternalReferences": null,
+      "Components": [
+        {
+          "Type": "Null",
+          "MimeType": null,
+          "BomRef": "System2@1:Component2@1",
+          "Supplier": null,
+          "Author": null,
+          "Publisher": null,
+          "Group": null,
+          "Name": "Component2",
+          "Version": "1",
+          "Description": null,
+          "Scope": null,
+          "Hashes": null,
+          "Licenses": null,
+          "Copyright": null,
+          "Cpe": null,
+          "Purl": null,
+          "Swid": null,
+          "Modified": null,
+          "Pedigree": null,
+          "ExternalReferences": null,
+          "Components": null,
+          "Properties": null,
+          "Evidence": null
+        }
+      ],
+      "Properties": null,
+      "Evidence": null
+    }
+  ],
+  "Services": null,
+  "ExternalReferences": null,
+  "Dependencies": [
+    {
+      "Ref": "System1@1:System1@1",
+      "Dependencies": [
+        {
+          "Ref": "System1@1:Component1@1",
+          "Dependencies": null
+        }
+      ]
+    },
+    {
+      "Ref": "System2@1:System2@1",
+      "Dependencies": [
+        {
+          "Ref": "System2@1:Component2@1",
+          "Dependencies": null
+        }
+      ]
+    }
+  ],
+  "Compositions": [
+    {
+      "Aggregate": "Complete",
+      "Assemblies": [
+        "System1@1:System1@1"
+      ],
+      "Dependencies": [
+        "System1@1:System1@1"
+      ]
+    },
+    {
+      "Aggregate": "Complete",
+      "Assemblies": [
+        "System2@1:System2@1"
+      ],
+      "Dependencies": [
+        "System2@1:System2@1"
+      ]
+    }
+  ]
+}

@@ -32,7 +32,7 @@ namespace CycloneDX.Models.v1_3
             get => _timestamp;
             set
             {
-                if (value == null)
+                if (value is null)
                 {
                     _timestamp = null;
                 }
