@@ -70,7 +70,7 @@ namespace CycloneDX.Json
         {
             Contract.Requires(jsonString != null);
 
-            if (_options_v1_3 == null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
+            if (_options_v1_3 is null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
 
             var bom = JsonSerializer.Deserialize<Models.v1_3.Bom>(jsonString, _options_v1_3);
 
@@ -81,7 +81,7 @@ namespace CycloneDX.Json
         {
             Contract.Requires(jsonString != null);
 
-            if (_options_v1_2 == null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
+            if (_options_v1_2 is null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
 
             var bom = JsonSerializer.Deserialize<Models.v1_2.Bom>(jsonString, _options_v1_2);
 

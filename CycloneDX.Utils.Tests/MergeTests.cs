@@ -18,6 +18,8 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Snapshooter;
+using Snapshooter.Xunit;
 using CycloneDX;
 using CycloneDX.Models.v1_3;
 using CycloneDX.Utils;
@@ -27,7 +29,7 @@ namespace CycloneDX.Utils.Tests
     public class MergeTests
     {
         [Fact]
-        public void MergeToolsTest()
+        public void FlatMergeToolsTest()
         {
             var sbom1 = new Bom
             {
@@ -58,13 +60,13 @@ namespace CycloneDX.Utils.Tests
                 }
             };
 
-            var result = CycloneDXUtils.Merge(sbom1, sbom2);
+            var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
 
-            Assert.Equal(2, result.Metadata.Tools.Count);
+            Snapshot.Match(result);
         }
 
         [Fact]
-        public void MergeComponentsTest()
+        public void FlatMergeComponentsTest()
         {
             var sbom1 = new Bom
             {
@@ -89,9 +91,118 @@ namespace CycloneDX.Utils.Tests
                 }
             };
 
-            var result = CycloneDXUtils.Merge(sbom1, sbom2);
+            var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
 
-            Assert.Equal(2, result.Components.Count);
+            Snapshot.Match(result);
+        }
+
+        [Fact]
+        public void HierarchicalMergeComponentsTest()
+        {
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System1",
+                        Version = "1",
+                        BomRef = "System1@1"
+                    }
+                },
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component1",
+                        Version = "1",
+                        BomRef = "Component1@1"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "System1@1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "Component1@1"
+                            }
+                        }
+                    }
+                },
+                Compositions = new List<Composition>
+                {
+                    new Composition
+                    {
+                        Aggregate = Composition.AggregateType.Complete,
+                        Assemblies = new List<string>
+                        {
+                            "System1@1"
+                        },
+                        Dependencies = new List<string>
+                        {
+                            "System1@1"
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System2",
+                        Version = "1",
+                        BomRef = "System2@1"
+                    }
+                },
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component2",
+                        Version = "1",
+                        BomRef = "Component2@1"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "System2@1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "Component2@1"
+                            }
+                        }
+                    }
+                },
+                Compositions = new List<Composition>
+                {
+                    new Composition
+                    {
+                        Aggregate = Composition.AggregateType.Complete,
+                        Assemblies = new List<string>
+                        {
+                            "System2@1"
+                        },
+                        Dependencies = new List<string>
+                        {
+                            "System2@1"
+                        }
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new [] { sbom1, sbom2 });
+
+            Snapshot.Match(result);
         }
     }
 }
