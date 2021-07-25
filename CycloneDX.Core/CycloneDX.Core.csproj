@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Product>CycloneDX.Core</Product>
     <Authors>Patrick Dwyer &amp; Steve Springett</Authors>
-    <Copyright>Copyright (c) Steve Springett</Copyright>
+    <Copyright>Copyright (c) OWASP Foundation</Copyright>
     <Description>A .NET Standard library for CycloneDX bill-of-material documents.</Description>
     <PackageId>CycloneDX.Core</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>

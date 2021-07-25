@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Product>CycloneDX.Utils</Product>
     <Authors>Patrick Dwyer</Authors>
-    <Copyright>Copyright (c) Patrick Dwyer</Copyright>
+    <Copyright>Copyright (c) OWASP Foundation</Copyright>
     <Description>A .NET Standard library of utility methods for CycloneDX bill-of-material documents.</Description>
     <PackageId>CycloneDX.Utils</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
