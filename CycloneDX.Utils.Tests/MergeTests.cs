@@ -99,6 +99,12 @@ namespace CycloneDX.Utils.Tests
         [Fact]
         public void HierarchicalMergeComponentsTest()
         {
+            var subject = new Component
+            {
+                Name = "Thing",
+                Version = "1",
+            };
+
             var sbom1 = new Bom
             {
                 Metadata = new Metadata
@@ -200,7 +206,7 @@ namespace CycloneDX.Utils.Tests
                 }
             };
 
-            var result = CycloneDXUtils.HierarchicalMerge(new [] { sbom1, sbom2 });
+            var result = CycloneDXUtils.HierarchicalMerge(new [] { sbom1, sbom2 }, subject);
 
             Snapshot.Match(result);
         }

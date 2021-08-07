@@ -92,9 +92,18 @@ namespace CycloneDX.Utils
             return result;
         }
 
-        public static Bom HierarchicalMerge(IEnumerable<Bom> boms)
+        public static Bom HierarchicalMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
+            if (bomSubject != null)
+            {
+                if (bomSubject.BomRef is null) bomSubject.BomRef = ComponentBomRefNamespace(bomSubject);
+                result.Metadata = new Metadata
+                {
+                    Component = bomSubject,
+                    Tools = new List<Tool>(),
+                };
+            }
 
             result.Components = new List<Component>();
             result.Services = new List<Service>();
@@ -102,9 +111,11 @@ namespace CycloneDX.Utils
             result.Dependencies = new List<Dependency>();
             result.Compositions = new List<Composition>();
 
+            var bomSubjectDependencies = new List<Dependency>();
+
             foreach (var bom in boms)
             {
-                if (bom?.Metadata?.Component is null)
+                if (bom.Metadata?.Component is null)
                 {
                     throw new MissingMetadataComponentException(
                         bom.SerialNumber is null
@@ -112,11 +123,24 @@ namespace CycloneDX.Utils
                         : $"Required metadata (top level) component is missing from BOM {bom.SerialNumber}.");
                 }
 
-                // top level component and sub-components
-                if (bom.Metadata.Component.Components is null) bom.Metadata.Component.Components = new List<Component>();
-                bom.Metadata.Component.Components.AddRange(bom.Components);
-                NamespaceComponentBomRefs(bom.Metadata.Component);
-                result.Components.Add(bom.Metadata.Component);
+                if (bom.Metadata?.Tools?.Count > 0)
+                {
+                    result.Metadata.Tools.AddRange(bom.Metadata.Tools);
+                }
+
+                var thisComponent = bom.Metadata.Component;
+                if (thisComponent.Components is null) bom.Metadata.Component.Components = new List<Component>();
+                thisComponent.Components.AddRange(bom.Components);
+
+                // add a namespace to existing BOM refs
+                NamespaceComponentBomRefs(thisComponent);
+
+                // make sure we have a BOM ref set and add top level dependency reference
+                if (thisComponent.BomRef is null) thisComponent.BomRef = ComponentBomRefNamespace(thisComponent);
+                bomSubjectDependencies.Add(new Dependency { Ref = thisComponent.BomRef });
+
+                result.Components.Add(thisComponent);
+
 
                 // services
                 if (bom.Services != null)
@@ -132,7 +156,7 @@ namespace CycloneDX.Utils
                 // dependencies
                 if (bom.Dependencies != null)
                 {
-                    NamespaceDependencyBomRefs(ComponentBomRefNamespace(bom.Metadata.Component), bom.Dependencies);
+                    NamespaceDependencyBomRefs(ComponentBomRefNamespace(thisComponent), bom.Dependencies);
                     result.Dependencies.AddRange(bom.Dependencies);
                 }
 
@@ -144,7 +168,17 @@ namespace CycloneDX.Utils
                 }
             }
 
+            if (bomSubject != null)
+            {
+                result.Dependencies.Add( new Dependency
+                {
+                    Ref = result.Metadata.Component.BomRef,
+                    Dependencies = bomSubjectDependencies
+                });
+            }
+
             // cleanup empty top level elements
+            if (result.Metadata.Tools.Count == 0) result.Metadata.Tools = null;
             if (result.Components.Count == 0) result.Components = null;
             if (result.Services.Count == 0) result.Services = null;
             if (result.ExternalReferences.Count == 0) result.ExternalReferences = null;
@@ -166,7 +200,9 @@ namespace CycloneDX.Utils
 
         private static string ComponentBomRefNamespace(Component component)
         {
-            return $"{component.Name}@{component.Version}";
+            return component.Group is null
+                ? $"{component.Name}@{component.Version}"
+                : $"{component.Group}.{component.Name}@{component.Version}";
         }
 
         private static void NamespaceComponentBomRefs(Component topComponent)
