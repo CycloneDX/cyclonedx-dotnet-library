@@ -3,7 +3,39 @@
   "SpecVersion": "1.3",
   "SerialNumber": null,
   "Version": null,
-  "Metadata": null,
+  "Metadata": {
+    "Tools": null,
+    "Authors": null,
+    "Component": {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "Thing@1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Thing",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Hashes": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "ExternalReferences": null,
+      "Components": null,
+      "Properties": null,
+      "Evidence": null
+    },
+    "Manufacture": null,
+    "Supplier": null,
+    "Licenses": null,
+    "Properties": null
+  },
   "Components": [
     {
       "Type": "Null",
@@ -125,6 +157,19 @@
       "Dependencies": [
         {
           "Ref": "System2@1:Component2@1",
+          "Dependencies": null
+        }
+      ]
+    },
+    {
+      "Ref": "Thing@1",
+      "Dependencies": [
+        {
+          "Ref": "System1@1:System1@1",
+          "Dependencies": null
+        },
+        {
+          "Ref": "System2@1:System2@1",
           "Dependencies": null
         }
       ]
