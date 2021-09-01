@@ -14,6 +14,8 @@ The CycloneDX libraries for .NET support programmatically consuming and producin
 
 The libraries support .NET Standard 2.0.
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CycloneDX/cyclonedx-dotnet-library)
+
 ## License
 
 Permission to modify and redistribute is granted under the terms of the Apache 2.0 license. See the [LICENSE] file for the full license.

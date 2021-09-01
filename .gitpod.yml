@@ -1,0 +1,9 @@
+image: gitpod/workspace-dotnet
+
+tasks:
+  - init: dotnet tool install --global dotnet-reportgenerator-globaltool
+  - init: dotnet build
+
+vscode:
+  extensions:
+    - muhammad-sammy.csharp
