@@ -1,4 +1,5 @@
-image: gitpod/workspace-dotnet
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
   - init: dotnet tool install --global dotnet-reportgenerator-globaltool
