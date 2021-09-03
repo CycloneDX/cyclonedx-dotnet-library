@@ -31,76 +31,114 @@ namespace CycloneDX.Json
 {
     public static class Validator
     {
+        static Validator()
+        {
+            // I think the global schema registry is not thread safe
+            // well, I'm pretty sure, it's the only thing I can think of that would explain the sporadic test failures
+            // might as well just do it once on initialisation
+            var assembly = typeof(Validator).GetTypeInfo().Assembly;
+            using (var spdxStream = assembly.GetManifestResourceStream("CycloneDX.Core.Schemas.spdx.schema.json"))
+            using (var spdxStreamReader = new StreamReader(spdxStream))
+            {
+                var spdxSchema = JsonSchema.FromText(spdxStreamReader.ReadToEnd());
+                SchemaRegistry.Global.Register(new Uri("file://spdx.schema.json"), spdxSchema);
+            }
+        }
+
+        [Obsolete("Validate(Stream, SchemaVersion) is deprecated and will be removed in a future version. Use ValidateAsync(Stream, ShemaVersion) instead.")]
         public static async Task<ValidationResult> Validate(Stream jsonStream, SchemaVersion schemaVersion)
+        {
+            return await ValidateAsync(jsonStream, schemaVersion);
+        }
+
+        public static async Task<ValidationResult> ValidateAsync(Stream jsonStream, SchemaVersion schemaVersion)
         {
             if (schemaVersion == SchemaVersion.v1_0 || schemaVersion == SchemaVersion.v1_1)
             {
                 throw new Exceptions.UnsupportedSchemaVersionException($"JSON format is not supported by schema version {schemaVersion}");
             }
 
-            var validationMessages = new List<string>();
-
-            var schemaVersionString = schemaVersion.ToString().Substring(1).Replace('_', '.');
+            var schemaVersionString = SchemaVersionResourceFilenameString(schemaVersion);
             var assembly = typeof(Validator).GetTypeInfo().Assembly;
             
             using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{schemaVersionString}.schema.json"))
-            using (var spdxStream = assembly.GetManifestResourceStream("CycloneDX.Core.Schemas.spdx.schema.json"))
             {
-                var schema = await JsonSchema.FromStream(schemaStream);
-                var spdxSchema = await JsonSchema.FromStream(spdxStream);
-
-                SchemaRegistry.Global.Register(new Uri("file://spdx.schema.json"), spdxSchema);
-
+                var jsonSchema = await JsonSchema.FromStream(schemaStream);
                 var jsonDocument = await JsonDocument.ParseAsync(jsonStream);
-                var validationOptions = new ValidationOptions
-                {
-                    OutputFormat = OutputFormat.Detailed,
-                    RequireFormatValidation = true
-                };
+                return Validate(jsonSchema, jsonDocument, schemaVersionString);
+            }
+        }
+        
+        public static ValidationResult Validate(string jsonString, SchemaVersion schemaVersion)
+        {
+            if (schemaVersion == SchemaVersion.v1_0 || schemaVersion == SchemaVersion.v1_1)
+            {
+                throw new Exceptions.UnsupportedSchemaVersionException($"JSON format is not supported by schema version {schemaVersion}");
+            }
 
-                var result = schema.Validate(jsonDocument.RootElement, validationOptions);
+            var schemaVersionString = SchemaVersionResourceFilenameString(schemaVersion);
+            var assembly = typeof(Validator).GetTypeInfo().Assembly;
+            
+            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{schemaVersionString}.schema.json"))
+            using (var schemaStreamReader = new StreamReader(schemaStream))
+            {
+                var jsonSchema = JsonSchema.FromText(schemaStreamReader.ReadToEnd());
+                var jsonDocument = JsonDocument.Parse(jsonString);
+                return Validate(jsonSchema, jsonDocument, schemaVersionString);
+            }
+        }
 
-                if (result.IsValid)
+        private static ValidationResult Validate(JsonSchema schema, JsonDocument jsonDocument, string schemaVersionString)
+        {
+            var validationMessages = new List<string>();
+            var validationOptions = new ValidationOptions
+            {
+                OutputFormat = OutputFormat.Detailed,
+                RequireFormatValidation = true
+            };
+
+            var result = schema.Validate(jsonDocument.RootElement, validationOptions);
+
+            if (result.IsValid)
+            {
+                foreach (var properties in jsonDocument.RootElement.EnumerateObject())
                 {
-                    foreach (var properties in jsonDocument.RootElement.EnumerateObject())
+                    if (properties.Name == "specVersion")
                     {
-                        if (properties.Name == "specVersion")
+                        var specVersion = properties.Value.GetString();
+                        if (specVersion != schemaVersionString)
                         {
-                            var specVersion = properties.Value.GetString();
-                            if (specVersion != schemaVersionString)
-                            {
-                                validationMessages.Add($"Incorrect schema version: expected {schemaVersionString} actual {specVersion}");
-                            }
+                            validationMessages.Add($"Incorrect schema version: expected {schemaVersionString} actual {specVersion}");
                         }
                     }
                 }
-                else
+            }
+            else
+            {
+                validationMessages.Add($"Validation failed: {result.Message}");
+                validationMessages.Add(result.SchemaLocation.ToString());
+
+                if (result.NestedResults != null)
                 {
-                    validationMessages.Add($"Validation failed: {result.Message}");
-                    validationMessages.Add(result.SchemaLocation.ToString());
+                    var nestedResults = new Queue<ValidationResults>(result.NestedResults);
 
-                    if (result.NestedResults != null)
+                    while (nestedResults.Count > 0)
                     {
-                        var nestedResults = new Queue<ValidationResults>(result.NestedResults);
+                        var nestedResult = nestedResults.Dequeue();
 
-                        while (nestedResults.Count > 0)
+                        if (
+                            !string.IsNullOrEmpty(nestedResult.Message)
+                            && nestedResult.NestedResults != null
+                            && nestedResult.NestedResults.Count > 0)
                         {
-                            var nestedResult = nestedResults.Dequeue();
-
-                            if (
-                                !string.IsNullOrEmpty(nestedResult.Message)
-                                && nestedResult.NestedResults != null
-                                && nestedResult.NestedResults.Count > 0)
+                            validationMessages.Add($"{nestedResult.InstanceLocation}: {nestedResult.Message}");
+                        }
+                        
+                        if (nestedResult.NestedResults != null)
+                        {
+                            foreach (var newNestedResult in nestedResult.NestedResults)
                             {
-                                validationMessages.Add($"{nestedResult.InstanceLocation}: {nestedResult.Message}");
-                            }
-                            
-                            if (nestedResult.NestedResults != null)
-                            {
-                                foreach (var newNestedResult in nestedResult.NestedResults)
-                                {
-                                    nestedResults.Enqueue(newNestedResult);
-                                }
+                                nestedResults.Enqueue(newNestedResult);
                             }
                         }
                     }
@@ -113,16 +151,12 @@ namespace CycloneDX.Json
                 Messages = validationMessages
             };
         }
-        
-        public static async Task<ValidationResult> Validate(string jsonString, SchemaVersion schemaVersion)
+
+        private static string SchemaVersionResourceFilenameString(SchemaVersion schemaVersion) => schemaVersion.ToString().Substring(1).Replace('_', '.');
+
+        private static void RegisterSchema(Uri uri, JsonSchema jsonSchema)
         {
-            using (var ms = new MemoryStream())
-            {
-                var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
-                await ms.WriteAsync(jsonBytes, 0, jsonBytes.Length);
-                ms.Position = 0;
-                return await Validate(ms, schemaVersion);
-            }
+
         }
     }
 }

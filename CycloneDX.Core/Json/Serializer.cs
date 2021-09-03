@@ -15,11 +15,13 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 using CycloneDX;
 
@@ -31,39 +33,51 @@ namespace CycloneDX.Json
         private static JsonSerializerOptions _options_v1_3;
         private static JsonSerializerOptions _options_v1_2;
 
+        [Obsolete("Serialize(Bom, Stream) is deprecated and will be removed in a future version. Use SerializeAsync(Bom, Stream) instead.")]
         public static void Serialize(Models.v1_3.Bom bom, Stream outputStream)
         {
+            Contract.Requires(bom != null && outputStream != null);
             var jsonString = Serialize(bom);
             var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
             outputStream.Write(jsonBytes, 0, jsonBytes.Length);
         }
-        
-        public static void Serialize(Models.v1_2.Bom bom, Stream outputStream)
+
+        public static async Task SerializeAsync(Models.v1_3.Bom bom, Stream outputStream)
         {
-            var jsonString = Serialize(bom);
-            var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
-            outputStream.Write(jsonBytes, 0, jsonBytes.Length);
+            Contract.Requires(bom != null && outputStream != null);
+            if (_options_v1_3 is null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
+            await JsonSerializer.SerializeAsync<Models.v1_3.Bom>(outputStream, bom, _options_v1_3);
         }
-        
+
         public static string Serialize(Models.v1_3.Bom bom)
         {
             Contract.Requires(bom != null);
-
             if (_options_v1_3 is null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
-
             var jsonBom = JsonSerializer.Serialize(bom, _options_v1_3);
-
             return jsonBom;
         }
         
+        [Obsolete("Serialize(Bom, Stream) is deprecated and will be removed in a future version. Use SerializeAsync(Bom, Stream) instead.")]
+        public static void Serialize(Models.v1_2.Bom bom, Stream outputStream)
+        {
+            Contract.Requires(bom != null && outputStream != null);
+            var jsonString = Serialize(bom);
+            var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
+            outputStream.Write(jsonBytes, 0, jsonBytes.Length);
+        }
+
+        public static async Task SerializeAsync(Models.v1_2.Bom bom, Stream outputStream)
+        {
+            Contract.Requires(bom != null && outputStream != null);
+            if (_options_v1_2 is null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
+            await JsonSerializer.SerializeAsync<Models.v1_2.Bom>(outputStream, bom, _options_v1_2);
+        }
+
         public static string Serialize(Models.v1_2.Bom bom)
         {
             Contract.Requires(bom != null);
-
             if (_options_v1_2 is null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
-
             var jsonBom = JsonSerializer.Serialize(bom, _options_v1_2);
-
             return jsonBom;
         }
     }

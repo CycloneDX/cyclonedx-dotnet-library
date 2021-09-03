@@ -73,7 +73,7 @@ namespace CycloneDX.Core.Benchmark
         }
 
         [Benchmark]
-        public async Task<CycloneDX.Models.ValidationResult> ValidateJson() => await Json.Validator.Validate(_jsonBom, SchemaVersion.v1_3);
+        public async Task<CycloneDX.Models.ValidationResult> ValidateJson() => Json.Validator.Validate(_jsonBom, SchemaVersion.v1_3);
         
         [Benchmark]
         public async Task<CycloneDX.Models.ValidationResult> ValidateXml() => await Xml.Validator.Validate(_xmlBom, SchemaVersion.v1_3);
