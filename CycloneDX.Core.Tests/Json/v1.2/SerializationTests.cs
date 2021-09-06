@@ -17,6 +17,7 @@
 
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
@@ -57,6 +58,42 @@ namespace CycloneDX.Tests.Json.v1_2
             jsonBom = Serializer.Serialize(bom);
 
             Snapshot.Match(jsonBom, SnapshotNameExtension.Create(filename));
+        }
+
+        [Theory]
+        [InlineData("valid-assembly-1.2.json")]
+        [InlineData("valid-bom-1.2.json")]
+        [InlineData("valid-component-hashes-1.2.json")]
+        [InlineData("valid-component-ref-1.2.json")]
+        [InlineData("valid-component-swid-1.2.json")]
+        [InlineData("valid-component-swid-full-1.2.json")]
+        [InlineData("valid-component-types-1.2.json")]
+        [InlineData("valid-dependency-1.2.json")]
+        [InlineData("valid-empty-components-1.2.json")]
+        [InlineData("valid-license-expression-1.2.json")]
+        [InlineData("valid-license-id-1.2.json")]
+        [InlineData("valid-license-name-1.2.json")]
+        [InlineData("valid-metadata-author-1.2.json")]
+        [InlineData("valid-metadata-manufacture-1.2.json")]
+        [InlineData("valid-metadata-supplier-1.2.json")]
+        [InlineData("valid-metadata-timestamp-1.2.json")]
+        [InlineData("valid-metadata-tool-1.2.json")]
+        [InlineData("valid-minimal-viable-1.2.json")]
+        [InlineData("valid-patch-1.2.json")]
+        [InlineData("valid-service-1.2.json")]
+        [InlineData("valid-service-empty-objects-1.2.json")]
+        public async Task JsonRoundTripAsyncTest(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", "v1.2", filename);
+            using (var jsonBomStream = File.OpenRead(resourceFilename))
+            using (var ms = new MemoryStream())
+            using (var sr = new StreamReader(ms))
+            {
+                var bom = await Deserializer.DeserializeAsync_v1_2(jsonBomStream);
+                await Serializer.SerializeAsync(bom, ms);
+                ms.Position = 0;
+                Snapshot.Match(sr.ReadToEnd(), SnapshotNameExtension.Create(filename));
+            }
         }
     }
 }
