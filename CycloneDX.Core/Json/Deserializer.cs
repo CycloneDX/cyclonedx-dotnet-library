@@ -71,14 +71,16 @@ namespace CycloneDX.Json
             var ms = new MemoryStream();
             jsonStream.CopyTo(ms);
             var jsonString = Encoding.UTF8.GetString(ms.ToArray());
-            return Deserialize_v1_3(jsonString);
+            var bom = Deserialize_v1_3(jsonString);
+            return bom;
         }
         
         public static async Task<Models.v1_3.Bom> DeserializeAsync_v1_3(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
             if (_options_v1_3 is null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
-            return await JsonSerializer.DeserializeAsync<Models.v1_3.Bom>(jsonStream);
+            var bom = await JsonSerializer.DeserializeAsync<Models.v1_3.Bom>(jsonStream, _options_v1_3);
+            return bom;
         }
         
 
@@ -86,9 +88,7 @@ namespace CycloneDX.Json
         {
             Contract.Requires(!string.IsNullOrEmpty(jsonString));
             if (_options_v1_3 is null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
-
             var bom = JsonSerializer.Deserialize<Models.v1_3.Bom>(jsonString, _options_v1_3);
-
             return bom;
         }
 
@@ -99,14 +99,16 @@ namespace CycloneDX.Json
             var ms = new MemoryStream();
             jsonStream.CopyTo(ms);
             var jsonString = Encoding.UTF8.GetString(ms.ToArray());
-            return Deserialize_v1_2(jsonString);
+            var bom = Deserialize_v1_2(jsonString);
+            return bom;
         }
         
         public static async Task<Models.v1_2.Bom> DeserializeAsync_v1_2(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
             if (_options_v1_2 is null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
-            return await JsonSerializer.DeserializeAsync<Models.v1_2.Bom>(jsonStream);
+            var bom = await JsonSerializer.DeserializeAsync<Models.v1_2.Bom>(jsonStream, _options_v1_2);
+            return bom;
         }
 
         public static Models.v1_2.Bom Deserialize_v1_2(string jsonString)
@@ -114,7 +116,6 @@ namespace CycloneDX.Json
             Contract.Requires(!string.IsNullOrEmpty(jsonString));
             if (_options_v1_2 is null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
             var bom = JsonSerializer.Deserialize<Models.v1_2.Bom>(jsonString, _options_v1_2);
-
             return bom;
         }
     }
