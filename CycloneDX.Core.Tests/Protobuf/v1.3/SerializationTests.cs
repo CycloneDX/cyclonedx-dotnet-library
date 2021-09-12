@@ -64,6 +64,7 @@ namespace CycloneDX.Tests.Protobuf.v1_3
 
             var stream = new MemoryStream();
             CycloneDX.Protobuf.Serializer.Serialize(inputBom, stream);
+            stream.Position = 0;
             var outputBom = CycloneDX.Protobuf.Deserializer.Deserialize(stream);
             xmlBom = CycloneDX.Xml.Serializer.Serialize(outputBom);
 

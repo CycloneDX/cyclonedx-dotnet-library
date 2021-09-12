@@ -32,7 +32,6 @@ namespace CycloneDX.Protobuf
             Contract.Requires(bom != null);
             
             ProtoBuf.Serializer.Serialize(outputStream, bom);
-            outputStream.Position = 0;
         }
 
         [Obsolete("Serialize(Stream, Models.v1_3.Bom) is deprecated, use Serialize(Models.v1_3.Bom, Stream) instead.")]
