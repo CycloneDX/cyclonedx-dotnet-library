@@ -43,13 +43,19 @@ namespace CycloneDX.Json
         public static async Task<Models.v1_3.Bom> DeserializeAsync(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
-            try
+            using (var stream = new MemoryStream())
             {
-                return await DeserializeAsync_v1_3(jsonStream);
-            }
-            catch (JsonException) {}
+                // first need to make a copy, some streams aren't replayable
+                await jsonStream.CopyToAsync(stream);
 
-            return new Models.v1_3.Bom(await DeserializeAsync_v1_2(jsonStream));
+                try
+                {
+                    return await DeserializeAsync_v1_3(jsonStream);
+                }
+                catch (JsonException) {}
+
+                return new Models.v1_3.Bom(await DeserializeAsync_v1_2(jsonStream));
+            }
         }
 
         public static Models.v1_3.Bom Deserialize(string jsonString)

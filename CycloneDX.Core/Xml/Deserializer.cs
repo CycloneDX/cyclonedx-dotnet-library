@@ -43,33 +43,39 @@ namespace CycloneDX.Xml
 
         public static Models.v1_3.Bom Deserialize(Stream xmlStream)
         {
-            try
+            using (var stream = new MemoryStream())
             {
-                return Deserialize_v1_3(xmlStream);
+                // first need to make a copy, some streams aren't replayable
+                xmlStream.CopyTo(stream);
+
+                try
+                {
+                    return Deserialize_v1_3(stream);
+                }
+                catch (InvalidOperationException) {}
+
+                stream.Position = 0;
+                try
+                {
+                    return new Models.v1_3.Bom(Deserialize_v1_2(stream));
+                }
+                catch (InvalidOperationException) {}
+
+                stream.Position = 0;
+                try
+                {
+                    return new Models.v1_3.Bom(new Models.v1_2.Bom(Deserialize_v1_1(stream)));
+
+                }
+                catch (InvalidOperationException) {}
+
+                stream.Position = 0;
+                var v1_0_sbom = Deserialize_v1_0(stream);
+                var v1_1_sbom = new Models.v1_1.Bom(v1_0_sbom);
+                var v1_2_sbom = new Models.v1_2.Bom(v1_1_sbom);
+                var v1_3_sbom = new Models.v1_3.Bom(v1_2_sbom);
+                return v1_3_sbom;
             }
-            catch (InvalidOperationException) {}
-
-            xmlStream.Position = 0;
-            try
-            {
-                return new Models.v1_3.Bom(Deserialize_v1_2(xmlStream));
-            }
-            catch (InvalidOperationException) {}
-
-            xmlStream.Position = 0;
-            try
-            {
-                return new Models.v1_3.Bom(new Models.v1_2.Bom(Deserialize_v1_1(xmlStream)));
-
-            }
-            catch (InvalidOperationException) {}
-
-            xmlStream.Position = 0;
-            var v1_0_sbom = Deserialize_v1_0(xmlStream);
-            var v1_1_sbom = new Models.v1_1.Bom(v1_0_sbom);
-            var v1_2_sbom = new Models.v1_2.Bom(v1_1_sbom);
-            var v1_3_sbom = new Models.v1_3.Bom(v1_2_sbom);
-            return v1_3_sbom;
         }
 
         public static Models.v1_3.Bom Deserialize_v1_3(string xmlString)
