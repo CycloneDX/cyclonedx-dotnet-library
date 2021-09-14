@@ -70,6 +70,10 @@ namespace CycloneDX.Xml
                             validationMessages.Add($"Validation failed at position {xmlStream.Position}: {exc.Message}");
                         }
                     }
+                    catch (XmlException exc)
+                    {
+                        validationMessages.Add(exc.Message);
+                    }
                 }
             }
 

@@ -83,8 +83,19 @@ namespace CycloneDX.Json
             using (var schemaStreamReader = new StreamReader(schemaStream))
             {
                 var jsonSchema = JsonSchema.FromText(schemaStreamReader.ReadToEnd());
-                var jsonDocument = JsonDocument.Parse(jsonString);
-                return Validate(jsonSchema, jsonDocument, schemaVersionString);
+                try
+                {
+                    var jsonDocument = JsonDocument.Parse(jsonString);
+                    return Validate(jsonSchema, jsonDocument, schemaVersionString);
+                }
+                catch (JsonException exc)
+                {
+                    return new ValidationResult
+                    {
+                        Valid = false,
+                        Messages = new List<string> { exc.Message }
+                    };
+                }
             }
         }
 
@@ -153,10 +164,5 @@ namespace CycloneDX.Json
         }
 
         private static string SchemaVersionResourceFilenameString(SchemaVersion schemaVersion) => schemaVersion.ToString().Substring(1).Replace('_', '.');
-
-        private static void RegisterSchema(Uri uri, JsonSchema jsonSchema)
-        {
-
-        }
     }
 }
