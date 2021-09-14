@@ -50,22 +50,22 @@ namespace CycloneDX.Xml
 
                 try
                 {
+                    stream.Position = 0;
                     return Deserialize_v1_3(stream);
                 }
                 catch (InvalidOperationException) {}
 
-                stream.Position = 0;
                 try
                 {
+                    stream.Position = 0;
                     return new Models.v1_3.Bom(Deserialize_v1_2(stream));
                 }
                 catch (InvalidOperationException) {}
 
-                stream.Position = 0;
                 try
                 {
+                    stream.Position = 0;
                     return new Models.v1_3.Bom(new Models.v1_2.Bom(Deserialize_v1_1(stream)));
-
                 }
                 catch (InvalidOperationException) {}
 

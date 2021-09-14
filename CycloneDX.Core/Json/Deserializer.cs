@@ -46,15 +46,17 @@ namespace CycloneDX.Json
             using (var stream = new MemoryStream())
             {
                 // first need to make a copy, some streams aren't replayable
-                await jsonStream.CopyToAsync(stream);
+                await jsonStream.CopyToAsync(stream).ConfigureAwait(false);
 
                 try
                 {
-                    return await DeserializeAsync_v1_3(jsonStream);
+                    stream.Position = 0;
+                    return await DeserializeAsync_v1_3(stream).ConfigureAwait(false);
                 }
                 catch (JsonException) {}
 
-                return new Models.v1_3.Bom(await DeserializeAsync_v1_2(jsonStream));
+                stream.Position = 0;
+                return new Models.v1_3.Bom(await DeserializeAsync_v1_2(stream).ConfigureAwait(false));
             }
         }
 
@@ -85,7 +87,7 @@ namespace CycloneDX.Json
         {
             Contract.Requires(jsonStream != null);
             if (_options_v1_3 is null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
-            var bom = await JsonSerializer.DeserializeAsync<Models.v1_3.Bom>(jsonStream, _options_v1_3);
+            var bom = await JsonSerializer.DeserializeAsync<Models.v1_3.Bom>(jsonStream, _options_v1_3).ConfigureAwait(false);
             return bom;
         }
         
@@ -113,7 +115,7 @@ namespace CycloneDX.Json
         {
             Contract.Requires(jsonStream != null);
             if (_options_v1_2 is null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
-            var bom = await JsonSerializer.DeserializeAsync<Models.v1_2.Bom>(jsonStream, _options_v1_2);
+            var bom = await JsonSerializer.DeserializeAsync<Models.v1_2.Bom>(jsonStream, _options_v1_2).ConfigureAwait(false);
             return bom;
         }
 
