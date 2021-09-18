@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CycloneDX.Utils\CycloneDX.Utils.csproj" />
-    <ProjectReference Include="..\CycloneDX.Core\CycloneDX.Core.csproj" />
+    <ProjectReference Include="..\..\src\CycloneDX.Utils\CycloneDX.Utils.csproj" />
+    <ProjectReference Include="..\..\src\CycloneDX.Core\CycloneDX.Core.csproj" />
   </ItemGroup>
 
 </Project>
