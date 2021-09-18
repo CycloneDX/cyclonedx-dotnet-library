@@ -10,13 +10,13 @@ The libraries support .NET Standard 2.0.
 
 To add data models, serialization, deserialization, and validation to your project
 
-```
+```shell
 dotnet add package CycloneDX.Core
 ```
 
 To add additional utility methods to your project
 
-```
+```shell
 dotnet add package CycloneDX.Utils
 ```
 
