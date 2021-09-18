@@ -33,6 +33,9 @@
     "resource": [
       {
         "files": [
+          "logo.svg",
+          "favicon.ico",
+          "styles/*.css",
           "images/**"
         ]
       }
@@ -52,7 +55,8 @@
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
-      "default"
+      "default",
+      "templates/cyclonedx"
     ],
     "postProcessors": [],
     "markdownEngineName": "markdig",

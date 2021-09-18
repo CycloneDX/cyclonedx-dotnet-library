@@ -9,3 +9,4 @@ coverage-report/
 **/__snapshots__/__mismatch__/
 /CycloneDXLibrary.sln.DotSettings.user
 docfx/
+_exported_templates/
