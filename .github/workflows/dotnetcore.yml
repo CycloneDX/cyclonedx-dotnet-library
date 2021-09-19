@@ -42,3 +42,19 @@ jobs:
 
     - name: Tests
       run: dotnet test --framework netcoreapp${{ matrix.framework }}
+  
+  documentation-build:
+    name: "Build documentation"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Download DocFX
+        run: |
+          wget -O docfx.zip https://github.com/dotnet/docfx/releases/download/v2.58.4/docfx.zip
+          unzip docfx.zip -d docfx/
+          chmod +x docfx/docfx.exe
+      - name: Build documentation
+        run: |
+          docfx/docfx.exe docs/docfx.json
