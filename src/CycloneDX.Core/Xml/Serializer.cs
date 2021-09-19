@@ -27,7 +27,9 @@ using CycloneDX;
 
 namespace CycloneDX.Xml
 {
-
+    /// <summary>
+    /// Contains all XML serialization methods.
+    /// </summary>
     public static class Serializer
     {
         private static readonly XmlWriterSettings WriterSettings = new XmlWriterSettings
@@ -36,6 +38,11 @@ namespace CycloneDX.Xml
             Encoding = Encoding.UTF8
         };
         
+        /// <summary>
+        /// Serializes a v1.3 CycloneDX BOM writing the output to a stream.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <param name="outputStream"></param>
         public static void Serialize(Models.v1_3.Bom bom, Stream outputStream)
         {
             Contract.Requires(bom != null);
@@ -47,6 +54,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Serializes a v1.2 CycloneDX BOM writing the output to a stream.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <param name="outputStream"></param>
         public static void Serialize(Models.v1_2.Bom bom, Stream outputStream)
         {
             Contract.Requires(bom != null);
@@ -58,6 +70,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Serializes a v1.1 CycloneDX BOM writing the output to a stream.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <param name="outputStream"></param>
         public static void Serialize(Models.v1_1.Bom bom, Stream outputStream)
         {
             Contract.Requires(bom != null);
@@ -69,6 +86,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Serializes a v1.0 CycloneDX BOM writing the output to a stream.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <param name="outputStream"></param>
         public static void Serialize(Models.v1_0.Bom bom, Stream outputStream)
         {
             Contract.Requires(bom != null);
@@ -80,6 +102,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Serializes a v1.3 CycloneDX BOM to a string.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <returns></returns>
         public static string Serialize(Models.v1_3.Bom bom)
         {
             Contract.Requires(bom != null);
@@ -93,6 +120,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Serializes a v1.2 CycloneDX BOM to a string.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <returns></returns>
         public static string Serialize(Models.v1_2.Bom bom)
         {
             Contract.Requires(bom != null);
@@ -106,6 +138,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Serializes a v1.1 CycloneDX BOM to a string.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <returns></returns>
         public static string Serialize(Models.v1_1.Bom bom)
         {
             Contract.Requires(bom != null);
@@ -119,6 +156,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Serializes a v1.0 CycloneDX BOM to a string.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <returns></returns>
         public static string Serialize(Models.v1_0.Bom bom)
         {
             Contract.Requires(bom != null);

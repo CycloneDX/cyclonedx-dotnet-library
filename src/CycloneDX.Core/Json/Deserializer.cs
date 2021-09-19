@@ -24,22 +24,25 @@ using System.Threading.Tasks;
 
 namespace CycloneDX.Json
 {
-
+    /// <summary>
+    /// Contains all JSON deserialization methods.
+    /// </summary>
     public static class Deserializer
     {
         private static JsonSerializerOptions _options_v1_3;
         private static JsonSerializerOptions _options_v1_2;
 
-        [Obsolete("Deserialize(Stream) is deprecated and will be removed in a future version. Use DeserializeAsync(Stream) instead.")]
-        public static Models.v1_3.Bom Deserialize(Stream jsonStream)
-        {
-            Contract.Requires(jsonStream != null);
-            var ms = new MemoryStream();
-            jsonStream.CopyTo(ms);
-            var jsonString = Encoding.UTF8.GetString(ms.ToArray());
-            return Deserialize(jsonString);
-        }
-
+        /// <summary>
+        /// Dserializes any supported CycloneDX JSON document from a stream.
+        /// 
+        /// Note: To be able to support deserializing any specification
+        /// version, the stream is completely read into memory first.
+        /// 
+        /// If the CycloneDX specification version in use is known, one of the
+        /// version specific deserialization methods should be used.
+        /// </summary>
+        /// <param name="jsonStream"></param>
+        /// <returns></returns>
         public static async Task<Models.v1_3.Bom> DeserializeAsync(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
@@ -60,6 +63,11 @@ namespace CycloneDX.Json
             }
         }
 
+        /// <summary>
+        /// Deserializes any supported CycloneDX JSON document from a string.
+        /// </summary>
+        /// <param name="jsonString"></param>
+        /// <returns></returns>
         public static Models.v1_3.Bom Deserialize(string jsonString)
         {
             Contract.Requires(!string.IsNullOrEmpty(jsonString));
@@ -72,17 +80,11 @@ namespace CycloneDX.Json
             return new Models.v1_3.Bom(Deserialize_v1_2(jsonString));
         }
 
-        [Obsolete("Deserialize_v1_3(Stream) is deprecated and will be removed in a future version. Use DeserializeAsync_v1_3(Stream) instead.")]
-        public static Models.v1_3.Bom Deserialize_v1_3(Stream jsonStream)
-        {
-            Contract.Requires(jsonStream != null);
-            var ms = new MemoryStream();
-            jsonStream.CopyTo(ms);
-            var jsonString = Encoding.UTF8.GetString(ms.ToArray());
-            var bom = Deserialize_v1_3(jsonString);
-            return bom;
-        }
-        
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.3 document from a stream.
+        /// </summary>
+        /// <param name="jsonStream"></param>
+        /// <returns></returns>
         public static async Task<Models.v1_3.Bom> DeserializeAsync_v1_3(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
@@ -91,7 +93,11 @@ namespace CycloneDX.Json
             return bom;
         }
         
-
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.3 document from a string.
+        /// </summary>
+        /// <param name="jsonString"></param>
+        /// <returns></returns>
         public static Models.v1_3.Bom Deserialize_v1_3(string jsonString)
         {
             Contract.Requires(!string.IsNullOrEmpty(jsonString));
@@ -100,17 +106,11 @@ namespace CycloneDX.Json
             return bom;
         }
 
-        [Obsolete("Deserialize_v1_2(Stream) is deprecated and will be removed in a future version. Use DeserializeAsync_v1_2(Stream) instead.")]
-        public static Models.v1_2.Bom Deserialize_v1_2(Stream jsonStream)
-        {
-            Contract.Requires(jsonStream != null);
-            var ms = new MemoryStream();
-            jsonStream.CopyTo(ms);
-            var jsonString = Encoding.UTF8.GetString(ms.ToArray());
-            var bom = Deserialize_v1_2(jsonString);
-            return bom;
-        }
-        
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.2 document from a stream.
+        /// </summary>
+        /// <param name="jsonStream"></param>
+        /// <returns></returns>
         public static async Task<Models.v1_2.Bom> DeserializeAsync_v1_2(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
@@ -119,6 +119,11 @@ namespace CycloneDX.Json
             return bom;
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.2 document from a string.
+        /// </summary>
+        /// <param name="jsonString"></param>
+        /// <returns></returns>
         public static Models.v1_2.Bom Deserialize_v1_2(string jsonString)
         {
             Contract.Requires(!string.IsNullOrEmpty(jsonString));

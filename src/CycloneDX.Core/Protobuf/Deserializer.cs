@@ -22,9 +22,16 @@ using ProtoBuf;
 
 namespace CycloneDX.Protobuf
 {
-
+    /// <summary>
+    /// Contains all Protobuf deserialization methods.
+    /// </summary>
     public static class Deserializer
     {
+        /// <summary>
+        /// Deserializes any supported CycloneDX Protobuf message from a stream.
+        /// </summary>
+        /// <param name="protobufStream"></param>
+        /// <returns></returns>
         public static CycloneDX.Models.v1_3.Bom Deserialize(Stream protobufStream)
         {
             Contract.Requires(protobufStream != null);
@@ -41,6 +48,11 @@ namespace CycloneDX.Protobuf
             return bom;
         }
 
+        /// <summary>
+        /// Deserializes any supported CycloneDX Protobuf message from a byte array.
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
         public static CycloneDX.Models.v1_3.Bom Deserialize(byte[] bytes)
         {
             Contract.Requires(bytes != null);

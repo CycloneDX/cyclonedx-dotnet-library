@@ -24,9 +24,16 @@ using CycloneDX;
 
 namespace CycloneDX.Xml
 {
-
+    /// <summary>
+    /// Contains all XML deserialization methods.
+    /// </summary>
     public static class Deserializer
     {
+        /// <summary>
+        /// Dserializes any supported CycloneDX XML document from a string.
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
         public static Models.v1_3.Bom Deserialize(string xmlString)
         {
             Contract.Requires(xmlString != null);
@@ -41,6 +48,17 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Dserializes any supported CycloneDX XML document from a stream.
+        /// 
+        /// Note: To be able to support deserializing any specification
+        /// version, the stream is completely read into memory first.
+        /// 
+        /// If the CycloneDX specification version in use is known, one of the
+        /// version specific deserialization methods should be used.
+        /// </summary>
+        /// <param name="xmlStream"></param>
+        /// <returns></returns>
         public static Models.v1_3.Bom Deserialize(Stream xmlStream)
         {
             using (var stream = new MemoryStream())
@@ -78,6 +96,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.3 document from a string.
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
         public static Models.v1_3.Bom Deserialize_v1_3(string xmlString)
         {
             Contract.Requires(xmlString != null);
@@ -92,6 +115,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.3 document from a stream.
+        /// </summary>
+        /// <param name="xmlStream"></param>
+        /// <returns></returns>
         public static Models.v1_3.Bom Deserialize_v1_3(Stream xmlStream)
         {
             Contract.Requires(xmlStream != null);
@@ -107,6 +135,11 @@ namespace CycloneDX.Xml
             return bom;
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.2 document from a string.
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
         public static Models.v1_2.Bom Deserialize_v1_2(string xmlString)
         {
             Contract.Requires(xmlString != null);
@@ -121,6 +154,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.2 document from a stream.
+        /// </summary>
+        /// <param name="xmlStream"></param>
+        /// <returns></returns>
         public static Models.v1_2.Bom Deserialize_v1_2(Stream xmlStream)
         {
             Contract.Requires(xmlStream != null);
@@ -136,6 +174,11 @@ namespace CycloneDX.Xml
             return bom;
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.1 document from a string.
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
         public static Models.v1_1.Bom Deserialize_v1_1(string xmlString)
         {
             Contract.Requires(xmlString != null);
@@ -150,6 +193,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.1 document from a stream.
+        /// </summary>
+        /// <param name="xmlStream"></param>
+        /// <returns></returns>
         public static Models.v1_1.Bom Deserialize_v1_1(Stream xmlStream)
         {
             Contract.Requires(xmlStream != null);
@@ -165,6 +213,11 @@ namespace CycloneDX.Xml
             return bom;
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.0 document from a string.
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <returns></returns>
         public static Models.v1_0.Bom Deserialize_v1_0(string xmlString)
         {
             Contract.Requires(xmlString != null);
@@ -179,6 +232,11 @@ namespace CycloneDX.Xml
             }
         }
 
+        /// <summary>
+        /// Deserializes a CycloneDX XML v1.0 document from a stream.
+        /// </summary>
+        /// <param name="xmlStream"></param>
+        /// <returns></returns>
         public static Models.v1_0.Bom Deserialize_v1_0(Stream xmlStream)
         {
             Contract.Requires(xmlStream != null);

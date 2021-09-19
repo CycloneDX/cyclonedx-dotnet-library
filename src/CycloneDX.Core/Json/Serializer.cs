@@ -27,21 +27,20 @@ using CycloneDX;
 
 namespace CycloneDX.Json
 {
-
+    /// <summary>
+    /// Contains all JSON serialization methods.
+    /// </summary>
     public static class Serializer
     {
         private static JsonSerializerOptions _options_v1_3;
         private static JsonSerializerOptions _options_v1_2;
 
-        [Obsolete("Serialize(Bom, Stream) is deprecated and will be removed in a future version. Use SerializeAsync(Bom, Stream) instead.")]
-        public static void Serialize(Models.v1_3.Bom bom, Stream outputStream)
-        {
-            Contract.Requires(bom != null && outputStream != null);
-            var jsonString = Serialize(bom);
-            var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
-            outputStream.Write(jsonBytes, 0, jsonBytes.Length);
-        }
-
+        /// <summary>
+        /// Serializes a v1.3 CycloneDX BOM writing the output to a stream.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <param name="outputStream"></param>
+        /// <returns></returns>
         public static async Task SerializeAsync(Models.v1_3.Bom bom, Stream outputStream)
         {
             Contract.Requires(bom != null && outputStream != null);
@@ -49,6 +48,11 @@ namespace CycloneDX.Json
             await JsonSerializer.SerializeAsync<Models.v1_3.Bom>(outputStream, bom, _options_v1_3);
         }
 
+        /// <summary>
+        /// Serializes a v1.3 CycloneDX BOM returning the output as a string.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <returns></returns>
         public static string Serialize(Models.v1_3.Bom bom)
         {
             Contract.Requires(bom != null);
@@ -57,15 +61,12 @@ namespace CycloneDX.Json
             return jsonBom;
         }
         
-        [Obsolete("Serialize(Bom, Stream) is deprecated and will be removed in a future version. Use SerializeAsync(Bom, Stream) instead.")]
-        public static void Serialize(Models.v1_2.Bom bom, Stream outputStream)
-        {
-            Contract.Requires(bom != null && outputStream != null);
-            var jsonString = Serialize(bom);
-            var jsonBytes = Encoding.UTF8.GetBytes(jsonString);
-            outputStream.Write(jsonBytes, 0, jsonBytes.Length);
-        }
-
+        /// <summary>
+        /// Serializes a v1.2 CycloneDX BOM writing the output to a stream.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <param name="outputStream"></param>
+        /// <returns></returns>
         public static async Task SerializeAsync(Models.v1_2.Bom bom, Stream outputStream)
         {
             Contract.Requires(bom != null && outputStream != null);
@@ -73,6 +74,11 @@ namespace CycloneDX.Json
             await JsonSerializer.SerializeAsync<Models.v1_2.Bom>(outputStream, bom, _options_v1_2);
         }
 
+        /// <summary>
+        /// Serializes a v1.2 CycloneDX BOM returning the output as a string.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <returns></returns>
         public static string Serialize(Models.v1_2.Bom bom)
         {
             Contract.Requires(bom != null);

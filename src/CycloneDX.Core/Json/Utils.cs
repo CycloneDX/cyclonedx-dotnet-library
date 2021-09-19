@@ -19,8 +19,16 @@ using System.Text.Json;
 
 namespace CycloneDX.Json
 {
+    /// <summary>
+    /// JSON utility methods.
+    /// </summary>
     public static class Utils
     {
+        /// <summary>
+        /// Returns <c>JsonSerializerOptions</c> required to serialize and
+        /// deserialize CycloneDX v1.3 JSON documents.
+        /// </summary>
+        /// <returns></returns>
         public static JsonSerializerOptions GetJsonSerializerOptions_v1_3()
         {
             var options = new JsonSerializerOptions
@@ -43,6 +51,11 @@ namespace CycloneDX.Json
             return options;
         }
 
+        /// <summary>
+        /// Returns <c>JsonSerializerOptions</c> required to serialize and
+        /// deserialize CycloneDX v1.2 JSON documents.
+        /// </summary>
+        /// <returns></returns>
         public static JsonSerializerOptions GetJsonSerializerOptions_v1_2()
         {
             var options = new JsonSerializerOptions

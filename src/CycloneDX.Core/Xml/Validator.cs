@@ -27,8 +27,17 @@ using CycloneDX;
 
 namespace CycloneDX.Xml
 {
+    /// <summary>
+    /// Contains all XML validation methods.
+    /// </summary>
     public static class Validator
     {
+        /// <summary>
+        /// Validate the stream contents represent a valid CycloneDX XML document.
+        /// </summary>
+        /// <param name="xmlStream"></param>
+        /// <param name="schemaVersion"></param>
+        /// <returns></returns>
         public static Models.ValidationResult Validate(Stream xmlStream, SpecificationVersion schemaVersion)
         {
             var validationMessages = new List<string>();
@@ -84,6 +93,12 @@ namespace CycloneDX.Xml
             };
         }
 
+        /// <summary>
+        /// Validate the string contents represent a valid CycloneDX XML document.
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <param name="schemaVersion"></param>
+        /// <returns></returns>
         public static async Task<Models.ValidationResult> Validate(string xmlString, SpecificationVersion schemaVersion)
         {
             using (var stream = new MemoryStream())

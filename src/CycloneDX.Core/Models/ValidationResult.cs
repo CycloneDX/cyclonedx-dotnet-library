@@ -20,9 +20,21 @@ using System.Collections.Generic;
 
 namespace CycloneDX.Models
 {
+    /// <summary>
+    /// The return type for all validation methods.
+    /// </summary>
     public class ValidationResult
     {
+        /// <summary>
+        /// <c>true</c> if the document has been successfully validated.
+        /// </summary>
+        /// <value></value>
         public bool Valid { get; set; }
+        /// <summary>
+        /// When validation fails, has one or more messages detailing why validation failed.
+        /// </summary>
+        /// <typeparam name="string"></typeparam>
+        /// <returns></returns>
         public IEnumerable<string> Messages { get; set; } = new List<string>();
     }
 }

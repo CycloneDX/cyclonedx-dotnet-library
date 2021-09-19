@@ -29,6 +29,9 @@ using CycloneDX.Models;
 
 namespace CycloneDX.Json
 {
+    /// <summary>
+    /// Contains all JSON validation methods.
+    /// </summary>
     public static class Validator
     {
         static Validator()
@@ -45,12 +48,12 @@ namespace CycloneDX.Json
             }
         }
 
-        [Obsolete("Validate(Stream, SchemaVersion) is deprecated and will be removed in a future version. Use ValidateAsync(Stream, ShemaVersion) instead.")]
-        public static async Task<ValidationResult> Validate(Stream jsonStream, SpecificationVersion schemaVersion)
-        {
-            return await ValidateAsync(jsonStream, schemaVersion);
-        }
-
+        /// <summary>
+        /// Validate the stream contents represent a valid CycloneDX JSON document.
+        /// </summary>
+        /// <param name="jsonStream"></param>
+        /// <param name="schemaVersion"></param>
+        /// <returns></returns>
         public static async Task<ValidationResult> ValidateAsync(Stream jsonStream, SpecificationVersion schemaVersion)
         {
             if (schemaVersion == SpecificationVersion.v1_0 || schemaVersion == SpecificationVersion.v1_1)
@@ -69,6 +72,12 @@ namespace CycloneDX.Json
             }
         }
         
+        /// <summary>
+        /// Validate the string contents represent a valid CycloneDX JSON document.
+        /// </summary>
+        /// <param name="jsonString"></param>
+        /// <param name="schemaVersion"></param>
+        /// <returns></returns>
         public static ValidationResult Validate(string jsonString, SpecificationVersion schemaVersion)
         {
             if (schemaVersion == SpecificationVersion.v1_0 || schemaVersion == SpecificationVersion.v1_1)

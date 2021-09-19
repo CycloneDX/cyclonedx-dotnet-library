@@ -23,9 +23,16 @@ using CycloneDX;
 
 namespace CycloneDX.Protobuf
 {
-
+    /// <summary>
+    /// Contains all Protobuf serialization methods.
+    /// </summary>
     public static class Serializer
     {
+        /// <summary>
+        /// Serializes a v1.3 CycloneDX BOM writing the output to a stream.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <param name="outputStream"></param>
         public static void Serialize(Models.v1_3.Bom bom, Stream outputStream)
         {
             Contract.Requires(outputStream != null);
@@ -34,12 +41,11 @@ namespace CycloneDX.Protobuf
             ProtoBuf.Serializer.Serialize(outputStream, bom);
         }
 
-        [Obsolete("Serialize(Stream, Models.v1_3.Bom) is deprecated, use Serialize(Models.v1_3.Bom, Stream) instead.")]
-        public static void Serialize(Stream outputStream, Models.v1_3.Bom bom)
-        {
-            Serialize(bom, outputStream);
-        }
-
+        /// <summary>
+        /// Serializes a v1.3 CycloneDX BOM returning the output as a byte array.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <returns></returns>
         public static byte[] Serialize(Models.v1_3.Bom bom)
         {
             var ms = new MemoryStream();
