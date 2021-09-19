@@ -8,3 +8,5 @@ coverage-report/
 **/coverage.*.cobertura.xml
 **/__snapshots__/__mismatch__/
 /CycloneDXLibrary.sln.DotSettings.user
+docfx/
+_exported_templates/

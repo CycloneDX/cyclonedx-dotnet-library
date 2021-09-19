@@ -16,6 +16,20 @@ The libraries support .NET Standard 2.0.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CycloneDX/cyclonedx-dotnet-library)
 
+## Getting Started
+
+To add data models, serialization, deserialization, and validation to your project
+
+```shell
+dotnet add package CycloneDX.Core
+```
+
+To add additional utility methods to your project
+
+```shell
+dotnet add package CycloneDX.Utils
+```
+
 ## License
 
 Permission to modify and redistribute is granted under the terms of the Apache 2.0 license. See the [LICENSE] file for the full license.
@@ -29,9 +43,7 @@ Pull requests are welcome. But please read the
 
 To build and test the solution locally standard commands like `dotnet build` and `dotnet test` work.
 
-Alternatively, you can use VS Code and the included devcontainer configuration
-to work in a pre-configured docker image. (You will also need the "Remote - Containers"
-extension and Docker)
+Documentation is generated using [DocFX](https://dotnet.github.io/docfx/index.html).
 
 It is generally expected that pull requests will include relevant tests.
 Tests are automatically run on Windows, MacOS and Linux for every pull request.
