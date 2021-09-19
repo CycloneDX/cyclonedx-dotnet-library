@@ -99,13 +99,13 @@ namespace CycloneDX.Xml
         /// <param name="xmlString"></param>
         /// <param name="schemaVersion"></param>
         /// <returns></returns>
-        public static async Task<Models.ValidationResult> Validate(string xmlString, SpecificationVersion schemaVersion)
+        public static Models.ValidationResult Validate(string xmlString, SpecificationVersion schemaVersion)
         {
             using (var stream = new MemoryStream())
             using (var writer = new StreamWriter(stream))
             {
-                await writer.WriteAsync(xmlString);
-                await writer.FlushAsync();
+                writer.Write(xmlString);
+                writer.Flush();
                 stream.Position = 0;
                 return Validate(stream, schemaVersion);
             }

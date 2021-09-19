@@ -38,12 +38,12 @@ namespace CycloneDX.Tests.Xml.v1_1
         [InlineData("valid-minimal-viable-1.1.xml")]
         // [InlineData("valid-random-attributes-1.1.xml")]
         // [InlineData("valid-xml-signature-1.1.xml")]
-        public async Task ValidXmlTest(string filename)
+        public void ValidXmlTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.1", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var validationResult = await Validator.Validate(xmlBom, SpecificationVersion.v1_1);
+            var validationResult = Validator.Validate(xmlBom, SpecificationVersion.v1_1);
 
             Assert.True(validationResult.Valid);
         }
@@ -66,12 +66,12 @@ namespace CycloneDX.Tests.Xml.v1_1
         [InlineData("invalid-namespace-1.1.xml")]
         [InlineData("invalid-scope-1.1.xml")]
         [InlineData("invalid-serialnumber-1.1.xml")]
-        public async Task InvalidXmlTest(string filename)
+        public void InvalidXmlTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.1", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var validationResult = await Validator.Validate(xmlBom, SpecificationVersion.v1_1);
+            var validationResult = Validator.Validate(xmlBom, SpecificationVersion.v1_1);
 
             Assert.False(validationResult.Valid);
         }
