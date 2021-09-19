@@ -1,3 +1,104 @@
 # Getting Started
 
-_Coming soon_
+All the following examples require the `CycloneDX.Core` library.
+
+Add to your project with the command `dotnet add package CycloneDX.Core`.
+
+## Serialization, Deserialization & Validation
+
+### JSON Examples
+
+```csharp
+using CycloneDX.Json;
+
+...
+
+// deserializing from a string
+var bom = Deserializer.Deserialize(jsonString);
+// deserializing from a stream
+var bom = await Deserializer.DeserializeAsync(jsonStream);
+
+
+// serializing to a string
+var jsonString = Serializer.Serialize(bom);
+// serializing to a stream
+await Serializer.SerializeAsync(bom, stream);
+
+
+// validating a string or stream
+var result = Validator.Validate(jsonString, SpecificationVersion.v1_3);
+// or
+var result = await Validator.Validate(jsonStream, SpecificationVersion.v1_3);
+
+if (result.Valid)
+{
+    Console.WriteLine("Valid CycloneDX v1.3 JSON document");
+}
+else
+{
+    Console.WriteLine("Not a valid CycloneDX v1.3 JSON document");
+    Console.WriteLine("Validation errors:");
+    foreach (var message in result.Messages)
+    {
+        Console.WriteLine(message);
+    }
+}
+```
+
+### XML Examples
+
+```csharp
+using CycloneDX.Xml;
+
+...
+
+// deserializing from a string
+var bom = Deserializer.Deserialize(xmlString);
+// deserializing from a stream
+var bom = Deserializer.Deserialize(xmlStream);
+
+
+// serializing to a string
+var xmlString = Serializer.Serialize(bom);
+// serializing to a stream
+Serializer.SerializeAsync(bom, stream);
+
+
+// validating a string or stream
+var result = Validator.Validate(xmlString, SpecificationVersion.v1_3);
+// or
+var result = Validator.Validate(xmlStream, SpecificationVersion.v1_3);
+
+if (result.Valid)
+{
+    Console.WriteLine("Valid CycloneDX v1.3 XML document");
+}
+else
+{
+    Console.WriteLine("Not a valid CycloneDX v1.3 XML document");
+    Console.WriteLine("Validation errors:");
+    foreach (var message in result.Messages)
+    {
+        Console.WriteLine(message);
+    }
+}
+```
+
+### Protobuf Examples
+
+```csharp
+using CycloneDX.Protobuf;
+
+...
+
+// deserializing from a byte array
+var bom = Deserializer.Deserialize(protobufBytes);
+// deserializing from a stream
+var bom = Deserializer.Deserialize(protobufStream);
+
+
+// serializing to a byte array
+var bytes = Serializer.Serialize(bom);
+// serializing to a stream
+Serializer.SerializeAsync(bom, stream);
+```

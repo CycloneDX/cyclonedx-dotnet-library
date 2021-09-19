@@ -20,6 +20,8 @@ To add additional utility methods to your project
 dotnet add package CycloneDX.Utils
 ```
 
+For code examples check out the [Getting Started Article](articles/getting-started.md)
+
 ## License
 
 Permission to modify and redistribute is granted under the terms of the

@@ -50,12 +50,12 @@ namespace CycloneDX.Tests.Xml.v1_2
         [InlineData("valid-service-1.2.xml")]
         [InlineData("valid-service-empty-objects-1.2.xml")]
         // [InlineData("valid-xml-signature-1.2.xml")]
-        public async Task ValidXmlTest(string filename)
+        public void ValidXmlTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.2", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var validationResult = await Validator.Validate(xmlBom, SpecificationVersion.v1_2);
+            var validationResult = Validator.Validate(xmlBom, SpecificationVersion.v1_2);
 
             Assert.True(validationResult.Valid);
         }
@@ -85,12 +85,12 @@ namespace CycloneDX.Tests.Xml.v1_2
         [InlineData("invalid-serialnumber-1.2.xml")]
         [InlineData("invalid-service-data-1.2.xml")]
 
-        public async Task InvalidXmlTest(string filename)
+        public void InvalidXmlTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.2", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var validationResult = await Validator.Validate(xmlBom, SpecificationVersion.v1_2);
+            var validationResult = Validator.Validate(xmlBom, SpecificationVersion.v1_2);
 
             Assert.False(validationResult.Valid);
         }
