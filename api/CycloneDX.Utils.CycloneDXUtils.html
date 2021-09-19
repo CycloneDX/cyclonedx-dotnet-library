@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CycloneDXUtils
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CycloneDXUtils
+   ">
+    <meta name="generator" content="docfx 2.58.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/cyclonedx.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CycloneDX.Utils.CycloneDXUtils">
+  
+  
+  <h1 id="CycloneDX_Utils_CycloneDXUtils" data-uid="CycloneDX.Utils.CycloneDXUtils" class="text-break">Class CycloneDXUtils
+  </h1>
+  <div class="markdown level0 summary"><p>Class containing utility methods that operate on CycloneDX BOMs.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CycloneDXUtils</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CycloneDX.Utils.html">CycloneDX.Utils</a></h6>
+  <h6><strong>Assembly</strong>: CycloneDX.Utils.dll</h6>
+  <h5 id="CycloneDX_Utils_CycloneDXUtils_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class CycloneDXUtils : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_ComponentAnalysisIdentifier_CycloneDX_Models_v1_3_Component_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.ComponentAnalysisIdentifier(CycloneDX.Models.v1_3.Component)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/ComponentAnalysisIdentifier.cs/#L36">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_ComponentAnalysisIdentifier_" data-uid="CycloneDX.Utils.CycloneDXUtils.ComponentAnalysisIdentifier*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_ComponentAnalysisIdentifier_CycloneDX_Models_v1_3_Component_" data-uid="CycloneDX.Utils.CycloneDXUtils.ComponentAnalysisIdentifier(CycloneDX.Models.v1_3.Component)">ComponentAnalysisIdentifier(Component)</h4>
+  <div class="markdown level1 summary"><p>Utility method to generate a component identifier that can be
+used when analysing two or more BOMs.</p>
+<p>In general, a component <code>BomRef</code> should be used to identify
+a specific component within a BOM. However, it is not very
+useful when trying to compare components across BOMs. For example,
+when trying to identify components that have changed versions
+between two BOMs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ComponentAnalysisIdentifier(Component component)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Component.html">Component</a></td>
+        <td><span class="parametername">component</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_ComponentVersionDiff_CycloneDX_Models_v1_3_Bom_CycloneDX_Models_v1_3_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.ComponentVersionDiff(CycloneDX.Models.v1_3.Bom%2CCycloneDX.Models.v1_3.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/ComponentVersionDiff.cs/#L44">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_ComponentVersionDiff_" data-uid="CycloneDX.Utils.CycloneDXUtils.ComponentVersionDiff*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_ComponentVersionDiff_CycloneDX_Models_v1_3_Bom_CycloneDX_Models_v1_3_Bom_" data-uid="CycloneDX.Utils.CycloneDXUtils.ComponentVersionDiff(CycloneDX.Models.v1_3.Bom,CycloneDX.Models.v1_3.Bom)">ComponentVersionDiff(Bom, Bom)</h4>
+  <div class="markdown level1 summary"><p>Generates a component version diff between two BOMs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Dictionary&lt;string, DiffItem&lt;Component&gt;&gt; ComponentVersionDiff(Bom fromBom, Bom toBom)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td><span class="parametername">fromBom</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td><span class="parametername">toBom</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="CycloneDX.Utils.DiffItem-1.html">DiffItem</a>&lt;<a class="xref" href="CycloneDX.Models.v1_3.Component.html">Component</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_FlatMerge_CycloneDX_Models_v1_3_Bom_CycloneDX_Models_v1_3_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.FlatMerge(CycloneDX.Models.v1_3.Bom%2CCycloneDX.Models.v1_3.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L54">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_CycloneDX_Models_v1_3_Bom_CycloneDX_Models_v1_3_Bom_" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge(CycloneDX.Models.v1_3.Bom,CycloneDX.Models.v1_3.Bom)">FlatMerge(Bom, Bom)</h4>
+  <div class="markdown level1 summary"><p>Performs a flat merge of two BOMs.</p>
+<p>Useful for situations like building a consolidated BOM for a web
+application. Flat merge can combine the BOM for frontend code
+with the BOM for backend code and return a single, combined BOM.</p>
+<p>For situations where system component hierarchy is required to be
+maintained refer to the <code>HierarchicalMerge</code> method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Bom FlatMerge(Bom bom1, Bom bom2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td><span class="parametername">bom1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td><span class="parametername">bom2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_FlatMerge_IEnumerable_CycloneDX_Models_v1_3_Bom__.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable%7BCycloneDX.Models.v1_3.Bom%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L99">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_IEnumerable_CycloneDX_Models_v1_3_Bom__" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable{CycloneDX.Models.v1_3.Bom})">FlatMerge(IEnumerable&lt;Bom&gt;)</h4>
+  <div class="markdown level1 summary"><p>Performs a flat merge of multiple BOMs.</p>
+<p>Useful for situations like building a consolidated BOM for a web
+application. Flat merge can combine the BOM for frontend code
+with the BOM for backend code and return a single, combined BOM.</p>
+<p>For situations where system component hierarchy is required to be
+maintained refer to the <code>HierarchicalMerge</code> method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Bom FlatMerge(IEnumerable&lt;Bom&gt; boms)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a>&gt;</td>
+        <td><span class="parametername">boms</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_GenerateSerialNumber.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.GenerateSerialNumber%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/GenerateSerialNumber.cs/#L26">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_GenerateSerialNumber_" data-uid="CycloneDX.Utils.CycloneDXUtils.GenerateSerialNumber*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_GenerateSerialNumber" data-uid="CycloneDX.Utils.CycloneDXUtils.GenerateSerialNumber">GenerateSerialNumber()</h4>
+  <div class="markdown level1 summary"><p>Utility method to generate a valid, unique, CycloneDX formatted BOM serial number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GenerateSerialNumber()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_HierarchicalMerge_IEnumerable_CycloneDX_Models_v1_3_Bom__CycloneDX_Models_v1_3_Component_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.HierarchicalMerge(IEnumerable%7BCycloneDX.Models.v1_3.Bom%7D%2CCycloneDX.Models.v1_3.Component)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L125">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_HierarchicalMerge_" data-uid="CycloneDX.Utils.CycloneDXUtils.HierarchicalMerge*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_HierarchicalMerge_IEnumerable_CycloneDX_Models_v1_3_Bom__CycloneDX_Models_v1_3_Component_" data-uid="CycloneDX.Utils.CycloneDXUtils.HierarchicalMerge(IEnumerable{CycloneDX.Models.v1_3.Bom},CycloneDX.Models.v1_3.Component)">HierarchicalMerge(IEnumerable&lt;Bom&gt;, Component)</h4>
+  <div class="markdown level1 summary"><p>Performs a hierarchical merge for multiple BOMs.</p>
+<p>To retain system component hierarchy, top level BOM metadata
+component must be included in each BOM.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Bom HierarchicalMerge(IEnumerable&lt;Bom&gt; boms, Component bomSubject)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a>&gt;</td>
+        <td><span class="parametername">boms</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Component.html">Component</a></td>
+        <td><span class="parametername">bomSubject</span></td>
+        <td><p>The component described by the hierarchical merge being performed.</p>
+<p>This will be included as the top level BOM metadata component in
+the returned BOM.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_MultipleComponentVersions_CycloneDX_Models_v1_3_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.MultipleComponentVersions(CycloneDX.Models.v1_3.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/MultipleComponentVersions.cs/#L33">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_MultipleComponentVersions_" data-uid="CycloneDX.Utils.CycloneDXUtils.MultipleComponentVersions*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_MultipleComponentVersions_CycloneDX_Models_v1_3_Bom_" data-uid="CycloneDX.Utils.CycloneDXUtils.MultipleComponentVersions(CycloneDX.Models.v1_3.Bom)">MultipleComponentVersions(Bom)</h4>
+  <div class="markdown level1 summary"><p>Analyzes a BOM identifying when multiple versions of the same
+component have been included.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Dictionary&lt;string, List&lt;Component&gt;&gt; MultipleComponentVersions(Bom bom)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td><span class="parametername">bom</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">List</span>&lt;<a class="xref" href="CycloneDX.Models.v1_3.Component.html">Component</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_RemoveInternalProperties_CycloneDX_Models_v1_3_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.RemoveInternalProperties(CycloneDX.Models.v1_3.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/RemoveInternalProperties.cs/#L35">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_RemoveInternalProperties_" data-uid="CycloneDX.Utils.CycloneDXUtils.RemoveInternalProperties*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_RemoveInternalProperties_CycloneDX_Models_v1_3_Bom_" data-uid="CycloneDX.Utils.CycloneDXUtils.RemoveInternalProperties(CycloneDX.Models.v1_3.Bom)">RemoveInternalProperties(Bom)</h4>
+  <div class="markdown level1 summary"><p>Utility method to remove all properties from a BOM that are in the
+<code>internal</code> namespace.</p>
+<p>This should be used on BOMs before sharing them externally to
+your organization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveInternalProperties(Bom bom)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td><span class="parametername">bom</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/RemoveInternalProperties.cs/#L25" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
