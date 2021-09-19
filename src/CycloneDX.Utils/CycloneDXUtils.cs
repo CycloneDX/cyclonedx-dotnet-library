@@ -15,17 +15,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models.v1_3;
+
 namespace CycloneDX.Utils
 {
-    public static partial class CycloneDXUtils
-    {
-        /// <summary>
-        /// Utility method to generate a valid, unique, CycloneDX formatted BOM serial number.
-        /// </summary>
-        /// <returns></returns>
-        public static string GenerateSerialNumber()
-        {
-            return "urn:uuid:" + System.Guid.NewGuid().ToString();
-        }
-    }
+    /// <summary>
+    /// Class containing utility methods that operate on CycloneDX BOMs.
+    /// </summary>
+    public static partial class CycloneDXUtils {}
 }

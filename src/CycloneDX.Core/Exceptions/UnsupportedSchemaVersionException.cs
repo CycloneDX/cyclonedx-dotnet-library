@@ -22,9 +22,9 @@ namespace CycloneDX.Exceptions
     /// <summary>
     /// Exception unsupported format and specification versions.
     /// 
-    /// XML supports all versions
-    /// JSON support added from v1.2
-    /// Protobuf support added from v1.3
+    /// XML supports all versions  
+    /// JSON supported from v1.2  
+    /// Protobuf supported from v1.3  
     /// </summary>
     public class UnsupportedFormatSpecificationVersionException : Exception
     {

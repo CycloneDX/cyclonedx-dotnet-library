@@ -22,6 +22,10 @@ using CycloneDX.Models.v1_3;
 
 namespace CycloneDX.Utils
 {
+    /// <summary>
+    /// Generic class representing the diff of an item when generating a diff between BOMs.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class DiffItem<T>
     {
         public List<T> Added { get; set; } = new List<T>();
@@ -31,6 +35,12 @@ namespace CycloneDX.Utils
 
     public static partial class CycloneDXUtils
     {
+        /// <summary>
+        /// Generates a component version diff between two BOMs.
+        /// </summary>
+        /// <param name="fromBom"></param>
+        /// <param name="toBom"></param>
+        /// <returns></returns>
         public static Dictionary<string, DiffItem<Component>> ComponentVersionDiff(Bom fromBom, Bom toBom)
         {
             var result = new Dictionary<string, DiffItem<Component>>();

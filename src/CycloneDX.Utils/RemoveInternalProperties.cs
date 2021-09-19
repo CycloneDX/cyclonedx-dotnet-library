@@ -24,6 +24,14 @@ namespace CycloneDX.Utils
 {
     public static partial class CycloneDXUtils
     {
+        /// <summary>
+        /// Utility method to remove all properties from a BOM that are in the
+        /// <c>internal</c> namespace.
+        /// 
+        /// This should be used on BOMs before sharing them externally to
+        /// your organization.
+        /// </summary>
+        /// <param name="bom"></param>
         public static void RemoveInternalProperties(Bom bom)
         {
             RemoveInternalProperties(bom.Metadata?.Properties);

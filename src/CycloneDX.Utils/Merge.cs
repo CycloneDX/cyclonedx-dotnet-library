@@ -18,14 +18,10 @@
 using System;
 using System.Collections.Generic;
 using CycloneDX.Models.v1_3;
+using CycloneDX.Utils.Exceptions;
 
 namespace CycloneDX.Utils
 {
-    public class MissingMetadataComponentException : Exception
-    {
-        public MissingMetadataComponentException(string message) : base(message) {}
-    }
-
     class ListMergeHelper<T>
     {
         public List<T> Merge(List<T> list1, List<T> list2)
@@ -42,12 +38,19 @@ namespace CycloneDX.Utils
 
     public static partial class CycloneDXUtils
     {
-        [Obsolete("Merge method is deprecated, please use FlatMerge method instead.")]
-        public static Bom Merge(Bom bom1, Bom bom2)
-        {
-            return FlatMerge(bom1, bom2);
-        }
-
+        /// <summary>
+        /// Performs a flat merge of two BOMs.
+        /// 
+        /// Useful for situations like building a consolidated BOM for a web
+        /// application. Flat merge can combine the BOM for frontend code
+        /// with the BOM for backend code and return a single, combined BOM.
+        /// 
+        /// For situations where system component hierarchy is required to be
+        /// maintained refer to the <c>HierarchicalMerge</c> method.
+        /// </summary>
+        /// <param name="bom1"></param>
+        /// <param name="bom2"></param>
+        /// <returns></returns>
         public static Bom FlatMerge(Bom bom1, Bom bom2)
         {
             var result = new Bom();
@@ -80,6 +83,19 @@ namespace CycloneDX.Utils
             return result;
         }
 
+        /// <summary>
+        /// Performs a flat merge of multiple BOMs.
+        /// 
+        /// Useful for situations like building a consolidated BOM for a web
+        /// application. Flat merge can combine the BOM for frontend code
+        /// with the BOM for backend code and return a single, combined BOM.
+        /// 
+        /// For situations where system component hierarchy is required to be
+        /// maintained refer to the <c>HierarchicalMerge</c> method.
+        /// </summary>
+        /// <param name="bom1"></param>
+        /// <param name="bom2"></param>
+        /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms)
         {
             var result = new Bom();
@@ -92,6 +108,20 @@ namespace CycloneDX.Utils
             return result;
         }
 
+        /// <summary>
+        /// Performs a hierarchical merge for multiple BOMs.
+        /// 
+        /// To retain system component hierarchy, top level BOM metadata
+        /// component must be included in each BOM.
+        /// </summary>
+        /// <param name="boms"></param>
+        /// <param name="bomSubject">
+        /// The component described by the hierarchical merge being performed.
+        /// 
+        /// This will be included as the top level BOM metadata component in
+        /// the returned BOM.
+        /// </param>
+        /// <returns></returns>
         public static Bom HierarchicalMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();

@@ -15,17 +15,17 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-namespace CycloneDX.Utils
+using System;
+
+namespace CycloneDX.Utils.Exceptions
 {
-    public static partial class CycloneDXUtils
+    /// <summary>
+    /// Exception used when metadata required for a BOM operation is missing.
+    /// </summary>
+    public class MissingMetadataComponentException : Exception
     {
-        /// <summary>
-        /// Utility method to generate a valid, unique, CycloneDX formatted BOM serial number.
-        /// </summary>
-        /// <returns></returns>
-        public static string GenerateSerialNumber()
-        {
-            return "urn:uuid:" + System.Guid.NewGuid().ToString();
-        }
+        public MissingMetadataComponentException() : base() {}
+        public MissingMetadataComponentException(string message) : base(message) {}
+        public MissingMetadataComponentException(string message, Exception innerException) : base(message, innerException) {}
     }
 }

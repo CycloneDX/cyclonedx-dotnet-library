@@ -21,6 +21,18 @@ namespace CycloneDX.Utils
 {
     public static partial class CycloneDXUtils
     {
+        /// <summary>
+        /// Utility method to generate a component identifier that can be
+        /// used when analysing two or more BOMs.
+        /// 
+        /// In general, a component <c>BomRef</c> should be used to identify
+        /// a specific component within a BOM. However, it is not very
+        /// useful when trying to compare components across BOMs. For example,
+        /// when trying to identify components that have changed versions
+        /// between two BOMs.
+        /// </summary>
+        /// <param name="component"></param>
+        /// <returns></returns>
         public static string ComponentAnalysisIdentifier(Component component)
         {
             var componentIdentifier = $"{component.Group}:{component.Name}";

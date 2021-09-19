@@ -24,6 +24,12 @@ namespace CycloneDX.Utils
 {
     public static partial class CycloneDXUtils
     {
+        /// <summary>
+        /// Analyzes a BOM identifying when multiple versions of the same
+        /// component have been included.
+        /// </summary>
+        /// <param name="bom"></param>
+        /// <returns></returns>
         public static Dictionary<string, List<Component>> MultipleComponentVersions(Bom bom)
         {
             var result = new Dictionary<string, List<Component>>();
