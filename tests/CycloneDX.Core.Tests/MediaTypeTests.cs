@@ -23,19 +23,26 @@ namespace CycloneDX.Core.Tests
     public class MediaTypeTests
     {
         [Theory]
-        [InlineData(Format.Xml, null, "application/vnd.cyclonedx+xml")]
-        [InlineData(Format.Xml, SchemaVersion.v1_3, "application/vnd.cyclonedx+xml; version=1.3")]
-        [InlineData(Format.Xml, SchemaVersion.v1_2, "application/vnd.cyclonedx+xml; version=1.2")]
-        [InlineData(Format.Xml, SchemaVersion.v1_1, "application/vnd.cyclonedx+xml; version=1.1")]
-        [InlineData(Format.Xml, SchemaVersion.v1_0, "application/vnd.cyclonedx+xml; version=1.0")]
-        [InlineData(Format.Json, null, "application/vnd.cyclonedx+json")]
-        [InlineData(Format.Json, SchemaVersion.v1_3, "application/vnd.cyclonedx+json; version=1.3")]
-        [InlineData(Format.Json, SchemaVersion.v1_2, "application/vnd.cyclonedx+json; version=1.2")]
-        [InlineData(Format.Protobuf, null, "application/x.vnd.cyclonedx+protobuf")]
-        [InlineData(Format.Protobuf, SchemaVersion.v1_3, "application/x.vnd.cyclonedx+protobuf; version=1.3")]
-        public void MediaTypeIsCorrect(Format format, SchemaVersion? schemaVersion, string expected)
+        [InlineData(Format.Xml, SpecificationVersion.v1_3, "application/vnd.cyclonedx+xml; version=1.3")]
+        [InlineData(Format.Xml, SpecificationVersion.v1_2, "application/vnd.cyclonedx+xml; version=1.2")]
+        [InlineData(Format.Xml, SpecificationVersion.v1_1, "application/vnd.cyclonedx+xml; version=1.1")]
+        [InlineData(Format.Xml, SpecificationVersion.v1_0, "application/vnd.cyclonedx+xml; version=1.0")]
+        [InlineData(Format.Json, SpecificationVersion.v1_3, "application/vnd.cyclonedx+json; version=1.3")]
+        [InlineData(Format.Json, SpecificationVersion.v1_2, "application/vnd.cyclonedx+json; version=1.2")]
+        [InlineData(Format.Protobuf, SpecificationVersion.v1_3, "application/x.vnd.cyclonedx+protobuf; version=1.3")]
+        public void MediaTypeAndVersionIsCorrect(Format format, SpecificationVersion schemaVersion, string expected)
         {
             Assert.Equal(expected, MediaTypes.GetMediaType(format, schemaVersion));
         }
+
+        [Theory]
+        [InlineData(Format.Xml, "application/vnd.cyclonedx+xml")]
+        [InlineData(Format.Json, "application/vnd.cyclonedx+json")]
+        [InlineData(Format.Protobuf, "application/x.vnd.cyclonedx+protobuf")]
+        public void MediaTypeIsCorrect(Format format, string expected)
+        {
+            Assert.Equal(expected, MediaTypes.GetMediaType(format));
+        }
+
     }
 }

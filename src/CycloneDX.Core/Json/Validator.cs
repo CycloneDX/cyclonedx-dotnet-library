@@ -46,16 +46,16 @@ namespace CycloneDX.Json
         }
 
         [Obsolete("Validate(Stream, SchemaVersion) is deprecated and will be removed in a future version. Use ValidateAsync(Stream, ShemaVersion) instead.")]
-        public static async Task<ValidationResult> Validate(Stream jsonStream, SchemaVersion schemaVersion)
+        public static async Task<ValidationResult> Validate(Stream jsonStream, SpecificationVersion schemaVersion)
         {
             return await ValidateAsync(jsonStream, schemaVersion);
         }
 
-        public static async Task<ValidationResult> ValidateAsync(Stream jsonStream, SchemaVersion schemaVersion)
+        public static async Task<ValidationResult> ValidateAsync(Stream jsonStream, SpecificationVersion schemaVersion)
         {
-            if (schemaVersion == SchemaVersion.v1_0 || schemaVersion == SchemaVersion.v1_1)
+            if (schemaVersion == SpecificationVersion.v1_0 || schemaVersion == SpecificationVersion.v1_1)
             {
-                throw new Exceptions.UnsupportedSchemaVersionException($"JSON format is not supported by schema version {schemaVersion}");
+                throw new Exceptions.UnsupportedFormatSpecificationVersionException($"JSON format is not supported by schema version {schemaVersion}");
             }
 
             var schemaVersionString = SchemaVersionResourceFilenameString(schemaVersion);
@@ -69,11 +69,11 @@ namespace CycloneDX.Json
             }
         }
         
-        public static ValidationResult Validate(string jsonString, SchemaVersion schemaVersion)
+        public static ValidationResult Validate(string jsonString, SpecificationVersion schemaVersion)
         {
-            if (schemaVersion == SchemaVersion.v1_0 || schemaVersion == SchemaVersion.v1_1)
+            if (schemaVersion == SpecificationVersion.v1_0 || schemaVersion == SpecificationVersion.v1_1)
             {
-                throw new Exceptions.UnsupportedSchemaVersionException($"JSON format is not supported by schema version {schemaVersion}");
+                throw new Exceptions.UnsupportedFormatSpecificationVersionException($"JSON format is not supported by schema version {schemaVersion}");
             }
 
             var schemaVersionString = SchemaVersionResourceFilenameString(schemaVersion);
@@ -163,6 +163,6 @@ namespace CycloneDX.Json
             };
         }
 
-        private static string SchemaVersionResourceFilenameString(SchemaVersion schemaVersion) => schemaVersion.ToString().Substring(1).Replace('_', '.');
+        private static string SchemaVersionResourceFilenameString(SpecificationVersion schemaVersion) => schemaVersion.ToString().Substring(1).Replace('_', '.');
     }
 }

@@ -19,10 +19,17 @@ using System;
 
 namespace CycloneDX.Exceptions
 {
-    public class UnsupportedSchemaVersionException : Exception
+    /// <summary>
+    /// Exception unsupported format and specification versions.
+    /// 
+    /// XML supports all versions
+    /// JSON support added from v1.2
+    /// Protobuf support added from v1.3
+    /// </summary>
+    public class UnsupportedFormatSpecificationVersionException : Exception
     {
-        public UnsupportedSchemaVersionException() {}
-        public UnsupportedSchemaVersionException(string message) : base(message) {}
-        public UnsupportedSchemaVersionException(string message, Exception innerException) : base(message, innerException) {}
+        public UnsupportedFormatSpecificationVersionException() {}
+        public UnsupportedFormatSpecificationVersionException(string message) : base(message) {}
+        public UnsupportedFormatSpecificationVersionException(string message, Exception innerException) : base(message, innerException) {}
     }
 }

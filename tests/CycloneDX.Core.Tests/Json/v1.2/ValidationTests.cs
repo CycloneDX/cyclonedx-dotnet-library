@@ -53,7 +53,7 @@ namespace CycloneDX.Tests.Json.v1_2
              var resourceFilename = Path.Join("Resources", "v1.2", filename);
              var jsonString = File.ReadAllText(resourceFilename);
 
-             var validationResult = Validator.Validate(jsonString, SchemaVersion.v1_2);
+             var validationResult = Validator.Validate(jsonString, SpecificationVersion.v1_2);
 
              Assert.True(validationResult.Valid);
         }
@@ -86,7 +86,7 @@ namespace CycloneDX.Tests.Json.v1_2
              var resourceFilename = Path.Join("Resources", "v1.2", filename);
              using (var jsonStream = File.OpenRead(resourceFilename))
              {
-                var validationResult = await Validator.ValidateAsync(jsonStream, SchemaVersion.v1_2);
+                var validationResult = await Validator.ValidateAsync(jsonStream, SpecificationVersion.v1_2);
 
                 Assert.True(validationResult.Valid);
              }

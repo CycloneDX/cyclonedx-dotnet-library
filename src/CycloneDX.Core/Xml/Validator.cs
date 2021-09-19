@@ -29,7 +29,7 @@ namespace CycloneDX.Xml
 {
     public static class Validator
     {
-        public static Models.ValidationResult Validate(Stream xmlStream, SchemaVersion schemaVersion)
+        public static Models.ValidationResult Validate(Stream xmlStream, SpecificationVersion schemaVersion)
         {
             var validationMessages = new List<string>();
 
@@ -84,7 +84,7 @@ namespace CycloneDX.Xml
             };
         }
 
-        public static async Task<Models.ValidationResult> Validate(string xmlString, SchemaVersion schemaVersion)
+        public static async Task<Models.ValidationResult> Validate(string xmlString, SpecificationVersion schemaVersion)
         {
             using (var stream = new MemoryStream())
             using (var writer = new StreamWriter(stream))

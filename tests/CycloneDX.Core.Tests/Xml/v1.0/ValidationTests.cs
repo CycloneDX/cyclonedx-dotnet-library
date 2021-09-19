@@ -34,7 +34,7 @@ namespace CycloneDX.Tests.Xml.v1_0
             var resourceFilename = Path.Join("Resources", "v1.0", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var validationResult = await Validator.Validate(xmlBom, SchemaVersion.v1_0);
+            var validationResult = await Validator.Validate(xmlBom, SpecificationVersion.v1_0);
 
             Assert.True(validationResult.Valid);
         }

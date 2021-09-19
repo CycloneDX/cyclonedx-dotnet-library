@@ -55,7 +55,7 @@ namespace CycloneDX.Tests.Xml.v1_2
             var resourceFilename = Path.Join("Resources", "v1.2", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var validationResult = await Validator.Validate(xmlBom, SchemaVersion.v1_2);
+            var validationResult = await Validator.Validate(xmlBom, SpecificationVersion.v1_2);
 
             Assert.True(validationResult.Valid);
         }
@@ -90,7 +90,7 @@ namespace CycloneDX.Tests.Xml.v1_2
             var resourceFilename = Path.Join("Resources", "v1.2", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var validationResult = await Validator.Validate(xmlBom, SchemaVersion.v1_2);
+            var validationResult = await Validator.Validate(xmlBom, SpecificationVersion.v1_2);
 
             Assert.False(validationResult.Valid);
         }

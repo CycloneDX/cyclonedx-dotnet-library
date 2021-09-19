@@ -19,7 +19,10 @@ using System;
 
 namespace CycloneDX
 {
-    public enum SchemaVersion
+    /// <summary>
+    /// Enum of all supported CycloneDX specification versions.
+    /// </summary>
+    public enum SpecificationVersion
     {
         v1_0,
         v1_1,

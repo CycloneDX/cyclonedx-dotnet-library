@@ -19,6 +19,9 @@ using System;
 
 namespace CycloneDX
 {
+    /// <summary>
+    /// Enum of all supported CycloneDX serialization formats.
+    /// </summary>
     public enum Format
     {
         Xml,
