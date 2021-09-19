@@ -9,7 +9,6 @@
 
 # CycloneDX libraries for .NET
 
-
 The CycloneDX libraries for .NET support programmatically consuming and producing CycloneDX bill-of-materials. CycloneDX is a lightweight BOM specification that is easily created, human readable, and simple to parse.
 
 The libraries support .NET Standard 2.0.
@@ -18,17 +17,7 @@ The libraries support .NET Standard 2.0.
 
 ## Getting Started
 
-To add data models, serialization, deserialization, and validation to your project
-
-```shell
-dotnet add package CycloneDX.Core
-```
-
-To add additional utility methods to your project
-
-```shell
-dotnet add package CycloneDX.Utils
-```
+For help getting started using the CycloneDX .NET Library refer to the [documentation](https://cyclonedx.github.io/cyclonedx-dotnet-library/).
 
 ## License
 
