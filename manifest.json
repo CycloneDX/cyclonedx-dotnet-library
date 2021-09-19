@@ -369,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "X17xEhESl8hnXzDduLofXqABCQHqSHatGzCDMWNl+bc="
+          "hash": "a9kWm15Z84OJK710/PZ40wgrdMJhzjwStsCmD7OrcFo="
         }
       },
       "is_incremental": false,
@@ -1653,7 +1653,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Xml.Validator.html",
-          "hash": "DfVFqJ2bP2y9QXdgJTqIw3IJGASbNShzhUaBgewDcEA="
+          "hash": "2th+ENiWUvtTPGCS1SmG/Qyj1e5ud5OT7aipOcOgXbY="
         }
       },
       "is_incremental": false,
@@ -1713,7 +1713,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/getting-started.html",
-          "hash": "GEO6N2nUhKieRLcZgkVcK/r3MooGc7LL5W4opZUGZ9Q="
+          "hash": "7+Pjh9sNorjJGIWN/tW6Glnk/q2AbfQcPrq7lssm5Oo="
         }
       },
       "is_incremental": false,
@@ -1748,7 +1748,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "lHd0IwRjjMzOpJWScVZY3AFBKhJ41c4Zj5lrGwB5uhs="
+          "hash": "hJmLYO1wh8D7z+9cAxfbkOgVIY68rlr9AxRBD/S1VHI="
         }
       },
       "is_incremental": false,

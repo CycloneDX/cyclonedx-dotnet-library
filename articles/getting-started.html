@@ -70,7 +70,97 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="getting-started">Getting Started</h1>
 
-<p><em>Coming soon</em></p>
+<p>All the following examples require the <code>CycloneDX.Core</code> library.</p>
+<p>Add to your project with the command <code>dotnet add package CycloneDX.Core</code>.</p>
+<h2 id="serialization-deserialization--validation">Serialization, Deserialization &amp; Validation</h2>
+<h3 id="json-examples">JSON Examples</h3>
+<pre><code class="lang-csharp">using CycloneDX.Json;
+
+...
+
+// deserializing from a string
+var bom = Deserializer.Deserialize(jsonString);
+// deserializing from a stream
+var bom = await Deserializer.DeserializeAsync(jsonStream);
+
+
+// serializing to a string
+var jsonString = Serializer.Serialize(bom);
+// serializing to a stream
+await Serializer.SerializeAsync(bom, stream);
+
+
+// validating a string or stream
+var result = Validator.Validate(jsonString, SpecificationVersion.v1_3);
+// or
+var result = await Validator.Validate(jsonStream, SpecificationVersion.v1_3);
+
+if (result.Valid)
+{
+    Console.WriteLine(&quot;Valid CycloneDX v1.3 JSON document&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;Not a valid CycloneDX v1.3 JSON document&quot;);
+    Console.WriteLine(&quot;Validation errors:&quot;);
+    foreach (var message in result.Messages)
+    {
+        Console.WriteLine(message);
+    }
+}
+</code></pre>
+<h3 id="xml-examples">XML Examples</h3>
+<pre><code class="lang-csharp">using CycloneDX.Xml;
+
+...
+
+// deserializing from a string
+var bom = Deserializer.Deserialize(xmlString);
+// deserializing from a stream
+var bom = Deserializer.Deserialize(xmlStream);
+
+
+// serializing to a string
+var xmlString = Serializer.Serialize(bom);
+// serializing to a stream
+Serializer.SerializeAsync(bom, stream);
+
+
+// validating a string or stream
+var result = Validator.Validate(xmlString, SpecificationVersion.v1_3);
+// or
+var result = Validator.Validate(xmlStream, SpecificationVersion.v1_3);
+
+if (result.Valid)
+{
+    Console.WriteLine(&quot;Valid CycloneDX v1.3 XML document&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;Not a valid CycloneDX v1.3 XML document&quot;);
+    Console.WriteLine(&quot;Validation errors:&quot;);
+    foreach (var message in result.Messages)
+    {
+        Console.WriteLine(message);
+    }
+}
+</code></pre>
+<h3 id="protobuf-examples">Protobuf Examples</h3>
+<pre><code class="lang-csharp">using CycloneDX.Protobuf;
+
+...
+
+// deserializing from a byte array
+var bom = Deserializer.Deserialize(protobufBytes);
+// deserializing from a stream
+var bom = Deserializer.Deserialize(protobufStream);
+
+
+// serializing to a byte array
+var bytes = Serializer.Serialize(bom);
+// serializing to a stream
+Serializer.SerializeAsync(bom, stream);
+</code></pre>
 </article>
           </div>
           
