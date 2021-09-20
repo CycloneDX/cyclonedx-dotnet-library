@@ -4,11 +4,14 @@ All the following examples require the `CycloneDX.Core` library.
 
 Add to your project with the command `dotnet add package CycloneDX.Core`.
 
+
 ## Serialization, Deserialization & Validation
+
 
 ### JSON Examples
 
 ```csharp
+using CycloneDX;
 using CycloneDX.Json;
 
 ...
@@ -28,7 +31,7 @@ await Serializer.SerializeAsync(bom, stream);
 // validating a string or stream
 var result = Validator.Validate(jsonString, SpecificationVersion.v1_3);
 // or
-var result = await Validator.Validate(jsonStream, SpecificationVersion.v1_3);
+var result = await Validator.ValidateAsync(jsonStream, SpecificationVersion.v1_3);
 
 if (result.Valid)
 {
@@ -45,9 +48,11 @@ else
 }
 ```
 
+
 ### XML Examples
 
 ```csharp
+using CycloneDX;
 using CycloneDX.Xml;
 
 ...
@@ -61,7 +66,7 @@ var bom = Deserializer.Deserialize(xmlStream);
 // serializing to a string
 var xmlString = Serializer.Serialize(bom);
 // serializing to a stream
-Serializer.SerializeAsync(bom, stream);
+Serializer.Serialize(bom, stream);
 
 
 // validating a string or stream
@@ -84,9 +89,11 @@ else
 }
 ```
 
+
 ### Protobuf Examples
 
 ```csharp
+using CycloneDX;
 using CycloneDX.Protobuf;
 
 ...
@@ -100,5 +107,21 @@ var bom = Deserializer.Deserialize(protobufStream);
 // serializing to a byte array
 var bytes = Serializer.Serialize(bom);
 // serializing to a stream
-Serializer.SerializeAsync(bom, stream);
+Serializer.Serialize(bom, stream);
+```
+
+
+## Converting between BOM formats
+
+```csharp
+using CycloneDX;
+
+...
+
+using (var inputFile = File.OpenRead("bom.json"))
+using (var outputFile = File.OpenWrite("bom.xml"))
+{
+    var bom = await Json.Deserializer.DeserializeAsync(jsonStream);
+    Xml.Serializer.Serialize(bom, outputFile);
+}
 ```
