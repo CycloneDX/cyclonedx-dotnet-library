@@ -74,7 +74,8 @@
 <p>Add to your project with the command <code>dotnet add package CycloneDX.Core</code>.</p>
 <h2 id="serialization-deserialization--validation">Serialization, Deserialization &amp; Validation</h2>
 <h3 id="json-examples">JSON Examples</h3>
-<pre><code class="lang-csharp">using CycloneDX.Json;
+<pre><code class="lang-csharp">using CycloneDX;
+using CycloneDX.Json;
 
 ...
 
@@ -93,7 +94,7 @@ await Serializer.SerializeAsync(bom, stream);
 // validating a string or stream
 var result = Validator.Validate(jsonString, SpecificationVersion.v1_3);
 // or
-var result = await Validator.Validate(jsonStream, SpecificationVersion.v1_3);
+var result = await Validator.ValidateAsync(jsonStream, SpecificationVersion.v1_3);
 
 if (result.Valid)
 {
@@ -110,7 +111,8 @@ else
 }
 </code></pre>
 <h3 id="xml-examples">XML Examples</h3>
-<pre><code class="lang-csharp">using CycloneDX.Xml;
+<pre><code class="lang-csharp">using CycloneDX;
+using CycloneDX.Xml;
 
 ...
 
@@ -123,7 +125,7 @@ var bom = Deserializer.Deserialize(xmlStream);
 // serializing to a string
 var xmlString = Serializer.Serialize(bom);
 // serializing to a stream
-Serializer.SerializeAsync(bom, stream);
+Serializer.Serialize(bom, stream);
 
 
 // validating a string or stream
@@ -146,7 +148,8 @@ else
 }
 </code></pre>
 <h3 id="protobuf-examples">Protobuf Examples</h3>
-<pre><code class="lang-csharp">using CycloneDX.Protobuf;
+<pre><code class="lang-csharp">using CycloneDX;
+using CycloneDX.Protobuf;
 
 ...
 
@@ -159,7 +162,19 @@ var bom = Deserializer.Deserialize(protobufStream);
 // serializing to a byte array
 var bytes = Serializer.Serialize(bom);
 // serializing to a stream
-Serializer.SerializeAsync(bom, stream);
+Serializer.Serialize(bom, stream);
+</code></pre>
+<h2 id="converting-between-bom-formats">Converting between BOM formats</h2>
+<pre><code class="lang-csharp">using CycloneDX;
+
+...
+
+using (var inputFile = File.OpenRead(&quot;bom.json&quot;))
+using (var outputFile = File.OpenWrite(&quot;bom.xml&quot;))
+{
+    var bom = await Json.Deserializer.DeserializeAsync(jsonStream);
+    Xml.Serializer.Serialize(bom, outputFile);
+}
 </code></pre>
 </article>
           </div>
