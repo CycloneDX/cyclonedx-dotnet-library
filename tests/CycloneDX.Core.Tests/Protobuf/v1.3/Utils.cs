@@ -174,7 +174,7 @@ namespace CycloneDX.Tests.Protobuf.v1_3.Utils
             await Task.Yield();
 
             string line;
-            while ((line = await reader.ReadLineAsync()) != null)
+            while ((line = await reader.ReadLineAsync().ConfigureAwait(false)) != null)
             {
                 lines.AppendLine(line);
             }
