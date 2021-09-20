@@ -45,7 +45,7 @@ namespace CycloneDX.Json
         {
             Contract.Requires(bom != null && outputStream != null);
             if (_options_v1_3 is null) _options_v1_3 = Utils.GetJsonSerializerOptions_v1_3();
-            await JsonSerializer.SerializeAsync<Models.v1_3.Bom>(outputStream, bom, _options_v1_3);
+            await JsonSerializer.SerializeAsync<Models.v1_3.Bom>(outputStream, bom, _options_v1_3).ConfigureAwait(false);;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace CycloneDX.Json
         {
             Contract.Requires(bom != null && outputStream != null);
             if (_options_v1_2 is null) _options_v1_2 = Utils.GetJsonSerializerOptions_v1_2();
-            await JsonSerializer.SerializeAsync<Models.v1_2.Bom>(outputStream, bom, _options_v1_2);
+            await JsonSerializer.SerializeAsync<Models.v1_2.Bom>(outputStream, bom, _options_v1_2).ConfigureAwait(false);;
         }
 
         /// <summary>

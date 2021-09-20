@@ -66,8 +66,8 @@ namespace CycloneDX.Json
             
             using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{schemaVersionString}.schema.json"))
             {
-                var jsonSchema = await JsonSchema.FromStream(schemaStream);
-                var jsonDocument = await JsonDocument.ParseAsync(jsonStream);
+                var jsonSchema = await JsonSchema.FromStream(schemaStream).ConfigureAwait(false);
+                var jsonDocument = await JsonDocument.ParseAsync(jsonStream).ConfigureAwait(false);
                 return Validate(jsonSchema, jsonDocument, schemaVersionString);
             }
         }

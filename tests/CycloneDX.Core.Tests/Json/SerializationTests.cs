@@ -52,8 +52,8 @@ namespace CycloneDX.Tests.Json
             using (var ms = new MemoryStream())
             using (var sr = new StreamReader(ms))
             {
-                var bom = await Deserializer.DeserializeAsync(jsonBomStream);
-                await Serializer.SerializeAsync(bom, ms);
+                var bom = await Deserializer.DeserializeAsync(jsonBomStream).ConfigureAwait(false);
+                await Serializer.SerializeAsync(bom, ms).ConfigureAwait(false);
                 ms.Position = 0;
                 Snapshot.Match(sr.ReadToEnd(), SnapshotNameExtension.Create(filename));
             }
