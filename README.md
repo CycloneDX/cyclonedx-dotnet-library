@@ -13,8 +13,6 @@ The CycloneDX libraries for .NET support programmatically consuming and producin
 
 The libraries support .NET Standard 2.0.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CycloneDX/cyclonedx-dotnet-library)
-
 ## Getting Started
 
 For help getting started using the CycloneDX .NET Library refer to the [documentation](https://cyclonedx.github.io/cyclonedx-dotnet-library/).
