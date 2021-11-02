@@ -1,10 +1,7 @@
-ARG BASE_IMAGE=gitpod/workspace-full:latest
-ARG USERNAME=gitpod
-
-FROM $BASE_IMAGE
+FROM gitpod/workspace-full-vnc:latest
 
 USER root
-# Install .NET runtime dependencies
+# Install .NET runtime dependencies and the git gui
 RUN apt-get update \
     && apt-get install -y \
         libc6 \
@@ -14,16 +11,19 @@ RUN apt-get update \
         libssl1.1 \
         libstdc++6 \
         zlib1g \
+        git-gui \
+        unzip \
     && rm -rf /var/lib/apt/lists/*
 
-USER $USERNAME
+# install protocol buffer compiler
+RUN wget -O protoc.zip https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protoc-3.15.8-linux-x86_64.zip \
+    && unzip protoc.zip -d $HOME/.local \
+    && rm protoc.zip
 
-# Install .NET SDK
-# Source: https://docs.microsoft.com/dotnet/core/install/linux-scripted-manual#scripted-install
-RUN mkdir -p "$HOME/dotnet" \
-    && wget --output-document="$HOME/dotnet/dotnet-install.sh" https://dot.net/v1/dotnet-install.sh \
-    && chmod +x "$HOME/dotnet/dotnet-install.sh"
-RUN "$HOME/dotnet/dotnet-install.sh" --channel 3.1 --install-dir "$HOME/dotnet"
 
-ENV DOTNET_ROOT="$HOME/dotnet"
-ENV PATH=$PATH:"$HOME/dotnet"
+USER gitpod
+
+# messy handling for https://github.com/gitpod-io/gitpod/issues/5090
+ENV DOTNET_ROOT="/workspace/.dotnet"
+ENV PATH=$PATH:$DOTNET_ROOT
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=true
