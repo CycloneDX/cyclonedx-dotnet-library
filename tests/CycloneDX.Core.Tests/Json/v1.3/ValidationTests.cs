@@ -53,14 +53,14 @@ namespace CycloneDX.Tests.Json.v1_3
         [InlineData("valid-properties-1.3.json")]
         [InlineData("valid-service-1.3.json")]
         [InlineData("valid-service-empty-objects-1.3.json")]
-         public void ValidateJsonStringTest(string filename)
-         {
-             var resourceFilename = Path.Join("Resources", "v1.3", filename);
-             var jsonString = File.ReadAllText(resourceFilename);
+        public void ValidateJsonStringTest(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", "v1.3", filename);
+            var jsonString = File.ReadAllText(resourceFilename);
 
-             var validationResult = Validator.Validate(jsonString, SpecificationVersion.v1_3);
+            var validationResult = Validator.Validate(jsonString, SpecificationVersion.v1_3);
 
-             Assert.True(validationResult.Valid);
+            Assert.True(validationResult.Valid);
         }
 
         [Theory]
@@ -91,15 +91,15 @@ namespace CycloneDX.Tests.Json.v1_3
         [InlineData("valid-properties-1.3.json")]
         [InlineData("valid-service-1.3.json")]
         [InlineData("valid-service-empty-objects-1.3.json")]
-         public async Task ValidateJsonStreamTest(string filename)
-         {
-             var resourceFilename = Path.Join("Resources", "v1.3", filename);
-             using (var jsonStream = File.OpenRead(resourceFilename))
-             {
+        public async Task ValidateJsonStreamTest(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", "v1.3", filename);
+            using (var jsonStream = File.OpenRead(resourceFilename))
+            {
                 var validationResult = await Validator.ValidateAsync(jsonStream, SpecificationVersion.v1_3).ConfigureAwait(false);
 
                 Assert.True(validationResult.Valid);
-             }
+            }
         }
     }
 }

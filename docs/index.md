@@ -20,6 +20,18 @@ To add additional utility methods to your project
 dotnet add package CycloneDX.Utils
 ```
 
+To add SPDX serialization, deserialization, and validation to your project
+
+```shell
+dotnet add package CycloneDX.Spdx
+```
+
+To convert between CycloneDX and SPDX formats
+
+```shell
+dotnet add package CycloneDX.Spdx.Interop
+```
+
 For code examples check out the [Getting Started Article](articles/getting-started.md)
 
 ## License
