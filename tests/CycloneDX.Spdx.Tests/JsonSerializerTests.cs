@@ -23,36 +23,37 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Spdx.Serialization;
 
-namespace CycloneDX.Spdx.Tests;
-
-public class JsonSerializerTests
+namespace CycloneDX.Spdx.Tests
 {
-    [Theory]
-    [InlineData("document")]
-    public void JsonRoundTripTest(string baseFilename)
+    public class JsonSerializerTests
     {
-        var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
-        var document = File.ReadAllText(resourceFilename);
-
-        var spdxDocument = JsonSerializer.Deserialize(document);
-        var result = JsonSerializer.Serialize(spdxDocument);
-
-        Snapshot.Match(result, SnapshotNameExtension.Create(baseFilename));
-    }
-
-    [Theory]
-    [InlineData("document")]
-    public async Task JsonAsyncRoundTripTest(string baseFilename)
-    {
-        var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
-
-        using (var jsonStream = File.OpenRead(resourceFilename))
-        using (var outputStream = new MemoryStream())
+        [Theory]
+        [InlineData("document")]
+        public void JsonRoundTripTest(string baseFilename)
         {
-            var spdxDocument = await JsonSerializer.DeserializeAsync(jsonStream);
-            await JsonSerializer.SerializeAsync(spdxDocument, outputStream);
-            var result = System.Text.Encoding.UTF8.GetString(outputStream.ToArray());
+            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var document = File.ReadAllText(resourceFilename);
+
+            var spdxDocument = JsonSerializer.Deserialize(document);
+            var result = JsonSerializer.Serialize(spdxDocument);
+
             Snapshot.Match(result, SnapshotNameExtension.Create(baseFilename));
+        }
+
+        [Theory]
+        [InlineData("document")]
+        public async Task JsonAsyncRoundTripTest(string baseFilename)
+        {
+            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+
+            using (var jsonStream = File.OpenRead(resourceFilename))
+            using (var outputStream = new MemoryStream())
+            {
+                var spdxDocument = await JsonSerializer.DeserializeAsync(jsonStream);
+                await JsonSerializer.SerializeAsync(spdxDocument, outputStream);
+                var result = System.Text.Encoding.UTF8.GetString(outputStream.ToArray());
+                Snapshot.Match(result, SnapshotNameExtension.Create(baseFilename));
+            }
         }
     }
 }

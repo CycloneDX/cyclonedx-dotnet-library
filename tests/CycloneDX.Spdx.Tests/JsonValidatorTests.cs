@@ -23,32 +23,33 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Spdx.Validation;
 
-namespace CycloneDX.Spdx.Tests;
-
-public class JsonValidatorTests
+namespace CycloneDX.Spdx.Tests
 {
-    [Theory]
-    [InlineData("document")]
-    public void ValidateJsonStringTest(string baseFilename)
+    public class JsonValidatorTests
     {
-        var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
-        var document = File.ReadAllText(resourceFilename);
-
-        var result = JsonValidator.Validate(document);
-
-        Assert.True(result.Valid);
-    }
-
-    [Theory]
-    [InlineData("document")]
-    public async Task ValidateJsonStreamTest(string baseFilename)
-    {
-        var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
-        using (var jsonStream = File.OpenRead(resourceFilename))
+        [Theory]
+        [InlineData("document")]
+        public void ValidateJsonStringTest(string baseFilename)
         {
-            var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
+            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var document = File.ReadAllText(resourceFilename);
 
-            Assert.True(validationResult.Valid);
+            var result = JsonValidator.Validate(document);
+
+            Assert.True(result.Valid);
+        }
+
+        [Theory]
+        [InlineData("document")]
+        public async Task ValidateJsonStreamTest(string baseFilename)
+        {
+            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            using (var jsonStream = File.OpenRead(resourceFilename))
+            {
+                var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
+
+                Assert.True(validationResult.Valid);
+            }
         }
     }
 }
