@@ -26,7 +26,7 @@ using CycloneDX.Spdx.Models;
 
 namespace CycloneDX.Spdx.Validation
 {
-    public class JsonValidator
+    public static class JsonValidator
     {
         /// <summary>
         /// Validate the stream contents represent a valid SPDX JSON document.

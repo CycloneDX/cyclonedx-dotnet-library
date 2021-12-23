@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 
 namespace CycloneDX.Spdx.Serialization
 {
-    public class JsonSerializer
+    public static class JsonSerializer
     {
         // this is so we can "cache" the serialization options
         // instantiating a new instance each time tanks serialization performance
