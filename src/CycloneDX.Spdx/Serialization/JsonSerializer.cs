@@ -44,27 +44,27 @@ namespace CycloneDX.Spdx.Serialization
 
         public static string Serialize(Models.v2_2.SpdxDocument document)
         {
-            if (_options_v2_2 is null) _options_v2_2 = GetJsonSerializerOptions_v2_2();
+            if (_options_v2_2 is null) { _options_v2_2 = GetJsonSerializerOptions_v2_2(); }
             return System.Text.Json.JsonSerializer.Serialize<Models.v2_2.SpdxDocument>(document, _options_v2_2);
         }
 
         public static async Task SerializeAsync(Models.v2_2.SpdxDocument document, Stream outputStream)
         {
             Contract.Requires(document != null && outputStream != null);
-            if (_options_v2_2 is null) _options_v2_2 = GetJsonSerializerOptions_v2_2();
+            if (_options_v2_2 is null) { _options_v2_2 = GetJsonSerializerOptions_v2_2(); }
             await System.Text.Json.JsonSerializer.SerializeAsync<Models.v2_2.SpdxDocument>(outputStream, document, _options_v2_2).ConfigureAwait(false);
         }
 
         public static Models.v2_2.SpdxDocument Deserialize(string document)
         {
-            if (_options_v2_2 is null) _options_v2_2 = GetJsonSerializerOptions_v2_2();
+            if (_options_v2_2 is null) { _options_v2_2 = GetJsonSerializerOptions_v2_2(); }
             return System.Text.Json.JsonSerializer.Deserialize<Models.v2_2.SpdxDocument>(document, _options_v2_2);
         }
 
         public static async Task<Models.v2_2.SpdxDocument> DeserializeAsync(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
-            if (_options_v2_2 is null) _options_v2_2 = GetJsonSerializerOptions_v2_2();
+            if (_options_v2_2 is null) { _options_v2_2 = GetJsonSerializerOptions_v2_2(); }
             var doc = await System.Text.Json.JsonSerializer.DeserializeAsync<Models.v2_2.SpdxDocument>(jsonStream, _options_v2_2).ConfigureAwait(false);
             return doc;
         }
