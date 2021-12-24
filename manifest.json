@@ -1101,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.v1_3.Bom.html",
-          "hash": "PGOSGyN8XCxJT2c8PnB3Vc+jMfQ64epAeDN3ICltcdU="
+          "hash": "8KSHJ2uD566Y6kQXxf6deEbcBpS3WDHpNR42doxKzrY="
         }
       },
       "is_incremental": false,
@@ -1149,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.v1_3.Component.html",
-          "hash": "HyS0GWkMr+Sb8f5lhyVCmPAt6RDRc7NhQp8tU8Vw8gM="
+          "hash": "UPOk1FBuIoy10f1jriPRgq6PdYIIXqhhmpb13iXlpX0="
         }
       },
       "is_incremental": false,
@@ -1553,6 +1553,138 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html",
+          "hash": "Z/tRvUv0uN4qw2l8D+pX7DA7j8RnP2tkmNuSkLZzcog="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Checksums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Checksums.html",
+          "hash": "kd7KkIzM8c1taP+L0dSdedsRL0dt3lKn4MPv6l+dCtQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Creators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Creators.html",
+          "hash": "L+jrvcKX8gyHfFKT0gCyZoMr1hj20jeIMoPEhV0+Gnc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.html",
+          "hash": "u3qeF/ey3pYtwnX/qAVceHdOQs4u8IAmCBEWBwwS77Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.html",
+          "hash": "2U5YIuRmj20FhPVIQBUhqByObaey8lXGgWkkm3AvpB8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Files.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Files.html",
+          "hash": "5cF0Cvkm6q6OEEM16WocGVUidXeU2BvqEnxSmSfNF9A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.General.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.General.html",
+          "hash": "GRU3G4SDc+7WMLmsixDIp4gupmrAeCVrtgBYipsdyLY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.html",
+          "hash": "/FgxtyW8oFmiJ96R1tAwr271Z7rVAPkHu0bpc0tS+/8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.html",
+          "hash": "EGimLV08R0vMmQXk2NeM+egVkuStosIC3b7CfkEDs1M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.html",
+          "hash": "f/g8k4KRZx4nCrQgGyY+UDftsZCKoCc/sW70ofDQasc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Interop.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Interop.html",
+          "hash": "RxlisOEhZfm5yBrgj5kV/SF7N6wumrG7JaW5khF6wIE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.ValidationResult.yml",
       "output": {
         ".html": {
@@ -1809,7 +1941,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Spdx.Models.v2_2.SpdxDocument.html",
-          "hash": "3+DBWifp6mriOgqPmtSSzzYKYoI5KWXAUpAwZ5gK77M="
+          "hash": "1cj60LCbRQ4vI2z0crGMerh51h75abXtgzKwO0sT7K0="
         }
       },
       "is_incremental": false,
@@ -1834,6 +1966,18 @@
         ".html": {
           "relative_path": "api/CycloneDX.Spdx.Models.html",
           "hash": "Bcwo975Sb9yjzqM20RBTDzUxfoLGv9BkMzVOC/Z1QdQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.PropertyTaxonomy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.PropertyTaxonomy.html",
+          "hash": "+QKMv32cwAFOgeo7KSVMKQk255rQG4Kjn0HaePWs1R4="
         }
       },
       "is_incremental": false,
@@ -1882,6 +2026,18 @@
         ".html": {
           "relative_path": "api/CycloneDX.Spdx.Validation.html",
           "hash": "LOJipgFbpHZiq5ZjAGQ5jXQGToN6CarbVVWQazAvK6g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.html",
+          "hash": "eRdM8NvJ+jRQp3ye+6Adr3Gyu9JXNMe985xLd+gZl+Y="
         }
       },
       "is_incremental": false,
@@ -2037,7 +2193,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "dJGlSNttDvDZpa/IBLuh5JBZWAnu9e5oUVQj0U6LIRM="
+          "hash": "JCh3KaiFrz2SYNGP7jXYrEUORNtuK8hBChnbyDH9/0s="
         }
       },
       "is_incremental": false,
@@ -2145,7 +2301,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 182,
+          "total_file_count": 195,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

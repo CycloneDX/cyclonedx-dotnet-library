@@ -8703,6 +8703,414 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Protobuf.Serializer.Serialize
   nameWithType: Serializer.Serialize
+- uid: CycloneDX.Spdx
+  name: CycloneDX.Spdx
+  href: api/CycloneDX.Spdx.html
+  commentId: N:CycloneDX.Spdx
+  fullName: CycloneDX.Spdx
+  nameWithType: CycloneDX.Spdx
+- uid: CycloneDX.Spdx.Interop
+  name: CycloneDX.Spdx.Interop
+  href: api/CycloneDX.Spdx.Interop.html
+  commentId: N:CycloneDX.Spdx.Interop
+  fullName: CycloneDX.Spdx.Interop
+  nameWithType: CycloneDX.Spdx.Interop
+- uid: CycloneDX.Spdx.Interop.Helpers
+  name: CycloneDX.Spdx.Interop.Helpers
+  href: api/CycloneDX.Spdx.Interop.Helpers.html
+  commentId: N:CycloneDX.Spdx.Interop.Helpers
+  fullName: CycloneDX.Spdx.Interop.Helpers
+  nameWithType: CycloneDX.Spdx.Interop.Helpers
+- uid: CycloneDX.Spdx.Interop.Helpers.AttributionTexts
+  name: AttributionTexts
+  href: api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html
+  commentId: T:CycloneDX.Spdx.Interop.Helpers.AttributionTexts
+  fullName: CycloneDX.Spdx.Interop.Helpers.AttributionTexts
+  nameWithType: AttributionTexts
+- uid: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.AddSpdxAttributionTexts(CycloneDX.Models.v1_3.Component,List{System.String})
+  name: AddSpdxAttributionTexts(Component, List<String>)
+  href: api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html#CycloneDX_Spdx_Interop_Helpers_AttributionTexts_AddSpdxAttributionTexts_CycloneDX_Models_v1_3_Component_List_System_String__
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.AttributionTexts.AddSpdxAttributionTexts(CycloneDX.Models.v1_3.Component,List{System.String})
+  name.vb: AddSpdxAttributionTexts(Component, List(Of String))
+  fullName: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.AddSpdxAttributionTexts(CycloneDX.Models.v1_3.Component, List<System.String>)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.AddSpdxAttributionTexts(CycloneDX.Models.v1_3.Component, List(Of System.String))
+  nameWithType: AttributionTexts.AddSpdxAttributionTexts(Component, List<String>)
+  nameWithType.vb: AttributionTexts.AddSpdxAttributionTexts(Component, List(Of String))
+- uid: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.AddSpdxAttributionTexts*
+  name: AddSpdxAttributionTexts
+  href: api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html#CycloneDX_Spdx_Interop_Helpers_AttributionTexts_AddSpdxAttributionTexts_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.AttributionTexts.AddSpdxAttributionTexts
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.AddSpdxAttributionTexts
+  nameWithType: AttributionTexts.AddSpdxAttributionTexts
+- uid: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.GetSpdxAttributionTexts(CycloneDX.Models.v1_3.Component)
+  name: GetSpdxAttributionTexts(Component)
+  href: api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html#CycloneDX_Spdx_Interop_Helpers_AttributionTexts_GetSpdxAttributionTexts_CycloneDX_Models_v1_3_Component_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.AttributionTexts.GetSpdxAttributionTexts(CycloneDX.Models.v1_3.Component)
+  fullName: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.GetSpdxAttributionTexts(CycloneDX.Models.v1_3.Component)
+  nameWithType: AttributionTexts.GetSpdxAttributionTexts(Component)
+- uid: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.GetSpdxAttributionTexts*
+  name: GetSpdxAttributionTexts
+  href: api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html#CycloneDX_Spdx_Interop_Helpers_AttributionTexts_GetSpdxAttributionTexts_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.AttributionTexts.GetSpdxAttributionTexts
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.AttributionTexts.GetSpdxAttributionTexts
+  nameWithType: AttributionTexts.GetSpdxAttributionTexts
+- uid: CycloneDX.Spdx.Interop.Helpers.Checksums
+  name: Checksums
+  href: api/CycloneDX.Spdx.Interop.Helpers.Checksums.html
+  commentId: T:CycloneDX.Spdx.Interop.Helpers.Checksums
+  fullName: CycloneDX.Spdx.Interop.Helpers.Checksums
+  nameWithType: Checksums
+- uid: CycloneDX.Spdx.Interop.Helpers.Checksums.AddSpdxChecksums(CycloneDX.Models.v1_3.Component,List{CycloneDX.Spdx.Models.v2_2.Checksum})
+  name: AddSpdxChecksums(Component, List<Checksum>)
+  href: api/CycloneDX.Spdx.Interop.Helpers.Checksums.html#CycloneDX_Spdx_Interop_Helpers_Checksums_AddSpdxChecksums_CycloneDX_Models_v1_3_Component_List_CycloneDX_Spdx_Models_v2_2_Checksum__
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.Checksums.AddSpdxChecksums(CycloneDX.Models.v1_3.Component,List{CycloneDX.Spdx.Models.v2_2.Checksum})
+  name.vb: AddSpdxChecksums(Component, List(Of Checksum))
+  fullName: CycloneDX.Spdx.Interop.Helpers.Checksums.AddSpdxChecksums(CycloneDX.Models.v1_3.Component, List<CycloneDX.Spdx.Models.v2_2.Checksum>)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.Checksums.AddSpdxChecksums(CycloneDX.Models.v1_3.Component, List(Of CycloneDX.Spdx.Models.v2_2.Checksum))
+  nameWithType: Checksums.AddSpdxChecksums(Component, List<Checksum>)
+  nameWithType.vb: Checksums.AddSpdxChecksums(Component, List(Of Checksum))
+- uid: CycloneDX.Spdx.Interop.Helpers.Checksums.AddSpdxChecksums*
+  name: AddSpdxChecksums
+  href: api/CycloneDX.Spdx.Interop.Helpers.Checksums.html#CycloneDX_Spdx_Interop_Helpers_Checksums_AddSpdxChecksums_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.Checksums.AddSpdxChecksums
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.Checksums.AddSpdxChecksums
+  nameWithType: Checksums.AddSpdxChecksums
+- uid: CycloneDX.Spdx.Interop.Helpers.Checksums.GetSpdxChecksums(CycloneDX.Models.v1_3.Component)
+  name: GetSpdxChecksums(Component)
+  href: api/CycloneDX.Spdx.Interop.Helpers.Checksums.html#CycloneDX_Spdx_Interop_Helpers_Checksums_GetSpdxChecksums_CycloneDX_Models_v1_3_Component_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.Checksums.GetSpdxChecksums(CycloneDX.Models.v1_3.Component)
+  fullName: CycloneDX.Spdx.Interop.Helpers.Checksums.GetSpdxChecksums(CycloneDX.Models.v1_3.Component)
+  nameWithType: Checksums.GetSpdxChecksums(Component)
+- uid: CycloneDX.Spdx.Interop.Helpers.Checksums.GetSpdxChecksums*
+  name: GetSpdxChecksums
+  href: api/CycloneDX.Spdx.Interop.Helpers.Checksums.html#CycloneDX_Spdx_Interop_Helpers_Checksums_GetSpdxChecksums_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.Checksums.GetSpdxChecksums
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.Checksums.GetSpdxChecksums
+  nameWithType: Checksums.GetSpdxChecksums
+- uid: CycloneDX.Spdx.Interop.Helpers.Creators
+  name: Creators
+  href: api/CycloneDX.Spdx.Interop.Helpers.Creators.html
+  commentId: T:CycloneDX.Spdx.Interop.Helpers.Creators
+  fullName: CycloneDX.Spdx.Interop.Helpers.Creators
+  nameWithType: Creators
+- uid: CycloneDX.Spdx.Interop.Helpers.Creators.AddSpdxCreators(CycloneDX.Models.v1_3.Bom,List{System.String})
+  name: AddSpdxCreators(Bom, List<String>)
+  href: api/CycloneDX.Spdx.Interop.Helpers.Creators.html#CycloneDX_Spdx_Interop_Helpers_Creators_AddSpdxCreators_CycloneDX_Models_v1_3_Bom_List_System_String__
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.Creators.AddSpdxCreators(CycloneDX.Models.v1_3.Bom,List{System.String})
+  name.vb: AddSpdxCreators(Bom, List(Of String))
+  fullName: CycloneDX.Spdx.Interop.Helpers.Creators.AddSpdxCreators(CycloneDX.Models.v1_3.Bom, List<System.String>)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.Creators.AddSpdxCreators(CycloneDX.Models.v1_3.Bom, List(Of System.String))
+  nameWithType: Creators.AddSpdxCreators(Bom, List<String>)
+  nameWithType.vb: Creators.AddSpdxCreators(Bom, List(Of String))
+- uid: CycloneDX.Spdx.Interop.Helpers.Creators.AddSpdxCreators*
+  name: AddSpdxCreators
+  href: api/CycloneDX.Spdx.Interop.Helpers.Creators.html#CycloneDX_Spdx_Interop_Helpers_Creators_AddSpdxCreators_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.Creators.AddSpdxCreators
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.Creators.AddSpdxCreators
+  nameWithType: Creators.AddSpdxCreators
+- uid: CycloneDX.Spdx.Interop.Helpers.Creators.GetSpdxCreators(CycloneDX.Models.v1_3.Bom)
+  name: GetSpdxCreators(Bom)
+  href: api/CycloneDX.Spdx.Interop.Helpers.Creators.html#CycloneDX_Spdx_Interop_Helpers_Creators_GetSpdxCreators_CycloneDX_Models_v1_3_Bom_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.Creators.GetSpdxCreators(CycloneDX.Models.v1_3.Bom)
+  fullName: CycloneDX.Spdx.Interop.Helpers.Creators.GetSpdxCreators(CycloneDX.Models.v1_3.Bom)
+  nameWithType: Creators.GetSpdxCreators(Bom)
+- uid: CycloneDX.Spdx.Interop.Helpers.Creators.GetSpdxCreators*
+  name: GetSpdxCreators
+  href: api/CycloneDX.Spdx.Interop.Helpers.Creators.html#CycloneDX_Spdx_Interop_Helpers_Creators_GetSpdxCreators_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.Creators.GetSpdxCreators
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.Creators.GetSpdxCreators
+  nameWithType: Creators.GetSpdxCreators
+- uid: CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers
+  name: CycloneDXBomHelpers
+  href: api/CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.html
+  commentId: T:CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers
+  fullName: CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers
+  nameWithType: CycloneDXBomHelpers
+- uid: CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.AddSpdxPackages(CycloneDX.Models.v1_3.Bom,CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  name: AddSpdxPackages(Bom, SpdxDocument)
+  href: api/CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.html#CycloneDX_Spdx_Interop_Helpers_CycloneDXBomHelpers_AddSpdxPackages_CycloneDX_Models_v1_3_Bom_CycloneDX_Spdx_Models_v2_2_SpdxDocument_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.AddSpdxPackages(CycloneDX.Models.v1_3.Bom,CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  fullName: CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.AddSpdxPackages(CycloneDX.Models.v1_3.Bom, CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  nameWithType: CycloneDXBomHelpers.AddSpdxPackages(Bom, SpdxDocument)
+- uid: CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.AddSpdxPackages*
+  name: AddSpdxPackages
+  href: api/CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.html#CycloneDX_Spdx_Interop_Helpers_CycloneDXBomHelpers_AddSpdxPackages_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.AddSpdxPackages
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.AddSpdxPackages
+  nameWithType: CycloneDXBomHelpers.AddSpdxPackages
+- uid: CycloneDX.Spdx.Interop.Helpers.ExternalRefs
+  name: ExternalRefs
+  href: api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.html
+  commentId: T:CycloneDX.Spdx.Interop.Helpers.ExternalRefs
+  fullName: CycloneDX.Spdx.Interop.Helpers.ExternalRefs
+  nameWithType: ExternalRefs
+- uid: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.AddSpdxExternalRefs(CycloneDX.Models.v1_3.Component,List{CycloneDX.Spdx.Models.v2_2.ExternalRef})
+  name: AddSpdxExternalRefs(Component, List<ExternalRef>)
+  href: api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.html#CycloneDX_Spdx_Interop_Helpers_ExternalRefs_AddSpdxExternalRefs_CycloneDX_Models_v1_3_Component_List_CycloneDX_Spdx_Models_v2_2_ExternalRef__
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.ExternalRefs.AddSpdxExternalRefs(CycloneDX.Models.v1_3.Component,List{CycloneDX.Spdx.Models.v2_2.ExternalRef})
+  name.vb: AddSpdxExternalRefs(Component, List(Of ExternalRef))
+  fullName: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.AddSpdxExternalRefs(CycloneDX.Models.v1_3.Component, List<CycloneDX.Spdx.Models.v2_2.ExternalRef>)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.AddSpdxExternalRefs(CycloneDX.Models.v1_3.Component, List(Of CycloneDX.Spdx.Models.v2_2.ExternalRef))
+  nameWithType: ExternalRefs.AddSpdxExternalRefs(Component, List<ExternalRef>)
+  nameWithType.vb: ExternalRefs.AddSpdxExternalRefs(Component, List(Of ExternalRef))
+- uid: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.AddSpdxExternalRefs*
+  name: AddSpdxExternalRefs
+  href: api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.html#CycloneDX_Spdx_Interop_Helpers_ExternalRefs_AddSpdxExternalRefs_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.ExternalRefs.AddSpdxExternalRefs
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.AddSpdxExternalRefs
+  nameWithType: ExternalRefs.AddSpdxExternalRefs
+- uid: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.GetSpdxExternalRefs(CycloneDX.Models.v1_3.Component)
+  name: GetSpdxExternalRefs(Component)
+  href: api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.html#CycloneDX_Spdx_Interop_Helpers_ExternalRefs_GetSpdxExternalRefs_CycloneDX_Models_v1_3_Component_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.ExternalRefs.GetSpdxExternalRefs(CycloneDX.Models.v1_3.Component)
+  fullName: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.GetSpdxExternalRefs(CycloneDX.Models.v1_3.Component)
+  nameWithType: ExternalRefs.GetSpdxExternalRefs(Component)
+- uid: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.GetSpdxExternalRefs*
+  name: GetSpdxExternalRefs
+  href: api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.html#CycloneDX_Spdx_Interop_Helpers_ExternalRefs_GetSpdxExternalRefs_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.ExternalRefs.GetSpdxExternalRefs
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.ExternalRefs.GetSpdxExternalRefs
+  nameWithType: ExternalRefs.GetSpdxExternalRefs
+- uid: CycloneDX.Spdx.Interop.Helpers.Files
+  name: Files
+  href: api/CycloneDX.Spdx.Interop.Helpers.Files.html
+  commentId: T:CycloneDX.Spdx.Interop.Helpers.Files
+  fullName: CycloneDX.Spdx.Interop.Helpers.Files
+  nameWithType: Files
+- uid: CycloneDX.Spdx.Interop.Helpers.Files.AddSpdxFiles(CycloneDX.Models.v1_3.Bom,List{CycloneDX.Spdx.Models.v2_2.File})
+  name: AddSpdxFiles(Bom, List<File>)
+  href: api/CycloneDX.Spdx.Interop.Helpers.Files.html#CycloneDX_Spdx_Interop_Helpers_Files_AddSpdxFiles_CycloneDX_Models_v1_3_Bom_List_CycloneDX_Spdx_Models_v2_2_File__
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.Files.AddSpdxFiles(CycloneDX.Models.v1_3.Bom,List{CycloneDX.Spdx.Models.v2_2.File})
+  name.vb: AddSpdxFiles(Bom, List(Of File))
+  fullName: CycloneDX.Spdx.Interop.Helpers.Files.AddSpdxFiles(CycloneDX.Models.v1_3.Bom, List<CycloneDX.Spdx.Models.v2_2.File>)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.Files.AddSpdxFiles(CycloneDX.Models.v1_3.Bom, List(Of CycloneDX.Spdx.Models.v2_2.File))
+  nameWithType: Files.AddSpdxFiles(Bom, List<File>)
+  nameWithType.vb: Files.AddSpdxFiles(Bom, List(Of File))
+- uid: CycloneDX.Spdx.Interop.Helpers.Files.AddSpdxFiles*
+  name: AddSpdxFiles
+  href: api/CycloneDX.Spdx.Interop.Helpers.Files.html#CycloneDX_Spdx_Interop_Helpers_Files_AddSpdxFiles_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.Files.AddSpdxFiles
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.Files.AddSpdxFiles
+  nameWithType: Files.AddSpdxFiles
+- uid: CycloneDX.Spdx.Interop.Helpers.Files.GetSpdxFiles(CycloneDX.Models.v1_3.Bom)
+  name: GetSpdxFiles(Bom)
+  href: api/CycloneDX.Spdx.Interop.Helpers.Files.html#CycloneDX_Spdx_Interop_Helpers_Files_GetSpdxFiles_CycloneDX_Models_v1_3_Bom_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.Files.GetSpdxFiles(CycloneDX.Models.v1_3.Bom)
+  fullName: CycloneDX.Spdx.Interop.Helpers.Files.GetSpdxFiles(CycloneDX.Models.v1_3.Bom)
+  nameWithType: Files.GetSpdxFiles(Bom)
+- uid: CycloneDX.Spdx.Interop.Helpers.Files.GetSpdxFiles*
+  name: GetSpdxFiles
+  href: api/CycloneDX.Spdx.Interop.Helpers.Files.html#CycloneDX_Spdx_Interop_Helpers_Files_GetSpdxFiles_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.Files.GetSpdxFiles
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.Files.GetSpdxFiles
+  nameWithType: Files.GetSpdxFiles
+- uid: CycloneDX.Spdx.Interop.Helpers.General
+  name: General
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html
+  commentId: T:CycloneDX.Spdx.Interop.Helpers.General
+  fullName: CycloneDX.Spdx.Interop.Helpers.General
+  nameWithType: General
+- uid: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement(List{CycloneDX.Models.v1_3.Property},System.String,System.String)
+  name: AddSpdxElement(List<Property>, String, String)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_AddSpdxElement_List_CycloneDX_Models_v1_3_Property__System_String_System_String_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement(List{CycloneDX.Models.v1_3.Property},System.String,System.String)
+  name.vb: AddSpdxElement(List(Of Property), String, String)
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement(List<CycloneDX.Models.v1_3.Property>, System.String, System.String)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement(List(Of CycloneDX.Models.v1_3.Property), System.String, System.String)
+  nameWithType: General.AddSpdxElement(List<Property>, String, String)
+  nameWithType.vb: General.AddSpdxElement(List(Of Property), String, String)
+- uid: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement*
+  name: AddSpdxElement
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_AddSpdxElement_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement
+  nameWithType: General.AddSpdxElement
+- uid: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement``1(List{CycloneDX.Models.v1_3.Property},System.String,``0)
+  name: AddSpdxElement<T>(List<Property>, String, T)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_AddSpdxElement__1_List_CycloneDX_Models_v1_3_Property__System_String___0_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement``1(List{CycloneDX.Models.v1_3.Property},System.String,``0)
+  name.vb: AddSpdxElement(Of T)(List(Of Property), String, T)
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement<T>(List<CycloneDX.Models.v1_3.Property>, System.String, T)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElement(Of T)(List(Of CycloneDX.Models.v1_3.Property), System.String, T)
+  nameWithType: General.AddSpdxElement<T>(List<Property>, String, T)
+  nameWithType.vb: General.AddSpdxElement(Of T)(List(Of Property), String, T)
+- uid: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements(List{CycloneDX.Models.v1_3.Property},System.String,List{System.String})
+  name: AddSpdxElements(List<Property>, String, List<String>)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_AddSpdxElements_List_CycloneDX_Models_v1_3_Property__System_String_List_System_String__
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements(List{CycloneDX.Models.v1_3.Property},System.String,List{System.String})
+  name.vb: AddSpdxElements(List(Of Property), String, List(Of String))
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements(List<CycloneDX.Models.v1_3.Property>, System.String, List<System.String>)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements(List(Of CycloneDX.Models.v1_3.Property), System.String, List(Of System.String))
+  nameWithType: General.AddSpdxElements(List<Property>, String, List<String>)
+  nameWithType.vb: General.AddSpdxElements(List(Of Property), String, List(Of String))
+- uid: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements*
+  name: AddSpdxElements
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_AddSpdxElements_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements
+  nameWithType: General.AddSpdxElements
+- uid: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements``1(List{CycloneDX.Models.v1_3.Property},System.String,List{``0})
+  name: AddSpdxElements<T>(List<Property>, String, List<T>)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_AddSpdxElements__1_List_CycloneDX_Models_v1_3_Property__System_String_List___0__
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements``1(List{CycloneDX.Models.v1_3.Property},System.String,List{``0})
+  name.vb: AddSpdxElements(Of T)(List(Of Property), String, List(Of T))
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements<T>(List<CycloneDX.Models.v1_3.Property>, System.String, List<T>)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.General.AddSpdxElements(Of T)(List(Of CycloneDX.Models.v1_3.Property), System.String, List(Of T))
+  nameWithType: General.AddSpdxElements<T>(List<Property>, String, List<T>)
+  nameWithType.vb: General.AddSpdxElements(Of T)(List(Of Property), String, List(Of T))
+- uid: CycloneDX.Spdx.Interop.Helpers.General.Base64Decode(System.String)
+  name: Base64Decode(String)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_Base64Decode_System_String_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.Base64Decode(System.String)
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.Base64Decode(System.String)
+  nameWithType: General.Base64Decode(String)
+- uid: CycloneDX.Spdx.Interop.Helpers.General.Base64Decode*
+  name: Base64Decode
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_Base64Decode_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.General.Base64Decode
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.Base64Decode
+  nameWithType: General.Base64Decode
+- uid: CycloneDX.Spdx.Interop.Helpers.General.Base64Encode(System.String)
+  name: Base64Encode(String)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_Base64Encode_System_String_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.Base64Encode(System.String)
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.Base64Encode(System.String)
+  nameWithType: General.Base64Encode(String)
+- uid: CycloneDX.Spdx.Interop.Helpers.General.Base64Encode*
+  name: Base64Encode
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_Base64Encode_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.General.Base64Encode
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.Base64Encode
+  nameWithType: General.Base64Encode
+- uid: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement(List{CycloneDX.Models.v1_3.Property},System.String)
+  name: GetSpdxElement(List<Property>, String)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_GetSpdxElement_List_CycloneDX_Models_v1_3_Property__System_String_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement(List{CycloneDX.Models.v1_3.Property},System.String)
+  name.vb: GetSpdxElement(List(Of Property), String)
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement(List<CycloneDX.Models.v1_3.Property>, System.String)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement(List(Of CycloneDX.Models.v1_3.Property), System.String)
+  nameWithType: General.GetSpdxElement(List<Property>, String)
+  nameWithType.vb: General.GetSpdxElement(List(Of Property), String)
+- uid: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement*
+  name: GetSpdxElement
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_GetSpdxElement_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement
+  nameWithType: General.GetSpdxElement
+- uid: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement``1(List{CycloneDX.Models.v1_3.Property},System.String)
+  name: GetSpdxElement<T>(List<Property>, String)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_GetSpdxElement__1_List_CycloneDX_Models_v1_3_Property__System_String_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement``1(List{CycloneDX.Models.v1_3.Property},System.String)
+  name.vb: GetSpdxElement(Of T)(List(Of Property), String)
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement<T>(List<CycloneDX.Models.v1_3.Property>, System.String)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElement(Of T)(List(Of CycloneDX.Models.v1_3.Property), System.String)
+  nameWithType: General.GetSpdxElement<T>(List<Property>, String)
+  nameWithType.vb: General.GetSpdxElement(Of T)(List(Of Property), String)
+- uid: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements(List{CycloneDX.Models.v1_3.Property},System.String)
+  name: GetSpdxElements(List<Property>, String)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_GetSpdxElements_List_CycloneDX_Models_v1_3_Property__System_String_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements(List{CycloneDX.Models.v1_3.Property},System.String)
+  name.vb: GetSpdxElements(List(Of Property), String)
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements(List<CycloneDX.Models.v1_3.Property>, System.String)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements(List(Of CycloneDX.Models.v1_3.Property), System.String)
+  nameWithType: General.GetSpdxElements(List<Property>, String)
+  nameWithType.vb: General.GetSpdxElements(List(Of Property), String)
+- uid: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements*
+  name: GetSpdxElements
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_GetSpdxElements_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements
+  nameWithType: General.GetSpdxElements
+- uid: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements``1(List{CycloneDX.Models.v1_3.Property},System.String)
+  name: GetSpdxElements<T>(List<Property>, String)
+  href: api/CycloneDX.Spdx.Interop.Helpers.General.html#CycloneDX_Spdx_Interop_Helpers_General_GetSpdxElements__1_List_CycloneDX_Models_v1_3_Property__System_String_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements``1(List{CycloneDX.Models.v1_3.Property},System.String)
+  name.vb: GetSpdxElements(Of T)(List(Of Property), String)
+  fullName: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements<T>(List<CycloneDX.Models.v1_3.Property>, System.String)
+  fullName.vb: CycloneDX.Spdx.Interop.Helpers.General.GetSpdxElements(Of T)(List(Of CycloneDX.Models.v1_3.Property), System.String)
+  nameWithType: General.GetSpdxElements<T>(List<Property>, String)
+  nameWithType.vb: General.GetSpdxElements(Of T)(List(Of Property), String)
+- uid: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers
+  name: SpdxDocumentHelpers
+  href: api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.html
+  commentId: T:CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers
+  fullName: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers
+  nameWithType: SpdxDocumentHelpers
+- uid: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.AddCycloneDXComponents(CycloneDX.Spdx.Models.v2_2.SpdxDocument,CycloneDX.Models.v1_3.Bom)
+  name: AddCycloneDXComponents(SpdxDocument, Bom)
+  href: api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.html#CycloneDX_Spdx_Interop_Helpers_SpdxDocumentHelpers_AddCycloneDXComponents_CycloneDX_Spdx_Models_v2_2_SpdxDocument_CycloneDX_Models_v1_3_Bom_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.AddCycloneDXComponents(CycloneDX.Spdx.Models.v2_2.SpdxDocument,CycloneDX.Models.v1_3.Bom)
+  fullName: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.AddCycloneDXComponents(CycloneDX.Spdx.Models.v2_2.SpdxDocument, CycloneDX.Models.v1_3.Bom)
+  nameWithType: SpdxDocumentHelpers.AddCycloneDXComponents(SpdxDocument, Bom)
+- uid: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.AddCycloneDXComponents*
+  name: AddCycloneDXComponents
+  href: api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.html#CycloneDX_Spdx_Interop_Helpers_SpdxDocumentHelpers_AddCycloneDXComponents_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.AddCycloneDXComponents
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.AddCycloneDXComponents
+  nameWithType: SpdxDocumentHelpers.AddCycloneDXComponents
+- uid: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.IsSpdxPackageSupportedComponentType(CycloneDX.Models.v1_3.Component)
+  name: IsSpdxPackageSupportedComponentType(Component)
+  href: api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.html#CycloneDX_Spdx_Interop_Helpers_SpdxDocumentHelpers_IsSpdxPackageSupportedComponentType_CycloneDX_Models_v1_3_Component_
+  commentId: M:CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.IsSpdxPackageSupportedComponentType(CycloneDX.Models.v1_3.Component)
+  fullName: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.IsSpdxPackageSupportedComponentType(CycloneDX.Models.v1_3.Component)
+  nameWithType: SpdxDocumentHelpers.IsSpdxPackageSupportedComponentType(Component)
+- uid: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.IsSpdxPackageSupportedComponentType*
+  name: IsSpdxPackageSupportedComponentType
+  href: api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.html#CycloneDX_Spdx_Interop_Helpers_SpdxDocumentHelpers_IsSpdxPackageSupportedComponentType_
+  commentId: Overload:CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.IsSpdxPackageSupportedComponentType
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.IsSpdxPackageSupportedComponentType
+  nameWithType: SpdxDocumentHelpers.IsSpdxPackageSupportedComponentType
+- uid: CycloneDX.Spdx.Interop.SpdxDocumentConverters
+  name: SpdxDocumentConverters
+  href: api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.html
+  commentId: T:CycloneDX.Spdx.Interop.SpdxDocumentConverters
+  fullName: CycloneDX.Spdx.Interop.SpdxDocumentConverters
+  nameWithType: SpdxDocumentConverters
+- uid: CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToCycloneDX(CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  name: ToCycloneDX(SpdxDocument)
+  href: api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.html#CycloneDX_Spdx_Interop_SpdxDocumentConverters_ToCycloneDX_CycloneDX_Spdx_Models_v2_2_SpdxDocument_
+  commentId: M:CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToCycloneDX(CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  fullName: CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToCycloneDX(CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  nameWithType: SpdxDocumentConverters.ToCycloneDX(SpdxDocument)
+- uid: CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToCycloneDX*
+  name: ToCycloneDX
+  href: api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.html#CycloneDX_Spdx_Interop_SpdxDocumentConverters_ToCycloneDX_
+  commentId: Overload:CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToCycloneDX
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToCycloneDX
+  nameWithType: SpdxDocumentConverters.ToCycloneDX
+- uid: CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToSpdx(CycloneDX.Models.v1_3.Bom)
+  name: ToSpdx(Bom)
+  href: api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.html#CycloneDX_Spdx_Interop_SpdxDocumentConverters_ToSpdx_CycloneDX_Models_v1_3_Bom_
+  commentId: M:CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToSpdx(CycloneDX.Models.v1_3.Bom)
+  fullName: CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToSpdx(CycloneDX.Models.v1_3.Bom)
+  nameWithType: SpdxDocumentConverters.ToSpdx(Bom)
+- uid: CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToSpdx*
+  name: ToSpdx
+  href: api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.html#CycloneDX_Spdx_Interop_SpdxDocumentConverters_ToSpdx_
+  commentId: Overload:CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToSpdx
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Interop.SpdxDocumentConverters.ToSpdx
+  nameWithType: SpdxDocumentConverters.ToSpdx
 - uid: CycloneDX.Spdx.Models
   name: CycloneDX.Spdx.Models
   href: api/CycloneDX.Spdx.Models.html
@@ -10705,6 +11113,312 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Spdx.Models.ValidationResult.Valid
   nameWithType: ValidationResult.Valid
+- uid: CycloneDX.Spdx.PropertyTaxonomy
+  name: PropertyTaxonomy
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html
+  commentId: T:CycloneDX.Spdx.PropertyTaxonomy
+  fullName: CycloneDX.Spdx.PropertyTaxonomy
+  nameWithType: PropertyTaxonomy
+- uid: CycloneDX.Spdx.PropertyTaxonomy.ANNOTATION
+  name: ANNOTATION
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_ANNOTATION
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.ANNOTATION
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.ANNOTATION
+  nameWithType: PropertyTaxonomy.ANNOTATION
+- uid: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM
+  name: CHECKSUM
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_CHECKSUM
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM
+  nameWithType: PropertyTaxonomy.CHECKSUM
+- uid: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD2
+  name: CHECKSUM_MD2
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_CHECKSUM_MD2
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD2
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD2
+  nameWithType: PropertyTaxonomy.CHECKSUM_MD2
+- uid: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD4
+  name: CHECKSUM_MD4
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_CHECKSUM_MD4
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD4
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD4
+  nameWithType: PropertyTaxonomy.CHECKSUM_MD4
+- uid: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD6
+  name: CHECKSUM_MD6
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_CHECKSUM_MD6
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD6
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_MD6
+  nameWithType: PropertyTaxonomy.CHECKSUM_MD6
+- uid: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_SHA224
+  name: CHECKSUM_SHA224
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_CHECKSUM_SHA224
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_SHA224
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.CHECKSUM_SHA224
+  nameWithType: PropertyTaxonomy.CHECKSUM_SHA224
+- uid: CycloneDX.Spdx.PropertyTaxonomy.COMMENT
+  name: COMMENT
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_COMMENT
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.COMMENT
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.COMMENT
+  nameWithType: PropertyTaxonomy.COMMENT
+- uid: CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_COMMENT
+  name: CREATION_INFO_COMMENT
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_CREATION_INFO_COMMENT
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_COMMENT
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_COMMENT
+  nameWithType: PropertyTaxonomy.CREATION_INFO_COMMENT
+- uid: CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_LICENSE_CREATORS_ORGANIZATIONS
+  name: CREATION_INFO_LICENSE_CREATORS_ORGANIZATIONS
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_CREATION_INFO_LICENSE_CREATORS_ORGANIZATIONS
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_LICENSE_CREATORS_ORGANIZATIONS
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_LICENSE_CREATORS_ORGANIZATIONS
+  nameWithType: PropertyTaxonomy.CREATION_INFO_LICENSE_CREATORS_ORGANIZATIONS
+- uid: CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_LICENSE_LIST_VERSION
+  name: CREATION_INFO_LICENSE_LIST_VERSION
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_CREATION_INFO_LICENSE_LIST_VERSION
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_LICENSE_LIST_VERSION
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.CREATION_INFO_LICENSE_LIST_VERSION
+  nameWithType: PropertyTaxonomy.CREATION_INFO_LICENSE_LIST_VERSION
+- uid: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_DATA_LICENSE
+  name: DOCUMENT_DATA_LICENSE
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_DOCUMENT_DATA_LICENSE
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_DATA_LICENSE
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_DATA_LICENSE
+  nameWithType: PropertyTaxonomy.DOCUMENT_DATA_LICENSE
+- uid: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_DESCRIBES
+  name: DOCUMENT_DESCRIBES
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_DOCUMENT_DESCRIBES
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_DESCRIBES
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_DESCRIBES
+  nameWithType: PropertyTaxonomy.DOCUMENT_DESCRIBES
+- uid: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_EXTERNAL_DOCUMENT_REF
+  name: DOCUMENT_EXTERNAL_DOCUMENT_REF
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_DOCUMENT_EXTERNAL_DOCUMENT_REF
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_EXTERNAL_DOCUMENT_REF
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_EXTERNAL_DOCUMENT_REF
+  nameWithType: PropertyTaxonomy.DOCUMENT_EXTERNAL_DOCUMENT_REF
+- uid: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_NAME
+  name: DOCUMENT_NAME
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_DOCUMENT_NAME
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_NAME
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_NAME
+  nameWithType: PropertyTaxonomy.DOCUMENT_NAME
+- uid: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_NAMESPACE
+  name: DOCUMENT_NAMESPACE
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_DOCUMENT_NAMESPACE
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_NAMESPACE
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_NAMESPACE
+  nameWithType: PropertyTaxonomy.DOCUMENT_NAMESPACE
+- uid: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_SPDX_VERSION
+  name: DOCUMENT_SPDX_VERSION
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_DOCUMENT_SPDX_VERSION
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_SPDX_VERSION
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.DOCUMENT_SPDX_VERSION
+  nameWithType: PropertyTaxonomy.DOCUMENT_SPDX_VERSION
+- uid: CycloneDX.Spdx.PropertyTaxonomy.DOWNLOAD_LOCATION
+  name: DOWNLOAD_LOCATION
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_DOWNLOAD_LOCATION
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.DOWNLOAD_LOCATION
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.DOWNLOAD_LOCATION
+  nameWithType: PropertyTaxonomy.DOWNLOAD_LOCATION
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE
+  name: EXTERNAL_REFERENCE
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_OTHER
+  name: EXTERNAL_REFERENCE_OTHER
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_OTHER
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_OTHER
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_OTHER
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_OTHER
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER
+  name: EXTERNAL_REFERENCE_PACKAGE_MANAGER
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_PACKAGE_MANAGER
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_BOWER
+  name: EXTERNAL_REFERENCE_PACKAGE_MANAGER_BOWER
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_PACKAGE_MANAGER_BOWER
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_BOWER
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_BOWER
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_BOWER
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_MAVEN_CENTRAL
+  name: EXTERNAL_REFERENCE_PACKAGE_MANAGER_MAVEN_CENTRAL
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_PACKAGE_MANAGER_MAVEN_CENTRAL
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_MAVEN_CENTRAL
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_MAVEN_CENTRAL
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_MAVEN_CENTRAL
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NPM
+  name: EXTERNAL_REFERENCE_PACKAGE_MANAGER_NPM
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_PACKAGE_MANAGER_NPM
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NPM
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NPM
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NPM
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NUGET
+  name: EXTERNAL_REFERENCE_PACKAGE_MANAGER_NUGET
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_PACKAGE_MANAGER_NUGET
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NUGET
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NUGET
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NUGET
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL
+  name: EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID
+  name: EXTERNAL_REFERENCE_PERSISTENT_ID
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_PERSISTENT_ID
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH
+  name: EXTERNAL_REFERENCE_PERSISTENT_ID_SWH
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_PERSISTENT_ID_SWH
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY
+  name: EXTERNAL_REFERENCE_SECURITY
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_SECURITY
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22
+  name: EXTERNAL_REFERENCE_SECURITY_CPE22
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_SECURITY_CPE22
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22
+- uid: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23
+  name: EXTERNAL_REFERENCE_SECURITY_CPE23
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_EXTERNAL_REFERENCE_SECURITY_CPE23
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23
+  nameWithType: PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23
+- uid: CycloneDX.Spdx.PropertyTaxonomy.FILE_CONTRIBUTOR
+  name: FILE_CONTRIBUTOR
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_FILE_CONTRIBUTOR
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.FILE_CONTRIBUTOR
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.FILE_CONTRIBUTOR
+  nameWithType: PropertyTaxonomy.FILE_CONTRIBUTOR
+- uid: CycloneDX.Spdx.PropertyTaxonomy.FILE_NOTICE_TEXT
+  name: FILE_NOTICE_TEXT
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_FILE_NOTICE_TEXT
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.FILE_NOTICE_TEXT
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.FILE_NOTICE_TEXT
+  nameWithType: PropertyTaxonomy.FILE_NOTICE_TEXT
+- uid: CycloneDX.Spdx.PropertyTaxonomy.FILE_TYPE
+  name: FILE_TYPE
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_FILE_TYPE
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.FILE_TYPE
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.FILE_TYPE
+  nameWithType: PropertyTaxonomy.FILE_TYPE
+- uid: CycloneDX.Spdx.PropertyTaxonomy.FILES_ANALYZED
+  name: FILES_ANALYZED
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_FILES_ANALYZED
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.FILES_ANALYZED
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.FILES_ANALYZED
+  nameWithType: PropertyTaxonomy.FILES_ANALYZED
+- uid: CycloneDX.Spdx.PropertyTaxonomy.HOMEPAGE
+  name: HOMEPAGE
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_HOMEPAGE
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.HOMEPAGE
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.HOMEPAGE
+  nameWithType: PropertyTaxonomy.HOMEPAGE
+- uid: CycloneDX.Spdx.PropertyTaxonomy.LICENSE_COMMENTS
+  name: LICENSE_COMMENTS
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_LICENSE_COMMENTS
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.LICENSE_COMMENTS
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.LICENSE_COMMENTS
+  nameWithType: PropertyTaxonomy.LICENSE_COMMENTS
+- uid: CycloneDX.Spdx.PropertyTaxonomy.LICENSE_CONCLUDED
+  name: LICENSE_CONCLUDED
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_LICENSE_CONCLUDED
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.LICENSE_CONCLUDED
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.LICENSE_CONCLUDED
+  nameWithType: PropertyTaxonomy.LICENSE_CONCLUDED
+- uid: CycloneDX.Spdx.PropertyTaxonomy.LICENSE_DECLARED
+  name: LICENSE_DECLARED
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_LICENSE_DECLARED
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.LICENSE_DECLARED
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.LICENSE_DECLARED
+  nameWithType: PropertyTaxonomy.LICENSE_DECLARED
+- uid: CycloneDX.Spdx.PropertyTaxonomy.LICENSE_INFO_FROM_FILE
+  name: LICENSE_INFO_FROM_FILE
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_LICENSE_INFO_FROM_FILE
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.LICENSE_INFO_FROM_FILE
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.LICENSE_INFO_FROM_FILE
+  nameWithType: PropertyTaxonomy.LICENSE_INFO_FROM_FILE
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_FILENAME
+  name: PACKAGE_FILENAME
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_FILENAME
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_FILENAME
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_FILENAME
+  nameWithType: PropertyTaxonomy.PACKAGE_FILENAME
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR
+  name: PACKAGE_ORIGINATOR
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_ORIGINATOR
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR
+  nameWithType: PropertyTaxonomy.PACKAGE_ORIGINATOR
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR_EMAIL
+  name: PACKAGE_ORIGINATOR_EMAIL
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_ORIGINATOR_EMAIL
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR_EMAIL
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR_EMAIL
+  nameWithType: PropertyTaxonomy.PACKAGE_ORIGINATOR_EMAIL
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR_ORGANIZATION
+  name: PACKAGE_ORIGINATOR_ORGANIZATION
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_ORIGINATOR_ORGANIZATION
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR_ORGANIZATION
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_ORIGINATOR_ORGANIZATION
+  nameWithType: PropertyTaxonomy.PACKAGE_ORIGINATOR_ORGANIZATION
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SOURCE_INFO
+  name: PACKAGE_SOURCE_INFO
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_SOURCE_INFO
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SOURCE_INFO
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SOURCE_INFO
+  nameWithType: PropertyTaxonomy.PACKAGE_SOURCE_INFO
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUMMARY
+  name: PACKAGE_SUMMARY
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_SUMMARY
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUMMARY
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUMMARY
+  nameWithType: PropertyTaxonomy.PACKAGE_SUMMARY
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUPPLIER
+  name: PACKAGE_SUPPLIER
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_SUPPLIER
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUPPLIER
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUPPLIER
+  nameWithType: PropertyTaxonomy.PACKAGE_SUPPLIER
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUPPLIER_ORGANIZATION
+  name: PACKAGE_SUPPLIER_ORGANIZATION
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_SUPPLIER_ORGANIZATION
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUPPLIER_ORGANIZATION
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_SUPPLIER_ORGANIZATION
+  nameWithType: PropertyTaxonomy.PACKAGE_SUPPLIER_ORGANIZATION
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_EXCLUDED_FILE
+  name: PACKAGE_VERIFICATION_CODE_EXCLUDED_FILE
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_VERIFICATION_CODE_EXCLUDED_FILE
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_EXCLUDED_FILE
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_EXCLUDED_FILE
+  nameWithType: PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_EXCLUDED_FILE
+- uid: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_VALUE
+  name: PACKAGE_VERIFICATION_CODE_VALUE
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_PACKAGE_VERIFICATION_CODE_VALUE
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_VALUE
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_VALUE
+  nameWithType: PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_VALUE
+- uid: CycloneDX.Spdx.PropertyTaxonomy.SPDXID
+  name: SPDXID
+  href: api/CycloneDX.Spdx.PropertyTaxonomy.html#CycloneDX_Spdx_PropertyTaxonomy_SPDXID
+  commentId: F:CycloneDX.Spdx.PropertyTaxonomy.SPDXID
+  fullName: CycloneDX.Spdx.PropertyTaxonomy.SPDXID
+  nameWithType: PropertyTaxonomy.SPDXID
 - uid: CycloneDX.Spdx.Serialization
   name: CycloneDX.Spdx.Serialization
   href: api/CycloneDX.Spdx.Serialization.html
