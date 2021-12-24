@@ -17,6 +17,44 @@ The libraries support .NET Standard 2.0.
 
 For help getting started using the CycloneDX .NET Library refer to the [documentation](https://cyclonedx.github.io/cyclonedx-dotnet-library/).
 
+## SPDX Interop
+
+The `CycloneDX.Spdx.Interop` library includes methods for converting between
+CycloneDX and SPDX formats. (Currently only SPDX v2.2 JSON format is supported.)
+
+### High level overview of information lost during conversion:
+
+This is a high level overview of information that will be lost during
+conversion. This is current state only, some features are yet to be
+implemented as indicated below.
+
+If you are familiar with both formats, and would like to contribute to
+minimising data loss during conversion, pull requests are welcome :)
+
+#### SPDX -> CycloneDX
+
+| Feature | Notes |
+| --- | --- |
+| Relationship Information | Implementation pending, related to CycloneDX component assemblies, dependency graph, and composition. |
+| License information in files | Needs review, the way SPDX and CycloneDX handle license information evidence is slightly different. |
+| Snippet Information | Snippets are not currently supported by CycloneDX |
+| Non-SPDX licenses | Implementation pending |
+
+#### CycloneDX -> SPDX
+
+| Feature | Notes |
+| --- | --- |
+| Component assemblies | Implementation pending - related to SPDX Relationship Information |
+| Hashes | SPDX documents are unable to represent the following hash algorithms: SHA3-256, SHA3-384, SHA3-512, BLAKE2b-256, BLAKE2b-384, BLAKE2b-512, BLAKE3. |
+| SWID Tags | SPDX doesn't support SWID tags. |
+| Component Type Information | SPDX doesn't support designating a component as a particular type (i.e. library, framework, container). |
+| CPE and Package URL for Component Identity | SPDX supports multiple CPEs and PURLs for a package. But doesn't support specifying if any are a component identifier. |
+| Device & Hardware Components | SPDX does not support devices or hardware as components. |
+| Composition | Implementation pending - related to SPDX Relationship Information |
+| Dependency Graph | Implementation pending - related to SPDX Relationship Information |
+| External References | External references are handled differently between the two formats. |
+| Non-SPDX licenses | Implementation pending |
+
 ## License
 
 Permission to modify and redistribute is granted under the terms of the Apache 2.0 license. See the [LICENSE] file for the full license.

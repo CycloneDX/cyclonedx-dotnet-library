@@ -1,0 +1,28 @@
+﻿{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "creationInfo": {
+    "comment": "This SPDX document has been converted from CycloneDX format.",
+    "created": "2021-12-24T12:00:00Z"
+  },
+  "name": "CycloneDX BOM",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "http://spdx.org/spdxdocs/CycloneDX BOM-3e671687-395b-41f5-a30f-a58921a69b79",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-1",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "homepage": "NOASSERTION",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "name": "Acme Application",
+      "originator": "Person: Acme Super Heros ()",
+      "supplier": "NOASSERTION",
+      "versionInfo": "9.1.1"
+    }
+  ]
+}

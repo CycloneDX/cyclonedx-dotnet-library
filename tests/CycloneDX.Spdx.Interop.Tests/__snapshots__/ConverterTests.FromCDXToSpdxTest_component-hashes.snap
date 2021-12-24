@@ -1,0 +1,50 @@
+﻿{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "creationInfo": {
+    "comment": "This SPDX document has been converted from CycloneDX format.",
+    "created": "2021-12-24T12:00:00Z"
+  },
+  "name": "CycloneDX BOM",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "http://spdx.org/spdxdocs/CycloneDX BOM-3e671687-395b-41f5-a30f-a58921a69b79",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-1",
+      "checksums": [
+        {
+          "algorithm": "MD5",
+          "checksumValue": "641b6e166f8b33c5e959e2adcc18b1c7"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "9188560f22e0b73070d2efce670c74af2bdf30af"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d88bc4e70bfb34d18b5542136639acbb26a8ae2429aa1e47489332fb389cc964"
+        },
+        {
+          "algorithm": "SHA384",
+          "checksumValue": "d4835048a0f57c74b8fb617d5366ab81376fc92bebe9a93bf24ba7f9da6c9aeeb6179f5d1361f6533211b15f3224cbad"
+        },
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "74a51ff45e4c11df9ba1f0094282c80489649cb157a75fa337992d2d4592a5a1b8cb4525de8db0ae25233553924d76c36e093ea7fa9df4e5b8b07fd2e074efd6"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "homepage": "NOASSERTION",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "name": "acme-example",
+      "originator": "NOASSERTION",
+      "supplier": "NOASSERTION",
+      "versionInfo": "1.0.0"
+    }
+  ]
+}

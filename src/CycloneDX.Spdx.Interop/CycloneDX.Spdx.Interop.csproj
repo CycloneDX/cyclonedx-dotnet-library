@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Product>CycloneDX.Spdx.Interop</Product>
+    <Authors>Patrick Dwyer</Authors>
+    <Copyright>Copyright (c) OWASP Foundation</Copyright>
+    <Description>A .NET Standard library for CycloneDX and SPDX inter-op.</Description>
+    <PackageId>CycloneDX.Spdx.Interop</PackageId>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CycloneDX.Core\CycloneDX.Core.csproj" />
+    <ProjectReference Include="..\CycloneDX.Spdx\CycloneDX.Spdx.csproj" />
+    <ProjectReference Include="..\CycloneDX.Utils\CycloneDX.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
