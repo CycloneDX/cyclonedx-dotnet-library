@@ -1,0 +1,129 @@
+﻿{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.3",
+  "metadata": {
+    "timestamp": "2021-12-24T12:00:00Z",
+    "properties": [
+      {
+        "name": "spdx:spdxid",
+        "value": "SPDXRef-DOCUMENT"
+      },
+      {
+        "name": "spdx:document:spdx-version",
+        "value": "SPDX-2.2"
+      },
+      {
+        "name": "spdx:document:name",
+        "value": "CycloneDX BOM"
+      },
+      {
+        "name": "spdx:document:document-namespace",
+        "value": "http://spdx.org/spdxdocs/CycloneDX BOM-3e671687-395b-41f5-a30f-a58921a69b79"
+      },
+      {
+        "name": "spdx:creation-info:comment",
+        "value": "This SPDX document has been converted from CycloneDX format."
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "acme-library",
+      "version": "1.0.0",
+      "copyright": "NOASSERTION",
+      "externalReferences": [
+        {
+          "url": "NOASSERTION",
+          "type": "distribution"
+        },
+        {
+          "url": "NOASSERTION",
+          "type": "website"
+        }
+      ],
+      "properties": [
+        {
+          "name": "spdx:spdxid",
+          "value": "SPDXRef-123"
+        },
+        {
+          "name": "spdx:license-concluded",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:license-declared",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:package:originator",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:package:supplier",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:download-location",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:homepage",
+          "value": "NOASSERTION"
+        }
+      ],
+      "evidence": {
+        "licenses": []
+      }
+    },
+    {
+      "type": "library",
+      "name": "acme-library",
+      "version": "1.0.0",
+      "copyright": "NOASSERTION",
+      "externalReferences": [
+        {
+          "url": "NOASSERTION",
+          "type": "distribution"
+        },
+        {
+          "url": "NOASSERTION",
+          "type": "website"
+        }
+      ],
+      "properties": [
+        {
+          "name": "spdx:spdxid",
+          "value": "SPDXRef-456"
+        },
+        {
+          "name": "spdx:license-concluded",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:license-declared",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:package:originator",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:package:supplier",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:download-location",
+          "value": "NOASSERTION"
+        },
+        {
+          "name": "spdx:homepage",
+          "value": "NOASSERTION"
+        }
+      ],
+      "evidence": {
+        "licenses": []
+      }
+    }
+  ]
+}
