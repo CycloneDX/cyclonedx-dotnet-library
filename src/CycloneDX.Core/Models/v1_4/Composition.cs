@@ -22,7 +22,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Composition : IXmlSerializable
@@ -54,8 +54,8 @@ namespace CycloneDX.Models.v1_3
         public List<string> Dependencies { get; set; }
 
         public Composition() { }
-        
-        public Composition(v1_4.Composition composition)
+
+        public Composition(v1_3.Composition composition)
         {
             Aggregate = (AggregateType)composition.Aggregate;
             if (composition.Assemblies != null)
@@ -67,7 +67,7 @@ namespace CycloneDX.Models.v1_3
                 Dependencies = new List<string>(composition.Dependencies);
             }
         }
-
+        
         public System.Xml.Schema.XmlSchema GetSchema() {
             return null;
         }
@@ -93,7 +93,10 @@ namespace CycloneDX.Models.v1_3
                     if (reader.HasAttributes)
                     {
                         var bomRef = reader["ref"];
-                        if (bomRef != null) Assemblies.Add(bomRef);
+                        if (bomRef != null)
+                        {
+                            Assemblies.Add(bomRef);
+                        }
                     }
 
                     reader.Read();
@@ -110,7 +113,10 @@ namespace CycloneDX.Models.v1_3
                     if (reader.HasAttributes)
                     {
                         var bomRef = reader["ref"];
-                        if (bomRef != null) Dependencies.Add(bomRef);
+                        if (bomRef != null)
+                        {
+                            Dependencies.Add(bomRef);
+                        }
                     }
 
                     reader.Read();

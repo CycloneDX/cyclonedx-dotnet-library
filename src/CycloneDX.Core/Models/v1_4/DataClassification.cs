@@ -15,35 +15,29 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
-    public class Diff
+    public class DataClassification
     {
-        [XmlElement("text")]
-        [ProtoMember(1)]
-        public AttachedText Text { get; set; }
-        [XmlElement("url")]
+        [XmlAttribute("flow")]
+        [ProtoMember(1, IsRequired=true)]
+        public DataFlow Flow { get; set; }
+
+        [XmlText]
         [ProtoMember(2)]
-        public string Url { get; set; }
+        public string Classification { get; set; }
 
-        public Diff() {}
+        public DataClassification() {}
 
-        public Diff(v1_2.Diff diff)
+        public DataClassification(v1_3.DataClassification dataClassification)
         {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
-
-        public Diff(v1_4.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
+            Flow = (DataFlow)dataClassification.Flow;
+            Classification = dataClassification.Classification;
         }
     }
 }

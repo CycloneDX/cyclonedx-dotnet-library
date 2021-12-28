@@ -18,32 +18,46 @@
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
-    public class Diff
+    public class Commit
     {
-        [XmlElement("text")]
+        [XmlElement("uid")]
         [ProtoMember(1)]
-        public AttachedText Text { get; set; }
+        public string Uid { get; set; }
+
         [XmlElement("url")]
         [ProtoMember(2)]
         public string Url { get; set; }
+        
+        [XmlElement("author")]
+        [ProtoMember(3)]
+        public IdentifiableAction Author { get; set; }
 
-        public Diff() {}
+        [XmlElement("committer")]
+        [ProtoMember(4)]
+        public IdentifiableAction Committer { get; set; }
+        
+        [XmlElement("message")]
+        [ProtoMember(5)]
+        public string Message { get; set; }
 
-        public Diff(v1_2.Diff diff)
+        public Commit() {}
+
+        public Commit(v1_3.Commit commit)
         {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
-
-        public Diff(v1_4.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
+            Uid = commit.Uid;
+            Url = commit.Url;
+            if (commit.Author != null)
+            {
+                Author = new IdentifiableAction(commit.Author);
+            }
+            if (commit.Committer != null)
+            {
+                Committer = new IdentifiableAction(commit.Committer);
+            }
+            Message = commit.Message;
         }
     }
 }

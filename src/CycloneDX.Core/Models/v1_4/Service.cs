@@ -21,7 +21,7 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Service
@@ -121,57 +121,13 @@ namespace CycloneDX.Models.v1_3
 
         public Service() {}
 
-        public Service(v1_2.Service service)
+        public Service(v1_3.Service service)
         {
             BomRef = service.BomRef;
             if (service.Provider != null)
+            {
                 Provider = new OrganizationalEntity(service.Provider);
-            Group = service.Group;
-            Name = service.Name;
-            Version = service.Version;
-            Description = service.Description;
-            Endpoints = service.Endpoints;
-            Authenticated = service.Authenticated;
-            XTrustBoundary = service.XTrustBoundary;
-            if (service.Data != null)
-            {
-                Data = new List<DataClassification>();
-                foreach (var data in service.Data)
-                {
-                    Data.Add(new DataClassification(data));
-                }
             }
-            if (service.Licenses != null)
-            {
-                Licenses = new List<LicenseChoice>();
-                foreach (var license in service.Licenses)
-                {
-                    Licenses.Add(new LicenseChoice(license));
-                }
-            }
-            if (service.ExternalReferences != null)
-            {
-                ExternalReferences = new List<ExternalReference>();
-                foreach (var externalReference in service.ExternalReferences)
-                {
-                    ExternalReferences.Add(new ExternalReference(externalReference));
-                }
-            }
-            if (service.Services != null)
-            {
-                Services = new List<Service>();
-                foreach (var serv in service.Services)
-                {
-                    Services.Add(new Service(serv));
-                }
-            }
-        }
-
-        public Service(v1_4.Service service)
-        {
-            BomRef = service.BomRef;
-            if (service.Provider != null)
-                Provider = new OrganizationalEntity(service.Provider);
             Group = service.Group;
             Name = service.Name;
             Version = service.Version;

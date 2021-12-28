@@ -22,7 +22,7 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
@@ -192,20 +192,25 @@ namespace CycloneDX.Models.v1_3
         
         public Component() {}
 
-        public Component(v1_2.Component component)
+        public Component(v1_3.Component component)
         {
             Type = (Classification)((int)component.Type + 1);
             MimeType = component.MimeType;
             BomRef = component.BomRef;
             if (component.Supplier != null)
+            {
                 Supplier = new OrganizationalEntity(component.Supplier);
+            }
             Author = component.Author;
             Publisher = component.Publisher;
             Group = component.Group;
             Name = component.Name;
             Version = component.Version;
             Description = component.Description;
-            if (component.Scope.HasValue) Scope = (ComponentScope)((int)component.Scope + 1);
+            if (component.Scope.HasValue)
+            {
+                Scope = (ComponentScope)((int)component.Scope + 1);
+            }
             if (component.Hashes != null)
             {
                 Hashes = new List<Hash>();
@@ -226,66 +231,14 @@ namespace CycloneDX.Models.v1_3
             Cpe = component.Cpe;
             Purl = component.Purl;
             if (component.Swid != null)
+            {
                 Swid = new Swid(component.Swid);
+            }
             Modified = component.Modified;
             if (component.Pedigree != null)
+            {
                 Pedigree = new Pedigree(component.Pedigree);
-            if (component.ExternalReferences != null)
-            {
-                ExternalReferences = new List<ExternalReference>();
-                foreach (var externalReference in component.ExternalReferences)
-                {
-                    ExternalReferences.Add(new ExternalReference(externalReference));
-                }
             }
-            if (component.Components != null)
-            {
-                Components = new List<Component>();
-                foreach (var subComponent in component.Components)
-                {
-                    Components.Add(new Component(subComponent));
-                }
-            }
-        }
-
-        public Component(v1_4.Component component)
-        {
-            Type = (Classification)((int)component.Type + 1);
-            MimeType = component.MimeType;
-            BomRef = component.BomRef;
-            if (component.Supplier != null)
-                Supplier = new OrganizationalEntity(component.Supplier);
-            Author = component.Author;
-            Publisher = component.Publisher;
-            Group = component.Group;
-            Name = component.Name;
-            Version = component.Version;
-            Description = component.Description;
-            if (component.Scope.HasValue) Scope = (ComponentScope)((int)component.Scope + 1);
-            if (component.Hashes != null)
-            {
-                Hashes = new List<Hash>();
-                foreach (var hash in component.Hashes)
-                {
-                    Hashes.Add(new Hash(hash));
-                }
-            }
-            if (component.Licenses != null)
-            {
-                Licenses = new List<LicenseChoice>();
-                foreach (var componentLicense in component.Licenses)
-                {
-                    Licenses.Add(new LicenseChoice(componentLicense));
-                }
-            }
-            Copyright = component.Copyright;
-            Cpe = component.Cpe;
-            Purl = component.Purl;
-            if (component.Swid != null)
-                Swid = new Swid(component.Swid);
-            Modified = component.Modified;
-            if (component.Pedigree != null)
-                Pedigree = new Pedigree(component.Pedigree);
             if (component.ExternalReferences != null)
             {
                 ExternalReferences = new List<ExternalReference>();

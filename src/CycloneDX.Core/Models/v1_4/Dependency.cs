@@ -22,7 +22,7 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [XmlType("dependency")]
     [ProtoContract]
@@ -38,20 +38,7 @@ namespace CycloneDX.Models.v1_3
 
         public Dependency() {}
 
-        public Dependency(v1_2.Dependency dependency)
-        {
-            Ref = dependency.Ref;
-            if (dependency.Dependencies != null)
-            {
-                Dependencies = new List<Dependency>();
-                foreach (var dep in dependency.Dependencies)
-                {
-                    Dependencies.Add(new Dependency(dep));
-                }
-            }
-        }
-
-        public Dependency(v1_4.Dependency dependency)
+        public Dependency(v1_3.Dependency dependency)
         {
             Ref = dependency.Ref;
             if (dependency.Dependencies != null)

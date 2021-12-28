@@ -20,7 +20,7 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Swid
@@ -83,7 +83,7 @@ namespace CycloneDX.Models.v1_3
 
         public Swid() {}
 
-        public Swid(v1_2.Swid swid)
+        public Swid(v1_3.Swid swid)
         {
             TagId = swid.TagId;
             Name = swid.Name;
@@ -91,19 +91,9 @@ namespace CycloneDX.Models.v1_3
             TagVersion = swid.TagVersion;
             Patch = swid.Patch;
             if (swid.Text != null)
+            {
                 Text = new AttachedText(swid.Text);
-            Url = swid.Url;
-        }
-
-        public Swid(v1_4.Swid swid)
-        {
-            TagId = swid.TagId;
-            Name = swid.Name;
-            Version = swid.Version;
-            TagVersion = swid.TagVersion;
-            Patch = swid.Patch;
-            if (swid.Text != null)
-                Text = new AttachedText(swid.Text);
+            }
             Url = swid.Url;
         }
     }

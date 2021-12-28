@@ -18,7 +18,7 @@
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Diff
@@ -32,17 +32,12 @@ namespace CycloneDX.Models.v1_3
 
         public Diff() {}
 
-        public Diff(v1_2.Diff diff)
+        public Diff(v1_3.Diff diff)
         {
             if (diff.Text != null)
+            {
                 Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
-
-        public Diff(v1_4.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
+            }
             Url = diff.Url;
         }
     }

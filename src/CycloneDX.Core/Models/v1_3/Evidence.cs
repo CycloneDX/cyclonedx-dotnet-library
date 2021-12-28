@@ -41,6 +41,26 @@ namespace CycloneDX.Models.v1_3
         
         public Evidence() {}
 
+        public Evidence(v1_4.Evidence evidence)
+        {
+            if (evidence.Licenses != null)
+            {
+                Licenses = new List<LicenseChoice>();
+                foreach (var license in evidence.Licenses)
+                {
+                    Licenses.Add(new LicenseChoice(license));
+                }
+            }
+            if (evidence.Copyright != null)
+            {
+                Copyright = new List<EvidenceCopyright>();
+                foreach (var copyright in evidence.Copyright)
+                {
+                    Copyright.Add(new EvidenceCopyright(copyright));
+                }
+            }
+        }
+
         public System.Xml.Schema.XmlSchema GetSchema()
         {
             return null;

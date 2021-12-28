@@ -20,7 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     [ProtoContract]
@@ -80,21 +80,7 @@ namespace CycloneDX.Models.v1_3
 
         public ExternalReference() {}
 
-        public ExternalReference(v1_2.ExternalReference externalReference)
-        {
-            Url = externalReference.Url;
-            if (externalReference.Type == v1_2.ExternalReference.ExternalReferenceType.Other)
-            {
-                Type = ExternalReferenceType.Other;
-            }
-            else
-            {
-                Type = (ExternalReferenceType)((int)externalReference.Type+1);
-            }
-            Comment = externalReference.Comment;
-        }
-
-        public ExternalReference(v1_4.ExternalReference externalReference)
+        public ExternalReference(v1_3.ExternalReference externalReference)
         {
             Url = externalReference.Url;
             Type = (ExternalReferenceType)externalReference.Type;

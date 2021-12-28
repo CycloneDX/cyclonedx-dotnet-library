@@ -33,5 +33,11 @@ namespace CycloneDX.Models.v1_3
         public string Value { get; set; }
         
         public Property() {}
+
+        public Property(v1_4.Property prop)
+        {
+            Name = prop.Name;
+            Value = prop.Value;
+        }
     }
 }

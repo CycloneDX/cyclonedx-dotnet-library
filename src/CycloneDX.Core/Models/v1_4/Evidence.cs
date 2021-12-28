@@ -18,50 +18,52 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 using System.Text.Json.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
-    [XmlType("dependency")]
+    [XmlType("evidence")]
     [ProtoContract]
-    public class Dependency
+    public class Evidence
     {
-        [XmlAttribute("ref")]
+        [XmlElement("licenses")]
         [ProtoMember(1)]
-        public string Ref { get; set; }
+        public List<LicenseChoice> Licenses { get; set; }
 
-        [XmlElement("dependency")]
+        [XmlArray("copyright")]
+        [XmlArrayItem("text")]
         [ProtoMember(2)]
-        public List<Dependency> Dependencies { get; set; }
+        public List<EvidenceCopyright> Copyright { get; set; }
+        
+        public Evidence() {}
 
-        public Dependency() {}
-
-        public Dependency(v1_2.Dependency dependency)
+        public Evidence(v1_3.Evidence evidence)
         {
-            Ref = dependency.Ref;
-            if (dependency.Dependencies != null)
+            if (evidence.Licenses != null)
             {
-                Dependencies = new List<Dependency>();
-                foreach (var dep in dependency.Dependencies)
+                Licenses = new List<LicenseChoice>();
+                foreach (var license in evidence.Licenses)
                 {
-                    Dependencies.Add(new Dependency(dep));
+                    Licenses.Add(new LicenseChoice(license));
+                }
+            }
+            if (evidence.Copyright != null)
+            {
+                Copyright = new List<EvidenceCopyright>();
+                foreach (var copyright in evidence.Copyright)
+                {
+                    Copyright.Add(new EvidenceCopyright(copyright));
                 }
             }
         }
 
-        public Dependency(v1_4.Dependency dependency)
+        public System.Xml.Schema.XmlSchema GetSchema()
         {
-            Ref = dependency.Ref;
-            if (dependency.Dependencies != null)
-            {
-                Dependencies = new List<Dependency>();
-                foreach (var dep in dependency.Dependencies)
-                {
-                    Dependencies.Add(new Dependency(dep));
-                }
-            }
+            return null;
         }
     }
 }

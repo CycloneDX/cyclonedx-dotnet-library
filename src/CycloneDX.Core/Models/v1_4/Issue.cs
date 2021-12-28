@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Issue
@@ -64,25 +64,16 @@ namespace CycloneDX.Models.v1_3
 
         public Issue() {}
 
-        public Issue(v1_2.Issue issue)
-        {
-            Type = (IssueClassification)((int)issue.Type + 1);
-            Id = issue.Id;
-            Name = issue.Name;
-            Description = issue.Description;
-            if (issue.Source != null)
-                Source = new Source(issue.Source);
-            References = issue.References;
-        }
-
-        public Issue(v1_4.Issue issue)
+        public Issue(v1_3.Issue issue)
         {
             Type = (IssueClassification)issue.Type;
             Id = issue.Id;
             Name = issue.Name;
             Description = issue.Description;
             if (issue.Source != null)
+            {
                 Source = new Source(issue.Source);
+            }
             References = issue.References;
         }
     }

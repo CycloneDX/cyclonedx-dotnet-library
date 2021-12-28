@@ -18,32 +18,45 @@
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
+    [XmlType("license")]
     [ProtoContract]
-    public class Diff
+    public class License
     {
-        [XmlElement("text")]
+        [XmlElement("id")]
         [ProtoMember(1)]
-        public AttachedText Text { get; set; }
-        [XmlElement("url")]
+        public string Id { get; set; }
+
+        [XmlElement("name")]
         [ProtoMember(2)]
+        public string Name { get; set; }
+        public bool ShouldSerializeName() { return string.IsNullOrEmpty(Id); }
+
+        [XmlElement("text")]
+        [ProtoMember(3)]
+        public AttachedText Text { get; set; }
+        
+        [XmlElement("url")]
+        [ProtoMember(4)]
         public string Url { get; set; }
 
-        public Diff() {}
+        public License() {}
 
-        public Diff(v1_2.Diff diff)
+        public License(v1_3.License license)
         {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
-
-        public Diff(v1_4.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
+            Id = license.Id;
+            Name = license.Name;
+            if (license.Text != null)
+            {
+                Text = new AttachedText
+                {
+                    Content = license.Text.Content,
+                    ContentType = license.Text.ContentType,
+                    Encoding = license.Text.Encoding
+                };
+            }
+            Url = license.Url;
         }
     }
 }

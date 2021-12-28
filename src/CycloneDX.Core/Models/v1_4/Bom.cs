@@ -22,7 +22,7 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -35,7 +35,7 @@ namespace CycloneDX.Models.v1_3
 
         [XmlIgnore]
         [ProtoMember(1)]
-        public string SpecVersion { get; set; } = "1.3";
+        public string SpecVersion { get; set; } = "1.4";
 
         [XmlAttribute("serialNumber")]
         [ProtoMember(3)]
@@ -88,49 +88,7 @@ namespace CycloneDX.Models.v1_3
         
         public Bom() {}
         
-        public Bom(v1_2.Bom bom)
-        {
-            SerialNumber = bom.SerialNumber;
-            Version = bom.Version;
-            if (bom.Metadata != null)
-            {
-                Metadata = new Metadata(bom.Metadata);
-            }
-            if (bom.Components != null)
-            {
-                Components = new List<Component>();
-                foreach (var component in bom.Components)
-                {
-                    Components.Add(new Component(component));
-                }
-            }
-            if (bom.Services != null)
-            {
-                Services = new List<Service>();
-                foreach (var service in bom.Services)
-                {
-                    Services.Add(new Service(service));
-                }
-            }
-            if (bom.ExternalReferences != null)
-            {
-                ExternalReferences = new List<ExternalReference>();
-                foreach (var externalReference in bom.ExternalReferences)
-                {
-                    ExternalReferences.Add(new ExternalReference(externalReference));
-                }
-            }
-            if (bom.Dependencies != null)
-            {
-                Dependencies = new List<Dependency>();
-                foreach (var dependency in bom.Dependencies)
-                {
-                    Dependencies.Add(new Dependency(dependency));
-                }
-            }
-        }
-                
-        public Bom(v1_4.Bom bom)
+        public Bom(v1_3.Bom bom)
         {
             SerialNumber = bom.SerialNumber;
             Version = bom.Version;
@@ -179,5 +137,5 @@ namespace CycloneDX.Models.v1_3
                 }
             }
         }
-     }
+    }
 }

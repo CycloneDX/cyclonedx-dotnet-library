@@ -18,7 +18,7 @@
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [XmlType("hash")]
     [ProtoContract]
@@ -65,13 +65,7 @@ namespace CycloneDX.Models.v1_3
 
         public Hash() {}
 
-        public Hash(v1_2.Hash hash)
-        {
-            Alg = (HashAlgorithm)((int)hash.Alg + 1);
-            Content = hash.Content;
-        }
-
-        public Hash(v1_4.Hash hash)
+        public Hash(v1_3.Hash hash)
         {
             Alg = (HashAlgorithm)hash.Alg;
             Content = hash.Content;

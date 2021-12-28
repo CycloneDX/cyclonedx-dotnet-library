@@ -18,32 +18,20 @@
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
-    public class Diff
+    public class EvidenceCopyright
     {
-        [XmlElement("text")]
+        [XmlText]
         [ProtoMember(1)]
-        public AttachedText Text { get; set; }
-        [XmlElement("url")]
-        [ProtoMember(2)]
-        public string Url { get; set; }
+        public string Text { get; set; }
 
-        public Diff() {}
+        public EvidenceCopyright() {}
 
-        public Diff(v1_2.Diff diff)
+        public EvidenceCopyright(v1_3.EvidenceCopyright evidenceCopyright)
         {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
-
-        public Diff(v1_4.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
+            Text = evidenceCopyright.Text;
         }
     }
 }

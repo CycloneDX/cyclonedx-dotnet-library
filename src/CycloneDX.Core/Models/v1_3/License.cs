@@ -58,5 +58,21 @@ namespace CycloneDX.Models.v1_3
             }
             Url = license.Url;
         }
+
+        public License(v1_4.License license)
+        {
+            Id = license.Id;
+            Name = license.Name;
+            if (license.Text != null)
+            {
+                Text = new AttachedText
+                {
+                    Content = license.Text.Content,
+                    ContentType = license.Text.ContentType,
+                    Encoding = license.Text.Encoding
+                };
+            }
+            Url = license.Url;
+        }
     }
 }

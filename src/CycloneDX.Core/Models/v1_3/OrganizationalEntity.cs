@@ -51,5 +51,19 @@ namespace CycloneDX.Models.v1_3
                 }
             }
         }
+
+        public OrganizationalEntity(v1_4.OrganizationalEntity organizationalEntity)
+        {
+            Name = organizationalEntity.Name;
+            Url = organizationalEntity.Url;
+            if (organizationalEntity.Contact != null)
+            {
+                Contact = new List<OrganizationalContact>();
+                foreach (var contact in organizationalEntity.Contact)
+                {
+                    Contact.Add(new OrganizationalContact(contact));
+                }
+            }
+        }
     }
 }

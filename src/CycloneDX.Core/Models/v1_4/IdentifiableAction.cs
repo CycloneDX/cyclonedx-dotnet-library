@@ -19,7 +19,7 @@ using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class IdentifiableAction
@@ -61,14 +61,7 @@ namespace CycloneDX.Models.v1_3
 
         public IdentifiableAction() {}
 
-        public IdentifiableAction(v1_2.IdentifiableAction identifiableAction)
-        {
-            Timestamp = identifiableAction.Timestamp;
-            Name = identifiableAction.Name;
-            Email = identifiableAction.Email;
-        }
-
-        public IdentifiableAction(v1_4.IdentifiableAction identifiableAction)
+        public IdentifiableAction(v1_3.IdentifiableAction identifiableAction)
         {
             Timestamp = identifiableAction.Timestamp;
             Name = identifiableAction.Name;

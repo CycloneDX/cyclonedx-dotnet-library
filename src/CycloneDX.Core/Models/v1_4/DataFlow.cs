@@ -1,4 +1,4 @@
-﻿// This file is part of CycloneDX Library for .NET
+// This file is part of CycloneDX Library for .NET
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -15,35 +15,24 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
-    public class Diff
+    public enum DataFlow
     {
-        [XmlElement("text")]
-        [ProtoMember(1)]
-        public AttachedText Text { get; set; }
-        [XmlElement("url")]
-        [ProtoMember(2)]
-        public string Url { get; set; }
-
-        public Diff() {}
-
-        public Diff(v1_2.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
-
-        public Diff(v1_4.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
+        // to make working with protobuf easier
+        Null,
+        [XmlEnum(Name = "inbound")]
+        Inbound,
+        [XmlEnum(Name = "outbound")]
+        Outbound,
+        [XmlEnum(Name = "bi-directional")]
+        Bidirectional,
+        [XmlEnum(Name = "unknown")]
+        Unknown
     }
 }

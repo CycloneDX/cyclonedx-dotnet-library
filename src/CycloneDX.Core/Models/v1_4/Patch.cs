@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Patch
@@ -54,26 +54,13 @@ namespace CycloneDX.Models.v1_3
 
         public Patch() {}
 
-        public Patch(v1_2.Patch patch)
-        {
-            Type = (PatchClassification)((int)patch.Type + 1);
-            if (patch.Diff != null)
-                Diff = new Diff(patch.Diff);
-            if (patch.Resolves != null)
-            {
-                Resolves = new List<Issue>();
-                foreach (var issue in patch.Resolves)
-                {
-                    Resolves.Add(new Issue(issue));
-                }
-            }
-        }
-
-        public Patch(v1_4.Patch patch)
+        public Patch(v1_3.Patch patch)
         {
             Type = (PatchClassification)patch.Type;
             if (patch.Diff != null)
+            {
                 Diff = new Diff(patch.Diff);
+            }
             if (patch.Resolves != null)
             {
                 Resolves = new List<Issue>();

@@ -1,4 +1,4 @@
-﻿// This file is part of CycloneDX Library for .NET
+// This file is part of CycloneDX Library for .NET
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
-    public class Source
+    public class OrganizationalEntity
     {
         [XmlElement("name")]
         [ProtoMember(1)]
@@ -29,20 +30,26 @@ namespace CycloneDX.Models.v1_3
 
         [XmlElement("url")]
         [ProtoMember(2)]
-        public string Url { get; set; }
+        public List<string> Url { get; set; }
 
-        public Source() {}
-        
-        public Source(v1_2.Source source)
-        {
-            Name = source.Name;
-            Url = source.Url;
-        }
+        [XmlElement("contact")]
+        [ProtoMember(3)]
+        public List<OrganizationalContact> Contact { get; set; }
 
-        public Source(v1_4.Source source)
+        public OrganizationalEntity() {}
+
+        public OrganizationalEntity(v1_3.OrganizationalEntity organizationalEntity)
         {
-            Name = source.Name;
-            Url = source.Url;
+            Name = organizationalEntity.Name;
+            Url = organizationalEntity.Url;
+            if (organizationalEntity.Contact != null)
+            {
+                Contact = new List<OrganizationalContact>();
+                foreach (var contact in organizationalEntity.Contact)
+                {
+                    Contact.Add(new OrganizationalContact(contact));
+                }
+            }
         }
     }
 }

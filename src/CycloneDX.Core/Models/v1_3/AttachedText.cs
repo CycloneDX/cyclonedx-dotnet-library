@@ -41,5 +41,12 @@ namespace CycloneDX.Models.v1_3
             Encoding = attachedText.Encoding;
             Content = attachedText.Content;
         }
+
+        public AttachedText(v1_4.AttachedText attachedText)
+        {
+            ContentType = attachedText.ContentType;
+            Encoding = attachedText.Encoding;
+            Content = attachedText.Content;
+        }
     }
 }

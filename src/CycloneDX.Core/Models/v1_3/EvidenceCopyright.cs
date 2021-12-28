@@ -28,5 +28,10 @@ namespace CycloneDX.Models.v1_3
         public string Text { get; set; }
 
         public EvidenceCopyright() {}
+
+        public EvidenceCopyright(v1_4.EvidenceCopyright evidenceCopyright)
+        {
+            Text = evidenceCopyright.Text;
+        }
     }
 }

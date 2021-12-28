@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Tool
@@ -42,22 +42,7 @@ namespace CycloneDX.Models.v1_3
 
         public Tool() {}
 
-        public Tool(v1_2.Tool tool)
-        {
-            Vendor = tool.Vendor;
-            Name = tool.Name;
-            Version = tool.Version;
-            if (tool.Hashes != null)
-            {
-                Hashes = new List<Hash>();
-                foreach (var hash in tool.Hashes)
-                {
-                    Hashes.Add(new Hash(hash));
-                }
-            }
-        }
-
-        public Tool(v1_4.Tool tool)
+        public Tool(v1_3.Tool tool)
         {
             Vendor = tool.Vendor;
             Name = tool.Name;

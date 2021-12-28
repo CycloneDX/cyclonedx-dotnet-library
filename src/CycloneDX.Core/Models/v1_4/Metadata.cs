@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Metadata
@@ -86,7 +86,7 @@ namespace CycloneDX.Models.v1_3
 
         public Metadata() {}
         
-        public Metadata(v1_2.Metadata metadata)
+        public Metadata(v1_3.Metadata metadata)
         {
             Timestamp = metadata.Timestamp;
             if (metadata.Tools != null)
@@ -106,38 +106,17 @@ namespace CycloneDX.Models.v1_3
                 }
             }
             if (metadata.Component != null)
-                Component = new Component(metadata.Component);
-            if (metadata.Manufacture != null)
-                Manufacture = new OrganizationalEntity(metadata.Manufacture);
-            if (metadata.Supplier != null)
-                Supplier = new OrganizationalEntity(metadata.Supplier);
-        }
-                
-        public Metadata(v1_4.Metadata metadata)
-        {
-            Timestamp = metadata.Timestamp;
-            if (metadata.Tools != null)
             {
-                Tools = new List<Tool>();
-                foreach(var tool in metadata.Tools)
-                {
-                    Tools.Add(new Tool(tool));
-                }
-            }
-            if (metadata.Authors != null)
-            {
-                Authors = new List<OrganizationalContact>();
-                foreach(var author in metadata.Authors)
-                {
-                    Authors.Add(new OrganizationalContact(author));
-                }
-            }
-            if (metadata.Component != null)
                 Component = new Component(metadata.Component);
+            }
             if (metadata.Manufacture != null)
+            {
                 Manufacture = new OrganizationalEntity(metadata.Manufacture);
+            }
             if (metadata.Supplier != null)
+            {
                 Supplier = new OrganizationalEntity(metadata.Supplier);
+            }
 
             if (metadata.Licenses != null)
             {

@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CycloneDX.Json
 {
@@ -35,7 +36,7 @@ namespace CycloneDX.Json
             {
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                IgnoreNullValues = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             };
             options.Converters.Add(new Converters.v1_3.AggregateTypeConverter());
             options.Converters.Add(new Converters.v1_3.ComponentScopeConverter());
@@ -62,7 +63,7 @@ namespace CycloneDX.Json
             {
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                IgnoreNullValues = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             };
             options.Converters.Add(new Converters.v1_2.ComponentScopeConverter());
             options.Converters.Add(new Converters.v1_2.ComponentTypeConverter());

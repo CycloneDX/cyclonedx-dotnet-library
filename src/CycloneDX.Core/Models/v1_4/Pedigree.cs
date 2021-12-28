@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
     public class Pedigree
@@ -55,52 +55,7 @@ namespace CycloneDX.Models.v1_3
 
         public Pedigree() {}
 
-        public Pedigree(v1_2.Pedigree pedigree)
-        {
-            if (pedigree.Ancestors != null)
-            {
-                Ancestors = new List<Component>();
-                foreach (var ancestor in pedigree.Ancestors)
-                {
-                    Ancestors.Add(new Component(ancestor));
-                }
-            }
-            if (pedigree.Descendants != null)
-            {
-                Descendants = new List<Component>();
-                foreach (var descendant in pedigree.Descendants)
-                {
-                    Descendants.Add(new Component(descendant));
-                }
-            }
-            if (pedigree.Variants != null)
-            {
-                Variants = new List<Component>();
-                foreach (var variant in pedigree.Variants)
-                {
-                    Variants.Add(new Component(variant));
-                }
-            }
-            if (pedigree.Commits != null)
-            {
-                Commits = new List<Commit>();
-                foreach (var commit in pedigree.Commits)
-                {
-                    Commits.Add(new Commit(commit));
-                }
-            }
-            if (pedigree.Patches != null)
-            {
-                Patches = new List<Patch>();
-                foreach (var patch in pedigree.Patches)
-                {
-                    Patches.Add(new Patch(patch));
-                }
-            }
-            Notes = pedigree.Notes;
-        }
-
-        public Pedigree(v1_4.Pedigree pedigree)
+        public Pedigree(v1_3.Pedigree pedigree)
         {
             if (pedigree.Ancestors != null)
             {

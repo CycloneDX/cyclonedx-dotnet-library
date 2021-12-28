@@ -18,32 +18,25 @@
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
-    public class Diff
+    public class Source
     {
-        [XmlElement("text")]
+        [XmlElement("name")]
         [ProtoMember(1)]
-        public AttachedText Text { get; set; }
+        public string Name { get; set; }
+
         [XmlElement("url")]
         [ProtoMember(2)]
         public string Url { get; set; }
 
-        public Diff() {}
-
-        public Diff(v1_2.Diff diff)
+        public Source() {}
+        
+        public Source(v1_3.Source source)
         {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
-
-        public Diff(v1_4.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
+            Name = source.Name;
+            Url = source.Url;
         }
     }
 }

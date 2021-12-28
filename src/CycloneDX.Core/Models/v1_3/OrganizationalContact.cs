@@ -43,5 +43,12 @@ namespace CycloneDX.Models.v1_3
             Email = organizationalContact.Email;
             Phone = organizationalContact.Phone;
         }
+
+        public OrganizationalContact(v1_4.OrganizationalContact organizationalContact)
+        {
+            Name = organizationalContact.Name;
+            Email = organizationalContact.Email;
+            Phone = organizationalContact.Phone;
+        }
     }
 }

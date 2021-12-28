@@ -44,5 +44,17 @@ namespace CycloneDX.Models.v1_3
                 Expression = licenseChoice.Expression;
             }
         }
+
+        public LicenseChoice(v1_4.LicenseChoice licenseChoice)
+        {
+            if (licenseChoice.License != null)
+            {
+                License = new License(licenseChoice.License);
+            }
+            else if (licenseChoice.Expression != null)
+            {
+                Expression = licenseChoice.Expression;
+            }
+        }
     }
 }

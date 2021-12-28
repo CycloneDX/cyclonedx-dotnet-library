@@ -1,4 +1,4 @@
-﻿// This file is part of CycloneDX Library for .NET
+// This file is part of CycloneDX Library for .NET
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -18,32 +18,30 @@
 using System.Xml.Serialization;
 using ProtoBuf;
 
-namespace CycloneDX.Models.v1_3
+namespace CycloneDX.Models.v1_4
 {
     [ProtoContract]
-    public class Diff
+    public class OrganizationalContact
     {
-        [XmlElement("text")]
+        [XmlElement("name")]
         [ProtoMember(1)]
-        public AttachedText Text { get; set; }
-        [XmlElement("url")]
+        public string Name { get; set; }
+
+        [XmlElement("email")]
         [ProtoMember(2)]
-        public string Url { get; set; }
+        public string Email { get; set; }
 
-        public Diff() {}
+        [XmlElement("phone")]
+        [ProtoMember(3)]
+        public string Phone { get; set; }
 
-        public Diff(v1_2.Diff diff)
+        public OrganizationalContact() {}
+
+        public OrganizationalContact(v1_3.OrganizationalContact organizationalContact)
         {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
-        }
-
-        public Diff(v1_4.Diff diff)
-        {
-            if (diff.Text != null)
-                Text = new AttachedText(diff.Text);
-            Url = diff.Url;
+            Name = organizationalContact.Name;
+            Email = organizationalContact.Email;
+            Phone = organizationalContact.Phone;
         }
     }
 }
