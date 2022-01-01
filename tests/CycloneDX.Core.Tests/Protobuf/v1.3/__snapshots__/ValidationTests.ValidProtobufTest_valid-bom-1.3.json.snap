@@ -116,7 +116,7 @@ components {
           nanos: 3
         }
         name: ""
-        email: ""
+        email: "example@example.com"
       }
     }
   }

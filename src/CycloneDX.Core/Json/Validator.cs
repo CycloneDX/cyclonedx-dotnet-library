@@ -18,13 +18,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Json.Schema;
-using CycloneDX;
 using CycloneDX.Models;
 
 namespace CycloneDX.Json
@@ -52,16 +49,16 @@ namespace CycloneDX.Json
         /// Validate the stream contents represent a valid CycloneDX JSON document.
         /// </summary>
         /// <param name="jsonStream"></param>
-        /// <param name="schemaVersion"></param>
+        /// <param name="specificationVersion"></param>
         /// <returns></returns>
-        public static async Task<ValidationResult> ValidateAsync(Stream jsonStream, SpecificationVersion schemaVersion)
+        public static async Task<ValidationResult> ValidateAsync(Stream jsonStream, SpecificationVersion specificationVersion)
         {
-            if (schemaVersion == SpecificationVersion.v1_0 || schemaVersion == SpecificationVersion.v1_1)
+            if (specificationVersion < SpecificationVersion.v1_2)
             {
-                throw new Exceptions.UnsupportedFormatSpecificationVersionException($"JSON format is not supported by schema version {schemaVersion}");
+                throw new Exceptions.UnsupportedFormatSpecificationVersionException($"JSON format is not supported by schema version {specificationVersion}");
             }
 
-            var schemaVersionString = SchemaVersionResourceFilenameString(schemaVersion);
+            var schemaVersionString = SchemaVersionResourceFilenameString(specificationVersion);
             var assembly = typeof(Validator).GetTypeInfo().Assembly;
             
             using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{schemaVersionString}.schema.json"))
@@ -76,16 +73,16 @@ namespace CycloneDX.Json
         /// Validate the string contents represent a valid CycloneDX JSON document.
         /// </summary>
         /// <param name="jsonString"></param>
-        /// <param name="schemaVersion"></param>
+        /// <param name="specificationVersion"></param>
         /// <returns></returns>
-        public static ValidationResult Validate(string jsonString, SpecificationVersion schemaVersion)
+        public static ValidationResult Validate(string jsonString, SpecificationVersion specificationVersion)
         {
-            if (schemaVersion == SpecificationVersion.v1_0 || schemaVersion == SpecificationVersion.v1_1)
+            if (specificationVersion < SpecificationVersion.v1_2)
             {
-                throw new Exceptions.UnsupportedFormatSpecificationVersionException($"JSON format is not supported by schema version {schemaVersion}");
+                throw new Exceptions.UnsupportedFormatSpecificationVersionException($"JSON format is not supported by schema version {specificationVersion}");
             }
 
-            var schemaVersionString = SchemaVersionResourceFilenameString(schemaVersion);
+            var schemaVersionString = SchemaVersionResourceFilenameString(specificationVersion);
             var assembly = typeof(Validator).GetTypeInfo().Assembly;
             
             using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{schemaVersionString}.schema.json"))

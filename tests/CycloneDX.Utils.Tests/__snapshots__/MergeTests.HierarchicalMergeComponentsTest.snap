@@ -1,6 +1,7 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "1.3",
+  "SpecVersion": "v1_3",
+  "SpecVersionString": "1.3",
   "SerialNumber": null,
   "Version": null,
   "Metadata": {

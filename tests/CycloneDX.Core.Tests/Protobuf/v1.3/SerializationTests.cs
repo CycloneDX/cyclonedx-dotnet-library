@@ -22,7 +22,7 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX;
 
-namespace CycloneDX.Tests.Protobuf.v1_3
+namespace CycloneDX.Core.Tests.Protobuf.v1_3
 {
     public class SerializationTests
     {
@@ -60,12 +60,12 @@ namespace CycloneDX.Tests.Protobuf.v1_3
         {
             var resourceFilename = Path.Join("Resources", "v1.3", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
-            var inputBom = CycloneDX.Xml.Deserializer.Deserialize_v1_3(xmlBom);
+            var inputBom = CycloneDX.Xml.Serializer.Deserialize(xmlBom);
 
             var stream = new MemoryStream();
             CycloneDX.Protobuf.Serializer.Serialize(inputBom, stream);
             stream.Position = 0;
-            var outputBom = CycloneDX.Protobuf.Deserializer.Deserialize(stream);
+            var outputBom = CycloneDX.Protobuf.Serializer.Deserialize(stream);
             xmlBom = CycloneDX.Xml.Serializer.Serialize(outputBom);
 
             Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));

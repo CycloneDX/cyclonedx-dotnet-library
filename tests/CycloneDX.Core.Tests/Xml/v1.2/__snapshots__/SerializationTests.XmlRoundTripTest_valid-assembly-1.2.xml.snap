@@ -16,15 +16,10 @@
     <service>
       <name>acme-service-a</name>
       <endpoints />
-      <data />
-      <externalReferences />
       <services>
         <service>
           <name>acme-service-b</name>
           <endpoints />
-          <data />
-          <externalReferences />
-          <services />
         </service>
       </services>
     </service>

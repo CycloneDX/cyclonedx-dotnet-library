@@ -17,9 +17,9 @@ using CycloneDX.Json;
 ...
 
 // deserializing from a string
-var bom = Deserializer.Deserialize(jsonString);
+var bom = Serializer.Deserialize(jsonString);
 // deserializing from a stream
-var bom = await Deserializer.DeserializeAsync(jsonStream);
+var bom = await Serializer.DeserializeAsync(jsonStream);
 
 
 // serializing to a string
@@ -58,9 +58,9 @@ using CycloneDX.Xml;
 ...
 
 // deserializing from a string
-var bom = Deserializer.Deserialize(xmlString);
+var bom = Serializer.Deserialize(xmlString);
 // deserializing from a stream
-var bom = Deserializer.Deserialize(xmlStream);
+var bom = Serializer.Deserialize(xmlStream);
 
 
 // serializing to a string
@@ -99,9 +99,9 @@ using CycloneDX.Protobuf;
 ...
 
 // deserializing from a byte array
-var bom = Deserializer.Deserialize(protobufBytes);
+var bom = Serializer.Deserialize(protobufBytes);
 // deserializing from a stream
-var bom = Deserializer.Deserialize(protobufStream);
+var bom = Serializer.Deserialize(protobufStream);
 
 
 // serializing to a byte array
@@ -121,7 +121,24 @@ using CycloneDX;
 using (var inputFile = File.OpenRead("bom.json"))
 using (var outputFile = File.OpenWrite("bom.xml"))
 {
-    var bom = await Json.Deserializer.DeserializeAsync(jsonStream);
+    var bom = await Json.Serializer.DeserializeAsync(inputFile);
     Xml.Serializer.Serialize(bom, outputFile);
+}
+```
+
+## Downgrading/Upgrading BOM formats
+
+```csharp
+using CycloneDX;
+
+...
+
+using (var inputFile = File.OpenRead("bom-1.2.json"))
+using (var outputFile = File.OpenWrite("bom-1.3.json"))
+{
+    var bom = await Json.Serializer.DeserializeAsync(inputFile);
+    // set the SpecVersion to whatever version you want
+    bom.SpecVersion = SpecificationVersion.v1_3;
+    Json.Serializer.Serialize(bom, outputFile);
 }
 ```

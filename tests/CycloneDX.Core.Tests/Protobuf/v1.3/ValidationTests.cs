@@ -22,7 +22,7 @@ using Snapshooter.Xunit;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace CycloneDX.Tests.Protobuf.v1_3 
+namespace CycloneDX.Core.Tests.Protobuf.v1_3 
 {
     public class ValidationTests
     {
@@ -68,7 +68,7 @@ namespace CycloneDX.Tests.Protobuf.v1_3
             {
                 var resourceFilename = Path.Join("Resources", "v1.3", filename);
                 var jsonBom = File.ReadAllText(resourceFilename);
-                var inputBom = CycloneDX.Json.Deserializer.Deserialize_v1_3(jsonBom);
+                var inputBom = CycloneDX.Json.Serializer.Deserialize(jsonBom);
 
                 var stream = new MemoryStream();
                 CycloneDX.Protobuf.Serializer.Serialize(inputBom, stream);

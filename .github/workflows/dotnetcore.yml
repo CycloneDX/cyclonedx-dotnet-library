@@ -25,6 +25,7 @@ jobs:
     name: Tests for .net core ${{ matrix.framework }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         framework: ['3.1']

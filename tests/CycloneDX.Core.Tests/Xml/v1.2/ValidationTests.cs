@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 using Xunit;
 using CycloneDX.Xml;
 
-namespace CycloneDX.Tests.Xml.v1_2
+namespace CycloneDX.Core.Tests.Xml.v1_2
 {
     public class ValidationTests
     {

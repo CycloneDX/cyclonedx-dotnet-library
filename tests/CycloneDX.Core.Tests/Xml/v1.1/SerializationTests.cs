@@ -23,7 +23,7 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Xml;
 
-namespace CycloneDX.Tests.Xml.v1_1
+namespace CycloneDX.Core.Tests.Xml.v1_1
 {
     public class SerializationTests
     {
@@ -45,7 +45,7 @@ namespace CycloneDX.Tests.Xml.v1_1
             var resourceFilename = Path.Join("Resources", "v1.1", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var bom = Deserializer.Deserialize_v1_1(xmlBom);
+            var bom = Serializer.Deserialize(xmlBom);
             xmlBom = Serializer.Serialize(bom);
 
             Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
@@ -69,11 +69,39 @@ namespace CycloneDX.Tests.Xml.v1_1
             var resourceFilename = Path.Join("Resources", "v1.1", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var bom = Deserializer.Deserialize_v1_1(xmlBom);
+            var bom = Serializer.Deserialize(xmlBom);
             using var ms = new MemoryStream();
             Serializer.Serialize(bom, ms);
 
             Snapshot.Match(Encoding.UTF8.GetString(ms.ToArray()), SnapshotNameExtension.Create(filename));
         }
+
+        // TODO: modify test data to conform to v1.0 spec, i.e. component types, hash algorithms, and component modified
+        // [Theory]
+        // [InlineData("valid-bom-1.1.xml")]
+        // [InlineData("valid-component-hashes-1.1.xml")]
+        // [InlineData("valid-component-ref-1.1.xml")]
+        // [InlineData("valid-component-types-1.1.xml")]
+        // [InlineData("valid-empty-components-1.1.xml")]
+        // // [InlineData("valid-external-elements-1.1.xml")]
+        // [InlineData("valid-license-expression-1.1.xml")]
+        // [InlineData("valid-license-id-1.1.xml")]
+        // [InlineData("valid-license-name-1.1.xml")]
+        // [InlineData("valid-minimal-viable-1.1.xml")]
+        // [InlineData("valid-random-attributes-1.1.xml")]
+        // [InlineData("valid-xml-signature-1.1.xml")]
+        // public void XmlDowngradeTest(string filename)
+        // {
+        //     var resourceFilename = Path.Join("Resources", "v1.1", filename);
+        //     var xmlBom = File.ReadAllText(resourceFilename);
+
+        //     var bom = Serializer.Deserialize(xmlBom);
+        //     bom.SpecVersion = SpecificationVersion.v1_0;
+        //     xmlBom = Serializer.Serialize(bom);
+
+        //     var result = Validator.Validate(xmlBom, SpecificationVersion.v1_0);
+
+        //     Assert.True(result.Valid, $"BOM version downgrade failed validation: Validation failed: {result}");
+        // }
     }
 }

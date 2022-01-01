@@ -27,7 +27,7 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using Xunit;
 
-namespace CycloneDX.Tests.Protobuf.v1_3.Utils
+namespace CycloneDX.Core.Tests.Protobuf.v1_3.Utils
 {
     public sealed class LinuxOnlyForCITheory : TheoryAttribute
     {
@@ -65,7 +65,7 @@ namespace CycloneDX.Tests.Protobuf.v1_3.Utils
     {
         public TempDirectoryWithProtoSchema()
         {
-            var assembly = typeof(CycloneDX.Protobuf.Deserializer).GetTypeInfo().Assembly;
+            var assembly = typeof(CycloneDX.Protobuf.Serializer).GetTypeInfo().Assembly;
             using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-1.3.proto"))
             {
                 using (var fileStream = File.Create(Path.Join(DirectoryPath, "bom-1.3.proto")))

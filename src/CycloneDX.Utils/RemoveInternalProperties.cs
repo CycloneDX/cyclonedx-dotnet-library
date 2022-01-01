@@ -18,7 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 
 namespace CycloneDX.Utils
 {

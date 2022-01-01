@@ -24,7 +24,7 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Json;
 
-namespace CycloneDX.Tests.Json
+namespace CycloneDX.Core.Tests.Json
 {
     public class SerializationTests
     {
@@ -36,7 +36,7 @@ namespace CycloneDX.Tests.Json
             var resourceFilename = Path.Join("Resources", resourceSubdir, filename);
             var jsonBom = File.ReadAllText(resourceFilename);
 
-            var bom = Deserializer.Deserialize(jsonBom);
+            var bom = Serializer.Deserialize(jsonBom);
             jsonBom = Serializer.Serialize(bom);
 
             Snapshot.Match(jsonBom, SnapshotNameExtension.Create(filename));
@@ -52,7 +52,7 @@ namespace CycloneDX.Tests.Json
             using (var ms = new MemoryStream())
             using (var sr = new StreamReader(ms))
             {
-                var bom = await Deserializer.DeserializeAsync(jsonBomStream).ConfigureAwait(false);
+                var bom = await Serializer.DeserializeAsync(jsonBomStream).ConfigureAwait(false);
                 await Serializer.SerializeAsync(bom, ms).ConfigureAwait(false);
                 ms.Position = 0;
                 Snapshot.Match(sr.ReadToEnd(), SnapshotNameExtension.Create(filename));

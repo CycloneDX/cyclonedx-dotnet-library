@@ -17,6 +17,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CycloneDX.Json.Converters;
 
 namespace CycloneDX.Json
 {
@@ -27,10 +28,10 @@ namespace CycloneDX.Json
     {
         /// <summary>
         /// Returns <c>JsonSerializerOptions</c> required to serialize and
-        /// deserialize CycloneDX v1.3 JSON documents.
+        /// deserialize CycloneDX JSON documents.
         /// </summary>
         /// <returns></returns>
-        public static JsonSerializerOptions GetJsonSerializerOptions_v1_3()
+        public static JsonSerializerOptions GetJsonSerializerOptions()
         {
             var options = new JsonSerializerOptions
             {
@@ -38,43 +39,17 @@ namespace CycloneDX.Json
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             };
-            options.Converters.Add(new Converters.v1_3.AggregateTypeConverter());
-            options.Converters.Add(new Converters.v1_3.ComponentScopeConverter());
-            options.Converters.Add(new Converters.v1_3.ComponentTypeConverter());
-            options.Converters.Add(new Converters.v1_3.DataFlowConverter());
-            options.Converters.Add(new Converters.v1_3.DateTimeConverter());
-            options.Converters.Add(new Converters.v1_3.DependencyConverter());
-            options.Converters.Add(new Converters.v1_3.ExternalReferenceTypeConverter());
-            options.Converters.Add(new Converters.v1_3.HashAlgorithmConverter());
-            options.Converters.Add(new Converters.v1_3.IssueClassificationConverter());
-            options.Converters.Add(new Converters.v1_3.LicenseConverter());
-            options.Converters.Add(new Converters.v1_3.PatchClassificationConverter());
-            return options;
-        }
-
-        /// <summary>
-        /// Returns <c>JsonSerializerOptions</c> required to serialize and
-        /// deserialize CycloneDX v1.2 JSON documents.
-        /// </summary>
-        /// <returns></returns>
-        public static JsonSerializerOptions GetJsonSerializerOptions_v1_2()
-        {
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-            };
-            options.Converters.Add(new Converters.v1_2.ComponentScopeConverter());
-            options.Converters.Add(new Converters.v1_2.ComponentTypeConverter());
-            options.Converters.Add(new Converters.v1_2.DataFlowConverter());
-            options.Converters.Add(new Converters.v1_2.DateTimeConverter());
-            options.Converters.Add(new Converters.v1_2.DependencyConverter());
-            options.Converters.Add(new Converters.v1_2.ExternalReferenceTypeConverter());
-            options.Converters.Add(new Converters.v1_2.HashAlgorithmConverter());
-            options.Converters.Add(new Converters.v1_2.IssueClassificationConverter());
-            options.Converters.Add(new Converters.v1_2.LicenseConverter());
-            options.Converters.Add(new Converters.v1_2.PatchClassificationConverter());
+            options.Converters.Add(new AggregateTypeConverter());
+            options.Converters.Add(new ComponentScopeConverter());
+            options.Converters.Add(new ComponentTypeConverter());
+            options.Converters.Add(new DataFlowConverter());
+            options.Converters.Add(new DateTimeConverter());
+            options.Converters.Add(new DependencyConverter());
+            options.Converters.Add(new ExternalReferenceTypeConverter());
+            options.Converters.Add(new HashAlgorithmConverter());
+            options.Converters.Add(new IssueClassificationConverter());
+            options.Converters.Add(new LicenseConverter());
+            options.Converters.Add(new PatchClassificationConverter());
             return options;
         }
     }
