@@ -557,7 +557,7 @@
       "additionalProperties": false,
       "properties": {
         "id": {
-          "$ref": "spdx.schema.json",
+          "$ref": "file://spdx.schema.json",
           "title": "License ID (SPDX)",
           "description": "A valid SPDX license ID",
           "examples": ["Apache-2.0"]
