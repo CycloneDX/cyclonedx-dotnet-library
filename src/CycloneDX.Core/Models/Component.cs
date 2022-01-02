@@ -191,5 +191,10 @@ namespace CycloneDX.Models
         [XmlElement("evidence")]
         [ProtoMember(23)]
         public Evidence Evidence { get; set; }
+
+        [XmlElement("releaseNotes")]
+        [ProtoMember(24)]
+        public ReleaseNotes ReleaseNotes { get; set; }
+        public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
     }
 }
