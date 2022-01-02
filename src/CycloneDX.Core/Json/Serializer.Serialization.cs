@@ -42,7 +42,7 @@ namespace CycloneDX.Json
         public static async Task SerializeAsync(Bom bom, Stream outputStream)
         {
             Contract.Requires(bom != null && outputStream != null);
-            await JsonSerializer.SerializeAsync<Bom>(outputStream, bom, _options).ConfigureAwait(false);
+            await JsonSerializer.SerializeAsync<Bom>(outputStream, SpecificationVersionHelpers.GetBomForSerialization(bom), _options).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace CycloneDX.Json
         public static string Serialize(Bom bom)
         {
             Contract.Requires(bom != null);
-            var jsonBom = JsonSerializer.Serialize(bom, _options);
+            var jsonBom = JsonSerializer.Serialize(SpecificationVersionHelpers.GetBomForSerialization(bom), _options);
             return jsonBom;
         }
     }

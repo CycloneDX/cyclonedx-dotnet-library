@@ -176,7 +176,8 @@ namespace CycloneDX.Models
         [XmlArrayItem("reference")]
         [ProtoMember(20)]
         public List<ExternalReference> ExternalReferences { get; set; }
-        
+        public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
+
         [XmlArray("components")]
         [ProtoMember(21)]
         public List<Component> Components { get; set; }
@@ -185,6 +186,7 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(22)]
         public List<Property> Properties { get; set; }
+        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
         
         [XmlElement("evidence")]
         [ProtoMember(23)]

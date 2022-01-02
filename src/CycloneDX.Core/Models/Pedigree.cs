@@ -48,6 +48,7 @@ namespace CycloneDX.Models
         [XmlArrayItem("patch")]
         [ProtoMember(5)]
         public List<Patch> Patches { get; set; }
+        public bool ShouldSerializePatches() { return Patches?.Count > 0; }
 
         [XmlElement("notes")]
         [ProtoMember(6)]

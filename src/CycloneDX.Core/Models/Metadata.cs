@@ -78,10 +78,12 @@ namespace CycloneDX.Models
         [XmlElement("licenses")]
         [ProtoMember(7)]
         public List<LicenseChoice> Licenses { get; set; }
+        public bool ShouldSerializeLicenses() { return Licenses?.Count > 0; }
         
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(8)]
         public List<Property> Properties { get; set; }
+        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
     }
 }

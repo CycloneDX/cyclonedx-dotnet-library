@@ -44,55 +44,6 @@ namespace CycloneDX.Xml
         {
             var overrideBuilder = new OverrideXml();
 
-            if (specificationVersion < SpecificationVersion.v1_3)
-            {
-                overrideBuilder.Override<Bom>()
-                    .Member("Compositions").XmlIgnore();
-                
-                overrideBuilder.Override<Metadata>()
-                    .Member("Licenses").XmlIgnore()
-                    .Member("Properties").XmlIgnore();
-
-                overrideBuilder.Override<Component>()
-                    .Member("Properties").XmlIgnore()
-                    .Member("Evidence").XmlIgnore();
-                
-                overrideBuilder.Override<Service>()
-                    .Member("Properties").XmlIgnore();
-
-                overrideBuilder.Override<ExternalReference>()
-                    .Member("Hashes").XmlIgnore();
-            }
-
-            if (specificationVersion < SpecificationVersion.v1_2)
-            {
-                overrideBuilder.Override<Bom>()
-                    .Member("Metadata").XmlIgnore()
-                    .Member("Dependencies").XmlIgnore()
-                    .Member("Services").XmlIgnore();
-
-                overrideBuilder.Override<Component>()
-                    .Member("Author").XmlIgnore()
-                    .Member("MimeType").XmlIgnore()
-                    .Member("Supplier").XmlIgnore()
-                    .Member("Swid").XmlIgnore();
-                
-                overrideBuilder.Override<Pedigree>()
-                    .Member("Patches").XmlIgnore();
-            }
-
-            if (specificationVersion < SpecificationVersion.v1_1)
-            {
-                overrideBuilder.Override<Bom>()
-                    .Member("SerialNumber").XmlIgnore()
-                    .Member("ExternalReferences").XmlIgnore();
-
-                overrideBuilder.Override<Component>()
-                    .Member("BomRef").XmlIgnore()
-                    .Member("Pedigree").XmlIgnore()
-                    .Member("ExternalReferences").XmlIgnore();
-            }
-
             overrideBuilder.Override<Bom>()
                 .Attr(new XmlRootAttribute("bom") { Namespace = SpecificationVersionHelpers.XmlNamespace(specificationVersion) });
 
@@ -139,7 +90,7 @@ namespace CycloneDX.Xml
             var serializer = GetXmlSerializer(bom.SpecVersion);
             using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
             {
-                serializer.Serialize(xmlWriter, bom);
+                serializer.Serialize(xmlWriter, SpecificationVersionHelpers.GetBomForSerialization(bom));
             }
         }
 
@@ -155,7 +106,7 @@ namespace CycloneDX.Xml
             var serializer = GetXmlSerializer(bom.SpecVersion);
             using (var writer = new Utf8StringWriter())
             {
-                serializer.Serialize(writer, bom);
+                serializer.Serialize(writer, SpecificationVersionHelpers.GetBomForSerialization(bom));
                 return writer.ToString();
             }
         }

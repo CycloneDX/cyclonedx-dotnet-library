@@ -118,17 +118,20 @@ namespace CycloneDX.Models
         [XmlArrayItem("service")]
         [ProtoMember(6)]
         public List<Service> Services { get; set; }
+        public bool ShouldSerializeServices() { return Services?.Count > 0; }
 
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
         [ProtoMember(7)]
         public List<ExternalReference> ExternalReferences { get; set; }
+        public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
 
         [XmlArray("dependencies")]
         [XmlArrayItem("dependency")]
         [ProtoMember(8)]
         public List<Dependency> Dependencies { get; set; }
-        
+        public bool ShouldSerializeDependencies() { return Dependencies?.Count > 0; }
+
         [XmlArray("compositions")]
         [XmlArrayItem("composition")]
         [ProtoMember(9)]

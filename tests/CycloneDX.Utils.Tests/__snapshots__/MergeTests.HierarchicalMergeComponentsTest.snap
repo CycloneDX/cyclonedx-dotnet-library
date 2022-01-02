@@ -27,15 +27,11 @@
       "Swid": null,
       "Modified": null,
       "Pedigree": null,
-      "ExternalReferences": null,
       "Components": null,
-      "Properties": null,
       "Evidence": null
     },
     "Manufacture": null,
-    "Supplier": null,
-    "Licenses": null,
-    "Properties": null
+    "Supplier": null
   },
   "Components": [
     {
@@ -58,7 +54,6 @@
       "Swid": null,
       "Modified": null,
       "Pedigree": null,
-      "ExternalReferences": null,
       "Components": [
         {
           "Type": "Null",
@@ -80,13 +75,10 @@
           "Swid": null,
           "Modified": null,
           "Pedigree": null,
-          "ExternalReferences": null,
           "Components": null,
-          "Properties": null,
           "Evidence": null
         }
       ],
-      "Properties": null,
       "Evidence": null
     },
     {
@@ -109,7 +101,6 @@
       "Swid": null,
       "Modified": null,
       "Pedigree": null,
-      "ExternalReferences": null,
       "Components": [
         {
           "Type": "Null",
@@ -131,18 +122,13 @@
           "Swid": null,
           "Modified": null,
           "Pedigree": null,
-          "ExternalReferences": null,
           "Components": null,
-          "Properties": null,
           "Evidence": null
         }
       ],
-      "Properties": null,
       "Evidence": null
     }
   ],
-  "Services": null,
-  "ExternalReferences": null,
   "Dependencies": [
     {
       "Ref": "System1@1:System1@1",
