@@ -39,5 +39,11 @@ namespace CycloneDX.Models
         [XmlArray("hashes")]
         [ProtoMember(4)]
         public List<Hash> Hashes { get; set; }
+
+        [XmlArray("externalReferences")]
+        [XmlArrayItem("reference")]
+        [ProtoMember(5)]
+        public List<ExternalReference> ExternalReferences { get; set; }
+        public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
     }
 }

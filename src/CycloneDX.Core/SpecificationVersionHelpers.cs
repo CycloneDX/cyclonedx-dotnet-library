@@ -161,6 +161,13 @@ namespace CycloneDX
 
             if (bomCopy.SpecVersion < SpecificationVersion.v1_4)
             {
+                if (bomCopy.Metadata?.Tools != null)
+                {
+                    foreach (var tool in bomCopy.Metadata.Tools)
+                    {
+                        tool.ExternalReferences = null;
+                    }
+                }
             }
 
             return bomCopy;
