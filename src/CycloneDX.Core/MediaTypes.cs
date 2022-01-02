@@ -53,8 +53,12 @@ namespace CycloneDX
         {
             var mediaType = GetMediaType(format);
 
-            var version = "1.3";
-            if (specificationVersion == SpecificationVersion.v1_2)
+            var version = "1.4";
+            if (specificationVersion == SpecificationVersion.v1_3)
+            {
+                version = "1.3";
+            }
+            else if (specificationVersion == SpecificationVersion.v1_2)
             {
                 if (format == Format.Protobuf)
                 {

@@ -26,7 +26,7 @@ namespace CycloneDX
     {
         public static readonly SpecificationVersion CurrentVersion = SpecificationVersion.v1_3;
 
-        public static readonly string XmlNamespaceRegexString = @"http:\/\/cyclonedx\.org\/schema\/bom\/(?<SpecificationVersionString>1\.[0-3])";
+        public static readonly string XmlNamespaceRegexString = @"http:\/\/cyclonedx\.org\/schema\/bom\/(?<SpecificationVersionString>1\.[0-4])";
 
         public static readonly Regex XmlNamespaceRegex = new Regex(XmlNamespaceRegexString);
 
@@ -57,6 +57,8 @@ namespace CycloneDX
         {
             switch (specificationVersion)
             {
+                case SpecificationVersion.v1_4:
+                    return "1.4";
                 case SpecificationVersion.v1_3:
                     return "1.3";
                 case SpecificationVersion.v1_2:
@@ -155,6 +157,10 @@ namespace CycloneDX
                         }
                     }
                 }
+            }
+
+            if (bomCopy.SpecVersion < SpecificationVersion.v1_4)
+            {
             }
 
             return bomCopy;

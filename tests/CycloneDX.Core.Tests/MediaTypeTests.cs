@@ -23,12 +23,15 @@ namespace CycloneDX.Core.Tests
     public class MediaTypeTests
     {
         [Theory]
+        [InlineData(Format.Xml, SpecificationVersion.v1_4, "application/vnd.cyclonedx+xml; version=1.4")]
         [InlineData(Format.Xml, SpecificationVersion.v1_3, "application/vnd.cyclonedx+xml; version=1.3")]
         [InlineData(Format.Xml, SpecificationVersion.v1_2, "application/vnd.cyclonedx+xml; version=1.2")]
         [InlineData(Format.Xml, SpecificationVersion.v1_1, "application/vnd.cyclonedx+xml; version=1.1")]
         [InlineData(Format.Xml, SpecificationVersion.v1_0, "application/vnd.cyclonedx+xml; version=1.0")]
+        [InlineData(Format.Json, SpecificationVersion.v1_4, "application/vnd.cyclonedx+json; version=1.4")]
         [InlineData(Format.Json, SpecificationVersion.v1_3, "application/vnd.cyclonedx+json; version=1.3")]
         [InlineData(Format.Json, SpecificationVersion.v1_2, "application/vnd.cyclonedx+json; version=1.2")]
+        [InlineData(Format.Protobuf, SpecificationVersion.v1_4, "application/x.vnd.cyclonedx+protobuf; version=1.4")]
         [InlineData(Format.Protobuf, SpecificationVersion.v1_3, "application/x.vnd.cyclonedx+protobuf; version=1.3")]
         public void MediaTypeAndVersionIsCorrect(Format format, SpecificationVersion schemaVersion, string expected)
         {
