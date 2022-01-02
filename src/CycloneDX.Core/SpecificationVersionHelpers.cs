@@ -168,6 +168,11 @@ namespace CycloneDX
                         tool.ExternalReferences = null;
                     }
                 }
+
+                EnumerateAllComponents(bomCopy, (component) => {
+                    component.ReleaseNotes = null;
+                });
+                
             }
 
             return bomCopy;

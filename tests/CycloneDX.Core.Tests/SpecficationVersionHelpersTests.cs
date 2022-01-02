@@ -27,7 +27,8 @@ namespace CycloneDX.Core.Tests
         [InlineData("http://cyclonedx.org/schema/bom/1.1", true)]
         [InlineData("http://cyclonedx.org/schema/bom/1.2", true)]
         [InlineData("http://cyclonedx.org/schema/bom/1.3", true)]
-        [InlineData("http://cyclonedx.org/schema/bom/1.4", false)]
+        [InlineData("http://cyclonedx.org/schema/bom/1.4", true)]
+        [InlineData("http://cyclonedx.org/schema/bom/1.5", false)]
         [InlineData("http://cyclonedx.org/schema/bom/", false)]
         public void IsValidXmlNamespaceTest(string xmlns, bool valid)
         {
@@ -39,7 +40,8 @@ namespace CycloneDX.Core.Tests
         [InlineData("http://cyclonedx.org/schema/bom/1.1", "1.1")]
         [InlineData("http://cyclonedx.org/schema/bom/1.2", "1.2")]
         [InlineData("http://cyclonedx.org/schema/bom/1.3", "1.3")]
-        [InlineData("http://cyclonedx.org/schema/bom/1.4", null)]
+        [InlineData("http://cyclonedx.org/schema/bom/1.4", "1.4")]
+        [InlineData("http://cyclonedx.org/schema/bom/1.5", null)]
         [InlineData("http://cyclonedx.org/schema/bom/", null)]
         public void XmlNamespaceSpecificationVersionTest(string xmlns, string specVersionString)
         {
