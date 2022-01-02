@@ -47,19 +47,7 @@ namespace CycloneDX.Models
         {
             get
             {
-                switch (SpecVersion)
-                {
-                    case SpecificationVersion.v1_0:
-                        return "1.0";
-                    case SpecificationVersion.v1_1:
-                        return "1.1";
-                    case SpecificationVersion.v1_2:
-                        return "1.2";
-                    case SpecificationVersion.v1_3:
-                        return "1.3";
-                    default:
-                        throw new ArgumentException($"Unhandled specification version: {SpecVersion}");
-                }
+                return SpecificationVersionHelpers.VersionString(SpecVersion);
             }
             set
             {
@@ -76,6 +64,9 @@ namespace CycloneDX.Models
                         break;
                     case "1.3":
                         SpecVersion = SpecificationVersion.v1_3;
+                        break;
+                    case "1.4":
+                        SpecVersion = SpecificationVersion.v1_4;
                         break;
                     default:
                         throw new ArgumentException($"Unsupported specification version: {value}");
