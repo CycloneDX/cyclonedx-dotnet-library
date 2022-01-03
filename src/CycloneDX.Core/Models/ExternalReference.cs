@@ -58,7 +58,9 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "build-meta")]
             BuildMeta,
             [XmlEnum(Name = "build-system")]
-            BuildSystem
+            BuildSystem,
+            [XmlEnum(Name = "release-notes")]
+            ReleaseNotes,
         }
 
         [XmlElement("url")]
