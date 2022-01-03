@@ -43,6 +43,12 @@ namespace CycloneDX.Json
                 var spdxSchema = JsonSchema.FromText(spdxStreamReader.ReadToEnd());
                 SchemaRegistry.Global.Register(new Uri("file://spdx.schema.json"), spdxSchema);
             }
+            using (var jsfStream = assembly.GetManifestResourceStream("CycloneDX.Core.Schemas.jsf-0.82.schema.json"))
+            using (var jsfStreamReader = new StreamReader(jsfStream))
+            {
+                var jsfSchema = JsonSchema.FromText(jsfStreamReader.ReadToEnd());
+                SchemaRegistry.Global.Register(new Uri("file://jsf-0.82.schema.json"), jsfSchema);
+            }
         }
 
         /// <summary>
