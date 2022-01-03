@@ -127,5 +127,11 @@ namespace CycloneDX.Models
         [XmlArrayItem("composition")]
         [ProtoMember(9)]
         public List<Composition> Compositions { get; set; }
+
+        [XmlArray("vulnerabilities")]
+        [XmlArrayItem("vulnerability")]
+        [ProtoMember(10)]
+        public List<Vulnerabilities.Vulnerability> Vulnerabilities { get; set; }
+        public bool ShouldSerializeVulnerabilities() { return Vulnerabilities?.Count > 0; }
     }
 }
