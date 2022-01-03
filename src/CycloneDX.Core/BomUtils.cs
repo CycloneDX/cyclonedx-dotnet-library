@@ -102,7 +102,6 @@ namespace CycloneDX
                     bomCopy.Metadata.Licenses = null;
                     bomCopy.Metadata.Properties = null;
                 }
-
                 EnumerateAllComponents(bomCopy, (component) => {
                     component.Properties = null;
                     component.Evidence = null;
@@ -114,21 +113,16 @@ namespace CycloneDX
                         }
                     }
                 });
-
-                if (bomCopy.Services != null)
-                {
-                    foreach (var service in bomCopy.Services)
+                EnumerateAllServices(bomCopy, (service) => {
+                    service.Properties = null;
+                    if (service.ExternalReferences != null)
                     {
-                        service.Properties = null;
-                        if (service.ExternalReferences != null)
+                        foreach (var extRef in service.ExternalReferences)
                         {
-                            foreach (var extRef in service.ExternalReferences)
-                            {
-                                extRef.Hashes = null;
-                            }
+                            extRef.Hashes = null;
                         }
                     }
-                }
+                });
             }
 
             if (bomCopy.SpecVersion < SpecificationVersion.v1_4)
