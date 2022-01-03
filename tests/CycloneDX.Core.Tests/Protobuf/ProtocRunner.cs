@@ -18,72 +18,12 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Text;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
-using Snapshooter;
-using Snapshooter.Xunit;
-using Xunit;
 
-namespace CycloneDX.Core.Tests.Protobuf.v1_3.Utils
+namespace CycloneDX.Core.Tests.Protobuf
 {
-    public sealed class LinuxOnlyForCITheory : TheoryAttribute
-    {
-        public LinuxOnlyForCITheory() {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && IsCI()) {
-                Skip = "Skip on non-Linux when running in CI";
-            }
-        }
-        
-        private static bool IsCI()
-            => Environment.GetEnvironmentVariable("CI") == "true";
-    }
-    
-    public class TempDirectory : IDisposable
-    {
-        private readonly string _tempPath;
-        private readonly string _tempDirName;
-
-        public TempDirectory()
-        {
-            _tempPath = Path.GetTempPath();
-            _tempDirName = Path.GetRandomFileName();
-            Directory.CreateDirectory(DirectoryPath);
-        }
-
-        public void Dispose()
-        {
-            Directory.Delete(DirectoryPath, true);
-        }
-
-        public string DirectoryPath => Path.Join(_tempPath, _tempDirName);
-    }
-
-    public class TempDirectoryWithProtoSchema : TempDirectory
-    {
-        public TempDirectoryWithProtoSchema()
-        {
-            var assembly = typeof(CycloneDX.Protobuf.Serializer).GetTypeInfo().Assembly;
-            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-1.3.proto"))
-            {
-                using (var fileStream = File.Create(Path.Join(DirectoryPath, "bom-1.3.proto")))
-                {
-                    schemaStream.Seek(0, SeekOrigin.Begin);
-                    schemaStream.CopyTo(fileStream);
-                }
-            }
-        }
-    }
-
-    public class ProtocResult
-    {
-        public string Output { get; set; }
-        public string Errors { get; set; }
-        public int ExitCode { get; set; }
-    }
-
     public class ProtocRunner
     {
         internal ProtocResult Run(string workingDirectory, byte[] input, string[] arguments)
