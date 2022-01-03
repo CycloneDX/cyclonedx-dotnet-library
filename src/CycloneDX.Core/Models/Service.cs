@@ -114,6 +114,10 @@ namespace CycloneDX.Models
         [ProtoMember(13)]
         public List<Service> Services { get; set; }
 
+        [XmlElement("releaseNotes")]
+        [ProtoMember(15)]
+        public ReleaseNotes ReleaseNotes { get; set; }
+
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(14)]
