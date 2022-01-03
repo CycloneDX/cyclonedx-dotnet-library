@@ -1639,7 +1639,7 @@
       "maxLength": 1024
     },
     "signature": {
-      "$ref": "jsf-0.82.schema.json#/definitions/signature",
+      "$ref": "file://jsf-0.82.schema.json#/definitions/signature",
       "title": "Signature",
       "description": "Enveloped signature in JSON Signature Format (JSF)."
     }
