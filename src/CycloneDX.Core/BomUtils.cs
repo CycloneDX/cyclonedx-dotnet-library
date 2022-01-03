@@ -140,11 +140,12 @@ namespace CycloneDX
                         tool.ExternalReferences = null;
                     }
                 }
-
                 EnumerateAllComponents(bomCopy, (component) => {
                     component.ReleaseNotes = null;
                 });
-                
+                EnumerateAllServices(bomCopy, (service) => {
+                    service.ReleaseNotes = null;
+                });
                 bomCopy.Vulnerabilities = null;
             }
 
@@ -207,6 +208,34 @@ namespace CycloneDX
                     foreach (var c in currentComponent.Pedigree.Variants)
                     {
                         q.Enqueue(c);
+                    }
+                }
+            }
+        }
+
+        public static void EnumerateAllServices(Bom bom, Action<Service> callback)
+        {
+            var q = new Queue<Service>();
+
+            if (bom.Services != null)
+            {
+                foreach (var service in bom.Services)
+                {
+                    q.Enqueue(service);
+                }
+            }
+
+            while (q.Count > 0)
+            {
+                var currentService = q.Dequeue();
+                
+                callback(currentService);
+
+                if (currentService.Services != null)
+                {
+                    foreach (var s in currentService.Services)
+                    {
+                        q.Enqueue(s);
                     }
                 }
             }
