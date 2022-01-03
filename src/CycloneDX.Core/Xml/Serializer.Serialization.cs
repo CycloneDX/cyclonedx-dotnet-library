@@ -90,7 +90,7 @@ namespace CycloneDX.Xml
             var serializer = GetXmlSerializer(bom.SpecVersion);
             using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
             {
-                serializer.Serialize(xmlWriter, SpecificationVersionHelpers.GetBomForSerialization(bom));
+                serializer.Serialize(xmlWriter, BomUtils.GetBomForSerialization(bom));
             }
         }
 
@@ -106,7 +106,7 @@ namespace CycloneDX.Xml
             var serializer = GetXmlSerializer(bom.SpecVersion);
             using (var writer = new Utf8StringWriter())
             {
-                serializer.Serialize(writer, SpecificationVersionHelpers.GetBomForSerialization(bom));
+                serializer.Serialize(writer, BomUtils.GetBomForSerialization(bom));
                 return writer.ToString();
             }
         }

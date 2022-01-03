@@ -38,7 +38,7 @@ namespace CycloneDX.Protobuf
             Contract.Requires(outputStream != null);
             Contract.Requires(bom != null);
             
-            ProtoBuf.Serializer.Serialize(outputStream, SpecificationVersionHelpers.GetBomForSerialization(bom));
+            ProtoBuf.Serializer.Serialize(outputStream, BomUtils.GetBomForSerialization(bom));
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace CycloneDX.Protobuf
         public static byte[] Serialize(Bom bom)
         {
             var ms = new MemoryStream();
-            Serialize(SpecificationVersionHelpers.GetBomForSerialization(bom), ms);
+            Serialize(BomUtils.GetBomForSerialization(bom), ms);
             return ms.ToArray();
         }
 

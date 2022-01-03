@@ -51,29 +51,10 @@ namespace CycloneDX.Models
         public DateTime? Timestamp
         {
             get => _timestamp;
-            set
-            {
-                if (value is null)
-                {
-                    _timestamp = null;
-                }
-                else if (value.Value.Kind == DateTimeKind.Unspecified)
-                {
-                    _timestamp = DateTime.SpecifyKind(value.Value, DateTimeKind.Utc);
-                }
-                else if (value.Value.Kind == DateTimeKind.Local)
-                {
-                    _timestamp = value.Value.ToUniversalTime();
-                }
-                else
-                {
-                    _timestamp = value;
-                }
-            }
+            set { _timestamp = BomUtils.UtcifyDateTime(value); }
         }
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
-        //TODO HERE
         [XmlArray("aliases")]
         [XmlArrayItem("alias")]
         [ProtoMember(7)]
@@ -98,6 +79,5 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(11)]
         public List<Property> Properties { get; set; }
-        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
     }
 }
