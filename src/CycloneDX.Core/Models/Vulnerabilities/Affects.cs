@@ -28,8 +28,8 @@ namespace CycloneDX.Models.Vulnerabilities
         [ProtoMember(1)]
         public string Ref { get; set; }
 
-        [XmlArray("affectedVersions")]
-        [XmlArrayItem("affectedVersion")]
+        [XmlArray("versions")]
+        [XmlArrayItem("version")]
         [ProtoMember(2)]
         public List<AffectedVersions> Range { get; set; }
     }

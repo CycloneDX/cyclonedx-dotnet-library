@@ -136,6 +136,10 @@ namespace CycloneDX
                 }
                 EnumerateAllComponents(bomCopy, (component) => {
                     component.ReleaseNotes = null;
+                    if (component.Version == null)
+                    {
+                        component.Version = "0.0.0";
+                    }
                 });
                 EnumerateAllServices(bomCopy, (service) => {
                     service.ReleaseNotes = null;

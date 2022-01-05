@@ -15,11 +15,9 @@
   <services>
     <service>
       <name>acme-service-a</name>
-      <endpoints />
       <services>
         <service>
           <name>acme-service-b</name>
-          <endpoints />
         </service>
       </services>
     </service>

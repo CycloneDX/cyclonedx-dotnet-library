@@ -26,23 +26,23 @@ namespace CycloneDX.Models.Vulnerabilities
     {
         // to make working with protobuf easier
         Null,
-        [XmlEnum(Name = "code-not-present")]
+        [XmlEnum(Name = "code_not_present")]
         CodeNotPresent,
-        [XmlEnum(Name = "code-not-reachable")]
+        [XmlEnum(Name = "code_not_reachable")]
         CodeNotReachable,
-        [XmlEnum(Name = "requires-configuration")]
+        [XmlEnum(Name = "requires_configuration")]
         RequiresConfiguration,
-        [XmlEnum(Name = "requires-dependency")]
+        [XmlEnum(Name = "requires_dependency")]
         RequiresDependency,
-        [XmlEnum(Name = "requires-environment")]
+        [XmlEnum(Name = "requires_environment")]
         RequiresEnvironment,
-        [XmlEnum(Name = "protected-by-compiler")]
+        [XmlEnum(Name = "protected_by_compiler")]
         ProtectedByCompiler,
-        [XmlEnum(Name = "protected-at-runtime")]
+        [XmlEnum(Name = "protected_at_runtime")]
         ProtectedAtRuntime,
-        [XmlEnum(Name = "protected-at-perimeter")]
+        [XmlEnum(Name = "protected_at_perimeter")]
         ProtectedAtPerimeter,
-        [XmlEnum(Name = "protected-by-mitigating-control")]
+        [XmlEnum(Name = "protected_by_mitigating_control")]
         ProtectedByMitigatingControl,
     }
 }

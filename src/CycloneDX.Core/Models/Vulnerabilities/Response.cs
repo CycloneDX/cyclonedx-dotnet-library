@@ -26,15 +26,15 @@ namespace CycloneDX.Models.Vulnerabilities
     {
         // to make working with protobuf easier
         Null,
-        [XmlEnum(Name = "can-not-fix")]
+        [XmlEnum(Name = "can_not_fix")]
         CanNotFix,
-        [XmlEnum(Name = "will-not-fix")]
+        [XmlEnum(Name = "will_not_fix")]
         WillNotFix,
         [XmlEnum(Name = "update")]
         Update,
         [XmlEnum(Name = "rollback")]
         Rollback,
-        [XmlEnum(Name = "workaround-available")]
+        [XmlEnum(Name = "workaround_available")]
         WorkaroundAvailable,
     }
 }

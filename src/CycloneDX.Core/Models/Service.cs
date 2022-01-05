@@ -117,6 +117,7 @@ namespace CycloneDX.Models
         [XmlElement("releaseNotes")]
         [ProtoMember(15)]
         public ReleaseNotes ReleaseNotes { get; set; }
+        public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
 
         [XmlArray("properties")]
         [XmlArrayItem("property")]

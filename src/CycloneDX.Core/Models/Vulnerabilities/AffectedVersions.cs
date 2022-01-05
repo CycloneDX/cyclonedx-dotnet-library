@@ -30,5 +30,9 @@ namespace CycloneDX.Models.Vulnerabilities
         [XmlElement("range")]
         [ProtoMember(2)]
         public string Range { get; set; }
+
+        [XmlElement("status")]
+        [ProtoMember(3)]
+        public Status Status { get; set; }
     }
 }

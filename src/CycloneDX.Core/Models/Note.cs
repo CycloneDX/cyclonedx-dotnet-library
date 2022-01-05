@@ -23,7 +23,7 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class Note
     {
-        [XmlAttribute("locale")]
+        [XmlElement("locale")]
         [ProtoMember(1)]
         public string Locale { get; set; }
 

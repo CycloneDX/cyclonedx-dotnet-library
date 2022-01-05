@@ -26,13 +26,13 @@ namespace CycloneDX.Models.Vulnerabilities
     {
         // to make working with protobuf easier
         Null,
-        [XmlEnum(Name = "cvss-v2")]
+        [XmlEnum(Name = "CVSSv2")]
         CVSSV2,
-        [XmlEnum(Name = "cvss-v3")]
+        [XmlEnum(Name = "CVSSv3")]
         CVSSV3,
-        [XmlEnum(Name = "cvss-v3.1")]
+        [XmlEnum(Name = "CVSSv3.1")]
         CVSSV31,
-        [XmlEnum(Name = "owasp")]
+        [XmlEnum(Name = "OWASP")]
         OWASP,
         [XmlEnum(Name = "other")]
         Other,
