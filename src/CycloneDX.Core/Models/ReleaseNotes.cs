@@ -35,7 +35,7 @@ namespace CycloneDX.Models
         
         [XmlElement("featuredImage")]
         [ProtoMember(3)]
-        public string FeauredImage { get; set; }
+        public string FeaturedImage { get; set; }
         
         [XmlElement("socialImage")]
         [ProtoMember(4)]

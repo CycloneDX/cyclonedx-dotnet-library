@@ -50,6 +50,12 @@ namespace CycloneDX.Json
             options.Converters.Add(new IssueClassificationConverter());
             options.Converters.Add(new LicenseConverter());
             options.Converters.Add(new PatchClassificationConverter());
+
+            options.Converters.Add(new ImpactAnalysisJustificationConverter());
+            options.Converters.Add(new ImpactAnalysisStateConverter());
+            options.Converters.Add(new ResponseConverter());
+
+            options.Converters.Add(new JsonStringEnumConverter());
             return options;
         }
     }
