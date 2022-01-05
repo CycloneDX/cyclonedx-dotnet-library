@@ -36,29 +36,19 @@ namespace CycloneDX.Utils
         {
             RemoveInternalProperties(bom.Metadata?.Properties);
 
-            if (bom.Components != null)
-            {
-                var componentQueue = new Queue<Component>(bom.Components);
-                while (componentQueue.Count > 0)
+            CycloneDX.BomUtils.EnumerateAllComponents(bom, (c) => {
+                if (c.Properties != null)
                 {
-                    var component = componentQueue.Dequeue();
-                    RemoveInternalProperties(component.Properties);
-                    if (component.Components != null)
-                    {
-                        foreach (var subComponent in component.Components)
-                        {
-                            componentQueue.Enqueue(subComponent);
-                        }
-                    }
+                    RemoveInternalProperties(c.Properties);
+                    RemoveInternalProperties(c.ReleaseNotes?.Properties);
                 }
-            }
+            });
 
-            if (bom.Services != null) {
-                foreach (var service in bom.Services)
-                {
-                    RemoveInternalProperties(service.Properties);
-                }
-            }
+            CycloneDX.BomUtils.EnumerateAllServices(bom, (s) => {
+                RemoveInternalProperties(s.Properties);
+                RemoveInternalProperties(s.ReleaseNotes?.Properties);
+            });
+
         }
 
         private static void RemoveInternalProperties(List<Property> properties)
