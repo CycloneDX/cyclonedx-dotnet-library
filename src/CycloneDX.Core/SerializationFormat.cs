@@ -22,7 +22,7 @@ namespace CycloneDX
     /// <summary>
     /// Enum of all supported CycloneDX serialization formats.
     /// </summary>
-    public enum Format
+    public enum SerializationFormat
     {
         Xml,
         Json,
