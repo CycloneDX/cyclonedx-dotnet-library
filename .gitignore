@@ -10,3 +10,4 @@ coverage-report/
 /CycloneDXLibrary.sln.DotSettings.user
 docfx/
 _exported_templates/
+**/BenchmarkDotNet.Artifacts/
