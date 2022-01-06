@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using CycloneDX.Models;
@@ -70,12 +70,15 @@ namespace CycloneDX.Xml
             // results in a memory leak and poor performance. The easiest
             // solution is to use one of the previously mentioned two
             // constructors. Otherwise, you must cache the assemblies
-            if (!_serializers.ContainsKey(specificationVersion))
+            lock (_serializers)
             {
-                var attributeOverrides = GetOverrides(specificationVersion);
-                _serializers[specificationVersion] = new XmlSerializer(typeof(Bom), attributeOverrides);
+                if (!_serializers.ContainsKey(specificationVersion))
+                {
+                    var attributeOverrides = GetOverrides(specificationVersion);
+                    _serializers[specificationVersion] = new XmlSerializer(typeof(Bom), attributeOverrides);
+                }
+                return _serializers[specificationVersion];
             }
-            return _serializers[specificationVersion];
         }
         
         /// <summary>
