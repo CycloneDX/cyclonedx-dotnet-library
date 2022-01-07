@@ -24,6 +24,7 @@ using Xunit.Abstractions;
 
 namespace CycloneDX.Core.Tests.Protobuf.v1_3 
 {
+    [Collection("Protoc Validation")]
     public class ValidationTests
     {
         private readonly ITestOutputHelper output;
