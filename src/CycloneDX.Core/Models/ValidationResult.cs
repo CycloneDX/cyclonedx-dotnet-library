@@ -36,5 +36,10 @@ namespace CycloneDX.Models
         /// <typeparam name="string"></typeparam>
         /// <returns></returns>
         public IEnumerable<string> Messages { get; set; } = new List<string>();
+
+        public override string ToString()
+        {
+            return String.Join("\n", Messages);
+        }
     }
 }

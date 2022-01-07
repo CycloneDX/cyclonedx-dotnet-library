@@ -17,7 +17,7 @@
 
 using System;
 using System.Collections.Generic;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 
 namespace CycloneDX.Spdx.Interop.Helpers
 {

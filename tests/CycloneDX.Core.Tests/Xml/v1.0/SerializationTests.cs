@@ -23,7 +23,7 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Xml;
 
-namespace CycloneDX.Tests.Xml.v1_0
+namespace CycloneDX.Core.Tests.Xml.v1_0
 {
     public class SerializationTests
     {
@@ -35,7 +35,7 @@ namespace CycloneDX.Tests.Xml.v1_0
             var resourceFilename = Path.Join("Resources", "v1.0", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var bom = Deserializer.Deserialize_v1_0(xmlBom);
+            var bom = Serializer.Deserialize(xmlBom);
             xmlBom = Serializer.Serialize(bom);
 
             Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
@@ -49,7 +49,7 @@ namespace CycloneDX.Tests.Xml.v1_0
             var resourceFilename = Path.Join("Resources", "v1.0", filename);
             var xmlBom = File.ReadAllText(resourceFilename);
 
-            var bom = Deserializer.Deserialize_v1_0(xmlBom);
+            var bom = Serializer.Deserialize(xmlBom);
             using var ms = new MemoryStream();
             Serializer.Serialize(bom, ms);
 

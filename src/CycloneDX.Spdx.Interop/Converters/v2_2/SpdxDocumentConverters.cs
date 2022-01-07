@@ -17,7 +17,7 @@
 
 using System;
 using System.Collections.Generic;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 using CycloneDX.Spdx.Models.v2_2;
 using CycloneDX.Spdx.Interop.Helpers;
 

@@ -6,13 +6,8 @@
   "services": [
     {
       "bom-ref": "b2a46a4b-8367-4bae-9820-95557cfe03a8",
-      "provider": {
-        "contact": []
-      },
-      "name": "Stock ticker service",
-      "endpoints": [],
-      "data": [],
-      "externalReferences": []
+      "provider": {},
+      "name": "Stock ticker service"
     }
   ]
 }

@@ -36,13 +36,13 @@ namespace CycloneDX.Xml
         /// Validate the stream contents represent a valid CycloneDX XML document.
         /// </summary>
         /// <param name="xmlStream"></param>
-        /// <param name="schemaVersion"></param>
+        /// <param name="specificationVersion"></param>
         /// <returns></returns>
-        public static Models.ValidationResult Validate(Stream xmlStream, SpecificationVersion schemaVersion)
+        public static Models.ValidationResult Validate(Stream xmlStream, SpecificationVersion specificationVersion)
         {
             var validationMessages = new List<string>();
 
-            var schemaVersionString = schemaVersion.ToString().Substring(1).Replace('_', '.');
+            var schemaVersionString = specificationVersion.ToString().Substring(1).Replace('_', '.');
             var expectedNamespaceUri = $"http://cyclonedx.org/schema/bom/{schemaVersionString}";
 
             var assembly = typeof(Validator).GetTypeInfo().Assembly;

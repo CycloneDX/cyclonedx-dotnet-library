@@ -56,7 +56,6 @@
           <url>http://api.partner.org/swagger</url>
         </reference>
       </externalReferences>
-      <services />
     </service>
   </services>
   <dependencies>

@@ -18,7 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 
 namespace CycloneDX.Spdx.Interop.Helpers
 {

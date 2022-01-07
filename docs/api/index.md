@@ -1,1 +1,1 @@
-# CycloneDX.Core and CycloneDX.Utils libraries API documentation
+# CycloneDX .NET libraries API documentation

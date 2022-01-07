@@ -20,7 +20,7 @@ using System.IO;
 using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
-using CycloneDX.Models.v1_3;
+using CycloneDX.Models;
 using CycloneDX.Spdx.Serialization;
 
 namespace CycloneDX.Spdx.Interop.Tests
@@ -88,7 +88,7 @@ namespace CycloneDX.Spdx.Interop.Tests
             var resourceFilename = Path.Join("Resources", "CycloneDX", "v1.3", $"valid-{baseFilename}-1.3.json");
             var fileContents = File.ReadAllText(resourceFilename);
 
-            var cdxBom = CycloneDX.Json.Deserializer.Deserialize_v1_3(fileContents);
+            var cdxBom = CycloneDX.Json.Serializer.Deserialize(fileContents);
             // set the BOM timestamp if it hasn't been already
             // it's required for converting to SPDX
             // and if we don't set it the tests will fail because the time has changed from last test run
@@ -133,7 +133,7 @@ namespace CycloneDX.Spdx.Interop.Tests
             var resourceFilename = Path.Join("Resources", "CycloneDX", "v1.3", $"valid-{baseFilename}-1.3.json");
             var fileContents = File.ReadAllText(resourceFilename);
 
-            var cdxBom = CycloneDX.Json.Deserializer.Deserialize_v1_3(fileContents);
+            var cdxBom = CycloneDX.Json.Serializer.Deserialize(fileContents);
             // set the BOM timestamp if it hasn't been already
             // it's required for converting to SPDX
             // and if we don't set it the tests will fail because the time has changed from last test run

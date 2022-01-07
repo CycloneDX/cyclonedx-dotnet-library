@@ -23,7 +23,7 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Json;
 
-namespace CycloneDX.Tests.Json.v1_3
+namespace CycloneDX.Core.Tests.Json.v1_3
 {
     public class SerializationTests
     {
@@ -59,7 +59,7 @@ namespace CycloneDX.Tests.Json.v1_3
             var resourceFilename = Path.Join("Resources", "v1.3", filename);
             var jsonBom = File.ReadAllText(resourceFilename);
 
-            var bom = Deserializer.Deserialize_v1_3(jsonBom);
+            var bom = Serializer.Deserialize(jsonBom);
             jsonBom = Serializer.Serialize(bom);
 
             Snapshot.Match(jsonBom, SnapshotNameExtension.Create(filename));
@@ -99,11 +99,52 @@ namespace CycloneDX.Tests.Json.v1_3
             using (var ms = new MemoryStream())
             using (var sr = new StreamReader(ms))
             {
-                var bom = await Deserializer.DeserializeAsync_v1_3(jsonBomStream).ConfigureAwait(false);
+                var bom = await Serializer.DeserializeAsync(jsonBomStream).ConfigureAwait(false);
                 await Serializer.SerializeAsync(bom, ms).ConfigureAwait(false);
                 ms.Position = 0;
                 Snapshot.Match(sr.ReadToEnd(), SnapshotNameExtension.Create(filename));
             }
+        }
+
+        [Theory]
+        [InlineData("valid-assembly-1.3.json")]
+        [InlineData("valid-bom-1.3.json")]
+        [InlineData("valid-component-hashes-1.3.json")]
+        [InlineData("valid-component-ref-1.3.json")]
+        [InlineData("valid-component-swid-1.3.json")]
+        [InlineData("valid-component-swid-full-1.3.json")]
+        [InlineData("valid-component-types-1.3.json")]
+        [InlineData("valid-compositions-1.3.json")]
+        [InlineData("valid-dependency-1.3.json")]
+        [InlineData("valid-empty-components-1.3.json")]
+        [InlineData("valid-evidence-1.3.json")]
+        [InlineData("valid-external-reference-1.3.json")]
+        [InlineData("valid-license-expression-1.3.json")]
+        [InlineData("valid-license-id-1.3.json")]
+        [InlineData("valid-license-name-1.3.json")]
+        [InlineData("valid-metadata-author-1.3.json")]
+        [InlineData("valid-metadata-license-1.3.json")]
+        [InlineData("valid-metadata-manufacture-1.3.json")]
+        [InlineData("valid-metadata-supplier-1.3.json")]
+        [InlineData("valid-metadata-timestamp-1.3.json")]
+        [InlineData("valid-metadata-tool-1.3.json")]
+        [InlineData("valid-minimal-viable-1.3.json")]
+        [InlineData("valid-patch-1.3.json")]
+        [InlineData("valid-properties-1.3.json")]
+        [InlineData("valid-service-1.3.json")]
+        [InlineData("valid-service-empty-objects-1.3.json")]
+        public void JsonDowngradeTest(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", "v1.3", filename);
+            var jsonBom = File.ReadAllText(resourceFilename);
+
+            var bom = Serializer.Deserialize(jsonBom);
+            bom.SpecVersion = SpecificationVersion.v1_2;
+            jsonBom = Serializer.Serialize(bom);
+
+            var result = Validator.Validate(jsonBom, SpecificationVersion.v1_2);
+
+            Assert.True(result.Valid, $"BOM version downgrade failed validation: Validation failed: {result}");
         }
     }
 }

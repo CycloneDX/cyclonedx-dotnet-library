@@ -49,14 +49,18 @@ namespace CycloneDX
         /// </summary>
         /// <param name="format">The CycloneDX format. i.e. <c>Format.Xml</c></param>
         /// <param name="specificationVersion">The CycloneDX specification version. i.e. <c>SpecificationVersion.v1_3</c></param>
-        public static string GetMediaType(Format format, SpecificationVersion specificationVersion)
+        public static string GetMediaType(SerializationFormat format, SpecificationVersion specificationVersion)
         {
             var mediaType = GetMediaType(format);
 
-            var version = "1.3";
-            if (specificationVersion == SpecificationVersion.v1_2)
+            var version = "1.4";
+            if (specificationVersion == SpecificationVersion.v1_3)
             {
-                if (format == Format.Protobuf)
+                version = "1.3";
+            }
+            else if (specificationVersion == SpecificationVersion.v1_2)
+            {
+                if (format == SerializationFormat.Protobuf)
                 {
                     throw new UnsupportedFormatSpecificationVersionException("Protocol Buffers format is only supported from v1.3.");
                 }
@@ -64,11 +68,11 @@ namespace CycloneDX
             }
             else if (specificationVersion == SpecificationVersion.v1_1)
             {
-                if (format == Format.Json)
+                if (format == SerializationFormat.Json)
                 {
                     throw new UnsupportedFormatSpecificationVersionException("JSON format is only supported from v1.2.");
                 }
-                if (format == Format.Protobuf)
+                if (format == SerializationFormat.Protobuf)
                 {
                     throw new UnsupportedFormatSpecificationVersionException("Protocol Buffers format is only supported from v1.3.");
                 }
@@ -76,11 +80,11 @@ namespace CycloneDX
             }
             else if (specificationVersion == SpecificationVersion.v1_0)
             {
-                if (format == Format.Json)
+                if (format == SerializationFormat.Json)
                 {
                     throw new UnsupportedFormatSpecificationVersionException("JSON format is only supported from v1.2.");
                 }
-                if (format == Format.Protobuf)
+                if (format == SerializationFormat.Protobuf)
                 {
                     throw new UnsupportedFormatSpecificationVersionException("Protocol Buffers format is only supported from v1.3.");
                 }
@@ -94,14 +98,14 @@ namespace CycloneDX
         /// Utility method to return the CycloneDX media type for a supported <c>Format</c>.
         /// </summary>
         /// <param name="format">The CycloneDX format. i.e. <c>Format.Xml</c></param>
-        public static string GetMediaType(Format format)
+        public static string GetMediaType(SerializationFormat format)
         {
             var mediaType = Xml;
-            if (format == Format.Json)
+            if (format == SerializationFormat.Json)
             {
                 mediaType = Json;
             }
-            else if (format == Format.Protobuf)
+            else if (format == SerializationFormat.Protobuf)
             {
                 mediaType = Protobuf;
             }

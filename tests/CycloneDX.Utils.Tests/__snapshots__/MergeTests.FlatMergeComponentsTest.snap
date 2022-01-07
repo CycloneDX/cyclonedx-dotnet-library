@@ -1,6 +1,7 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "1.3",
+  "SpecVersion": "v1_4",
+  "SpecVersionString": "1.4",
   "SerialNumber": null,
   "Version": null,
   "Metadata": null,
@@ -25,9 +26,7 @@
       "Swid": null,
       "Modified": null,
       "Pedigree": null,
-      "ExternalReferences": null,
       "Components": null,
-      "Properties": null,
       "Evidence": null
     },
     {
@@ -50,14 +49,9 @@
       "Swid": null,
       "Modified": null,
       "Pedigree": null,
-      "ExternalReferences": null,
       "Components": null,
-      "Properties": null,
       "Evidence": null
     }
   ],
-  "Services": null,
-  "ExternalReferences": null,
-  "Dependencies": null,
   "Compositions": null
 }

@@ -22,8 +22,9 @@ using Snapshooter.Xunit;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace CycloneDX.Tests.Protobuf.v1_3 
+namespace CycloneDX.Core.Tests.Protobuf.v1_3 
 {
+    [Collection("Protoc Validation")]
     public class ValidationTests
     {
         private readonly ITestOutputHelper output;
@@ -35,7 +36,7 @@ namespace CycloneDX.Tests.Protobuf.v1_3
 
         // I can't be bothered setting up protoc in the github workflow for all platforms
         // if anyone wants to have a crack at it please go for it
-        [Utils.LinuxOnlyForCITheory]
+        [LinuxOnlyForCITheory]
         [InlineData("valid-assembly-1.3.json")]
         [InlineData("valid-bom-1.3.json")]
         [InlineData("valid-component-hashes-1.3.json")]
@@ -64,18 +65,18 @@ namespace CycloneDX.Tests.Protobuf.v1_3
         [InlineData("valid-service-empty-objects-1.3.json")]
         public void ValidProtobufTest(string filename)
         {
-            using (var tempDir = new Utils.TempDirectoryWithProtoSchema())
+            using (var tempDir = new TempDirectoryWithProtoSchemas())
             {
                 var resourceFilename = Path.Join("Resources", "v1.3", filename);
                 var jsonBom = File.ReadAllText(resourceFilename);
-                var inputBom = CycloneDX.Json.Deserializer.Deserialize_v1_3(jsonBom);
+                var inputBom = CycloneDX.Json.Serializer.Deserialize(jsonBom);
 
                 var stream = new MemoryStream();
                 CycloneDX.Protobuf.Serializer.Serialize(inputBom, stream);
 
                 var protoBom = stream.ToArray();
 
-                var runner = new Utils.ProtocRunner();
+                var runner = new ProtocRunner();
                 var result = runner.Run(tempDir.DirectoryPath, protoBom, new string[]
                 {
                     "--proto_path=./",
