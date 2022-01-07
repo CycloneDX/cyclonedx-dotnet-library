@@ -92,19 +92,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_0_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_0.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Deserialize_Stream_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Deserialize(Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L164">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.Deserialization.cs/#L52">View Source</a>
   </span>
-  <a id="CycloneDX_Xml_Serializer_Serialize_" data-uid="CycloneDX.Xml.Serializer.Serialize*"></a>
-  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_0_Bom_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_0.Bom)">Serialize(Bom)</h4>
-  <div class="markdown level1 summary"><p>Serializes a v1.0 CycloneDX BOM to a string.</p>
+  <a id="CycloneDX_Xml_Serializer_Deserialize_" data-uid="CycloneDX.Xml.Serializer.Deserialize*"></a>
+  <h4 id="CycloneDX_Xml_Serializer_Deserialize_Stream_" data-uid="CycloneDX.Xml.Serializer.Deserialize(Stream)">Deserialize(Stream)</h4>
+  <div class="markdown level1 summary"><p>Deserializes a CycloneDX XML document from a stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string Serialize(Bom bom)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Bom Deserialize(Stream xmlStream)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -116,76 +116,86 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a class="xref" href="CycloneDX.Models.v1_0.Bom.html">Bom</a></td>
-        <td><span class="parametername">bom</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_0_Bom_Stream_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_0.Bom%2CStream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L94">View Source</a>
-  </span>
-  <a id="CycloneDX_Xml_Serializer_Serialize_" data-uid="CycloneDX.Xml.Serializer.Serialize*"></a>
-  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_0_Bom_Stream_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_0.Bom,Stream)">Serialize(Bom, Stream)</h4>
-  <div class="markdown level1 summary"><p>Serializes a v1.0 CycloneDX BOM writing the output to a stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Serialize(Bom bom, Stream outputStream)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="CycloneDX.Models.v1_0.Bom.html">Bom</a></td>
-        <td><span class="parametername">bom</span></td>
-        <td></td>
-      </tr>
       <tr>
         <td><span class="xref">Stream</span></td>
-        <td><span class="parametername">outputStream</span></td>
+        <td><span class="parametername">xmlStream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.Bom.html">Bom</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_1_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_1.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Deserialize_System_String_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Deserialize(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L146">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.Deserialization.cs/#L34">View Source</a>
+  </span>
+  <a id="CycloneDX_Xml_Serializer_Deserialize_" data-uid="CycloneDX.Xml.Serializer.Deserialize*"></a>
+  <h4 id="CycloneDX_Xml_Serializer_Deserialize_System_String_" data-uid="CycloneDX.Xml.Serializer.Deserialize(System.String)">Deserialize(String)</h4>
+  <div class="markdown level1 summary"><p>Deserializes a CycloneDX XML document from a string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Bom Deserialize(string xmlString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">xmlString</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.Bom.html">Bom</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.Serialization.cs/#L105">View Source</a>
   </span>
   <a id="CycloneDX_Xml_Serializer_Serialize_" data-uid="CycloneDX.Xml.Serializer.Serialize*"></a>
-  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_1_Bom_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_1.Bom)">Serialize(Bom)</h4>
-  <div class="markdown level1 summary"><p>Serializes a v1.1 CycloneDX BOM to a string.</p>
+  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_Bom_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.Bom)">Serialize(Bom)</h4>
+  <div class="markdown level1 summary"><p>Serializes a CycloneDX BOM to a string.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -203,7 +213,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="CycloneDX.Models.v1_1.Bom.html">Bom</a></td>
+        <td><a class="xref" href="CycloneDX.Models.Bom.html">Bom</a></td>
         <td><span class="parametername">bom</span></td>
         <td></td>
       </tr>
@@ -226,14 +236,14 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_1_Bom_Stream_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_1.Bom%2CStream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_Bom_Stream_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.Bom%2CStream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L78">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.Serialization.cs/#L89">View Source</a>
   </span>
   <a id="CycloneDX_Xml_Serializer_Serialize_" data-uid="CycloneDX.Xml.Serializer.Serialize*"></a>
-  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_1_Bom_Stream_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_1.Bom,Stream)">Serialize(Bom, Stream)</h4>
-  <div class="markdown level1 summary"><p>Serializes a v1.1 CycloneDX BOM writing the output to a stream.</p>
+  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_Bom_Stream_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.Bom,Stream)">Serialize(Bom, Stream)</h4>
+  <div class="markdown level1 summary"><p>Serializes a CycloneDX BOM writing the output to a stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -251,179 +261,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="CycloneDX.Models.v1_1.Bom.html">Bom</a></td>
-        <td><span class="parametername">bom</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Stream</span></td>
-        <td><span class="parametername">outputStream</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_2_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_2.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L128">View Source</a>
-  </span>
-  <a id="CycloneDX_Xml_Serializer_Serialize_" data-uid="CycloneDX.Xml.Serializer.Serialize*"></a>
-  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_2_Bom_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_2.Bom)">Serialize(Bom)</h4>
-  <div class="markdown level1 summary"><p>Serializes a v1.2 CycloneDX BOM to a string.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string Serialize(Bom bom)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="CycloneDX.Models.v1_2.Bom.html">Bom</a></td>
-        <td><span class="parametername">bom</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_2_Bom_Stream_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_2.Bom%2CStream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L62">View Source</a>
-  </span>
-  <a id="CycloneDX_Xml_Serializer_Serialize_" data-uid="CycloneDX.Xml.Serializer.Serialize*"></a>
-  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_2_Bom_Stream_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_2.Bom,Stream)">Serialize(Bom, Stream)</h4>
-  <div class="markdown level1 summary"><p>Serializes a v1.2 CycloneDX BOM writing the output to a stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Serialize(Bom bom, Stream outputStream)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="CycloneDX.Models.v1_2.Bom.html">Bom</a></td>
-        <td><span class="parametername">bom</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Stream</span></td>
-        <td><span class="parametername">outputStream</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_3_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_3.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L110">View Source</a>
-  </span>
-  <a id="CycloneDX_Xml_Serializer_Serialize_" data-uid="CycloneDX.Xml.Serializer.Serialize*"></a>
-  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_3_Bom_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_3.Bom)">Serialize(Bom)</h4>
-  <div class="markdown level1 summary"><p>Serializes a v1.3 CycloneDX BOM to a string.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string Serialize(Bom bom)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
-        <td><span class="parametername">bom</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_3_Bom_Stream_.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_3.Bom%2CStream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L46">View Source</a>
-  </span>
-  <a id="CycloneDX_Xml_Serializer_Serialize_" data-uid="CycloneDX.Xml.Serializer.Serialize*"></a>
-  <h4 id="CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_v1_3_Bom_Stream_" data-uid="CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.v1_3.Bom,Stream)">Serialize(Bom, Stream)</h4>
-  <div class="markdown level1 summary"><p>Serializes a v1.3 CycloneDX BOM writing the output to a stream.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Serialize(Bom bom, Stream outputStream)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="CycloneDX.Models.v1_3.Bom.html">Bom</a></td>
+        <td><a class="xref" href="CycloneDX.Models.Bom.html">Bom</a></td>
         <td><span class="parametername">bom</span></td>
         <td></td>
       </tr>
@@ -445,7 +283,7 @@
                     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Xml_Serializer.md&amp;value=---%0Auid%3A%20CycloneDX.Xml.Serializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.cs/#L33" class="contribution-link">View Source</a>
+                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Xml/Serializer.Serialization.cs/#L33" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
