@@ -17,22 +17,27 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v2.4.0
-  
+      - uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: '6.0'
+
       - name: Build
         run: dotnet build /WarnAsError
 
   test:
-    name: Tests for .net core ${{ matrix.framework }} on ${{ matrix.os }}
+    name: Tests on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        framework: ['3.1']
     timeout-minutes: 30
     
     steps:
     - uses: actions/checkout@v2.4.0
+    - uses: actions/setup-dotnet@v1.9.0
+      with:
+        dotnet-version: '6.0'
 
     - name: Install protocol buffers compiler on Linux
       if: matrix.os == 'ubuntu-latest'
@@ -42,7 +47,7 @@ jobs:
         export PATH="$PATH:$HOME/.local/bin"
 
     - name: Tests
-      run: dotnet test --framework netcoreapp${{ matrix.framework }}
+      run: dotnet test
   
   documentation-build:
     name: "Build documentation"
@@ -50,6 +55,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v2.4.0
+      - uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: '6.0'
 
       - name: Download DocFX
         run: |

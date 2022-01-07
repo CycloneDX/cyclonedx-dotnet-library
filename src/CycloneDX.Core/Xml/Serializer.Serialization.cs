@@ -37,7 +37,7 @@ namespace CycloneDX.Xml
         private static readonly XmlWriterSettings WriterSettings = new XmlWriterSettings
         {
             Indent = true,
-            Encoding = Encoding.UTF8
+            Encoding = Encoding.UTF8,
         };
 
         private static XmlAttributeOverrides GetOverrides(SpecificationVersion specificationVersion)
@@ -107,10 +107,10 @@ namespace CycloneDX.Xml
             Contract.Requires(bom != null);
 
             var serializer = GetXmlSerializer(bom.SpecVersion);
-            using (var writer = new Utf8StringWriter())
+            using (var ms = new MemoryStream())
             {
-                serializer.Serialize(writer, BomUtils.GetBomForSerialization(bom));
-                return writer.ToString();
+                Serialize(bom, ms);
+                return Encoding.UTF8.GetString(ms.ToArray());
             }
         }
     }
