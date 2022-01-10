@@ -77,21 +77,21 @@
       },
       "JsonPointer.Net": {
         "type": "Transitive",
-        "resolved": "1.4.0",
-        "contentHash": "q9X1+qKa91mQ5Eytv3OV0aRCSlKLRADFqCEMNs7xNOl/NW0zjJ69qfFuALRJBn6ryfhoe+8wAqxkbuHjypsxqw==",
+        "resolved": "2.1.0",
+        "contentHash": "T/upKtpS8MWV1Th90bnyWtcs+vt9WRcrH2BSQIXkIDNwwcdoUxfhJkO+mrtCSlkyCOREbHrV3KeT1U2oL+n+6w==",
         "dependencies": {
-          "Json.More.Net": "1.4.3",
+          "Json.More.Net": "1.4.4",
           "System.Text.Json": "4.7.2"
         }
       },
       "JsonSchema.Net": {
         "type": "Transitive",
-        "resolved": "1.11.3",
-        "contentHash": "TddJ6cuEUL5FY1o+bVjWeUPzQ9kVMfz2JZZ1Nl8g2iYHerSS5QuAhelhmsF9y8ZmNM8V3EQRdrRUoMWlGXnIyQ==",
+        "resolved": "1.12.0",
+        "contentHash": "2RUhx6AVLv+Tnn9fLe87wHwzs+kfBySweydKdJwUi+i+y4n2R47pgfPWuQWNi9O35pelvgfQYB8uDQGVyvZDTA==",
         "dependencies": {
           "JetBrains.Annotations": "2021.2.0",
           "Json.More.Net": "1.4.4",
-          "JsonPointer.Net": "1.4.0",
+          "JsonPointer.Net": "2.1.0",
           "System.Text.Json": "4.7.2"
         }
       },
@@ -1132,7 +1132,7 @@
       "cyclonedx.core": {
         "type": "Project",
         "dependencies": {
-          "JsonSchema.Net": "1.11.3",
+          "JsonSchema.Net": "1.12.0",
           "System.Text.Json": "6.0.1",
           "protobuf-net": "3.0.101"
         }
