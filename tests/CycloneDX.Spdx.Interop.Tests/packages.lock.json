@@ -80,8 +80,8 @@
       },
       "JsonSchema.Net": {
         "type": "Transitive",
-        "resolved": "1.12.0",
-        "contentHash": "2RUhx6AVLv+Tnn9fLe87wHwzs+kfBySweydKdJwUi+i+y4n2R47pgfPWuQWNi9O35pelvgfQYB8uDQGVyvZDTA==",
+        "resolved": "1.11.6",
+        "contentHash": "SVN0AJtNj8BVZNutTYtZaZxsj7aZe6ffnM5hJclzukL/VL/FY7fPldcv5TahmUtnkP+l8M5mLPJiVx9nhV8f+Q==",
         "dependencies": {
           "JetBrains.Annotations": "2021.2.0",
           "Json.More.Net": "1.4.4",
@@ -1126,7 +1126,7 @@
       "cyclonedx.core": {
         "type": "Project",
         "dependencies": {
-          "JsonSchema.Net": "1.12.0",
+          "JsonSchema.Net": "1.11.6",
           "System.Text.Json": "6.0.1",
           "protobuf-net": "3.0.101"
         }
@@ -1134,7 +1134,7 @@
       "cyclonedx.spdx": {
         "type": "Project",
         "dependencies": {
-          "JsonSchema.Net": "1.11.3",
+          "JsonSchema.Net": "1.11.6",
           "System.Text.Json": "6.0.1"
         }
       },
