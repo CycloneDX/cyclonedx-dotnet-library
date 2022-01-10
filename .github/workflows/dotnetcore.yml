@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v2.4.0
       - uses: actions/setup-dotnet@v1.9.0
         with:
-          dotnet-version: '6.0'
+          dotnet-version: '6.0.101'
 
       - name: Build
         run: dotnet build /WarnAsError
@@ -48,10 +48,7 @@ jobs:
 
     - name: Tests
       run: |
-        dotnet test tests/CycloneDX.Utils.Tests/
-        dotnet test tests/CycloneDX.Spdx.Tests/
-        dotnet test tests/CycloneDX.Spdx.Interop.Tests/
-        dotnet test tests/CycloneDX.Core.Tests/
+        dotnet test
   
   documentation-build:
     name: "Build documentation"
