@@ -3,14 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Product>CycloneDX.Spdx</Product>
-    <Authors>Patrick Dwyer</Authors>
-    <Copyright>Copyright (c) OWASP Foundation</Copyright>
     <Description>A .NET Standard library for SPDX documents.</Description>
     <PackageId>CycloneDX.Spdx</PackageId>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library</PackageProjectUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/CycloneDX/cyclonedx-dotnet-library.git</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
