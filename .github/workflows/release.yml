@@ -57,9 +57,13 @@ jobs:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Core.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Core.${{ steps.package_release.outputs.version }}.snupkg
           dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.snupkg
           dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Spdx.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Spdx.${{ steps.package_release.outputs.version }}.snupkg
           dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.snupkg
 
       - name: Create github release and git tag for release
         id: create_release
@@ -88,8 +92,28 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./nupkgs/CycloneDX.Core.${{ steps.package_release.outputs.version }}.snupkg
+          asset_name: CycloneDX.Core.${{ steps.package_release.outputs.version }}.snupkg
+          asset_content_type: application/zip
+
+      - name: Upload package to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
           asset_name: CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
+          asset_content_type: application/zip
+
+      - name: Upload package to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.snupkg
+          asset_name: CycloneDX.Utils.${{ steps.package_release.outputs.version }}.snupkg
           asset_content_type: application/zip
 
       - name: Upload package to github release
@@ -108,6 +132,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./nupkgs/CycloneDX.Spdx.${{ steps.package_release.outputs.version }}.snupkg
+          asset_name: CycloneDX.Spdx.${{ steps.package_release.outputs.version }}.snupkg
+          asset_content_type: application/zip
+
+      - name: Upload package to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./nupkgs/CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.nupkg
           asset_name: CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.nupkg
+          asset_content_type: application/zip
+
+      - name: Upload package to github release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./nupkgs/CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.snupkg
+          asset_name: CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.snupkg
           asset_content_type: application/zip
