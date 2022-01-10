@@ -48,10 +48,7 @@ jobs:
 
     - name: Tests
       run: |
-        dotnet test tests/CycloneDX.Utils.Tests/
-        dotnet test tests/CycloneDX.Spdx.Tests/
-        dotnet test tests/CycloneDX.Spdx.Interop.Tests/
-        dotnet test tests/CycloneDX.Core.Tests/
+        dotnet test
   
   documentation-build:
     name: "Build documentation"
