@@ -68,6 +68,8 @@ Pull requests are welcome. But please read the
 
 To build and test the solution locally standard commands like `dotnet build` and `dotnet test` work.
 
+The protocol buffer tests require the protocol buffer compiler executable `protoc` to be available in your path.
+
 Documentation is generated using [DocFX](https://dotnet.github.io/docfx/index.html).
 
 It is generally expected that pull requests will include relevant tests.
@@ -76,9 +78,3 @@ And build warnings will break the build.
 
 If you are having trouble debugging a test that is failing for a platform you
 don't have access to please us know.
-
-Thanks to [Gitpod](https://gitpod.io/) there is a really easy way of
-creating a ready to go development environment with VS Code. All from your
-browser.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CycloneDX/cyclonedx-dotnet-library)
