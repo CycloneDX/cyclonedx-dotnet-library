@@ -38,7 +38,7 @@ namespace CycloneDX.Spdx.Validation
         {
             var assembly = typeof(JsonValidator).GetTypeInfo().Assembly;
             
-            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Spdx.Schemas.spdx-2.2.json"))
+            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Spdx.Schemas.spdx-2.2.schema.json"))
             {
                 var jsonSchema = await JsonSchema.FromStream(schemaStream).ConfigureAwait(false);
                 var jsonDocument = await JsonDocument.ParseAsync(jsonStream).ConfigureAwait(false);
@@ -55,7 +55,7 @@ namespace CycloneDX.Spdx.Validation
         {
             var assembly = typeof(JsonValidator).GetTypeInfo().Assembly;
             
-            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Spdx.Schemas.spdx-2.2.json"))
+            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Spdx.Schemas.spdx-2.2.schema.json"))
             using (var schemaStreamReader = new StreamReader(schemaStream))
             {
                 var jsonSchema = JsonSchema.FromText(schemaStreamReader.ReadToEnd());
