@@ -13,7 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="System.Text.Json" Version="6.0.1" />
-    <PackageReference Include="JsonSchema.Net" Version="1.11.6" />
+    <PackageReference Include="JsonSchema.Net" Version="1.12.0" />
     <PackageReference Include="protobuf-net" Version="3.0.101" />
     <PackageReference Include="protobuf-net.BuildTools" Version="3.0.115" PrivateAssets="all" IncludeAssets="runtime;build;native;contentfiles;analyzers;buildtransitive" />
   </ItemGroup>
