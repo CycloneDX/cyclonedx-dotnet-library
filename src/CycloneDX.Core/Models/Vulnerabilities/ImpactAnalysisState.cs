@@ -26,7 +26,7 @@ namespace CycloneDX.Models.Vulnerabilities
     {
         // to make working with protobuf easier
         Null,
-        [XmlEnum(Name = "reolved")]
+        [XmlEnum(Name = "resolved")]
         Resolved,
         [XmlEnum(Name = "resolved_with_pedigree")]
         ResolvedWithPedigree,
