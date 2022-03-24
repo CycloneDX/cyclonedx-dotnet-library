@@ -5,6 +5,9 @@ image:
 tasks:
   - name: Restore dependencies
     init: |
+      wget -O protoc.zip https://github.com/protocolbuffers/protobuf/releases/download/v3.15.8/protoc-3.15.8-linux-x86_64.zip
+      unzip protoc.zip -d $HOME/.local
+      export PATH="$PATH:$HOME/.local/bin"
       mkdir -p /tmp/dotnet && curl -fsSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 6.0 --install-dir /tmp/dotnet
       dotnet tool install --global dotnet-reportgenerator-globaltool
       dotnet restore
