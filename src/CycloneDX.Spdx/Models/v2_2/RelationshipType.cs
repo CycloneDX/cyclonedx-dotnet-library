@@ -58,6 +58,7 @@ namespace CycloneDX.Spdx.Models.v2_2
         BUILD_TOOL_OF,
         TEST_CASE_OF,
         PACKAGE_OF,
+        AMENDS,
         DESCENDANT_OF,
         FILE_DELETED,
         EXPANDED_FROM_ARCHIVE,
