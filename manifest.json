@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
+          "hash": "owLOnHLu++H+I600pSUxsWQZRdgJ7yw5P/usKMMDnUs="
         }
       },
       "is_incremental": false,
@@ -1305,7 +1305,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Spdx.Models.v2_2.RelationshipType.html",
-          "hash": "Oiq5Jty/mSWTtaur2HW69xLgDrO9Ccrc13w3xJMWJ/w="
+          "hash": "r2Qv2udAPPNxOtGdUtJ7zB4IVs7ICsNqPGgWRUHJy1k="
         }
       },
       "is_incremental": false,

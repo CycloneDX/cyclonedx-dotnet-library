@@ -6391,6 +6391,12 @@ references:
   commentId: T:CycloneDX.Spdx.Models.v2_2.RelationshipType
   fullName: CycloneDX.Spdx.Models.v2_2.RelationshipType
   nameWithType: RelationshipType
+- uid: CycloneDX.Spdx.Models.v2_2.RelationshipType.AMENDS
+  name: AMENDS
+  href: api/CycloneDX.Spdx.Models.v2_2.RelationshipType.html#CycloneDX_Spdx_Models_v2_2_RelationshipType_AMENDS
+  commentId: F:CycloneDX.Spdx.Models.v2_2.RelationshipType.AMENDS
+  fullName: CycloneDX.Spdx.Models.v2_2.RelationshipType.AMENDS
+  nameWithType: RelationshipType.AMENDS
 - uid: CycloneDX.Spdx.Models.v2_2.RelationshipType.ANCESTOR_OF
   name: ANCESTOR_OF
   href: api/CycloneDX.Spdx.Models.v2_2.RelationshipType.html#CycloneDX_Spdx_Models_v2_2_RelationshipType_ANCESTOR_OF
