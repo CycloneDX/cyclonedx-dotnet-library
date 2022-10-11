@@ -22,6 +22,7 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX;
 using CycloneDX.Models;
+using CycloneDX.Models.Vulnerabilities;
 using CycloneDX.Utils;
 
 namespace CycloneDX.Utils.Tests
@@ -87,6 +88,49 @@ namespace CycloneDX.Utils.Tests
                     {
                         Name = "Component2",
                         Version = "1"
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
+        public void FlatMergeVulnerabilitiesTest()
+        {
+            var sbom1 = new Bom
+            {
+                Vulnerabilities = new List<Vulnerability>
+                {
+                    new Vulnerability
+                    {
+                        Id = "cve1",
+                        Affects = new List<Affects>
+                        {
+                            new Affects
+                            {
+                                Ref = "ref1"
+                            }
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Vulnerabilities = new List<Vulnerability>
+                {
+                    new Vulnerability
+                    {
+                        Id = "cve2",
+                        Affects = new List<Affects>
+                        {
+                            new Affects
+                            {
+                                Ref = "ref2"
+                            }
+                        }
                     }
                 }
             };
@@ -201,6 +245,73 @@ namespace CycloneDX.Utils.Tests
                         Dependencies = new List<string>
                         {
                             "System2@1"
+                        }
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new [] { sbom1, sbom2 }, subject);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
+        public void HierarchicalMergeVulnerabilitiesTest()
+        {
+            var subject = new Component
+            {
+                Name = "Thing",
+                Version = "1",
+            };
+
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System1",
+                        Version = "1",
+                        BomRef = "System1@1"
+                    }
+                },
+                Vulnerabilities = new List<Vulnerability>
+                {
+                    new Vulnerability
+                    {
+                        Id = "cve1",
+                        Affects = new List<Affects>
+                        {
+                            new Affects
+                            {
+                                Ref = "ref1"
+                            }
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System2",
+                        Version = "1",
+                        BomRef = "System2@1"
+                    }
+                },
+                Vulnerabilities = new List<Vulnerability>
+                {
+                    new Vulnerability
+                    {
+                        Id = "cve2",
+                        Affects = new List<Affects>
+                        {
+                            new Affects
+                            {
+                                Ref = "ref2"
+                            }
                         }
                     }
                 }
