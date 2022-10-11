@@ -165,7 +165,10 @@ namespace CycloneDX.Utils
 
                 var thisComponent = bom.Metadata.Component;
                 if (thisComponent.Components is null) bom.Metadata.Component.Components = new List<Component>();
-                if (!(bom.Components is null)) thisComponent.Components.AddRange(bom.Components);
+                if (!(bom.Components is null))
+                {
+                    thisComponent.Components.AddRange(bom.Components);
+                }
 
                 // add a namespace to existing BOM refs
                 NamespaceComponentBomRefs(thisComponent);
@@ -278,9 +281,11 @@ namespace CycloneDX.Utils
                 vulnerability.BomRef = NamespacedBomRef(bomRefNamespace, vulnerability.BomRef);
 
                 if (vulnerability.Affects != null)
-                foreach (var affect in vulnerability.Affects)
                 {
-                    affect.Ref = bomRefNamespace;
+                    foreach (var affect in vulnerability.Affects)
+                    {
+                        affect.Ref = bomRefNamespace;
+                    }
                 }
             }
         }
