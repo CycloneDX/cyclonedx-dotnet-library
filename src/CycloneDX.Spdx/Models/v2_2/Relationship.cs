@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_2
 {
@@ -24,18 +25,22 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// <summary>
         /// Id to which the SPDX element is related
         /// </summary>
+        [XmlElement("spdxElementId")]
         public string SpdxElementId { get; set; }
 
+        [XmlElement("comment")]
         public string Comment { get; set; }
 
         /// <summary>
         /// SPDX ID for SpdxElement.  A related SpdxElement.
         /// </summary>
+        [XmlElement("relatedSpdxElement")]
         public string RelatedSpdxElement { get; set; }
 
         /// <summary>
         /// Describes the type of relationship between two SPDX elements.
         /// </summary>
+        [XmlElement("relationshipType")]
         public RelationshipType RelationshipType { get; set; }
     }
 }

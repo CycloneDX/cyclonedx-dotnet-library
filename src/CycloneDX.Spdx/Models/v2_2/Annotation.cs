@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_2
 {
@@ -24,18 +25,22 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// <summary>
         /// Identify when the comment was made. This is to be specified according to the combined date and time in the UTC format, as specified in the ISO 8601 standard.
         /// </summary>
+        [XmlElement("annotationDate")]
         public DateTime AnnotationDate { get; set; }
 
         /// <summary>
         /// Type of the annotation.
         /// </summary>
+        [XmlElement("annotationType")]
         public AnnotationType AnnotationType { get; set; }
 
         /// <summary>
         /// This field identifies the person, organization or tool that has commented on a file, package, or the entire document.
         /// </summary>
+        [XmlElement("annotator")]
         public string Annotator { get; set; }
 
+        [XmlElement("comment")]
         public string Comment { get; set; }
     }
 }

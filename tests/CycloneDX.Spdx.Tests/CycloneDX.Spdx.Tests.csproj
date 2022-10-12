@@ -24,6 +24,10 @@
     <Content Include="Resources\**" CopyToOutputDirectory="Always" />
     <Content Include="__snapshots__\**" CopyToOutputDirectory="Always" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Resources\v2.2\document.xml" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\CycloneDX.Spdx\CycloneDX.Spdx.csproj" />

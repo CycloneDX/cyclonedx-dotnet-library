@@ -16,28 +16,28 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
-using System.Xml.Serialization;
+using System.IO;
+using System.Threading.Tasks;
+using Xunit;
+using Snapshooter;
+using Snapshooter.Xunit;
+using CycloneDX.Spdx.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Tests
 {
-    public class RangePointer
+    public class XmlSerializerTests
     {
-        /// <summary>
-        /// Byte offset in the file
-        /// </summary>
-        [XmlElement("offset")]
-        public int? Offset { get; set; }
+        [Theory]
+        [InlineData("document")]
+        public void XmlRoundTripTest(string baseFilename)
+        {
+            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".xml");
+            var document = File.ReadAllText(resourceFilename);
 
-        /// <summary>
-        /// line number offset in the file
-        /// </summary>
-        [XmlElement("lineNumber")]
-        public int? LineNumber { get; set; }
+            var spdxDocument = XmlSerializer.Deserialize(document);
+            var result = XmlSerializer.Serialize(spdxDocument);
 
-        /// <summary>
-        /// SPDX ID for File
-        /// </summary>
-        [XmlElement("reference")]
-        public string Reference { get; set; }
+            Snapshot.Match(result, SnapshotNameExtension.Create(baseFilename));
+        }
     }
 }

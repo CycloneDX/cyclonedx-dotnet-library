@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_2
 {
@@ -25,11 +26,13 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// <summary>
         /// A file that was excluded when calculating the package verification code. This is usually a file containing SPDX data regarding the package. If a package contains more than one SPDX file all SPDX files must be excluded from the package verification code. If this is not done it would be impossible to correctly calculate the verification codes in both files.
         /// </summary>
+        [XmlElement("packageVerificationCodeExcludedFiles")]
         public List<string> PackageVerificationCodeExcludedFiles { get; set; }
 
         /// <summary>
         /// The actual package verification code as a hex encoded value.
         /// </summary>
+        [XmlElement("packageVerificationCodeValue")]
         public string PackageVerificationCodeValue { get; set; }
     }
 }
