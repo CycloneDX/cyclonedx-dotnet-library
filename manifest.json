@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "owLOnHLu++H+I600pSUxsWQZRdgJ7yw5P/usKMMDnUs="
+          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
         }
       },
       "is_incremental": false,
@@ -1473,7 +1473,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Utils.CycloneDXUtils.html",
-          "hash": "m9qNWwQHxg35boPASx5HOYZ7bOnl2tmuwBU3js6E8/0="
+          "hash": "rVYCxio6NSbOakbfdI2V/Ao5lqd9hye7ehVnE7yvpSc="
         }
       },
       "is_incremental": false,
