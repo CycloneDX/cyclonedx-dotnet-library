@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_2
 {
@@ -32,38 +33,46 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// <summary>
         /// Provide additional information about an SpdxElement.
         /// </summary>
+        [XmlElement("annotations")]
         public List<Annotation> Annotations { get; set; }
 
         /// <summary>
         /// The checksum property provides a mechanism that can be used to verify that the contents of a File or Package have not changed.
         /// </summary>
+        [XmlElement("checksums")]
         public List<Checksum> Checksums { get; set; }
 
+        [XmlElement("comment")]
         public string Comment { get; set; }
 
         /// <summary>
         /// The text of copyright declarations recited in the Package or File.
         /// </summary>
+        [XmlElement("copyrightText")]
         public string CopyrightText { get; set; }
 
         /// <summary>
         /// This field provides a place for the SPDX file creator to record file contributors. Contributors could include names of copyright holders and/or authors who may not be copyright holders yet contributed to the file content.
         /// </summary>
+        [XmlElement("fileContributors")]
         public List<string> FileContributors { get; set; }
 
         /// <summary>
         /// The name of the file relative to the root of the package.
         /// </summary>
+        [XmlElement("fileName")]
         public string FileName { get; set; }
 
         /// <summary>
         /// The type of the file.
         /// </summary>
+        [XmlElement("fileTypes")]
         public List<FileType> FileTypes { get; set; }
 
         /// <summary>
         /// This field provides a place for the SPDX data creator to record acknowledgements that may be required to be communicated in some contexts. This is not meant to include theactual complete license text (see licenseConculded and licenseDeclared), and may or may not include copyright notices (see also copyrightText). The SPDX data creator may use this field to record other acknowledgements, such as particular clauses from license texts, which may be necessary or desirable to reproduce.
         /// </summary>
+        [XmlElement("attributionTexts")]
         public List<string> AttributionTexts { get; set; }
 
         /// <summary>
@@ -75,21 +84,25 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// <summary>
         /// The licenseComments property allows the preparer of the SPDX document to describe why the licensing in spdx:licenseConcluded was chosen.
         /// </summary>
+        [XmlElement("licenseComments")]
         public string LicenseComments { get; set; }
 
         /// <summary>
         /// License expression for licenseConcluded.  The licensing that the preparer of this SPDX document has concluded, based on the evidence, actually applies to the package.
         /// </summary>
+        [XmlElement("licenseConcluded")]
         public string LicenseConcluded { get; set; }
 
         /// <summary>
         /// Licensing information that was discovered directly in the subject file. This is also considered a declared license for the file.
         /// </summary>
+        [XmlElement("licenseInfoInFiles")]
         public List<string> LicenseInfoInFiles { get; set; }
 
         /// <summary>
         /// This field provides a place for the SPDX file creator to record potential legal notices found in the file. This may or may not include copyright statements.
         /// </summary>
+        [XmlElement("noticeText")]
         public string NoticeText { get; set; }
 
         [Obsolete("File Dependencies is deprecated, use Relationships instead")]

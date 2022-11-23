@@ -16,28 +16,27 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
-using System.Xml.Serialization;
+using System.IO;
+using System.Threading.Tasks;
+using Xunit;
+using Snapshooter;
+using Snapshooter.Xunit;
+using CycloneDX.Spdx.Validation;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Tests
 {
-    public class RangePointer
+    public class XmlValidatorTests
     {
-        /// <summary>
-        /// Byte offset in the file
-        /// </summary>
-        [XmlElement("offset")]
-        public int? Offset { get; set; }
+        [Theory]
+        [InlineData("document")]
+        public void ValidateXmlStringTest(string baseFilename)
+        {
+            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".xml");
+            var document = File.ReadAllText(resourceFilename);
 
-        /// <summary>
-        /// line number offset in the file
-        /// </summary>
-        [XmlElement("lineNumber")]
-        public int? LineNumber { get; set; }
+            var result = XmlValidator.Validate(document);
 
-        /// <summary>
-        /// SPDX ID for File
-        /// </summary>
-        [XmlElement("reference")]
-        public string Reference { get; set; }
+            Assert.True(result.Valid);
+        }
     }
 }

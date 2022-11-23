@@ -16,26 +16,31 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_2
 {
     public class ExternalRef
     {
+        [XmlElement("comment")]
         public string Comment { get; set; }
 
         /// <summary>
         /// Category for the external reference
         /// </summary>
+        [XmlElement("referenceCategory")]
         public ExternalRefCategory ReferenceCategory { get; set; }
 
         /// <summary>
         /// The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location. The format of the locator is subject to constraints defined by the &lt;type&gt;.
         /// </summary>
+        [XmlElement("referenceLocator")]
         public string ReferenceLocator { get; set; }
 
         /// <summary>
         /// Type of the external reference. These are definined in an appendix in the SPDX specification.
         /// </summary>
+        [XmlElement("referenceType")]
         public string ReferenceType { get; set; }
     }
 }

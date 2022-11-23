@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.Xml.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_2
 {
@@ -24,13 +25,16 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// <summary>
         /// The name and, optionally, contact information of the person who performed the review. Values of this property must conform to the agent and tool syntax.
         /// </summary>
+        [XmlElement("reviewer")]
         public string Reviewer { get; set; }
 
+        [XmlElement("comment")]
         public string Comment { get; set; }
 
         /// <summary>
         /// The date and time at which the SpdxDocument was reviewed. This value must be in UTC and have 'Z' as its timezone indicator.
         /// </summary>
+        [XmlElement("reviewDate")]
         public DateTime ReviewDate { get; set; }
 
     }
