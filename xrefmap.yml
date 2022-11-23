@@ -7472,6 +7472,50 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Spdx.Serialization.JsonSerializer.SerializeAsync
   nameWithType: JsonSerializer.SerializeAsync
+- uid: CycloneDX.Spdx.Serialization.XmlSerializer
+  name: XmlSerializer
+  href: api/CycloneDX.Spdx.Serialization.XmlSerializer.html
+  commentId: T:CycloneDX.Spdx.Serialization.XmlSerializer
+  fullName: CycloneDX.Spdx.Serialization.XmlSerializer
+  nameWithType: XmlSerializer
+- uid: CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize(Stream)
+  name: Deserialize(Stream)
+  href: api/CycloneDX.Spdx.Serialization.XmlSerializer.html#CycloneDX_Spdx_Serialization_XmlSerializer_Deserialize_Stream_
+  commentId: M:CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize(Stream)
+  fullName: CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize(Stream)
+  nameWithType: XmlSerializer.Deserialize(Stream)
+- uid: CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize(System.String)
+  name: Deserialize(String)
+  href: api/CycloneDX.Spdx.Serialization.XmlSerializer.html#CycloneDX_Spdx_Serialization_XmlSerializer_Deserialize_System_String_
+  commentId: M:CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize(System.String)
+  fullName: CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize(System.String)
+  nameWithType: XmlSerializer.Deserialize(String)
+- uid: CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize*
+  name: Deserialize
+  href: api/CycloneDX.Spdx.Serialization.XmlSerializer.html#CycloneDX_Spdx_Serialization_XmlSerializer_Deserialize_
+  commentId: Overload:CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Serialization.XmlSerializer.Deserialize
+  nameWithType: XmlSerializer.Deserialize
+- uid: CycloneDX.Spdx.Serialization.XmlSerializer.Serialize(CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  name: Serialize(SpdxDocument)
+  href: api/CycloneDX.Spdx.Serialization.XmlSerializer.html#CycloneDX_Spdx_Serialization_XmlSerializer_Serialize_CycloneDX_Spdx_Models_v2_2_SpdxDocument_
+  commentId: M:CycloneDX.Spdx.Serialization.XmlSerializer.Serialize(CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  fullName: CycloneDX.Spdx.Serialization.XmlSerializer.Serialize(CycloneDX.Spdx.Models.v2_2.SpdxDocument)
+  nameWithType: XmlSerializer.Serialize(SpdxDocument)
+- uid: CycloneDX.Spdx.Serialization.XmlSerializer.Serialize(CycloneDX.Spdx.Models.v2_2.SpdxDocument,Stream)
+  name: Serialize(SpdxDocument, Stream)
+  href: api/CycloneDX.Spdx.Serialization.XmlSerializer.html#CycloneDX_Spdx_Serialization_XmlSerializer_Serialize_CycloneDX_Spdx_Models_v2_2_SpdxDocument_Stream_
+  commentId: M:CycloneDX.Spdx.Serialization.XmlSerializer.Serialize(CycloneDX.Spdx.Models.v2_2.SpdxDocument,Stream)
+  fullName: CycloneDX.Spdx.Serialization.XmlSerializer.Serialize(CycloneDX.Spdx.Models.v2_2.SpdxDocument, Stream)
+  nameWithType: XmlSerializer.Serialize(SpdxDocument, Stream)
+- uid: CycloneDX.Spdx.Serialization.XmlSerializer.Serialize*
+  name: Serialize
+  href: api/CycloneDX.Spdx.Serialization.XmlSerializer.html#CycloneDX_Spdx_Serialization_XmlSerializer_Serialize_
+  commentId: Overload:CycloneDX.Spdx.Serialization.XmlSerializer.Serialize
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Serialization.XmlSerializer.Serialize
+  nameWithType: XmlSerializer.Serialize
 - uid: CycloneDX.Spdx.Validation
   name: CycloneDX.Spdx.Validation
   href: api/CycloneDX.Spdx.Validation.html
@@ -7510,6 +7554,31 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Spdx.Validation.JsonValidator.ValidateAsync
   nameWithType: JsonValidator.ValidateAsync
+- uid: CycloneDX.Spdx.Validation.XmlValidator
+  name: XmlValidator
+  href: api/CycloneDX.Spdx.Validation.XmlValidator.html
+  commentId: T:CycloneDX.Spdx.Validation.XmlValidator
+  fullName: CycloneDX.Spdx.Validation.XmlValidator
+  nameWithType: XmlValidator
+- uid: CycloneDX.Spdx.Validation.XmlValidator.Validate(Stream)
+  name: Validate(Stream)
+  href: api/CycloneDX.Spdx.Validation.XmlValidator.html#CycloneDX_Spdx_Validation_XmlValidator_Validate_Stream_
+  commentId: M:CycloneDX.Spdx.Validation.XmlValidator.Validate(Stream)
+  fullName: CycloneDX.Spdx.Validation.XmlValidator.Validate(Stream)
+  nameWithType: XmlValidator.Validate(Stream)
+- uid: CycloneDX.Spdx.Validation.XmlValidator.Validate(System.String)
+  name: Validate(String)
+  href: api/CycloneDX.Spdx.Validation.XmlValidator.html#CycloneDX_Spdx_Validation_XmlValidator_Validate_System_String_
+  commentId: M:CycloneDX.Spdx.Validation.XmlValidator.Validate(System.String)
+  fullName: CycloneDX.Spdx.Validation.XmlValidator.Validate(System.String)
+  nameWithType: XmlValidator.Validate(String)
+- uid: CycloneDX.Spdx.Validation.XmlValidator.Validate*
+  name: Validate
+  href: api/CycloneDX.Spdx.Validation.XmlValidator.html#CycloneDX_Spdx_Validation_XmlValidator_Validate_
+  commentId: Overload:CycloneDX.Spdx.Validation.XmlValidator.Validate
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Validation.XmlValidator.Validate
+  nameWithType: XmlValidator.Validate
 - uid: CycloneDX.SpecificationVersion
   name: SpecificationVersion
   href: api/CycloneDX.SpecificationVersion.html
