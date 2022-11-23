@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using CycloneDX.Models;
+using CycloneDX.Models.Vulnerabilities;
 using CycloneDX.Utils.Exceptions;
 
 namespace CycloneDX.Utils
@@ -80,6 +81,9 @@ namespace CycloneDX.Utils
             var compositionsMerger = new ListMergeHelper<Composition>();
             result.Compositions = compositionsMerger.Merge(bom1.Compositions, bom2.Compositions);
 
+            var vulnerabilitiesMerger = new ListMergeHelper<Vulnerability>();
+            result.Vulnerabilities = vulnerabilitiesMerger.Merge(bom1.Vulnerabilities, bom2.Vulnerabilities);
+
             return result;
         }
 
@@ -140,6 +144,7 @@ namespace CycloneDX.Utils
             result.ExternalReferences = new List<ExternalReference>();
             result.Dependencies = new List<Dependency>();
             result.Compositions = new List<Composition>();
+            result.Vulnerabilities = new List<Vulnerability>();
 
             var bomSubjectDependencies = new List<Dependency>();
 
@@ -160,7 +165,10 @@ namespace CycloneDX.Utils
 
                 var thisComponent = bom.Metadata.Component;
                 if (thisComponent.Components is null) bom.Metadata.Component.Components = new List<Component>();
-                thisComponent.Components.AddRange(bom.Components);
+                if (!(bom.Components is null))
+                {
+                    thisComponent.Components.AddRange(bom.Components);
+                }
 
                 // add a namespace to existing BOM refs
                 NamespaceComponentBomRefs(thisComponent);
@@ -196,6 +204,13 @@ namespace CycloneDX.Utils
                     NamespaceCompositions(ComponentBomRefNamespace(bom.Metadata.Component), bom.Compositions);
                     result.Compositions.AddRange(bom.Compositions);
                 }
+
+                // vulnerabilities
+                if (bom.Vulnerabilities != null)
+                {
+                    NamespaceVulnerabilitiesRefs(ComponentBomRefNamespace(result.Metadata.Component), bom.Vulnerabilities);
+                    result.Vulnerabilities.AddRange(bom.Vulnerabilities);
+                }
             }
 
             if (bomSubject != null)
@@ -214,6 +229,7 @@ namespace CycloneDX.Utils
             if (result.ExternalReferences.Count == 0) result.ExternalReferences = null;
             if (result.Dependencies.Count == 0) result.Dependencies = null;
             if (result.Compositions.Count == 0) result.Compositions = null;
+            if (result.Vulnerabilities.Count == 0) result.Vulnerabilities = null;
 
             return result;
         }
@@ -251,6 +267,26 @@ namespace CycloneDX.Utils
                 }
 
                 currentComponent.BomRef = NamespacedBomRef(topComponent, currentComponent.BomRef);
+            }
+        }
+
+        private static void NamespaceVulnerabilitiesRefs(string bomRefNamespace, List<Vulnerability> vulnerabilities)
+        {
+            var pendingVulnerabilities = new Stack<Vulnerability>(vulnerabilities);
+
+            while (pendingVulnerabilities.Count > 0)
+            {
+                var vulnerability = pendingVulnerabilities.Pop();
+
+                vulnerability.BomRef = NamespacedBomRef(bomRefNamespace, vulnerability.BomRef);
+
+                if (vulnerability.Affects != null)
+                {
+                    foreach (var affect in vulnerability.Affects)
+                    {
+                        affect.Ref = bomRefNamespace;
+                    }
+                }
             }
         }
 
