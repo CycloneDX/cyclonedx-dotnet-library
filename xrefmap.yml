@@ -4466,6 +4466,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Id
   nameWithType: Vulnerability.Id
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Properties
+  name: Properties
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Properties
+  commentId: P:CycloneDX.Models.Vulnerabilities.Vulnerability.Properties
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Properties
+  nameWithType: Vulnerability.Properties
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Properties*
+  name: Properties
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Properties_
+  commentId: Overload:CycloneDX.Models.Vulnerabilities.Vulnerability.Properties
+  isSpec: "True"
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Properties
+  nameWithType: Vulnerability.Properties
 - uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Published
   name: Published
   href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Published
@@ -4531,6 +4544,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.ShouldSerializeCreated
   nameWithType: Vulnerability.ShouldSerializeCreated
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.ShouldSerializeProperties
+  name: ShouldSerializeProperties()
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_ShouldSerializeProperties
+  commentId: M:CycloneDX.Models.Vulnerabilities.Vulnerability.ShouldSerializeProperties
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.ShouldSerializeProperties()
+  nameWithType: Vulnerability.ShouldSerializeProperties()
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.ShouldSerializeProperties*
+  name: ShouldSerializeProperties
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_ShouldSerializeProperties_
+  commentId: Overload:CycloneDX.Models.Vulnerabilities.Vulnerability.ShouldSerializeProperties
+  isSpec: "True"
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.ShouldSerializeProperties
+  nameWithType: Vulnerability.ShouldSerializeProperties
 - uid: CycloneDX.Models.Vulnerabilities.Vulnerability.ShouldSerializePublished
   name: ShouldSerializePublished()
   href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_ShouldSerializePublished
