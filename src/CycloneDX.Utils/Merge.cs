@@ -77,7 +77,7 @@ namespace CycloneDX.Utils
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
 
             //Add main component if missing
-            if (!(bom2.Metadata?.Component is null) && !result.Components.Contains(bom2.Metadata.Component)) 
+            if (result.Components != null && !(bom2.Metadata?.Component is null) && !result.Components.Contains(bom2.Metadata.Component)) 
             {
                 result.Components.Add(bom2.Metadata.Component);
             }
