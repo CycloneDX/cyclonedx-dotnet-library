@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("dependency")]
     [ProtoContract]
-    public class Dependency
+    public class Dependency: IEquatable<Dependency>
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]
@@ -35,5 +35,10 @@ namespace CycloneDX.Models
         [XmlElement("dependency")]
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
+
+        public bool Equals(Dependency other)
+        {
+            return Ref.Equals(other.Ref);
+        }
     }
 }

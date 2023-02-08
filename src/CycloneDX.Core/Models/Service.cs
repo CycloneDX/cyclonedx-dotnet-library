@@ -24,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Service
+    public class Service: IEquatable<Service>
     {
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
@@ -123,5 +123,10 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(14)]
         public List<Property> Properties { get; set; }
+
+        public bool Equals(Service obj)
+        {
+            return  BomRef.Equals(obj.BomRef);
+        }
     }
 }

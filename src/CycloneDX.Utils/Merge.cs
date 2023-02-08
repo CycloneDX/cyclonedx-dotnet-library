@@ -31,7 +31,14 @@ namespace CycloneDX.Utils
             if (list2 is null) return list1;
 
             var result = new List<T>(list1);
-            result.AddRange(list2);
+
+            foreach (var item in list2)
+            {
+                if (!(result.Contains(item))) 
+                {
+                    result.Add(item);
+                }
+            }
 
             return result;
         }
@@ -69,6 +76,12 @@ namespace CycloneDX.Utils
             var componentsMerger = new ListMergeHelper<Component>();
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
 
+            //Add main component if missing
+            if (!(bom2.Metadata?.Component is null) && !result.Components.Contains(bom2.Metadata.Component)) 
+            {
+                result.Components.Add(bom2.Metadata.Component);
+            }
+
             var servicesMerger = new ListMergeHelper<Service>();
             result.Services = servicesMerger.Merge(bom1.Services, bom2.Services);
 
@@ -87,6 +100,7 @@ namespace CycloneDX.Utils
             return result;
         }
 
+
         /// <summary>
         /// Performs a flat merge of multiple BOMs.
         /// 
@@ -102,11 +116,55 @@ namespace CycloneDX.Utils
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms)
         {
-            var result = new Bom();
+            return FlatMerge(boms, null);
+        }
 
+        /// <summary>
+        /// Performs a flat merge of multiple BOMs.
+        /// 
+        /// Useful for situations like building a consolidated BOM for a web
+        /// application. Flat merge can combine the BOM for frontend code
+        /// with the BOM for backend code and return a single, combined BOM.
+        /// 
+        /// For situations where system component hierarchy is required to be
+        /// maintained refer to the <c>HierarchicalMerge</c> method.
+        /// </summary>
+        /// <param name="bom1"></param>
+        /// <param name="bom2"></param>
+        /// <returns></returns>
+        public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject)
+        {
+            var result = new Bom();
+            
             foreach (var bom in boms)
             {
                 result = FlatMerge(result, bom);
+            }
+
+            if (bomSubject != null)
+            {
+                // use the params provided if possible
+                result.Metadata.Component = bomSubject;
+                result.Metadata.Component.BomRef = ComponentBomRefNamespace(result.Metadata.Component);
+
+                var mainDependency = new Dependency();
+                mainDependency.Ref = result.Metadata.Component.BomRef;
+                mainDependency.Dependencies = new List<Dependency>();
+                
+                foreach (var bom in boms)
+                {
+                    if (!(bom.Metadata?.Component is null)) 
+                    {
+                        var dep =  new Dependency();
+                        dep.Ref = bom.Metadata.Component.BomRef;
+
+                        mainDependency.Dependencies.Add(dep);
+                    }
+                }
+
+                result.Dependencies.Add(mainDependency);
+
+                
             }
 
             return result;
