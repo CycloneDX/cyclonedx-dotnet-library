@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -22,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Tool
+    public class Tool: IEquatable<Tool>
     {
         [XmlElement("vendor")]
         [ProtoMember(1)]
@@ -45,5 +46,10 @@ namespace CycloneDX.Models
         [ProtoMember(5)]
         public List<ExternalReference> ExternalReferences { get; set; }
         public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
+
+        public bool Equals(Tool obj)
+        {
+            return Vendor == obj.Vendor && Name == obj.Name && Version == obj.Version;
+        }
     }
 }
