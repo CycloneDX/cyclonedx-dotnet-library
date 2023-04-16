@@ -112,9 +112,9 @@ namespace CycloneDX.Core.Tests.Json.v1_4
         public void InvalidJsonTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.4", filename);
-            var xmlBom = File.ReadAllText(resourceFilename);
+            var jsonBom = File.ReadAllText(resourceFilename);
 
-            var validationResult = Validator.Validate(xmlBom, SpecificationVersion.v1_4);
+            var validationResult = Validator.Validate(jsonBom, SpecificationVersion.v1_4);
 
             Assert.False(validationResult.Valid);
         }
