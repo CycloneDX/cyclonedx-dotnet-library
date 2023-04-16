@@ -186,6 +186,8 @@ namespace CycloneDX.Json
             {
                 validationMessages.Add($"Validation failed: {result.Message}");
                 validationMessages.Add(result.SchemaLocation.ToString());
+                validationMessages.Add($"On instance: {result.InstanceLocation}:");
+                validationMessages.Add(result.InstanceLocation.Evaluate(jsonDocument.RootElement).ToString());
 
                 if (result.NestedResults != null)
                 {

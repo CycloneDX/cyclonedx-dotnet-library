@@ -105,5 +105,18 @@ namespace CycloneDX.Core.Tests.Json.v1_4
                 Assert.True(validationResult.Valid);
             }
         }
+
+        [Theory]
+        [InlineData("invalid-bomattribute-1.4.json")]
+        [InlineData("invalid-component-type-1.4.json")]
+        public void InvalidJsonTest(string filename)
+        {
+            var resourceFilename = Path.Join("Resources", "v1.4", filename);
+            var xmlBom = File.ReadAllText(resourceFilename);
+
+            var validationResult = Validator.Validate(xmlBom, SpecificationVersion.v1_4);
+
+            Assert.False(validationResult.Valid);
+        }
     }
 }
