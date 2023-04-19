@@ -683,6 +683,12 @@ references:
   commentId: T:CycloneDX.Json.Validator
   fullName: CycloneDX.Json.Validator
   nameWithType: Validator
+- uid: CycloneDX.Json.Validator.Validate(System.String)
+  name: Validate(String)
+  href: api/CycloneDX.Json.Validator.html#CycloneDX_Json_Validator_Validate_System_String_
+  commentId: M:CycloneDX.Json.Validator.Validate(System.String)
+  fullName: CycloneDX.Json.Validator.Validate(System.String)
+  nameWithType: Validator.Validate(String)
 - uid: CycloneDX.Json.Validator.Validate(System.String,CycloneDX.SpecificationVersion)
   name: Validate(String, SpecificationVersion)
   href: api/CycloneDX.Json.Validator.html#CycloneDX_Json_Validator_Validate_System_String_CycloneDX_SpecificationVersion_
