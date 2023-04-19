@@ -27,7 +27,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
     [ProtoContract]
-    public class Component
+    public class Component: IEquatable<Component>
     {
         [ProtoContract]
         public enum Classification
@@ -196,5 +196,11 @@ namespace CycloneDX.Models
         [ProtoMember(24)]
         public ReleaseNotes ReleaseNotes { get; set; }
         public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
+
+        public bool Equals(Component obj)
+        {
+            return (BomRef != null && BomRef.Equals(obj.BomRef)) || 
+            (Group == obj.Group && Name == obj.Name && Version == obj.Version);
+        }
     }
 }
