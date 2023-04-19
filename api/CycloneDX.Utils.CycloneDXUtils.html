@@ -202,7 +202,7 @@ between two BOMs.</p>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_FlatMerge_CycloneDX_Models_Bom_CycloneDX_Models_Bom_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.FlatMerge(CycloneDX.Models.Bom%2CCycloneDX.Models.Bom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L55">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L62">View Source</a>
   </span>
   <a id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge*"></a>
   <h4 id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_CycloneDX_Models_Bom_CycloneDX_Models_Bom_" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge(CycloneDX.Models.Bom,CycloneDX.Models.Bom)">FlatMerge(Bom, Bom)</h4>
@@ -260,7 +260,7 @@ maintained refer to the <code>HierarchicalMerge</code> method.</p>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_FlatMerge_IEnumerable_CycloneDX_Models_Bom__.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable%7BCycloneDX.Models.Bom%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L103">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L117">View Source</a>
   </span>
   <a id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge*"></a>
   <h4 id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_IEnumerable_CycloneDX_Models_Bom__" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable{CycloneDX.Models.Bom})">FlatMerge(IEnumerable&lt;Bom&gt;)</h4>
@@ -289,6 +289,64 @@ maintained refer to the <code>HierarchicalMerge</code> method.</p>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="CycloneDX.Models.Bom.html">Bom</a>&gt;</td>
         <td><span class="parametername">boms</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.Bom.html">Bom</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_FlatMerge_IEnumerable_CycloneDX_Models_Bom__CycloneDX_Models_Component_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable%7BCycloneDX.Models.Bom%7D%2CCycloneDX.Models.Component)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L135">View Source</a>
+  </span>
+  <a id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge*"></a>
+  <h4 id="CycloneDX_Utils_CycloneDXUtils_FlatMerge_IEnumerable_CycloneDX_Models_Bom__CycloneDX_Models_Component_" data-uid="CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable{CycloneDX.Models.Bom},CycloneDX.Models.Component)">FlatMerge(IEnumerable&lt;Bom&gt;, Component)</h4>
+  <div class="markdown level1 summary"><p>Performs a flat merge of multiple BOMs.</p>
+<p>Useful for situations like building a consolidated BOM for a web
+application. Flat merge can combine the BOM for frontend code
+with the BOM for backend code and return a single, combined BOM.</p>
+<p>For situations where system component hierarchy is required to be
+maintained refer to the <code>HierarchicalMerge</code> method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Bom FlatMerge(IEnumerable&lt;Bom&gt; boms, Component bomSubject)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="CycloneDX.Models.Bom.html">Bom</a>&gt;</td>
+        <td><span class="parametername">boms</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.Component.html">Component</a></td>
+        <td><span class="parametername">bomSubject</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -344,7 +402,7 @@ maintained refer to the <code>HierarchicalMerge</code> method.</p>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Utils_CycloneDXUtils_HierarchicalMerge_IEnumerable_CycloneDX_Models_Bom__CycloneDX_Models_Component_.md&amp;value=---%0Auid%3A%20CycloneDX.Utils.CycloneDXUtils.HierarchicalMerge(IEnumerable%7BCycloneDX.Models.Bom%7D%2CCycloneDX.Models.Component)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L129">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Utils/Merge.cs/#L187">View Source</a>
   </span>
   <a id="CycloneDX_Utils_CycloneDXUtils_HierarchicalMerge_" data-uid="CycloneDX.Utils.CycloneDXUtils.HierarchicalMerge*"></a>
   <h4 id="CycloneDX_Utils_CycloneDXUtils_HierarchicalMerge_IEnumerable_CycloneDX_Models_Bom__CycloneDX_Models_Component_" data-uid="CycloneDX.Utils.CycloneDXUtils.HierarchicalMerge(IEnumerable{CycloneDX.Models.Bom},CycloneDX.Models.Component)">HierarchicalMerge(IEnumerable&lt;Bom&gt;, Component)</h4>

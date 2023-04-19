@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
+          "hash": "owLOnHLu++H+I600pSUxsWQZRdgJ7yw5P/usKMMDnUs="
         }
       },
       "is_incremental": false,
@@ -345,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Component.html",
-          "hash": "Xf66Jf5AGRQiKR+DM58ZkQwpqoxUkKuu+kSzc70Gzic="
+          "hash": "WlLJT6YX4QB0QnM9fLnIXp/lY+Netd7hBTokMm0HaDM="
         }
       },
       "is_incremental": false,
@@ -405,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Dependency.html",
-          "hash": "16yJOhy3Snc8L9KJRMY3+CXmoiqs5lkaNim5ilLzid8="
+          "hash": "u/yeSleLDWMBJeoSOuM/FtTQNIp9JEYtN+yD5ty1rfA="
         }
       },
       "is_incremental": false,
@@ -669,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Service.html",
-          "hash": "zOdvwxsVXG14tT+0Mm/XZlHaG+CB7i6rTik7IKexuPQ="
+          "hash": "fuz9QbC4dIc5YizgPkma88a39QIkMLdTmd7ZOykp5JU="
         }
       },
       "is_incremental": false,
@@ -705,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Tool.html",
-          "hash": "XZCjT3IbanyXHj4HJ1x8UGxKhQNYnMrYfkbjmQYZsbk="
+          "hash": "odsyPQkjLMiFSG6V74ok+F9/9PXwSD981VcoN5l5Z6k="
         }
       },
       "is_incremental": false,
@@ -885,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Vulnerability.html",
-          "hash": "Q+udFhDTHdEFoomdNdx9fGgLNI8h+XPfVSIuVt+V0ns="
+          "hash": "i9DrGT/KRGx60eEaFpjj9LJa34Ap5XIKPeLGXf0PFGg="
         }
       },
       "is_incremental": false,
@@ -1497,7 +1497,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Utils.CycloneDXUtils.html",
-          "hash": "rVYCxio6NSbOakbfdI2V/Ao5lqd9hye7ehVnE7yvpSc="
+          "hash": "Z/zbtRCinU7QAtYix4z8h4Y65y/4ueJUXAHdjXvzYk8="
         }
       },
       "is_incremental": false,

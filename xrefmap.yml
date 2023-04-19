@@ -1309,6 +1309,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.Description
   nameWithType: Component.Description
+- uid: CycloneDX.Models.Component.Equals(CycloneDX.Models.Component)
+  name: Equals(Component)
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_Equals_CycloneDX_Models_Component_
+  commentId: M:CycloneDX.Models.Component.Equals(CycloneDX.Models.Component)
+  fullName: CycloneDX.Models.Component.Equals(CycloneDX.Models.Component)
+  nameWithType: Component.Equals(Component)
+- uid: CycloneDX.Models.Component.Equals*
+  name: Equals
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_Equals_
+  commentId: Overload:CycloneDX.Models.Component.Equals
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.Equals
+  nameWithType: Component.Equals
 - uid: CycloneDX.Models.Component.Evidence
   name: Evidence
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_Evidence
@@ -1847,6 +1860,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Dependency.Dependencies
   nameWithType: Dependency.Dependencies
+- uid: CycloneDX.Models.Dependency.Equals(CycloneDX.Models.Dependency)
+  name: Equals(Dependency)
+  href: api/CycloneDX.Models.Dependency.html#CycloneDX_Models_Dependency_Equals_CycloneDX_Models_Dependency_
+  commentId: M:CycloneDX.Models.Dependency.Equals(CycloneDX.Models.Dependency)
+  fullName: CycloneDX.Models.Dependency.Equals(CycloneDX.Models.Dependency)
+  nameWithType: Dependency.Equals(Dependency)
+- uid: CycloneDX.Models.Dependency.Equals*
+  name: Equals
+  href: api/CycloneDX.Models.Dependency.html#CycloneDX_Models_Dependency_Equals_
+  commentId: Overload:CycloneDX.Models.Dependency.Equals
+  isSpec: "True"
+  fullName: CycloneDX.Models.Dependency.Equals
+  nameWithType: Dependency.Equals
 - uid: CycloneDX.Models.Dependency.Ref
   name: Ref
   href: api/CycloneDX.Models.Dependency.html#CycloneDX_Models_Dependency_Ref
@@ -3234,6 +3260,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Service.Endpoints
   nameWithType: Service.Endpoints
+- uid: CycloneDX.Models.Service.Equals(CycloneDX.Models.Service)
+  name: Equals(Service)
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_Equals_CycloneDX_Models_Service_
+  commentId: M:CycloneDX.Models.Service.Equals(CycloneDX.Models.Service)
+  fullName: CycloneDX.Models.Service.Equals(CycloneDX.Models.Service)
+  nameWithType: Service.Equals(Service)
+- uid: CycloneDX.Models.Service.Equals*
+  name: Equals
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_Equals_
+  commentId: Overload:CycloneDX.Models.Service.Equals
+  isSpec: "True"
+  fullName: CycloneDX.Models.Service.Equals
+  nameWithType: Service.Equals
 - uid: CycloneDX.Models.Service.ExternalReferences
   name: ExternalReferences
   href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_ExternalReferences
@@ -3616,6 +3655,19 @@ references:
   commentId: T:CycloneDX.Models.Tool
   fullName: CycloneDX.Models.Tool
   nameWithType: Tool
+- uid: CycloneDX.Models.Tool.Equals(CycloneDX.Models.Tool)
+  name: Equals(Tool)
+  href: api/CycloneDX.Models.Tool.html#CycloneDX_Models_Tool_Equals_CycloneDX_Models_Tool_
+  commentId: M:CycloneDX.Models.Tool.Equals(CycloneDX.Models.Tool)
+  fullName: CycloneDX.Models.Tool.Equals(CycloneDX.Models.Tool)
+  nameWithType: Tool.Equals(Tool)
+- uid: CycloneDX.Models.Tool.Equals*
+  name: Equals
+  href: api/CycloneDX.Models.Tool.html#CycloneDX_Models_Tool_Equals_
+  commentId: Overload:CycloneDX.Models.Tool.Equals
+  isSpec: "True"
+  fullName: CycloneDX.Models.Tool.Equals
+  nameWithType: Tool.Equals
 - uid: CycloneDX.Models.Tool.ExternalReferences
   name: ExternalReferences
   href: api/CycloneDX.Models.Tool.html#CycloneDX_Models_Tool_ExternalReferences
@@ -4453,6 +4505,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Detail
   nameWithType: Vulnerability.Detail
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals(CycloneDX.Models.Vulnerabilities.Vulnerability)
+  name: Equals(Vulnerability)
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Equals_CycloneDX_Models_Vulnerabilities_Vulnerability_
+  commentId: M:CycloneDX.Models.Vulnerabilities.Vulnerability.Equals(CycloneDX.Models.Vulnerabilities.Vulnerability)
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals(CycloneDX.Models.Vulnerabilities.Vulnerability)
+  nameWithType: Vulnerability.Equals(Vulnerability)
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals*
+  name: Equals
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Equals_
+  commentId: Overload:CycloneDX.Models.Vulnerabilities.Vulnerability.Equals
+  isSpec: "True"
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals
+  nameWithType: Vulnerability.Equals
 - uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Id
   name: Id
   href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Id
@@ -7770,6 +7835,15 @@ references:
   fullName.vb: CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable(Of CycloneDX.Models.Bom))
   nameWithType: CycloneDXUtils.FlatMerge(IEnumerable<Bom>)
   nameWithType.vb: CycloneDXUtils.FlatMerge(IEnumerable(Of Bom))
+- uid: CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable{CycloneDX.Models.Bom},CycloneDX.Models.Component)
+  name: FlatMerge(IEnumerable<Bom>, Component)
+  href: api/CycloneDX.Utils.CycloneDXUtils.html#CycloneDX_Utils_CycloneDXUtils_FlatMerge_IEnumerable_CycloneDX_Models_Bom__CycloneDX_Models_Component_
+  commentId: M:CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable{CycloneDX.Models.Bom},CycloneDX.Models.Component)
+  name.vb: FlatMerge(IEnumerable(Of Bom), Component)
+  fullName: CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable<CycloneDX.Models.Bom>, CycloneDX.Models.Component)
+  fullName.vb: CycloneDX.Utils.CycloneDXUtils.FlatMerge(IEnumerable(Of CycloneDX.Models.Bom), CycloneDX.Models.Component)
+  nameWithType: CycloneDXUtils.FlatMerge(IEnumerable<Bom>, Component)
+  nameWithType.vb: CycloneDXUtils.FlatMerge(IEnumerable(Of Bom), Component)
 - uid: CycloneDX.Utils.CycloneDXUtils.FlatMerge*
   name: FlatMerge
   href: api/CycloneDX.Utils.CycloneDXUtils.html#CycloneDX_Utils_CycloneDXUtils_FlatMerge_
