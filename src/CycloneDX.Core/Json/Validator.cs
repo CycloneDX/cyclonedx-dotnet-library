@@ -74,7 +74,62 @@ namespace CycloneDX.Json
                 return Validate(jsonSchema, jsonDocument, schemaVersionString);
             }
         }
-        
+
+        /// <summary>
+        /// Validate the string contents represent a valid CycloneDX JSON document.
+        /// </summary>
+        /// <param name="jsonString"></param>
+        /// <returns></returns>
+        public static ValidationResult Validate(string jsonString)
+        {
+            JsonDocument jsonDocument = null;
+            try
+            {
+                jsonDocument = JsonDocument.Parse(jsonString);
+            }
+            catch (JsonException exc)
+            {
+                return new ValidationResult
+                {
+                    Valid = false,
+                    Messages = new List<string> { exc.Message }
+                };
+            }
+
+            SpecificationVersion? specificationVersion = null;
+            foreach (var properties in jsonDocument.RootElement.EnumerateObject())
+            {
+                if (properties.Name == "specVersion")
+                {
+                    var specVersion = properties.Value.GetString();
+                    if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_4))
+                    {
+                        specificationVersion = SpecificationVersion.v1_4;
+                    }
+                    else if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_3))
+                    {
+                        specificationVersion = SpecificationVersion.v1_3;
+                    }
+                    else if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_2))
+                    {
+                        specificationVersion = SpecificationVersion.v1_2;
+                    }
+                    // no need to test against earlier versions as they don't support JSON
+                }
+            }
+
+            if (specificationVersion == null)
+            {
+                return new ValidationResult
+                {
+                    Valid = false,
+                    Messages = new List<string> { "specVersion missing or unknown." }
+                };
+            }
+
+            return Validate(jsonString, specificationVersion.Value);
+        }
+
         /// <summary>
         /// Validate the string contents represent a valid CycloneDX JSON document.
         /// </summary>
@@ -140,6 +195,8 @@ namespace CycloneDX.Json
             {
                 validationMessages.Add($"Validation failed: {result.Message}");
                 validationMessages.Add(result.SchemaLocation.ToString());
+                validationMessages.Add($"On instance: {result.InstanceLocation}:");
+                validationMessages.Add(result.InstanceLocation.Evaluate(jsonDocument.RootElement).ToString());
 
                 if (result.NestedResults != null)
                 {
