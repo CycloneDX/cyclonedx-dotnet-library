@@ -49,7 +49,12 @@ namespace CycloneDX.Models
 
         public bool Equals(Tool obj)
         {
-            return Vendor == obj.Vendor && Name == obj.Name && Version == obj.Version;
+            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+        }
+    
+        public override int GetHashCode()
+        {
+            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
     }
 }

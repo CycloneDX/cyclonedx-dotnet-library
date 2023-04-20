@@ -199,8 +199,12 @@ namespace CycloneDX.Models
 
         public bool Equals(Component obj)
         {
-            return (BomRef != null && BomRef.Equals(obj.BomRef)) || 
-            (Group == obj.Group && Name == obj.Name && Version == obj.Version);
+            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+        }
+    
+        public override int GetHashCode()
+        {
+            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
     }
 }
