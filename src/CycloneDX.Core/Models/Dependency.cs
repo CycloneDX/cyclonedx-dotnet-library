@@ -36,9 +36,14 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
 
-        public bool Equals(Dependency other)
+        public bool Equals(Dependency obj)
         {
-            return Ref.Equals(other.Ref);
+            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+        }
+    
+        public override int GetHashCode()
+        {
+            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
     }
 }

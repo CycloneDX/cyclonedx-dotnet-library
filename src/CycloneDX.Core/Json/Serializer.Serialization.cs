@@ -57,5 +57,35 @@ namespace CycloneDX.Json
             var jsonBom = JsonSerializer.Serialize(BomUtils.GetBomForSerialization(bom), _options);
             return jsonBom;
         }
+
+        internal static string Serialize(Component component)
+        {
+            Contract.Requires(component != null);
+            return JsonSerializer.Serialize(component, _options);
+        }
+
+        internal static string Serialize(Dependency dependency)
+        {
+            Contract.Requires(dependency != null);
+            return JsonSerializer.Serialize(dependency, _options);
+        }
+
+        internal static string Serialize(Service service)
+        {
+            Contract.Requires(service != null);
+            return JsonSerializer.Serialize(service, _options);
+        }
+
+        internal static string Serialize(Tool tool)
+        {
+            Contract.Requires(tool != null);
+            return JsonSerializer.Serialize(tool, _options);
+        }
+
+        internal static string Serialize(Models.Vulnerabilities.Vulnerability vulnerability)
+        {
+            Contract.Requires(vulnerability != null);
+            return JsonSerializer.Serialize(vulnerability, _options);
+        }
     }
 }
