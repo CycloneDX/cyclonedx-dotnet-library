@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "owLOnHLu++H+I600pSUxsWQZRdgJ7yw5P/usKMMDnUs="
+          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
         }
       },
       "is_incremental": false,
@@ -345,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Component.html",
-          "hash": "WlLJT6YX4QB0QnM9fLnIXp/lY+Netd7hBTokMm0HaDM="
+          "hash": "L7czF2SoBjj8rRnVLK6eDojVpprQjhhRFDOmLCBut0k="
         }
       },
       "is_incremental": false,
@@ -405,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Dependency.html",
-          "hash": "u/yeSleLDWMBJeoSOuM/FtTQNIp9JEYtN+yD5ty1rfA="
+          "hash": "PZkBbm/PXpdt3AqBa/QaDeWelAEA0upZEdamtfqOpBA="
         }
       },
       "is_incremental": false,
@@ -669,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Service.html",
-          "hash": "fuz9QbC4dIc5YizgPkma88a39QIkMLdTmd7ZOykp5JU="
+          "hash": "h4dqI/MxE1Djcj37CPY9JJdYFsRQfaFRHrfH1xJMyDg="
         }
       },
       "is_incremental": false,
@@ -705,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Tool.html",
-          "hash": "odsyPQkjLMiFSG6V74ok+F9/9PXwSD981VcoN5l5Z6k="
+          "hash": "ldGLJ/aPDZzuAE7Pg9xOj1GdyQf2bB5LaEuiVAy71z4="
         }
       },
       "is_incremental": false,
@@ -885,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Vulnerability.html",
-          "hash": "i9DrGT/KRGx60eEaFpjj9LJa34Ap5XIKPeLGXf0PFGg="
+          "hash": "1K+j4zlbZmozFFb9HFuOpeCL3qREloZ+LXn8DB8npv8="
         }
       },
       "is_incremental": false,

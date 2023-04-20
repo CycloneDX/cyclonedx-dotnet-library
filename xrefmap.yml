@@ -1354,6 +1354,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.ExternalReferences
   nameWithType: Component.ExternalReferences
+- uid: CycloneDX.Models.Component.GetHashCode
+  name: GetHashCode()
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_GetHashCode
+  commentId: M:CycloneDX.Models.Component.GetHashCode
+  fullName: CycloneDX.Models.Component.GetHashCode()
+  nameWithType: Component.GetHashCode()
+- uid: CycloneDX.Models.Component.GetHashCode*
+  name: GetHashCode
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_GetHashCode_
+  commentId: Overload:CycloneDX.Models.Component.GetHashCode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.GetHashCode
+  nameWithType: Component.GetHashCode
 - uid: CycloneDX.Models.Component.Group
   name: Group
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_Group
@@ -1879,6 +1892,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Dependency.Equals
   nameWithType: Dependency.Equals
+- uid: CycloneDX.Models.Dependency.GetHashCode
+  name: GetHashCode()
+  href: api/CycloneDX.Models.Dependency.html#CycloneDX_Models_Dependency_GetHashCode
+  commentId: M:CycloneDX.Models.Dependency.GetHashCode
+  fullName: CycloneDX.Models.Dependency.GetHashCode()
+  nameWithType: Dependency.GetHashCode()
+- uid: CycloneDX.Models.Dependency.GetHashCode*
+  name: GetHashCode
+  href: api/CycloneDX.Models.Dependency.html#CycloneDX_Models_Dependency_GetHashCode_
+  commentId: Overload:CycloneDX.Models.Dependency.GetHashCode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Dependency.GetHashCode
+  nameWithType: Dependency.GetHashCode
 - uid: CycloneDX.Models.Dependency.Ref
   name: Ref
   href: api/CycloneDX.Models.Dependency.html#CycloneDX_Models_Dependency_Ref
@@ -3292,6 +3318,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Service.ExternalReferences
   nameWithType: Service.ExternalReferences
+- uid: CycloneDX.Models.Service.GetHashCode
+  name: GetHashCode()
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_GetHashCode
+  commentId: M:CycloneDX.Models.Service.GetHashCode
+  fullName: CycloneDX.Models.Service.GetHashCode()
+  nameWithType: Service.GetHashCode()
+- uid: CycloneDX.Models.Service.GetHashCode*
+  name: GetHashCode
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_GetHashCode_
+  commentId: Overload:CycloneDX.Models.Service.GetHashCode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Service.GetHashCode
+  nameWithType: Service.GetHashCode
 - uid: CycloneDX.Models.Service.Group
   name: Group
   href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_Group
@@ -3687,6 +3726,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Tool.ExternalReferences
   nameWithType: Tool.ExternalReferences
+- uid: CycloneDX.Models.Tool.GetHashCode
+  name: GetHashCode()
+  href: api/CycloneDX.Models.Tool.html#CycloneDX_Models_Tool_GetHashCode
+  commentId: M:CycloneDX.Models.Tool.GetHashCode
+  fullName: CycloneDX.Models.Tool.GetHashCode()
+  nameWithType: Tool.GetHashCode()
+- uid: CycloneDX.Models.Tool.GetHashCode*
+  name: GetHashCode
+  href: api/CycloneDX.Models.Tool.html#CycloneDX_Models_Tool_GetHashCode_
+  commentId: Overload:CycloneDX.Models.Tool.GetHashCode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Tool.GetHashCode
+  nameWithType: Tool.GetHashCode
 - uid: CycloneDX.Models.Tool.Hashes
   name: Hashes
   href: api/CycloneDX.Models.Tool.html#CycloneDX_Models_Tool_Hashes
@@ -4524,6 +4576,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals
   nameWithType: Vulnerability.Equals
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.GetHashCode
+  name: GetHashCode()
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_GetHashCode
+  commentId: M:CycloneDX.Models.Vulnerabilities.Vulnerability.GetHashCode
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.GetHashCode()
+  nameWithType: Vulnerability.GetHashCode()
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.GetHashCode*
+  name: GetHashCode
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_GetHashCode_
+  commentId: Overload:CycloneDX.Models.Vulnerabilities.Vulnerability.GetHashCode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.GetHashCode
+  nameWithType: Vulnerability.GetHashCode
 - uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Id
   name: Id
   href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Id
