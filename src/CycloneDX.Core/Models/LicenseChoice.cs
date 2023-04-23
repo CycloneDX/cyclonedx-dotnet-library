@@ -52,7 +52,7 @@ namespace CycloneDX.Models
 
         public LicenseChoiceList() { }
 
-        public List<LicenseChoice> Licenses;
+        public List<LicenseChoice> Licenses { get; set; }
 
         public System.Xml.Schema.XmlSchema GetSchema()
         {

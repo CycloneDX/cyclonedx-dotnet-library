@@ -140,7 +140,7 @@ namespace CycloneDX.Models
         public List<Hash> Hashes { get; set; }
         public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
 
-        [XmlIgnore()]
+        [XmlIgnore]
         [ProtoMember(13)]
         public List<LicenseChoice> Licenses { get; set; }
 
