@@ -83,7 +83,7 @@ namespace CycloneDX.Xml
 
         // Todo: this is a workaround to set the set the correct namespace
         // when writing licenses. Can this be avoided?
-        public static Dictionary<XmlWriter,string> WriterToNamespace = new Dictionary<XmlWriter, string>();
+        public readonly static Dictionary<XmlWriter,string> WriterToNamespace = new Dictionary<XmlWriter, string>();
 
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.

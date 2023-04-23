@@ -131,7 +131,7 @@ namespace CycloneDX.Models
         [ProtoMember(12)]
         public List<Hash> Hashes { get; set; }
 
-        [XmlIgnore()]
+        [XmlIgnore]
         [ProtoMember(13)]
         public List<LicenseChoice> Licenses { get; set; }
 
