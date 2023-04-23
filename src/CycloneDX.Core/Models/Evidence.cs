@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
@@ -30,11 +31,21 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class Evidence
     {
-        [XmlElement("licenses", Order = 3)]
+        [XmlIgnore]
         [ProtoMember(1)]
         public List<LicenseChoice> Licenses { get; set; }
+        
+        [XmlElement("licenses"), Order = 3]
+        [JsonIgnore]
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
-        [XmlArray("copyright", Order = 4)]
+        [XmlArray("copyright")]
         [XmlArrayItem("text")]
         [ProtoMember(2)]
         public List<EvidenceCopyright> Copyright { get; set; }

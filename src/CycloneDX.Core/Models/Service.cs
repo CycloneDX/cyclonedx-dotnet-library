@@ -165,10 +165,21 @@ namespace CycloneDX.Models
             }
         }
         public bool ShouldSerializeXmlData() => ShouldSerializeData();
-        
-        [XmlElement("licenses")]
+
+        [XmlIgnore]
         [ProtoMember(11)]
         public List<LicenseChoice> Licenses { get; set; }
+
+        [XmlElement("licenses")]
+        [JsonIgnore]
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        // This is a serialization workaround
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
