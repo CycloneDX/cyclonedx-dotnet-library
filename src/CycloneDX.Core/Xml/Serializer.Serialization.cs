@@ -81,9 +81,18 @@ namespace CycloneDX.Xml
             }
         }
 
-        // Todo: this is a workaround to set the set the correct namespace
+        // Todo: this is a workaround to set the correct namespace
         // when writing licenses. Can this be avoided?
-        public readonly static Dictionary<XmlWriter,string> WriterToNamespace = new Dictionary<XmlWriter, string>();
+        private readonly static Dictionary<XmlWriter, string> WriterToNamespace = new Dictionary<XmlWriter, string>();
+
+        public static string GetNamespace(XmlWriter writer)
+        {
+            string namespaceStr;
+            lock (WriterToNamespace) {
+                namespaceStr = WriterToNamespace[writer];
+            }
+            return namespaceStr;
+        }
 
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.

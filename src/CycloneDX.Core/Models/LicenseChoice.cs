@@ -98,10 +98,7 @@ namespace CycloneDX.Models
             {
                 // todo: is there a way to feed in the namespace with having to introduce WriterToNamespace?
                 string defaultNamespace;
-                lock (CycloneDX.Xml.Serializer.WriterToNamespace)
-                {
-                    defaultNamespace = CycloneDX.Xml.Serializer.WriterToNamespace[writer];
-                }
+                defaultNamespace = CycloneDX.Xml.Serializer.GetNamespace(writer);
                 XmlSerializer licenseSerializer = new XmlSerializer(typeof(License), defaultNamespace);
 
                 foreach (var license in Licenses)
