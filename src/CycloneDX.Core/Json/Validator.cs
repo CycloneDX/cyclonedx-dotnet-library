@@ -166,9 +166,9 @@ namespace CycloneDX.Json
             }
         }
 
-        private static Dictionary<JsonElement, List<JsonElement>> addDictList(
-            Dictionary<JsonElement, List<JsonElement>> dict1,
-            Dictionary<JsonElement, List<JsonElement>> dict2)
+        private static Dictionary<string, List<JsonElement>> addDictList(
+            Dictionary<string, List<JsonElement>> dict1,
+            Dictionary<string, List<JsonElement>> dict2)
         {
             if (dict2 == null || dict2.Count == 0)
             {
@@ -180,10 +180,12 @@ namespace CycloneDX.Json
                 return dict2;
             }
 
-            foreach (KeyValuePair<JsonElement, List<JsonElement>> KVP in dict2)
+            foreach (KeyValuePair<string, List<JsonElement>> KVP in dict2)
             {
                 if (dict1.ContainsKey(KVP.Key))
                 {
+                    // NOTE: Possibly different object, but same string representation!
+                    // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: Adding duplicate for: {KVP.Key}");
                     dict1[KVP.Key].AddRange(KVP.Value);
                 }
                 else
@@ -203,25 +205,29 @@ namespace CycloneDX.Json
         ///    for the original caller, probably. Then used to recurse.
         /// </param>
         /// <param name="name">The property name we seek.</param>
-        /// <returns>A Dictionary with distinct values of the seeked JsonElement as keys,
-        ///    and a List of "parent" JsonElement (which contain such key) as mapped values.
+        /// <returns>A Dictionary with distinct values of string representation of the
+        ///    seeked JsonElement as keys, and a List of actual JsonElement objects as
+        ///    mapped values.
         /// </returns>
-        private static Dictionary<JsonElement, List<JsonElement>> findNamedElements(JsonElement element, string name)
+        private static Dictionary<string, List<JsonElement>> findNamedElements(JsonElement element, string name)
         {
-            Dictionary<JsonElement, List<JsonElement>> hits = new Dictionary<JsonElement, List<JsonElement>>();
-            Dictionary<JsonElement, List<JsonElement>> nestedHits = null;
+            Dictionary<string, List<JsonElement>> hits = new Dictionary<string, List<JsonElement>>();
+            Dictionary<string, List<JsonElement>> nestedHits = null;
 
             // Can we iterate further?
             switch (element.ValueKind) {
                 case JsonValueKind.Object:
                     foreach (JsonProperty property in element.EnumerateObject())
                     {
+                        // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: Looking at object property: {property.Name}");
                         if (property.Name == name) {
-                            if (!hits.ContainsKey(property.Value))
+                            // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: GOT A HIT: {property.Name} => ({property.Value.ValueKind}) {property.Value.ToString()}");
+                            string key = property.Value.ToString();
+                            if (!(hits.ContainsKey(key)))
                             {
-                                hits.Add(property.Value, new List<JsonElement>());
+                                hits.Add(key, new List<JsonElement>());
                             }
-                            hits[property.Value].Add(element);
+                            hits[key].Add(property.Value);
                         }
 
                         // Note: Here we can recurse into same property that
@@ -232,6 +238,7 @@ namespace CycloneDX.Json
                     break;
 
                 case JsonValueKind.Array:
+                    // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: Looking at List");
                     foreach (JsonElement nestedElem in element.EnumerateArray())
                     {
                         nestedHits = findNamedElements(nestedElem, name);
@@ -283,10 +290,12 @@ namespace CycloneDX.Json
                 // document seems structurally intact otherwise.
                 // Note that this is not a problem for the XML schema with
                 // its explicit <xs:unique name="bom-ref"> constraint.
-                Dictionary<JsonElement, List<JsonElement>> bomRefs = findNamedElements(jsonDocument.RootElement, "bom-ref");
-                foreach (KeyValuePair<JsonElement, List<JsonElement>> KVP in bomRefs) {
+                // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: Looking at bom-ref uniqueness");
+                Dictionary<string, List<JsonElement>> bomRefs = findNamedElements(jsonDocument.RootElement, "bom-ref");
+                foreach (KeyValuePair<string, List<JsonElement>> KVP in bomRefs) {
+                    // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: [{KVP.Value.Count}] '{KVP.Key}' => {KVP.Value.ToString()}");
                     if (KVP.Value != null && KVP.Value.Count != 1) {
-                        validationMessages.Add($"'bom-ref' value of {KVP.Key.GetString()}: expected 1 mention, actual {KVP.Value.Count}");
+                        validationMessages.Add($"'bom-ref' value of {KVP.Key}: expected 1 mention, actual {KVP.Value.Count}");
                     }
                 }
             }
