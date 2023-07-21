@@ -185,7 +185,6 @@ namespace CycloneDX.Json
                 if (dict1.ContainsKey(KVP.Key))
                 {
                     // NOTE: Possibly different object, but same string representation!
-                    // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: Adding duplicate for: {KVP.Key}");
                     dict1[KVP.Key].AddRange(KVP.Value);
                 }
                 else
@@ -219,9 +218,7 @@ namespace CycloneDX.Json
                 case JsonValueKind.Object:
                     foreach (JsonProperty property in element.EnumerateObject())
                     {
-                        // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: Looking at object property: {property.Name}");
                         if (property.Name == name) {
-                            // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: GOT A HIT: {property.Name} => ({property.Value.ValueKind}) {property.Value.ToString()}");
                             string key = property.Value.ToString();
                             if (!(hits.ContainsKey(key)))
                             {
@@ -238,7 +235,6 @@ namespace CycloneDX.Json
                     break;
 
                 case JsonValueKind.Array:
-                    // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: Looking at List");
                     foreach (JsonElement nestedElem in element.EnumerateArray())
                     {
                         nestedHits = findNamedElements(nestedElem, name);
@@ -290,10 +286,8 @@ namespace CycloneDX.Json
                 // document seems structurally intact otherwise.
                 // Note that this is not a problem for the XML schema with
                 // its explicit <xs:unique name="bom-ref"> constraint.
-                // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: Looking at bom-ref uniqueness");
                 Dictionary<string, List<JsonElement>> bomRefs = findNamedElements(jsonDocument.RootElement, "bom-ref");
                 foreach (KeyValuePair<string, List<JsonElement>> KVP in bomRefs) {
-                    // #COMMENTED-DEBUG# Console.WriteLine($"VALIDATE: [{KVP.Value.Count}] '{KVP.Key}' => {KVP.Value.ToString()}");
                     if (KVP.Value != null && KVP.Value.Count != 1) {
                         validationMessages.Add($"'bom-ref' value of {KVP.Key}: expected 1 mention, actual {KVP.Value.Count}");
                     }
