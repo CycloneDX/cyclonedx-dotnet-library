@@ -27,16 +27,58 @@ namespace CycloneDX.Utils
     {
         public List<T> Merge(List<T> list1, List<T> list2)
         {
+            Console.WriteLine($"List-Merge for: {this.GetType().ToString()}");
             if (list1 is null) return list2;
             if (list2 is null) return list1;
 
-            var result = new List<T>(list1);
+            List<T> result = new List<T>(list1);
 
-            foreach (var item in list2)
+            foreach (var item2 in list2)
             {
-                if (!(result.Contains(item))) 
+                bool isContained = false;
+                for (int i=0; i < result.Count; i++)
                 {
-                    result.Add(item);
+                    T item1 = result[i];
+                    // Squash contents of the new entry with an already
+                    // existing equivalent (same-ness is subject to
+                    // IEquatable<>.Equals() checks defined in respective
+                    // classes), if there is a method defined there:
+                    var method = item1.GetType().GetMethod("mergeWith");
+                    if (method != null)
+                    {
+                        try
+                        {
+                            if (((bool)method.Invoke(item1, new object[] {item2})))
+                            {
+                                isContained = true;
+                                break; // items deemed equivalent
+                            }
+                        }
+                        catch (System.Exception exc)
+                        {
+                            Console.WriteLine($"SKIP MERGE: can not mergeWith() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}");
+                        }
+                    } // else: That class lacks a mergeWith(), gotta trust the equality
+                    else
+                    {
+                        Console.WriteLine($"SKIP MERGE: can not mergeWith() {item1.ToString()} and {item2.ToString()}: no such method");
+                        if (item1.Equals(item2)) {
+                            isContained = true;
+                            break; // item2 merged into result[item1] or already equal to it
+                        }
+                    }
+                }
+
+                if (!isContained)
+                {
+                    // Add new entry "as is" (new-ness is subject to
+                    // equality checks of respective classes):
+                    Console.WriteLine($"WILL ADD: {item2.ToString()}");
+                    result.Add(item2);
+                }
+                else
+                {
+                    Console.WriteLine($"ALREADY THERE: {item2.ToString()}");
                 }
             }
 
