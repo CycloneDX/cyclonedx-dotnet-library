@@ -18,6 +18,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -201,10 +203,159 @@ namespace CycloneDX.Models
         {
             return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
         }
-    
+
         public override int GetHashCode()
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+        }
+
+        public bool mergeWith(Component obj)
+        {
+            if (this.Equals(obj))
+                // Contents are identical, nothing to do:
+                return true;
+
+            if (
+                (this.BomRef != null && BomRef.Equals(obj.BomRef)) ||
+                (this.Group == obj.Group && this.Name == obj.Name && this.Version == obj.Version)
+            ) {
+                // Objects seem equivalent according to critical arguments;
+                // merge the attribute values with help of reflection:
+                PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.Instance);
+
+                // Use a temporary clone instead of mangling "this" object right away:
+                Component tmp = new Component();
+                tmp = JsonSerializer.Deserialize<Component>(CycloneDX.Json.Serializer.Serialize(this));
+                bool mergedOk = true;
+
+                foreach (PropertyInfo property in properties)
+                {
+                    switch (property.PropertyType)
+                    {
+                        case Type _ when property.PropertyType == typeof(ComponentScope):
+                            {
+                                // Not nullable!
+                                ComponentScope tmpItem = (ComponentScope)property.GetValue(tmp, null);
+                                ComponentScope objItem = (ComponentScope)property.GetValue(obj, null);
+                                if (tmpItem == objItem)
+                                {
+                                    continue;
+                                }
+                                else
+                                {
+                                    // Per CycloneDX spec v1.4, absent value "SHOULD" be treated as "required"
+                                    if (tmpItem == ComponentScope.Required || tmpItem == ComponentScope.Null)
+                                    {
+                                        if (objItem != ComponentScope.Excluded)
+                                            // keep absent==required; upgrade optional objItem to value of tmp
+                                            property.SetValue(tmp, ComponentScope.Required);
+                                            continue;
+                                    }
+
+                                    if (objItem == ComponentScope.Required || objItem == ComponentScope.Null)
+                                    {
+                                        if (tmpItem != ComponentScope.Excluded)
+                                            // set required; upgrade optional tmpItem (if such)
+                                            property.SetValue(tmp, ComponentScope.Required);
+                                            continue;
+                                    }
+                                }
+
+                                // Here throw some exception or trigger creation of new object with a
+                                // new bom-ref - and a new identification in the original document to
+                                // avoid conflicts; be sure then to check for other entries that have
+                                // everything same except bom-ref (match the expected new pattern)?..
+                                mergedOk = false;
+                            }
+                            break;
+
+                        case Type _ when property.PropertyType == typeof(List<object>):
+                            {
+                                foreach (var objItem in ((List<object>)(property.GetValue(obj, null))))
+                                {
+                                    if (objItem is null)
+                                        continue;
+
+                                    bool listHit = false;
+                                    foreach (var tmpItem in ((List<object>)(property.GetValue(tmp, null))))
+                                    {
+                                        if (tmpItem != null && tmpItem == objItem)
+                                        {
+                                            listHit = true;
+                                            var method = property.GetValue(tmp, null).GetType().GetMethod("mergeWith");
+                                            if (method != null)
+                                            {
+                                                try
+                                                {
+                                                    if (!((bool)method.Invoke(property.GetValue(tmp, null), new object[] {property.GetValue(obj, null)})))
+                                                        mergedOk = false;
+                                                }
+                                                catch (System.Exception exc)
+                                                {
+                                                    Console.WriteLine($"SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem.ToString()} and {objItem.ToString()}: {exc.ToString()}");
+                                                    mergedOk = false;
+                                                }
+                                            } // else: no method, just trust equality - avoid "Add" to merge below
+                                            else
+                                            {
+                                                Console.WriteLine($"SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem.ToString()} and {objItem.ToString()}: no such method");
+                                            }
+                                        }
+                                    }
+
+                                    if (!listHit)
+                                    {
+                                        (((List<object>)property.GetValue(tmp, null))).Add(objItem);
+                                    }
+                                }
+                            }
+                            break;
+
+                        default:
+                            {
+                                var method = property.GetValue(tmp, null).GetType().GetMethod("mergeWith");
+                                if (method != null)
+                                {
+                                    try
+                                    {
+                                        if (!((bool)method.Invoke(property.GetValue(tmp, null), new object[] {property.GetValue(obj, null)})))
+                                            mergedOk = false;
+                                    }
+                                    catch (System.Exception exc)
+                                    {
+                                        // That property's class lacks a mergeWith(), gotta trust the equality:
+                                        if (property.GetValue(tmp, null) == property.GetValue(obj, null))
+                                            continue;
+                                        Console.WriteLine($"FAILED MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmp.ToString()} and {obj.ToString()}: {exc.ToString()}");
+                                        mergedOk = false;
+                                    }
+                                }
+                                else
+                                {
+                                    // That property's class lacks a mergeWith(), gotta trust the equality:
+                                    Console.WriteLine($"SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmp.ToString()} and {obj.ToString()}: no such method");
+                                    if (property.GetValue(tmp, null) == property.GetValue(obj, null))
+                                        continue;
+                                    mergedOk = false;
+                                }
+                            }
+                            break;
+                    }
+                }
+
+                if (mergedOk) {
+                    // No failures, only now update the current object:
+                    foreach (PropertyInfo property in properties)
+                    {
+                        property.SetValue(this, property.GetValue(tmp, null));
+                    }
+                }
+
+                return mergedOk;
+            }
+
+            // Merge was not applicable or otherwise did not succeed
+            return false;
         }
     }
 }
