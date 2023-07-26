@@ -33,25 +33,30 @@ namespace CycloneDX.Utils
 
             List<T> result = new List<T>(list1);
 
+            var TType = ((T)list2[0]).GetType();
+            var methodMergeWith = TType.GetMethod("mergeWith");
+            var methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
+
             foreach (var item2 in list2)
             {
                 bool isContained = false;
+                Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries");
                 for (int i=0; i < result.Count; i++)
                 {
+                    Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}");
                     T item1 = result[i];
                     // Squash contents of the new entry with an already
                     // existing equivalent (same-ness is subject to
                     // IEquatable<>.Equals() checks defined in respective
                     // classes), if there is a method defined there:
-                    var method = item1.GetType().GetMethod("mergeWith");
-                    if (method != null)
+                    if (methodMergeWith != null)
                     {
                         try
                         {
-                            if (((bool)method.Invoke(item1, new object[] {item2})))
+                            if (((bool)methodMergeWith.Invoke(item1, new object[] {item2})))
                             {
                                 isContained = true;
-                                break; // items deemed equivalent
+                                break; // item2 merged into result[item1] or already equal to it
                             }
                         }
                         catch (System.Exception exc)
@@ -61,11 +66,53 @@ namespace CycloneDX.Utils
                     } // else: That class lacks a mergeWith(), gotta trust the equality
                     else
                     {
-                        Console.WriteLine($"SKIP MERGE: can not mergeWith() {item1.ToString()} and {item2.ToString()}: no such method");
-                        if (item1.Equals(item2)) {
-                            isContained = true;
-                            break; // item2 merged into result[item1] or already equal to it
+                        Console.WriteLine($"SKIP MERGE? can not mergeWith() {item1.ToString()} and {item2.ToString()}: no such method");
+                        if (item1 is IEquatable<T>)
+                        {
+                            if (methodEquals != null)
+                            {
+                                try
+                                {
+                                    Console.WriteLine($"LIST-MERGE: try methodEquals()");
+                                    if (((bool)methodEquals.Invoke(item1, new object[] {item2})))
+                                    {
+                                        isContained = true;
+                                        break;
+                                    }
+                                }
+                                catch (System.Exception exc)
+                                {
+                                    Console.WriteLine($"SKIP MERGE: can not check Equals() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}");
+                                }
+                            }
+
+                            if (item1.Equals(item2))
+                            {
+                                // Fall back to generic equality check which may be useless
+                                Console.WriteLine($"SKIP MERGE: items say they are equal");
+                                isContained = true;
+                                break; // items deemed equivalent
+                            }
+
+                            Console.WriteLine($"MERGE: items say they are not equal");
                         }
+                        else
+                        {
+                            Console.WriteLine($"MERGE: items are not IEquatable");
+                        }
+/*
+                        else
+                        {
+                            if (item1 is CycloneDX.Models.Bom)
+                            {
+                                if (CycloneDX.Json.Serializer.Serialize((CycloneDX.Models.Bom)item1) == CycloneDX.Json.Serializer.Serialize((CycloneDX.Models.Bom)item2))
+                                {
+                                    isContained = true;
+                                    break; // items deemed equivalent
+                                }
+                            }
+                        }
+*/
                     }
                 }
 
