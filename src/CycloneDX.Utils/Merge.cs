@@ -40,10 +40,10 @@ namespace CycloneDX.Utils
             foreach (var item2 in list2)
             {
                 bool isContained = false;
-                Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries");
+                /* Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries"); */
                 for (int i=0; i < result.Count; i++)
                 {
-                    Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}");
+                    /* Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}"); */
                     T item1 = result[i];
                     // Squash contents of the new entry with an already
                     // existing equivalent (same-ness is subject to
@@ -66,14 +66,14 @@ namespace CycloneDX.Utils
                     } // else: That class lacks a mergeWith(), gotta trust the equality
                     else
                     {
-                        Console.WriteLine($"SKIP MERGE? can not mergeWith() {item1.ToString()} and {item2.ToString()}: no such method");
+                        /* Console.WriteLine($"SKIP MERGE? can not mergeWith() {item1.ToString()} and {item2.ToString()}: no such method"); */
                         if (item1 is IEquatable<T>)
                         {
                             if (methodEquals != null)
                             {
                                 try
                                 {
-                                    Console.WriteLine($"LIST-MERGE: try methodEquals()");
+                                    /* Console.WriteLine($"LIST-MERGE: try methodEquals()"); */
                                     if (((bool)methodEquals.Invoke(item1, new object[] {item2})))
                                     {
                                         isContained = true;
@@ -82,7 +82,7 @@ namespace CycloneDX.Utils
                                 }
                                 catch (System.Exception exc)
                                 {
-                                    Console.WriteLine($"SKIP MERGE: can not check Equals() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}");
+                                    /* Console.WriteLine($"LIST-MERGE: can not check Equals() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}"); */
                                 }
                             }
 
