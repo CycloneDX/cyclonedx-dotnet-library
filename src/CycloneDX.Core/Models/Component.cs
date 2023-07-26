@@ -24,8 +24,6 @@ using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
-using CycloneDX.Utils.ListMergeHelper;
-
 namespace CycloneDX.Models
 {
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -273,25 +271,6 @@ namespace CycloneDX.Models
 
                         case Type _ when property.PropertyType == typeof(List<object>):
                             {
-                                var listTmp = ((List<object>)(property.GetValue(tmp, null)));
-                                var listObj = ((List<object>)(property.GetValue(obj, null)));
-/*
-                                if (listObj == null || listObj.Count == 0)
-                                {
-                                    // Keep whatever "this" version of the list as the only one relevant
-                                    break;
-                                }
-
-                                if (listTmp == null || listTmp.Count == 0)
-                                {
-                                    // Keep whatever "other" version of the list as the only one relevant
-                                    property.SetValue(tmp, listObj);
-                                    break;
-                                }
-*/
-                                var propertyMerger = new ListMergeHelper<object>();
-                                property.SetValue(tmp, propertyMerger.Merge(listTmp, listObj));
-/*
                                 foreach (var objItem in ((List<object>)(property.GetValue(obj, null))))
                                 {
                                     if (objItem is null)
@@ -329,7 +308,6 @@ namespace CycloneDX.Models
                                         (((List<object>)property.GetValue(tmp, null))).Add(objItem);
                                     }
                                 }
-*/
                             }
                             break;
 
