@@ -212,8 +212,10 @@ namespace CycloneDX.Models
         public bool mergeWith(Component obj)
         {
             if (this.Equals(obj))
-                // Contents are identical, nothing to do:
+            {
+                Console.WriteLine($"Component.mergeWith(): SKIP: contents are identical, nothing to do");
                 return true;
+            }
 
             if (
                 (this.BomRef != null && BomRef.Equals(obj.BomRef)) ||
@@ -221,91 +223,200 @@ namespace CycloneDX.Models
             ) {
                 // Objects seem equivalent according to critical arguments;
                 // merge the attribute values with help of reflection:
-                PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.Instance);
+                Console.WriteLine($"Component.mergeWith(): items seem related - investigate properties: {this.BomRef} / {this.Group} : {this.Name} : {this.Version}");
+                PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
+                Console.WriteLine($"Component.mergeWith(): items seem related - investigate properties: num {properties.Length}: {properties.ToString()}");
 
-                // Use a temporary clone instead of mangling "this" object right away:
+                // Use a temporary clone instead of mangling "this" object right away;
+                // note serialization seems to skip over "nonnullable" values in some cases
                 Component tmp = new Component();
-                tmp = JsonSerializer.Deserialize<Component>(CycloneDX.Json.Serializer.Serialize(this));
+                foreach (PropertyInfo property in properties)
+                {
+                    try {
+                        property.SetValue(tmp, property.GetValue(this, null));
+                    } catch (System.Exception) {
+                        // no-op
+                    }
+                }
+                /* tmp = JsonSerializer.Deserialize<Component>(CycloneDX.Json.Serializer.Serialize(this)); */
                 bool mergedOk = true;
 
                 foreach (PropertyInfo property in properties)
                 {
+                    Console.WriteLine($"Component.mergeWith(): <{property.PropertyType}>'{property.Name}'");
                     switch (property.PropertyType)
                     {
+                        case Type _ when property.PropertyType == typeof(Nullable):
+                            break;
+/*
+                        case Type _ when property.PropertyType == typeof(Nullable[]):
+                            break;
+*/
                         case Type _ when property.PropertyType == typeof(ComponentScope):
                             {
                                 // Not nullable!
-                                ComponentScope tmpItem = (ComponentScope)property.GetValue(tmp, null);
-                                ComponentScope objItem = (ComponentScope)property.GetValue(obj, null);
-                                if (tmpItem == objItem)
+                                ComponentScope tmpItem;
+                                try
                                 {
+                                    tmpItem = (ComponentScope)property.GetValue(tmp, null);
+                                }
+                                catch (System.Exception)
+                                {
+                                    // Unspecified => required per CycloneDX spec v1.4?..
+                                    tmpItem = ComponentScope.Null;
+                                }
+
+                                ComponentScope objItem;
+                                try
+                                {
+                                    objItem = (ComponentScope)property.GetValue(obj, null);
+                                }
+                                catch (System.Exception)
+                                {
+                                    objItem = ComponentScope.Null;
+                                }
+
+                                Console.WriteLine($"Component.mergeWith(): SCOPE: '{tmpItem}' and '{objItem}'");
+
+                                // Per CycloneDX spec v1.4, absent value "SHOULD" be treated as "required"
+                                if (tmpItem != ComponentScope.Excluded && objItem != ComponentScope.Excluded)
+                                {
+                                    // keep absent==required; upgrade optional objItem
+                                    property.SetValue(tmp, ComponentScope.Required);
+                                    Console.WriteLine($"Component.mergeWith(): SCOPE: set 'Required'");
                                     continue;
                                 }
-                                else
-                                {
-                                    // Per CycloneDX spec v1.4, absent value "SHOULD" be treated as "required"
-                                    if (tmpItem == ComponentScope.Required || tmpItem == ComponentScope.Null)
-                                    {
-                                        if (objItem != ComponentScope.Excluded)
-                                            // keep absent==required; upgrade optional objItem to value of tmp
-                                            property.SetValue(tmp, ComponentScope.Required);
-                                            continue;
-                                    }
 
-                                    if (objItem == ComponentScope.Required || objItem == ComponentScope.Null)
+                                if ((tmpItem == ComponentScope.Excluded && objItem == ComponentScope.Optional) || (objItem == ComponentScope.Excluded && tmpItem == ComponentScope.Optional))
+                                {
+                                    // downgrade optional objItem to excluded
+                                    property.SetValue(tmp, ComponentScope.Excluded);
+                                    Console.WriteLine($"Component.mergeWith(): SCOPE: set 'Excluded'");
+                                    continue;
+                                }
+
+
+/*
+                                if (tmpItem == ComponentScope.Required || tmpItem == ComponentScope.Null)
+                                {
+                                    if (objItem != ComponentScope.Excluded)
                                     {
-                                        if (tmpItem != ComponentScope.Excluded)
-                                            // set required; upgrade optional tmpItem (if such)
-                                            property.SetValue(tmp, ComponentScope.Required);
-                                            continue;
+                                        // keep absent==required; upgrade optional objItem to value of tmp
+                                        property.SetValue(tmp, ComponentScope.Required);
+                                        continue;
                                     }
                                 }
+
+                                if (objItem == ComponentScope.Required || objItem == ComponentScope.Null)
+                                {
+                                    if (tmpItem != ComponentScope.Excluded)
+                                    {
+                                        // set required; upgrade optional tmpItem (if such)
+                                        property.SetValue(tmp, ComponentScope.Required);
+                                        continue;
+                                    }
+                                }
+*/
 
                                 // Here throw some exception or trigger creation of new object with a
                                 // new bom-ref - and a new identification in the original document to
                                 // avoid conflicts; be sure then to check for other entries that have
                                 // everything same except bom-ref (match the expected new pattern)?..
+                                Console.WriteLine($"Component.mergeWith(): can not merge two bom-refs with scope excluded and required");
                                 mergedOk = false;
                             }
                             break;
 
-                        case Type _ when property.PropertyType == typeof(List<object>):
+                        case Type _ when (property.Name == "NonNullableModified"):
                             {
-                                foreach (var objItem in ((List<object>)(property.GetValue(obj, null))))
+                                // Not nullable!
+                                bool tmpItem = (bool)property.GetValue(tmp, null);
+                                bool objItem = (bool)property.GetValue(obj, null);
+
+                                Console.WriteLine($"Component.mergeWith(): MODIFIED BOOL: '{tmpItem}' and '{objItem}'");
+                                if (objItem)
+                                    property.SetValue(tmp, true);
+                            }
+                            break;
+
+                        case Type _ when (property.PropertyType == typeof(List<Object>) || property.PropertyType.ToString().StartsWith("System.Collections.Generic.List")):
+                            {
+                                // https://www.experts-exchange.com/questions/22600200/Traverse-generic-List-using-C-Reflection.html
+                                var propValTmp = property.GetValue(tmp);
+                                var propValObj = property.GetValue(obj);
+                                if (propValTmp == null && propValObj == null)
                                 {
+                                    Console.WriteLine($"Component.mergeWith(): LIST?: got <null> in tmp and <null> in obj");
+                                    continue;
+                                }
+
+                                var LType = (propValTmp == null ? propValObj.GetType() : propValTmp.GetType());
+                                var propCount = LType.GetProperty("Count");
+                                var methodGetItem = LType.GetMethod("get_Item");
+                                var methodAdd = LType.GetMethod("Add");
+                                if (methodGetItem == null || propCount == null || methodAdd == null)
+                                {
+                                    Console.WriteLine($"Component.mergeWith(): is this really a LIST - it lacks a get_Item() or Add() method, or a Count property");
+                                    mergedOk = false;
+                                    continue;
+                                }
+
+                                int propValTmpCount = (propValTmp == null ? -1 : (int)propCount.GetValue(propValTmp, null));
+                                int propValObjCount = (propValObj == null ? -1 : (int)propCount.GetValue(propValObj, null));
+                                Console.WriteLine($"Component.mergeWith(): LIST?: got {propValTmp}=>{propValTmpCount} in tmp and {propValObj}=>{propValObjCount} in obj");
+
+                                if (propValObj == null || propValObjCount == 0 || propValObjCount == null)
+                                {
+                                    continue;
+                                }
+
+                                if (propValTmp == null || propValTmpCount == 0 || propValTmpCount == null)
+                                {
+                                    property.SetValue(tmp, propValObj);
+                                    continue;
+                                }
+
+                                var TType = methodGetItem.Invoke(propValObj, new object[] { 0 }).GetType();
+                                var methodMergeWith = TType.GetMethod("mergeWith");
+
+                                for (int o = 0; o < propValObjCount; o++)
+                                {
+                                    var objItem = methodGetItem.Invoke(propValObj, new object[] { o });
                                     if (objItem is null)
                                         continue;
 
                                     bool listHit = false;
-                                    foreach (var tmpItem in ((List<object>)(property.GetValue(tmp, null))))
+                                    for (int t = 0; t < propValTmpCount; t++)
                                     {
-                                        if (tmpItem != null && tmpItem == objItem)
+                                        var tmpItem = methodGetItem.Invoke(propValTmp, new object[] { t });
+                                        if (tmpItem != null)
                                         {
                                             listHit = true;
-                                            var method = property.GetValue(tmp, null).GetType().GetMethod("mergeWith");
-                                            if (method != null)
+                                            if (methodMergeWith != null)
                                             {
                                                 try
                                                 {
-                                                    if (!((bool)method.Invoke(property.GetValue(tmp, null), new object[] {property.GetValue(obj, null)})))
+                                                    Console.WriteLine($"Component.mergeWith(): Call futher {TType.ToString()}.mergeWith() for '{property.Name}': merge of {tmpItem?.ToString()} and {objItem?.ToString()}");
+                                                    if (!((bool)methodMergeWith.Invoke(tmpItem, new object[] {objItem})))
                                                         mergedOk = false;
                                                 }
                                                 catch (System.Exception exc)
                                                 {
-                                                    Console.WriteLine($"SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem.ToString()} and {objItem.ToString()}: {exc.ToString()}");
+                                                    Console.WriteLine($"Component.mergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem?.ToString()} and {objItem?.ToString()}: {exc.ToString()}");
                                                     mergedOk = false;
                                                 }
                                             } // else: no method, just trust equality - avoid "Add" to merge below
                                             else
                                             {
-                                                Console.WriteLine($"SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem.ToString()} and {objItem.ToString()}: no such method");
+                                                /* Console.WriteLine($"Component.mergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem?.ToString()} and {objItem?.ToString()}: no such method: will add to list"); */
                                             }
-                                        }
+                                        } // else: tmpitem considered not equal, should be added
                                     }
 
                                     if (!listHit)
                                     {
-                                        (((List<object>)property.GetValue(tmp, null))).Add(objItem);
+                                        methodAdd.Invoke(propValTmp, new object[] {objItem});
+                                        propValTmpCount = (int)propCount.GetValue(propValTmp, null);
                                     }
                                 }
                             }
@@ -313,29 +424,110 @@ namespace CycloneDX.Models
 
                         default:
                             {
-                                var method = property.GetValue(tmp, null).GetType().GetMethod("mergeWith");
-                                if (method != null)
+                                if (
+                                    /* property.CustomAttributes.Any(x => x.AttributeType.Name == "NullableAttribute") || */
+                                    property.PropertyType.ToString().StartsWith("System.Nullable")
+                                )
+                                {
+                                    // e.g. <System.Nullable`1[CycloneDX.Models.Component+ComponentScope]>'Scope' helper
+                                    // followed by <System.Nullable`1[CycloneDX.Models.Component+ComponentScope]>'Scope'
+                                    // which we specially handle above
+                                    Console.WriteLine($"Component.mergeWith(): SKIP NullableAttribute");
+                                    continue;
+                                }
+
+                                Console.WriteLine($"Component.mergeWith(): DEFAULT TYPES");
+                                var propValTmp = property.GetValue(tmp, null);
+                                var propValObj = property.GetValue(obj, null);
+                                if (propValObj == null)
+                                {
+                                    continue;
+                                }
+
+                                if (propValTmp == null)
+                                {
+                                    property.SetValue(tmp, propValObj);
+                                    continue;
+                                }
+
+                                var TType = propValTmp.GetType();
+                                var methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
+                                bool propsSeemEqual = false;
+                                bool propsSeemEqualLearned = false;
+
+                                try
+                                {
+                                    if (methodEquals != null)
+                                    {
+                                        /* Console.WriteLine($"Component.mergeWith(): try methodEquals()"); */
+                                        propsSeemEqual = (bool)methodEquals.Invoke(propValTmp, new object[] {propValObj});
+                                        propsSeemEqualLearned = true;
+                                    }
+                                }
+                                catch (System.Exception exc)
+                                {
+                                    // no-op
+                                    /* Console.WriteLine($"Component.mergeWith(): can not check Equals() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}"); */
+                                }
+
+                                try
+                                {
+                                    if (!propsSeemEqualLearned)
+                                    {
+                                        // Fall back to generic equality check which may be useless
+                                        /* Console.WriteLine($"Component.mergeWith(): SKIP MERGE: items say they are equal"); */
+                                        propsSeemEqual = propValTmp.Equals(propValObj);
+                                        propsSeemEqualLearned = true;
+                                    }
+                                }
+                                catch (System.Exception exc)
+                                {
+                                    // no-op
+                                }
+
+                                try
+                                {
+                                    if (!propsSeemEqualLearned)
+                                    {
+                                        // Fall back to generic equality check which may be useless
+                                        /* Console.WriteLine($"Component.mergeWith(): SKIP MERGE: items say they are equal"); */
+                                        propsSeemEqual = (propValTmp == propValObj);
+                                        propsSeemEqualLearned = true;
+                                    }
+                                }
+                                catch (System.Exception exc)
+                                {
+                                    // no-op
+                                }
+
+                                if (!propsSeemEqual)
+                                {
+                                    Console.WriteLine($"Component.mergeWith(): items say they are not equal");
+                                }
+
+                                var methodMergeWith = TType.GetMethod("mergeWith");
+                                if (methodMergeWith != null)
                                 {
                                     try
                                     {
-                                        if (!((bool)method.Invoke(property.GetValue(tmp, null), new object[] {property.GetValue(obj, null)})))
+                                        if (!((bool)methodMergeWith.Invoke(propValTmp, new object[] {propValObj})))
                                             mergedOk = false;
                                     }
                                     catch (System.Exception exc)
                                     {
                                         // That property's class lacks a mergeWith(), gotta trust the equality:
-                                        if (property.GetValue(tmp, null) == property.GetValue(obj, null))
+                                        if (propsSeemEqual)
                                             continue;
-                                        Console.WriteLine($"FAILED MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmp.ToString()} and {obj.ToString()}: {exc.ToString()}");
+                                        Console.WriteLine($"Component.mergeWith(): FAILED MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmp.ToString()} and {obj.ToString()}: {exc.ToString()}");
                                         mergedOk = false;
                                     }
                                 }
                                 else
                                 {
                                     // That property's class lacks a mergeWith(), gotta trust the equality:
-                                    Console.WriteLine($"SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmp.ToString()} and {obj.ToString()}: no such method");
-                                    if (property.GetValue(tmp, null) == property.GetValue(obj, null))
+                                    if (propsSeemEqual)
                                         continue;
+                                    Console.WriteLine($"Component.mergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmp.ToString()} and {obj.ToString()}: no such method");
                                     mergedOk = false;
                                 }
                             }
@@ -351,7 +543,12 @@ namespace CycloneDX.Models
                     }
                 }
 
+                Console.WriteLine($"Component.mergeWith(): result {mergedOk} for: {this.BomRef} / {this.Group} : {this.Name} : {this.Version}");
                 return mergedOk;
+            }
+            else
+            {
+                Console.WriteLine($"Component.mergeWith(): SKIP: items do not seem related");
             }
 
             // Merge was not applicable or otherwise did not succeed
