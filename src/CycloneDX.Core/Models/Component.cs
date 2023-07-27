@@ -236,6 +236,9 @@ namespace CycloneDX.Models
                 // Use a temporary clone instead of mangling "this" object right away;
                 // note serialization seems to skip over "nonnullable" values in some cases
                 Component tmp = new Component();
+                /* This fails due to copy of "non-null" fields which may be null:
+                 *   tmp = JsonSerializer.Deserialize<Component>(CycloneDX.Json.Serializer.Serialize(this));
+                 */
                 foreach (PropertyInfo property in properties)
                 {
                     try {
@@ -244,7 +247,6 @@ namespace CycloneDX.Models
                         // no-op
                     }
                 }
-                /* tmp = JsonSerializer.Deserialize<Component>(CycloneDX.Json.Serializer.Serialize(this)); */
                 bool mergedOk = true;
 
                 foreach (PropertyInfo property in properties)
@@ -328,6 +330,7 @@ namespace CycloneDX.Models
                                 }
 */
 
+                                // TODO: Having two same bom-refs is a syntax validation error...
                                 // Here throw some exception or trigger creation of new object with a
                                 // new bom-ref - and a new identification in the original document to
                                 // avoid conflicts; be sure then to check for other entries that have
@@ -380,12 +383,12 @@ namespace CycloneDX.Models
                                 if (iDebugLevel >= 4)
                                     Console.WriteLine($"Component.mergeWith(): LIST?: got {propValTmp}=>{propValTmpCount} in tmp and {propValObj}=>{propValObjCount} in obj");
 
-                                if (propValObj == null || propValObjCount == 0 || propValObjCount == null)
+                                if (propValObj == null || propValObjCount < 1)
                                 {
                                     continue;
                                 }
 
-                                if (propValTmp == null || propValTmpCount == 0 || propValTmpCount == null)
+                                if (propValTmp == null || propValTmpCount < 1)
                                 {
                                     property.SetValue(tmp, propValObj);
                                     continue;
@@ -503,7 +506,7 @@ namespace CycloneDX.Models
                                         propsSeemEqualLearned = true;
                                     }
                                 }
-                                catch (System.Exception exc)
+                                catch (System.Exception)
                                 {
                                     // no-op
                                 }
@@ -519,7 +522,7 @@ namespace CycloneDX.Models
                                         propsSeemEqualLearned = true;
                                     }
                                 }
-                                catch (System.Exception exc)
+                                catch (System.Exception)
                                 {
                                     // no-op
                                 }
