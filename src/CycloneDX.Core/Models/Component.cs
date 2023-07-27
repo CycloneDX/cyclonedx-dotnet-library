@@ -298,37 +298,16 @@ namespace CycloneDX.Models
                                     continue;
                                 }
 
-                                if ((tmpItem == ComponentScope.Excluded && objItem == ComponentScope.Optional) || (objItem == ComponentScope.Excluded && tmpItem == ComponentScope.Optional))
-                                {
+                                if (
+                                    (tmpItem == ComponentScope.Excluded && objItem == ComponentScope.Optional) ||
+                                    (objItem == ComponentScope.Excluded && tmpItem == ComponentScope.Optional)
+                                ) {
                                     // downgrade optional objItem to excluded
                                     property.SetValue(tmp, ComponentScope.Excluded);
                                     if (iDebugLevel >= 3)
                                         Console.WriteLine($"Component.mergeWith(): SCOPE: set 'Excluded'");
                                     continue;
                                 }
-
-
-/*
-                                if (tmpItem == ComponentScope.Required || tmpItem == ComponentScope.Null)
-                                {
-                                    if (objItem != ComponentScope.Excluded)
-                                    {
-                                        // keep absent==required; upgrade optional objItem to value of tmp
-                                        property.SetValue(tmp, ComponentScope.Required);
-                                        continue;
-                                    }
-                                }
-
-                                if (objItem == ComponentScope.Required || objItem == ComponentScope.Null)
-                                {
-                                    if (tmpItem != ComponentScope.Excluded)
-                                    {
-                                        // set required; upgrade optional tmpItem (if such)
-                                        property.SetValue(tmp, ComponentScope.Required);
-                                        continue;
-                                    }
-                                }
-*/
 
                                 // TODO: Having two same bom-refs is a syntax validation error...
                                 // Here throw some exception or trigger creation of new object with a
