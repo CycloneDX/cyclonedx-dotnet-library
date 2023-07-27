@@ -27,7 +27,11 @@ namespace CycloneDX.Utils
     {
         public List<T> Merge(List<T> list1, List<T> list2)
         {
-            Console.WriteLine($"List-Merge for: {this.GetType().ToString()}");
+            if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+                iDebugLevel = 0;
+
+            if (iDebugLevel >= 1)
+                Console.WriteLine($"List-Merge for: {this.GetType().ToString()}");
             if (list1 is null) return list2;
             if (list2 is null) return list1;
 
@@ -40,10 +44,12 @@ namespace CycloneDX.Utils
             foreach (var item2 in list2)
             {
                 bool isContained = false;
-                /* Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries"); */
+                if (iDebugLevel >= 3)
+                    Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries");
                 for (int i=0; i < result.Count; i++)
                 {
-                    /* Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}"); */
+                    if (iDebugLevel >= 3)
+                        Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}");
                     T item1 = result[i];
                     // Squash contents of the new entry with an already
                     // existing equivalent (same-ness is subject to
@@ -61,19 +67,22 @@ namespace CycloneDX.Utils
                         }
                         catch (System.Exception exc)
                         {
-                            Console.WriteLine($"SKIP MERGE: can not mergeWith() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}");
+                            if (iDebugLevel >= 1)
+                                Console.WriteLine($"SKIP MERGE: can not mergeWith() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}");
                         }
                     } // else: That class lacks a mergeWith(), gotta trust the equality
                     else
                     {
-                        /* Console.WriteLine($"SKIP MERGE? can not mergeWith() {item1.ToString()} and {item2.ToString()}: no such method"); */
+                        if (iDebugLevel >= 6)
+                            Console.WriteLine($"SKIP MERGE? can not mergeWith() {item1.ToString()} and {item2.ToString()}: no such method");
                         if (item1 is IEquatable<T>)
                         {
                             if (methodEquals != null)
                             {
                                 try
                                 {
-                                    /* Console.WriteLine($"LIST-MERGE: try methodEquals()"); */
+                                    if (iDebugLevel >= 5)
+                                        Console.WriteLine($"LIST-MERGE: try methodEquals()");
                                     if (((bool)methodEquals.Invoke(item1, new object[] {item2})))
                                     {
                                         isContained = true;
@@ -82,23 +91,27 @@ namespace CycloneDX.Utils
                                 }
                                 catch (System.Exception exc)
                                 {
-                                    /* Console.WriteLine($"LIST-MERGE: can not check Equals() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}"); */
+                                    if (iDebugLevel >= 5)
+                                        Console.WriteLine($"LIST-MERGE: can not check Equals() {item1.ToString()} and {item2.ToString()}: {exc.ToString()}");
                                 }
                             }
 
                             if (item1.Equals(item2))
                             {
                                 // Fall back to generic equality check which may be useless
-                                Console.WriteLine($"SKIP MERGE: items say they are equal");
+                                if (iDebugLevel >= 3)
+                                    Console.WriteLine($"SKIP MERGE: items say they are equal");
                                 isContained = true;
                                 break; // items deemed equivalent
                             }
 
-                            Console.WriteLine($"MERGE: items say they are not equal");
+                            if (iDebugLevel >= 3)
+                                Console.WriteLine($"MERGE: items say they are not equal");
                         }
                         else
                         {
-                            Console.WriteLine($"MERGE: items are not IEquatable");
+                            if (iDebugLevel >= 3)
+                                Console.WriteLine($"MERGE: items are not IEquatable");
                         }
 /*
                         else
@@ -120,12 +133,14 @@ namespace CycloneDX.Utils
                 {
                     // Add new entry "as is" (new-ness is subject to
                     // equality checks of respective classes):
-                    Console.WriteLine($"WILL ADD: {item2.ToString()}");
+                    if (iDebugLevel >= 2)
+                        Console.WriteLine($"WILL ADD: {item2.ToString()}");
                     result.Add(item2);
                 }
                 else
                 {
-                    Console.WriteLine($"ALREADY THERE: {item2.ToString()}");
+                    if (iDebugLevel >= 2)
+                        Console.WriteLine($"ALREADY THERE: {item2.ToString()}");
                 }
             }
 
