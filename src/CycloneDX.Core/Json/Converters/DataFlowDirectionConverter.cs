@@ -19,14 +19,14 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using DataFlow = CycloneDX.Models.DataFlow;
+using CycloneDX.Models;
 
 namespace CycloneDX.Json.Converters
 {
 
-    public class DataFlowConverter : JsonConverter<DataFlow>
+    public class DataFlowDirectionConverter : JsonConverter<DataFlowDirection>
     {
-        public override DataFlow Read(
+        public override DataFlowDirection Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -41,15 +41,15 @@ namespace CycloneDX.Json.Converters
 
             if (dataFlowString == "bi-directional")
             {
-                return DataFlow.Bidirectional;
+                return DataFlowDirection.Bidirectional;
             }
             else
             {
-                DataFlow dataFlow;
-                var success = Enum.TryParse<DataFlow>(dataFlowString, ignoreCase: true, out dataFlow);
+                DataFlowDirection dataFlowDirection;
+                var success = Enum.TryParse<DataFlowDirection>(dataFlowString, ignoreCase: true, out dataFlowDirection);
                 if (success)
                 {
-                    return dataFlow;
+                    return dataFlowDirection;
                 }
                 else
                 {
@@ -60,12 +60,12 @@ namespace CycloneDX.Json.Converters
 
         public override void Write(
             Utf8JsonWriter writer,
-            DataFlow value,
+            DataFlowDirection value,
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
 
-            if (value == DataFlow.Bidirectional)
+            if (value == DataFlowDirection.Bidirectional)
             {
                 writer.WriteStringValue("bi-directional");
             }

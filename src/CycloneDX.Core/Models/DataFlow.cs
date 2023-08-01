@@ -1,4 +1,4 @@
-// This file is part of CycloneDX Library for .NET
+﻿// This file is part of CycloneDX Library for .NET
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -21,18 +21,42 @@ using ProtoBuf;
 
 namespace CycloneDX.Models
 {
+    // this is the preferred way to represent this information for services since v1.5
+    [XmlType("dataflow")]
     [ProtoContract]
-    public enum DataFlow
+    public class DataFlow
     {
-        // to make working with protobuf easier
-        Null,
-        [XmlEnum(Name = "inbound")]
-        Inbound,
-        [XmlEnum(Name = "outbound")]
-        Outbound,
-        [XmlEnum(Name = "bi-directional")]
-        Bidirectional,
-        [XmlEnum(Name = "unknown")]
-        Unknown
+        [XmlElement("classification")]
+        [ProtoMember(2)]
+        public DataClassification Classification { get; set; }
+
+        [XmlAttribute("name")]
+        [ProtoMember(3)]
+        public string Name { get; set; }
+        
+        [XmlAttribute("description")]
+        [ProtoMember(4)]
+        public string Description { get; set; }
+        
+        [XmlElement("governance")]
+        [ProtoMember(7)]
+        public DataGovernance Governance { get; set; }
+
+        [XmlElement("source")]
+        [ProtoMember(5)]
+        public DataflowSourceDestination Source { get; set; }
+        
+        [XmlElement("destination")]
+        [ProtoMember(6)]
+        public DataflowSourceDestination Destination { get; set; }
+
+        internal bool IsDataClassification()
+        {
+            return Name == null
+                   && Description == null
+                   && Governance == null
+                   && Source == null
+                   && Destination == null;
+        }
     }
 }

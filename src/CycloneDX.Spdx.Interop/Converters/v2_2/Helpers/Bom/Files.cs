@@ -39,7 +39,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         CopyrightText = component.Copyright ?? "NOASSERTION",
                         SPDXID = component.Properties?.GetSpdxElement(PropertyTaxonomy.SPDXID),
                         Comment = component.Properties?.GetSpdxElement(PropertyTaxonomy.COMMENT),
-                        Annotations = component.Properties?.GetSpdxElements<Annotation>(PropertyTaxonomy.ANNOTATION),
+                        Annotations = component.Properties?.GetSpdxElements<Models.v2_2.Annotation>(PropertyTaxonomy.ANNOTATION),
                         LicenseComments = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS),
                         LicenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED) ?? "NOASSERTION",
                         AttributionTexts = component.GetSpdxAttributionTexts(),
@@ -95,7 +95,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     component.Properties.AddSpdxElement(PropertyTaxonomy.SPDXID, file.SPDXID);
                     component.Properties.AddSpdxElement(PropertyTaxonomy.COMMENT, file.Comment);
                     component.Properties.AddSpdxElements(PropertyTaxonomy.FILE_TYPE, file.FileTypes);
-                    component.Properties.AddSpdxElements<Annotation>(PropertyTaxonomy.ANNOTATION, file.Annotations);
+                    component.Properties.AddSpdxElements<Models.v2_2.Annotation>(PropertyTaxonomy.ANNOTATION, file.Annotations);
                     component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS, file.LicenseComments);
                     component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED, file.LicenseConcluded);
                     component.Properties.AddSpdxElements(PropertyTaxonomy.FILE_CONTRIBUTOR, file.FileContributors);

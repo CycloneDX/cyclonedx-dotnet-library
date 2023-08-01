@@ -42,7 +42,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new AggregateTypeConverter());
             options.Converters.Add(new ComponentScopeConverter());
             options.Converters.Add(new ComponentTypeConverter());
-            options.Converters.Add(new DataFlowConverter());
+            options.Converters.Add(new DataFlowDirectionConverter());
             options.Converters.Add(new DateTimeConverter());
             options.Converters.Add(new DependencyConverter());
             options.Converters.Add(new ExternalReferenceTypeConverter());

@@ -60,7 +60,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         package.SPDXID = $"SPDXRef-{component.BomRef}";
                     }
                 }
-                package.Annotations = component.Properties?.GetSpdxElements<Annotation>(PropertyTaxonomy.ANNOTATION);
+                package.Annotations = component.Properties?.GetSpdxElements<Models.v2_2.Annotation>(PropertyTaxonomy.ANNOTATION);
                 package.FilesAnalyzed = component.Properties?.GetSpdxElement<bool?>(PropertyTaxonomy.FILES_ANALYZED);
                 package.LicenseComments = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS);
                 package.LicenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED) ?? "NOASSERTION";

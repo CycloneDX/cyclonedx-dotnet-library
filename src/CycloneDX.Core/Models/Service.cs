@@ -94,11 +94,75 @@ namespace CycloneDX.Models
             }
         }
         public bool ShouldSerializeNonNullableXTrustBoundary() { return XTrustBoundary.HasValue; }
+        
+        [XmlElement("trustZone")]
+        [ProtoMember(16)]
+        public string TrustZone { get; set; }
+        
+        [XmlElement("data")]
+        public ServiceDataChoices Data { get; set; }
+        public bool ShouldSerializeData() => Data != null && Data.ShouldSerialize();
 
-        [XmlArray("data")]
-        [XmlArrayItem("classification")]
+        // this is a workaround for protobuf support
+        [XmlIgnore]
+        [JsonIgnore]
         [ProtoMember(10)]
-        public List<DataClassification> Data { get; set; }
+        public List<DataFlow> ProtobufData
+        {
+            get
+            {
+                if (Data == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    var result = new List<DataFlow>();
+                    if (Data.DataClassifications != null)
+                    {
+                        foreach (var item in Data.DataClassifications)
+                        {
+                            var data = new DataFlow
+                            {
+                                Classification = item
+                            };
+                            result.Add(data);
+                        }
+                    }
+
+                    if (Data.DataFlows != null)
+                    {
+                        result.AddRange(Data.DataFlows);
+                    }
+                    return result;
+                }
+            }
+            set
+            {
+                if (value != null)
+                {
+                    Data = new ServiceDataChoices();
+                    foreach (var item in value)
+                    {
+                        if (item.IsDataClassification())
+                        {
+                            if (Data.DataClassifications == null)
+                                Data.DataClassifications = new List<DataClassification>();
+                            Data.DataClassifications.Add(item.Classification);
+                        }
+                        else
+                        {
+                            if (Data.DataFlows == null) Data.DataFlows = new List<DataFlow>();
+                            Data.DataFlows.Add(item);
+                        }
+                    }
+                }
+                else
+                {
+                    Data = null;
+                }
+            }
+        }
 
         [XmlElement("licenses")]
         [ProtoMember(11)]
@@ -108,11 +172,13 @@ namespace CycloneDX.Models
         [XmlArrayItem("reference")]
         [ProtoMember(12)]
         public List<ExternalReference> ExternalReferences { get; set; }
+        public bool ShouldSerializeExternalReferences() => ExternalReferences?.Count > 0;
 
         [XmlArray("services")]
         [XmlArrayItem("service")]
         [ProtoMember(13)]
         public List<Service> Services { get; set; }
+        public bool ShouldSerializeServices() => Services?.Count > 0;
 
         [XmlElement("releaseNotes")]
         [ProtoMember(15)]
@@ -123,6 +189,8 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(14)]
         public List<Property> Properties { get; set; }
+
+        public bool ShouldSerializeProperties() => Properties?.Count > 0;
 
         public bool Equals(Service obj)
         {

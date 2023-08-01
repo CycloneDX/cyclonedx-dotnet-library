@@ -107,7 +107,6 @@ namespace CycloneDX.Xml
         {
             if (bom.Metadata?.Authors?.Count == 0) bom.Metadata.Authors = null;
             if (bom.Metadata?.Properties?.Count == 0) bom.Metadata.Properties = null;
-            if (bom.Metadata?.Tools?.Count == 0) bom.Metadata.Tools = null;
             if (bom.Components?.Count == 0) bom.Components = null;
             if (bom.Services?.Count == 0) bom.Services = null;
             if (bom.ExternalReferences?.Count == 0) bom.ExternalReferences = null;
@@ -154,7 +153,7 @@ namespace CycloneDX.Xml
 
         private static void CleanupEmptyXmlArrays(Service service)
         {
-            if (service.Data?.Count == 0) service.Data = null;
+            if (service.Data != null && !service.Data.ShouldSerialize()) service.Data = null;
             if (service.ExternalReferences?.Count == 0) service.ExternalReferences = null;
             if (service.Properties?.Count == 0) service.Properties = null;
             if (service.Services?.Count == 0) service.Services = null;

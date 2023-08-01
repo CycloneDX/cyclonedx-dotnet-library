@@ -76,11 +76,13 @@ namespace CycloneDX.Json
             return JsonSerializer.Serialize(service, _options);
         }
 
+        #pragma warning disable 618
         internal static string Serialize(Tool tool)
         {
             Contract.Requires(tool != null);
             return JsonSerializer.Serialize(tool, _options);
         }
+        #pragma warning restore 618
 
         internal static string Serialize(Models.Vulnerabilities.Vulnerability vulnerability)
         {

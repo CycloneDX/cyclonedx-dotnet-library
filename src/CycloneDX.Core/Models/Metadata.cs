@@ -35,10 +35,9 @@ namespace CycloneDX.Models
         }
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
-        [XmlArray("tools")]
-        [XmlArrayItem("tool")]
+        [XmlElement("tools")]
         [ProtoMember(2)]
-        public List<Tool> Tools { get; set; }
+        public ToolChoices Tools { get; set; }
 
         [XmlArray("authors")]
         [XmlArrayItem("author")]
@@ -67,5 +66,11 @@ namespace CycloneDX.Models
         [ProtoMember(8)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+        
+        [XmlArray("lifecycles")]
+        [XmlArrayItem("lifecycle")]
+        [ProtoMember(9)]
+        public List<Lifecycles> Lifecycles { get; set; }
+        public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
     }
 }

@@ -77,7 +77,7 @@ namespace CycloneDX.Spdx.Interop
             doc.CreationInfo.LicenseListVersion = bom.Metadata?.Properties?.GetSpdxElement(PropertyTaxonomy.CREATION_INFO_LICENSE_LIST_VERSION);
 
             doc.ExternalDocumentRefs = bom.Metadata?.Properties?.GetSpdxElements<ExternalDocumentRef>(PropertyTaxonomy.DOCUMENT_EXTERNAL_DOCUMENT_REF);
-            doc.Annotations = bom.Metadata?.Properties?.GetSpdxElements<Annotation>(PropertyTaxonomy.ANNOTATION);
+            doc.Annotations = bom.Metadata?.Properties?.GetSpdxElements<Models.v2_2.Annotation>(PropertyTaxonomy.ANNOTATION);
             doc.DocumentDescribes = bom.Metadata?.Properties?.GetSpdxElements(PropertyTaxonomy.DOCUMENT_DESCRIBES);
 
             doc.AddCycloneDXComponents(bom);
@@ -115,7 +115,7 @@ namespace CycloneDX.Spdx.Interop
             }
 
             bom.Metadata.Properties.AddSpdxElements<ExternalDocumentRef>(PropertyTaxonomy.DOCUMENT_EXTERNAL_DOCUMENT_REF, doc.ExternalDocumentRefs);
-            bom.Metadata.Properties.AddSpdxElements<Annotation>(PropertyTaxonomy.ANNOTATION, doc.Annotations);
+            bom.Metadata.Properties.AddSpdxElements<Models.v2_2.Annotation>(PropertyTaxonomy.ANNOTATION, doc.Annotations);
             bom.Metadata.Properties.AddSpdxElements(PropertyTaxonomy.DOCUMENT_DESCRIBES, doc.DocumentDescribes);
 
             bom.AddSpdxPackages(doc);

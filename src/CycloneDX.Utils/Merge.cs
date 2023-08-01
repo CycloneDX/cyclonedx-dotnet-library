@@ -63,13 +63,18 @@ namespace CycloneDX.Utils
         {
             var result = new Bom();
 
+            #pragma warning disable 618
             var toolsMerger = new ListMergeHelper<Tool>();
-            var tools = toolsMerger.Merge(bom1.Metadata?.Tools, bom2.Metadata?.Tools);
+            #pragma warning restore 618
+            var tools = toolsMerger.Merge(bom1.Metadata?.Tools?.Tools, bom2.Metadata?.Tools?.Tools);
             if (tools != null)
             {
                 result.Metadata = new Metadata
                 {
-                    Tools = tools
+                    Tools = new ToolChoices
+                    {
+                        Tools = tools,
+                    }
                 };
             }
 
@@ -193,7 +198,12 @@ namespace CycloneDX.Utils
                 result.Metadata = new Metadata
                 {
                     Component = bomSubject,
-                    Tools = new List<Tool>(),
+                    #pragma warning disable 618
+                    Tools = new ToolChoices
+                    {
+                        Tools = new List<Tool>(),
+                    }
+                    #pragma warning restore 618
                 };
             }
 
@@ -216,9 +226,9 @@ namespace CycloneDX.Utils
                         : $"Required metadata (top level) component is missing from BOM {bom.SerialNumber}.");
                 }
 
-                if (bom.Metadata?.Tools?.Count > 0)
+                if (bom.Metadata?.Tools?.Tools?.Count > 0)
                 {
-                    result.Metadata.Tools.AddRange(bom.Metadata.Tools);
+                    result.Metadata.Tools.Tools.AddRange(bom.Metadata.Tools.Tools);
                 }
 
                 var thisComponent = bom.Metadata.Component;
@@ -281,7 +291,7 @@ namespace CycloneDX.Utils
             }
 
             // cleanup empty top level elements
-            if (result.Metadata.Tools.Count == 0) result.Metadata.Tools = null;
+            if (result.Metadata.Tools.Tools.Count == 0) result.Metadata.Tools.Tools = null;
             if (result.Components.Count == 0) result.Components = null;
             if (result.Services.Count == 0) result.Services = null;
             if (result.ExternalReferences.Count == 0) result.ExternalReferences = null;

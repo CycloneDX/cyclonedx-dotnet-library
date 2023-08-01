@@ -59,6 +59,52 @@ namespace CycloneDX.Models
             BuildMeta,
             [XmlEnum(Name = "build-system")]
             BuildSystem,
+            [XmlEnum(Name = "security-contact")]
+            SecurityContact,
+            [XmlEnum(Name = "attestation")]
+            Attestation,
+            [XmlEnum(Name = "threat-model")]
+            ThreatModel,
+            [XmlEnum(Name = "adversary-model")]
+            AdversaryModel,
+            [XmlEnum(Name = "risk-assessment")]
+            RiskAssessment,
+            [XmlEnum(Name = "distribution-intake")]
+            DistributionIntake,
+            [XmlEnum(Name = "vulnerability-assertion")]
+            VulnerabilityAssertion,
+            [XmlEnum(Name = "exploitability-statement")]
+            ExploitabilityStatement,
+            [XmlEnum(Name = "pentest-report")]
+            PentestReport,
+            [XmlEnum(Name = "static-analysis-report")]
+            StaticAnalysisReport,
+            [XmlEnum(Name = "dynamic-analysis-report")]
+            DynamicAnalysisReport,
+            [XmlEnum(Name = "runtime-analysis-report")]
+            RuntimeAnalysisReport,
+            [XmlEnum(Name = "component-analysis-report")]
+            ComponentAnalysisReport,
+            [XmlEnum(Name = "maturity-report")]
+            MaturityReport,
+            [XmlEnum(Name = "certification-report")]
+            CertificationReport,
+            [XmlEnum(Name = "quality-metrics")]
+            QualityMetrics,
+            [XmlEnum(Name = "codified-infrastructure")]
+            CodifiedInfrastructure,
+            [XmlEnum(Name = "model-card")]
+            ModelCard,
+            [XmlEnum(Name = "poam")]
+            Poam,
+            [XmlEnum(Name = "log")]
+            Log,
+            [XmlEnum(Name = "configuration")]
+            Configuration,
+            [XmlEnum(Name = "evidence")]
+            Evidence,
+            [XmlEnum(Name = "formulation")]
+            Formulation,
             [XmlEnum(Name = "release-notes")]
             ReleaseNotes,
         }
