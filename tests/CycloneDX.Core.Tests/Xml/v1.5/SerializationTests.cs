@@ -125,7 +125,7 @@ namespace CycloneDX.Core.Tests.Xml.v1_5
             var bom = Serializer.Deserialize(xmlBom);
             using var ms = new MemoryStream();
             Serializer.Serialize(bom, ms);
-
+            var t = Encoding.UTF8.GetString(ms.ToArray());
             Snapshot.Match(Encoding.UTF8.GetString(ms.ToArray()), SnapshotNameExtension.Create(filename));
         }
 

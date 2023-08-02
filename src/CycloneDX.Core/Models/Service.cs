@@ -26,6 +26,13 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class Service: IEquatable<Service>
     {
+        public Service()
+        {
+            SpecVersion = SpecificationVersionHelpers.CurrentVersion;
+        }
+        
+        internal SpecificationVersion SpecVersion { get; set; }
+
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
         [ProtoMember(1)]
@@ -99,61 +106,55 @@ namespace CycloneDX.Models
         [ProtoMember(16)]
         public string TrustZone { get; set; }
         
-        [XmlElement("data")]
-        public ServiceDataChoices Data { get; set; }
-        public bool ShouldSerializeData() => Data != null && Data.ShouldSerialize();
-
-        // this is a workaround for protobuf support
         [XmlIgnore]
-        [JsonIgnore]
+        [JsonPropertyName("data")]
         [ProtoMember(10)]
-        public List<DataFlow> ProtobufData
+        public List<DataFlow> Data { get; set; }
+        public bool ShouldSerializeData() => Data?.Count > 0;
+
+        [XmlElement("data")]
+        [JsonIgnore]
+        public ServiceDataChoices XmlData
         {
             get
             {
-                if (Data == null)
+                if (Data == null) return null;
+                if (SpecVersion < SpecificationVersion.v1_5)
                 {
-                    return null;
+                    var result = new ServiceDataChoices()
+                    {
+                        SpecVersion = SpecVersion,
+                        DataClassifications = new List<DataClassification>()
+                    };
+                    foreach (var data in Data)
+                    {
+                        result.DataClassifications.Add(data.XmlClassification);
+                    }
+
+                    return result;
                 }
                 else
                 {
-                    var result = new List<DataFlow>();
-                    if (Data.DataClassifications != null)
+                    return new ServiceDataChoices
                     {
-                        foreach (var item in Data.DataClassifications)
-                        {
-                            var data = new DataFlow
-                            {
-                                Classification = item
-                            };
-                            result.Add(data);
-                        }
-                    }
-
-                    if (Data.DataFlows != null)
-                    {
-                        result.AddRange(Data.DataFlows);
-                    }
-                    return result;
+                        SpecVersion = SpecVersion,
+                        DataFlows = Data
+                    };
                 }
             }
             set
             {
                 if (value != null)
                 {
-                    Data = new ServiceDataChoices();
-                    foreach (var item in value)
+                    Data = value.DataFlows != null ? Data = value.DataFlows : Data = new List<DataFlow>();
+                    if (value.DataClassifications != null)
                     {
-                        if (item.IsDataClassification())
+                        foreach (var classification in value.DataClassifications)
                         {
-                            if (Data.DataClassifications == null)
-                                Data.DataClassifications = new List<DataClassification>();
-                            Data.DataClassifications.Add(item.Classification);
-                        }
-                        else
-                        {
-                            if (Data.DataFlows == null) Data.DataFlows = new List<DataFlow>();
-                            Data.DataFlows.Add(item);
+                            Data.Add(new DataFlow
+                            {
+                                XmlClassification = classification
+                            });
                         }
                     }
                 }
@@ -163,7 +164,8 @@ namespace CycloneDX.Models
                 }
             }
         }
-
+        public bool ShouldSerializeXmlData() => ShouldSerializeData();
+        
         [XmlElement("licenses")]
         [ProtoMember(11)]
         public List<LicenseChoice> Licenses { get; set; }

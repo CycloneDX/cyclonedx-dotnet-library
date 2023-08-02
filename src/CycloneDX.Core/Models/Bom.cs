@@ -50,8 +50,7 @@ namespace CycloneDX.Models
                 });
                 BomUtils.EnumerateAllServices(this, (service) =>
                 {
-                    if (service.Data != null)
-                        service.Data.SpecVersion = _specVersion;
+                    service.SpecVersion = _specVersion;
                 });
             }
         }

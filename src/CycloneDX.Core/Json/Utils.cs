@@ -55,6 +55,8 @@ namespace CycloneDX.Json
             options.Converters.Add(new ImpactAnalysisStateConverter());
             options.Converters.Add(new ResponseConverter());
 
+            options.Converters.Add(new ToolChoicesConverter());
+
             options.Converters.Add(new JsonStringEnumConverter());
             return options;
         }

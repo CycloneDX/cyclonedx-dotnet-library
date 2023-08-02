@@ -153,7 +153,7 @@ namespace CycloneDX.Xml
 
         private static void CleanupEmptyXmlArrays(Service service)
         {
-            if (service.Data != null && !service.Data.ShouldSerialize()) service.Data = null;
+            if (service.Data?.Count == 0) service.Data = null;
             if (service.ExternalReferences?.Count == 0) service.ExternalReferences = null;
             if (service.Properties?.Count == 0) service.Properties = null;
             if (service.Services?.Count == 0) service.Services = null;

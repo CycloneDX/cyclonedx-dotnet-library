@@ -16,19 +16,41 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
-    // this is the preferred way to represent this information for services since v1.5
     [XmlType("dataflow")]
     [ProtoContract]
     public class DataFlow
     {
-        [XmlElement("classification")]
+        [XmlIgnore]
+        [JsonPropertyName("flow")]
+        [ProtoMember(1, IsRequired=true)]
+        public DataFlowDirection Flow { get; set; }
+
+        [XmlIgnore]
+        [JsonPropertyName("classification")]
         [ProtoMember(2)]
-        public DataClassification Classification { get; set; }
+        public string Classification { get; set; }
+        
+        // workaround for XML
+        [XmlElement("classification")]
+        [JsonIgnore]
+        public DataClassification XmlClassification {
+            get => new DataClassification
+            {
+                Flow = Flow,
+                Classification = Classification
+            };
+            set
+            {
+                Flow = value.Flow;
+                Classification = value.Classification;
+            }
+        }
 
         [XmlAttribute("name")]
         [ProtoMember(3)]
@@ -49,14 +71,5 @@ namespace CycloneDX.Models
         [XmlElement("destination")]
         [ProtoMember(6)]
         public DataflowSourceDestination Destination { get; set; }
-
-        internal bool IsDataClassification()
-        {
-            return Name == null
-                   && Description == null
-                   && Governance == null
-                   && Source == null
-                   && Destination == null;
-        }
     }
 }

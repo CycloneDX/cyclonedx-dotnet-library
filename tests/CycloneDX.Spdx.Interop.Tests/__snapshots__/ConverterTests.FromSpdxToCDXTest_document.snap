@@ -3,14 +3,12 @@
   "specVersion": "1.5",
   "metadata": {
     "timestamp": "2010-01-29T18:30:22Z",
-    "tools": {
-      "tools": [
-        {
-          "name": "LicenseFind",
-          "version": "1.0"
-        }
-      ]
-    },
+    "tools": [
+      {
+        "name": "LicenseFind",
+        "version": "1.0"
+      }
+    ],
     "authors": [
       {
         "name": "ExampleCodeInspect",

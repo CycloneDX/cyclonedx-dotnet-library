@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -36,8 +37,32 @@ namespace CycloneDX.Models
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
         [XmlElement("tools")]
-        [ProtoMember(2)]
         public ToolChoices Tools { get; set; }
+        
+        // this is to support a bug in v1.5 of the protobuf spec
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(2)]
+        #pragma warning disable 618
+        public List<Tool> ProtobufTools
+        #pragma warning restore 618
+        {
+            get => Tools?.Tools;
+            set
+            {
+                if (value == null)
+                {
+                    Tools = null;
+                }
+                else
+                {
+                    Tools = new ToolChoices
+                    {
+                        Tools = value
+                    };
+                }
+            }
+        }
 
         [XmlArray("authors")]
         [XmlArrayItem("author")]

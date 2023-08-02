@@ -173,6 +173,17 @@ namespace CycloneDX
                 EnumerateAllServices(bomCopy, (service) =>
                 {
                     service.TrustZone = null;
+                    if (service.Data != null)
+                    {
+                        foreach (var data in service.Data)
+                        {
+                            data.Name = null;
+                            data.Description = null;
+                            data.Governance = null;
+                            data.Source = null;
+                            data.Destination = null;
+                        }
+                    }
                 });
                 
                 EnumerateAllVulnerabilities(bomCopy, (vulnerability) =>
@@ -330,8 +341,6 @@ namespace CycloneDX
                         if (license.License != null) callback(license.License);
                     }
                 }
-
-                if (service.Data != null) service.Data.DataFlows = null;
             });
 
             EnumerateAllEvidence(bom, (evidence) =>

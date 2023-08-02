@@ -21,6 +21,20 @@
         }
       ]
     },
+    "ProtobufTools": [
+      {
+        "Vendor": null,
+        "Name": "Tool1",
+        "Version": "1",
+        "Hashes": null
+      },
+      {
+        "Vendor": null,
+        "Name": "Tool2",
+        "Version": "1",
+        "Hashes": null
+      }
+    ],
     "Authors": null,
     "Component": null,
     "Manufacture": null,
