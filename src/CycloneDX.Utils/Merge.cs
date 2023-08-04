@@ -399,14 +399,61 @@ namespace CycloneDX.Utils
                 });
             }
 
+            result = CleanupMetadataComponent(result);
+            result = CleanupEmptyLists(result);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Merge main "metadata/component" entry with its possible alter-ego
+        /// in the components list and evict extra copy from that list: per
+        /// spec v1_4 at least, the bom-ref must be unique across the document.
+        /// </summary>
+        /// <param name="result">A Bom document</param>
+        /// <returns>Resulting document (whether modified or not)</returns>
+        public static Bom CleanupMetadataComponent(Bom result)
+        {
+            if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+                iDebugLevel = 0;
+
+            if (iDebugLevel >= 1)
+                Console.WriteLine($"MERGE-CLEANUP: metadata/component/bom-ref='{result.Metadata?.Component?.BomRef}'");
+            if (!(result.Metadata.Component is null) && !(result.Components is null) && (result.Components?.Count > 0) && result.Components.Contains(result.Metadata.Component))
+            {
+                if (iDebugLevel >= 2)
+                    Console.WriteLine($"MERGE-CLEANUP: Searching in list");
+                foreach (Component component in result.Components)
+                {
+                    if (iDebugLevel >= 2)
+                        Console.WriteLine($"MERGE-CLEANUP: Looking at a bom-ref='{component?.BomRef}'");
+                    if (component is null) continue; // should not happen
+                    if (component.Equals(result.Components) || component.BomRef.Equals(result.Metadata.Component.BomRef))
+                    {
+                        if (iDebugLevel >= 1)
+                            Console.WriteLine($"MERGE-CLEANUP: Found in list: merging, cleaning...");
+                        result.Metadata.Component.mergeWith(component);
+                        result.Components.Remove(component);
+                        return result;
+                    }
+                }
+            }
+
+            if (iDebugLevel >= 1)
+                Console.WriteLine($"MERGE-CLEANUP: NO HITS");
+            return result;
+        }
+
+        public static Bom CleanupEmptyLists(Bom result)
+        {
             // cleanup empty top level elements
-            if (result.Metadata.Tools.Count == 0) result.Metadata.Tools = null;
-            if (result.Components.Count == 0) result.Components = null;
-            if (result.Services.Count == 0) result.Services = null;
-            if (result.ExternalReferences.Count == 0) result.ExternalReferences = null;
-            if (result.Dependencies.Count == 0) result.Dependencies = null;
-            if (result.Compositions.Count == 0) result.Compositions = null;
-            if (result.Vulnerabilities.Count == 0) result.Vulnerabilities = null;
+            if (result.Metadata?.Tools?.Count == 0) result.Metadata.Tools = null;
+            if (result.Components?.Count == 0) result.Components = null;
+            if (result.Services?.Count == 0) result.Services = null;
+            if (result.ExternalReferences?.Count == 0) result.ExternalReferences = null;
+            if (result.Dependencies?.Count == 0) result.Dependencies = null;
+            if (result.Compositions?.Count == 0) result.Compositions = null;
+            if (result.Vulnerabilities?.Count == 0) result.Vulnerabilities = null;
 
             return result;
         }
