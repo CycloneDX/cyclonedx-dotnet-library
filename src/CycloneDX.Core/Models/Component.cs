@@ -375,6 +375,7 @@ namespace CycloneDX.Models
 
                                 var TType = methodGetItem.Invoke(propValObj, new object[] { 0 }).GetType();
                                 var methodMergeWith = TType.GetMethod("mergeWith");
+                                var methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
 
                                 for (int o = 0; o < propValObjCount; o++)
                                 {
@@ -388,29 +389,56 @@ namespace CycloneDX.Models
                                         var tmpItem = methodGetItem.Invoke(propValTmp, new object[] { t });
                                         if (tmpItem != null)
                                         {
-                                            listHit = true;
-                                            if (methodMergeWith != null)
+                                            // EQ CHECK
+                                            bool propsSeemEqual = false;
+                                            bool propsSeemEqualLearned = false;
+
+                                            try
                                             {
-                                                try
+                                                if (methodEquals != null)
                                                 {
-                                                    if (iDebugLevel >= 4)
-                                                        Console.WriteLine($"Component.mergeWith(): Call futher {TType.ToString()}.mergeWith() for '{property.Name}': merge of {tmpItem?.ToString()} and {objItem?.ToString()}");
-                                                    if (!((bool)methodMergeWith.Invoke(tmpItem, new object[] {objItem})))
-                                                        mergedOk = false;
+                                                    if (iDebugLevel >= 5)
+                                                        Console.WriteLine($"Component.mergeWith(): try methodEquals()");
+                                                    propsSeemEqual = (bool)methodEquals.Invoke(tmpItem, new object[] {objItem});
+                                                    propsSeemEqualLearned = true;
                                                 }
-                                                catch (System.Exception exc)
-                                                {
-                                                    if (iDebugLevel >= 4)
-                                                        Console.WriteLine($"Component.mergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem?.ToString()} and {objItem?.ToString()}: {exc.ToString()}");
-                                                    mergedOk = false;
-                                                }
-                                            } // else: no method, just trust equality - avoid "Add" to merge below
-                                            else
-                                            {
-                                                if (iDebugLevel >= 6)
-                                                    Console.WriteLine($"Component.mergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem?.ToString()} and {objItem?.ToString()}: no such method: will add to list");
                                             }
-                                        } // else: tmpitem considered not equal, should be added
+                                            catch (System.Exception exc)
+                                            {
+                                                // no-op
+                                                if (iDebugLevel >= 5)
+                                                    Console.WriteLine($"Component.mergeWith(): can not check Equals() {propValTmp.ToString()} and {propValObj.ToString()}: {exc.ToString()}");
+                                            }
+
+                                            if (propsSeemEqual || !propsSeemEqualLearned)
+                                            {
+                                                // Got an equivalently-looking item on both sides!
+                                                // If there is no mergeWith() in its class, consider
+                                                // the two entries just equal (no-op to merge them).
+                                                listHit = true;
+                                                if (methodMergeWith != null)
+                                                {
+                                                    try
+                                                    {
+                                                        if (iDebugLevel >= 4)
+                                                            Console.WriteLine($"Component.mergeWith(): Call futher {TType.ToString()}.mergeWith() for '{property.Name}': merge of {tmpItem?.ToString()} and {objItem?.ToString()}");
+                                                        if (!((bool)methodMergeWith.Invoke(tmpItem, new object[] {objItem})))
+                                                            mergedOk = false;
+                                                    }
+                                                    catch (System.Exception exc)
+                                                    {
+                                                        if (iDebugLevel >= 4)
+                                                            Console.WriteLine($"Component.mergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem?.ToString()} and {objItem?.ToString()}: {exc.ToString()}");
+                                                        mergedOk = false;
+                                                    }
+                                                } // else: no method, just trust equality - avoid "Add" to merge below
+                                                else
+                                                {
+                                                    if (iDebugLevel >= 6)
+                                                        Console.WriteLine($"Component.mergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem?.ToString()} and {objItem?.ToString()}: no such method: will add to list");
+                                                }
+                                            } // else: tmpitem considered not equal, should be added
+                                        }
                                     }
 
                                     if (!listHit)
