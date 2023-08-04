@@ -165,6 +165,9 @@ namespace CycloneDX.Utils
         /// <returns></returns>
         public static Bom FlatMerge(Bom bom1, Bom bom2)
         {
+            if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+                iDebugLevel = 0;
+
             var result = new Bom();
             result.Metadata = new Metadata
             {
@@ -186,10 +189,37 @@ namespace CycloneDX.Utils
             var componentsMerger = new ListMergeHelper<Component>();
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
 
-            //Add main component if missing
-            if (result.Components != null && !(bom2.Metadata?.Component is null) && !result.Components.Contains(bom2.Metadata.Component)) 
+            // Add main component from bom2 as a "yet another component"
+            // if missing in that list so far. Note: any more complicated
+            // cases should be handled by CleanupMetadataComponent() when
+            // called by MergeCommand or similar consumer; however we can
+            // not generally rely in a library that only one particular
+            // tool calls it - so this method should ensure validity of
+            // its own output on every step along the way.
+            if (result.Components != null && !(bom2.Metadata?.Component is null) && !result.Components.Contains(bom2.Metadata.Component))
             {
-                result.Components.Add(bom2.Metadata.Component);
+                // Skip such addition if the component in bom2 is same as the
+                // existing metadata/component in bom1 (gluing same file together
+                // twice should be effectively no-op); try to merge instead:
+
+                if (iDebugLevel >= 1)
+                    Console.WriteLine($"FLAT-MERGE: bom1comp='{bom1.Metadata?.Component}' bom-ref1='{bom1.Metadata?.Component?.BomRef}' bom2comp='{bom2.Metadata?.Component}' bom-ref2='{bom2.Metadata?.Component?.BomRef}'");
+
+                if (!(bom1.Metadata?.Component is null) && (bom2.Metadata.Component.Equals(bom1.Metadata.Component)
+                || (!(bom1.Metadata?.Component?.BomRef is null) && !(bom2.Metadata?.Component?.BomRef is null) && (bom1.Metadata.Component.BomRef == bom2.Metadata.Component.BomRef))))
+                {
+                    // bom1's entry is not null and seems equivalent to bom2's:
+                if (iDebugLevel >= 1)
+                        Console.WriteLine($"FLAT-MERGE: bom1.Metadata.Component is already equivalent to bom2.Metadata.Component: merging");
+                    result.Metadata.Component = bom1.Metadata.Component;
+                    result.Metadata.Component.mergeWith(bom2.Metadata.Component);
+                }
+                else
+                {
+                if (iDebugLevel >= 1)
+                        Console.WriteLine($"FLAT-MERGE: bom1.Metadata.Component is missing or not equivalent to bom2.Metadata.Component: adding new entry into components[]");
+                    result.Components.Add(bom2.Metadata.Component);
+                }
             }
 
             var servicesMerger = new ListMergeHelper<Service>();
@@ -206,6 +236,9 @@ namespace CycloneDX.Utils
 
             var vulnerabilitiesMerger = new ListMergeHelper<Vulnerability>();
             result.Vulnerabilities = vulnerabilitiesMerger.Merge(bom1.Vulnerabilities, bom2.Vulnerabilities);
+
+            result = CleanupMetadataComponent(result);
+            result = CleanupEmptyLists(result);
 
             return result;
         }
@@ -257,9 +290,14 @@ namespace CycloneDX.Utils
 
             if (bomSubject != null)
             {
-                // use the params provided if possible
-                result.Metadata.Component = bomSubject;
-                result.Metadata.Component.BomRef = ComponentBomRefNamespace(result.Metadata.Component);
+                // use the params provided if possible: prepare a new document
+                // with desired "metadata/component" and merge differing data
+                // from earlier collected result into this structure.
+                var resultSubj = new Bom();
+
+                resultSubj.Metadata.Component = bomSubject;
+                resultSubj.Metadata.Component.BomRef = ComponentBomRefNamespace(result.Metadata.Component);
+                result = FlatMerge(resultSubj, result);
 
                 var mainDependency = new Dependency();
                 mainDependency.Ref = result.Metadata.Component.BomRef;
@@ -278,6 +316,9 @@ namespace CycloneDX.Utils
 
                 result.Dependencies.Add(mainDependency);
             }
+
+            result = CleanupMetadataComponent(result);
+            result = CleanupEmptyLists(result);
 
             return result;
         }
