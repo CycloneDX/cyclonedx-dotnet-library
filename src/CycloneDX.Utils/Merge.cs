@@ -166,15 +166,21 @@ namespace CycloneDX.Utils
         public static Bom FlatMerge(Bom bom1, Bom bom2)
         {
             var result = new Bom();
+            result.Metadata = new Metadata
+            {
+                // Note: we recurse into this method from other FlatMerge() implementations
+                // (e.g. mass-merge of a big list of Bom documents), so the resulting
+                // document gets a new timestamp every time. It is unique after all.
+                // Also note that a merge of "new Bom()" with a real Bom is also different
+                // from that original (serialNumber, timestamp, possible entry order, etc.)
+                Timestamp = DateTime.Now
+            };
 
             var toolsMerger = new ListMergeHelper<Tool>();
             var tools = toolsMerger.Merge(bom1.Metadata?.Tools, bom2.Metadata?.Tools);
             if (tools != null)
             {
-                result.Metadata = new Metadata
-                {
-                    Tools = tools
-                };
+                result.Metadata.Tools = tools;
             }
 
             var componentsMerger = new ListMergeHelper<Component>();
@@ -239,7 +245,11 @@ namespace CycloneDX.Utils
         public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
-            
+
+            // Note: we were asked to "merge" and so we do, per principle of
+            // least surprise - even if there is just one entry in boms[] so
+            // we might be inclined to skip the loop. Resulting document WILL
+            // differ from such single original (serialNumber, timestamp...)
             foreach (var bom in boms)
             {
                 result = FlatMerge(result, bom);
@@ -267,8 +277,6 @@ namespace CycloneDX.Utils
                 }
 
                 result.Dependencies.Add(mainDependency);
-
-                
             }
 
             return result;
@@ -291,14 +299,16 @@ namespace CycloneDX.Utils
         public static Bom HierarchicalMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
+            result.Metadata = new Metadata
+            {
+                Timestamp = DateTime.Now
+            };
+
             if (bomSubject != null)
             {
                 if (bomSubject.BomRef is null) bomSubject.BomRef = ComponentBomRefNamespace(bomSubject);
-                result.Metadata = new Metadata
-                {
-                    Component = bomSubject,
-                    Tools = new List<Tool>(),
-                };
+                result.Metadata.Component = bomSubject;
+                result.Metadata.Tools = new List<Tool>();
             }
 
             result.Components = new List<Component>();
