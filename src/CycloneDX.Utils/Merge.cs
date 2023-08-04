@@ -332,6 +332,11 @@ namespace CycloneDX.Utils
 
                 if (bom.Metadata?.Tools?.Count > 0)
                 {
+                    if (result.Metadata.Tools == null)
+                    {
+                        result.Metadata.Tools = new List<Tool>();
+                    }
+
                     result.Metadata.Tools.AddRange(bom.Metadata.Tools);
                 }
 
