@@ -243,8 +243,8 @@ namespace CycloneDX.Models
                 {
                     try {
                         property.SetValue(tmp, property.GetValue(this, null));
-                    } catch (System.InvalidOperationException) {
-                        // no-op, skip factually null values of NonNullable types
+                    } catch (System.Exception) {
+                        // no-op
                     }
                 }
                 bool mergedOk = true;
@@ -269,7 +269,7 @@ namespace CycloneDX.Models
                                 {
                                     tmpItem = (ComponentScope)property.GetValue(tmp, null);
                                 }
-                                catch (System.InvalidOperationException)
+                                catch (System.Exception)
                                 {
                                     // Unspecified => required per CycloneDX spec v1.4?..
                                     tmpItem = ComponentScope.Null;
@@ -280,7 +280,7 @@ namespace CycloneDX.Models
                                 {
                                     objItem = (ComponentScope)property.GetValue(obj, null);
                                 }
-                                catch (System.InvalidOperationException)
+                                catch (System.Exception)
                                 {
                                     objItem = ComponentScope.Null;
                                 }
