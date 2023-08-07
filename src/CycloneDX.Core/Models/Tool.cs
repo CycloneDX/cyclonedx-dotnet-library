@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Tool: IEquatable<Tool>
+    public class Tool: BomEntity
     {
         [XmlElement("vendor")]
         [ProtoMember(1)]
@@ -49,12 +49,14 @@ namespace CycloneDX.Models
 
         public bool Equals(Tool obj)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            /*return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);*/
+            return base.Equals(obj);
         }
     
         public override int GetHashCode()
         {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+            /*return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();*/
+            return base.GetHashCode();
         }
     }
 }
