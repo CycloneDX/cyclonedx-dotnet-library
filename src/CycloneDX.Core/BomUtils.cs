@@ -17,6 +17,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 using System.Text.RegularExpressions;
 using CycloneDX.Models;
 
@@ -266,12 +268,21 @@ namespace CycloneDX
                 throw new BomEntityIncompatibleException("Can not merge lists of different Bom entity types", TType, TType2);
             }
 
+/*
             // Inspired by https://stackoverflow.com/a/4661237/4715872
             // to craft a List<SpecificType> "result" at run-time:
             Type listType = typeof(List<>);
             var constructedListType = listType.MakeGenericType(TType);
-            List<BomEntity> result = (List<BomEntity>)Activator.CreateInstance(constructedListType);
-            result.AddRange(list1);
+            //IList<BomEntity> result = (IList<BomEntity>)Activator.CreateInstance(constructedListType); //.Cast<object>().ToList();
+            var result = Activator.CreateInstance(constructedListType);
+
+            foreach (var item1 in list1)
+            {
+                result.Add(item1);
+            }
+*/
+
+            List<BomEntity> result = new List<BomEntity>(list1);
 
             foreach (var item2 in list2)
             {
@@ -320,7 +331,7 @@ namespace CycloneDX
                 }
             }
 
-            return result;
+            return (List<BomEntity>)result;
         }
     }
 }
