@@ -38,7 +38,7 @@ namespace CycloneDX.Utils
                 return BomUtils.MergeBomEntityLists(list1 as List<BomEntity>, list2 as List<BomEntity>) as List<T>;
             }
 
-            // Lists of legacy types
+            // Lists of legacy types (for BomEntity we use BomEntityListMergeHelper<T> class)
             if (iDebugLevel >= 1)
                 Console.WriteLine($"List-Merge for legacy types: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
             var result = new List<T>(list1);
