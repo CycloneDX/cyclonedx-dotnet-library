@@ -30,9 +30,9 @@ namespace CycloneDX.Utils
             if (list1 is null || list1.Count < 1) return list2;
             if (list2 is null || list2.Count < 1) return list1;
 
-            if (((T)list2[0]).GetType() is BomEntity)
+            if (typeof(BomEntity).IsInstanceOfType(list1[0]))
             {
-                return BomUtils.MergeBomEntityLists(list1, list2);
+                return BomUtils.MergeBomEntityLists(list1 as List<BomEntity>, list2 as List<BomEntity>) as List<T>;
             }
 
 			// Lists of legacy types
@@ -52,6 +52,17 @@ namespace CycloneDX.Utils
 
     public static partial class CycloneDXUtils
     {
+        // TOTHINK: Now that we have a BomEntity base class, shouldn't
+        // this logic relocate to become a Bom.MergeWith() implementation?
+        // Notably, sanity checks like CleanupMetadataComponent and making
+        // sure that a Bom+Bom merge produces a spec-validatable result
+        // should be a concern of that class (same as we coerce other
+        // classes to perform a structure-dependent meaningful merge,
+        // and same as the types in its source code handle non-nullable
+        // properties, etc.) - right?.. Perhaps sub-classes like BomFlat
+        // and BomHierarchical and their respective MergeWith() methods
+        // could be a way forward for this...
+
         /// <summary>
         /// Performs a flat merge of two BOMs.
         /// 
