@@ -24,7 +24,7 @@ using System.Text.Json.Serialization;
 namespace CycloneDX.Models
 {
     [Serializable]
-    class BomEntityConflictException : Exception
+    public class BomEntityConflictException : Exception
     {
         public BomEntityConflictException()
             : base(String.Format("Unresolvable conflict in Bom entities"))
@@ -42,8 +42,9 @@ namespace CycloneDX.Models
             : base(String.Format("Unresolvable conflict in Bom entities of type {0}: {1}", type.ToString(), msg))
         { }
     }
+
     [Serializable]
-    class BomEntityIncompatibleException : Exception
+    public class BomEntityIncompatibleException : Exception
     {
         public BomEntityIncompatibleException()
             : base(String.Format("Comparing incompatible Bom entities"))
