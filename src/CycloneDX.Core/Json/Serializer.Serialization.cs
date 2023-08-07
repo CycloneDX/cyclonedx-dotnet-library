@@ -58,6 +58,12 @@ namespace CycloneDX.Json
             return jsonBom;
         }
 
+        internal static string Serialize(BomEntity entity)
+        {
+            Contract.Requires(entity != null);
+            return JsonSerializer.Serialize(entity, _options);
+        }
+
         internal static string Serialize(Component component)
         {
             Contract.Requires(component != null);
