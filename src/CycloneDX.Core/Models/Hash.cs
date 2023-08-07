@@ -22,7 +22,7 @@ namespace CycloneDX.Models
 {
     [XmlType("hash")]
     [ProtoContract]
-    public class Hash
+    public class Hash : BomEntity
     {
         [ProtoContract]
         public enum HashAlgorithm
@@ -62,5 +62,40 @@ namespace CycloneDX.Models
         [XmlText]
         [ProtoMember(2)]
         public string Content { get; set; }
+
+        public bool Equivalent(Hash other)
+        {
+            return (!(other is null) && this.Alg == other.Alg);
+        }
+
+        public bool MergeWith(Hash other)
+        {
+            try
+            {
+                // Basic checks for null, type compatibility,
+                // equality and non-equivalence; throws for
+                // the hard stuff to implement in the catch:
+                return base.MergeWith(other);
+            }
+            catch (BomEntityConflictException)
+            {
+                // Note: Alg is non-nullable so no check for that
+                if (this.Content is null && !(other.Content is null))
+                {
+                    this.Content = other.Content;
+                    return true;
+                }
+
+                if (this.Content != other.Content)
+                {
+                    throw new BomEntityConflictException("Two Hash objects with same Alg='${this.Alg}' and different Content: '${this.Content}' vs. '${other.Content}'");
+                }
+
+                // All known properties merged or were equal/equivalent
+                return true;
+            }
+
+            // Should not get here
+        }
     }
 }
