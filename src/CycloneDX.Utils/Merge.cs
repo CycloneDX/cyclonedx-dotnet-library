@@ -125,7 +125,7 @@ namespace CycloneDX.Utils
                 if (iDebugLevel >= 1)
                         Console.WriteLine($"FLAT-MERGE: bom1.Metadata.Component is already equivalent to bom2.Metadata.Component: merging");
                     result.Metadata.Component = bom1.Metadata.Component;
-                    result.Metadata.Component.mergeWith(bom2.Metadata.Component);
+                    result.Metadata.Component.MergeWith(bom2.Metadata.Component);
                 }
                 else
                 {
@@ -386,7 +386,7 @@ namespace CycloneDX.Utils
                     {
                         if (iDebugLevel >= 1)
                             Console.WriteLine($"MERGE-CLEANUP: Found in list: merging, cleaning...");
-                        result.Metadata.Component.mergeWith(component);
+                        result.Metadata.Component.MergeWith(component);
                         result.Components.Remove(component);
                         return result;
                     }
