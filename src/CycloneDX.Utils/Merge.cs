@@ -27,6 +27,9 @@ namespace CycloneDX.Utils
     {
         public List<T> Merge(List<T> list1, List<T> list2)
         {
+            if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+                iDebugLevel = 0;
+
             if (list1 is null || list1.Count < 1) return list2;
             if (list2 is null || list2.Count < 1) return list1;
 
@@ -35,7 +38,9 @@ namespace CycloneDX.Utils
                 return BomUtils.MergeBomEntityLists(list1 as List<BomEntity>, list2 as List<BomEntity>) as List<T>;
             }
 
-			// Lists of legacy types
+            // Lists of legacy types
+            if (iDebugLevel >= 1)
+                Console.WriteLine($"List-Merge for legacy types: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
             var result = new List<T>(list1);
 
             foreach (var item in list2)
