@@ -63,6 +63,74 @@ namespace CycloneDX.Models
         { }
     }
 
+    public class BomEntityListMergeHelper<T> where T : BomEntity
+    {
+        public List<T> Merge(List<T> list1, List<T> list2)
+        {
+            //return BomUtils.MergeBomEntityLists(list1, list2);
+            if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+                iDebugLevel = 0;
+
+            if (list1 is null || list1.Count < 1) return list2;
+            if (list2 is null || list2.Count < 1) return list1;
+
+            if (iDebugLevel >= 1)
+                Console.WriteLine($"List-Merge for BomEntity derivatives: {list1.GetType().ToString()}");
+
+            List<T> result = new List<T>(list1);
+            Type TType = list1[0].GetType();
+
+            foreach (var item2 in list2)
+            {
+                bool isContained = false;
+                if (iDebugLevel >= 3)
+                    Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries");
+
+                for (int i=0; i < result.Count; i++)
+                {
+                    if (iDebugLevel >= 3)
+                        Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}");
+                    var item1 = result[i];
+
+                    // Squash contents of the new entry with an already
+                    // existing equivalent (same-ness is subject to
+                    // IEquatable<>.Equals() checks defined in respective
+                    // classes), if there is a method defined there.
+                    // For BomEntity descendant instances we assume that
+                    // they have Equals(), Equivalent() and MergeWith()
+                    // methods defined or inherited as is suitable for
+                    // the particular entity type, hence much less code
+                    // and error-checking than there was in the PoC:
+                    if (item1.MergeWith(item2))
+                    {
+                        isContained = true;
+                        break; // item2 merged into result[item1] or already equal to it
+                    }
+                    // MergeWith() may throw BomEntityConflictException which we
+                    // want to propagate to users - their input data is confusing.
+                    // Probably should not throw BomEntityIncompatibleException
+                    // unless the lists truly are of mixed types.
+                }
+
+                if (isContained)
+                {
+                    if (iDebugLevel >= 2)
+                        Console.WriteLine($"ALREADY THERE: {item2.ToString()}");
+                }
+                else
+                {
+                    // Add new entry "as is" (new-ness is subject to
+                    // equality checks of respective classes):
+                    if (iDebugLevel >= 2)
+                        Console.WriteLine($"WILL ADD: {item2.ToString()}");
+                    result.Add(item2);
+                }
+            }
+
+            return result;
+        }
+    }
+
     /// <summary>
     /// BomEntity is intended as a base class for other classes in CycloneDX.Models,
     /// which in turn encapsulate different concepts and data types described by

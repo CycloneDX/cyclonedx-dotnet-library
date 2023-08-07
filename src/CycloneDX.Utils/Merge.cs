@@ -97,14 +97,16 @@ namespace CycloneDX.Utils
                 Timestamp = DateTime.Now
             };
 
-            var toolsMerger = new ListMergeHelper<Tool>();
+            var toolsMerger = new CycloneDX.Models.BomEntityListMergeHelper<Tool>();
+            //var toolsMerger = new ListMergeHelper<Tool>();
             var tools = toolsMerger.Merge(bom1.Metadata?.Tools, bom2.Metadata?.Tools);
+            //var tools = BomUtils.MergeBomEntityLists(bom1.Metadata?.Tools, bom2.Metadata?.Tools);
             if (tools != null)
             {
                 result.Metadata.Tools = tools;
             }
 
-            var componentsMerger = new ListMergeHelper<Component>();
+            var componentsMerger = new CycloneDX.Models.BomEntityListMergeHelper<Component>();
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
 
             // Add main component from bom2 as a "yet another component"

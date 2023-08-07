@@ -17,8 +17,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Collections;
 using System.Text.RegularExpressions;
 using CycloneDX.Models;
 
@@ -239,99 +237,6 @@ namespace CycloneDX
                     }
                 }
             }
-        }
-
-        public static List<BomEntity> MergeBomEntityLists(List<BomEntity> list1, List<BomEntity> list2)
-        {
-            if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
-                iDebugLevel = 0;
-
-            if (list1 is null || list1.Count < 1) return list2;
-            if (list2 is null || list2.Count < 1) return list1;
-
-            if (iDebugLevel >= 1)
-                Console.WriteLine($"List-Merge for: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
-
-            // Check actual subtypes of list entries
-            // TODO: Reflection to get generic List<> type argument?
-            // This would avoid lists of mixed BomEntity descendant objects
-            // typed truly as a List<BomEntity> by caller...
-            Type TType = list1[0].GetType();
-            Type TType2 = list2[0].GetType();
-            if (TType == typeof(BomEntity) || TType2 == typeof(BomEntity))
-            {
-                // Should not happen, but...
-                throw new BomEntityIncompatibleException("Can not merge lists of different Bom entity types (one of these seems to be the base class)", TType, TType2);
-            }
-            if (TType != TType2)
-            {
-                throw new BomEntityIncompatibleException("Can not merge lists of different Bom entity types", TType, TType2);
-            }
-
-/*
-            // Inspired by https://stackoverflow.com/a/4661237/4715872
-            // to craft a List<SpecificType> "result" at run-time:
-            Type listType = typeof(List<>);
-            var constructedListType = listType.MakeGenericType(TType);
-            //IList<BomEntity> result = (IList<BomEntity>)Activator.CreateInstance(constructedListType); //.Cast<object>().ToList();
-            var result = Activator.CreateInstance(constructedListType);
-
-            foreach (var item1 in list1)
-            {
-                result.Add(item1);
-            }
-*/
-
-            List<BomEntity> result = new List<BomEntity>(list1);
-
-            foreach (var item2 in list2)
-            {
-                bool isContained = false;
-                if (iDebugLevel >= 3)
-                    Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries");
-
-                for (int i=0; i < result.Count; i++)
-                {
-                    if (iDebugLevel >= 3)
-                        Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}");
-                    var item1 = result[i];
-
-                    // Squash contents of the new entry with an already
-                    // existing equivalent (same-ness is subject to
-                    // IEquatable<>.Equals() checks defined in respective
-                    // classes), if there is a method defined there.
-                    // For BomEntity descendant instances we assume that
-                    // they have Equals(), Equivalent() and MergeWith()
-                    // methods defined or inherited as is suitable for
-                    // the particular entity type, hence much less code
-                    // and error-checking than there was in the PoC:
-                    if (item1.MergeWith(item2))
-                    {
-                        isContained = true;
-                        break; // item2 merged into result[item1] or already equal to it
-                    }
-                    // MergeWith() may throw BomEntityConflictException which we
-                    // want to propagate to users - their input data is confusing.
-                    // Probably should not throw BomEntityIncompatibleException
-                    // unless the lists truly are of mixed types.
-                }
-
-                if (isContained)
-                {
-                    if (iDebugLevel >= 2)
-                        Console.WriteLine($"ALREADY THERE: {item2.ToString()}");
-                }
-                else
-                {
-                    // Add new entry "as is" (new-ness is subject to
-                    // equality checks of respective classes):
-                    if (iDebugLevel >= 2)
-                        Console.WriteLine($"WILL ADD: {item2.ToString()}");
-                    result.Add(item2);
-                }
-            }
-
-            return (List<BomEntity>)result;
         }
     }
 }
