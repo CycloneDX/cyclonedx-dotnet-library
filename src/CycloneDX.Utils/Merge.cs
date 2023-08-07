@@ -35,7 +35,23 @@ namespace CycloneDX.Utils
 
             if (typeof(BomEntity).IsInstanceOfType(list1[0]))
             {
-                return BomUtils.MergeBomEntityLists(list1 as List<BomEntity>, list2 as List<BomEntity>) as List<T>;
+                // Inspired by https://stackoverflow.com/a/4661237/4715872
+                // to craft a List<SpecificType> "result" at run-time:
+                Type listHelperType = typeof(BomEntityListMergeHelper<>);
+                var constructedListHelperType = listHelperType.MakeGenericType(list1[0].GetType());
+                var helper = Activator.CreateInstance(constructedListHelperType);
+                // Gotta use reflection for run-time evaluated type methods:
+                var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>) });
+                if (methodMerge != null)
+                {
+                    return (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2});
+                }
+                else
+                {
+                    // Should not get here, but if we do - log and fall through
+                    if (iDebugLevel >= 1)
+                        Console.WriteLine($"Warning: List-Merge for BomEntity failed to find a Merge() helper method: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
+                }
             }
 
             // Lists of legacy types (for BomEntity we use BomEntityListMergeHelper<T> class)
@@ -97,16 +113,14 @@ namespace CycloneDX.Utils
                 Timestamp = DateTime.Now
             };
 
-            var toolsMerger = new CycloneDX.Models.BomEntityListMergeHelper<Tool>();
-            //var toolsMerger = new ListMergeHelper<Tool>();
+            var toolsMerger = new ListMergeHelper<Tool>();
             var tools = toolsMerger.Merge(bom1.Metadata?.Tools, bom2.Metadata?.Tools);
-            //var tools = BomUtils.MergeBomEntityLists(bom1.Metadata?.Tools, bom2.Metadata?.Tools);
             if (tools != null)
             {
                 result.Metadata.Tools = tools;
             }
 
-            var componentsMerger = new CycloneDX.Models.BomEntityListMergeHelper<Component>();
+            var componentsMerger = new ListMergeHelper<Component>();
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
 
             // Add main component from bom2 as a "yet another component"
