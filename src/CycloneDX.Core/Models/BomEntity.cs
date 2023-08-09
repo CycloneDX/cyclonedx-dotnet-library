@@ -147,15 +147,25 @@ namespace CycloneDX.Models
             // a bad alternative to private is to: throw new NotImplementedException("The BomEntity class directly should not be instantiated");
         }
 
+        /// <summary>
+        /// Helper for comparisons and getting object hash code.
+        /// Calls our standard CycloneDX.Json.Serializer to use
+        /// its common options in particular.
+        /// </summary>
+        internal string SerializeEntity()
+        {
+            return CycloneDX.Json.Serializer.Serialize(this);
+        }
+
         public bool Equals(BomEntity other)
         {
             if (other is null || this.GetType() != other.GetType()) return false;
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(other);
+            return this.SerializeEntity() == other.SerializeEntity();
         }
     
         public override int GetHashCode()
         {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+            return this.SerializeEntity().GetHashCode();
         }
 
         /// <summary>
