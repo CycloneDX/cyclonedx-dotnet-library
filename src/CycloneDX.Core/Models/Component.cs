@@ -544,6 +544,21 @@ namespace CycloneDX.Models
                             }
                             break;
 
+                        // Default handling for enums, if not customized above
+                        case Type _ when (property.PropertyType.IsEnum):
+                            {
+                                // Not nullable!
+                                var propValTmp = property.GetValue(tmp, null);
+                                var propValObj = property.GetValue(obj, null);
+                                if (propValTmp == propValObj)
+                                {
+                                    continue;
+                                }
+
+                                mergedOk = false;
+                            }
+                            break;
+
                         default:
                             {
                                 if (
@@ -575,18 +590,6 @@ namespace CycloneDX.Models
                                 }
 
                                 var TType = propValTmp.GetType();
-
-                                if (TType.IsEnum)
-                                {
-                                    if (propValTmp == propValObj)
-                                    {
-                                        continue;
-                                    }
-
-                                    mergedOk = false;
-                                    break;
-                                }
-
                                 if (!KnownTypeEquals.TryGetValue(TType, out var methodEquals))
                                 {
                                     if (KnownOtherTypeEquals.TryGetValue(TType, out var methodEquals2))
