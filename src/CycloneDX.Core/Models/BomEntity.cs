@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json.Serialization;
 
 namespace CycloneDX.Models
@@ -142,6 +143,51 @@ namespace CycloneDX.Models
     /// </summary>
     public class BomEntity : IEquatable<BomEntity>
     {
+        // Keep this info initialized once to cut down on overheads of reflection
+        // when running in our run-time loops.
+        // Thanks to https://stackoverflow.com/a/45896403/4715872 for the Func'y trick
+        // and https://stackoverflow.com/questions/857705/get-all-derived-types-of-a-type
+        // TOTHINK: Should these be exposed as public or hidden even more strictly?
+        //  Perhaps add getters for a copy?
+
+        /// <summary>
+        /// List of classes derived from BomEntity, prepared startically at start time.
+        /// </summary>
+        static List<Type> KnownEntityTypes =
+            new Func<List<Type>>(() =>
+            {
+                List<Type> derived_types = new List<Type>();
+                foreach (var domain_assembly in AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    var assembly_types = domain_assembly.GetTypes()
+                        .Where(type => type.IsSubclassOf(typeof(BomEntity)) && !type.IsAbstract);
+
+                    derived_types.AddRange(assembly_types);
+                }
+                return derived_types;
+            }) ();
+
+        /// <summary>
+        /// Dictionary mapping classes derived from BomEntity to reflection
+        /// MethodInfo about custom CycloneDX.Json.Serializer.Serialize()
+        /// implementations (if present), prepared startically at start time.
+        /// </summary>
+        static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeSerializers =
+            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                var jserClassType = typeof(CycloneDX.Json.Serializer);
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = jserClassType.GetMethod("Serialize",
+                        BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic,
+                        new Type[] { type });
+                    if (method != null)
+                        dict[type] = method;
+                }
+                return dict;
+            }) ();
+
         protected BomEntity()
         {
             // a bad alternative to private is to: throw new NotImplementedException("The BomEntity class directly should not be instantiated");
@@ -157,11 +203,7 @@ namespace CycloneDX.Models
             // Do we have a custom serializer defined? Use it!
             // (One for BomEntity tends to serialize this base class
             // so comes up empty, or has to jump through hoops...)
-            var myClassType = typeof(CycloneDX.Json.Serializer);
-            var methodSerializeThis = myClassType.GetMethod("Serialize",
-                BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic,
-                new Type[] { this.GetType() });
-            if (methodSerializeThis != null)
+            if (KnownTypeSerializers.TryGetValue(this.GetType(), out var methodSerializeThis))
             {
                 var res1 = (string)methodSerializeThis.Invoke(null, new object[] {this});
                 return res1;
