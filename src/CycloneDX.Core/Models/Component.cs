@@ -199,6 +199,7 @@ namespace CycloneDX.Models
         public ReleaseNotes ReleaseNotes { get; set; }
         public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
 
+/*
         public bool Equals(Component obj)
         {
             return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
@@ -208,6 +209,7 @@ namespace CycloneDX.Models
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
+*/
 
         public bool Equivalent(Component obj)
         {
@@ -219,13 +221,25 @@ namespace CycloneDX.Models
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
                 iDebugLevel = 0;
 
-            if (this.Equals(obj))
+            try
             {
-                if (iDebugLevel >= 1)
+                // Basic checks for null, type compatibility,
+                // equality and non-equivalence; throws for
+                // the hard stuff to implement in the catch:
+                bool resBase = base.MergeWith(obj);
+                if (resBase && iDebugLevel >= 1)
+                {
                     Console.WriteLine($"Component.MergeWith(): SKIP: contents are identical, nothing to do");
-                return true;
+                }
+                return resBase;
+            }
+            catch (BomEntityConflictException)
+            {
+                // No-op to fall through below with less indentation
             }
 
+            // Custom logic to squash together two equivalent entries -
+            // with same BomRef value but something differing elsewhere
             if (
                 (this.BomRef != null && BomRef.Equals(obj.BomRef)) ||
                 (this.Group == obj.Group && this.Name == obj.Name && this.Version == obj.Version)
