@@ -188,6 +188,66 @@ namespace CycloneDX.Models
                 return dict;
             }) ();
 
+        /// <summary>
+        /// Dictionary mapping classes derived from BomEntity to reflection
+        /// MethodInfo about their custom Equals() method implementations
+        /// (if present), prepared startically at start time.
+        /// </summary>
+        static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquals =
+            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = type.GetMethod("Equals",
+                        BindingFlags.Public | BindingFlags.NonPublic,
+                        new Type[] { type });
+                    if (method != null)
+                        dict[type] = method;
+                }
+                return dict;
+            }) ();
+
+        /// <summary>
+        /// Dictionary mapping classes derived from BomEntity to reflection
+        /// MethodInfo about their custom Equivalent() method implementations
+        /// (if present), prepared startically at start time.
+        /// </summary>
+        static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquivalent =
+            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = type.GetMethod("Equivalent",
+                        BindingFlags.Public | BindingFlags.NonPublic,
+                        new Type[] { type });
+                    if (method != null)
+                        dict[type] = method;
+                }
+                return dict;
+            }) ();
+
+        /// <summary>
+        /// Dictionary mapping classes derived from BomEntity to reflection
+        /// MethodInfo about their custom MergeWith() method implementations
+        /// (if present), prepared startically at start time.
+        /// </summary>
+        static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeMergeWith =
+            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = type.GetMethod("MergeWith",
+                        BindingFlags.Public | BindingFlags.NonPublic,
+                        new Type[] { type });
+                    if (method != null)
+                        dict[type] = method;
+                }
+                return dict;
+            }) ();
+
         protected BomEntity()
         {
             // a bad alternative to private is to: throw new NotImplementedException("The BomEntity class directly should not be instantiated");
@@ -267,7 +327,17 @@ namespace CycloneDX.Models
             }
 
             if (this.Equals(other)) return true;
-            if (!this.Equivalent(other)) return false;
+            // Avoid calling Equals => serializer twice for no gain
+            // (default equivalence is equality):
+            if (KnownTypeEquivalent.TryGetValue(this.GetType(), out var methodEquivalent))
+            {
+                if (!this.Equivalent(other)) return false;
+                // else fall through to exception below
+            }
+            else
+            {
+                return false; // known not equal => not equivalent by default => false
+            }
 
             // Normal mode of operation: descendant classes catch this
             // exception to use their custom non-trivial merging logic.
