@@ -273,8 +273,23 @@ namespace CycloneDX.Models
             return res;
         }
 
+        /// <summary>
+        /// NOTE: Class methods do not "override" this one because they compare to their type
+        /// and not to the base BomEntity type objects. They should also not call this method
+        /// to avoid looping - implement everything needed there directly, if ever needed!
+        /// Keep in mind that the base implementation calls the SerializeEntity() method which
+        /// should be by default aware and capable of ultimately serializing the properties
+        /// relevant to each derived class.
+        /// </summary>
+        /// <param name="other">Another BomEntity-derived object of same type</param>
+        /// <returns>True if two objects are deemed equal</returns>
         public bool Equals(BomEntity other)
         {
+            if (KnownTypeEquals.TryGetValue(this.GetType(), out var methodEquals))
+            {
+                return (bool)methodEquals.Invoke(this, new object[] {other});
+            }
+
             if (other is null || this.GetType() != other.GetType()) return false;
             return this.SerializeEntity() == other.SerializeEntity();
         }
@@ -286,15 +301,21 @@ namespace CycloneDX.Models
 
         /// <summary>
         /// Do this and other objects describe the same real-life entity?
-        /// Override this in sub-classes that have a more detailed definition of
+        /// "Override" this in sub-classes that have a more detailed definition of
         /// equivalence (e.g. that certain fields are equal even if whole contents
-        /// are not).
+        /// are not) by defining an implementation tailored to that derived type
+        /// as the argument, or keep this default where equiality is equivalence.
         /// </summary>
         /// <param name="other">Another object of same type</param>
         /// <returns>True if two data objects are considered to represent
         /// the same real-life entity, False otherwise.</returns>
         public bool Equivalent(BomEntity other)
         {
+            if (KnownTypeEquals.TryGetValue(this.GetType(), out var methodEquivalent))
+            {
+                return (bool)methodEquivalent.Invoke(this, new object[] {other});
+            }
+
             return (!(other is null) && (this.GetType() == other.GetType()) && this.Equals(other));
         }
 
