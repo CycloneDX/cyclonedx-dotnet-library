@@ -235,7 +235,8 @@ namespace CycloneDX.Models
                     }
                     else
                     {
-                        Console.WriteLine($"Component.MergeWith(): SKIP: items do not seem related");
+                        if (iDebugLevel >= 4)
+                            Console.WriteLine($"Component.MergeWith(): SKIP: items do not seem related");
                     }
                 }
                 return resBase;
