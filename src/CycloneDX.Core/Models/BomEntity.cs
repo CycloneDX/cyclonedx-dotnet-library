@@ -80,6 +80,10 @@ namespace CycloneDX.Models
 
             List<T> result = new List<T>(list1);
             Type TType = list1[0].GetType();
+            if (!BomEntity.KnownTypeMergeWith.TryGetValue(TType, out var methodMergeWith))
+            {
+                methodMergeWith = null;
+            }
 
             foreach (var item2 in list2)
             {
@@ -102,15 +106,25 @@ namespace CycloneDX.Models
                     // methods defined or inherited as is suitable for
                     // the particular entity type, hence much less code
                     // and error-checking than there was in the PoC:
-                    if (item1.MergeWith(item2))
+                    bool resMerge;
+                    if (methodMergeWith != null)
                     {
-                        isContained = true;
-                        break; // item2 merged into result[item1] or already equal to it
+                        resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item2});
+                    }
+                    else
+                    {
+                        resMerge = item1.MergeWith(item2);
                     }
                     // MergeWith() may throw BomEntityConflictException which we
                     // want to propagate to users - their input data is confusing.
                     // Probably should not throw BomEntityIncompatibleException
                     // unless the lists truly are of mixed types.
+
+                    if (resMerge)
+                    {
+                        isContained = true;
+                        break; // item2 merged into result[item1] or already equal to it
+                    }
                 }
 
                 if (isContained)
@@ -153,7 +167,7 @@ namespace CycloneDX.Models
         /// <summary>
         /// List of classes derived from BomEntity, prepared startically at start time.
         /// </summary>
-        static List<Type> KnownEntityTypes =
+        public static List<Type> KnownEntityTypes =
             new Func<List<Type>>(() =>
             {
                 List<Type> derived_types = new List<Type>();
@@ -172,7 +186,7 @@ namespace CycloneDX.Models
         /// MethodInfo about custom CycloneDX.Json.Serializer.Serialize()
         /// implementations (if present), prepared startically at start time.
         /// </summary>
-        static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeSerializers =
+        public static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeSerializers =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 var jserClassType = typeof(CycloneDX.Json.Serializer);
@@ -193,7 +207,7 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom Equals() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquals =
+        public static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquals =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
@@ -213,7 +227,7 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom Equivalent() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquivalent =
+        public static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquivalent =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
@@ -233,7 +247,7 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom MergeWith() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeMergeWith =
+        public static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeMergeWith =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
