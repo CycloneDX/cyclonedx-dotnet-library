@@ -249,7 +249,7 @@ namespace CycloneDX.Models
                 if (iDebugLevel >= 1)
                     Console.WriteLine($"Component.MergeWith(): items seem related - investigate properties: {this.BomRef} / {this.Group} : {this.Name} : {this.Version}");
                 PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
-                if (iDebugLevel >= 1)
+                if (iDebugLevel >= 2)
                     Console.WriteLine($"Component.MergeWith(): items seem related - investigate properties: num {properties.Length}: {properties.ToString()}");
 
                 // Use a temporary clone instead of mangling "this" object right away;
@@ -270,7 +270,7 @@ namespace CycloneDX.Models
 
                 foreach (PropertyInfo property in properties)
                 {
-                    if (iDebugLevel >= 2)
+                    if (iDebugLevel >= 4)
                         Console.WriteLine($"Component.MergeWith(): <{property.PropertyType}>'{property.Name}'");
                     switch (property.PropertyType)
                     {
@@ -304,7 +304,7 @@ namespace CycloneDX.Models
                                     objItem = ComponentScope.Null;
                                 }
 
-                                if (iDebugLevel >= 3)
+                                if (iDebugLevel >= 4)
                                     Console.WriteLine($"Component.MergeWith(): SCOPE: '{tmpItem}' and '{objItem}'");
 
                                 // Per CycloneDX spec v1.4, absent value "SHOULD" be treated as "required"
@@ -312,7 +312,7 @@ namespace CycloneDX.Models
                                 {
                                     // keep absent==required; upgrade optional objItem
                                     property.SetValue(tmp, ComponentScope.Required);
-                                    if (iDebugLevel >= 3)
+                                    if (iDebugLevel >= 4)
                                         Console.WriteLine($"Component.MergeWith(): SCOPE: set 'Required'");
                                     continue;
                                 }
@@ -323,7 +323,7 @@ namespace CycloneDX.Models
                                 ) {
                                     // downgrade optional objItem to excluded
                                     property.SetValue(tmp, ComponentScope.Excluded);
-                                    if (iDebugLevel >= 3)
+                                    if (iDebugLevel >= 4)
                                         Console.WriteLine($"Component.MergeWith(): SCOPE: set 'Excluded'");
                                     continue;
                                 }
@@ -345,7 +345,7 @@ namespace CycloneDX.Models
                                 bool tmpItem = (bool)property.GetValue(tmp, null);
                                 bool objItem = (bool)property.GetValue(obj, null);
 
-                                if (iDebugLevel >= 3)
+                                if (iDebugLevel >= 4)
                                     Console.WriteLine($"Component.MergeWith(): MODIFIED BOOL: '{tmpItem}' and '{objItem}'");
                                 if (objItem)
                                     property.SetValue(tmp, true);
@@ -359,7 +359,7 @@ namespace CycloneDX.Models
                                 var propValObj = property.GetValue(obj);
                                 if (propValTmp == null && propValObj == null)
                                 {
-                                    if (iDebugLevel >= 3)
+                                    if (iDebugLevel >= 4)
                                         Console.WriteLine($"Component.MergeWith(): LIST?: got <null> in tmp and <null> in obj");
                                     continue;
                                 }
@@ -378,7 +378,7 @@ namespace CycloneDX.Models
 
                                 int propValTmpCount = (propValTmp == null ? -1 : (int)propCount.GetValue(propValTmp, null));
                                 int propValObjCount = (propValObj == null ? -1 : (int)propCount.GetValue(propValObj, null));
-                                if (iDebugLevel >= 4)
+                                if (iDebugLevel >= 5)
                                     Console.WriteLine($"Component.MergeWith(): LIST?: got {propValTmp}=>{propValTmpCount} in tmp and {propValObj}=>{propValObjCount} in obj");
 
                                 if (propValObj == null || propValObjCount < 1)
@@ -416,7 +416,7 @@ namespace CycloneDX.Models
                                             {
                                                 if (methodEquals != null)
                                                 {
-                                                    if (iDebugLevel >= 5)
+                                                    if (iDebugLevel >= 6)
                                                         Console.WriteLine($"Component.MergeWith(): try methodEquals()");
                                                     propsSeemEqual = (bool)methodEquals.Invoke(tmpItem, new object[] {objItem});
                                                     propsSeemEqualLearned = true;
@@ -425,7 +425,7 @@ namespace CycloneDX.Models
                                             catch (System.Exception exc)
                                             {
                                                 // no-op
-                                                if (iDebugLevel >= 5)
+                                                if (iDebugLevel >= 6)
                                                     Console.WriteLine($"Component.MergeWith(): can not check Equals() {propValTmp.ToString()} and {propValObj.ToString()}: {exc.ToString()}");
                                             }
 
@@ -439,21 +439,21 @@ namespace CycloneDX.Models
                                                 {
                                                     try
                                                     {
-                                                        if (iDebugLevel >= 4)
+                                                        if (iDebugLevel >= 5)
                                                             Console.WriteLine($"Component.MergeWith(): Call futher {TType.ToString()}.mergeWith() for '{property.Name}': merge of {tmpItem?.ToString()} and {objItem?.ToString()}");
                                                         if (!((bool)methodMergeWith.Invoke(tmpItem, new object[] {objItem})))
                                                             mergedOk = false;
                                                     }
                                                     catch (System.Exception exc)
                                                     {
-                                                        if (iDebugLevel >= 4)
+                                                        if (iDebugLevel >= 5)
                                                             Console.WriteLine($"Component.MergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem?.ToString()} and {objItem?.ToString()}: {exc.ToString()}");
                                                         mergedOk = false;
                                                     }
                                                 } // else: no method, just trust equality - avoid "Add" to merge below
                                                 else
                                                 {
-                                                    if (iDebugLevel >= 6)
+                                                    if (iDebugLevel >= 7)
                                                         Console.WriteLine($"Component.MergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmpItem?.ToString()} and {objItem?.ToString()}: no such method: will add to list");
                                                 }
                                             } // else: tmpitem considered not equal, should be added
@@ -479,12 +479,12 @@ namespace CycloneDX.Models
                                     // e.g. <System.Nullable`1[CycloneDX.Models.Component+ComponentScope]>'Scope' helper
                                     // followed by <System.Nullable`1[CycloneDX.Models.Component+ComponentScope]>'Scope'
                                     // which we specially handle above
-                                    if (iDebugLevel >= 4)
+                                    if (iDebugLevel >= 5)
                                         Console.WriteLine($"Component.MergeWith(): SKIP NullableAttribute");
                                     continue;
                                 }
 
-                                if (iDebugLevel >= 3)
+                                if (iDebugLevel >= 4)
                                     Console.WriteLine($"Component.MergeWith(): DEFAULT TYPES");
                                 var propValTmp = property.GetValue(tmp, null);
                                 var propValObj = property.GetValue(obj, null);
@@ -508,7 +508,7 @@ namespace CycloneDX.Models
                                 {
                                     if (methodEquals != null)
                                     {
-                                        if (iDebugLevel >= 5)
+                                        if (iDebugLevel >= 6)
                                             Console.WriteLine($"Component.MergeWith(): try methodEquals()");
                                         propsSeemEqual = (bool)methodEquals.Invoke(propValTmp, new object[] {propValObj});
                                         propsSeemEqualLearned = true;
@@ -517,7 +517,7 @@ namespace CycloneDX.Models
                                 catch (System.Exception exc)
                                 {
                                     // no-op
-                                    if (iDebugLevel >= 5)
+                                    if (iDebugLevel >= 6)
                                         Console.WriteLine($"Component.MergeWith(): can not check Equals() {propValTmp.ToString()} and {propValObj.ToString()}: {exc.ToString()}");
                                 }
 
@@ -526,7 +526,7 @@ namespace CycloneDX.Models
                                     if (!propsSeemEqualLearned)
                                     {
                                         // Fall back to generic equality check which may be useless
-                                        if (iDebugLevel >= 4)
+                                        if (iDebugLevel >= 5)
                                             Console.WriteLine($"Component.MergeWith(): MIGHT SKIP MERGE: items say they are equal");
                                         propsSeemEqual = propValTmp.Equals(propValObj);
                                         propsSeemEqualLearned = true;
@@ -542,7 +542,7 @@ namespace CycloneDX.Models
                                     if (!propsSeemEqualLearned)
                                     {
                                         // Fall back to generic equality check which may be useless
-                                        if (iDebugLevel >= 4)
+                                        if (iDebugLevel >= 5)
                                             Console.WriteLine($"Component.MergeWith(): SKIP MERGE: items say they are equal");
                                         propsSeemEqual = (propValTmp == propValObj);
                                         propsSeemEqualLearned = true;
@@ -555,7 +555,7 @@ namespace CycloneDX.Models
 
                                 if (!propsSeemEqual)
                                 {
-                                    if (iDebugLevel >= 4)
+                                    if (iDebugLevel >= 5)
                                         Console.WriteLine($"Component.MergeWith(): items say they are not equal");
                                 }
 
@@ -572,7 +572,7 @@ namespace CycloneDX.Models
                                         // That property's class lacks a mergeWith(), gotta trust the equality:
                                         if (propsSeemEqual)
                                             continue;
-                                        if (iDebugLevel >= 4)
+                                        if (iDebugLevel >= 5)
                                             Console.WriteLine($"Component.MergeWith(): FAILED MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmp.ToString()} and {obj.ToString()}: {exc.ToString()}");
                                         mergedOk = false;
                                     }
@@ -582,7 +582,7 @@ namespace CycloneDX.Models
                                     // That property's class lacks a mergeWith(), gotta trust the equality:
                                     if (propsSeemEqual)
                                         continue;
-                                    if (iDebugLevel >= 6)
+                                    if (iDebugLevel >= 7)
                                         Console.WriteLine($"Component.MergeWith(): SKIP MERGE: can not {this.GetType().ToString()}.mergeWith() '{property.Name}' of {tmp.ToString()} and {obj.ToString()}: no such method");
                                     mergedOk = false;
                                 }
