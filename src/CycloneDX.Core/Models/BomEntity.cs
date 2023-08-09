@@ -154,7 +154,21 @@ namespace CycloneDX.Models
         /// </summary>
         internal string SerializeEntity()
         {
-            return CycloneDX.Json.Serializer.Serialize(this);
+            // Do we have a custom serializer defined? Use it!
+            // (One for BomEntity tends to serialize this base class
+            // so comes up empty, or has to jump through hoops...)
+            var myClassType = typeof(CycloneDX.Json.Serializer);
+            var methodSerializeThis = myClassType.GetMethod("Serialize",
+                BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic,
+                new Type[] { this.GetType() });
+            if (methodSerializeThis != null)
+            {
+                var res1 = (string)methodSerializeThis.Invoke(null, new object[] {this});
+                return res1;
+            }
+
+            var res = CycloneDX.Json.Serializer.Serialize(this);
+            return res;
         }
 
         public bool Equals(BomEntity other)
