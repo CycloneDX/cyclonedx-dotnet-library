@@ -575,6 +575,18 @@ namespace CycloneDX.Models
                                 }
 
                                 var TType = propValTmp.GetType();
+
+                                if (TType.IsEnum)
+                                {
+                                    if (propValTmp == propValObj)
+                                    {
+                                        continue;
+                                    }
+
+                                    mergedOk = false;
+                                    break;
+                                }
+
                                 if (!KnownTypeEquals.TryGetValue(TType, out var methodEquals))
                                 {
                                     if (KnownOtherTypeEquals.TryGetValue(TType, out var methodEquals2))
