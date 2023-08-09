@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Pedigree
+    public class Pedigree : BomEntity
     {
         [XmlArray("ancestors")]
         [XmlArrayItem("component")]

@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class DataClassification
+    public class DataClassification : BomEntity
     {
         [XmlAttribute("flow")]
         [ProtoMember(1, IsRequired=true)]

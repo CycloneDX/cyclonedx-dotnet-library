@@ -29,7 +29,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlRoot("bom", IsNullable=false)]
     [ProtoContract]
-    public class Bom
+    public class Bom : BomEntity
     {
         [XmlIgnore]
         public string BomFormat => "CycloneDX";
@@ -133,5 +133,10 @@ namespace CycloneDX.Models
         [ProtoMember(10)]
         public List<Vulnerabilities.Vulnerability> Vulnerabilities { get; set; }
         public bool ShouldSerializeVulnerabilities() { return Vulnerabilities?.Count > 0; }
+
+        // TODO: MergeWith() might be reasonable but is currently handled
+        // by several strategy implementations in CycloneDX.Utils Merge.cs
+        // so maybe there should be sub-classes or strategy arguments or
+        // properties to select one of those implementations at run-time?..
     }
 }

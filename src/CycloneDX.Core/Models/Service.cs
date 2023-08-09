@@ -24,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Service: IEquatable<Service>
+    public class Service : BomEntity
     {
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
@@ -123,7 +123,7 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(14)]
         public List<Property> Properties { get; set; }
-
+/*
         public bool Equals(Service obj)
         {
             return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
@@ -133,5 +133,6 @@ namespace CycloneDX.Models
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
+*/
     }
 }

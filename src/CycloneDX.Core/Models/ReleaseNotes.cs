@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ReleaseNotes
+    public class ReleaseNotes : BomEntity
     {
         [XmlElement("type")]
         [ProtoMember(1)]

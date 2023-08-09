@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Note
+    public class Note : BomEntity
     {
         [XmlElement("locale")]
         [ProtoMember(1)]
