@@ -248,7 +248,7 @@ namespace CycloneDX.Models
                 // merge the attribute values with help of reflection:
                 if (iDebugLevel >= 1)
                     Console.WriteLine($"Component.MergeWith(): items seem related - investigate properties: {this.BomRef} / {this.Group} : {this.Name} : {this.Version}");
-                PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
+                PropertyInfo[] properties = BomEntity.KnownEntityTypeProperties[this.GetType()]; //this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
                 if (iDebugLevel >= 2)
                     Console.WriteLine($"Component.MergeWith(): items seem related - investigate properties: num {properties.Length}: {properties.ToString()}");
 

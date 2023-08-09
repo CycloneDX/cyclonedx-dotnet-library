@@ -183,6 +183,22 @@ namespace CycloneDX.Models
 
         /// <summary>
         /// Dictionary mapping classes derived from BomEntity to reflection
+        /// MethodInfo about their custom Equals() method implementations
+        /// (if present), prepared startically at start time.
+        /// </summary>
+        public static Dictionary<Type, System.Reflection.PropertyInfo[]> KnownEntityTypeProperties =
+            new Func<Dictionary<Type, System.Reflection.PropertyInfo[]>>(() =>
+            {
+                Dictionary<Type, System.Reflection.PropertyInfo[]> dict = new Dictionary<Type, System.Reflection.PropertyInfo[]>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    dict[type] = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
+                }
+                return dict;
+            }) ();
+
+        /// <summary>
+        /// Dictionary mapping classes derived from BomEntity to reflection
         /// MethodInfo about custom CycloneDX.Json.Serializer.Serialize()
         /// implementations (if present), prepared startically at start time.
         /// </summary>
