@@ -406,9 +406,25 @@ namespace CycloneDX.Models
                                 }
 
                                 var LType = (propValTmp == null ? propValObj.GetType() : propValTmp.GetType());
-                                var propCount = LType.GetProperty("Count");
-                                var methodGetItem = LType.GetMethod("get_Item");
-                                var methodAdd = LType.GetMethod("Add");
+                                // Use cached info where available
+                                PropertyInfo propCount = null;
+                                MethodInfo methodGetItem = null;
+                                MethodInfo methodAdd = null;
+                                if (BomEntity.KnownEntityTypeLists.TryGetValue(LType, out BomEntityListReflection refInfo))
+                                {
+                                    propCount = refInfo.propCount;
+                                    methodGetItem = refInfo.methodGetItem;
+                                    methodAdd = refInfo.methodAdd;
+                                }
+                                else
+                                {
+                                    if (iDebugLevel >= 4)
+                                        Console.WriteLine($"Component.MergeWith(): No cached info about BomEntityListReflection[{LType}]");
+                                    propCount = LType.GetProperty("Count");
+                                    methodGetItem = LType.GetMethod("get_Item");
+                                    methodAdd = LType.GetMethod("Add");
+                                }
+
                                 if (methodGetItem == null || propCount == null || methodAdd == null)
                                 {
                                     if (iDebugLevel >= 1)

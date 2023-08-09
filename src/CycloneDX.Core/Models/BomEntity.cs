@@ -146,6 +146,22 @@ namespace CycloneDX.Models
         }
     }
 
+    public class BomEntityListReflection
+    {
+        public Type genericType;
+        public PropertyInfo propCount;
+        public MethodInfo methodAdd;
+        public MethodInfo methodAddRange;
+        public MethodInfo methodGetItem;
+    }
+
+    public class BomEntityListMergeHelperReflection
+    {
+        public Type genericType;
+        public MethodInfo methodMerge;
+        public Object helperInstance;
+    }
+
     /// <summary>
     /// BomEntity is intended as a base class for other classes in CycloneDX.Models,
     /// which in turn encapsulate different concepts and data types described by
@@ -193,6 +209,73 @@ namespace CycloneDX.Models
                 foreach (var type in KnownEntityTypes)
                 {
                     dict[type] = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
+                }
+                return dict;
+            }) ();
+
+        public static Dictionary<Type, BomEntityListReflection> KnownEntityTypeLists =
+            new Func<Dictionary<Type, BomEntityListReflection>>(() =>
+            {
+                Dictionary<Type, BomEntityListReflection> dict = new Dictionary<Type, BomEntityListReflection>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    // Inspired by https://stackoverflow.com/a/4661237/4715872
+                    // to craft a List<SpecificType> "result" at run-time:
+                    Type listType = typeof(List<>);
+                    Type constructedListType = listType.MakeGenericType(type);
+                    // Needed? var helper = Activator.CreateInstance(constructedListType);
+
+                    dict[type] = new BomEntityListReflection();
+                    dict[type].genericType = constructedListType;
+
+                    // Gotta use reflection for run-time evaluated type methods:
+                    dict[type].propCount = constructedListType.GetProperty("Count");
+                    dict[type].methodGetItem = constructedListType.GetMethod("get_Item");
+                    dict[type].methodAdd = constructedListType.GetMethod("Add", 0, new Type[] { type });
+                    dict[type].methodAddRange = constructedListType.GetMethod("AddRange", 0, new Type[] { constructedListType });
+                }
+                return dict;
+            }) ();
+
+        public static Dictionary<Type, BomEntityListMergeHelperReflection> KnownBomEntityListMergeHelpers =
+            new Func<Dictionary<Type, BomEntityListMergeHelperReflection>>(() =>
+            {
+                Dictionary<Type, BomEntityListMergeHelperReflection> dict = new Dictionary<Type, BomEntityListMergeHelperReflection>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    // Inspired by https://stackoverflow.com/a/4661237/4715872
+                    // to craft a List<SpecificType> "result" at run-time:
+                    Type listHelperType = typeof(BomEntityListMergeHelper<>);
+                    Type constructedListHelperType = listHelperType.MakeGenericType(type);
+                    var helper = Activator.CreateInstance(constructedListHelperType);
+                    Type LType = null;
+                    if (KnownEntityTypeLists.TryGetValue(type, out BomEntityListReflection refInfo))
+                    {
+                        LType = refInfo.genericType;
+                    }
+
+                    if (LType != null)
+                    {
+                        // Gotta use reflection for run-time evaluated type methods:
+                        var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { LType, LType });
+                        if (methodMerge != null)
+                        {
+                            dict[type] = new BomEntityListMergeHelperReflection();
+                            dict[type].genericType = constructedListHelperType;
+                            dict[type].methodMerge = methodMerge;
+                            dict[type].helperInstance = helper;
+                            // Callers would return (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2});
+                        }
+                        else
+                        {
+                            // Should not get here, but if we do - make noise
+                            throw new InvalidOperationException($"BomEntityListMergeHelper<{type}> lacks a Merge() helper method");
+                        }
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException($"BomEntityListMergeHelper<{type}> lacks a List class definition");
+                    }
                 }
                 return dict;
             }) ();
