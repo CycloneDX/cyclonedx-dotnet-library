@@ -271,6 +271,11 @@ namespace CycloneDX.Models
                 foreach (PropertyInfo property in properties)
                 {
                     try {
+                        // Avoid spurious "modified=false" in merged JSON
+                        if (property.Name == "Modified" && !(this.Modified.HasValue))
+                            continue;
+                        if (property.Name == "Scope" && !(this.Scope.HasValue))
+                            continue;
                         property.SetValue(tmp, property.GetValue(this, null));
                     } catch (System.Exception) {
                         // no-op
