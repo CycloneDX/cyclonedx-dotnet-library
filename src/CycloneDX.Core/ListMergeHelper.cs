@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using CycloneDX.Models;
 
@@ -43,13 +44,25 @@ namespace CycloneDX
 
             if (typeof(BomEntity).IsInstanceOfType(list1[0]))
             {
-                // Inspired by https://stackoverflow.com/a/4661237/4715872
-                // to craft a List<SpecificType> "result" at run-time:
-                Type listHelperType = typeof(BomEntityListMergeHelper<>);
-                var constructedListHelperType = listHelperType.MakeGenericType(typeof(T));
-                var helper = Activator.CreateInstance(constructedListHelperType);
-                // Gotta use reflection for run-time evaluated type methods:
-                var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>) });
+                MethodInfo methodMerge = null;
+                Object helper;
+                // Use cached info where available
+                if (BomEntity.KnownBomEntityListMergeHelpers.TryGetValue(typeof(T), out BomEntityListMergeHelperReflection refInfo))
+                {
+                    methodMerge = refInfo.methodMerge;
+                    helper = refInfo.helperInstance;
+                }
+                else
+                {
+                    // Inspired by https://stackoverflow.com/a/4661237/4715872
+                    // to craft a List<SpecificType> "result" at run-time:
+                    Type listHelperType = typeof(BomEntityListMergeHelper<>);
+                    var constructedListHelperType = listHelperType.MakeGenericType(typeof(T));
+                    helper = Activator.CreateInstance(constructedListHelperType);
+                    // Gotta use reflection for run-time evaluated type methods:
+                    methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>) });
+                }
+
                 if (methodMerge != null)
                 {
                     return (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2});
