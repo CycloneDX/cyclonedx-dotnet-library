@@ -17,60 +17,13 @@
 
 using System;
 using System.Collections.Generic;
+using CycloneDX;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
 using CycloneDX.Utils.Exceptions;
 
 namespace CycloneDX.Utils
 {
-    class ListMergeHelper<T>
-    {
-        public List<T> Merge(List<T> list1, List<T> list2)
-        {
-            if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
-                iDebugLevel = 0;
-
-            if (list1 is null || list1.Count < 1) return list2;
-            if (list2 is null || list2.Count < 1) return list1;
-
-            if (typeof(BomEntity).IsInstanceOfType(list1[0]))
-            {
-                // Inspired by https://stackoverflow.com/a/4661237/4715872
-                // to craft a List<SpecificType> "result" at run-time:
-                Type listHelperType = typeof(BomEntityListMergeHelper<>);
-                var constructedListHelperType = listHelperType.MakeGenericType(typeof(T));
-                var helper = Activator.CreateInstance(constructedListHelperType);
-                // Gotta use reflection for run-time evaluated type methods:
-                var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>) });
-                if (methodMerge != null)
-                {
-                    return (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2});
-                }
-                else
-                {
-                    // Should not get here, but if we do - log and fall through
-                    if (iDebugLevel >= 1)
-                        Console.WriteLine($"Warning: List-Merge for BomEntity failed to find a Merge() helper method: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
-                }
-            }
-
-            // Lists of legacy types (for BomEntity we use BomEntityListMergeHelper<T> class)
-            if (iDebugLevel >= 1)
-                Console.WriteLine($"List-Merge for legacy types: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
-            var result = new List<T>(list1);
-
-            foreach (var item in list2)
-            {
-                if (!(result.Contains(item)))
-                {
-                    result.Add(item);
-                }
-            }
-
-            return result;
-        }
-    }
-
     public static partial class CycloneDXUtils
     {
         // TOTHINK: Now that we have a BomEntity base class, shouldn't
