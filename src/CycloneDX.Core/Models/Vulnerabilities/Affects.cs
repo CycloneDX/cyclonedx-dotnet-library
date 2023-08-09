@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class Affects
+    public class Affects : BomEntity
     {
         [XmlElement("ref")]
         [ProtoMember(1)]

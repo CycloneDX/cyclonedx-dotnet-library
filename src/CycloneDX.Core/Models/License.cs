@@ -22,7 +22,7 @@ namespace CycloneDX.Models
 {
     [XmlType("license")]
     [ProtoContract]
-    public class License
+    public class License : BomEntity
     {
         [XmlElement("id")]
         [ProtoMember(1)]

@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class Analysis
+    public class Analysis : BomEntity
     {
         [XmlElement("state")]
         [ProtoMember(1)]

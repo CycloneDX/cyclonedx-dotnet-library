@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class IdentifiableAction
+    public class IdentifiableAction : BomEntity
     {
         private DateTime? _timestamp;
         [XmlElement("timestamp")]

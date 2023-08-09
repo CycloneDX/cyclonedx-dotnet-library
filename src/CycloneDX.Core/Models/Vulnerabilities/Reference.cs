@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class Reference
+    public class Reference : BomEntity
     {
         [XmlAttribute("id")]
         [ProtoMember(1)]

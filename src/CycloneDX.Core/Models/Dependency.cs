@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("dependency")]
     [ProtoContract]
-    public class Dependency: IEquatable<Dependency>
+    public class Dependency : BomEntity
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]
@@ -36,6 +36,7 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
 
+/*
         public bool Equals(Dependency obj)
         {
             return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
@@ -45,5 +46,6 @@ namespace CycloneDX.Models
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
+*/
     }
 }

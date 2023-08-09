@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Swid
+    public class Swid : BomEntity
     {
         [XmlAttribute("tagId")]
         [ProtoMember(1)]

@@ -24,7 +24,7 @@ namespace CycloneDX.Models
 {
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     [ProtoContract]
-    public class ExternalReference
+    public class ExternalReference : BomEntity
     {
         [ProtoContract]
         public enum ExternalReferenceType
