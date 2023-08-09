@@ -118,6 +118,8 @@ namespace CycloneDX.Models
         {
             get
             {
+                if (Scope == null)
+                    return ComponentScope.Null;
                 return Scope.Value;
             }
             set
@@ -296,9 +298,14 @@ namespace CycloneDX.Models
                                 {
                                     tmpItem = (ComponentScope)property.GetValue(tmp, null);
                                 }
-                                catch (System.Exception)
+                                catch (System.InvalidOperationException)
                                 {
                                     // Unspecified => required per CycloneDX spec v1.4?..
+                                    // Currently handled below like that, so (enum) Null value here.
+                                    tmpItem = ComponentScope.Null;
+                                }
+                                catch (System.Reflection.TargetInvocationException)
+                                {
                                     tmpItem = ComponentScope.Null;
                                 }
 
@@ -307,7 +314,11 @@ namespace CycloneDX.Models
                                 {
                                     objItem = (ComponentScope)property.GetValue(obj, null);
                                 }
-                                catch (System.Exception)
+                                catch (System.InvalidOperationException)
+                                {
+                                    objItem = ComponentScope.Null;
+                                }
+                                catch (System.Reflection.TargetInvocationException)
                                 {
                                     objItem = ComponentScope.Null;
                                 }
