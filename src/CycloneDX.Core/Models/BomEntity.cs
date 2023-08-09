@@ -238,6 +238,27 @@ namespace CycloneDX.Models
                 return dict;
             }) ();
 
+        // Our loops check for some non-BomEntity typed value equalities,
+        // so cache their methods if present. Note that this one retains
+        // the "null" results to mark that we do not need to look further.
+        public static Dictionary<Type, System.Reflection.MethodInfo> KnownOtherTypeEquals =
+            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                var listMore = new List<Type>();
+                listMore.Add(typeof(string));
+                listMore.Add(typeof(bool));
+                listMore.Add(typeof(int));
+                foreach (var type in listMore)
+                {
+                    var method = type.GetMethod("Equals",
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
+                        new Type[] { type });
+                    dict[type] = method;
+                }
+                return dict;
+            }) ();
+
         /// <summary>
         /// Dictionary mapping classes derived from BomEntity to reflection
         /// MethodInfo about their custom Equivalent() method implementations

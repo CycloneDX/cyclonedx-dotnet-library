@@ -434,8 +434,26 @@ namespace CycloneDX.Models
                                 }
 
                                 var TType = methodGetItem.Invoke(propValObj, new object[] { 0 }).GetType();
-                                var methodMergeWith = TType.GetMethod("MergeWith", 0, new Type[] { TType });
-                                var methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
+                                if (!KnownTypeMergeWith.TryGetValue(TType, out var methodMergeWith))
+                                {
+                                    // No need to re-query now that we have BomEntity descendance:
+                                    // e.g. methodMergeWith = TType.GetMethod("MergeWith", 0, new Type[] { TType });
+                                    methodMergeWith = null;
+                                }
+
+                                if (!KnownTypeEquals.TryGetValue(TType, out var methodEquals))
+                                {
+                                    if (KnownOtherTypeEquals.TryGetValue(TType, out var methodEquals2))
+                                    {
+                                        methodEquals = methodEquals2;
+                                    }
+                                    else
+                                    {
+                                        methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
+                                        if (iDebugLevel >= 1)
+                                            Console.WriteLine($"Component.MergeWith(): had to look for {TType}.Equals()... found? {methodEquals != null}");
+                                    }
+                                }
 
                                 for (int o = 0; o < propValObjCount; o++)
                                 {
@@ -541,7 +559,20 @@ namespace CycloneDX.Models
                                 }
 
                                 var TType = propValTmp.GetType();
-                                var methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
+                                if (!KnownTypeEquals.TryGetValue(TType, out var methodEquals))
+                                {
+                                    if (KnownOtherTypeEquals.TryGetValue(TType, out var methodEquals2))
+                                    {
+                                        methodEquals = methodEquals2;
+                                    }
+                                    else
+                                    {
+                                        methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
+                                        if (iDebugLevel >= 1)
+                                            Console.WriteLine($"Component.MergeWith(): had to look for {TType}.Equals()... found? {methodEquals != null}");
+                                    }
+                                }
+
                                 bool propsSeemEqual = false;
                                 bool propsSeemEqualLearned = false;
 
@@ -600,7 +631,13 @@ namespace CycloneDX.Models
                                         Console.WriteLine($"Component.MergeWith(): items say they are not equal");
                                 }
 
-                                var methodMergeWith = TType.GetMethod("MergeWith", 0, new Type[] { TType });
+                                if (!KnownTypeMergeWith.TryGetValue(TType, out var methodMergeWith))
+                                {
+                                    // No need to re-query now that we have BomEntity descendance:
+                                    // e.g. methodMergeWith = TType.GetMethod("MergeWith", 0, new Type[] { TType });
+                                    methodMergeWith = null;
+                                }
+
                                 if (methodMergeWith != null)
                                 {
                                     try
