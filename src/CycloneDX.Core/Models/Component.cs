@@ -625,7 +625,7 @@ namespace CycloneDX.Models
             else
             {
                 if (iDebugLevel >= 1)
-                    Console.WriteLine($"Component.MergeWith(): SKIP: items do not seem related");
+                    Console.WriteLine($"Component.MergeWith(): SKIP: items do not seem related upon second look");
             }
 
             // Merge was not applicable or otherwise did not succeed
