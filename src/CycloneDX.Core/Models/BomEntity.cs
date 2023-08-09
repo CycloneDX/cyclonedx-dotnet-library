@@ -200,7 +200,7 @@ namespace CycloneDX.Models
                 foreach (var type in KnownEntityTypes)
                 {
                     var method = type.GetMethod("Equals",
-                        BindingFlags.Public | BindingFlags.NonPublic,
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
                         new Type[] { type });
                     if (method != null)
                         dict[type] = method;
@@ -220,7 +220,7 @@ namespace CycloneDX.Models
                 foreach (var type in KnownEntityTypes)
                 {
                     var method = type.GetMethod("Equivalent",
-                        BindingFlags.Public | BindingFlags.NonPublic,
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
                         new Type[] { type });
                     if (method != null)
                         dict[type] = method;
@@ -240,7 +240,7 @@ namespace CycloneDX.Models
                 foreach (var type in KnownEntityTypes)
                 {
                     var method = type.GetMethod("MergeWith",
-                        BindingFlags.Public | BindingFlags.NonPublic,
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
                         new Type[] { type });
                     if (method != null)
                         dict[type] = method;
@@ -263,7 +263,8 @@ namespace CycloneDX.Models
             // Do we have a custom serializer defined? Use it!
             // (One for BomEntity tends to serialize this base class
             // so comes up empty, or has to jump through hoops...)
-            if (KnownTypeSerializers.TryGetValue(this.GetType(), out var methodSerializeThis))
+            Type thisType = this.GetType();
+            if (KnownTypeSerializers.TryGetValue(thisType, out var methodSerializeThis))
             {
                 var res1 = (string)methodSerializeThis.Invoke(null, new object[] {this});
                 return res1;
@@ -285,12 +286,13 @@ namespace CycloneDX.Models
         /// <returns>True if two objects are deemed equal</returns>
         public bool Equals(BomEntity other)
         {
-            if (KnownTypeEquals.TryGetValue(this.GetType(), out var methodEquals))
+            Type thisType = this.GetType();
+            if (KnownTypeEquals.TryGetValue(thisType, out var methodEquals))
             {
                 return (bool)methodEquals.Invoke(this, new object[] {other});
             }
 
-            if (other is null || this.GetType() != other.GetType()) return false;
+            if (other is null || thisType != other.GetType()) return false;
             return this.SerializeEntity() == other.SerializeEntity();
         }
     
@@ -311,12 +313,18 @@ namespace CycloneDX.Models
         /// the same real-life entity, False otherwise.</returns>
         public bool Equivalent(BomEntity other)
         {
-            if (KnownTypeEquals.TryGetValue(this.GetType(), out var methodEquivalent))
+            Type thisType = this.GetType();
+            if (KnownTypeEquivalent.TryGetValue(thisType, out var methodEquivalent))
             {
+                // Note we do not check for null/type of "other" at this point
+                // since the derived classes define the logic of equivalence
+                // (possibly to other entity subtypes as well).
                 return (bool)methodEquivalent.Invoke(this, new object[] {other});
             }
 
-            return (!(other is null) && (this.GetType() == other.GetType()) && this.Equals(other));
+            // Note that here a default Equivalent() may call into custom Equals(),
+            // so the similar null/type sanity shecks are still relevant.
+            return (!(other is null) && (thisType == other.GetType()) && this.Equals(other));
         }
 
         /// <summary>
