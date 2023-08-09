@@ -251,7 +251,7 @@ namespace CycloneDX.Models
             // Custom logic to squash together two equivalent entries -
             // with same BomRef value but something differing elsewhere
             if (
-                (this.BomRef != null && BomRef.Equals(obj.BomRef)) ||
+                (this.BomRef != null && this.BomRef.Equals(obj.BomRef)) ||
                 (this.Group == obj.Group && this.Name == obj.Name && this.Version == obj.Version)
             ) {
                 // Objects seem equivalent according to critical arguments;
@@ -326,16 +326,38 @@ namespace CycloneDX.Models
                                 if (iDebugLevel >= 4)
                                     Console.WriteLine($"Component.MergeWith(): SCOPE: '{tmpItem}' and '{objItem}'");
 
-                                // Per CycloneDX spec v1.4, absent value "SHOULD" be treated as "required"
+                                // Since CycloneDX spec v1.0 up to at least v1.4,
+                                // an absent value "SHOULD" be treated as "required"
                                 if (tmpItem != ComponentScope.Excluded && objItem != ComponentScope.Excluded)
                                 {
-                                    // keep absent==required; upgrade optional objItem
+                                    // BOTH are not specified
+                                    if (tmpItem == ComponentScope.Null && objItem == ComponentScope.Null)
+                                    {
+                                        if (iDebugLevel >= 4)
+                                            Console.WriteLine($"Component.MergeWith(): SCOPE: keep unspecified explicitly");
+                                        continue;
+                                    }
+
+                                    if (tmpItem == ComponentScope.Optional && objItem == ComponentScope.Optional)
+                                    {
+                                        property.SetValue(tmp, ComponentScope.Optional);
+                                        if (iDebugLevel >= 4)
+                                            Console.WriteLine($"Component.MergeWith(): SCOPE: keep 'Optional'");
+                                        continue;
+                                    }
+
+                                    // Any one (or both) are Required, or Null meaning required:
+                                    // keep absent=>required; upgrade optional objItem
                                     property.SetValue(tmp, ComponentScope.Required);
                                     if (iDebugLevel >= 4)
                                         Console.WriteLine($"Component.MergeWith(): SCOPE: set 'Required'");
                                     continue;
                                 }
 
+                                // NOTE: "excluded" is only defined since CycloneDX spec v1.1 =>
+                                // you should not see it read from v1.0 documents.
+                                // TOTHINK: Theoretically: what if we are asked to output a v1.0
+                                // document after merge of newer documents? Emitter should care...
                                 if (
                                     (tmpItem == ComponentScope.Excluded && objItem == ComponentScope.Optional) ||
                                     (objItem == ComponentScope.Excluded && tmpItem == ComponentScope.Optional)
