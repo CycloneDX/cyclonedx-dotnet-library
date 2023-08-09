@@ -38,7 +38,7 @@ namespace CycloneDX.Utils
                 // Inspired by https://stackoverflow.com/a/4661237/4715872
                 // to craft a List<SpecificType> "result" at run-time:
                 Type listHelperType = typeof(BomEntityListMergeHelper<>);
-                var constructedListHelperType = listHelperType.MakeGenericType(list1[0].GetType());
+                var constructedListHelperType = listHelperType.MakeGenericType(typeof(T));
                 var helper = Activator.CreateInstance(constructedListHelperType);
                 // Gotta use reflection for run-time evaluated type methods:
                 var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>) });
