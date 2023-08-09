@@ -227,9 +227,16 @@ namespace CycloneDX.Models
                 // equality and non-equivalence; throws for
                 // the hard stuff to implement in the catch:
                 bool resBase = base.MergeWith(obj);
-                if (resBase && iDebugLevel >= 1)
+                if (iDebugLevel >= 1)
                 {
-                    Console.WriteLine($"Component.MergeWith(): SKIP: contents are identical, nothing to do");
+                    if (resBase)
+                    {
+                        Console.WriteLine($"Component.MergeWith(): SKIP: contents are identical, nothing to do");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Component.MergeWith(): SKIP: items do not seem related");
+                    }
                 }
                 return resBase;
             }
