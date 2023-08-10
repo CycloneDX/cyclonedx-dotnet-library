@@ -578,7 +578,7 @@ namespace CycloneDX.Models
                                 // Not nullable!
                                 var propValTmp = property.GetValue(tmp, null);
                                 var propValObj = property.GetValue(obj, null);
-                                if (propValTmp == propValObj)
+                                if (propValTmp == propValObj || propValTmp.Equals(propValObj))
                                 {
                                     continue;
                                 }
