@@ -44,10 +44,16 @@ namespace CycloneDX
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
                 iDebugLevel = 0;
 
-            if (list1 is null || list1.Count < 1) return list2;
-            if (list2 is null || list2.Count < 1) return list1;
+            // Rule out utterly empty inputs
+            if ((list1 is null || list1.Count < 1) && (list2 is null || list2.Count < 1))
+            {
+                if (list1 is not null) return list1;
+                if (list2 is not null) return list2;
+                return new List<T>();
+            }
 
-            if (typeof(BomEntity).IsInstanceOfType(list1[0]))
+            // At least one of these entries exists, per above sanity check
+            if (typeof(BomEntity).IsInstanceOfType((!(list1 is null) && list1.Count > 0) ? list1[0] : list2[0]))
             {
                 MethodInfo methodMerge = null;
                 Object helper;
@@ -82,7 +88,11 @@ namespace CycloneDX
 
             // Lists of legacy types (for BomEntity we use BomEntityListMergeHelper<T> class)
             if (iDebugLevel >= 1)
-                Console.WriteLine($"List-Merge for legacy types: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
+                Console.WriteLine($"List-Merge for legacy types: {list1?.GetType()?.ToString()} and {list2?.GetType()?.ToString()}");
+
+            if (list1 is null || list1.Count < 1) return list2;
+            if (list2 is null || list2.Count < 1) return list1;
+
             var result = new List<T>(list1);
 
             foreach (var item in list2)
