@@ -578,7 +578,8 @@ namespace CycloneDX.Models
                                 // Not nullable!
                                 var propValTmp = property.GetValue(tmp, null);
                                 var propValObj = property.GetValue(obj, null);
-                                if (propValTmp == propValObj || propValTmp.Equals(propValObj))
+                                // For some reason, reflected enums do not like getting compared
+                                if (propValTmp == propValObj || propValTmp.Equals(propValObj) || ((Enum)propValTmp).CompareTo((Enum)propValObj) == 0 || propValTmp.ToString().Equals(propValObj.ToString()))
                                 {
                                     continue;
                                 }
