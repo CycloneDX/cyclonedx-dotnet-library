@@ -35,17 +35,5 @@ namespace CycloneDX.Models
         [XmlElement("dependency")]
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
-
-/*
-        public bool Equals(Dependency obj)
-        {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
-        }
-    
-        public override int GetHashCode()
-        {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
-        }
-*/
     }
 }
