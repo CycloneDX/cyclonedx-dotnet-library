@@ -321,6 +321,24 @@ namespace CycloneDX.Models
                 return dict;
             }) ();
 
+        public static Dictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquals =
+            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                var methodDefault = typeof(BomEntity).GetMethod("Equals",
+                    BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
+                    new Type[] { typeof(BomEntity) });
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = type.GetMethod("Equals",
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
+                        new Type[] { type });
+                    if (method == null)
+                        dict[type] = methodDefault;
+                }
+                return dict;
+            }) ();
+
         // Our loops check for some non-BomEntity typed value equalities,
         // so cache their methods if present. Note that this one retains
         // the "null" results to mark that we do not need to look further.
@@ -358,6 +376,24 @@ namespace CycloneDX.Models
                         new Type[] { type });
                     if (method != null)
                         dict[type] = method;
+                }
+                return dict;
+            }) ();
+
+        public static Dictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquivalent =
+            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                var methodDefault = typeof(BomEntity).GetMethod("Equivalent",
+                    BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
+                    new Type[] { typeof(BomEntity) });
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = type.GetMethod("Equivalent",
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
+                        new Type[] { type });
+                    if (method == null)
+                        dict[type] = methodDefault;
                 }
                 return dict;
             }) ();
