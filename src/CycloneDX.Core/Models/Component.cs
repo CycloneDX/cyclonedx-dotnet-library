@@ -250,6 +250,11 @@ namespace CycloneDX.Models
 
             // Custom logic to squash together two equivalent entries -
             // with same BomRef value but something differing elsewhere
+            // TODO: Much of this seems reusable - if other classes get
+            // a need for some fully-fledged MergeWith, consider breaking
+            // this code into helper methods and patterns, so that only
+            // specific property hits would be customized and the default
+            // scaffolding shared.
             if (
                 (this.BomRef != null && this.BomRef.Equals(obj.BomRef)) ||
                 (this.Group == obj.Group && this.Name == obj.Name && this.Version == obj.Version)
