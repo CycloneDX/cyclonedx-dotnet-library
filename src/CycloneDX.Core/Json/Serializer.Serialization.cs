@@ -99,7 +99,7 @@ namespace CycloneDX.Json
             }
             return res;
         }
-
+/*
         internal static string Serialize(Component component)
         {
             Contract.Requires(component != null);
@@ -129,5 +129,6 @@ namespace CycloneDX.Json
             Contract.Requires(vulnerability != null);
             return JsonSerializer.Serialize(vulnerability, _options);
         }
+*/
     }
 }
