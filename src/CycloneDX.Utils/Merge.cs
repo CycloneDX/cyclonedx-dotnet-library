@@ -52,6 +52,11 @@ namespace CycloneDX.Utils
         /// <returns></returns>
         public static Bom FlatMerge(Bom bom1, Bom bom2)
         {
+            return FlatMerge(bom1, bom2, BomEntityListMergeHelperStrategy.Default());
+        }
+
+        public static Bom FlatMerge(Bom bom1, Bom bom2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
+        {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
                 iDebugLevel = 0;
 
@@ -67,14 +72,14 @@ namespace CycloneDX.Utils
             };
 
             var toolsMerger = new ListMergeHelper<Tool>();
-            var tools = toolsMerger.Merge(bom1.Metadata?.Tools, bom2.Metadata?.Tools);
+            var tools = toolsMerger.Merge(bom1.Metadata?.Tools, bom2.Metadata?.Tools, listMergeHelperStrategy);
             if (tools != null)
             {
                 result.Metadata.Tools = tools;
             }
 
             var componentsMerger = new ListMergeHelper<Component>();
-            result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
+            result.Components = componentsMerger.Merge(bom1.Components, bom2.Components, listMergeHelperStrategy);
 
             // Add main component from bom2 as a "yet another component"
             // if missing in that list so far. Note: any more complicated
@@ -110,19 +115,19 @@ namespace CycloneDX.Utils
             }
 
             var servicesMerger = new ListMergeHelper<Service>();
-            result.Services = servicesMerger.Merge(bom1.Services, bom2.Services);
+            result.Services = servicesMerger.Merge(bom1.Services, bom2.Services, listMergeHelperStrategy);
 
             var extRefsMerger = new ListMergeHelper<ExternalReference>();
-            result.ExternalReferences = extRefsMerger.Merge(bom1.ExternalReferences, bom2.ExternalReferences);
+            result.ExternalReferences = extRefsMerger.Merge(bom1.ExternalReferences, bom2.ExternalReferences, listMergeHelperStrategy);
 
             var dependenciesMerger = new ListMergeHelper<Dependency>();
-            result.Dependencies = dependenciesMerger.Merge(bom1.Dependencies, bom2.Dependencies);
+            result.Dependencies = dependenciesMerger.Merge(bom1.Dependencies, bom2.Dependencies, listMergeHelperStrategy);
 
             var compositionsMerger = new ListMergeHelper<Composition>();
-            result.Compositions = compositionsMerger.Merge(bom1.Compositions, bom2.Compositions);
+            result.Compositions = compositionsMerger.Merge(bom1.Compositions, bom2.Compositions, listMergeHelperStrategy);
 
             var vulnerabilitiesMerger = new ListMergeHelper<Vulnerability>();
-            result.Vulnerabilities = vulnerabilitiesMerger.Merge(bom1.Vulnerabilities, bom2.Vulnerabilities);
+            result.Vulnerabilities = vulnerabilitiesMerger.Merge(bom1.Vulnerabilities, bom2.Vulnerabilities, listMergeHelperStrategy);
 
             result = CleanupMetadataComponent(result);
             result = CleanupEmptyLists(result);
@@ -165,17 +170,31 @@ namespace CycloneDX.Utils
         public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
+            BomEntityListMergeHelperStrategy safeStrategy = BomEntityListMergeHelperStrategy.Default();
+            BomEntityListMergeHelperStrategy quickStrategy = BomEntityListMergeHelperStrategy.Default();
+            quickStrategy.useBomEntityMerge = false;
 
             // Note: we were asked to "merge" and so we do, per principle of
             // least surprise - even if there is just one entry in boms[] so
             // we might be inclined to skip the loop. Resulting document WILL
             // differ from such single original (serialNumber, timestamp...)
+            int countBoms = 0;
             foreach (var bom in boms)
             {
-                result = FlatMerge(result, bom);
+                result = FlatMerge(result, bom, quickStrategy);
+                countBoms++;
             }
 
-            if (bomSubject != null)
+            // The quickly-made merged Bom is likely messy (only deduplicating
+            // identical entries). Run another merge, careful this time, over
+            // the resulting collection with a lot fewer items to inspect with
+            // the heavier logic.
+            if (bomSubject is null)
+            {
+                var emptyBom = new Bom();
+                result = FlatMerge(emptyBom, result, safeStrategy);
+            }
+            else
             {
                 // use the params provided if possible: prepare a new document
                 // with desired "metadata/component" and merge differing data
@@ -184,12 +203,15 @@ namespace CycloneDX.Utils
 
                 resultSubj.Metadata.Component = bomSubject;
                 resultSubj.Metadata.Component.BomRef = ComponentBomRefNamespace(result.Metadata.Component);
-                result = FlatMerge(resultSubj, result);
+                result = FlatMerge(resultSubj, result, safeStrategy);
 
                 var mainDependency = new Dependency();
                 mainDependency.Ref = result.Metadata.Component.BomRef;
                 mainDependency.Dependencies = new List<Dependency>();
-                
+
+                // Revisit original Boms which had a metadata/component
+                // to write them up as dependencies of newly injected
+                // top-level product name.
                 foreach (var bom in boms)
                 {
                     if (!(bom.Metadata?.Component is null)) 
