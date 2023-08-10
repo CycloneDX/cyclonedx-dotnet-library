@@ -81,7 +81,6 @@ namespace CycloneDX.Models
         /// </summary>
         public bool useBomEntityMerge;
 
-
         /// <summary>
         /// CycloneDX spec version.
         /// </summary>
@@ -106,115 +105,181 @@ namespace CycloneDX.Models
     {
         public List<T> Merge(List<T> list1, List<T> list2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
-            //return BomUtils.MergeBomEntityLists(list1, list2);
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
                 iDebugLevel = 0;
 
-            if (list1 is null || list1.Count < 1) return list2;
-            if (list2 is null || list2.Count < 1) return list1;
+            // Rule out utterly empty inputs
+            if ((list1 is null || list1.Count < 1) && (list2 is null || list2.Count < 1))
+            {
+                if (list1 is not null) return list1;
+                if (list2 is not null) return list2;
+                return new List<T>();
+            }
 
+            List<T> result = new List<T>();
+
+            // Note: no blind checks for null/empty inputs - part of logic below,
+            // in order to surely de-duplicate even single incoming lists.
             if (!listMergeHelperStrategy.useBomEntityMerge)
             {
                 // Most BomEntity classes are not individually IEquatable to avoid the
                 // copy-paste coding overhead, however they inherit the Equals() and
                 // GetHashCode() methods from their base class.
                 if (iDebugLevel >= 1)
-                    Console.WriteLine($"List-Merge (quick and careless) for BomEntity-derived types: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
+                    Console.WriteLine($"List-Merge (quick and careless) for BomEntity-derived types: {list1?.GetType()?.ToString()} and {list2?.GetType()?.ToString()}");
 
                 List<int> hashList = new List<int>();
-                List<T> resultQ = new List<T>();
+                List<int> hashList2 = new List<int>();
 
                 // Exclude possibly pre-existing identical entries first, then similarly
                 // handle data from the second list. Here we have the "benefit" of lack
                 // of real content merging, so already saved items (and their hashes)
                 // can be treated as immutable.
-                foreach (T item1 in list1)
+                if (!(list1 is null) && list1.Count > 0)
                 {
-                    if (item1 is null) continue;
-                    int hash1 = item1.GetHashCode();
-                    if (hashList.Contains(hash1))
-                        continue;
-                    resultQ.Add(item1);
-                    hashList.Add(hash1);
+                    foreach (T item1 in list1)
+                    {
+                        if (item1 is null) continue;
+                        int hash1 = item1.GetHashCode();
+                        if (hashList.Contains(hash1))
+                        {
+                            if (iDebugLevel >= 1)
+                                Console.WriteLine($"LIST-MERGE: hash table claims duplicate data in original list1: ${item1.SerializeEntity()}");
+                            continue;
+                        }
+                        result.Add(item1);
+                        hashList.Add(hash1);
+                    }
                 }
 
-                foreach (T item2 in list2)
+                if (!(list2 is null) && list2.Count > 0)
                 {
-                    if (item2 is null) continue;
-                    int hash2 = item2.GetHashCode();
-                    if (hashList.Contains(hash2))
-                        continue;
-                    resultQ.Add(item2);
-                    hashList.Add(hash2);
+                    foreach (T item2 in list2)
+                    {
+                        if (item2 is null) continue;
+                        int hash2 = item2.GetHashCode();
+
+                        // For info (track if data is bad or hash is unreliably weak):
+                        if (iDebugLevel >= 1)
+                        {
+                            if (hashList2.Contains(hash2))
+                            {
+                                Console.WriteLine($"LIST-MERGE: hash table claims duplicate data in original list2: ${item2.SerializeEntity()}");
+                            }
+                            hashList2.Add(hash2);
+                        }
+
+                        if (hashList.Contains(hash2))
+                            continue;
+                        result.Add(item2);
+                        hashList.Add(hash2);
+                    }
                 }
 
-                return resultQ;
+                return result;
             }
 
-            if (iDebugLevel >= 1)
-                Console.WriteLine($"List-Merge (careful) for BomEntity derivatives: {list1.GetType().ToString()}");
+            // Here both lists are assumed to possibly have same or equivalent
+            // entries, even inside the same original list (e.g. if prepared by
+            // quick logic above for de-duplicating the major bulk of content).
+            Type TType = ((!(list1 is null) && list1.Count > 0) ? list1[0] : list2[0]).GetType();
 
-            List<T> result = new List<T>(list1);
-            Type TType = list1[0].GetType();
+            if (iDebugLevel >= 1)
+                Console.WriteLine($"List-Merge (careful) for BomEntity derivatives: {TType.ToString()}");
+
             if (!BomEntity.KnownTypeMergeWith.TryGetValue(TType, out var methodMergeWith))
             {
                 methodMergeWith = null;
             }
 
-            foreach (var item2 in list2)
+            // Compact version of loop below; see comments there.
+            // In short, we avoid making a plain copy of list1 so
+            // we can carefully pass each entry to MergeWith()
+            // any suitable other in the same original list.
+            if (!(list1 is null) && list1.Count > 0)
             {
-                bool isContained = false;
-                if (iDebugLevel >= 3)
-                    Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries");
-
-                for (int i=0; i < result.Count; i++)
+                foreach (var item0 in list1)
                 {
-                    if (iDebugLevel >= 3)
-                        Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}");
-                    var item1 = result[i];
-
-                    // Squash contents of the new entry with an already
-                    // existing equivalent (same-ness is subject to
-                    // IEquatable<>.Equals() checks defined in respective
-                    // classes), if there is a method defined there.
-                    // For BomEntity descendant instances we assume that
-                    // they have Equals(), Equivalent() and MergeWith()
-                    // methods defined or inherited as is suitable for
-                    // the particular entity type, hence much less code
-                    // and error-checking than there was in the PoC:
-                    bool resMerge;
-                    if (methodMergeWith != null)
+                    for (int i=0; i < result.Count; i++)
                     {
-                        resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item2});
+                        var item1 = result[i];
+                        bool resMerge;
+                        if (methodMergeWith != null)
+                        {
+                            resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item0});
+                        }
+                        else
+                        {
+                            resMerge = item1.MergeWith(item0);
+                        }
+
+                        if (resMerge)
+                        {
+                            break; // item2 merged into result[item1] or already equal to it
+                        }
+                    }
+                }
+            }
+
+            // Similar logic to the pass above, but with optional logging to
+            // highlight results of merges of the second list into the first.
+            if (!(list2 is null) && list2.Count > 0)
+            {
+                foreach (var item2 in list2)
+                {
+                    bool isContained = false;
+                    if (iDebugLevel >= 3)
+                        Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries");
+
+                    for (int i=0; i < result.Count; i++)
+                    {
+                        if (iDebugLevel >= 3)
+                            Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}");
+                        var item1 = result[i];
+
+                        // Squash contents of the new entry with an already
+                        // existing equivalent (same-ness is subject to
+                        // IEquatable<>.Equals() checks defined in respective
+                        // classes), if there is a method defined there.
+                        // For BomEntity descendant instances we assume that
+                        // they have Equals(), Equivalent() and MergeWith()
+                        // methods defined or inherited as is suitable for
+                        // the particular entity type, hence much less code
+                        // and error-checking than there was in the PoC:
+                        bool resMerge;
+                        if (methodMergeWith != null)
+                        {
+                            resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item2});
+                        }
+                        else
+                        {
+                            resMerge = item1.MergeWith(item2);
+                        }
+                        // MergeWith() may throw BomEntityConflictException which we
+                        // want to propagate to users - their input data is confusing.
+                        // Probably should not throw BomEntityIncompatibleException
+                        // unless the lists truly are of mixed types.
+
+                        if (resMerge)
+                        {
+                            isContained = true;
+                            break; // item2 merged into result[item1] or already equal to it
+                        }
+                    }
+
+                    if (isContained)
+                    {
+                        if (iDebugLevel >= 2)
+                            Console.WriteLine($"ALREADY THERE: {item2.ToString()}");
                     }
                     else
                     {
-                        resMerge = item1.MergeWith(item2);
+                        // Add new entry "as is" (new-ness is subject to
+                        // equality checks of respective classes):
+                        if (iDebugLevel >= 2)
+                            Console.WriteLine($"WILL ADD: {item2.ToString()}");
+                        result.Add(item2);
                     }
-                    // MergeWith() may throw BomEntityConflictException which we
-                    // want to propagate to users - their input data is confusing.
-                    // Probably should not throw BomEntityIncompatibleException
-                    // unless the lists truly are of mixed types.
-
-                    if (resMerge)
-                    {
-                        isContained = true;
-                        break; // item2 merged into result[item1] or already equal to it
-                    }
-                }
-
-                if (isContained)
-                {
-                    if (iDebugLevel >= 2)
-                        Console.WriteLine($"ALREADY THERE: {item2.ToString()}");
-                }
-                else
-                {
-                    // Add new entry "as is" (new-ness is subject to
-                    // equality checks of respective classes):
-                    if (iDebugLevel >= 2)
-                        Console.WriteLine($"WILL ADD: {item2.ToString()}");
-                    result.Add(item2);
                 }
             }
 
