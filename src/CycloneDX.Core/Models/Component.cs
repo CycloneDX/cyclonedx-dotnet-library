@@ -735,6 +735,16 @@ namespace CycloneDX.Models
                     // No failures, only now update the current object:
                     foreach (PropertyInfo property in properties)
                     {
+                        // Avoid spurious "modified=false" in merged JSON
+                        // Also skip helpers, care about real values
+                        if ((property.Name == "Modified" || property.Name == "NonNullableModified") && !(tmp.Modified.HasValue)) {
+                            // Can not set R/O prop: ### this.Modified.HasValue = false;
+                            continue;
+                        }
+                        if ((property.Name == "Scope" || property.Name == "NonNullableScope") && !(tmp.Scope.HasValue)) {
+                            // Can not set R/O prop: ### this.Scope.HasValue = false;
+                            continue;
+                        }
                         property.SetValue(this, property.GetValue(tmp, null));
                     }
                 }
