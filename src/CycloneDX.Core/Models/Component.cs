@@ -272,10 +272,15 @@ namespace CycloneDX.Models
                 {
                     try {
                         // Avoid spurious "modified=false" in merged JSON
-                        if (property.Name == "Modified" && !(this.Modified.HasValue))
+                        // Also skip helpers, care about real values
+                        if ((property.Name == "Modified" || property.Name == "NonNullableModified") && !(this.Modified.HasValue)) {
+                            // Can not set R/O prop: ### tmp.Modified.HasValue = false;
                             continue;
-                        if (property.Name == "Scope" && !(this.Scope.HasValue))
+                        }
+                        if ((property.Name == "Scope" || property.Name == "NonNullableScope") && !(this.Scope.HasValue)) {
+                            // Can not set R/O prop: ### tmp.Scope.HasValue = false;
                             continue;
+                        }
                         property.SetValue(tmp, property.GetValue(this, null));
                     } catch (System.Exception) {
                         // no-op
