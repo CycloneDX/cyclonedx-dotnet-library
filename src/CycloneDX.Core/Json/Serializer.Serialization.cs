@@ -61,7 +61,43 @@ namespace CycloneDX.Json
         internal static string Serialize(BomEntity entity)
         {
             Contract.Requires(entity != null);
-            return JsonSerializer.Serialize(entity, _options);
+            // Default code tends to return serialization of base class
+            // => empty (no props in BomEntity itself) so we have to
+            // coerce it into seeing the object type we need to parse.
+            string res = null;
+            if (BomEntity.KnownEntityTypeLists.TryGetValue(entity.GetType(), out var listInfo)
+                && listInfo != null && listInfo.genericType != null
+                && listInfo.methodAdd != null && listInfo.methodGetItem != null
+            ) {
+                var castList = Activator.CreateInstance(listInfo.genericType);
+                listInfo.methodAdd.Invoke(castList, new object[] { entity });
+                res = JsonSerializer.Serialize(listInfo.methodGetItem.Invoke(castList, new object[] { 0 }), _options);
+            }
+            else
+            {
+                var castEntity = Convert.ChangeType(entity, entity.GetType());
+/*
+                // Inspired by https://stackoverflow.com/a/4661237/4715872
+                // to craft a List<SpecificType> "result" at run-time:
+                Type listHelperType = typeof(BomEntityListMergeHelper<>);
+                var constructedListHelperType = listHelperType.MakeGenericType(list1[0].GetType());
+                var helper = Activator.CreateInstance(constructedListHelperType);
+                // Gotta use reflection for run-time evaluated type methods:
+                var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>) });
+                if (methodMerge != null)
+                {
+                    return (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2});
+                }
+                else
+                {
+                    // Should not get here, but if we do - log and fall through
+                    if (iDebugLevel >= 1)
+                        Console.WriteLine($"Warning: List-Merge for BomEntity failed to find a Merge() helper method: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
+                }
+*/
+                res = JsonSerializer.Serialize(castEntity, _options);
+            }
+            return res;
         }
 
         internal static string Serialize(Component component)
