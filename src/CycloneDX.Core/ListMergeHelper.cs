@@ -47,7 +47,7 @@ namespace CycloneDX
             if (list1 is null || list1.Count < 1) return list2;
             if (list2 is null || list2.Count < 1) return list1;
 
-            if (listMergeHelperStrategy.useBomEntityMerge && typeof(BomEntity).IsInstanceOfType(list1[0]))
+            if (typeof(BomEntity).IsInstanceOfType(list1[0]))
             {
                 MethodInfo methodMerge = null;
                 Object helper;
@@ -65,12 +65,12 @@ namespace CycloneDX
                     var constructedListHelperType = listHelperType.MakeGenericType(typeof(T));
                     helper = Activator.CreateInstance(constructedListHelperType);
                     // Gotta use reflection for run-time evaluated type methods:
-                    methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>) });
+                    methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>), typeof(BomEntityListMergeHelperStrategy) });
                 }
 
                 if (methodMerge != null)
                 {
-                    return (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2});
+                    return (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2, listMergeHelperStrategy});
                 }
                 else
                 {

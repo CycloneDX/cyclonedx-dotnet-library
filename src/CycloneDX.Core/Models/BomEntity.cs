@@ -104,7 +104,7 @@ namespace CycloneDX.Models
 
     public class BomEntityListMergeHelper<T> where T : BomEntity
     {
-        public List<T> Merge(List<T> list1, List<T> list2)
+        public List<T> Merge(List<T> list1, List<T> list2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             //return BomUtils.MergeBomEntityLists(list1, list2);
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
@@ -113,8 +113,46 @@ namespace CycloneDX.Models
             if (list1 is null || list1.Count < 1) return list2;
             if (list2 is null || list2.Count < 1) return list1;
 
+            if (!listMergeHelperStrategy.useBomEntityMerge)
+            {
+                // Most BomEntity classes are not individually IEquatable to avoid the
+                // copy-paste coding overhead, however they inherit the Equals() and
+                // GetHashCode() methods from their base class.
+                if (iDebugLevel >= 1)
+                    Console.WriteLine($"List-Merge (quick and careless) for BomEntity-derived types: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
+
+                List<int> hashList = new List<int>();
+                List<T> resultQ = new List<T>();
+
+                // Exclude possibly pre-existing identical entries first, then similarly
+                // handle data from the second list. Here we have the "benefit" of lack
+                // of real content merging, so already saved items (and their hashes)
+                // can be treated as immutable.
+                foreach (T item1 in list1)
+                {
+                    if (item1 is null) continue;
+                    int hash1 = item1.GetHashCode();
+                    if (hashList.Contains(hash1))
+                        continue;
+                    resultQ.Add(item1);
+                    hashList.Add(hash1);
+                }
+
+                foreach (T item2 in list2)
+                {
+                    if (item2 is null) continue;
+                    int hash2 = item2.GetHashCode();
+                    if (hashList.Contains(hash2))
+                        continue;
+                    resultQ.Add(item2);
+                    hashList.Add(hash2);
+                }
+
+                return resultQ;
+            }
+
             if (iDebugLevel >= 1)
-                Console.WriteLine($"List-Merge for BomEntity derivatives: {list1.GetType().ToString()}");
+                Console.WriteLine($"List-Merge (careful) for BomEntity derivatives: {list1.GetType().ToString()}");
 
             List<T> result = new List<T>(list1);
             Type TType = list1[0].GetType();
@@ -299,7 +337,7 @@ namespace CycloneDX.Models
                     if (LType != null)
                     {
                         // Gotta use reflection for run-time evaluated type methods:
-                        var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { LType, LType });
+                        var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { LType, LType, typeof(BomEntityListMergeHelperStrategy) });
                         if (methodMerge != null)
                         {
                             dict[type] = new BomEntityListMergeHelperReflection();
