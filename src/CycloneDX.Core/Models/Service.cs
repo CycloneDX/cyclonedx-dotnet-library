@@ -123,16 +123,5 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(14)]
         public List<Property> Properties { get; set; }
-/*
-        public bool Equals(Service obj)
-        {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
-        }
-    
-        public override int GetHashCode()
-        {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
-        }
-*/
     }
 }

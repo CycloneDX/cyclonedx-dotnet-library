@@ -201,18 +201,6 @@ namespace CycloneDX.Models
         public ReleaseNotes ReleaseNotes { get; set; }
         public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
 
-/*
-        public bool Equals(Component obj)
-        {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
-        }
-*/
-
         public bool Equivalent(Component obj)
         {
             return (!(obj is null) && this.BomRef == obj.BomRef);
@@ -263,14 +251,14 @@ namespace CycloneDX.Models
                 // merge the attribute values with help of reflection:
                 if (iDebugLevel >= 1)
                     Console.WriteLine($"Component.MergeWith(): items seem related - investigate properties: {this.BomRef} / {this.Group} : {this.Name} : {this.Version}");
-                PropertyInfo[] properties = BomEntity.KnownEntityTypeProperties[this.GetType()]; //this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
+                PropertyInfo[] properties = BomEntity.KnownEntityTypeProperties[this.GetType()];
                 if (iDebugLevel >= 2)
                     Console.WriteLine($"Component.MergeWith(): items seem related - investigate properties: num {properties.Length}: {properties.ToString()}");
 
                 // Use a temporary clone instead of mangling "this" object right away;
                 // note serialization seems to skip over "nonnullable" values in some cases
                 Component tmp = new Component();
-                /* This fails due to copy of "non-null" fields which may be null:
+                /* This copier fails due to copy of "non-null" fields which may be null:
                  *   tmp = JsonSerializer.Deserialize<Component>(CycloneDX.Json.Serializer.Serialize(this));
                  */
                 foreach (PropertyInfo property in properties)
@@ -301,10 +289,7 @@ namespace CycloneDX.Models
                     {
                         case Type _ when property.PropertyType == typeof(Nullable):
                             break;
-/*
-                        case Type _ when property.PropertyType == typeof(Nullable[]):
-                            break;
-*/
+
                         case Type _ when property.PropertyType == typeof(ComponentScope):
                             {
                                 // NOTE: Intentionally not matching <System.Nullable`1[CycloneDX.Models.Component+ComponentScope]>'Scope' helper
@@ -591,7 +576,6 @@ namespace CycloneDX.Models
                         default:
                             {
                                 if (
-                                    /* property.CustomAttributes.Any(x => x.AttributeType.Name == "NullableAttribute") || */
                                     property.PropertyType.Name.StartsWith("Nullable") ||
                                     property.PropertyType.ToString().StartsWith("System.Nullable")
                                 )
@@ -641,7 +625,8 @@ namespace CycloneDX.Models
                                     }
                                 }
 
-
+                                // Track the result of comparison, and if we did find and
+                                // run a method for comparison (the result was "learned"):
                                 bool propsSeemEqual = false;
                                 bool propsSeemEqualLearned = false;
 

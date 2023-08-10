@@ -46,18 +46,5 @@ namespace CycloneDX.Models
         [ProtoMember(5)]
         public List<ExternalReference> ExternalReferences { get; set; }
         public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
-/*
-        public bool Equals(Tool obj)
-        {
-            //return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
-            return base.Equals(obj);
-        }
-    
-        public override int GetHashCode()
-        {
-            //return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
-            return base.GetHashCode();
-        }
-*/
     }
 }
