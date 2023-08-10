@@ -297,6 +297,7 @@ namespace CycloneDX.Models
 */
                         case Type _ when property.PropertyType == typeof(ComponentScope):
                             {
+                                // NOTE: Intentionally not matching <System.Nullable`1[CycloneDX.Models.Component+ComponentScope]>'Scope' helper
                                 // Not nullable! Quickly keep un-set if applicable.
                                 if (!(obj.Scope.HasValue) && !(tmp.Scope.HasValue))
                                     continue;
@@ -584,7 +585,7 @@ namespace CycloneDX.Models
                                 )
                                 {
                                     // e.g. <System.Nullable`1[CycloneDX.Models.Component+ComponentScope]>'Scope' helper
-                                    // followed by <System.Nullable`1[CycloneDX.Models.Component+ComponentScope]>'Scope'
+                                    // followed by '{ComponentScope NonNullableScope}'
                                     // which we specially handle above
                                     if (iDebugLevel >= 5)
                                         Console.WriteLine($"Component.MergeWith(): SKIP NullableAttribute");
