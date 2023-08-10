@@ -33,6 +33,14 @@ namespace CycloneDX.Json
     public static partial class Serializer
     {
         private static JsonSerializerOptions _options = Utils.GetJsonSerializerOptions();
+        private static readonly JsonSerializerOptions _options_compact = new Func<JsonSerializerOptions>(() =>
+            {
+                JsonSerializerOptions opts = Utils.GetJsonSerializerOptions();
+                opts.AllowTrailingCommas = false;
+                opts.WriteIndented = false;
+
+                return opts;
+            }) ();
 
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.
@@ -59,11 +67,36 @@ namespace CycloneDX.Json
         }
 
         /// <summary>
-        /// Return serialization of a class derived from BomEntity.
+        /// Return serialization of a class derived from BomEntity
+        /// with common JsonSerializerOptions defined for this class.
         /// </summary>
         /// <param name="entity">A BomEntity-derived class</param>
         /// <returns>String with JSON markup</returns>
         internal static string Serialize(BomEntity entity)
+        {
+            return Serialize(entity, _options);
+        }
+
+        /// <summary>
+        /// Return serialization of a class derived from BomEntity
+        /// with compact JsonSerializerOptions aimed at minimal
+        /// markup (harder to read for humans, less bytes to parse).
+        /// </summary>
+        /// <param name="entity">A BomEntity-derived class</param>
+        /// <returns>String with JSON markup</returns>
+        internal static string SerializeCompact(BomEntity entity)
+        {
+            return Serialize(entity, _options_compact);
+        }
+
+        /// <summary>
+        /// Return serialization of a class derived from BomEntity
+        /// with caller-specified JsonSerializerOptions.
+        /// </summary>
+        /// <param name="entity">A BomEntity-derived class</param>
+        /// <param name="options">Options for serializer</param>
+        /// <returns>String with JSON markup</returns>
+        internal static string Serialize(BomEntity entity, JsonSerializerOptions jserOptions)
         {
             Contract.Requires(entity != null);
             // Default code tends to return serialization of base class
@@ -79,12 +112,12 @@ namespace CycloneDX.Json
             ) {
                 var castList = Activator.CreateInstance(listInfo.genericType);
                 listInfo.methodAdd.Invoke(castList, new object[] { entity });
-                res = JsonSerializer.Serialize(listInfo.methodGetItem.Invoke(castList, new object[] { 0 }), _options);
+                res = JsonSerializer.Serialize(listInfo.methodGetItem.Invoke(castList, new object[] { 0 }), jserOptions);
             }
             else
             {
                 var castEntity = Convert.ChangeType(entity, entity.GetType());
-                res = JsonSerializer.Serialize(castEntity, _options);
+                res = JsonSerializer.Serialize(castEntity, jserOptions);
             }
             return res;
         }
