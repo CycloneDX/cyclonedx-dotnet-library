@@ -423,7 +423,7 @@ namespace CycloneDX.Models
                                 }
                                 else
                                 {
-                                    if (iDebugLevel >= 4)
+                                    if (iDebugLevel >= 1)
                                         Console.WriteLine($"Component.MergeWith(): No cached info about BomEntityListReflection[{LType}]");
                                     propCount = LType.GetProperty("Count");
                                     methodGetItem = LType.GetMethod("get_Item");
@@ -464,15 +464,22 @@ namespace CycloneDX.Models
 
                                 if (!KnownTypeEquals.TryGetValue(TType, out var methodEquals))
                                 {
-                                    if (KnownOtherTypeEquals.TryGetValue(TType, out var methodEquals2))
+                                    if (KnownDefaultEquals.TryGetValue(TType, out var methodEquals2))
                                     {
                                         methodEquals = methodEquals2;
                                     }
                                     else
                                     {
-                                        methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
-                                        if (iDebugLevel >= 1)
-                                            Console.WriteLine($"Component.MergeWith(): had to look for {TType}.Equals()... found? {methodEquals != null}");
+                                        if (KnownOtherTypeEquals.TryGetValue(TType, out var methodEquals3))
+                                        {
+                                            methodEquals = methodEquals3;
+                                        }
+                                        else
+                                        {
+                                            methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
+                                            if (iDebugLevel >= 1)
+                                                Console.WriteLine($"Component.MergeWith(): had to look for {TType}.Equals()... found? {methodEquals != null}");
+                                        }
                                     }
                                 }
 
@@ -597,17 +604,25 @@ namespace CycloneDX.Models
                                 var TType = propValTmp.GetType();
                                 if (!KnownTypeEquals.TryGetValue(TType, out var methodEquals))
                                 {
-                                    if (KnownOtherTypeEquals.TryGetValue(TType, out var methodEquals2))
+                                    if (KnownDefaultEquals.TryGetValue(TType, out var methodEquals2))
                                     {
                                         methodEquals = methodEquals2;
                                     }
                                     else
                                     {
-                                        methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
-                                        if (iDebugLevel >= 1)
-                                            Console.WriteLine($"Component.MergeWith(): had to look for {TType}.Equals()... found? {methodEquals != null}");
+                                        if (KnownOtherTypeEquals.TryGetValue(TType, out var methodEquals3))
+                                        {
+                                            methodEquals = methodEquals3;
+                                        }
+                                        else
+                                        {
+                                            methodEquals = TType.GetMethod("Equals", 0, new Type[] { TType });
+                                            if (iDebugLevel >= 1)
+                                                Console.WriteLine($"Component.MergeWith(): had to look for {TType}.Equals()... found? {methodEquals != null}");
+                                        }
                                     }
                                 }
+
 
                                 bool propsSeemEqual = false;
                                 bool propsSeemEqualLearned = false;
