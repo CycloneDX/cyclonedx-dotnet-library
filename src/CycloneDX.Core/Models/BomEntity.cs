@@ -293,13 +293,16 @@ namespace CycloneDX.Models
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 var jserClassType = typeof(CycloneDX.Json.Serializer);
+                var methodDefault = jserClassType.GetMethod("Serialize",
+                    BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic,
+                    new Type[] { typeof(BomEntity) });
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 foreach (var type in KnownEntityTypes)
                 {
                     var method = jserClassType.GetMethod("Serialize",
-                        BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic,
+                        BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.DeclaredOnly,
                         new Type[] { type });
-                    if (method != null)
+                    if (method != null && method != methodDefault)
                         dict[type] = method;
                 }
                 return dict;
