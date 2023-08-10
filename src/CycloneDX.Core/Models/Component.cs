@@ -496,7 +496,7 @@ namespace CycloneDX.Models
                                         continue;
 
                                     bool listHit = false;
-                                    for (int t = 0; t < propValTmpCount; t++)
+                                    for (int t = 0; t < propValTmpCount && !listHit; t++)
                                     {
                                         var tmpItem = methodGetItem.Invoke(propValTmp, new object[] { t });
                                         if (tmpItem != null)
