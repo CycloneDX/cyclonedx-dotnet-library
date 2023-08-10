@@ -64,6 +64,44 @@ namespace CycloneDX.Models
         { }
     }
 
+    /// <summary>
+    /// Global configuration helper for ListMergeHelper<T>,
+    /// BomEntityListMergeHelper<T>, Merge.cs implementations
+    /// and related codebase.
+    /// </summary>
+    public class BomEntityListMergeHelperStrategy
+    {
+        /// <summary>
+        /// Cause ListMergeHelper<T> to consider calling
+        /// the BomEntityListMergeHelper->Merge which in
+        /// turn calls BomEntity->MergeWith() in a loop,
+        /// vs. just comparing entities for equality and
+        /// deduplicating based on that (goes faster but
+        /// may cause data structure not conforming to spec)
+        /// </summary>
+        public bool useBomEntityMerge;
+
+
+        /// <summary>
+        /// CycloneDX spec version.
+        /// </summary>
+        public SpecificationVersion specificationVersion;
+
+        /// <summary>
+        /// Return reasonable default strategy settings.
+        /// </summary>
+        /// <returns>A new ListMergeHelperStrategy instance
+        /// which the callers can tune to their liking.</returns>
+        public static BomEntityListMergeHelperStrategy Default()
+        {
+            return new BomEntityListMergeHelperStrategy()
+            {
+                useBomEntityMerge = true,
+                specificationVersion = SpecificationVersionHelpers.CurrentVersion
+            };
+        }
+    }
+
     public class BomEntityListMergeHelper<T> where T : BomEntity
     {
         public List<T> Merge(List<T> list1, List<T> list2)

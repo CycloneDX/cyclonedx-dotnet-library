@@ -36,13 +36,18 @@ namespace CycloneDX
     {
         public List<T> Merge(List<T> list1, List<T> list2)
         {
+            return Merge(list1, list2, BomEntityListMergeHelperStrategy.Default());
+        }
+
+        public List<T> Merge(List<T> list1, List<T> list2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
+        {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
                 iDebugLevel = 0;
 
             if (list1 is null || list1.Count < 1) return list2;
             if (list2 is null || list2.Count < 1) return list1;
 
-            if (typeof(BomEntity).IsInstanceOfType(list1[0]))
+            if (listMergeHelperStrategy.useBomEntityMerge && typeof(BomEntity).IsInstanceOfType(list1[0]))
             {
                 MethodInfo methodMerge = null;
                 Object helper;
