@@ -444,7 +444,7 @@ namespace CycloneDX.Models
                 return res1;
             }
 
-            var res = CycloneDX.Json.Serializer.Serialize(this);
+            var res = CycloneDX.Json.Serializer.SerializeCompact(this);
             return res;
         }
 
