@@ -233,6 +233,10 @@ namespace CycloneDX.Models
                     dict[type].methodGetItem = constructedListType.GetMethod("get_Item");
                     dict[type].methodAdd = constructedListType.GetMethod("Add", 0, new Type[] { type });
                     dict[type].methodAddRange = constructedListType.GetMethod("AddRange", 0, new Type[] { constructedListType });
+
+                    // Avoid: No cached info about BomEntityListReflection[System.Collections.Generic.List`1[CycloneDX.Models.ExternalReference]]
+                    // TODO: Separate dict?..
+                    dict[constructedListType] = dict[type];
                 }
                 return dict;
             }) ();
