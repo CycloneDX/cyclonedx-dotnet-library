@@ -297,7 +297,10 @@ namespace CycloneDX.Models
 */
                         case Type _ when property.PropertyType == typeof(ComponentScope):
                             {
-                                // Not nullable!
+                                // Not nullable! Quickly keep un-set if applicable.
+                                if (!(obj.Scope.HasValue) && !(tmp.Scope.HasValue))
+                                    continue;
+
                                 ComponentScope tmpItem;
                                 try
                                 {
