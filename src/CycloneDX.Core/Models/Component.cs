@@ -387,7 +387,9 @@ namespace CycloneDX.Models
 
                         case Type _ when (property.Name == "NonNullableModified"):
                             {
-                                // Not nullable!
+                                // Not nullable! Keep un-set if applicable.
+                                if (!obj.Modified.HasValue)
+                                    continue;
                                 bool tmpItem = (bool)property.GetValue(tmp, null);
                                 bool objItem = (bool)property.GetValue(obj, null);
 
