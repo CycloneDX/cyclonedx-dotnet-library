@@ -591,6 +591,7 @@ namespace CycloneDX.Models
                             {
                                 if (
                                     /* property.CustomAttributes.Any(x => x.AttributeType.Name == "NullableAttribute") || */
+                                    property.PropertyType.Name.StartsWith("Nullable") ||
                                     property.PropertyType.ToString().StartsWith("System.Nullable")
                                 )
                                 {
