@@ -42,13 +42,21 @@ namespace CycloneDX
         public List<T> Merge(List<T> list1, List<T> list2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+            {
                 iDebugLevel = 0;
+            }
 
             // Rule out utterly empty inputs
             if ((list1 is null || list1.Count < 1) && (list2 is null || list2.Count < 1))
             {
-                if (list1 is not null) return list1;
-                if (list2 is not null) return list2;
+                if (list1 is not null)
+                {
+                    return list1;
+                }
+                if (list2 is not null)
+                {
+                    return list2;
+                }
                 return new List<T>();
             }
 
@@ -71,7 +79,7 @@ namespace CycloneDX
                     var constructedListHelperType = listHelperType.MakeGenericType(typeof(T));
                     helper = Activator.CreateInstance(constructedListHelperType);
                     // Gotta use reflection for run-time evaluated type methods:
-                    methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { typeof(List<T>), typeof(List<T>), typeof(BomEntityListMergeHelperStrategy) });
+                    methodMerge = constructedListHelperType.GetMethod("Merge", 0, new [] { typeof(List<T>), typeof(List<T>), typeof(BomEntityListMergeHelperStrategy) });
                 }
 
                 if (methodMerge != null)
@@ -82,16 +90,26 @@ namespace CycloneDX
                 {
                     // Should not get here, but if we do - log and fall through
                     if (iDebugLevel >= 1)
+                    {
                         Console.WriteLine($"Warning: List-Merge for BomEntity failed to find a Merge() helper method: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
+                    }
                 }
             }
 
             // Lists of legacy types (for BomEntity we use BomEntityListMergeHelper<T> class)
             if (iDebugLevel >= 1)
+            {
                 Console.WriteLine($"List-Merge for legacy types: {list1?.GetType()?.ToString()} and {list2?.GetType()?.ToString()}");
+            }
 
-            if (list1 is null || list1.Count < 1) return list2;
-            if (list2 is null || list2.Count < 1) return list1;
+            if (list1 is null || list1.Count < 1)
+            {
+                return list2;
+            }
+            if (list2 is null || list2.Count < 1)
+            {
+                return list1;
+            }
 
             var result = new List<T>(list1);
 

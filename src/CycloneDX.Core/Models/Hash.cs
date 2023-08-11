@@ -63,32 +63,32 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public string Content { get; set; }
 
-        public bool Equivalent(Hash other)
+        public bool Equivalent(Hash obj)
         {
-            return (!(other is null) && this.Alg == other.Alg);
+            return (!(obj is null) && this.Alg == obj.Alg);
         }
 
-        public bool MergeWith(Hash other)
+        public bool MergeWith(Hash obj)
         {
             try
             {
                 // Basic checks for null, type compatibility,
                 // equality and non-equivalence; throws for
                 // the hard stuff to implement in the catch:
-                return base.MergeWith(other);
+                return base.MergeWith(obj);
             }
             catch (BomEntityConflictException)
             {
                 // Note: Alg is non-nullable so no check for that
-                if (this.Content is null && !(other.Content is null))
+                if (this.Content is null && !(obj.Content is null))
                 {
-                    this.Content = other.Content;
+                    this.Content = obj.Content;
                     return true;
                 }
 
-                if (this.Content != other.Content)
+                if (this.Content != obj.Content)
                 {
-                    throw new BomEntityConflictException("Two Hash objects with same Alg='${this.Alg}' and different Content: '${this.Content}' vs. '${other.Content}'");
+                    throw new BomEntityConflictException($"Two Hash objects with same Alg='{this.Alg}' and different Content: '{this.Content}' vs. '{obj.Content}'");
                 }
 
                 // All known properties merged or were equal/equivalent
