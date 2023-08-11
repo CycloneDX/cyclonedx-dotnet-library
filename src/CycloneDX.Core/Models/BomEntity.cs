@@ -80,12 +80,12 @@ namespace CycloneDX.Models
         /// deduplicating based on that (goes faster but
         /// may cause data structure not conforming to spec)
         /// </summary>
-        public bool useBomEntityMerge;
+        public bool useBomEntityMerge { get; set; }
 
         /// <summary>
         /// CycloneDX spec version.
         /// </summary>
-        public SpecificationVersion specificationVersion;
+        public SpecificationVersion specificationVersion { get; set; }
 
         /// <summary>
         /// Return reasonable default strategy settings.
@@ -320,18 +320,18 @@ namespace CycloneDX.Models
 
     public class BomEntityListReflection
     {
-        public Type genericType;
-        public PropertyInfo propCount;
-        public MethodInfo methodAdd;
-        public MethodInfo methodAddRange;
-        public MethodInfo methodGetItem;
+        public Type genericType { get; set; }
+        public PropertyInfo propCount { get; set; }
+        public MethodInfo methodAdd { get; set; }
+        public MethodInfo methodAddRange { get; set; }
+        public MethodInfo methodGetItem { get; set; }
     }
 
     public class BomEntityListMergeHelperReflection
     {
-        public Type genericType;
-        public MethodInfo methodMerge;
-        public Object helperInstance;
+        public Type genericType { get; set; }
+        public MethodInfo methodMerge { get; set; }
+        public Object helperInstance { get; set; }
     }
 
     /// <summary>
