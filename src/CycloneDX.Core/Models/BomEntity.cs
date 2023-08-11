@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
@@ -354,8 +355,8 @@ namespace CycloneDX.Models
         /// <summary>
         /// List of classes derived from BomEntity, prepared startically at start time.
         /// </summary>
-        public static readonly List<Type> KnownEntityTypes =
-            new Func<List<Type>>(() =>
+        public static readonly ImmutableList<Type> KnownEntityTypes =
+            new Func<ImmutableList<Type>>(() =>
             {
                 List<Type> derived_types = new List<Type>();
                 foreach (var domain_assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -365,7 +366,7 @@ namespace CycloneDX.Models
 
                     derived_types.AddRange(assembly_types);
                 }
-                return derived_types;
+                return ImmutableList.Create(derived_types.ToArray());
             }) ();
 
         /// <summary>
@@ -373,19 +374,19 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom Equals() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        public static readonly Dictionary<Type, System.Reflection.PropertyInfo[]> KnownEntityTypeProperties =
-            new Func<Dictionary<Type, System.Reflection.PropertyInfo[]>>(() =>
+        public static readonly ImmutableDictionary<Type, System.Reflection.PropertyInfo[]> KnownEntityTypeProperties =
+            new Func<ImmutableDictionary<Type, System.Reflection.PropertyInfo[]>>(() =>
             {
                 Dictionary<Type, System.Reflection.PropertyInfo[]> dict = new Dictionary<Type, System.Reflection.PropertyInfo[]>();
                 foreach (var type in KnownEntityTypes)
                 {
                     dict[type] = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
-        public static readonly Dictionary<Type, BomEntityListReflection> KnownEntityTypeLists =
-            new Func<Dictionary<Type, BomEntityListReflection>>(() =>
+        public static readonly ImmutableDictionary<Type, BomEntityListReflection> KnownEntityTypeLists =
+            new Func<ImmutableDictionary<Type, BomEntityListReflection>>(() =>
             {
                 Dictionary<Type, BomEntityListReflection> dict = new Dictionary<Type, BomEntityListReflection>();
                 foreach (var type in KnownEntityTypes)
@@ -409,11 +410,11 @@ namespace CycloneDX.Models
                     // TODO: Separate dict?..
                     dict[constructedListType] = dict[type];
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
-        public static readonly Dictionary<Type, BomEntityListMergeHelperReflection> KnownBomEntityListMergeHelpers =
-            new Func<Dictionary<Type, BomEntityListMergeHelperReflection>>(() =>
+        public static readonly ImmutableDictionary<Type, BomEntityListMergeHelperReflection> KnownBomEntityListMergeHelpers =
+            new Func<ImmutableDictionary<Type, BomEntityListMergeHelperReflection>>(() =>
             {
                 Dictionary<Type, BomEntityListMergeHelperReflection> dict = new Dictionary<Type, BomEntityListMergeHelperReflection>();
                 foreach (var type in KnownEntityTypes)
@@ -452,7 +453,7 @@ namespace CycloneDX.Models
                         throw new InvalidOperationException($"BomEntityListMergeHelper<{type}> lacks a List class definition");
                     }
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
         /// <summary>
@@ -460,8 +461,8 @@ namespace CycloneDX.Models
         /// MethodInfo about custom CycloneDX.Json.Serializer.Serialize()
         /// implementations (if present), prepared startically at start time.
         /// </summary>
-        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownTypeSerializers =
-            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownTypeSerializers =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 var jserClassType = typeof(CycloneDX.Json.Serializer);
                 var methodDefault = jserClassType.GetMethod("Serialize",
@@ -478,7 +479,7 @@ namespace CycloneDX.Models
                         dict[type] = method;
                     }
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
         /// <summary>
@@ -486,8 +487,8 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom Equals() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquals =
-            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownTypeEquals =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 foreach (var type in KnownEntityTypes)
@@ -500,11 +501,11 @@ namespace CycloneDX.Models
                         dict[type] = method;
                     }
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
-        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquals =
-            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquals =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 var methodDefault = typeof(BomEntity).GetMethod("Equals",
@@ -520,14 +521,14 @@ namespace CycloneDX.Models
                         dict[type] = methodDefault;
                     }
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
         // Our loops check for some non-BomEntity typed value equalities,
         // so cache their methods if present. Note that this one retains
         // the "null" results to mark that we do not need to look further.
-        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownOtherTypeEquals =
-            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownOtherTypeEquals =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 var listMore = new List<Type>();
@@ -541,7 +542,7 @@ namespace CycloneDX.Models
                         new [] { type });
                     dict[type] = method;
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
         /// <summary>
@@ -549,8 +550,8 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom Equivalent() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquivalent =
-            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownTypeEquivalent =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 foreach (var type in KnownEntityTypes)
@@ -563,11 +564,11 @@ namespace CycloneDX.Models
                         dict[type] = method;
                     }
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
-        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquivalent =
-            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquivalent =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 var methodDefault = typeof(BomEntity).GetMethod("Equivalent",
@@ -583,7 +584,7 @@ namespace CycloneDX.Models
                         dict[type] = methodDefault;
                     }
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
         /// <summary>
@@ -591,8 +592,8 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom MergeWith() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownTypeMergeWith =
-            new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownTypeMergeWith =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 foreach (var type in KnownEntityTypes)
@@ -605,7 +606,7 @@ namespace CycloneDX.Models
                         dict[type] = method;
                     }
                 }
-                return dict;
+                return ImmutableDictionary.CreateRange(dict);
             }) ();
 
         protected BomEntity()
