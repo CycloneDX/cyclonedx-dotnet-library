@@ -28,11 +28,11 @@ namespace CycloneDX.Models
     public class BomEntityConflictException : Exception
     {
         public BomEntityConflictException()
-            : base(String.Format("Unresolvable conflict in Bom entities"))
+            : base("Unresolvable conflict in Bom entities")
         { }
 
         public BomEntityConflictException(Type type)
-            : base(String.Format("Unresolvable conflict in Bom entities of type {0}", type.ToString()))
+            : base(String.Format("Unresolvable conflict in Bom entities of type {0}", type))
         { }
 
         public BomEntityConflictException(string msg)
@@ -40,7 +40,7 @@ namespace CycloneDX.Models
         { }
 
         public BomEntityConflictException(string msg, Type type)
-            : base(String.Format("Unresolvable conflict in Bom entities of type {0}: {1}", type.ToString(), msg))
+            : base(String.Format("Unresolvable conflict in Bom entities of type {0}: {1}", type, msg))
         { }
     }
 
@@ -48,11 +48,11 @@ namespace CycloneDX.Models
     public class BomEntityIncompatibleException : Exception
     {
         public BomEntityIncompatibleException()
-            : base(String.Format("Comparing incompatible Bom entities"))
+            : base("Comparing incompatible Bom entities")
         { }
 
         public BomEntityIncompatibleException(Type type1, Type type2)
-            : base(String.Format("Comparing incompatible Bom entities of types {0} and {1}", type1.ToString(), type2.ToString()))
+            : base(String.Format("Comparing incompatible Bom entities of types {0} and {1}", type1, type2))
         { }
 
         public BomEntityIncompatibleException(string msg)
@@ -60,7 +60,7 @@ namespace CycloneDX.Models
         { }
 
         public BomEntityIncompatibleException(string msg, Type type1, Type type2)
-            : base(String.Format("Comparing incompatible Bom entities of types {0} and {1}: {2}", type1.ToString(), type2.ToString(), msg))
+            : base(String.Format("Comparing incompatible Bom entities of types {0} and {1}: {2}", type1, type2, msg))
         { }
     }
 
@@ -93,7 +93,7 @@ namespace CycloneDX.Models
         /// which the callers can tune to their liking.</returns>
         public static BomEntityListMergeHelperStrategy Default()
         {
-            return new BomEntityListMergeHelperStrategy()
+            return new BomEntityListMergeHelperStrategy
             {
                 useBomEntityMerge = true,
                 specificationVersion = SpecificationVersionHelpers.CurrentVersion
@@ -106,13 +106,21 @@ namespace CycloneDX.Models
         public List<T> Merge(List<T> list1, List<T> list2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+            {
                 iDebugLevel = 0;
+            }
 
             // Rule out utterly empty inputs
             if ((list1 is null || list1.Count < 1) && (list2 is null || list2.Count < 1))
             {
-                if (list1 is not null) return list1;
-                if (list2 is not null) return list2;
+                if (list1 is not null)
+                {
+                    return list1;
+                }
+                if (list2 is not null)
+                {
+                    return list2;
+                }
                 return new List<T>();
             }
 
@@ -126,7 +134,9 @@ namespace CycloneDX.Models
                 // copy-paste coding overhead, however they inherit the Equals() and
                 // GetHashCode() methods from their base class.
                 if (iDebugLevel >= 1)
+                {
                     Console.WriteLine($"List-Merge (quick and careless) for BomEntity-derived types: {list1?.GetType()?.ToString()} and {list2?.GetType()?.ToString()}");
+                }
 
                 List<int> hashList = new List<int>();
                 List<int> hashList2 = new List<int>();
@@ -139,12 +149,17 @@ namespace CycloneDX.Models
                 {
                     foreach (T item1 in list1)
                     {
-                        if (item1 is null) continue;
+                        if (item1 is null)
+                        {
+                            continue;
+                        }
                         int hash1 = item1.GetHashCode();
                         if (hashList.Contains(hash1))
                         {
                             if (iDebugLevel >= 1)
+                            {
                                 Console.WriteLine($"LIST-MERGE: hash table claims duplicate data in original list1: ${item1.SerializeEntity()}");
+                            }
                             continue;
                         }
                         result.Add(item1);
@@ -156,7 +171,10 @@ namespace CycloneDX.Models
                 {
                     foreach (T item2 in list2)
                     {
-                        if (item2 is null) continue;
+                        if (item2 is null)
+                        {
+                            continue;
+                        }
                         int hash2 = item2.GetHashCode();
 
                         // For info (track if data is bad or hash is unreliably weak):
@@ -170,7 +188,9 @@ namespace CycloneDX.Models
                         }
 
                         if (hashList.Contains(hash2))
+                        {
                             continue;
+                        }
                         result.Add(item2);
                         hashList.Add(hash2);
                     }
@@ -185,7 +205,9 @@ namespace CycloneDX.Models
             Type TType = ((!(list1 is null) && list1.Count > 0) ? list1[0] : list2[0]).GetType();
 
             if (iDebugLevel >= 1)
+            {
                 Console.WriteLine($"List-Merge (careful) for BomEntity derivatives: {TType.ToString()}");
+            }
 
             if (!BomEntity.KnownTypeMergeWith.TryGetValue(TType, out var methodMergeWith))
             {
@@ -229,12 +251,16 @@ namespace CycloneDX.Models
                 {
                     bool isContained = false;
                     if (iDebugLevel >= 3)
+                    {
                         Console.WriteLine($"result<{TType.ToString()}> now contains {result.Count} entries");
+                    }
 
                     for (int i=0; i < result.Count; i++)
                     {
                         if (iDebugLevel >= 3)
+                        {
                             Console.WriteLine($"result<{TType.ToString()}>: checking entry #{i}");
+                        }
                         var item1 = result[i];
 
                         // Squash contents of the new entry with an already
@@ -270,14 +296,18 @@ namespace CycloneDX.Models
                     if (isContained)
                     {
                         if (iDebugLevel >= 2)
+                        {
                             Console.WriteLine($"ALREADY THERE: {item2.ToString()}");
+                        }
                     }
                     else
                     {
                         // Add new entry "as is" (new-ness is subject to
                         // equality checks of respective classes):
                         if (iDebugLevel >= 2)
+                        {
                             Console.WriteLine($"WILL ADD: {item2.ToString()}");
+                        }
                         result.Add(item2);
                     }
                 }
@@ -324,7 +354,7 @@ namespace CycloneDX.Models
         /// <summary>
         /// List of classes derived from BomEntity, prepared startically at start time.
         /// </summary>
-        public static List<Type> KnownEntityTypes =
+        public static readonly List<Type> KnownEntityTypes =
             new Func<List<Type>>(() =>
             {
                 List<Type> derived_types = new List<Type>();
@@ -343,7 +373,7 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom Equals() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        public static Dictionary<Type, System.Reflection.PropertyInfo[]> KnownEntityTypeProperties =
+        public static readonly Dictionary<Type, System.Reflection.PropertyInfo[]> KnownEntityTypeProperties =
             new Func<Dictionary<Type, System.Reflection.PropertyInfo[]>>(() =>
             {
                 Dictionary<Type, System.Reflection.PropertyInfo[]> dict = new Dictionary<Type, System.Reflection.PropertyInfo[]>();
@@ -354,7 +384,7 @@ namespace CycloneDX.Models
                 return dict;
             }) ();
 
-        public static Dictionary<Type, BomEntityListReflection> KnownEntityTypeLists =
+        public static readonly Dictionary<Type, BomEntityListReflection> KnownEntityTypeLists =
             new Func<Dictionary<Type, BomEntityListReflection>>(() =>
             {
                 Dictionary<Type, BomEntityListReflection> dict = new Dictionary<Type, BomEntityListReflection>();
@@ -364,7 +394,7 @@ namespace CycloneDX.Models
                     // to craft a List<SpecificType> "result" at run-time:
                     Type listType = typeof(List<>);
                     Type constructedListType = listType.MakeGenericType(type);
-                    // Needed? var helper = Activator.CreateInstance(constructedListType);
+                    // Would we want to stach a pre-created helper instance as Activator.CreateInstance(constructedListType) ?
 
                     dict[type] = new BomEntityListReflection();
                     dict[type].genericType = constructedListType;
@@ -372,8 +402,8 @@ namespace CycloneDX.Models
                     // Gotta use reflection for run-time evaluated type methods:
                     dict[type].propCount = constructedListType.GetProperty("Count");
                     dict[type].methodGetItem = constructedListType.GetMethod("get_Item");
-                    dict[type].methodAdd = constructedListType.GetMethod("Add", 0, new Type[] { type });
-                    dict[type].methodAddRange = constructedListType.GetMethod("AddRange", 0, new Type[] { constructedListType });
+                    dict[type].methodAdd = constructedListType.GetMethod("Add", 0, new [] { type });
+                    dict[type].methodAddRange = constructedListType.GetMethod("AddRange", 0, new [] { constructedListType });
 
                     // Avoid: No cached info about BomEntityListReflection[System.Collections.Generic.List`1[CycloneDX.Models.ExternalReference]]
                     // TODO: Separate dict?..
@@ -382,7 +412,7 @@ namespace CycloneDX.Models
                 return dict;
             }) ();
 
-        public static Dictionary<Type, BomEntityListMergeHelperReflection> KnownBomEntityListMergeHelpers =
+        public static readonly Dictionary<Type, BomEntityListMergeHelperReflection> KnownBomEntityListMergeHelpers =
             new Func<Dictionary<Type, BomEntityListMergeHelperReflection>>(() =>
             {
                 Dictionary<Type, BomEntityListMergeHelperReflection> dict = new Dictionary<Type, BomEntityListMergeHelperReflection>();
@@ -402,14 +432,14 @@ namespace CycloneDX.Models
                     if (LType != null)
                     {
                         // Gotta use reflection for run-time evaluated type methods:
-                        var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new Type[] { LType, LType, typeof(BomEntityListMergeHelperStrategy) });
+                        var methodMerge = constructedListHelperType.GetMethod("Merge", 0, new [] { LType, LType, typeof(BomEntityListMergeHelperStrategy) });
                         if (methodMerge != null)
                         {
                             dict[type] = new BomEntityListMergeHelperReflection();
                             dict[type].genericType = constructedListHelperType;
                             dict[type].methodMerge = methodMerge;
                             dict[type].helperInstance = helper;
-                            // Callers would return (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2});
+                            // Callers would return something like (List<T>)methodMerge.Invoke(helper, new object[] {list1, list2})
                         }
                         else
                         {
@@ -430,21 +460,23 @@ namespace CycloneDX.Models
         /// MethodInfo about custom CycloneDX.Json.Serializer.Serialize()
         /// implementations (if present), prepared startically at start time.
         /// </summary>
-        public static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeSerializers =
+        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownTypeSerializers =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 var jserClassType = typeof(CycloneDX.Json.Serializer);
                 var methodDefault = jserClassType.GetMethod("Serialize",
                     BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic,
-                    new Type[] { typeof(BomEntity) });
+                    new [] { typeof(BomEntity) });
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 foreach (var type in KnownEntityTypes)
                 {
                     var method = jserClassType.GetMethod("Serialize",
                         BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.DeclaredOnly,
-                        new Type[] { type });
+                        new [] { type });
                     if (method != null && method != methodDefault)
+                    {
                         dict[type] = method;
+                    }
                 }
                 return dict;
             }) ();
@@ -454,7 +486,7 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom Equals() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        public static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquals =
+        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquals =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
@@ -462,27 +494,31 @@ namespace CycloneDX.Models
                 {
                     var method = type.GetMethod("Equals",
                         BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                        new Type[] { type });
+                        new [] { type });
                     if (method != null)
+                    {
                         dict[type] = method;
+                    }
                 }
                 return dict;
             }) ();
 
-        public static Dictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquals =
+        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquals =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 var methodDefault = typeof(BomEntity).GetMethod("Equals",
                     BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                    new Type[] { typeof(BomEntity) });
+                    new [] { typeof(BomEntity) });
                 foreach (var type in KnownEntityTypes)
                 {
                     var method = type.GetMethod("Equals",
                         BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                        new Type[] { type });
+                        new [] { type });
                     if (method == null)
+                    {
                         dict[type] = methodDefault;
+                    }
                 }
                 return dict;
             }) ();
@@ -490,7 +526,7 @@ namespace CycloneDX.Models
         // Our loops check for some non-BomEntity typed value equalities,
         // so cache their methods if present. Note that this one retains
         // the "null" results to mark that we do not need to look further.
-        public static Dictionary<Type, System.Reflection.MethodInfo> KnownOtherTypeEquals =
+        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownOtherTypeEquals =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
@@ -502,7 +538,7 @@ namespace CycloneDX.Models
                 {
                     var method = type.GetMethod("Equals",
                         BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                        new Type[] { type });
+                        new [] { type });
                     dict[type] = method;
                 }
                 return dict;
@@ -513,7 +549,7 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom Equivalent() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        public static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquivalent =
+        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownTypeEquivalent =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
@@ -521,27 +557,31 @@ namespace CycloneDX.Models
                 {
                     var method = type.GetMethod("Equivalent",
                         BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                        new Type[] { type });
+                        new [] { type });
                     if (method != null)
+                    {
                         dict[type] = method;
+                    }
                 }
                 return dict;
             }) ();
 
-        public static Dictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquivalent =
+        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownDefaultEquivalent =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 var methodDefault = typeof(BomEntity).GetMethod("Equivalent",
                     BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                    new Type[] { typeof(BomEntity) });
+                    new [] { typeof(BomEntity) });
                 foreach (var type in KnownEntityTypes)
                 {
                     var method = type.GetMethod("Equivalent",
                         BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                        new Type[] { type });
+                        new [] { type });
                     if (method == null)
+                    {
                         dict[type] = methodDefault;
+                    }
                 }
                 return dict;
             }) ();
@@ -551,7 +591,7 @@ namespace CycloneDX.Models
         /// MethodInfo about their custom MergeWith() method implementations
         /// (if present), prepared startically at start time.
         /// </summary>
-        public static Dictionary<Type, System.Reflection.MethodInfo> KnownTypeMergeWith =
+        public static readonly Dictionary<Type, System.Reflection.MethodInfo> KnownTypeMergeWith =
             new Func<Dictionary<Type, System.Reflection.MethodInfo>>(() =>
             {
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
@@ -559,16 +599,18 @@ namespace CycloneDX.Models
                 {
                     var method = type.GetMethod("MergeWith",
                         BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                        new Type[] { type });
+                        new [] { type });
                     if (method != null)
+                    {
                         dict[type] = method;
+                    }
                 }
                 return dict;
             }) ();
 
         protected BomEntity()
         {
-            // a bad alternative to private is to: throw new NotImplementedException("The BomEntity class directly should not be instantiated");
+            // a bad alternative to private could be to: throw new NotImplementedException("The BomEntity class directly should not be instantiated")
         }
 
         /// <summary>
@@ -600,20 +642,33 @@ namespace CycloneDX.Models
         /// should be by default aware and capable of ultimately serializing the properties
         /// relevant to each derived class.
         /// </summary>
-        /// <param name="other">Another BomEntity-derived object of same type</param>
+        /// <param name="obj">Another BomEntity-derived object of same type</param>
         /// <returns>True if two objects are deemed equal</returns>
-        public bool Equals(BomEntity other)
+        public bool Equals(BomEntity obj)
         {
             Type thisType = this.GetType();
             if (KnownTypeEquals.TryGetValue(thisType, out var methodEquals))
             {
-                return (bool)methodEquals.Invoke(this, new object[] {other});
+                return (bool)methodEquals.Invoke(this, new object[] {obj});
             }
 
-            if (other is null || thisType != other.GetType()) return false;
-            return this.SerializeEntity() == other.SerializeEntity();
+            if (obj is null || thisType != obj.GetType())
+            {
+                return false;
+            }
+            return this.SerializeEntity() == obj.SerializeEntity();
         }
-    
+
+        // Needed by IEquatable contract
+        public override bool Equals(Object obj)
+        {
+            if (obj is null || !(obj is BomEntity))
+            {
+                return false;
+            }
+            return this.Equals((BomEntity)obj);
+        }
+
         public override int GetHashCode()
         {
             return this.SerializeEntity().GetHashCode();
@@ -626,23 +681,23 @@ namespace CycloneDX.Models
         /// are not) by defining an implementation tailored to that derived type
         /// as the argument, or keep this default where equiality is equivalence.
         /// </summary>
-        /// <param name="other">Another object of same type</param>
+        /// <param name="obj">Another object of same type</param>
         /// <returns>True if two data objects are considered to represent
         /// the same real-life entity, False otherwise.</returns>
-        public bool Equivalent(BomEntity other)
+        public bool Equivalent(BomEntity obj)
         {
             Type thisType = this.GetType();
             if (KnownTypeEquivalent.TryGetValue(thisType, out var methodEquivalent))
             {
-                // Note we do not check for null/type of "other" at this point
+                // Note we do not check for null/type of "obj" at this point
                 // since the derived classes define the logic of equivalence
                 // (possibly to other entity subtypes as well).
-                return (bool)methodEquivalent.Invoke(this, new object[] {other});
+                return (bool)methodEquivalent.Invoke(this, new object[] {obj});
             }
 
             // Note that here a default Equivalent() may call into custom Equals(),
             // so the similar null/type sanity shecks are still relevant.
-            return (!(other is null) && (thisType == other.GetType()) && this.Equals(other));
+            return (!(obj is null) && (thisType == obj.GetType()) && this.Equals(obj));
         }
 
         /// <summary>
@@ -653,7 +708,7 @@ namespace CycloneDX.Models
         /// Treats a null "other" object as a success (it is effectively a
         /// no-op merge, which keeps "this" object as is).
         /// </summary>
-        /// <param name="other">Another object of same type whose additional
+        /// <param name="obj">Another object of same type whose additional
         /// non-conflicting data we try to squash into this object.</param>
         /// <returns>True if merge was successful, False if it these objects
         /// are not equivalent, or throws if merge can not be done (including
@@ -661,24 +716,33 @@ namespace CycloneDX.Models
         /// </returns>
         /// <exception cref="BomEntityConflictException">Source data problem: two entities with conflicting information</exception>
         /// <exception cref="BomEntityIncompatibleException">Caller error: somehow merging different entity types</exception>
-        public bool MergeWith(BomEntity other)
+        public bool MergeWith(BomEntity obj)
         {
-            if (other is null) return true;
-            if (this.GetType() != other.GetType())
+            if (obj is null)
+            {
+                return true;
+            }
+            if (this.GetType() != obj.GetType())
             {
                 // Note: potentially descendent classes can catch this
                 // to adapt their behavior... if some two different
                 // classes would ever describe something comparable
                 // in real life.
-                throw new BomEntityIncompatibleException(this.GetType(), other.GetType());
+                throw new BomEntityIncompatibleException(this.GetType(), obj.GetType());
             }
 
-            if (this.Equals(other)) return true;
+            if (this.Equals(obj))
+            {
+                return true;
+            }
             // Avoid calling Equals => serializer twice for no gain
             // (default equivalence is equality):
             if (KnownTypeEquivalent.TryGetValue(this.GetType(), out var methodEquivalent))
             {
-                if (!this.Equivalent(other)) return false;
+                if (!this.Equivalent(obj))
+                {
+                    return false;
+                }
                 // else fall through to exception below
             }
             else

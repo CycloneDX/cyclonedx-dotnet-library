@@ -58,7 +58,9 @@ namespace CycloneDX.Utils
         public static Bom FlatMerge(Bom bom1, Bom bom2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+            {
                 iDebugLevel = 0;
+            }
 
             var result = new Bom();
             result.Metadata = new Metadata
@@ -95,21 +97,27 @@ namespace CycloneDX.Utils
                 // twice should be effectively no-op); try to merge instead:
 
                 if (iDebugLevel >= 1)
+                {
                     Console.WriteLine($"FLAT-MERGE: bom1comp='{bom1.Metadata?.Component}' bom-ref1='{bom1.Metadata?.Component?.BomRef}' bom2comp='{bom2.Metadata?.Component}' bom-ref2='{bom2.Metadata?.Component?.BomRef}'");
+                }
 
                 if (!(bom1.Metadata?.Component is null) && (bom2.Metadata.Component.Equals(bom1.Metadata.Component)
                 || (!(bom1.Metadata?.Component?.BomRef is null) && !(bom2.Metadata?.Component?.BomRef is null) && (bom1.Metadata.Component.BomRef == bom2.Metadata.Component.BomRef))))
                 {
                     // bom1's entry is not null and seems equivalent to bom2's:
-                if (iDebugLevel >= 1)
+                    if (iDebugLevel >= 1)
+                    {
                         Console.WriteLine($"FLAT-MERGE: bom1.Metadata.Component is already equivalent to bom2.Metadata.Component: merging");
+                    }
                     result.Metadata.Component = bom1.Metadata.Component;
                     result.Metadata.Component.MergeWith(bom2.Metadata.Component);
                 }
                 else
                 {
-                if (iDebugLevel >= 1)
+                    if (iDebugLevel >= 1)
+                    {
                         Console.WriteLine($"FLAT-MERGE: bom1.Metadata.Component is missing or not equivalent to bom2.Metadata.Component: adding new entry into components[]");
+                    }
                     result.Components.Add(bom2.Metadata.Component);
                 }
             }
@@ -256,7 +264,10 @@ namespace CycloneDX.Utils
 
             if (bomSubject != null)
             {
-                if (bomSubject.BomRef is null) bomSubject.BomRef = ComponentBomRefNamespace(bomSubject);
+                if (bomSubject.BomRef is null)
+                {
+                    bomSubject.BomRef = ComponentBomRefNamespace(bomSubject);
+                }
                 result.Metadata.Component = bomSubject;
                 result.Metadata.Tools = new List<Tool>();
             }
@@ -365,23 +376,38 @@ namespace CycloneDX.Utils
         public static Bom CleanupMetadataComponent(Bom result)
         {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
+            {
                 iDebugLevel = 0;
+            }
 
             if (iDebugLevel >= 1)
+            {
                 Console.WriteLine($"MERGE-CLEANUP: metadata/component/bom-ref='{result.Metadata?.Component?.BomRef}'");
+            }
+
             if (!(result.Metadata.Component is null) && !(result.Components is null) && (result.Components?.Count > 0) && result.Components.Contains(result.Metadata.Component))
             {
                 if (iDebugLevel >= 2)
+                {
                     Console.WriteLine($"MERGE-CLEANUP: Searching in list");
+                }
                 foreach (Component component in result.Components)
                 {
                     if (iDebugLevel >= 2)
+                    {
                         Console.WriteLine($"MERGE-CLEANUP: Looking at a bom-ref='{component?.BomRef}'");
-                    if (component is null) continue; // should not happen
+                    }
+                    if (component is null)
+                    {
+                        // should not happen, but...
+                        continue;
+                    }
                     if (component.Equals(result.Components) || component.BomRef.Equals(result.Metadata.Component.BomRef))
                     {
                         if (iDebugLevel >= 1)
+                        {
                             Console.WriteLine($"MERGE-CLEANUP: Found in list: merging, cleaning...");
+                        }
                         result.Metadata.Component.MergeWith(component);
                         result.Components.Remove(component);
                         return result;
@@ -390,20 +416,49 @@ namespace CycloneDX.Utils
             }
 
             if (iDebugLevel >= 1)
+            {
                 Console.WriteLine($"MERGE-CLEANUP: NO HITS");
+            }
             return result;
         }
 
         public static Bom CleanupEmptyLists(Bom result)
         {
             // cleanup empty top level elements
-            if (result.Metadata?.Tools?.Count == 0) result.Metadata.Tools = null;
-            if (result.Components?.Count == 0) result.Components = null;
-            if (result.Services?.Count == 0) result.Services = null;
-            if (result.ExternalReferences?.Count == 0) result.ExternalReferences = null;
-            if (result.Dependencies?.Count == 0) result.Dependencies = null;
-            if (result.Compositions?.Count == 0) result.Compositions = null;
-            if (result.Vulnerabilities?.Count == 0) result.Vulnerabilities = null;
+            if (result.Metadata?.Tools?.Count == 0)
+            {
+                result.Metadata.Tools = null;
+            }
+
+            if (result.Components?.Count == 0)
+            {
+                result.Components = null;
+            }
+
+            if (result.Services?.Count == 0)
+            {
+                result.Services = null;
+            }
+
+            if (result.ExternalReferences?.Count == 0)
+            {
+                result.ExternalReferences = null;
+            }
+
+            if (result.Dependencies?.Count == 0)
+            {
+                result.Dependencies = null;
+            }
+
+            if (result.Compositions?.Count == 0)
+            {
+                result.Compositions = null;
+            }
+
+            if (result.Vulnerabilities?.Count == 0)
+            {
+                result.Vulnerabilities = null;
+            }
 
             return result;
         }
@@ -435,9 +490,11 @@ namespace CycloneDX.Utils
                 var currentComponent = components.Pop();
 
                 if (currentComponent.Components != null)
-                foreach (var subComponent in currentComponent.Components)
                 {
-                    components.Push(subComponent);
+                    foreach (var subComponent in currentComponent.Components)
+                    {
+                        components.Push(subComponent);
+                    }
                 }
 
                 currentComponent.BomRef = NamespacedBomRef(topComponent, currentComponent.BomRef);
@@ -473,9 +530,11 @@ namespace CycloneDX.Utils
                 var dependency = pendingDependencies.Pop();
 
                 if (dependency.Dependencies != null)
-                foreach (var subDependency in dependency.Dependencies)
                 {
-                    pendingDependencies.Push(subDependency);
+                    foreach (var subDependency in dependency.Dependencies)
+                    {
+                        pendingDependencies.Push(subDependency);
+                    }
                 }
 
                 dependency.Ref = NamespacedBomRef(bomRefNamespace, dependency.Ref);
@@ -487,16 +546,20 @@ namespace CycloneDX.Utils
             foreach (var composition in compositions)
             {
                 if (composition.Assemblies != null)
+                {
                     for (var i=0; i<composition.Assemblies.Count; i++)
                     {
                         composition.Assemblies[i] = NamespacedBomRef(bomRefNamespace, composition.Assemblies[i]);
                     }
+                }
 
                 if (composition.Dependencies != null)
+                {
                     for (var i=0; i<composition.Dependencies.Count; i++)
                     {
                         composition.Dependencies[i] = NamespacedBomRef(bomRefNamespace, composition.Dependencies[i]);
                     }
+                }
             }
         }
     }
