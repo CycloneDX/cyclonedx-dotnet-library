@@ -27,9 +27,14 @@ namespace CycloneDX
     /// Allows to merge generic lists with items of specified types
     /// (by default essentially adding entries which are not present
     /// yet according to List.Contains() method), and calls special
-    /// logic for lists of BomEntry types.
+    /// logic for lists of BomEntry types.<br/>
+    ///
     /// Used in CycloneDX.Utils various Merge implementations as well
-    /// as in CycloneDX.Core BomEntity-derived classes' MergeWith().
+    /// as in CycloneDX.Core BomEntity-derived classes' MergeWith().<br/>
+    ///
+    /// Does not modify original lists and returns a new instance
+    /// with merged data. One exception is if one of the inputs is
+    /// null or empty - then the other object is returned.
     /// </summary>
     /// <typeparam name="T">Type of listed entries</typeparam>
     public class ListMergeHelper<T>
