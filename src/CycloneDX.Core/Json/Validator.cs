@@ -166,6 +166,15 @@ namespace CycloneDX.Json
             }
         }
 
+        /// <summary>
+        /// Merge two dictionaries whose values are lists of JsonElements,
+        /// adding all entries from list in dict2 for the same key as in
+        /// dict1 (or adds a new entry for a new key). Manipulates a COPY
+        /// of dict1, then returns this copy.
+        /// </summary>
+        /// <param name="dict1">Dict with lists as values</param>
+        /// <param name="dict2">Dict with lists as values</param>
+        /// <returns>Copy of dict1+dict2</returns>
         private static Dictionary<string, List<JsonElement>> addDictList(
             Dictionary<string, List<JsonElement>> dict1,
             Dictionary<string, List<JsonElement>> dict2)
