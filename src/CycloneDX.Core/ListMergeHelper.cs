@@ -54,11 +54,11 @@ namespace CycloneDX
             // Rule out utterly empty inputs
             if ((list1 is null || list1.Count < 1) && (list2 is null || list2.Count < 1))
             {
-                if (list1 is not null)
+                if (!(list1 is null))
                 {
                     return list1;
                 }
-                if (list2 is not null)
+                if (!(list2 is null))
                 {
                     return list2;
                 }
