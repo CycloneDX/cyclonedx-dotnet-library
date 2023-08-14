@@ -301,6 +301,16 @@ namespace CycloneDX.Json
                         validationMessages.Add($"'bom-ref' value of {KVP.Key}: expected 1 mention, actual {KVP.Value.Count}");
                     }
                 }
+
+                // Check that if we "ref" something (from dependencies, etc.)
+                // the corresponding "bom-ref" exists in this document:
+                List<string> bomRefsList = new List<string>(bomRefs.Keys);
+                Dictionary<string, List<JsonElement>> useRefs = findNamedElements(jsonDocument.RootElement, "ref");
+                foreach (KeyValuePair<string, List<JsonElement>> KVP in useRefs) {
+                    if (KVP.Value != null && KVP.Value.Count > 0 && !(bomRefsList.Contains(KVP.Key))) {
+                        validationMessages.Add($"'ref' value of {KVP.Key} was used in {KVP.Value.Count} place(s); expected a 'bom-ref' defined for it, but there was none");
+                    }
+                }
             }
             else
             {
