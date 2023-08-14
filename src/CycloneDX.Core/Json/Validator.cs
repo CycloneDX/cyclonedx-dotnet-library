@@ -166,6 +166,15 @@ namespace CycloneDX.Json
             }
         }
 
+        /// <summary>
+        /// Merge two dictionaries whose values are lists of JsonElements,
+        /// adding all entries from list in dict2 for the same key as in
+        /// dict1 (or adds a new entry for a new key). Manipulates a COPY
+        /// of dict1, then returns this copy.
+        /// </summary>
+        /// <param name="dict1">Dict with lists as values</param>
+        /// <param name="dict2">Dict with lists as values</param>
+        /// <returns>Copy of dict1+dict2</returns>
         private static Dictionary<string, List<JsonElement>> addDictList(
             Dictionary<string, List<JsonElement>> dict1,
             Dictionary<string, List<JsonElement>> dict2)
@@ -290,6 +299,16 @@ namespace CycloneDX.Json
                 foreach (KeyValuePair<string, List<JsonElement>> KVP in bomRefs) {
                     if (KVP.Value != null && KVP.Value.Count != 1) {
                         validationMessages.Add($"'bom-ref' value of {KVP.Key}: expected 1 mention, actual {KVP.Value.Count}");
+                    }
+                }
+
+                // Check that if we "ref" something (from dependencies, etc.)
+                // the corresponding "bom-ref" exists in this document:
+                List<string> bomRefsList = new List<string>(bomRefs.Keys);
+                Dictionary<string, List<JsonElement>> useRefs = findNamedElements(jsonDocument.RootElement, "ref");
+                foreach (KeyValuePair<string, List<JsonElement>> KVP in useRefs) {
+                    if (KVP.Value != null && KVP.Value.Count > 0 && !(bomRefsList.Contains(KVP.Key))) {
+                        validationMessages.Add($"'ref' value of {KVP.Key} was used in {KVP.Value.Count} place(s); expected a 'bom-ref' defined for it, but there was none");
                     }
                 }
             }
