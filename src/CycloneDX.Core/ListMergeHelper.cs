@@ -96,7 +96,7 @@ namespace CycloneDX
                     // Should not get here, but if we do - log and fall through
                     if (iDebugLevel >= 1)
                     {
-                        Console.WriteLine($"Warning: List-Merge for BomEntity failed to find a Merge() helper method: {list1.GetType().ToString()} and {list2.GetType().ToString()}");
+                        Console.WriteLine($"Warning: List-Merge for BomEntity failed to find a Merge() helper method: {list1?.GetType()?.ToString()} and {list2?.GetType()?.ToString()}");
                     }
                 }
             }
