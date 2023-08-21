@@ -197,6 +197,9 @@ namespace CycloneDX.Utils
             // identical entries). Run another merge, careful this time, over
             // the resulting collection with a lot fewer items to inspect with
             // the heavier logic.
+            // TODO: Add reference to this build of cyclonedx-cli to the
+            // metadata/tools of the merged BOM document. After all - any bugs
+            // due to merge routines are our own...
             if (bomSubject is null)
             {
                 var emptyBom = new Bom();
@@ -422,9 +425,13 @@ namespace CycloneDX.Utils
             return result;
         }
 
+        /// <summary>
+        /// Clean up empty top level elements.
+        /// </summary>
+        /// <param name="result">A Bom document</param>
+        /// <returns>Resulting document (whether modified or not)</returns>
         public static Bom CleanupEmptyLists(Bom result)
         {
-            // cleanup empty top level elements
             if (result.Metadata?.Tools?.Count == 0)
             {
                 result.Metadata.Tools = null;
