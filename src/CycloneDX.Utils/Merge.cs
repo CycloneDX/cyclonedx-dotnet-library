@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using CycloneDX;
 using CycloneDX.Models;
@@ -183,6 +184,16 @@ namespace CycloneDX.Utils
             BomEntityListMergeHelperStrategy quickStrategy = BomEntityListMergeHelperStrategy.Default();
             quickStrategy.useBomEntityMerge = false;
 
+            // Sanity-check: we will do evil things in Components.MergeWith()
+            // among others, and hash-code based quick deduplication, which
+            // may potentially lead to loss of info. Keep track of "bom-ref"
+            // values we had incoming, and what we would see in the merged
+            // document eventually.
+            // TODO: Adapt if we would later rename conflicting entries on
+            // the fly. These dictionaries can help actually. See details in
+            // https://github.com/CycloneDX/cyclonedx-dotnet-library/pull/245#issuecomment-1686079370
+            Dictionary<string, int> dictBomRefsInput = CountBomRefs(result);
+
             // Note: we were asked to "merge" and so we do, per principle of
             // least surprise - even if there is just one entry in boms[] so
             // we might be inclined to skip the loop. Resulting document WILL
@@ -190,6 +201,8 @@ namespace CycloneDX.Utils
             int countBoms = 0;
             foreach (var bom in boms)
             {
+                if (countBoms > 1)
+                CountBomRefs(bom, ref dictBomRefsInput);
                 result = FlatMerge(result, bom, quickStrategy);
                 countBoms++;
             }
@@ -274,6 +287,13 @@ namespace CycloneDX.Utils
             result = CleanupMetadataComponent(result);
             result = CleanupEmptyLists(result);
             result = CleanupSortLists(result);
+
+            // Final sanity-check:
+            Dictionary<string, int> dictBomRefsResult = CountBomRefs(result);
+            if (!Enumerable.SequenceEqual(dictBomRefsResult.Keys.OrderBy(e => e), dictBomRefsInput.Keys.OrderBy(e => e)))
+            {
+                Console.WriteLine("WARNING: Different sets of 'bom-ref' in the resulting document vs. original input files!");
+            }
 
             return result;
         }
@@ -557,6 +577,142 @@ namespace CycloneDX.Utils
             }
 
             return result;
+        }
+
+        // Currently our MergeWith() logic has potential to mess with
+        // Component bom entities (later maybe more), and generally
+        // the document-wide uniqueness of BomRefs is a sore point, so
+        // we want them all accounted "before and after" the (flat) merge.
+        // Code below reuses the same dictionary object as initialized
+        // once for the Bom document's caller, to go faster about it:
+        private static void BumpDictCounter<T>(T key, ref Dictionary<T, int> dict) {
+            if (dict.ContainsKey(key)) {
+                dict[key]++;
+                return;
+            }
+            dict[key] = 1;
+        }
+
+        private static void CountBomRefs(Component obj, ref Dictionary<string, int> dict) {
+            if (obj is null)
+            {
+                return;
+            }
+
+            if (obj.BomRef != null)
+            {
+                BumpDictCounter<string>(obj.BomRef, ref dict);
+            }
+
+            if (obj.Components != null && obj.Components.Count > 0)
+            {
+                foreach (Component child in obj.Components)
+                {
+                    CountBomRefs(child, ref dict);
+                }
+            }
+
+            if (obj.Pedigree != null)
+            {
+                if (obj.Pedigree.Ancestors != null && obj.Pedigree.Ancestors.Count > 0)
+                {
+                    foreach (Component child in obj.Pedigree.Ancestors)
+                    {
+                        CountBomRefs(child, ref dict);
+                    }
+                }
+
+                if (obj.Pedigree.Descendants != null && obj.Pedigree.Descendants.Count > 0)
+                {
+                    foreach (Component child in obj.Pedigree.Descendants)
+                    {
+                        CountBomRefs(child, ref dict);
+                    }
+                }
+
+                if (obj.Pedigree.Variants != null && obj.Pedigree.Variants.Count > 0)
+                {
+                    foreach (Component child in obj.Pedigree.Variants)
+                    {
+                        CountBomRefs(child, ref dict);
+                    }
+                }
+            }
+        }
+
+        private static void CountBomRefs(Service obj, ref Dictionary<string, int> dict) {
+            if (obj is null)
+            {
+                return;
+            }
+
+            if (obj.BomRef != null)
+            {
+                BumpDictCounter<string>(obj.BomRef, ref dict);
+            }
+
+            if (obj.Services != null && obj.Services.Count > 0)
+            {
+                foreach (Service child in obj.Services)
+                {
+                    CountBomRefs(child, ref dict);
+                }
+            }
+        }
+
+        private static void CountBomRefs(Vulnerability obj, ref Dictionary<string, int> dict) {
+            if (obj is null)
+            {
+                return;
+            }
+
+            if (obj.BomRef != null)
+            {
+                BumpDictCounter<string>(obj.BomRef, ref dict);
+            }
+
+            // Note: Vulnerability objects are not nested (as of CDX 1.4)
+        }
+
+        private static void CountBomRefs(Bom bom, ref Dictionary<string, int> dict) {
+            if (bom is null)
+            {
+                return;
+            }
+
+            if (bom.Metadata?.Component != null) {
+                CountBomRefs(bom.Metadata.Component, ref dict);
+            }
+
+            if (bom.Components != null && bom.Components.Count > 0)
+            {
+                foreach (Component child in bom.Components)
+                {
+                    CountBomRefs(child, ref dict);
+                }
+            }
+
+            if (bom.Services != null && bom.Services.Count > 0)
+            {
+                foreach (Service child in bom.Services)
+                {
+                    CountBomRefs(child, ref dict);
+                }
+            }
+
+            if (bom.Vulnerabilities != null && bom.Vulnerabilities.Count > 0)
+            {
+                foreach (Vulnerability child in bom.Vulnerabilities)
+                {
+                    CountBomRefs(child, ref dict);
+                }
+            }
+        }
+
+        private static Dictionary<string, int> CountBomRefs(Bom bom) {
+            var dict = new Dictionary<string, int>();
+            CountBomRefs(bom, ref dict);
+            return dict;
         }
 
         private static string NamespacedBomRef(Component bomSubject, string bomRef)
