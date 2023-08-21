@@ -261,6 +261,7 @@ namespace CycloneDX.Utils
                 // from earlier collected result into this structure.
                 resultSubj.Metadata.Component = bomSubject;
                 resultSubj.Metadata.Component.BomRef = ComponentBomRefNamespace(result.Metadata.Component);
+                CountBomRefs(resultSubj, ref dictBomRefsInput);
                 result = FlatMerge(resultSubj, result, safeStrategy);
 
                 var mainDependency = new Dependency();
