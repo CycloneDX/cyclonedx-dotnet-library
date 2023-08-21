@@ -675,9 +675,18 @@ namespace CycloneDX.Models
             return this.Equals((BomEntity)obj);
         }
 
+        /// <summary>
+        /// Returns hash code of the string returned by
+        /// `this.SerializeEntity()` (typically a compact
+        /// JSON representation) plus the length of this
+        /// string to randomize it a bit against hash
+        /// collisions. Never saw those, but just in case.
+        /// </summary>
+        /// <returns>Int hash code</returns>
         public override int GetHashCode()
         {
-            return this.SerializeEntity().GetHashCode();
+            string ser = this.SerializeEntity();
+            return ser.GetHashCode() + ser.Length;
         }
 
         /// <summary>
