@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using CycloneDX;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
@@ -197,21 +198,54 @@ namespace CycloneDX.Utils
             // identical entries). Run another merge, careful this time, over
             // the resulting collection with a lot fewer items to inspect with
             // the heavier logic.
-            // TODO: Add reference to this build of cyclonedx-cli to the
-            // metadata/tools of the merged BOM document. After all - any bugs
-            // due to merge routines are our own...
+            var resultSubj = new Bom();
+
+            // Add reference to this currently running build of cyclonedx-cli
+            // (likely) and this cyclonedx-dotnet-library into the metadata/tools
+            // of the merged BOM document. After all - any bugs appearing due
+            // to merge routines are our own and should be trackable...
+            // Per https://stackoverflow.com/a/36351902/4715872 :
+            // Use System.Reflection.Assembly.GetExecutingAssembly()
+            // to get the assembly (that this line of code is in), or
+            // use System.Reflection.Assembly.GetEntryAssembly() to
+            // get the assembly your project started with (most likely
+            // this is your app). In multi-project solutions this is
+            // something to keep in mind!
+            Tool toolThisLibrary = new Tool
+            {
+                Vendor = "OWASP Foundation",
+                Name = Assembly.GetExecutingAssembly().GetName().Name, // "cyclonedx-dotnet-library"
+                Version = Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            };
+
+            resultSubj.Metadata = new Metadata
+            {
+                Tools = new List<Tool>(new [] {toolThisLibrary})
+            };
+
+            // At worst, these would dedup away?..
+            string toolThisScriptName = Assembly.GetEntryAssembly().GetName().Name; // "cyclonedx-cli" or similar
+            if (toolThisScriptName != toolThisLibrary.Name)
+            {
+                Tool toolThisScript = new Tool
+                {
+                    Name = toolThisScriptName,
+                    Vendor = (toolThisScriptName.ToLower().StartsWith("cyclonedx") ? "OWASP Foundation" : null),
+                    Version = Assembly.GetEntryAssembly().GetName().Version.ToString()
+                };
+                resultSubj.Metadata.Tools.Add(toolThisScript);
+            }
+
+
             if (bomSubject is null)
             {
-                var emptyBom = new Bom();
-                result = FlatMerge(emptyBom, result, safeStrategy);
+                result = FlatMerge(resultSubj, result, safeStrategy);
             }
             else
             {
                 // use the params provided if possible: prepare a new document
                 // with desired "metadata/component" and merge differing data
                 // from earlier collected result into this structure.
-                var resultSubj = new Bom();
-
                 resultSubj.Metadata.Component = bomSubject;
                 resultSubj.Metadata.Component.BomRef = ComponentBomRefNamespace(result.Metadata.Component);
                 result = FlatMerge(resultSubj, result, safeStrategy);
