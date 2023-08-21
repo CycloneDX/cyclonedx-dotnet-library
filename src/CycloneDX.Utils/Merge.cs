@@ -201,7 +201,7 @@ namespace CycloneDX.Utils
             int countBoms = 0;
             foreach (var bom in boms)
             {
-                // INJECTED-ERROR-FOR-TESTING // if (countBoms > 1)
+                // INJECTED-ERROR-FOR-TESTING // if countBoms > 1 then ...
                 CountBomRefs(bom, ref dictBomRefsInput);
                 result = FlatMerge(result, bom, quickStrategy);
                 countBoms++;
