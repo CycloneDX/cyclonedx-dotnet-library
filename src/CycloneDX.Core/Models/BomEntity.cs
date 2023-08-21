@@ -223,10 +223,10 @@ namespace CycloneDX.Models
             {
                 foreach (var item0 in list1)
                 {
+                    bool resMerge = false;
                     for (int i=0; i < result.Count; i++)
                     {
                         var item1 = result[i];
-                        bool resMerge;
                         if (methodMergeWith != null)
                         {
                             resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item0});
@@ -240,6 +240,11 @@ namespace CycloneDX.Models
                         {
                             break; // item2 merged into result[item1] or already equal to it
                         }
+                    }
+
+                    if (!resMerge)
+                    {
+                        result.Add(item0);
                     }
                 }
             }
