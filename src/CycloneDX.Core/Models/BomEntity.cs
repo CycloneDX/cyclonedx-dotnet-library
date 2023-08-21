@@ -609,6 +609,48 @@ namespace CycloneDX.Models
                 return ImmutableDictionary.CreateRange(dict);
             }) ();
 
+        /// <summary>
+        /// Dictionary mapping classes derived from BomEntity to reflection
+        /// MethodInfo about their custom CompareSelector() method implementations
+        /// (if present), prepared startically at start time.
+        /// </summary>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownTypeCompareSelector =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = type.GetMethod("CompareSelector",
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
+                        new Type[] {});
+                    if (method != null)
+                    {
+                        dict[type] = method;
+                    }
+                }
+                return ImmutableDictionary.CreateRange(dict);
+            }) ();
+
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownDefaultCompareSelector =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                var methodDefault = typeof(BomEntity).GetMethod("CompareSelector",
+                    BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
+                    new Type[] {});
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = type.GetMethod("CompareSelector",
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
+                        new Type[] {});
+                    if (method == null)
+                    {
+                        dict[type] = methodDefault;
+                    }
+                }
+                return ImmutableDictionary.CreateRange(dict);
+            }) ();
+
         protected BomEntity()
         {
             // a bad alternative to private could be to: throw new NotImplementedException("The BomEntity class directly should not be instantiated")
@@ -699,6 +741,25 @@ namespace CycloneDX.Models
             // Note that here a default Equivalent() may call into custom Equals(),
             // so the similar null/type sanity shecks are still relevant.
             return (!(obj is null) && (thisType == obj.GetType()) && this.Equals(obj));
+        }
+
+        /// <summary>
+        /// The "selector" in this expression:
+        /// <pre>list.Sort((a, b) => comparer.Compare(selector(a), selector(b)));</pre>
+        /// and the "o => ..." part in
+        /// <pre>sortHelper.SortByAscending(result.Services, o => (o?.BomRef, o?.Group, o?.Name, o?.Version));</pre>
+        /// </summary>
+        /// <returns>Func<BomEntity, System.ValueTuple> object with some amount of arguments</returns>
+        public Func<BomEntity, ValueTuple> CompareSelector()
+        {
+            Type thisType = this.GetType();
+            if (KnownTypeCompareSelector.TryGetValue(thisType, out var methodCompareSelector))
+            {
+                return (Func<BomEntity, ValueTuple>)methodCompareSelector.Invoke(this, null);
+            }
+
+            // Expensive but reliable; classes are welcome to implement theirs
+            return new Func<BomEntity, ValueTuple>((obj) => (ValueTuple)ValueTuple.Create(obj.SerializeEntity()));
         }
 
         /// <summary>
