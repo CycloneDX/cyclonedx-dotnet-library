@@ -230,7 +230,7 @@ namespace CycloneDX.Utils
                 Tool toolThisScript = new Tool
                 {
                     Name = toolThisScriptName,
-                    Vendor = (toolThisScriptName.ToLower().StartsWith("cyclonedx") ? "OWASP Foundation" : null),
+                    Vendor = (toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx") ? "OWASP Foundation" : null),
                     Version = Assembly.GetEntryAssembly().GetName().Version.ToString()
                 };
                 resultSubj.Metadata.Tools.Add(toolThisScript);

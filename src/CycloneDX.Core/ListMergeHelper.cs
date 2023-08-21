@@ -130,7 +130,12 @@ namespace CycloneDX
         }
 
         // Adapted from https://stackoverflow.com/a/76523292/4715872
-        public void SortByAscending<TKey>(List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer = null)
+        public void SortByAscending<TKey>(List<T> list, Func<T, TKey> selector)
+        {
+            SortByAscending(list, selector, null);
+        }
+
+        public void SortByAscending<TKey>(List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
         {
             if (comparer is null)
             {
@@ -139,7 +144,12 @@ namespace CycloneDX
             list.Sort((a, b) => comparer.Compare(selector(a), selector(b)));
         }
 
-        public void SortByDescending<TKey>(List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer = null)
+        public void SortByDescending<TKey>(List<T> list, Func<T, TKey> selector)
+        {
+            SortByDescending(list, selector, null);
+        }
+
+        public void SortByDescending<TKey>(List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
         {
             if (comparer is null)
             {
