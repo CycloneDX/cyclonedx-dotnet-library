@@ -992,6 +992,26 @@ namespace CycloneDX.Models
         }
 
         /// <summary>
+        /// See NormalizeList(); this variant defaults "ascending=true"
+        /// </summary>
+        /// <param name="recursive">Should this recurse into child-object properties which are sub-lists?</param>
+        /// <param name="list"></param>
+        public static void NormalizeList(bool recursive, List<IBomEntity> list)
+        {
+            NormalizeList(true, recursive, list);
+        }
+
+        /// <summary>
+        /// <summary>
+        /// See NormalizeList(); this variant defaults "ascending=true"
+        /// and "recursive=false" to only normalize the given list itself.
+        /// </summary>
+        /// <param name="list"></param>
+        public static void NormalizeList(List<IBomEntity> list)
+        {
+            NormalizeList(true, false, list);
+        }
+
         /// Default implementation just "agrees" that Equals()==true objects
         /// are already merged (returns true), and that Equivalent()==false
         /// objects are not (returns false), and for others (equivalent but
