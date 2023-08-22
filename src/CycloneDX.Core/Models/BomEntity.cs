@@ -908,12 +908,10 @@ namespace CycloneDX.Models
                             catch (System.InvalidOperationException)
                             {
                                 // property.GetValue(obj) failed
-                                continue;
                             }
                             catch (System.Reflection.TargetInvocationException)
                             {
                                 // property.GetValue(obj) failed
-                                continue;
                             }
                         }
                     }
@@ -929,7 +927,8 @@ namespace CycloneDX.Models
                         // Note we do not check for null/type of "obj" at this point
                         // since the derived classes define the logic of equivalence
                         // (possibly to other entity subtypes as well).
-                        //methodNormalizeList.Invoke(null, new object[] {ascending, recursive, list}) does not work, alas
+                        //    methodNormalizeList.Invoke(null, new object[] {ascending, recursive, list}) does
+                        // not work, alas
 
                         // Gotta make ugly cast copies there and back:
                         var helper = Activator.CreateInstance(refInfoListType.genericType);
@@ -942,7 +941,7 @@ namespace CycloneDX.Models
 
                         // Populate back the original list object:
                         list.Clear();
-                        refInfoListInterface.methodAddRange.Invoke(list, new object[] {helper});
+                        refInfoListInterface.methodAddRange.Invoke(list, new [] {helper});
                         return;
                     }
                 }
@@ -950,7 +949,7 @@ namespace CycloneDX.Models
 
             // Expensive but reliable default implementation (modulo differently
             // sorted lists of identical item sets inside the otherwise identical
-            // objects -- but currently spec seems to mean ordered collections);
+            // objects -- but currently spec seems to mean ordered collections),
             // classes are welcome to implement theirs eventually or switch cases
             // above currently.
             var sortHelper = new ListMergeHelper<BomEntity>();
