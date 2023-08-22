@@ -209,16 +209,16 @@ namespace CycloneDX
                 // something as simple, so here it goes - some more reflection:
                 var methodNormalizeList = typeof(BomEntity).GetMethod("NormalizeList",
                         BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
-                        new [] { typeof(bool), typeof(bool), typeof(List<IBomEntity>) });
+                        new [] { typeof(bool), typeof(bool), typeof(List<BomEntity>) });
 
                 if (methodNormalizeList != null)
                 {
-                    if (BomEntity.KnownEntityTypeLists.TryGetValue(typeof(IBomEntity), out BomEntityListReflection refInfoListInterface))
+                    if (BomEntity.KnownEntityTypeLists.TryGetValue(typeof(BomEntity), out BomEntityListReflection refInfoListInterface))
                     {
                         if (BomEntity.KnownEntityTypeLists.TryGetValue(list[0].GetType(), out BomEntityListReflection refInfoListType))
                         {
                             // Gotta make ugly cast copies there and back:
-                            List<IBomEntity> helper = (List<IBomEntity>)Activator.CreateInstance(refInfoListInterface.genericType);
+                            List<BomEntity> helper = (List<BomEntity>)Activator.CreateInstance(refInfoListInterface.genericType);
                             refInfoListInterface.methodAddRange.Invoke(helper, new object[] {list});
 
                             methodNormalizeList.Invoke(null, new object[] {ascending, recursive, helper});
