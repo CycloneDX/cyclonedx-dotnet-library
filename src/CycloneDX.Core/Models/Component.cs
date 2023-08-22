@@ -205,7 +205,37 @@ namespace CycloneDX.Models
 
         public bool Equivalent(Component obj)
         {
-            return (!(obj is null) && this.BomRef == obj.BomRef);
+            // "this" is not null ever, so the counterpart also should not be :)
+            if (obj is null)
+            {
+                return false;
+            }
+
+            // By spec, as of CDX 1.4, "type" and "name" are the two required
+            // properties. Commonly, a "version" or "purl" makes sense to be
+            // sure about (not-)sameness of two components. And historically,
+            // for many computer-generated BOMs the "bom-ref" is representative.
+            // Notably, we care about BomRef because we might refer to this
+            // entity from others in the same document (e.g. Dependencies[]),
+            // and BOM references are done by this value.
+            // NOTE: If two otherwise identical components are refferred to
+            // by different BomRef values - so be it, Bom duplicates remain.
+            if (this.Type == obj.Type // No nullness check here, or we get: error CS0037: Cannot convert null to 'Component.Classification' because it is a non-nullable value type
+            &&  !(this.Name is null) && !(obj.Name is null) && this.Name == obj.Name
+            &&  (this.Version is null || obj.Version is null || this.Version == obj.Version)
+            &&  (this.Purl is null || obj.Purl is null || this.Purl == obj.Purl)
+            &&  (this.BomRef is null || obj.BomRef is null || this.BomRef == obj.BomRef)
+            )
+            {
+                // These two seem equivalent enough to go on with the more
+                // expensive logic such as MergeWith() which may ultimately
+                // reject the merge request - based on some unresolvable
+                // incompatibility in some other data fields or lists:
+                return true;
+            }
+
+            // Could not prove equivalence, err on the safe side:
+            return false;
         }
 
         public bool MergeWith(Component obj)
