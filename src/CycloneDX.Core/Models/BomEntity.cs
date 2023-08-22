@@ -918,7 +918,7 @@ namespace CycloneDX.Models
             // classes are welcome to implement theirs eventually or switch cases
             // above currently.
             var sortHelper = new ListMergeHelper<BomEntity>();
-            sortHelper.SortByImpl(ascending, list,
+            sortHelper.SortByImpl(ascending, recursive, list,
                 o => (o?.SerializeEntity()),
                 null);
         }

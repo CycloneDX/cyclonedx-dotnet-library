@@ -130,33 +130,95 @@ namespace CycloneDX
         }
 
         // Adapted from https://stackoverflow.com/a/76523292/4715872
+        public void SortByAscending<TKey>(List<T> list)
+        {
+            SortByImpl<TKey>(true, false, list, null, null);
+        }
+
+        public void SortByAscending<TKey>(List<T> list, bool recursive)
+        {
+            SortByImpl<TKey>(true, recursive, list, null, null);
+        }
+
         public void SortByAscending<TKey>(List<T> list, Func<T, TKey> selector)
         {
-            SortByImpl<TKey>(true, list, selector, null);
+            SortByImpl<TKey>(true, false, list, selector, null);
         }
 
         public void SortByAscending<TKey>(List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
         {
-            SortByImpl<TKey>(true, list, selector, comparer);
+            SortByImpl<TKey>(true, false, list, selector, comparer);
+        }
+
+        public void SortByDescending<TKey>(List<T> list)
+        {
+            SortByImpl<TKey>(false, false, list, null, null);
+        }
+
+        public void SortByDescending<TKey>(List<T> list, bool recursive)
+        {
+            SortByImpl<TKey>(false, recursive, list, null, null);
         }
 
         public void SortByDescending<TKey>(List<T> list, Func<T, TKey> selector)
         {
-            SortByImpl<TKey>(false, list, selector, null);
+            SortByImpl<TKey>(false, false, list, selector, null);
         }
 
         public void SortByDescending<TKey>(List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
         {
-            SortByImpl<TKey>(false, list, selector, comparer);
+            SortByImpl<TKey>(false, false, list, selector, comparer);
         }
 
-        public void SortByImpl<TKey>(bool ascending, List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
+        /// <summary>
+        /// Implementation of the sort algorithm.
+        /// Special handling for BomEntity-derived objects, including
+        /// optional recursion to have them sort their list-of-something
+        /// properties.
+        /// </summary>
+        /// <typeparam name="TKey">ValueTuple of function parameters returned by selector lambda</typeparam>
+        /// <param name="ascending">Ascending (true) or Descending (false)</param>
+        /// <param name="recursive">Passed to BomEntity.NormalizeList() (effective if recursing), not handled right here</param>
+        /// <param name="list">List<SomeType> to sort</param>
+        /// <param name="selector">lambda to select a tuple of properties to sort by</param>
+        /// <param name="comparer">null for default, or a custom comparer</param>
+        public void SortByImpl<TKey>(bool ascending, bool recursive, List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
         {
             if (list is null || list.Count < 2)
             {
                 // No-op quickly for null, empty or single-item lists
                 return;
             }
+
+            // Ordering proposed in those NormalizeList() implementations
+            // is an educated guess. Main purpose for this is to have
+            // consistently ordered serialized BomEntity-derived type
+            // lists for the purposes of comparison and compression.
+            if (selector is null && typeof(BomEntity).IsInstanceOfType(list[0]))
+            {
+                // This should really be offloaded as lambdas into the
+                // BomEntity-derived classes themselves, but I've struggled
+                // to cast the right magic spells at C# to please its gods.
+                // In particular, the ValueTuple used in selector signature is
+                // both generic for the values' types (e.g. <string, bool, int>),
+                // and for their amount in the tuple (0, 1, 2, ... explicitly
+                // stated). So this is the next best thing...
+
+                // Alas, C# won't let us just call
+                // BomEntity.NormalizeList(ascending, recursive, (List<BomEntity>)list) or
+                // something as simple, so here it goes - some more reflection:
+                var methodNormalizeList = typeof(BomEntity).GetMethod("NormalizeList",
+                        BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
+                        new [] { typeof(bool), typeof(bool), typeof(List<BomEntity>) });
+
+                if (methodNormalizeList != null)
+                {
+                    methodNormalizeList.Invoke(null, new object[] {ascending, recursive, list});
+                } // else keep it as was? no good cause for an exception?..
+
+                return;
+            }
+
             if (comparer is null)
             {
                 comparer = Comparer<TKey>.Default;
