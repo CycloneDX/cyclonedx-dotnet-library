@@ -132,30 +132,44 @@ namespace CycloneDX
         // Adapted from https://stackoverflow.com/a/76523292/4715872
         public void SortByAscending<TKey>(List<T> list, Func<T, TKey> selector)
         {
-            SortByAscending(list, selector, null);
+            SortByImpl<TKey>(true, list, selector, null);
         }
 
         public void SortByAscending<TKey>(List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
         {
-            if (comparer is null)
-            {
-                comparer = Comparer<TKey>.Default;
-            }
-            list.Sort((a, b) => comparer.Compare(selector(a), selector(b)));
+            SortByImpl<TKey>(true, list, selector, comparer);
         }
 
         public void SortByDescending<TKey>(List<T> list, Func<T, TKey> selector)
         {
-            SortByDescending(list, selector, null);
+            SortByImpl<TKey>(false, list, selector, null);
         }
 
         public void SortByDescending<TKey>(List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
         {
+            SortByImpl<TKey>(false, list, selector, comparer);
+        }
+
+        public void SortByImpl<TKey>(bool ascending, List<T> list, Func<T, TKey> selector, IComparer<TKey> comparer)
+        {
+            if (list is null || list.Count < 2)
+            {
+                // No-op quickly for null, empty or single-item lists
+                return;
+            }
             if (comparer is null)
             {
                 comparer = Comparer<TKey>.Default;
             }
-            list.Sort((a, b) => comparer.Compare(selector(b), selector(a)));
+
+            if (ascending)
+            {
+                list.Sort((a, b) => comparer.Compare(selector(a), selector(b)));
+            }
+            else
+            {
+                list.Sort((a, b) => comparer.Compare(selector(b), selector(a)));
+            }
         }
     }
 }
