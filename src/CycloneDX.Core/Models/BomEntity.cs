@@ -330,6 +330,8 @@ namespace CycloneDX.Models
         public MethodInfo methodAdd { get; set; }
         public MethodInfo methodAddRange { get; set; }
         public MethodInfo methodGetItem { get; set; }
+        public MethodInfo methodSort { get; set; }
+        public MethodInfo methodReverse { get; set; }
     }
 
     public class BomEntityListMergeHelperReflection
@@ -410,6 +412,8 @@ namespace CycloneDX.Models
                     dict[type].methodGetItem = constructedListType.GetMethod("get_Item");
                     dict[type].methodAdd = constructedListType.GetMethod("Add", 0, new [] { type });
                     dict[type].methodAddRange = constructedListType.GetMethod("AddRange", 0, new [] { constructedListType });
+                    dict[type].methodSort = constructedListType.GetMethod("Sort");
+                    dict[type].methodReverse = constructedListType.GetMethod("Reverse");
 
                     // Avoid: No cached info about BomEntityListReflection[System.Collections.Generic.List`1[CycloneDX.Models.ExternalReference]]
                     // TODO: Separate dict?..
