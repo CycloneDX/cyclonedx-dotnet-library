@@ -342,6 +342,17 @@ namespace CycloneDX.Models
     }
 
     /// <summary>
+    /// Primarily used to make life with List<IBomEntity> a bit
+    /// easier than List<BomEntity> when used against derived types.
+    /// </summary>
+    public interface IBomEntity
+    {
+        bool Equivalent(BomEntity obj);
+        bool MergeWith(BomEntity obj);
+        string SerializeEntity();
+    }
+
+    /// <summary>
     /// BomEntity is intended as a base class for other classes in CycloneDX.Models,
     /// which in turn encapsulate different concepts and data types described by
     /// the specification. It allows them to share certain behaviors such as the
@@ -350,7 +361,7 @@ namespace CycloneDX.Models
     /// and to define the logic for merge-ability of such objects while coding much
     /// of the logical scaffolding only once.
     /// </summary>
-    public class BomEntity : IEquatable<BomEntity>
+    public class BomEntity : IEquatable<BomEntity>, IBomEntity
     {
         // Keep this info initialized once to cut down on overheads of reflection
         // when running in our run-time loops.
@@ -396,7 +407,9 @@ namespace CycloneDX.Models
             new Func<ImmutableDictionary<Type, BomEntityListReflection>>(() =>
             {
                 Dictionary<Type, BomEntityListReflection> dict = new Dictionary<Type, BomEntityListReflection>();
-                foreach (var type in KnownEntityTypes)
+                List<Type> KnownEntityTypesPlus = new List<Type>(KnownEntityTypes);
+                KnownEntityTypesPlus.Add(typeof(IBomEntity));
+                foreach (var type in KnownEntityTypesPlus)
                 {
                     // Inspired by https://stackoverflow.com/a/4661237/4715872
                     // to craft a List<SpecificType> "result" at run-time:
@@ -654,7 +667,7 @@ namespace CycloneDX.Models
         /// Calls our standard CycloneDX.Json.Serializer to use
         /// its common options in particular.
         /// </summary>
-        internal string SerializeEntity()
+        public string SerializeEntity()
         {
             // Do we have a custom serializer defined? Use it!
             // (One for BomEntity tends to serialize this base class
@@ -767,7 +780,7 @@ namespace CycloneDX.Models
         /// and for their amount in the tuple (0, 1, 2, ... explicitly
         /// stated). So this is the next best thing...
         /// </summary>
-        public static void NormalizeList(bool ascending, bool recursive, List<BomEntity> list)
+        public static void NormalizeList(bool ascending, bool recursive, List<IBomEntity> list)
         {
             if (list is null || list.Count < 2)
             {
@@ -917,7 +930,7 @@ namespace CycloneDX.Models
             // objects -- but currently spec seems to mean ordered collections);
             // classes are welcome to implement theirs eventually or switch cases
             // above currently.
-            var sortHelper = new ListMergeHelper<BomEntity>();
+            var sortHelper = new ListMergeHelper<IBomEntity>();
             sortHelper.SortByImpl(ascending, recursive, list,
                 o => (o?.SerializeEntity()),
                 null);
