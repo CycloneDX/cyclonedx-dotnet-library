@@ -646,7 +646,41 @@ namespace CycloneDX.Models
                 Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
                 foreach (var type in KnownEntityTypes)
                 {
-                    var method = type.GetMethod("NormalizeList",
+                    MethodInfo method = null;
+
+                    if (BomEntity.KnownEntityTypeLists.TryGetValue(type, out BomEntityListReflection refInfoListType))
+                    {
+                        method = type.GetMethod("NormalizeList",
+                            BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
+                            new [] { typeof(bool), typeof(bool), refInfoListType.genericType });
+                        if (method != null)
+                        {
+                            dict[type] = method;
+                            continue;
+                        }
+                    }
+
+                    // Try interface default
+                    method = type.GetMethod("NormalizeList",
+                        BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
+                        new [] { typeof(bool), typeof(bool), typeof(IList<IBomEntity>) });
+                    if (method != null)
+                    {
+                        dict[type] = method;
+                        continue;
+                    }
+
+                    method = type.GetMethod("NormalizeList",
+                        BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
+                        new [] { typeof(bool), typeof(bool), typeof(List<IBomEntity>) });
+                    if (method != null)
+                    {
+                        dict[type] = method;
+                        continue;
+                    }
+
+                    // Try class default
+                    method = type.GetMethod("NormalizeList",
                         BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
                         new [] { typeof(bool), typeof(bool), typeof(List<BomEntity>) });
                     if (method != null)
