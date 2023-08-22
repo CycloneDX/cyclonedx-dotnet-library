@@ -812,7 +812,9 @@ namespace CycloneDX.Models
         /// In particular, the ValueTuple used in selector signature is
         /// both generic for the values' types (e.g. <string, bool, int>),
         /// and for their amount in the tuple (0, 1, 2, ... explicitly
-        /// stated). So this is the next best thing...
+        /// stated). So this is the next best thing... even if highly
+        /// inefficient to copy lists from one type to another as a
+        /// fake cast. At least it works!..
         /// </summary>
         public static void NormalizeList(bool ascending, bool recursive, List<IBomEntity> list)
         {
@@ -952,11 +954,30 @@ namespace CycloneDX.Models
 
             if (KnownTypeNormalizeList.TryGetValue(thisType, out var methodNormalizeList))
             {
-                // Note we do not check for null/type of "obj" at this point
-                // since the derived classes define the logic of equivalence
-                // (possibly to other entity subtypes as well).
-                methodNormalizeList.Invoke(null, new object[] {ascending, recursive, list});
-                return;
+                if (BomEntity.KnownEntityTypeLists.TryGetValue(thisType, out BomEntityListReflection refInfoListType))
+                {
+                    if (BomEntity.KnownEntityTypeLists.TryGetValue(typeof(IBomEntity), out BomEntityListReflection refInfoListInterface))
+                    {
+                        // Note we do not check for null/type of "obj" at this point
+                        // since the derived classes define the logic of equivalence
+                        // (possibly to other entity subtypes as well).
+                        //methodNormalizeList.Invoke(null, new object[] {ascending, recursive, list}) does not work, alas
+
+                        // Gotta make ugly cast copies there and back:
+                        var helper = Activator.CreateInstance(refInfoListType.genericType);
+                        foreach (var item in list)
+                        {
+                            refInfoListType.methodAdd.Invoke(helper, new object[] {item});
+                        }
+
+                        methodNormalizeList.Invoke(null, new object[] {ascending, recursive, helper});
+
+                        // Populate back the original list object:
+                        list.Clear();
+                        refInfoListInterface.methodAddRange.Invoke(list, new object[] {helper});
+                        return;
+                    }
+                }
             }
 
             // Expensive but reliable default implementation (modulo differently

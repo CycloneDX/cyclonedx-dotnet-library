@@ -204,16 +204,89 @@ namespace CycloneDX
                 // and for their amount in the tuple (0, 1, 2, ... explicitly
                 // stated). So this is the next best thing...
 
+/*
+                switch (typeof(TKey)) {
+                    case Tool:
+                        SortByImpl<Tool>(ascending, list,
+                            o => (o?.Vendor, o?.Name, o?.Version),
+                            comparer);
+                        return;
+
+                    case typeof(Component):
+                        SortByImpl<TKey>(ascending, list,
+                            o => (o?.BomRef, o?.Type, o?.Group, o?.Name, o?.Version),
+                            comparer);
+                        return;
+
+                    case typeof(Service):
+                        SortByImpl<TKey>(ascending, list,
+                            o => (o?.BomRef, o?.Group, o?.Name, o?.Version),
+                            comparer);
+                        return;
+
+                    case typeof(ExternalReference):
+                        SortByImpl<TKey>(ascending, list,
+                            o => (o?.Url, o?.Type),
+                            comparer);
+                        return;
+
+                    case typeof(Dependency):
+                        SortByImpl<TKey>(ascending, list,
+                            o => (o?.Ref),
+                            comparer);
+                        return;
+
+                    case typeof(Composition):
+                        SortByImpl<TKey>(ascending, list,
+                            o => (o?.Aggregate, o?.Assemblies, o?.Dependencies),
+                            comparer);
+                        return;
+
+                    case typeof(Vulnerability):
+                        SortByImpl<TKey>(ascending, list,
+                            o => (o?.BomRef, o?.Id, o?.Created, o?.Updated),
+                            comparer);
+                        return;
+
+                    default:
+                        // Expensive but reliable (modulo differently sorted lists
+                        // of identical item sets inside the otherwise identical
+                        // objects); classes are welcome to implement theirs eventually
+                        // or switch cases above currently.
+                        SortByImplBomEntity<TKey>(ascending, list,
+                            o => (o?.SerializeEntity()),
+                            comparer);
+                        return;
+                }
+*/
+
                 // Alas, C# won't let us just call
                 // BomEntity.NormalizeList(ascending, recursive, (List<BomEntity>)list) or
                 // something as simple, so here it goes - some more reflection:
                 var methodNormalizeList = typeof(BomEntity).GetMethod("NormalizeList",
                         BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
-                        new [] { typeof(bool), typeof(bool), typeof(List<BomEntity>) });
+                        new [] { typeof(bool), typeof(bool), typeof(List<IBomEntity>) });
 
                 if (methodNormalizeList != null)
                 {
-                    methodNormalizeList.Invoke(null, new object[] {ascending, recursive, list});
+                    if (BomEntity.KnownEntityTypeLists.TryGetValue(typeof(IBomEntity), out BomEntityListReflection refInfoListInterface))
+                    {
+                        if (BomEntity.KnownEntityTypeLists.TryGetValue(list[0].GetType(), out BomEntityListReflection refInfoListType))
+                        {
+                            // Gotta make ugly cast copies there and back:
+                            List<IBomEntity> helper = (List<IBomEntity>)Activator.CreateInstance(refInfoListInterface.genericType);
+                            refInfoListInterface.methodAddRange.Invoke(helper, new object[] {list});
+
+                            methodNormalizeList.Invoke(null, new object[] {ascending, recursive, helper});
+
+                            // Populate back the original list object:
+                            list.Clear();
+                            foreach (var item in helper)
+                            {
+                                refInfoListType.methodAdd.Invoke(list, new object[] {item});
+                            }
+                        }
+                    }
                 } // else keep it as was? no good cause for an exception?..
 
                 return;
