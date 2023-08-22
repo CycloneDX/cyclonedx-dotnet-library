@@ -412,8 +412,11 @@ namespace CycloneDX.Models
                     dict[type].methodGetItem = constructedListType.GetMethod("get_Item");
                     dict[type].methodAdd = constructedListType.GetMethod("Add", 0, new [] { type });
                     dict[type].methodAddRange = constructedListType.GetMethod("AddRange", 0, new [] { constructedListType });
-                    dict[type].methodSort = constructedListType.GetMethod("Sort");
-                    dict[type].methodReverse = constructedListType.GetMethod("Reverse");
+
+                    // Use the default no-arg implementations here explicitly,
+                    // to avoid an System.Reflection.AmbiguousMatchException:
+                    dict[type].methodSort = constructedListType.GetMethod("Sort", 0, new Type[] {});
+                    dict[type].methodReverse = constructedListType.GetMethod("Reverse", 0, new Type[] {});
 
                     // Avoid: No cached info about BomEntityListReflection[System.Collections.Generic.List`1[CycloneDX.Models.ExternalReference]]
                     // TODO: Separate dict?..
@@ -618,6 +621,29 @@ namespace CycloneDX.Models
                 return ImmutableDictionary.CreateRange(dict);
             }) ();
 
+        /// <summary>
+        /// Dictionary mapping classes derived from BomEntity to reflection
+        /// MethodInfo about their custom static NormalizeList() method
+        /// implementations (if present) for sorting=>normalization of lists
+        /// of that BomEntity-derived type, prepared startically at start time.
+        /// </summary>
+        public static readonly ImmutableDictionary<Type, System.Reflection.MethodInfo> KnownTypeNormalizeList =
+            new Func<ImmutableDictionary<Type, System.Reflection.MethodInfo>>(() =>
+            {
+                Dictionary<Type, System.Reflection.MethodInfo> dict = new Dictionary<Type, System.Reflection.MethodInfo>();
+                foreach (var type in KnownEntityTypes)
+                {
+                    var method = type.GetMethod("NormalizeList",
+                        BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
+                        new [] { typeof(bool), typeof(bool), typeof(List<BomEntity>) });
+                    if (method != null)
+                    {
+                        dict[type] = method;
+                    }
+                }
+                return ImmutableDictionary.CreateRange(dict);
+            }) ();
+
         protected BomEntity()
         {
             // a bad alternative to private could be to: throw new NotImplementedException("The BomEntity class directly should not be instantiated")
@@ -717,6 +743,184 @@ namespace CycloneDX.Models
             // Note that here a default Equivalent() may call into custom Equals(),
             // so the similar null/type sanity shecks are still relevant.
             return (!(obj is null) && (thisType == obj.GetType()) && this.Equals(obj));
+        }
+
+        /// <summary>
+        /// In-place normalization of a list of BomEntity-derived type.
+        /// Derived classes can implement this as a sort by one or more
+        /// of specific properties (e.g. name or bom-ref). Note that
+        /// handling of the "recursive" option is commonly handled in
+        /// the base-class method, via which these should be called.
+        /// Being a static method, those in derived classes are not
+        /// overrides for the PoV of the language.
+        ///
+        /// Ordering proposed in these methods is an educated guess.
+        /// Main purpose for this is to have some consistently ordered
+        /// serialized BomEntity lists for the purposes of comparison
+        /// and compression.
+        ///
+        /// TODO: this should really be offloaded as lambdas into the
+        /// BomEntity-derived classes themselves, but I've struggled
+        /// to cast the right magic spells at C# to please its gods.
+        /// In particular, the ValueTuple used in selector signature is
+        /// both generic for the values' types (e.g. <string, bool, int>),
+        /// and for their amount in the tuple (0, 1, 2, ... explicitly
+        /// stated). So this is the next best thing...
+        /// </summary>
+        public static void NormalizeList(bool ascending, bool recursive, List<BomEntity> list)
+        {
+            if (list is null || list.Count < 2)
+            {
+                // No-op quickly for null, empty or single-item lists
+                return;
+            }
+
+            Type thisType = list[0].GetType();
+
+            if (recursive)
+            {
+                // Look into properties of each currently listed BomEntity-derived
+                // type instance, so if there are further lists - sort them similarly.
+                PropertyInfo[] properties = BomEntity.KnownEntityTypeProperties[thisType];
+                foreach (PropertyInfo property in properties)
+                {
+                    if (property.PropertyType == typeof(List<Object>) || property.PropertyType.ToString().StartsWith("System.Collections.Generic.List"))
+                    {
+                        // Re-use these learnings while we iterate all original
+                        // list items regarding the specified sub-list property:
+                        Type LType = null;
+                        Type TType = null;
+                        PropertyInfo propCount = null;
+                        MethodInfo methodGetItem = null;
+                        MethodInfo methodSort = null;
+                        MethodInfo methodReverse = null;
+                        MethodInfo methodNormalizeSubList = null;
+                        bool retryMethodNormalizeSubList = true;
+
+                        foreach(var obj in list)
+                        {
+                            if (obj is null)
+                            {
+                                continue;
+                            }
+
+                            try
+                            {
+                                // Use cached info where available for all the
+                                // list and list-item types and methods involved.
+
+                                // Get the (list) property of the originally iterated
+                                // BomEntity-derived item from our original list:
+                                var propValObj = property.GetValue(obj);
+
+                                // Is that sub-list trivial enough to skip?
+                                if (propValObj is null)
+                                {
+                                    continue;
+                                }
+
+                                if (LType == null)
+                                {
+                                    LType = propValObj.GetType();
+                                }
+
+                                // Learn how to query that LType sort of lists:
+                                if (methodGetItem == null || propCount == null || methodSort == null || methodReverse == null)
+                                {
+                                    if (BomEntity.KnownEntityTypeLists.TryGetValue(LType, out BomEntityListReflection refInfo))
+                                    {
+                                        propCount = refInfo.propCount;
+                                        methodGetItem = refInfo.methodGetItem;
+                                        methodSort = refInfo.methodSort;
+                                        methodReverse = refInfo.methodReverse;
+                                    }
+                                    else
+                                    {
+                                        propCount = LType.GetProperty("Count");
+                                        methodGetItem = LType.GetMethod("get_Item");
+                                        methodSort = LType.GetMethod("Sort");
+                                        methodReverse = LType.GetMethod("Reverse");
+                                    }
+
+                                    if (methodGetItem == null || propCount == null || methodSort == null || methodReverse == null)
+                                    {
+                                        // is this really a LIST - it lacks a get_Item() or other methods, or a Count property
+                                        continue;
+                                    }
+                                }
+
+                                // Is that sub-list trivial enough to skip?
+                                int propValObjCount = (int)propCount.GetValue(propValObj, null);
+                                if (propValObjCount < 2)
+                                {
+                                    continue;
+                                }
+
+                                // Type of items in that sub-list:
+                                if (TType == null)
+                                {
+                                    TType = methodGetItem.Invoke(propValObj, new object[] { 0 }).GetType();
+                                }
+
+                                // Learn how to sort the sub-list of those item types:
+                                if (methodNormalizeSubList == null && retryMethodNormalizeSubList)
+                                {
+                                    if (!KnownTypeNormalizeList.TryGetValue(TType, out var methodNormalizeSubListTmp))
+                                    {
+                                        methodNormalizeSubListTmp = null;
+                                        retryMethodNormalizeSubList = false;
+                                    }
+                                    methodNormalizeSubList = methodNormalizeSubListTmp;
+                                }
+
+                                if (methodNormalizeSubList != null)
+                                {
+                                    // call static NormalizeList(..., List<TType> obj.propValObj)
+                                    methodNormalizeSubList.Invoke(null, new object[] {ascending, recursive, propValObj});
+                                }
+                                else
+                                {
+                                    // Default-sort a common sub-list directly (no recursion)
+                                    methodSort.Invoke(propValObj, null);
+                                    if (!ascending)
+                                    {
+                                        methodReverse.Invoke(propValObj, null);
+                                    }
+                                }
+                            }
+                            catch (System.InvalidOperationException)
+                            {
+                                // property.GetValue(obj) failed
+                                continue;
+                            }
+                            catch (System.Reflection.TargetInvocationException)
+                            {
+                                // property.GetValue(obj) failed
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (KnownTypeNormalizeList.TryGetValue(thisType, out var methodNormalizeList))
+            {
+                // Note we do not check for null/type of "obj" at this point
+                // since the derived classes define the logic of equivalence
+                // (possibly to other entity subtypes as well).
+                methodNormalizeList.Invoke(null, new object[] {ascending, recursive, list});
+                return;
+            }
+
+            // Expensive but reliable default implementation (modulo differently
+            // sorted lists of identical item sets inside the otherwise identical
+            // objects -- but currently spec seems to mean ordered collections);
+            // classes are welcome to implement theirs eventually or switch cases
+            // above currently.
+            var sortHelper = new ListMergeHelper<BomEntity>();
+            sortHelper.SortByImpl(ascending, list,
+                o => (o?.SerializeEntity()),
+                null);
         }
 
         /// <summary>
