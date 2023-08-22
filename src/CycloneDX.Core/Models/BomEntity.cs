@@ -342,17 +342,6 @@ namespace CycloneDX.Models
     }
 
     /// <summary>
-    /// Primarily used to make life with List<IBomEntity> a bit
-    /// easier than List<BomEntity> when used against derived types.
-    /// </summary>
-    public interface IBomEntity
-    {
-        bool Equivalent(BomEntity obj);
-        bool MergeWith(BomEntity obj);
-        string SerializeEntity();
-    }
-
-    /// <summary>
     /// BomEntity is intended as a base class for other classes in CycloneDX.Models,
     /// which in turn encapsulate different concepts and data types described by
     /// the specification. It allows them to share certain behaviors such as the
@@ -361,7 +350,7 @@ namespace CycloneDX.Models
     /// and to define the logic for merge-ability of such objects while coding much
     /// of the logical scaffolding only once.
     /// </summary>
-    public class BomEntity : IEquatable<BomEntity>, IBomEntity
+    public class BomEntity : IEquatable<BomEntity>
     {
         // Keep this info initialized once to cut down on overheads of reflection
         // when running in our run-time loops.
@@ -407,9 +396,7 @@ namespace CycloneDX.Models
             new Func<ImmutableDictionary<Type, BomEntityListReflection>>(() =>
             {
                 Dictionary<Type, BomEntityListReflection> dict = new Dictionary<Type, BomEntityListReflection>();
-                List<Type> KnownEntityTypesPlus = new List<Type>(KnownEntityTypes);
-                KnownEntityTypesPlus.Add(typeof(IBomEntity));
-                foreach (var type in KnownEntityTypesPlus)
+                foreach (var type in KnownEntityTypes)
                 {
                     // Inspired by https://stackoverflow.com/a/4661237/4715872
                     // to craft a List<SpecificType> "result" at run-time:
@@ -660,25 +647,6 @@ namespace CycloneDX.Models
                         }
                     }
 
-                    // Try interface default
-                    method = type.GetMethod("NormalizeList",
-                        BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
-                        new [] { typeof(bool), typeof(bool), typeof(IList<IBomEntity>) });
-                    if (method != null)
-                    {
-                        dict[type] = method;
-                        continue;
-                    }
-
-                    method = type.GetMethod("NormalizeList",
-                        BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
-                        new [] { typeof(bool), typeof(bool), typeof(List<IBomEntity>) });
-                    if (method != null)
-                    {
-                        dict[type] = method;
-                        continue;
-                    }
-
                     // Try class default
                     method = type.GetMethod("NormalizeList",
                         BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly,
@@ -816,7 +784,7 @@ namespace CycloneDX.Models
         /// inefficient to copy lists from one type to another as a
         /// fake cast. At least it works!..
         /// </summary>
-        public static void NormalizeList(bool ascending, bool recursive, List<IBomEntity> list)
+        public static void NormalizeList(bool ascending, bool recursive, List<BomEntity> list)
         {
             if (list is null || list.Count < 2)
             {
@@ -956,7 +924,7 @@ namespace CycloneDX.Models
             {
                 if (BomEntity.KnownEntityTypeLists.TryGetValue(thisType, out BomEntityListReflection refInfoListType))
                 {
-                    if (BomEntity.KnownEntityTypeLists.TryGetValue(typeof(IBomEntity), out BomEntityListReflection refInfoListInterface))
+                    if (BomEntity.KnownEntityTypeLists.TryGetValue(typeof(BomEntity), out BomEntityListReflection refInfoListInterface))
                     {
                         // Note we do not check for null/type of "obj" at this point
                         // since the derived classes define the logic of equivalence
@@ -985,7 +953,7 @@ namespace CycloneDX.Models
             // objects -- but currently spec seems to mean ordered collections);
             // classes are welcome to implement theirs eventually or switch cases
             // above currently.
-            var sortHelper = new ListMergeHelper<IBomEntity>();
+            var sortHelper = new ListMergeHelper<BomEntity>();
             sortHelper.SortByImpl(ascending, recursive, list,
                 o => (o?.SerializeEntity()),
                 null);
@@ -996,7 +964,7 @@ namespace CycloneDX.Models
         /// </summary>
         /// <param name="recursive">Should this recurse into child-object properties which are sub-lists?</param>
         /// <param name="list"></param>
-        public static void NormalizeList(bool recursive, List<IBomEntity> list)
+        public static void NormalizeList(bool recursive, List<BomEntity> list)
         {
             NormalizeList(true, recursive, list);
         }
@@ -1007,7 +975,7 @@ namespace CycloneDX.Models
         /// and "recursive=false" to only normalize the given list itself.
         /// </summary>
         /// <param name="list"></param>
-        public static void NormalizeList(List<IBomEntity> list)
+        public static void NormalizeList(List<BomEntity> list)
         {
             NormalizeList(true, false, list);
         }
