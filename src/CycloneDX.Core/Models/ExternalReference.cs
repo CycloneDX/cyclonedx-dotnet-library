@@ -79,5 +79,22 @@ namespace CycloneDX.Models
         [ProtoMember(4)]
         public List<Hash> Hashes { get; set; }
         public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
+
+        /// <summary>
+        /// See BomEntity.NormalizeList() and ListMergeHelper.SortByImpl().
+        /// Note that as a static method this is not exactly an "override",
+        /// but the BomEntity base class implementation makes it behave
+        /// like that in practice.
+        /// </summary>
+        /// <param name="ascending">Ascending (true) or Descending (false)</param>
+        /// <param name="recursive">Passed to BomEntity.NormalizeList() (effective if recursing), not handled right here</param>
+        /// <param name="list">List<ExternalReference> to sort</param>
+        public static void NormalizeList(bool ascending, bool recursive, List<ExternalReference> list)
+        {
+            var sortHelper = new ListMergeHelper<ExternalReference>();
+            sortHelper.SortByImpl(ascending, recursive, list,
+                o => (o?.Url, o?.Type),
+                null);
+        }
     }
 }

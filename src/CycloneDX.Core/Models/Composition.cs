@@ -141,5 +141,22 @@ namespace CycloneDX.Models
                 writer.WriteEndElement();
             }
         }
+
+        /// <summary>
+        /// See BomEntity.NormalizeList() and ListMergeHelper.SortByImpl().
+        /// Note that as a static method this is not exactly an "override",
+        /// but the BomEntity base class implementation makes it behave
+        /// like that in practice.
+        /// </summary>
+        /// <param name="ascending">Ascending (true) or Descending (false)</param>
+        /// <param name="recursive">Passed to BomEntity.NormalizeList() (effective if recursing), not handled right here</param>
+        /// <param name="list">List<Composition> to sort</param>
+        public static void NormalizeList(bool ascending, bool recursive, List<Composition> list)
+        {
+            var sortHelper = new ListMergeHelper<Composition>();
+            sortHelper.SortByImpl(ascending, recursive, list,
+                o => (o?.Aggregate, o?.Assemblies, o?.Dependencies),
+                null);
+        }
     }
 }
