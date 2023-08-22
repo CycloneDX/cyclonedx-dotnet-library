@@ -130,14 +130,14 @@ namespace CycloneDX
         }
 
         // Adapted from https://stackoverflow.com/a/76523292/4715872
-        public void SortByAscending<TKey>(List<T> list)
+        public void SortByAscending(List<T> list)
         {
-            SortByImpl<TKey>(true, false, list, null, null);
+            SortByImpl<Object>(true, false, list, null, null);
         }
 
-        public void SortByAscending<TKey>(List<T> list, bool recursive)
+        public void SortByAscending(List<T> list, bool recursive)
         {
-            SortByImpl<TKey>(true, recursive, list, null, null);
+            SortByImpl<Object>(true, recursive, list, null, null);
         }
 
         public void SortByAscending<TKey>(List<T> list, Func<T, TKey> selector)
@@ -150,14 +150,14 @@ namespace CycloneDX
             SortByImpl<TKey>(true, false, list, selector, comparer);
         }
 
-        public void SortByDescending<TKey>(List<T> list)
+        public void SortByDescending(List<T> list)
         {
-            SortByImpl<TKey>(false, false, list, null, null);
+            SortByImpl<Object>(false, false, list, null, null);
         }
 
-        public void SortByDescending<TKey>(List<T> list, bool recursive)
+        public void SortByDescending(List<T> list, bool recursive)
         {
-            SortByImpl<TKey>(false, recursive, list, null, null);
+            SortByImpl<Object>(false, recursive, list, null, null);
         }
 
         public void SortByDescending<TKey>(List<T> list, Func<T, TKey> selector)
