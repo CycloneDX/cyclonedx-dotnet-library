@@ -123,5 +123,22 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(14)]
         public List<Property> Properties { get; set; }
+
+        /// <summary>
+        /// See BomEntity.NormalizeList() and ListMergeHelper.SortByImpl().
+        /// Note that as a static method this is not exactly an "override",
+        /// but the BomEntity base class implementation makes it behave
+        /// like that in practice.
+        /// </summary>
+        /// <param name="ascending">Ascending (true) or Descending (false)</param>
+        /// <param name="recursive">Passed to BomEntity.NormalizeList() (effective if recursing), not handled right here</param>
+        /// <param name="list">List<Service> to sort</param>
+        public static void NormalizeList(bool ascending, bool recursive, List<Service> list)
+        {
+            var sortHelper = new ListMergeHelper<Service>();
+            sortHelper.SortByImpl(ascending, recursive, list,
+                o => (o?.BomRef, o?.Group, o?.Name, o?.Version),
+                null);
+        }
     }
 }

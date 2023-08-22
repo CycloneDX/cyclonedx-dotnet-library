@@ -535,46 +535,53 @@ namespace CycloneDX.Utils
         /// <returns>Resulting document (whether modified or not)</returns>
         public static Bom CleanupSortLists(Bom result)
         {
+            // Why oh why?..  error CS1503: Argument 1: cannot convert
+            // from 'System.Collections.Generic.List<CycloneDX.Models.Tool>'
+            // to 'System.Collections.Generic.List<CycloneDX.Models.BomEntity>'
+            //    BomEntity.NormalizeList(result.Tools) -- it looks so simple!
+            // But at least we *can* call it, perhaps inefficiently for
+            // the run-time code and scaffolding, but easy to maintain
+            // with filter definitions now stored in classes, not here...
             if (result.Metadata?.Tools?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Tool>();
-                sortHelper.SortByAscending(result.Metadata.Tools, o => (o?.Vendor, o?.Name, o?.Version));
+                sortHelper.SortByAscending(result.Metadata.Tools);
             }
 
             if (result.Components?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Component>();
-                sortHelper.SortByAscending(result.Components, o => (o?.BomRef, o?.Type, o?.Group, o?.Name, o?.Version));
+                sortHelper.SortByAscending(result.Components);
             }
 
             if (result.Services?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Service>();
-                sortHelper.SortByAscending(result.Services, o => (o?.BomRef, o?.Group, o?.Name, o?.Version));
+                sortHelper.SortByAscending(result.Services);
             }
 
             if (result.ExternalReferences?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<ExternalReference>();
-                sortHelper.SortByAscending(result.ExternalReferences, o => (o?.Url, o?.Type));
+                sortHelper.SortByAscending(result.ExternalReferences);
             }
 
             if (result.Dependencies?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Dependency>();
-                sortHelper.SortByAscending(result.Dependencies, o => (o?.Ref));
+                sortHelper.SortByAscending(result.Dependencies);
             }
 
             if (result.Compositions?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Composition>();
-                sortHelper.SortByAscending(result.Compositions, o => (o?.Aggregate, o?.Assemblies, o?.Dependencies));
+                sortHelper.SortByAscending(result.Compositions);
             }
 
             if (result.Vulnerabilities?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Vulnerability>();
-                sortHelper.SortByAscending(result.Vulnerabilities, o => (o?.BomRef, o?.Id, o?.Created, o?.Updated));
+                sortHelper.SortByAscending(result.Vulnerabilities);
             }
 
             return result;
