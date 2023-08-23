@@ -396,7 +396,9 @@ namespace CycloneDX.Models
             new Func<ImmutableDictionary<Type, BomEntityListReflection>>(() =>
             {
                 Dictionary<Type, BomEntityListReflection> dict = new Dictionary<Type, BomEntityListReflection>();
-                foreach (var type in KnownEntityTypes)
+                List<Type> KnownEntityTypesPlus = new List<Type>(KnownEntityTypes);
+                KnownEntityTypesPlus.Add(typeof(BomEntity));
+                foreach (var type in KnownEntityTypesPlus)
                 {
                     // Inspired by https://stackoverflow.com/a/4661237/4715872
                     // to craft a List<SpecificType> "result" at run-time:
