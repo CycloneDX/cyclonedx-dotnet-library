@@ -545,43 +545,43 @@ namespace CycloneDX.Utils
             if (result.Metadata?.Tools?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Tool>();
-                sortHelper.SortByAscending(result.Metadata.Tools);
+                sortHelper.SortByAscending(result.Metadata.Tools, true);
             }
 
             if (result.Components?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Component>();
-                sortHelper.SortByAscending(result.Components);
+                sortHelper.SortByAscending(result.Components, true);
             }
 
             if (result.Services?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Service>();
-                sortHelper.SortByAscending(result.Services);
+                sortHelper.SortByAscending(result.Services, true);
             }
 
             if (result.ExternalReferences?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<ExternalReference>();
-                sortHelper.SortByAscending(result.ExternalReferences);
+                sortHelper.SortByAscending(result.ExternalReferences, true);
             }
 
             if (result.Dependencies?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Dependency>();
-                sortHelper.SortByAscending(result.Dependencies);
+                sortHelper.SortByAscending(result.Dependencies, true);
             }
 
             if (result.Compositions?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Composition>();
-                sortHelper.SortByAscending(result.Compositions);
+                sortHelper.SortByAscending(result.Compositions, true);
             }
 
             if (result.Vulnerabilities?.Count > 0)
             {
                 var sortHelper = new ListMergeHelper<Vulnerability>();
-                sortHelper.SortByAscending(result.Vulnerabilities);
+                sortHelper.SortByAscending(result.Vulnerabilities, true);
             }
 
             return result;
