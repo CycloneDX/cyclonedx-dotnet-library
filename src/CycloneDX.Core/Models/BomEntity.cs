@@ -83,6 +83,64 @@ namespace CycloneDX.Models
         public bool useBomEntityMerge { get; set; }
 
         /// <summary>
+        /// When merging whole Bom documents which include
+        /// Equivalent() Components (and probably references
+        /// back to them in respective Dependencies[] lists)
+        /// with differing values of Scope (required or null
+        /// vs. optional vs. excluded), do not conflate them
+        /// but instead rename the two siblings' values of
+        /// "bom-ref", suffixing the ":scope" - including
+        /// the back-references from locations known by spec.
+        /// Also consider equality of non-null Dependencies
+        /// pointing back to their same BomRef value in the
+        /// two original Bom documents (notably honouring the
+        /// explicitly empty "dependsOn" lists -- NOT NULL).
+        ///
+        /// This is partially orthogonal to useBomEntityMerge
+        /// setting which would allow to populate missing
+        /// data points using an incoming Component object:
+        /// * "partially" being that when two Components would
+        ///   be inspected by MergeWith(), the possibiliy of
+        ///   such suffix would be considered among equality
+        ///   criteria (not exact equality of BomRef props).
+        /// * "orthogonal" relating to the fact that this conflict
+        ///   inspection aims to be a quick pre-processing stage
+        ///   similar to quick merge (useBomEntityMerge==false)
+        ///   and modifies the incoming list of Bom documents
+        ///   before that quick merge, with a targeted solution
+        ///   cheaper than a full MergeWith() iteration.
+        ///
+        /// This is a bit costlier in processing, but safer in
+        /// pedantic approach, than the known alternatives:
+        /// * Just following "useBomEntityMerge" to the letter,
+        ///   comparing for exact equality of serialization of
+        ///   the two objects -- two or more copies of the same
+        ///   BomRef value assigned to different but related
+        ///   "real-life" entities can appear (e.g. when "scope"
+        ///   differs, like for production and testing modules)
+        ///   AND different Dependencies[] entries can exist
+        ///   (e.g. different Maven resolutions when building
+        ///   a Java ecosystem library vs. an app using it,
+        ///   with different dependencyManagement preferences).
+        ///   Due to this, we can not quickly conflate "purely
+        ///   equal" entities as the first pass when such
+        ///   nuanced inequalities can arise.
+        /// * Brutely conflating the Components with different
+        ///   Scopes ("optional" becomes "required" if something
+        ///   else in the overall merged product did require it)
+        ///   can backfire if the merged document describes an
+        ///   end-user bundle of a number of products: their
+        ///   separate programs (or even containers) do still have
+        ///   their separate dependency trees, so "app A" requiring
+        ///   a library does not mean that "app B" which had it as
+        ///   optional suddenly requires it now -- and maybe gets
+        ///   false-positive vulnerabilities reported due to that.
+        ///   For merged Bom documents describing a single linker
+        ///   namespace such conflation may in fact be valid however.
+        /// </summary>
+        public bool renameConflictingComponents { get; set; }
+
+        /// <summary>
         /// CycloneDX spec version.
         /// </summary>
         public SpecificationVersion specificationVersion { get; set; }
@@ -97,6 +155,7 @@ namespace CycloneDX.Models
             return new BomEntityListMergeHelperStrategy
             {
                 useBomEntityMerge = true,
+                renameConflictingComponents = true,
                 specificationVersion = SpecificationVersionHelpers.CurrentVersion
             };
         }
