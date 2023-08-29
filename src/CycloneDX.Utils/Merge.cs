@@ -112,7 +112,7 @@ namespace CycloneDX.Utils
                         Console.WriteLine($"FLAT-MERGE: bom1.Metadata.Component is already equivalent to bom2.Metadata.Component: merging");
                     }
                     result.Metadata.Component = bom1.Metadata.Component;
-                    result.Metadata.Component.MergeWith(bom2.Metadata.Component);
+                    result.Metadata.Component.MergeWith(bom2.Metadata.Component, listMergeHelperStrategy);
                 }
                 else
                 {
@@ -446,6 +446,7 @@ namespace CycloneDX.Utils
 
             if (!(result.Metadata.Component is null) && !(result.Components is null) && (result.Components?.Count > 0) && result.Components.Contains(result.Metadata.Component))
             {
+                BomEntityListMergeHelperStrategy safeStrategy = BomEntityListMergeHelperStrategy.Default();
                 if (iDebugLevel >= 2)
                 {
                     Console.WriteLine($"MERGE-CLEANUP: Searching in list");
@@ -467,7 +468,7 @@ namespace CycloneDX.Utils
                         {
                             Console.WriteLine($"MERGE-CLEANUP: Found in list: merging, cleaning...");
                         }
-                        result.Metadata.Component.MergeWith(component);
+                        result.Metadata.Component.MergeWith(component, safeStrategy);
                         result.Components.Remove(component);
                         return result;
                     }

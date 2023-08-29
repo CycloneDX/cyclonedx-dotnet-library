@@ -229,11 +229,11 @@ namespace CycloneDX.Models
                         var item1 = result[i];
                         if (methodMergeWith != null)
                         {
-                            resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item0});
+                            resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item0, listMergeHelperStrategy});
                         }
                         else
                         {
-                            resMerge = item1.MergeWith(item0);
+                            resMerge = item1.MergeWith(item0, listMergeHelperStrategy);
                         }
 
                         if (resMerge)
@@ -281,11 +281,11 @@ namespace CycloneDX.Models
                         bool resMerge;
                         if (methodMergeWith != null)
                         {
-                            resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item2});
+                            resMerge = (bool)methodMergeWith.Invoke(item1, new object[] {item2, listMergeHelperStrategy});
                         }
                         else
                         {
-                            resMerge = item1.MergeWith(item2);
+                            resMerge = item1.MergeWith(item2, listMergeHelperStrategy);
                         }
                         // MergeWith() may throw BomEntityConflictException which we
                         // want to propagate to users - their input data is confusing.
@@ -614,7 +614,7 @@ namespace CycloneDX.Models
                 {
                     var method = type.GetMethod("MergeWith",
                         BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly,
-                        new [] { type });
+                        new [] { type, typeof(BomEntityListMergeHelperStrategy) });
                     if (method != null)
                     {
                         dict[type] = method;
@@ -990,13 +990,15 @@ namespace CycloneDX.Models
         /// </summary>
         /// <param name="obj">Another object of same type whose additional
         /// non-conflicting data we try to squash into this object.</param>
+        /// <param name="listMergeHelperStrategy">A BomEntityListMergeHelperStrategy
+        /// instance which relays nuances about desired merging activity.</param>
         /// <returns>True if merge was successful, False if it these objects
         /// are not equivalent, or throws if merge can not be done (including
         /// lack of merge logic or unresolvable conflicts in data points).
         /// </returns>
         /// <exception cref="BomEntityConflictException">Source data problem: two entities with conflicting information</exception>
         /// <exception cref="BomEntityIncompatibleException">Caller error: somehow merging different entity types</exception>
-        public bool MergeWith(BomEntity obj)
+        public bool MergeWith(BomEntity obj, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             if (obj is null)
             {

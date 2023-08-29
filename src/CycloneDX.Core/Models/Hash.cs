@@ -68,14 +68,17 @@ namespace CycloneDX.Models
             return (!(obj is null) && this.Alg == obj.Alg);
         }
 
-        public bool MergeWith(Hash obj)
+        /// <summary>
+        /// See BomEntity.MergeWith()
+        /// </summary>
+        public bool MergeWith(Hash obj, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             try
             {
                 // Basic checks for null, type compatibility,
                 // equality and non-equivalence; throws for
                 // the hard stuff to implement in the catch:
-                return base.MergeWith(obj);
+                return base.MergeWith(obj, listMergeHelperStrategy);
             }
             catch (BomEntityConflictException)
             {
