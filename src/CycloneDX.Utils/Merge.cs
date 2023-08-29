@@ -57,6 +57,21 @@ namespace CycloneDX.Utils
             return FlatMerge(bom1, bom2, BomEntityListMergeHelperStrategy.Default());
         }
 
+        /// <summary>
+        /// Handle merging of two Bom object contents, possibly de-duplicating
+        /// or merging information from Equivalent() entries as further tuned
+        /// via listMergeHelperStrategy argument.
+        ///
+        /// NOTE: This sets a new timestamp into each newly merged Bom document.
+        /// However it is up to the caller to use ReferThisToolkitMetadata()
+        /// for adding references to this library (and the run-time program
+        /// which consumes it) into the final merged document, to avoid the
+        /// overhead in a loop context.
+        /// </summary>
+        /// <param name="bom1"></param>
+        /// <param name="bom2"></param>
+        /// <param name="listMergeHelperStrategy"></param>
+        /// <returns></returns>
         public static Bom FlatMerge(Bom bom1, Bom bom2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
@@ -72,6 +87,9 @@ namespace CycloneDX.Utils
                 // document gets a new timestamp every time. It is unique after all.
                 // Also note that a merge of "new Bom()" with a real Bom is also different
                 // from that original (serialNumber, timestamp, possible entry order, etc.)
+                // Adding Tools[] entries to refer to this library (and the run-time tool
+                // program which consumes it) costs a bit more, so this is only done by the
+                // caller via ReferThisToolkitMetadata() for final merge and not in a loop.
                 Timestamp = DateTime.Now
             };
 
@@ -211,44 +229,7 @@ namespace CycloneDX.Utils
             // identical entries). Run another merge, careful this time, over
             // the resulting collection with a lot fewer items to inspect with
             // the heavier logic.
-            var resultSubj = new Bom();
-
-            // Add reference to this currently running build of cyclonedx-cli
-            // (likely) and this cyclonedx-dotnet-library into the metadata/tools
-            // of the merged BOM document. After all - any bugs appearing due
-            // to merge routines are our own and should be trackable...
-            // Per https://stackoverflow.com/a/36351902/4715872 :
-            // Use System.Reflection.Assembly.GetExecutingAssembly()
-            // to get the assembly (that this line of code is in), or
-            // use System.Reflection.Assembly.GetEntryAssembly() to
-            // get the assembly your project started with (most likely
-            // this is your app). In multi-project solutions this is
-            // something to keep in mind!
-            Tool toolThisLibrary = new Tool
-            {
-                Vendor = "OWASP Foundation",
-                Name = Assembly.GetExecutingAssembly().GetName().Name, // "cyclonedx-dotnet-library"
-                Version = Assembly.GetExecutingAssembly().GetName().Version.ToString()
-            };
-
-            resultSubj.Metadata = new Metadata
-            {
-                Tools = new List<Tool>(new [] {toolThisLibrary})
-            };
-
-            // At worst, these would dedup away?..
-            string toolThisScriptName = Assembly.GetEntryAssembly().GetName().Name; // "cyclonedx-cli" or similar
-            if (toolThisScriptName != toolThisLibrary.Name)
-            {
-                Tool toolThisScript = new Tool
-                {
-                    Name = toolThisScriptName,
-                    Vendor = (toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx") ? "OWASP Foundation" : null),
-                    Version = Assembly.GetEntryAssembly().GetName().Version.ToString()
-                };
-                resultSubj.Metadata.Tools.Add(toolThisScript);
-            }
-
+            var resultSubj = ReferThisToolkitMetadata(null);
 
             if (bomSubject is null)
             {
@@ -426,6 +407,73 @@ namespace CycloneDX.Utils
         }
 
         /// <summary>
+        /// Add reference to this currently running build of cyclonedx-cli
+        /// (likely) and this cyclonedx-dotnet-library into the metadata/tools
+        /// of the merged BOM document. After all - any bugs appearing due
+        /// to merge routines are our own and should be trackable...
+        /// </summary>
+        /// <param name="bom">The Bom object to inject Metadata.Tools[]
+        /// entries into. May be null, then a new Bom will be provisioned.</param>
+        /// <returns></returns>
+        public static Bom ReferThisToolkitMetadata(Bom bom)
+        {
+            // Per https://stackoverflow.com/a/36351902/4715872 :
+            // Use System.Reflection.Assembly.GetExecutingAssembly()
+            // to get the assembly (that this line of code is in), or
+            // use System.Reflection.Assembly.GetEntryAssembly() to
+            // get the assembly your project started with (most likely
+            // this is your app). In multi-project solutions this is
+            // something to keep in mind!
+            Tool toolThisLibrary = new Tool
+            {
+                Vendor = "OWASP Foundation",
+                Name = Assembly.GetExecutingAssembly().GetName().Name, // "cyclonedx-dotnet-library"
+                Version = Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            };
+
+            if (bom is null)
+            {
+                bom = new Bom();
+            }
+
+            if (bom.Metadata is null)
+            {
+                bom.Metadata = new Metadata();
+            }
+
+            if (bom.Metadata.Tools is null)
+            {
+                bom.Metadata.Tools = new List<Tool>(new [] {toolThisLibrary});
+            }
+            else
+            {
+                if (!bom.Metadata.Tools.Contains(toolThisLibrary))
+                {
+                    bom.Metadata.Tools.Add(toolThisLibrary);
+                }
+            }
+
+            // At worst, these would dedup away?..
+            string toolThisScriptName = Assembly.GetEntryAssembly().GetName().Name; // "cyclonedx-cli" or similar
+            if (toolThisScriptName != toolThisLibrary.Name)
+            {
+                Tool toolThisScript = new Tool
+                {
+                    Name = toolThisScriptName,
+                    Vendor = (toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx") ? "OWASP Foundation" : null),
+                    Version = Assembly.GetEntryAssembly().GetName().Version.ToString()
+                };
+
+                if (!bom.Metadata.Tools.Contains(toolThisScript))
+                {
+                    bom.Metadata.Tools.Add(toolThisScript);
+                }
+            }
+
+            return bom;
+        }
+
+        /// <summary>
         /// Merge main "metadata/component" entry with its possible alter-ego
         /// in the components list and evict extra copy from that list: per
         /// spec v1_4 at least, the bom-ref must be unique across the document.
@@ -589,7 +637,7 @@ namespace CycloneDX.Utils
         }
 
         // Currently our MergeWith() logic has potential to mess with
-        // Component bom entities (later maybe more), and generally
+        // Component bom entities (later maybe more types), and generally
         // the document-wide uniqueness of BomRefs is a sore point, so
         // we want them all accounted "before and after" the (flat) merge.
         // Code below reuses the same dictionary object as initialized
