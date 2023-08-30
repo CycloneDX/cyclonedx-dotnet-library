@@ -80,18 +80,29 @@ namespace CycloneDX.Utils
             }
 
             var result = new Bom();
-            result.Metadata = new Metadata
+            // Note: we recurse into this method from other FlatMerge() implementations
+            // (e.g. mass-merge of a big list of Bom documents), so the resulting
+            // document gets a new timestamp every time. It is unique after all.
+            // Also note that a merge of "new Bom()" with a real Bom is also different
+            // from that original (serialNumber, timestamp, possible entry order, etc.)
+            // Adding Tools[] entries to refer to this library (and the run-time tool
+            // program which consumes it) costs a bit more, so this is toggled separately
+            // and should not waste CPU not in a loop.
+            // Note that these toggles default to `false` so should not impact the
+            // typical loop (calls from the other FlatMerge() implementations nearby).
+            if (listMergeHelperStrategy.doBomMetadataUpdate)
             {
-                // Note: we recurse into this method from other FlatMerge() implementations
-                // (e.g. mass-merge of a big list of Bom documents), so the resulting
-                // document gets a new timestamp every time. It is unique after all.
-                // Also note that a merge of "new Bom()" with a real Bom is also different
-                // from that original (serialNumber, timestamp, possible entry order, etc.)
-                // Adding Tools[] entries to refer to this library (and the run-time tool
-                // program which consumes it) costs a bit more, so this is only done by the
-                // caller via ReferThisToolkitMetadata() for final merge and not in a loop.
-                Timestamp = DateTime.Now
-            };
+                result.BomMetadataUpdate(listMergeHelperStrategy.doBomMetadataUpdateNewSerialNumber);
+            }
+            if (listMergeHelperStrategy.doBomMetadataUpdateReferThisToolkit)
+            {
+                result.BomMetadataReferThisToolkit();
+            }
+            if (result.Metadata is null)
+            {
+                // If none of the above...
+                result.Metadata = new Metadata();
+            }
 
             var toolsMerger = new ListMergeHelper<Tool>();
             var tools = toolsMerger.Merge(bom1.Metadata?.Tools, bom2.Metadata?.Tools, listMergeHelperStrategy);
@@ -230,6 +241,8 @@ namespace CycloneDX.Utils
             // the resulting collection with a lot fewer items to inspect with
             // the heavier logic.
             var resultSubj = new Bom();
+            // New merged document (new SerialNumber, Version=1, Timestamp)...
+            resultSubj.BomMetadataUpdate(true);
             resultSubj.BomMetadataReferThisToolkit();
 
             if (bomSubject is null)
@@ -298,10 +311,7 @@ namespace CycloneDX.Utils
         public static Bom HierarchicalMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
-            result.Metadata = new Metadata
-            {
-                Timestamp = DateTime.Now
-            };
+            result.BomMetadataUpdate(true);
 
             if (bomSubject != null)
             {
