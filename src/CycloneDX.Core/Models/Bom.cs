@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -168,5 +169,132 @@ namespace CycloneDX.Models
         [ProtoMember(13)]
         public List<Formula> Formulation { get; set; }
         public bool ShouldSerializeFormulation() { return Formulation?.Count > 0; }
+
+        // TODO: MergeWith() might be reasonable but is currently handled
+        // by several strategy implementations in CycloneDX.Utils Merge.cs
+        // so maybe there should be sub-classes or strategy arguments or
+        // properties to select one of those implementations at run-time?..
+
+        /// <summary>
+        /// Add reference to this currently running build of cyclonedx-cli
+        /// (likely) and this cyclonedx-dotnet-library into the Metadata/Tools
+        /// of this Bom document. Intended for use after processing which
+        /// creates or modifies the document. After all - any bugs appearing
+        /// due to library routines are our own and should be trackable...
+        ///
+        /// NOTE: Tries to not add identical duplicate entries.
+        /// </summary>
+        public void BomMetadataReferThisToolkit()
+        {
+            // Per https://stackoverflow.com/a/36351902/4715872 :
+            // Use System.Reflection.Assembly.GetExecutingAssembly()
+            // to get the assembly (that this line of code is in), or
+            // use System.Reflection.Assembly.GetEntryAssembly() to
+            // get the assembly your project started with (most likely
+            // this is your app). In multi-project solutions this is
+            // something to keep in mind!
+            Tool toolThisLibrary = new Tool
+            {
+                Vendor = "OWASP Foundation",
+                Name = Assembly.GetExecutingAssembly().GetName().Name, // "cyclonedx-dotnet-library"
+                Version = Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            };
+
+            if (this.Metadata is null)
+            {
+                this.Metadata = new Metadata();
+            }
+
+            if (this.Metadata.Tools is null)
+            {
+                this.Metadata.Tools = new List<Tool>(new [] {toolThisLibrary});
+            }
+            else
+            {
+                if (!this.Metadata.Tools.Contains(toolThisLibrary))
+                {
+                    this.Metadata.Tools.Add(toolThisLibrary);
+                }
+            }
+
+            // At worst, these would dedup away?..
+            string toolThisScriptName = Assembly.GetEntryAssembly().GetName().Name; // "cyclonedx-cli" or similar
+            if (toolThisScriptName != toolThisLibrary.Name)
+            {
+                Tool toolThisScript = new Tool
+                {
+                    Name = toolThisScriptName,
+                    Vendor = (toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx") ? "OWASP Foundation" : null),
+                    Version = Assembly.GetEntryAssembly().GetName().Version.ToString()
+                };
+
+                if (!this.Metadata.Tools.Contains(toolThisScript))
+                {
+                    this.Metadata.Tools.Add(toolThisScript);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Update the Metadata/Timestamp of this Bom document
+        /// (after content manipulations such as a merge)
+        /// using DateTime.Now.
+        ///
+        /// NOTE: Creates a new Metadata object to populate
+        /// the property, if one was missing in this Bom object.
+        /// </summary>
+        public void BomMetadataUpdateTimestamp()
+        {
+            if (this.Metadata is null)
+            {
+                this.Metadata = new Metadata();
+            }
+
+            this.Metadata.Timestamp = DateTime.Now;
+        }
+
+        /// <summary>
+        /// Update the SerialNumber and optionally bump the Version
+        /// of a Bom document issued with such serial number (both
+        /// not in the Metadata structure, but still are "meta data")
+        /// of this Bom document, either using a new random UUID as
+        /// the SerialNumber and assigning a Version=1, or bumping
+        /// the Version -- usually done after content manipulations
+        /// such as a merge, depending on their caller-defined impact.
+        /// </summary>
+        public void BomMetadataUpdateSerialNumberVersion(bool generateNewSerialNumber)
+        {
+            if (this.Version is null || this.Version < 1 || this.SerialNumber is null || this.SerialNumber == "")
+            {
+                generateNewSerialNumber = true;
+            }
+
+            if (generateNewSerialNumber)
+            {
+                this.Version = 1;
+                this.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
+            }
+            else
+            {
+                this.Version++;
+            }
+        }
+
+        /// <summary>
+        /// Set up (default or update) meta data of this Bom document,
+        /// covering the Version, SerialNumber and Metadata/Timestamp
+        /// in one shot. Typically useful to brush up a `new Bom()` or
+        /// to ensure a new identity for a modified Bom document.
+        ///
+        /// NOTE: caller may want to BomMetadataReferThisToolkit()
+        /// separately, to add the Metadata/Tools[] entries about this
+        /// CycloneDX library and its consumer (e.g. the "cyclonedx-cli"
+        /// program).
+        /// </summary>
+        public void BomMetadataUpdate(bool generateNewSerialNumber)
+        {
+            this.BomMetadataUpdateSerialNumberVersion(generateNewSerialNumber);
+            this.BomMetadataUpdateTimestamp();
+        }
     }
 }
