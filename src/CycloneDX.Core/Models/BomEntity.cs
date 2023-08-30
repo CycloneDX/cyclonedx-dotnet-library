@@ -146,6 +146,22 @@ namespace CycloneDX.Models
         public SpecificationVersion specificationVersion { get; set; }
 
         /// <summary>
+        /// Used by interim Merge.FlatMerge(bom1, bom2) in a loop
+        /// context -- defaulting to `false` to reduce compute
+        /// load for results we would discard. Can be set to `true`
+        /// by some other use-cases that would invoke that method.
+        /// Does not impact the Merge.FlatMerge(Iterable<Bom>) variant.
+        ///
+        /// See also: doBomMetadataUpdateNewSerialNumber,
+        /// doBomMetadataUpdateReferThisToolkit
+        /// </summary>
+        public bool doBomMetadataUpdate { get; set; }
+        /// <summary>See doBomMetadataUpdate description.</summary>
+        public bool doBomMetadataUpdateNewSerialNumber { get; set; }
+        /// <summary>See doBomMetadataUpdate description.</summary>
+        public bool doBomMetadataUpdateReferThisToolkit { get; set; }
+
+        /// <summary>
         /// Return reasonable default strategy settings.
         /// </summary>
         /// <returns>A new ListMergeHelperStrategy instance
@@ -156,6 +172,9 @@ namespace CycloneDX.Models
             {
                 useBomEntityMerge = true,
                 renameConflictingComponents = true,
+                doBomMetadataUpdate = false,
+                doBomMetadataUpdateNewSerialNumber = false,
+                doBomMetadataUpdateReferThisToolkit = false,
                 specificationVersion = SpecificationVersionHelpers.CurrentVersion
             };
         }
