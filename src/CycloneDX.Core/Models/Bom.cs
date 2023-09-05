@@ -34,9 +34,26 @@ namespace CycloneDX.Models
         [XmlIgnore]
         public string BomFormat => "CycloneDX";
 
+        private SpecificationVersion _specVersion = SpecificationVersionHelpers.CurrentVersion;
         [XmlIgnore]
         [JsonIgnore]
-        public SpecificationVersion SpecVersion { get; set; } = SpecificationVersionHelpers.CurrentVersion;
+        public SpecificationVersion SpecVersion
+        {
+            get => _specVersion;
+            set
+            {
+                _specVersion = value;
+                // this is horrible, but I can't get the XML serializer to cooperate with me otherwise
+                BomUtils.EnumerateAllToolChoices(this, (toolChoice) =>
+                {
+                    toolChoice.SpecVersion = _specVersion;
+                });
+                BomUtils.EnumerateAllServices(this, (service) =>
+                {
+                    service.SpecVersion = _specVersion;
+                });
+            }
+        }
 
         // For JSON we could use a custom converter
         // but this works nicely for protobuf too
@@ -45,10 +62,7 @@ namespace CycloneDX.Models
         [JsonPropertyName("specVersion")]
         public string SpecVersionString
         {
-            get
-            {
-                return SpecificationVersionHelpers.VersionString(SpecVersion);
-            }
+            get => SpecificationVersionHelpers.VersionString(SpecVersion);
             set
             {
                 switch (value)
@@ -67,6 +81,9 @@ namespace CycloneDX.Models
                         break;
                     case "1.4":
                         SpecVersion = SpecificationVersion.v1_4;
+                        break;
+                    case "1.5":
+                        SpecVersion = SpecificationVersion.v1_5;
                         break;
                     default:
                         throw new ArgumentException($"Unsupported specification version: {value}");
@@ -133,5 +150,23 @@ namespace CycloneDX.Models
         [ProtoMember(10)]
         public List<Vulnerabilities.Vulnerability> Vulnerabilities { get; set; }
         public bool ShouldSerializeVulnerabilities() { return Vulnerabilities?.Count > 0; }
+        
+        [XmlArray("annotations")]
+        [XmlArrayItem("annotation")]
+        [ProtoMember(11)]
+        public List<Annotation> Annotations { get; set; }
+        public bool ShouldSerializeAnnotations() { return Annotations?.Count > 0; }
+        
+        [XmlArray("properties")]
+        [XmlArrayItem("property")]
+        [ProtoMember(12)]
+        public List<Property> Properties { get; set; }
+        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+        
+        [XmlArray("formulation")]
+        [XmlArrayItem("formula")]
+        [ProtoMember(13)]
+        public List<Formula> Formulation { get; set; }
+        public bool ShouldSerializeFormulation() { return Formulation?.Count > 0; }
     }
 }

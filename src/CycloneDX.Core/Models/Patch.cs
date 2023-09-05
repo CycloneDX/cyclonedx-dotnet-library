@@ -36,7 +36,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "backport")]
             Backport,
             [XmlEnum(Name = "cherry-pick")]
-            CherryPick
+            Cherry_Pick
         }
 
         [XmlAttribute("type")]

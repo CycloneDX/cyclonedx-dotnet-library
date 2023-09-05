@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -40,5 +41,25 @@ namespace CycloneDX.Models.Vulnerabilities
         [XmlElement("detail")]
         [ProtoMember(4)]
         public string Detail { get; set; }
+
+        private DateTime? _firstIssued;
+        [XmlElement("firstIssued")]
+        [ProtoMember(5)]
+        public DateTime? FirstIssued
+        { 
+            get => _firstIssued;
+            set { _firstIssued = BomUtils.UtcifyDateTime(value); }
+        }
+        public bool ShouldSerializeFirstIssued() { return FirstIssued != null; }
+
+        private DateTime? _lastUpdated;
+        [XmlElement("lastUpdated")]
+        [ProtoMember(6)]
+        public DateTime? LastUpdated
+        { 
+            get => _lastUpdated;
+            set { _lastUpdated = BomUtils.UtcifyDateTime(value); }
+        }
+        public bool ShouldSerializeLastUpdated() { return LastUpdated != null; }
     }
 }
