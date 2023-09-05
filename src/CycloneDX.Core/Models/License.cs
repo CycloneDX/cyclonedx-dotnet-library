@@ -29,6 +29,7 @@ namespace CycloneDX.Models
         [XmlElement("id")]
         [ProtoMember(1)]
         public string Id { get; set; }
+        public bool ShouldSerializeId() { return Id != null; }
 
         [XmlElement("name")]
         [ProtoMember(2)]

@@ -114,12 +114,11 @@
       "ProofOfConcept": null,
       "Advisories": null,
       "Credits": null,
-      "Tools": null,
       "Analysis": null,
       "Affects": [
         {
           "Ref": "Thing@1",
-          "Range": null
+          "Versions": null
         }
       ]
     },
@@ -136,12 +135,11 @@
       "ProofOfConcept": null,
       "Advisories": null,
       "Credits": null,
-      "Tools": null,
       "Analysis": null,
       "Affects": [
         {
           "Ref": "Thing@1",
-          "Range": null
+          "Versions": null
         }
       ]
     }

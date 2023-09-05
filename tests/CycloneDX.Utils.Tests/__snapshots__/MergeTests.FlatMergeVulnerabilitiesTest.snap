@@ -21,12 +21,11 @@
       "ProofOfConcept": null,
       "Advisories": null,
       "Credits": null,
-      "Tools": null,
       "Analysis": null,
       "Affects": [
         {
           "Ref": "ref1",
-          "Range": null
+          "Versions": null
         }
       ]
     },
@@ -43,12 +42,11 @@
       "ProofOfConcept": null,
       "Advisories": null,
       "Credits": null,
-      "Tools": null,
       "Analysis": null,
       "Affects": [
         {
           "Ref": "ref2",
-          "Range": null
+          "Versions": null
         }
       ]
     }

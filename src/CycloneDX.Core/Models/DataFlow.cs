@@ -66,10 +66,12 @@ namespace CycloneDX.Models
 
         [XmlElement("source")]
         [ProtoMember(5)]
-        public DataflowSourceDestination Source { get; set; }
+        public List<DataflowSourceDestination> Source { get; set; }
+        public bool ShouldSerializeSource() => Source != null;
         
         [XmlElement("destination")]
         [ProtoMember(6)]
-        public DataflowSourceDestination Destination { get; set; }
+        public List<DataflowSourceDestination> Destination { get; set; }
+        public bool ShouldSerializeDestination() => Destination != null;
     }
 }

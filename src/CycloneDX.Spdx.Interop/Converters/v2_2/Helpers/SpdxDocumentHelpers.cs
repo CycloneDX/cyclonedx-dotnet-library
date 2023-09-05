@@ -31,7 +31,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 || component.Type == Component.Classification.Firmware
                 || component.Type == Component.Classification.Framework
                 || component.Type == Component.Classification.Library
-                || component.Type == Component.Classification.OperationSystem
+                || component.Type == Component.Classification.Operating_System
                 || component.Type == Component.Classification.Container;
         }
 

@@ -31,7 +31,7 @@ namespace CycloneDX.Models
         [XmlEnum(Name = "outbound")]
         Outbound,
         [XmlEnum(Name = "bi-directional")]
-        Bidirectional,
+        Bi_Directional,
         [XmlEnum(Name = "unknown")]
         Unknown
     }

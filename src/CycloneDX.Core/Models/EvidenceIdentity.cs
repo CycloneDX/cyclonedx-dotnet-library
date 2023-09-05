@@ -63,10 +63,9 @@ namespace CycloneDX.Models
         [XmlArrayItem("method")]
         [ProtoMember(3)]
         public List<EvidenceMethods> Methods { get; set; }
-        
-        [XmlArray("tools")]
-        [XmlArrayItem("tool")]
+
+        [XmlElement("tools")]
         [ProtoMember(4)]
-        public List<EvidenceTool> Tools { get; set; }
+        public EvidenceTools Tools { get; set; }
     }
 }

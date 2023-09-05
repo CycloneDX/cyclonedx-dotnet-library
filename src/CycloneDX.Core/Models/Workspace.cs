@@ -32,15 +32,15 @@ namespace CycloneDX.Models
         public enum AccessModeType
         {
             [XmlEnum(Name = "read-only")]
-            ReadOnly,
+            Read_Only,
             [XmlEnum(Name = "read-write")]
-            ReadWrite,
+            Read_Write,
             [XmlEnum(Name = "read-write-once")]
-            ReadWriteOnce,
+            Read_Write_Once,
             [XmlEnum(Name = "write-once")]
-            WriteOnce,
+            Write_Once,
             [XmlEnum(Name = "write-only")]
-            WriteOnly,
+            Write_Only,
         }
 
         [JsonPropertyName("bom-ref")]
@@ -79,9 +79,8 @@ namespace CycloneDX.Models
 
         [XmlElement("accessMode")]
         [ProtoMember(8)]
-        public AccessModeType? AccessMode { get; set; }
-        public bool ShouldSerializeAccessMode() { return AccessMode != null; }
-
+        public AccessModeType AccessMode { get; set; }
+        
         [XmlElement("mountPath")]
         [ProtoMember(9)]
         public string MountPath { get; set; }

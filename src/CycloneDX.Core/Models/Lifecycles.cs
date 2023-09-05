@@ -15,6 +15,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -31,11 +33,11 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "design")]
             Design,
             [XmlEnum(Name = "pre-build")]
-            PreBuild,
+            Pre_Build,
             [XmlEnum(Name = "build")]
             Build,
             [XmlEnum(Name = "post-build")]
-            PostBuild,
+            Post_Build,
             [XmlEnum(Name = "operations")]
             Operations,
             [XmlEnum(Name = "discovery")]
@@ -46,8 +48,17 @@ namespace CycloneDX.Models
 
         [XmlElement("phase")]
         [ProtoMember(1)]
-        public LifecyclePhase? Phase { get; set; }
-        public bool ShouldSerializePhase() { return Phase == null || Phase == LifecyclePhase.Null; }
+        [JsonIgnore]
+        public LifecyclePhase Phase { get; set; }
+        public bool ShouldSerializePhase() => Phase != LifecyclePhase.Null;
+
+        [XmlIgnore]
+        [JsonPropertyName("phase")]
+        public LifecyclePhase? JsonPhase
+        {
+            get => Phase == LifecyclePhase.Null ? (LifecyclePhase?)null : Phase;
+            set => Phase = (value == null ? LifecyclePhase.Null : value.Value);
+        }
 
         [XmlElement("name")]
         [ProtoMember(2)]

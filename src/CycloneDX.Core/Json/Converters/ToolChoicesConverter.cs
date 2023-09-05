@@ -38,7 +38,17 @@ namespace CycloneDX.Json.Converters
             }
             else if (reader.TokenType == JsonTokenType.StartObject)
             {
-                var toolChoices = JsonSerializer.Deserialize<ToolChoices>(ref reader, options);
+                // need to remove _this_ converter from the options to prevent recursion below
+                var serializerOptions = Utils.GetJsonSerializerOptions();
+                for (var i = 0; i < serializerOptions.Converters.Count; i++)
+                {
+                    if (serializerOptions.Converters[i].CanConvert(typeof(ToolChoices)))
+                    {
+                        serializerOptions.Converters.RemoveAt(i);
+                        break;
+                    }
+                }
+                var toolChoices = JsonSerializer.Deserialize<ToolChoices>(ref reader, serializerOptions);
                 return toolChoices;
             }
             else if (reader.TokenType == JsonTokenType.StartArray)
@@ -72,7 +82,7 @@ namespace CycloneDX.Json.Converters
                 }
                 writer.WriteEndArray();
             }
-            else
+            else if (value.Components != null || value.Services != null)
             {
                 writer.WriteStartObject();
                 if (value.Components != null)
@@ -86,6 +96,10 @@ namespace CycloneDX.Json.Converters
                     JsonSerializer.Serialize(writer, value.Services, options);
                 }
                 writer.WriteEndObject();                
+            }
+            else
+            {
+                writer.WriteNullValue();
             }
         }
     }

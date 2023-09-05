@@ -154,6 +154,7 @@ namespace CycloneDX
                     foreach (var composition in bomCopy.Compositions)
                     {
                         composition.BomRef = null;
+                        composition.Vulnerabilities = null;
                     }
                 }
                 
@@ -196,6 +197,23 @@ namespace CycloneDX
                         vulnerability.Analysis.FirstIssued = null;
                         vulnerability.Analysis.LastUpdated = null;
                     }
+
+                    if (vulnerability.Ratings != null)
+                    {
+                        var i = 0;
+                        while (i < vulnerability.Ratings.Count)
+                        {
+                            if (vulnerability.Ratings[i].Method == ScoreMethod.CVSSV4 ||
+                                vulnerability.Ratings[i].Method == ScoreMethod.SSVC)
+                            {
+                                vulnerability.Ratings.RemoveAt(i);
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                    }
                 });
                 
                 EnumerateAllEvidence(bomCopy, (evidence) =>
@@ -203,6 +221,11 @@ namespace CycloneDX
                     evidence.Identity = null;
                     evidence.Occurrences = null;
                     evidence.Callstack = null;
+                });
+                
+                EnumerateAllLicenseChoices(bomCopy, (licenseChoice) =>
+                {
+                    licenseChoice.BomRef = null;
                 });
                 
                 EnumerateAllLicenses(bomCopy, (license) =>
@@ -223,6 +246,7 @@ namespace CycloneDX
                 });
             }
 
+            // triggers a bunch of stuff, don't remove unless you know what you are doing
             bomCopy.SpecVersion = bomCopy.SpecVersion;
 
             return bomCopy;
@@ -313,11 +337,19 @@ namespace CycloneDX
         
         public static void EnumerateAllLicenses(Bom bom, Action<License> callback)
         {
+            EnumerateAllLicenseChoices(bom, (licenseChoice) =>
+            {
+                if (licenseChoice.License != null) callback(licenseChoice.License);
+            });
+        }
+
+        public static void EnumerateAllLicenseChoices(Bom bom, Action<LicenseChoice> callback)
+        {
             if (bom.Metadata?.Licenses != null)
             {
                 foreach (var license in bom.Metadata.Licenses)
                 {
-                    if (license.License != null) callback(license.License);
+                    callback(license);
                 }
                     
             }
@@ -327,7 +359,7 @@ namespace CycloneDX
                 {
                     foreach (var license in component.Licenses)
                     {
-                        if (license.License != null) callback(license.License);
+                        callback(license);
                     }
                 }
             });
@@ -338,7 +370,7 @@ namespace CycloneDX
                 {
                     foreach (var license in service.Licenses)
                     {
-                        if (license.License != null) callback(license.License);
+                        callback(license);
                     }
                 }
             });
@@ -349,7 +381,7 @@ namespace CycloneDX
                 {
                     foreach (var license in evidence.Licenses)
                     {
-                        if (license.License != null) callback(license.License);
+                        callback(license);
                     }
                 }
             });

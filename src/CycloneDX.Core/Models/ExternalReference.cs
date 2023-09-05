@@ -34,7 +34,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "vcs")]
             Vcs,
             [XmlEnum(Name = "issue-tracker")]
-            IssueTracker,
+            Issue_Tracker,
             [XmlEnum(Name = "website")]
             Website,
             [XmlEnum(Name = "advisories")]
@@ -42,7 +42,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "bom")]
             Bom,
             [XmlEnum(Name = "mailing-list")]
-            MailingList,
+            Mailing_List,
             [XmlEnum(Name = "social")]
             Social,
             [XmlEnum(Name = "chat")]
@@ -56,45 +56,45 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "license")]
             License,
             [XmlEnum(Name = "build-meta")]
-            BuildMeta,
+            Build_Meta,
             [XmlEnum(Name = "build-system")]
-            BuildSystem,
+            Build_System,
             [XmlEnum(Name = "security-contact")]
-            SecurityContact,
+            Security_Contact,
             [XmlEnum(Name = "attestation")]
             Attestation,
             [XmlEnum(Name = "threat-model")]
-            ThreatModel,
+            Threat_Model,
             [XmlEnum(Name = "adversary-model")]
-            AdversaryModel,
+            Adversary_Model,
             [XmlEnum(Name = "risk-assessment")]
-            RiskAssessment,
+            Risk_Assessment,
             [XmlEnum(Name = "distribution-intake")]
-            DistributionIntake,
+            Distribution_Intake,
             [XmlEnum(Name = "vulnerability-assertion")]
-            VulnerabilityAssertion,
+            Vulnerability_Assertion,
             [XmlEnum(Name = "exploitability-statement")]
-            ExploitabilityStatement,
+            Exploitability_Statement,
             [XmlEnum(Name = "pentest-report")]
-            PentestReport,
+            Pentest_Report,
             [XmlEnum(Name = "static-analysis-report")]
-            StaticAnalysisReport,
+            Static_Analysis_Report,
             [XmlEnum(Name = "dynamic-analysis-report")]
-            DynamicAnalysisReport,
+            Dynamic_Analysis_Report,
             [XmlEnum(Name = "runtime-analysis-report")]
-            RuntimeAnalysisReport,
+            Runtime_Analysis_Report,
             [XmlEnum(Name = "component-analysis-report")]
-            ComponentAnalysisReport,
+            Component_Analysis_Report,
             [XmlEnum(Name = "maturity-report")]
-            MaturityReport,
+            Maturity_Report,
             [XmlEnum(Name = "certification-report")]
-            CertificationReport,
+            Certification_Report,
             [XmlEnum(Name = "quality-metrics")]
-            QualityMetrics,
+            Quality_Metrics,
             [XmlEnum(Name = "codified-infrastructure")]
-            CodifiedInfrastructure,
+            Codified_Infrastructure,
             [XmlEnum(Name = "model-card")]
-            ModelCard,
+            Model_Card,
             [XmlEnum(Name = "poam")]
             Poam,
             [XmlEnum(Name = "log")]
@@ -106,7 +106,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "formulation")]
             Formulation,
             [XmlEnum(Name = "release-notes")]
-            ReleaseNotes,
+            Release_Notes,
         }
 
         [XmlElement("url")]

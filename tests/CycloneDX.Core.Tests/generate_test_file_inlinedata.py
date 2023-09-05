@@ -22,6 +22,6 @@ for entry_name in dir_entries:
 print("\nXML Entries\n")
 print("\n".join(xml))
 print("\nJSON Entries\n")
-print("\n".join(xml))
+print("\n".join(json))
 print("\nProtobuf Entries\n")
 print("\n".join(protobuf))

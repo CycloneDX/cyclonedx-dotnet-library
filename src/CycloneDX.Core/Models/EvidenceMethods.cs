@@ -34,19 +34,19 @@ namespace CycloneDX.Models
         public enum EvidenceTechnique
         {
             [XmlEnum(Name = "source-code-analysis")]
-            SourceCodeAnalysis,
+            Source_Code_Analysis,
             [XmlEnum(Name = "binary-analysis")]
-            BinaryAnalysis,
+            Binary_Analysis,
             [XmlEnum(Name = "manifest-analysis")]
-            ManifestAnalysis,
+            Manifest_Analysis,
             [XmlEnum(Name = "ast-fingerprint")]
-            AstFingerprint,
+            Ast_Fingerprint,
             [XmlEnum(Name = "hash-comparison")]
-            HashComparison,
+            Hash_Comparison,
             [XmlEnum(Name = "instrumentation")]
             Instrumentation,
             [XmlEnum(Name = "dynamic-analysis")]
-            DynamicAnalysis,
+            Dynamic_Analysis,
             [XmlEnum(Name = "filename")]
             Filename,
             [XmlEnum(Name = "attestation")]

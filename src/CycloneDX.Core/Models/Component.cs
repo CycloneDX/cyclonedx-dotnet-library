@@ -41,7 +41,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "library")]
             Library,
             [XmlEnum(Name = "operating-system")]
-            OperationSystem,
+            Operating_System,
             [XmlEnum(Name = "device")]
             Device,
             [XmlEnum(Name = "file")]
@@ -51,11 +51,11 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "firmware")]
             Firmware,
             [XmlEnum(Name = "device-driver")]
-            DeviceDriver,
+            Device_Driver,
             [XmlEnum(Name = "platform")]
             Platform,
             [XmlEnum(Name = "machine-learning-model")]
-            MachineLearningModel,
+            Machine_Learning_Model,
             [XmlEnum(Name = "data")]
             Data,
         }

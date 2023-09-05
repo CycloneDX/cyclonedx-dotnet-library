@@ -26,7 +26,8 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class Annotation
     {
-        public class AnnotationSubject
+        [XmlType("subject")]
+        public class XmlAnnotationSubject
         {
             [XmlAttribute("ref")]
             public string Ref { get; set; }
@@ -37,30 +38,36 @@ namespace CycloneDX.Models
         [ProtoMember(1)]
         public string BomRef { get; set; }
 
-        [XmlArray("subjects")]
-        [XmlArrayItem("subject")]
-        public List<AnnotationSubject> Subjects { get; set; }
-
         [XmlIgnore]
-        [JsonIgnore]
+        [JsonPropertyName("subjects")]
         [ProtoMember(2)]
-        public List<string> ProtobufSubjects
+        public List<string> Subjects
         {
             get
             {
-                List<string> result = null;
-                if (Subjects != null)
-                {
-                    result = new List<string>();
-                    foreach (var subject in Subjects)
-                    {
-                        result.Add(subject.Ref);
-                    }
-                }
-
+                if (XmlSubjects == null) return null;
+                var result = new List<string>();
+                foreach (var subject in XmlSubjects) result.Add(subject.Ref);
                 return result;
             }
+            set
+            {
+                if (value == null)
+                {
+                    XmlSubjects = null;
+                }
+                else
+                {
+                    XmlSubjects = new List<XmlAnnotationSubject>();
+                    foreach (var subject in value) XmlSubjects.Add(new XmlAnnotationSubject() { Ref = subject});
+                }
+            }
         }
+
+        [JsonIgnore]
+        [XmlArray("subjects")]
+        [XmlArrayItem("subject")]
+        public List<XmlAnnotationSubject> XmlSubjects { get; set; }
 
         [XmlElement("annotator")] [ProtoMember(3)]
         public AnnotatorChoice Annotator { get; set; }

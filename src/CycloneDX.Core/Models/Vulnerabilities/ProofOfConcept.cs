@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -35,6 +36,7 @@ namespace CycloneDX.Models.Vulnerabilities
 
         [XmlArray("supportingMaterial")]
         [XmlArrayItem("attachment")]
+        [JsonPropertyName("supportingMaterial")]
         [ProtoMember(3)]
         public List<AttachedText> SupportingMaterials { get; set; }
     }

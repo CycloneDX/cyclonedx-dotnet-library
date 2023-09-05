@@ -39,27 +39,27 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "appliance")]
             Appliance,
             [XmlEnum(Name = "client-access")]
-            ClientAccess,
+            Client_Access,
             [XmlEnum(Name = "concurrent-user")]
-            ConcurrentUser,
+            Concurrent_User,
             [XmlEnum(Name = "core-points")]
-            CorePoints,
+            Core_Points,
             [XmlEnum(Name = "custom-metric")]
-            CustomMetric,
+            Custom_Metric,
             [XmlEnum(Name = "device")]
             Device,
             [XmlEnum(Name = "evaluation")]
             Evaluation,
             [XmlEnum(Name = "named-user")]
-            NamedUser,
+            Named_User,
             [XmlEnum(Name = "node-locked")]
-            NodeLocked,
+            Node_Locked,
             [XmlEnum(Name = "oem")]
             Oem,
             [XmlEnum(Name = "perpetual")]
             Perpetual,
             [XmlEnum(Name = "processor-points")]
-            ProcessorPoints,
+            Processor_Points,
             [XmlEnum(Name = "subscription")]
             Subscription,
             [XmlEnum(Name = "user")]
