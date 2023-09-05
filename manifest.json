@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.BomUtils.html",
-          "hash": "RFgk8YU7UfdmsERjJqwLOfPAcwqRif2CQawOTIvlIjI="
+          "hash": "3bG39bC90xDCC8HeOSvrKWsulG/ThgEmOjszTcRfE6k="
         }
       },
       "is_incremental": false,
@@ -41,47 +41,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.AggregateTypeConverter.yml",
+      "source_relative_path": "api/CycloneDX.Json.Converters.DataflowSourceDestinationConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.AggregateTypeConverter.html",
-          "hash": "sXxxCZepmzzgVit5rrLAEuc+MIwwApRWwRRbs8Yfxn8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.ComponentScopeConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.ComponentScopeConverter.html",
-          "hash": "II1uWE3HtGjUPyapxcjMTL1T0arsR/KaQ2rDyvNobbQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.ComponentTypeConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.ComponentTypeConverter.html",
-          "hash": "wmcRkVL4FiHo90I0ka56ghVZpV2JXYLkMrs7SmtoCyA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.DataFlowConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.DataFlowConverter.html",
-          "hash": "y7Fifitt9Klcfzu9bUI2vkzp/AOlgrYWfheHLdGGw7A="
+          "relative_path": "api/CycloneDX.Json.Converters.DataflowSourceDestinationConverter.html",
+          "hash": "s5EWJwQvS85HSdYJRBc9RBSdzES/yqI+p3J1LfGSRTI="
         }
       },
       "is_incremental": false,
@@ -113,11 +77,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.ExternalReferenceTypeConverter.yml",
+      "source_relative_path": "api/CycloneDX.Json.Converters.EnvironmentVarChoiceConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.ExternalReferenceTypeConverter.html",
-          "hash": "KO3yjohWYJg27Uyer4wfo9IaKisxLQFQSMP293TqmlI="
+          "relative_path": "api/CycloneDX.Json.Converters.EnvironmentVarChoiceConverter.html",
+          "hash": "Pq9jIJGHObnDeu61qhVIjR6ZV4ixe4OaIwwvC5MYbfU="
         }
       },
       "is_incremental": false,
@@ -125,11 +89,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.HashAlgorithmConverter.yml",
+      "source_relative_path": "api/CycloneDX.Json.Converters.HyphenEnumConverter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.HashAlgorithmConverter.html",
-          "hash": "z16o3FPze8jptbjGMcNSQdThJNP4wgaIuNeLsTzpGvc="
+          "relative_path": "api/CycloneDX.Json.Converters.HyphenEnumConverter-1.html",
+          "hash": "w997od7FGcUccYFb0WNV8gT14dolQ7uU6KnIwYbEtAU="
         }
       },
       "is_incremental": false,
@@ -137,11 +101,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.ImpactAnalysisJustificationConverter.yml",
+      "source_relative_path": "api/CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.ImpactAnalysisJustificationConverter.html",
-          "hash": "WAvGyuo8SxCBopA8vKizL8VQjS6O2RC5ssFMRNSLk8E="
+          "relative_path": "api/CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter-1.html",
+          "hash": "rAOXMCMgzTTIfKedem4kJ20GyVv/yH9i1q1Vrpi7l/Y="
         }
       },
       "is_incremental": false,
@@ -149,11 +113,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.ImpactAnalysisStateConverter.yml",
+      "source_relative_path": "api/CycloneDX.Json.Converters.ScoreMethodConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.ImpactAnalysisStateConverter.html",
-          "hash": "TqlMVsMG6hh+juMzxFtewewF0rpd+3sqkEMmR41KVes="
+          "relative_path": "api/CycloneDX.Json.Converters.ScoreMethodConverter.html",
+          "hash": "HKmhytH66i294e4YwqkUn8IsdzqOfdny58nMUYDvj4M="
         }
       },
       "is_incremental": false,
@@ -161,11 +125,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.IssueClassificationConverter.yml",
+      "source_relative_path": "api/CycloneDX.Json.Converters.ToolChoicesConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.IssueClassificationConverter.html",
-          "hash": "hisKM07J/Zjv9v4ZLATPqleJ7/3IQFPt5eG765Qkg7c="
+          "relative_path": "api/CycloneDX.Json.Converters.ToolChoicesConverter.html",
+          "hash": "mRH5fu6y3xLCoNFxrUM7ySBnOwEtV8Z4QZkbUHcOVyg="
         }
       },
       "is_incremental": false,
@@ -173,35 +137,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.LicenseConverter.yml",
+      "source_relative_path": "api/CycloneDX.Json.Converters.UnderscoreEnumConverter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.LicenseConverter.html",
-          "hash": "BfnVvLBbCLt7As7vVEoFrV2uv+xoV9PDwTFJ0tSe99U="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.PatchClassificationConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.PatchClassificationConverter.html",
-          "hash": "BZTZSW1eu5cvNKMujFObGR1R1KCq1ynMKffJKcu3vIo="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Json.Converters.ResponseConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.ResponseConverter.html",
-          "hash": "FPtcPiYZzGD68dMNFRt+mdX1RjH57Ow6elz1LzB/Ksg="
+          "relative_path": "api/CycloneDX.Json.Converters.UnderscoreEnumConverter-1.html",
+          "hash": "GkT998cjZiXAW/FGuVExfLw3DIK1ld7xqE1luPlQ2UI="
         }
       },
       "is_incremental": false,
@@ -213,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.Converters.html",
-          "hash": "enjAbrDPO7e6Whrs3+lLI432F0f0vv5KlNo//KSOOEk="
+          "hash": "RLkvqwfOI5v+QM/pgfierxutK0mPBC2ToKGLu+l3NKA="
         }
       },
       "is_incremental": false,
@@ -237,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.Utils.html",
-          "hash": "tZzp5iAL/GoxKsJrPlcZ+K8cyfEJhhnUSG9kGKOloBI="
+          "hash": "bCdczaazv4E+/U0KlwZlwgZ4cXN9WNdC0XD68YtEquY="
         }
       },
       "is_incremental": false,
@@ -249,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.Validator.html",
-          "hash": "6FMDEQqiiVwIecg8rz3KJjgfuTeuRgfY1cy8DJy8FX4="
+          "hash": "k5MhURTMJajvRI08bwUtxHAI0x4KNmPWPhKrfx5w9oQ="
         }
       },
       "is_incremental": false,
@@ -261,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
+          "hash": "owLOnHLu++H+I600pSUxsWQZRdgJ7yw5P/usKMMDnUs="
         }
       },
       "is_incremental": false,
@@ -273,7 +213,43 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.MediaTypes.html",
-          "hash": "vmqLQZpfrzFuvLgNo9kypr+521qIKiIujcUNUvUm1y0="
+          "hash": "Ha/PKWusxKpvqypKSX/ExW/3b7KQ9hfAmvI94TKYP0E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Annotation.XmlAnnotationSubject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Annotation.XmlAnnotationSubject.html",
+          "hash": "6PAqNceBRcvmnlDDy0cUdMw+eKMyn/1A4GqK0y+DXV4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Annotation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Annotation.html",
+          "hash": "YJv0HRYWJ9TDmvjMe7XEQH4KV/dIMyWxO2ch1vxqjQU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.AnnotatorChoice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.AnnotatorChoice.html",
+          "hash": "QSl3lDR0nWrb5B0sZruhmLSelY+2aO9J6KPhquHEJyo="
         }
       },
       "is_incremental": false,
@@ -285,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.AttachedText.html",
-          "hash": "iVM5ciZTXYctnKI2OOYUO9L4ChdsFipJL5U43P9ViJ0="
+          "hash": "M+iHLUUMFtAj3eu/OflMXZnNOVro4NNh+6H7CxwXKK8="
         }
       },
       "is_incremental": false,
@@ -297,7 +273,43 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Bom.html",
-          "hash": "090y+lTjMHwAVXEPwZPJh2ICrlRIxE/sNWTVftTSGpg="
+          "hash": "3geFC08URQ8gf28Pn4HlZQjY7VTfgS3/sg/Jl0zCoyU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Callstack.Frame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Callstack.Frame.html",
+          "hash": "f801lwaYfR01f3B9fyrSTRJd1pKcRSPCXv/Snmdv5Fs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Callstack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Callstack.html",
+          "hash": "ISXbWq78WG20489NSw4QMXuW71wV/pXcbnQsCxILCMY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Command.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Command.html",
+          "hash": "HcDvyYnF7mYSdJCp4pPjitje4SVkSgt/XPTZ0hcpOJU="
         }
       },
       "is_incremental": false,
@@ -321,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Component.Classification.html",
-          "hash": "8A0F2fDH+ltKBB8hI9mqkPHgnDsoFYHPrlCBzT4nVW0="
+          "hash": "6Ea7wsG54rBOWpI7jj4PcSUQ9A24V9tx9coyP9HK+es="
         }
       },
       "is_incremental": false,
@@ -333,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Component.ComponentScope.html",
-          "hash": "Ks0MkxKBCZOtzPOKuaCPTZ4n31gNgM3RuomlydYn1io="
+          "hash": "yDPCuQhXIzlEqPWQafTklRaGXQKyO6xehODwikxZEk0="
         }
       },
       "is_incremental": false,
@@ -345,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Component.html",
-          "hash": "L7czF2SoBjj8rRnVLK6eDojVpprQjhhRFDOmLCBut0k="
+          "hash": "MyyEG8Ixz+pRs9BvZz3Ag7dWhnL8Su/MmQbYs90zx3c="
         }
       },
       "is_incremental": false,
@@ -357,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Composition.AggregateType.html",
-          "hash": "b4nzKQUiepH+QASUFWku321ygRwzWHchRd6HgIArn4Q="
+          "hash": "TIs3XwDAJ3+nrk1fJmXOXsq2FTELU7asDbnnRKeqYk4="
         }
       },
       "is_incremental": false,
@@ -369,7 +381,43 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Composition.html",
-          "hash": "byJ/aKIMIc69XGXV6I3gtOeL/5iya08M26sXg3+oLAI="
+          "hash": "NFzIniDQZR5/l21GxAOPNoMUWQj6egaO7NOLXxOHu6o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Data.DataContents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Data.DataContents.html",
+          "hash": "pHfFdEMCLdi+s2Z0pODR6RdJIcFbY2+4kZISgf28yTc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Data.DataType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Data.DataType.html",
+          "hash": "82G46xrXpUwI7lUaUMSO1yvCYG4odOCTxL46t+dJi1o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Data.html",
+          "hash": "zSv8i3nB4wYvdr46W0Yoxd12jcrY4JCYndhp11PASeI="
         }
       },
       "is_incremental": false,
@@ -381,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.DataClassification.html",
-          "hash": "nnzZKutzGicM8OzApHWjq4JvHYZvo85opYvAygk+gx8="
+          "hash": "+xrYo/3ZsKlXECwikqTcC4yxk0W9n71aPLyouWMI86E="
         }
       },
       "is_incremental": false,
@@ -393,7 +441,67 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.DataFlow.html",
-          "hash": "oTgb5l5mgxJV1Jg0/bg2KZDxdbEsdll3xHKLC+Ot8vY="
+          "hash": "ci5oIzH4LrwTaCJMC0mtu2BOHRxIyeMoQ0WJcHcs7TY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.DataFlowDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.DataFlowDirection.html",
+          "hash": "sVmKfEda2TPjvrdFFJ8mFZC+fzLoIeayv5FSlCG1lZ0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.DataGovernance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.DataGovernance.html",
+          "hash": "gOGmR+sbdD5084ZUP9bJF7kTqxPjf3Wzm2HF0T1ndSw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.DataflowSourceDestination.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.DataflowSourceDestination.html",
+          "hash": "N26VQrR7QyreHLh8Cdbq8CiUOp+0uLL6dxr56sSBTbI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.DatasetChoice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.DatasetChoice.html",
+          "hash": "PxXRNyQAoDNbNJJopKzrojTbGjrJQIacXehNYCYi2sc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.DatasetChoices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.DatasetChoices.html",
+          "hash": "wMkYjrwZrV5ymfnt+gJEVXMrGfzMliiJQaJhn9JeeFI="
         }
       },
       "is_incremental": false,
@@ -425,11 +533,47 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.EnvironmentVarChoice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.EnvironmentVarChoice.html",
+          "hash": "bwm5qri8sLC/zg03GQRd6HsCHoiupKYxYi4Lz0YV1F4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.EnvironmentVarChoices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.EnvironmentVarChoices.html",
+          "hash": "dSe2Pmve2CKyZbw5FDnnFpOTblcn+6wdW0wcQ+fJ2rE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Event.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Event.html",
+          "hash": "rGBLji890NSr4xhcZ96YVyQsuGaIMOGCTZz6QHPHEXQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Evidence.yml",
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Evidence.html",
-          "hash": "7xmjE7D3VjGwfAlOR2xbSjJZDDm6gmsIbKhsp1Uked4="
+          "hash": "eTrW2FX1MX5s1tm7qMEDOzKwNNoILNMbTQA7JzQJlLM="
         }
       },
       "is_incremental": false,
@@ -449,11 +593,83 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.EvidenceIdentity.EvidenceFieldType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.EvidenceIdentity.EvidenceFieldType.html",
+          "hash": "P/wy39AZQAbEWA6/GCpAYdse4PKK98DW2ktOZCqqbMM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.EvidenceIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.EvidenceIdentity.html",
+          "hash": "EQs80/VDr/CQN0ckeW75H7vMMoJaNV5CfmEqfkNg0Ls="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.EvidenceMethods.EvidenceTechnique.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.EvidenceMethods.EvidenceTechnique.html",
+          "hash": "4oIebHeLYwTCYVioSjKrjvztrPE4LTeQeFtG8syHNQY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.EvidenceMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.EvidenceMethods.html",
+          "hash": "ImwjMdp7qKLaFFpvWJaNYqtXjbfLj0u2vGdfT2mng0Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.EvidenceOccurrence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.EvidenceOccurrence.html",
+          "hash": "iPSUUX6hPwnSitczE/PkGS5S+hblgjfx7yZMmWXtLAY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.EvidenceTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.EvidenceTools.html",
+          "hash": "gYIEmXtf+qXVzb8Nven4MgIRJUir4GF02tpqkVhJ9Rk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ExternalReference.ExternalReferenceType.yml",
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html",
-          "hash": "dawp6eJP1YAg90kvrK+7LP5m3lWTvXQDGeh7PbzJHC8="
+          "hash": "aF6Tkz8QD7bgqlNhnQvszP2h0MDGvWJpRkksoiboXrM="
         }
       },
       "is_incremental": false,
@@ -465,7 +681,43 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.ExternalReference.html",
-          "hash": "rYCfocirb+4q/8oevlVQIw99UQuw6oTPP2tBTIJB0Ag="
+          "hash": "KCYwBGQ2zGQL5mYDBBJhk0Qn/D5EqKA3etyRCs0hp0Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Formula.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Formula.html",
+          "hash": "FzXZYboFpyY+r8xbd/6T6tTjsxRtXjCAoLbjxp2Z6zI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.GraphicsCollection.Graphic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.GraphicsCollection.Graphic.html",
+          "hash": "ATBfysx9jzm1hdykwxMBFI3mpo5/Hwev2KbpAfroTUY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.GraphicsCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.GraphicsCollection.html",
+          "hash": "5m1IXOKEyBOT81fLX6U9jwPzWELDQGDZQOb18YsJ0Gg="
         }
       },
       "is_incremental": false,
@@ -509,6 +761,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Input.html",
+          "hash": "Xj6pbC8Rg1h1UJEOG0cwffFU4u5vj5Xi8FxpXoqP6wQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Issue.IssueClassification.yml",
       "output": {
         ".html": {
@@ -537,7 +801,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.License.html",
-          "hash": "XtSkP1OOSvvPPZ23JPUkfvAoDHlq3P4x/6TtrJ9RXfo="
+          "hash": "SZb1J/4e2D3CWf4q5OMItL4EAJf+R7PYsBpQdnjajTg="
         }
       },
       "is_incremental": false,
@@ -549,7 +813,55 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.LicenseChoice.html",
-          "hash": "1zlkyqTH8fojUQ/YXZ5bCgYADSKt4omCxjvAkZ877oY="
+          "hash": "pAchcWNxwpRLK1N/XcF3Y78XTeiyY7LLZmWmejn1FRI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Licensing.LicenseType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Licensing.LicenseType.html",
+          "hash": "u7iqySk2HCrO3p/j2IlCPhcYiEDW2oU/j6YTwwQ64tk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Licensing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Licensing.html",
+          "hash": "M7TejgSd4e4mx8yOPIhEaUo9zws/VgVxGZ1Mk8CFPFg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Lifecycles.LifecyclePhase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Lifecycles.LifecyclePhase.html",
+          "hash": "UR+BQyUpYiK3cCDm31kukAgpH5xS8vZAV0zyoQlt+eM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Lifecycles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Lifecycles.html",
+          "hash": "lKPDPaF3vsRdJwrG2hW+K9YaqxWQTlHVIsN7b/MTNx4="
         }
       },
       "is_incremental": false,
@@ -561,7 +873,151 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Metadata.html",
-          "hash": "uNbKVR+hrHnF0+KJpjCi5YpeJZaMaaCrBP8JTuWTMRY="
+          "hash": "6U8aViMsPvy16YBXyzX1rTpkXYogU2XNUt1NPS0KNFQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.PerformanceMetricConfidenceInterval.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.PerformanceMetricConfidenceInterval.html",
+          "hash": "iqfrxEvyOZfdB9rE9cOM/skKu0GLKQkM6DGBa/Ccjqo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.html",
+          "hash": "YNQC0HeN/+6FkXo5D1283dv4EW7wlwQsg+Wl0ipv5Tg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.html",
+          "hash": "7D+8I2WSzB1vNK4nfcTYM8m+hd0evfZwXbK5gXkBsIY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelCard.ModelParameterApproachType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelCard.ModelParameterApproachType.html",
+          "hash": "ptIBgeUZpXXLOVXPTbiGQTZT7wijqOiZ7rIzuZ2LOdw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelCard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelCard.html",
+          "hash": "Cz5bi7VS4a84u+zDCred4Zjf2GoTCgIJrRdeHyig4Lk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardEthicalConsideration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardEthicalConsideration.html",
+          "hash": "LFzAfDyl+YgrHBJuTwS9cKGJZVynweQfnqHY2+xPXuM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardFairnessAssessment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardFairnessAssessment.html",
+          "hash": "QFuoSdzxmZj8nHv2lsczYvueG4FP0kw8dhdfHBoZyXU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelCardConsiderations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.html",
+          "hash": "axOFCMw1jGeveRH7SUwj+6TTJJelGTKq0d4XCM10lW8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelParameters.MachineLearningInputOutputParameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelParameters.MachineLearningInputOutputParameter.html",
+          "hash": "ylSQyUw2N43gRXW9UGkrQMC2UNNyxuI+rZGxFVW+nOU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelParameters.ModelApproach.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelParameters.ModelApproach.html",
+          "hash": "YMIoTAZZSuc/SW+llobt4EKYO3cQrYsP5+bSS7/EmHM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelParameters.ModelDataset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelParameters.ModelDataset.html",
+          "hash": "AiBOHl4JQxk+cvRNjzLhMl4rusp2Twv1uB+xkrs2tEQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ModelParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ModelParameters.html",
+          "hash": "IA0H87GuTpk7Opm9+wk5FV1lbTbPK2BY8reVOQhv+SQ="
         }
       },
       "is_incremental": false,
@@ -585,7 +1041,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.OrganizationalContact.html",
-          "hash": "CrJ7zXq+o4oAc0YsfFw9fj7vk4ncOEWvrfEK3eMyb/Q="
+          "hash": "tDU/lJQZSFzzeXrd0/rlid8SAYJIYm8GAjSSxiTPwrU="
         }
       },
       "is_incremental": false,
@@ -597,7 +1053,55 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.OrganizationalEntity.html",
-          "hash": "hw7rt2jrUOAaBWNW7zNxvs6S8hr+WrHMeHdp0e6kMaA="
+          "hash": "k6+UaeVXtsXrMkDv6xvP4bKma2ne1i1DWOvfMNzBC+o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.OrganizationalEntityOrContact.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.OrganizationalEntityOrContact.html",
+          "hash": "q13pL61/QM4lJ4mxbUXGmp+2vy3icB1J3LKJc3g+q/w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Output.OutputType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Output.OutputType.html",
+          "hash": "jwsYxypdQBYhDCqU8mgCF3L2YdiZ9h8obI3roSwmkG4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Output.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Output.html",
+          "hash": "YnWFpH7SONqDqXq9Up2vD9NK4D5x/0hd9Ekd+O+nkH0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Parameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Parameter.html",
+          "hash": "M/+MUQkRBxPGlU7UoYGAR6lJcbrNAwMTlypmwGWrzL8="
         }
       },
       "is_incremental": false,
@@ -609,7 +1113,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Patch.PatchClassification.html",
-          "hash": "kRGNVxcsYravS1TATB+8UpIt0ujo186dgf6otCs2ffQ="
+          "hash": "mNUKWAUf7R9z61uqgERBdskuBrYRMQDMuh2BUsMLgq0="
         }
       },
       "is_incremental": false,
@@ -665,11 +1169,47 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ResourceReferenceChoice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ResourceReferenceChoice.html",
+          "hash": "F6rdjKPSXSxoV5oCcsmm6CQCJWE3oXYmHQQcRxlrIhw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ResourceReferenceChoices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ResourceReferenceChoices.html",
+          "hash": "uYbNhOlHGKnsubmFPNc7n82Wt0cyHlLblnv1KgV976A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Service.yml",
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Service.html",
-          "hash": "h4dqI/MxE1Djcj37CPY9JJdYFsRQfaFRHrfH1xJMyDg="
+          "hash": "Z0pvdSzzVwPuB7jlQmqF2s5wk/ZM+mL76YRfnLeNVLs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ServiceDataChoices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ServiceDataChoices.html",
+          "hash": "ckVnLMvbO7ZkmLapvLqlIal7SGQyFI7xlzmoerFxYJ8="
         }
       },
       "is_incremental": false,
@@ -689,11 +1229,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Step.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Step.html",
+          "hash": "ldmxrV96nbmFPiimoYwnVgT90JXZMJJOZ5qssMLk+aM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Swid.yml",
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Swid.html",
-          "hash": "s0CDO8rF1I0gjP4P4kcyP0Gw5jV+13+JRag+i5GiDwE="
+          "hash": "LpI1PEvvfraGsIkHR6NeT70EYzEpB5ULURgsK0oZu6o="
         }
       },
       "is_incremental": false,
@@ -705,7 +1257,55 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Tool.html",
-          "hash": "ldGLJ/aPDZzuAE7Pg9xOj1GdyQf2bB5LaEuiVAy71z4="
+          "hash": "fjTlBEZ5GAD9YidLuH7mTxwGLpqAgmqF/ORVKmrm8Qc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ToolChoices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ToolChoices.html",
+          "hash": "Oiizi5tUu1DsRgM30sUOU5U2/mpC8f+VGagt0Qy+r5g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Trigger.Condition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Trigger.Condition.html",
+          "hash": "qZNexpv1FQBHOU62v6ZRlfr8gDEdHX9qCA0VP24L6Hg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Trigger.TriggerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Trigger.TriggerType.html",
+          "hash": "JwM7mZt3RWT4GjZTzmSx2pfc3L1HvRxYkbh+YBOm7Ps="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Trigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Trigger.html",
+          "hash": "/07rKGKczd5Ed74dy696VpxbWcUzRZ3D79PXV96OgvI="
         }
       },
       "is_incremental": false,
@@ -718,6 +1318,30 @@
         ".html": {
           "relative_path": "api/CycloneDX.Models.ValidationResult.html",
           "hash": "TQUh5cFQ8cYgZcrKh8FIhK//P40IluzKIT7TK1tOSFs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Volume.VolumeMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Volume.VolumeMode.html",
+          "hash": "Voowc+Ru8/Sl4F8/J/s49vo59atDS8RQSdeDElnZUw8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Volume.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Volume.html",
+          "hash": "I6BTgBPQ2pOG4F/4NVxS4WZ3ww4uoGQDPiTXrNCbpnQ="
         }
       },
       "is_incremental": false,
@@ -753,7 +1377,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Affects.html",
-          "hash": "3HEKEV6HvaphzYsbNaGrcgZKQWGdVWSDX1R5lE4sjAQ="
+          "hash": "KVjqe7zdby+2323bFj2ozayxPXqrV8A7Ycpd3CX0diY="
         }
       },
       "is_incremental": false,
@@ -765,7 +1389,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Analysis.html",
-          "hash": "zFztIzcFmitJux8EiZjPBd5xCcONbNNS1JvvZhVxbAY="
+          "hash": "hOCzr2ejNlPYuOda/I0xOsXhDNGeLQzuLVkqiS+l/EI="
         }
       },
       "is_incremental": false,
@@ -777,7 +1401,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Credits.html",
-          "hash": "MS0An73q1QTcnQhDME5CfRoCQ7LsVa6+DphvYkN3j9k="
+          "hash": "aExwhqImQU2fXwKJccNb3U8ZjxNh4orufXfpS8BMH4A="
         }
       },
       "is_incremental": false,
@@ -789,7 +1413,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.ImpactAnalysisJustification.html",
-          "hash": "JNfLaQnVHaXyVns6b6+La/bJ8kdm47PAHYKx4e9JkTk="
+          "hash": "1tZJuUWYv6k86RfmKOQSRp8XklI7vBUItCMHn1LKZCs="
         }
       },
       "is_incremental": false,
@@ -801,7 +1425,19 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.ImpactAnalysisState.html",
-          "hash": "5T3lT5p+LBNrK2NXPN4uGQNBRqiVlYQsXOIgUHAIpus="
+          "hash": "oeGzclOCPVrPYKpcfncWIOx1mPw91TLB7TLTWOr3jAg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.ProofOfConcept.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ProofOfConcept.html",
+          "hash": "IbTnUmf8PCI9lKXBRl3th1vUaZGuZ65SzRi7kNbGKZ4="
         }
       },
       "is_incremental": false,
@@ -837,7 +1473,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Response.html",
-          "hash": "8hrWd5lhR/5rC3uYbqQMBOOeLDjvwXMbPpf7BbSxYhI="
+          "hash": "dDVc9S23UlV03km0R/VkTtKkLUPbXLp7/g1rovKfmBo="
         }
       },
       "is_incremental": false,
@@ -849,7 +1485,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.ScoreMethod.html",
-          "hash": "wuZ/yvHSHPE2CuYyskrP+nbihUcpbkhZ8MNfeS69GjM="
+          "hash": "SwQOL4ZyFV6yr7O8Ac+Nhv4KN/oSVlEK3njVvuK1RJc="
         }
       },
       "is_incremental": false,
@@ -873,7 +1509,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Status.html",
-          "hash": "65Vh9eCO2yP0BRVW+4ycKlvubrFzgcREuB8WzWbp8KI="
+          "hash": "zvou+vQWLvkMo49f9FkIq+IsStddqnDr6i5lxOGnpVY="
         }
       },
       "is_incremental": false,
@@ -885,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Vulnerability.html",
-          "hash": "1K+j4zlbZmozFFb9HFuOpeCL3qREloZ+LXn8DB8npv8="
+          "hash": "jhVWz3bwx9sQrmfen3mIFHagzu6FPmEL+oVXXnQcZCQ="
         }
       },
       "is_incremental": false,
@@ -897,7 +1533,79 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.html",
-          "hash": "CKJ/YkA9Jr3OvGkPpwOkd4qKON7iuH3K/63cZ5v8nKM="
+          "hash": "Y4NgEIT4rpZHhNdy8WYmC5fmWyjYzLyJz5B66cBj9g0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Workflow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Workflow.html",
+          "hash": "mZcW1A9B2xl+/pKPu8U+7KoTKCgLigKPrdytcv0/Lxs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.WorkflowTask.TaskType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.WorkflowTask.TaskType.html",
+          "hash": "cLUQEadBzVENtypYpXMLE03eE0CMBz6WOIiUvkRTk14="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.WorkflowTask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.WorkflowTask.html",
+          "hash": "GqtO1i1OSXgR/iK3v6vJr74nzSHag0CxQSl7aHnPSkU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.WorkflowTaskType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.WorkflowTaskType.html",
+          "hash": "vkbBHwxF1LzRNsdUnyMgQniIAlPgfspKdcLFz85UvOA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Workspace.AccessModeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Workspace.AccessModeType.html",
+          "hash": "SL5FrViTCBYhRhJGxmg2XibBTOqyg6XkIlgD4jOMArg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Workspace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Workspace.html",
+          "hash": "W4n09czi9RFn9OQmdB4t13qc3UoH3TBXF1195yvaeos="
         }
       },
       "is_incremental": false,
@@ -909,7 +1617,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.html",
-          "hash": "/vHwu8keolKHzzWgDHGz+lPnGqVshrdk4g0zUrJCmbc="
+          "hash": "+w+GIwhveoAXtmCytOqte1xM5dIYxi/oz26okIBp8jo="
         }
       },
       "is_incremental": false,
@@ -1473,7 +2181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.SpecificationVersion.html",
-          "hash": "pKMgnA2jwe5a9YEqaqzyWHBLh8nXXMk2qacWvEx8vlk="
+          "hash": "kRHMdjm6xgSdWh6cURYGCdeqUI9noTJOcoiFlq0+BqM="
         }
       },
       "is_incremental": false,
@@ -1485,7 +2193,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.SpecificationVersionHelpers.html",
-          "hash": "BAKT5Lsd3GxBTexFTLQSwU4nHys1s1qG4jqkXEsQSLA="
+          "hash": "IFR8OKnEQbpsNTy3ZGxZd4l3KQtviuusg7TKx+iuL44="
         }
       },
       "is_incremental": false,
@@ -1497,7 +2205,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Utils.CycloneDXUtils.html",
-          "hash": "Z/zbtRCinU7QAtYix4z8h4Y65y/4ueJUXAHdjXvzYk8="
+          "hash": "ue0PSEOtLabsTknUpZudlyOkGYlAdlc599ZuWLwAFs8="
         }
       },
       "is_incremental": false,
@@ -1557,7 +2265,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Xml.Serializer.html",
-          "hash": "5Q1r/uvkC/g1C1LPdu+Y4Ytv0NWydeC0YLj60U5EhCM="
+          "hash": "dVggB5mbbYD5yXfFmyLbs6YQS2F1S2ZrlP0VEAzZi5Y="
         }
       },
       "is_incremental": false,
@@ -1617,7 +2325,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "cgwrijjsFPdZQyZys0PMi+ey8KWfejhWcyDnPwFJOm4="
+          "hash": "mF/32z0MrEEbOmidHrfFgxvHw0po2M3N7cH6bKPjbFs="
         }
       },
       "is_incremental": false,
@@ -1725,7 +2433,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 142,
+          "total_file_count": 201,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
