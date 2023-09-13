@@ -361,16 +361,6 @@ namespace CycloneDX.Utils
 
                 if (bom.Metadata?.Tools?.Tools?.Count > 0)
                 {
-                    if (result.Metadata.Tools?.Tools == null)
-                    {
-                        #pragma warning disable 618
-                        result.Metadata.Tools = new ToolChoices
-                        {
-                            Tools = new List<Tool>(),
-                        }
-                        #pragma warning restore 618
-                    }
-
                     result.Metadata.Tools.Tools.AddRange(bom.Metadata.Tools.Tools);
                 }
 
