@@ -104,11 +104,13 @@ namespace CycloneDX.Utils
                 result.Metadata = new Metadata();
             }
 
+            #pragma warning disable 618
             var toolsMerger = new ListMergeHelper<Tool>();
-            var tools = toolsMerger.Merge(bom1.Metadata?.Tools, bom2.Metadata?.Tools, listMergeHelperStrategy);
+            #pragma warning restore 618
+            var tools = toolsMerger.Merge(bom1.Metadata?.Tools?.Tools, bom2.Metadata?.Tools?.Tools, listMergeHelperStrategy);
             if (tools != null)
             {
-                result.Metadata.Tools = tools;
+                result.Metadata.Tools.Tools = tools;
             }
 
             var componentsMerger = new ListMergeHelper<Component>();
@@ -312,6 +314,7 @@ namespace CycloneDX.Utils
         {
             var result = new Bom();
             result.BomMetadataUpdate(true);
+            result.BomMetadataReferThisToolkit();
 
             if (bomSubject != null)
             {
@@ -320,7 +323,6 @@ namespace CycloneDX.Utils
                     bomSubject.BomRef = ComponentBomRefNamespace(bomSubject);
                 }
                 result.Metadata.Component = bomSubject;
-                result.Metadata.Tools = new List<Tool>();
             }
 
             result.Components = new List<Component>();
@@ -342,14 +344,19 @@ namespace CycloneDX.Utils
                         : $"Required metadata (top level) component is missing from BOM {bom.SerialNumber}.");
                 }
 
-                if (bom.Metadata?.Tools?.Count > 0)
+                if (bom.Metadata?.Tools?.Tools?.Count > 0)
                 {
-                    if (result.Metadata.Tools == null)
+                    if (result.Metadata.Tools?.Tools == null)
                     {
-                        result.Metadata.Tools = new List<Tool>();
+                        #pragma warning disable 618
+                        result.Metadata.Tools = new ToolChoices
+                        {
+                            Tools = new List<Tool>(),
+                        }
+                        #pragma warning restore 618
                     }
 
-                    result.Metadata.Tools.AddRange(bom.Metadata.Tools);
+                    result.Metadata.Tools.Tools.AddRange(bom.Metadata.Tools.Tools);
                 }
 
                 var thisComponent = bom.Metadata.Component;
@@ -367,7 +374,6 @@ namespace CycloneDX.Utils
                 bomSubjectDependencies.Add(new Dependency { Ref = thisComponent.BomRef });
 
                 result.Components.Add(thisComponent);
-
 
                 // services
                 if (bom.Services != null)
@@ -481,9 +487,9 @@ namespace CycloneDX.Utils
         /// <returns>Resulting document (whether modified or not)</returns>
         public static Bom CleanupEmptyLists(Bom result)
         {
-            if (result.Metadata?.Tools?.Count == 0)
+            if (result.Metadata?.Tools?.Tools?.Count == 0)
             {
-                result.Metadata.Tools = null;
+                result.Metadata.Tools.Tools = null;
             }
 
             if (result.Components?.Count == 0)
@@ -531,14 +537,16 @@ namespace CycloneDX.Utils
             // Why oh why?..  error CS1503: Argument 1: cannot convert
             // from 'System.Collections.Generic.List<CycloneDX.Models.Tool>'
             // to 'System.Collections.Generic.List<CycloneDX.Models.BomEntity>'
-            //    BomEntity.NormalizeList(result.Tools) -- it looks so simple!
+            //    BomEntity.NormalizeList(result.Tools.Tools) -- it looks so simple!
             // But at least we *can* call it, perhaps inefficiently for
             // the run-time code and scaffolding, but easy to maintain
             // with filter definitions now stored in classes, not here...
-            if (result.Metadata?.Tools?.Count > 0)
+            if (result.Metadata?.Tools?.Tools?.Count > 0)
             {
+                #pragma warning disable 618
                 var sortHelper = new ListMergeHelper<Tool>();
-                sortHelper.SortByAscending(result.Metadata.Tools, true);
+                #pragma warning restore 618
+                sortHelper.SortByAscending(result.Metadata.Tools.Tools, true);
             }
 
             if (result.Components?.Count > 0)

@@ -23,7 +23,7 @@ namespace CycloneDX.Models.Vulnerabilities
     [ProtoContract]
     public class Advisory : BomEntity
     {
-        [XmlAttribute("title")]
+        [XmlElement("title")]
         [ProtoMember(1)]
         public string Title { get; set; }
 

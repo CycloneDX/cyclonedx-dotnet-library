@@ -34,7 +34,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "vcs")]
             Vcs,
             [XmlEnum(Name = "issue-tracker")]
-            IssueTracker,
+            Issue_Tracker,
             [XmlEnum(Name = "website")]
             Website,
             [XmlEnum(Name = "advisories")]
@@ -42,7 +42,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "bom")]
             Bom,
             [XmlEnum(Name = "mailing-list")]
-            MailingList,
+            Mailing_List,
             [XmlEnum(Name = "social")]
             Social,
             [XmlEnum(Name = "chat")]
@@ -56,11 +56,57 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "license")]
             License,
             [XmlEnum(Name = "build-meta")]
-            BuildMeta,
+            Build_Meta,
             [XmlEnum(Name = "build-system")]
-            BuildSystem,
+            Build_System,
+            [XmlEnum(Name = "security-contact")]
+            Security_Contact,
+            [XmlEnum(Name = "attestation")]
+            Attestation,
+            [XmlEnum(Name = "threat-model")]
+            Threat_Model,
+            [XmlEnum(Name = "adversary-model")]
+            Adversary_Model,
+            [XmlEnum(Name = "risk-assessment")]
+            Risk_Assessment,
+            [XmlEnum(Name = "distribution-intake")]
+            Distribution_Intake,
+            [XmlEnum(Name = "vulnerability-assertion")]
+            Vulnerability_Assertion,
+            [XmlEnum(Name = "exploitability-statement")]
+            Exploitability_Statement,
+            [XmlEnum(Name = "pentest-report")]
+            Pentest_Report,
+            [XmlEnum(Name = "static-analysis-report")]
+            Static_Analysis_Report,
+            [XmlEnum(Name = "dynamic-analysis-report")]
+            Dynamic_Analysis_Report,
+            [XmlEnum(Name = "runtime-analysis-report")]
+            Runtime_Analysis_Report,
+            [XmlEnum(Name = "component-analysis-report")]
+            Component_Analysis_Report,
+            [XmlEnum(Name = "maturity-report")]
+            Maturity_Report,
+            [XmlEnum(Name = "certification-report")]
+            Certification_Report,
+            [XmlEnum(Name = "quality-metrics")]
+            Quality_Metrics,
+            [XmlEnum(Name = "codified-infrastructure")]
+            Codified_Infrastructure,
+            [XmlEnum(Name = "model-card")]
+            Model_Card,
+            [XmlEnum(Name = "poam")]
+            Poam,
+            [XmlEnum(Name = "log")]
+            Log,
+            [XmlEnum(Name = "configuration")]
+            Configuration,
+            [XmlEnum(Name = "evidence")]
+            Evidence,
+            [XmlEnum(Name = "formulation")]
+            Formulation,
             [XmlEnum(Name = "release-notes")]
-            ReleaseNotes,
+            Release_Notes,
         }
 
         [XmlElement("url")]
