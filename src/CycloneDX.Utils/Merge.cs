@@ -110,6 +110,16 @@ namespace CycloneDX.Utils
             var tools = toolsMerger.Merge(bom1.Metadata?.Tools?.Tools, bom2.Metadata?.Tools?.Tools, listMergeHelperStrategy);
             if (tools != null)
             {
+                if (result.Metadata.Tools == null)
+                {
+                    result.Metadata.Tools = new ToolChoices();
+                }
+
+                if (result.Metadata.Tools.Tools != null)
+                {
+                    tools = toolsMerger.Merge(result.Metadata.Tools.Tools, tools, listMergeHelperStrategy);
+                }
+
                 result.Metadata.Tools.Tools = tools;
             }
 
