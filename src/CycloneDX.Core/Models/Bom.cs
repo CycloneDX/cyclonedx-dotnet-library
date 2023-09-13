@@ -205,15 +205,20 @@ namespace CycloneDX.Models
                 this.Metadata = new Metadata();
             }
 
-            if (this.Metadata.Tools is null)
+            if (this.Metadata.Tools is null || this.Metadata.Tools.Tools is null)
             {
-                this.Metadata.Tools = new List<Tool>(new [] {toolThisLibrary});
+                #pragma warning disable 618
+                this.Metadata.Tools = new ToolChoices
+                {
+                    Tools = new List<Tool>(new [] {toolThisLibrary}),
+                }
+                #pragma warning restore 618
             }
             else
             {
-                if (!this.Metadata.Tools.Contains(toolThisLibrary))
+                if (!this.Metadata.Tools.Tools.Contains(toolThisLibrary))
                 {
-                    this.Metadata.Tools.Add(toolThisLibrary);
+                    this.Metadata.Tools.Tools.Add(toolThisLibrary);
                 }
             }
 
@@ -228,9 +233,9 @@ namespace CycloneDX.Models
                     Version = Assembly.GetEntryAssembly().GetName().Version.ToString()
                 };
 
-                if (!this.Metadata.Tools.Contains(toolThisScript))
+                if (!this.Metadata.Tools.Tools.Contains(toolThisScript))
                 {
-                    this.Metadata.Tools.Add(toolThisScript);
+                    this.Metadata.Tools.Tools.Add(toolThisScript);
                 }
             }
         }
