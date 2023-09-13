@@ -243,7 +243,9 @@ namespace CycloneDX.Utils
             // the resulting collection with a lot fewer items to inspect with
             // the heavier logic.
             var resultSubj = new Bom();
-            // New merged document (new SerialNumber, Version=1, Timestamp)...
+            // New merged document has its own identity (new SerialNumber,
+            // Version=1, Timestamp...) and its Tools collection refers to this
+            // library and the tool like cyclonedx-cli which consumes it.
             resultSubj.BomMetadataUpdate(true);
             resultSubj.BomMetadataReferThisToolkit();
 
@@ -313,6 +315,9 @@ namespace CycloneDX.Utils
         public static Bom HierarchicalMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
+            // New resulting Bom has its own identity (timestamp, serial)
+            // and its Tools collection refers to this library and the
+            // tool which consumes it.
             result.BomMetadataUpdate(true);
             result.BomMetadataReferThisToolkit();
 
