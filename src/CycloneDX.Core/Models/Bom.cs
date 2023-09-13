@@ -269,12 +269,13 @@ namespace CycloneDX.Models
         /// </summary>
         public void BomMetadataUpdateSerialNumberVersion(bool generateNewSerialNumber)
         {
+            bool doGenerateNewSerialNumber = generateNewSerialNumber;
             if (this.Version is null || this.Version < 1 || this.SerialNumber is null || this.SerialNumber == "")
             {
-                generateNewSerialNumber = true;
+                doGenerateNewSerialNumber = true;
             }
 
-            if (generateNewSerialNumber)
+            if (doGenerateNewSerialNumber)
             {
                 this.Version = 1;
                 this.SerialNumber = "urn:uuid:" + System.Guid.NewGuid().ToString();
