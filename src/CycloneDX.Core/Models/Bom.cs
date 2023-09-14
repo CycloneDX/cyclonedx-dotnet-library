@@ -193,12 +193,14 @@ namespace CycloneDX.Models
             // get the assembly your project started with (most likely
             // this is your app). In multi-project solutions this is
             // something to keep in mind!
+            #pragma warning disable 618
             Tool toolThisLibrary = new Tool
             {
                 Vendor = "OWASP Foundation",
                 Name = Assembly.GetExecutingAssembly().GetName().Name, // "cyclonedx-dotnet-library"
                 Version = Assembly.GetExecutingAssembly().GetName().Version.ToString()
             };
+            #pragma warning restore 618
 
             if (this.Metadata is null)
             {
@@ -211,7 +213,7 @@ namespace CycloneDX.Models
                 this.Metadata.Tools = new ToolChoices
                 {
                     Tools = new List<Tool>(new [] {toolThisLibrary}),
-                }
+                };
                 #pragma warning restore 618
             }
             else
@@ -226,12 +228,14 @@ namespace CycloneDX.Models
             string toolThisScriptName = Assembly.GetEntryAssembly().GetName().Name; // "cyclonedx-cli" or similar
             if (toolThisScriptName != toolThisLibrary.Name)
             {
+                #pragma warning disable 618
                 Tool toolThisScript = new Tool
                 {
                     Name = toolThisScriptName,
                     Vendor = (toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx") ? "OWASP Foundation" : null),
                     Version = Assembly.GetEntryAssembly().GetName().Version.ToString()
                 };
+                #pragma warning restore 618
 
                 if (!this.Metadata.Tools.Tools.Contains(toolThisScript))
                 {
