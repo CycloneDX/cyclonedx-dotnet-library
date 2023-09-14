@@ -29,14 +29,14 @@ namespace CycloneDX.Models.Vulnerabilities
         [XmlEnum(Name = "resolved")]
         Resolved,
         [XmlEnum(Name = "resolved_with_pedigree")]
-        ResolvedWithPedigree,
+        Resolved_With_Pedigree,
         [XmlEnum(Name = "exploitable")]
         Exploitable,
         [XmlEnum(Name = "in_triage")]
-        InTriage,
+        In_Triage,
         [XmlEnum(Name = "false_positive")]
-        FalsePositive,
+        False_Positive,
         [XmlEnum(Name = "not_affected")]
-        NotAffected,
+        Not_Affected,
     }
 }

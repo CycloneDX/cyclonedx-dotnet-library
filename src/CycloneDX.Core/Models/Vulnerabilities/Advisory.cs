@@ -23,7 +23,7 @@ namespace CycloneDX.Models.Vulnerabilities
     [ProtoContract]
     public class Advisory
     {
-        [XmlAttribute("title")]
+        [XmlElement("title")]
         [ProtoMember(1)]
         public string Title { get; set; }
 

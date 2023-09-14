@@ -12,6 +12,7 @@ namespace CycloneDX.Core.Tests.Json
     public class ValidationTests
     {
         [Theory]
+        [InlineData("valid-assembly-1.5.json", "v1.5")]
         [InlineData("valid-assembly-1.4.json", "v1.4")]
         [InlineData("valid-assembly-1.3.json", "v1.3")]
         [InlineData("valid-assembly-1.2.json", "v1.2")]

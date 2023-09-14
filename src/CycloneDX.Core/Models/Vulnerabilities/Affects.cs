@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -30,7 +31,8 @@ namespace CycloneDX.Models.Vulnerabilities
 
         [XmlArray("versions")]
         [XmlArrayItem("version")]
+        [JsonPropertyName("versions")]
         [ProtoMember(2)]
-        public List<AffectedVersions> Range { get; set; }
+        public List<AffectedVersions> Versions { get; set; }
     }
 }

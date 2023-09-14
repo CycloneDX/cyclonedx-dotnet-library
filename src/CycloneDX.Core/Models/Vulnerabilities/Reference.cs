@@ -23,7 +23,7 @@ namespace CycloneDX.Models.Vulnerabilities
     [ProtoContract]
     public class Reference
     {
-        [XmlAttribute("id")]
+        [XmlElement("id")]
         [ProtoMember(1)]
         public string Id { get; set; }
 

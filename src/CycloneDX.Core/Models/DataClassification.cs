@@ -16,17 +16,20 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
+    // this is the version that was prior to v1.5
+    [XmlType("classification")]
     [ProtoContract]
     public class DataClassification
     {
         [XmlAttribute("flow")]
         [ProtoMember(1, IsRequired=true)]
-        public DataFlow Flow { get; set; }
+        public DataFlowDirection Flow { get; set; }
 
         [XmlText]
         [ProtoMember(2)]

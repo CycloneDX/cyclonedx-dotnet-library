@@ -41,7 +41,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "library")]
             Library,
             [XmlEnum(Name = "operating-system")]
-            OperationSystem,
+            Operating_System,
             [XmlEnum(Name = "device")]
             Device,
             [XmlEnum(Name = "file")]
@@ -49,7 +49,15 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "container")]
             Container,
             [XmlEnum(Name = "firmware")]
-            Firmware
+            Firmware,
+            [XmlEnum(Name = "device-driver")]
+            Device_Driver,
+            [XmlEnum(Name = "platform")]
+            Platform,
+            [XmlEnum(Name = "machine-learning-model")]
+            Machine_Learning_Model,
+            [XmlEnum(Name = "data")]
+            Data,
         }
 
         [ProtoContract]
@@ -128,6 +136,7 @@ namespace CycloneDX.Models
         [XmlArray("hashes")]
         [ProtoMember(12)]
         public List<Hash> Hashes { get; set; }
+        public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
 
         [XmlElement("licenses")]
         [ProtoMember(13)]
@@ -181,6 +190,7 @@ namespace CycloneDX.Models
         [XmlArray("components")]
         [ProtoMember(21)]
         public List<Component> Components { get; set; }
+        public bool ShouldSerializeComponents() { return Components?.Count > 0; }
 
         [XmlArray("properties")]
         [XmlArrayItem("property")]
@@ -196,15 +206,23 @@ namespace CycloneDX.Models
         [ProtoMember(24)]
         public ReleaseNotes ReleaseNotes { get; set; }
         public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
+        
+        [XmlElement("modelCard")]
+        [ProtoMember(25)]
+        public ModelCard ModelCard { get; set; }
+
+        [XmlElement("data")]
+        [ProtoMember(26)]
+        public Data Data { get; set; }
 
         public bool Equals(Component obj)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
         }
     
         public override int GetHashCode()
         {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+            return Json.Serializer.Serialize(this).GetHashCode();
         }
     }
 }
