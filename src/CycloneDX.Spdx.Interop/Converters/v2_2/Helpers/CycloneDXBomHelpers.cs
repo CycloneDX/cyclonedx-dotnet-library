@@ -42,7 +42,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     Properties = new List<Property>(),
                 };
                 component.Properties.AddSpdxElement(PropertyTaxonomy.SPDXID, package.SPDXID);
-                component.Properties.AddSpdxElements<Annotation>(PropertyTaxonomy.ANNOTATION, package.Annotations);
+                component.Properties.AddSpdxElements<Models.v2_2.Annotation>(PropertyTaxonomy.ANNOTATION, package.Annotations);
                 component.Properties.AddSpdxElement(PropertyTaxonomy.FILES_ANALYZED, package.FilesAnalyzed);
                 component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS, package.LicenseComments);
                 component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED, package.LicenseConcluded);

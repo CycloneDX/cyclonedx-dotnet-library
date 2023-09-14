@@ -35,43 +35,15 @@ namespace CycloneDX.Models
 
         [XmlAttribute("version")]
         [ProtoMember(3)]
-        public string Version { get; set; }
+        public string Version { get; set; } = "0.0";
 
-        [XmlIgnore]
-        [ProtoMember(4)]
-        public int? TagVersion { get; set; }
         [XmlAttribute("tagVersion")]
-        [JsonIgnore]
-        public int NonNullableTagVersion
-        { 
-            get
-            {
-                return TagVersion.HasValue ? TagVersion.Value : 0;
-            }
-            set
-            {
-                TagVersion = value;
-            }
-        }
-        public bool ShouldSerializeNonNullableTagVersion() { return TagVersion.HasValue; }
+        [ProtoMember(4)]
+        public int TagVersion { get; set; }
 
-        [XmlIgnore]
-        [ProtoMember(5)]
-        public bool? Patch { get; set; }
         [XmlAttribute("patch")]
-        [JsonIgnore]
-        public bool NonNullablePatch
-        { 
-            get
-            {
-                return Patch.HasValue ? Patch.Value : false;
-            }
-            set
-            {
-                Patch = value;
-            }
-        }
-        public bool ShouldSerializeNonNullablePatch() { return Patch.HasValue; }
+        [ProtoMember(5)]
+        public bool Patch { get; set; }
 
         [XmlElement("text")]
         [ProtoMember(6)]

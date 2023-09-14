@@ -17,9 +17,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Text.Json.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
@@ -41,7 +41,15 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "incomplete_third_party_only")]
             Incomplete_Third_Party_Only,
             [XmlEnum(Name = "unknown")]
-            Unknown
+            Unknown,
+            [XmlEnum(Name = "incomplete_first_party_proprietary_only")]
+            Incomplete_First_Party_Proprietary_Only,
+            [XmlEnum(Name = "incomplete_first_party_opensource_only")]
+            Incomplete_First_Party_Opensource_Only,
+            [XmlEnum(Name = "incomplete_third_party_proprietary_only")]
+            Incomplete_Third_Party_Proprietary_Only,
+            [XmlEnum(Name = "incomplete_third_party_opensource_only")]
+            Incomplete_Third_Party_Opensource_Only,
         }
 
         [ProtoMember(1, IsRequired=true)]
@@ -53,19 +61,27 @@ namespace CycloneDX.Models
         [ProtoMember(3)]
         public List<string> Dependencies { get; set; }
         
+        [ProtoMember(4)]
+        public List<string> Vulnerabilities { get; set; }
+        
+        [JsonPropertyName("bom-ref")]
+        [ProtoMember(5)]
+        public string BomRef { get; set; }
+
         public System.Xml.Schema.XmlSchema GetSchema() {
             return null;
         }
 
         public void ReadXml(XmlReader reader)
         {
+            BomRef = reader.GetAttribute("bom-ref");
             reader.ReadStartElement();
-
+            
             if (reader.LocalName == "aggregate")
             {
                 var aggregateString = reader.ReadElementContentAsString();
                 var aggregateType = AggregateType.Not_Specified;
-                Enum.TryParse<AggregateType>(aggregateString.Replace("_", ""), ignoreCase: true, out aggregateType);
+                Enum.TryParse<AggregateType>(aggregateString, ignoreCase: true, out aggregateType);
                 Aggregate = aggregateType;
             }
 
@@ -108,11 +124,35 @@ namespace CycloneDX.Models
                 }
                 reader.ReadEndElement();
             }
-            
+
+            if (reader.LocalName == "vulnerabilities")
+            {
+                Vulnerabilities = new List<string>();
+                reader.ReadToDescendant("vulnerability");
+                while (reader.LocalName == "vulnerability")
+                {
+                    if (reader.HasAttributes)
+                    {
+                        var bomRef = reader["ref"];
+                        if (bomRef != null)
+                        {
+                            Vulnerabilities.Add(bomRef);
+                        }
+                    }
+
+                    reader.Read();
+                }
+                reader.ReadEndElement();
+            }
+
             reader.ReadEndElement();
         }
         
         public void WriteXml(System.Xml.XmlWriter writer) {
+            if (BomRef != null)
+            {
+                writer.WriteAttributeString("bom-ref", BomRef);
+            }
             writer.WriteElementString("aggregate", Aggregate.ToString().ToLowerInvariant());
             if (Assemblies != null)
             {
@@ -135,6 +175,19 @@ namespace CycloneDX.Models
                     writer.WriteStartElement("dependency");
                     writer.WriteStartAttribute("ref");
                     writer.WriteString(dependency);
+                    writer.WriteEndAttribute();
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+            }
+            if (Vulnerabilities != null)
+            {
+                writer.WriteStartElement("vulnerabilities");
+                foreach (var vulnerability in Vulnerabilities)
+                {
+                    writer.WriteStartElement("vulnerability");
+                    writer.WriteStartAttribute("ref");
+                    writer.WriteString(vulnerability);
                     writer.WriteEndAttribute();
                     writer.WriteEndElement();
                 }

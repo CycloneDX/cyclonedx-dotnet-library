@@ -32,7 +32,8 @@ namespace CycloneDX.Xml
     /// </summary>
     public static partial class Serializer
     {
-        private static Dictionary<SpecificationVersion, XmlSerializer> _serializers = new Dictionary<SpecificationVersion, XmlSerializer>();
+        private static readonly Dictionary<SpecificationVersion, Dictionary<string, XmlSerializer>> _elementSerializers = new Dictionary<SpecificationVersion, Dictionary<string, XmlSerializer>>();
+        private static readonly Dictionary<SpecificationVersion, XmlSerializer> _serializers = new Dictionary<SpecificationVersion, XmlSerializer>();
 
         private static readonly XmlWriterSettings WriterSettings = new XmlWriterSettings
         {
@@ -112,6 +113,21 @@ namespace CycloneDX.Xml
                 Serialize(bom, ms);
                 return Encoding.UTF8.GetString(ms.ToArray());
             }
+        }
+
+        internal static XmlSerializer GetElementSerializer<T>(SpecificationVersion specVersion, string elementName)
+        {
+            if (!_elementSerializers.ContainsKey(specVersion))
+                _elementSerializers[specVersion] = new Dictionary<string, XmlSerializer>();
+            var serKey = $"{typeof(T).FullName}:{elementName}";
+            if (!_elementSerializers[specVersion].ContainsKey(serKey))
+            {
+                var rootAttr = new XmlRootAttribute(elementName);
+                rootAttr.Namespace = SpecificationVersionHelpers.XmlNamespace(specVersion);
+                _elementSerializers[specVersion][serKey] = new XmlSerializer(typeof(T), rootAttr);
+            }
+
+            return _elementSerializers[specVersion][serKey];
         }
     }
 }

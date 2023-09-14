@@ -25,10 +25,12 @@ namespace CycloneDX.Models
     {
         [XmlAttribute("content-type")]
         [ProtoMember(1)]
-        public string ContentType { get; set; }
+        public string ContentType { get; set; } = "text/plain";
+        
         [XmlAttribute("encoding")]
         [ProtoMember(2)]
         public string Encoding { get; set; }
+        
         [XmlText]
         [ProtoMember(3)]
         public string Content { get; set; }

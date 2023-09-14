@@ -4,7 +4,6 @@
     <service bom-ref="b2a46a4b-8367-4bae-9820-95557cfe03a8">
       <provider />
       <name>Stock ticker service</name>
-      <endpoints />
       <licenses />
     </service>
   </services>

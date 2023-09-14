@@ -24,9 +24,9 @@ namespace CycloneDX
 {
     public static class SpecificationVersionHelpers
     {
-        public static readonly SpecificationVersion CurrentVersion = SpecificationVersion.v1_4;
+        public static readonly SpecificationVersion CurrentVersion = SpecificationVersion.v1_5;
 
-        public static readonly string XmlNamespaceRegexString = @"http:\/\/cyclonedx\.org\/schema\/bom\/(?<SpecificationVersionString>1\.[0-4])";
+        public static readonly string XmlNamespaceRegexString = @"http:\/\/cyclonedx\.org\/schema\/bom\/(?<SpecificationVersionString>1\.[0-5])";
 
         public static readonly Regex XmlNamespaceRegex = new Regex(XmlNamespaceRegexString);
 
@@ -55,20 +55,19 @@ namespace CycloneDX
 
         public static string VersionString(SpecificationVersion specificationVersion)
         {
-            switch (specificationVersion)
+            return specificationVersion.ToString().Replace('_', '.').Trim('v');
+        }
+
+        public static SpecificationVersion Version(string specificationVersion)
+        {
+            if (Enum.TryParse($"v{specificationVersion.Replace('.', '_')}", out SpecificationVersion result))
             {
-                case SpecificationVersion.v1_4:
-                    return "1.4";
-                case SpecificationVersion.v1_3:
-                    return "1.3";
-                case SpecificationVersion.v1_2:
-                    return "1.2";
-                case SpecificationVersion.v1_1:
-                    return "1.1";
-                case SpecificationVersion.v1_0:
-                    return "1.0";
-                default:
-                    throw new ArgumentOutOfRangeException($"Unhandled specification version value: {specificationVersion}");
+                return result;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(
+                    $"Unrecognised specification version string: {specificationVersion}");
             }
         }
     }

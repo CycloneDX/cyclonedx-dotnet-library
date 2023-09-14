@@ -39,9 +39,17 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<EvidenceCopyright> Copyright { get; set; }
         
-        public System.Xml.Schema.XmlSchema GetSchema()
-        {
-            return null;
-        }
+        [XmlElement("identity")]
+        [ProtoMember(3)]
+        public EvidenceIdentity Identity { get; set; }
+
+        [XmlArray("occurrences")]
+        [XmlArrayItem("occurrence")]
+        [ProtoMember(4)]
+        public List<EvidenceOccurrence> Occurrences { get; set; }
+
+        [XmlElement("callstack")]
+        [ProtoMember(5)]
+        public Callstack Callstack { get; set; }
     }
 }

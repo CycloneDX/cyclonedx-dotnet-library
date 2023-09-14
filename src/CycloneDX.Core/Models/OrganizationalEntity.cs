@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -35,5 +36,10 @@ namespace CycloneDX.Models
         [XmlElement("contact")]
         [ProtoMember(3)]
         public List<OrganizationalContact> Contact { get; set; }
+
+        [JsonPropertyName("bom-ref")]
+        [XmlAttribute("bom-ref")]
+        [ProtoMember(4)]
+        public string BomRef { get; set; }
     }
 }

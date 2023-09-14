@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -35,10 +36,33 @@ namespace CycloneDX.Models
         }
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
-        [XmlArray("tools")]
-        [XmlArrayItem("tool")]
+        [XmlElement("tools")]
+        public ToolChoices Tools { get; set; }
+        
+        // this is to support a bug in v1.5 of the protobuf spec
+        [XmlIgnore]
+        [JsonIgnore]
         [ProtoMember(2)]
-        public List<Tool> Tools { get; set; }
+        #pragma warning disable 618
+        public List<Tool> ProtobufTools
+        #pragma warning restore 618
+        {
+            get => Tools?.Tools;
+            set
+            {
+                if (value == null)
+                {
+                    Tools = null;
+                }
+                else
+                {
+                    Tools = new ToolChoices
+                    {
+                        Tools = value
+                    };
+                }
+            }
+        }
 
         [XmlArray("authors")]
         [XmlArrayItem("author")]
@@ -67,5 +91,11 @@ namespace CycloneDX.Models
         [ProtoMember(8)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+        
+        [XmlArray("lifecycles")]
+        [XmlArrayItem("lifecycle")]
+        [ProtoMember(9)]
+        public List<Lifecycles> Lifecycles { get; set; }
+        public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
     }
 }

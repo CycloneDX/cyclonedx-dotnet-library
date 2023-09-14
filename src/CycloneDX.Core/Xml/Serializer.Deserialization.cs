@@ -107,7 +107,6 @@ namespace CycloneDX.Xml
         {
             if (bom.Metadata?.Authors?.Count == 0) bom.Metadata.Authors = null;
             if (bom.Metadata?.Properties?.Count == 0) bom.Metadata.Properties = null;
-            if (bom.Metadata?.Tools?.Count == 0) bom.Metadata.Tools = null;
             if (bom.Components?.Count == 0) bom.Components = null;
             if (bom.Services?.Count == 0) bom.Services = null;
             if (bom.ExternalReferences?.Count == 0) bom.ExternalReferences = null;
