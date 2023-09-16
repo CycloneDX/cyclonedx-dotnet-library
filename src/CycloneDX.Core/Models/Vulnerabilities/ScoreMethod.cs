@@ -36,5 +36,9 @@ namespace CycloneDX.Models.Vulnerabilities
         OWASP,
         [XmlEnum(Name = "other")]
         Other,
+        [XmlEnum(Name = "CVSSv4")]
+        CVSSV4,
+        [XmlEnum(Name = "SSVC")]
+        SSVC,
     }
 }

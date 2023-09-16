@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using CycloneDX.Models;
+using CycloneDX.Models.Vulnerabilities;
 
 namespace CycloneDX
 {
@@ -127,13 +128,6 @@ namespace CycloneDX
 
             if (bomCopy.SpecVersion < SpecificationVersion.v1_4)
             {
-                if (bomCopy.Metadata?.Tools != null)
-                {
-                    foreach (var tool in bomCopy.Metadata.Tools)
-                    {
-                        tool.ExternalReferences = null;
-                    }
-                }
                 EnumerateAllComponents(bomCopy, (component) => {
                     component.ReleaseNotes = null;
                     if (component.Version == null)
@@ -147,6 +141,114 @@ namespace CycloneDX
                 bomCopy.Vulnerabilities = null;
             }
 
+            if (bomCopy.SpecVersion < SpecificationVersion.v1_5)
+            {
+                bomCopy.Annotations = null;
+                bomCopy.Properties = null;
+                bomCopy.Formulation = null;
+
+                if (bomCopy.Metadata != null) bomCopy.Metadata.Lifecycles = null;
+
+                if (bomCopy.Compositions != null)
+                {
+                    foreach (var composition in bomCopy.Compositions)
+                    {
+                        composition.BomRef = null;
+                        composition.Vulnerabilities = null;
+                    }
+                }
+                
+                EnumerateAllToolChoices(bomCopy, (toolchoice) =>
+                {
+                    toolchoice.Components = null;
+                    toolchoice.Services = null;
+                });
+
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
+                    component.ModelCard = null;
+                    component.Data = null;
+                    if ((int)component.Type > 8) component.Type = Component.Classification.Library;
+                });
+                
+                EnumerateAllServices(bomCopy, (service) =>
+                {
+                    service.TrustZone = null;
+                    if (service.Data != null)
+                    {
+                        foreach (var data in service.Data)
+                        {
+                            data.Name = null;
+                            data.Description = null;
+                            data.Governance = null;
+                            data.Source = null;
+                            data.Destination = null;
+                        }
+                    }
+                });
+                
+                EnumerateAllVulnerabilities(bomCopy, (vulnerability) =>
+                {
+                    vulnerability.Rejected = null;
+                    vulnerability.ProofOfConcept = null;
+                    vulnerability.Workaround = null;
+                    if (vulnerability.Analysis != null)
+                    {
+                        vulnerability.Analysis.FirstIssued = null;
+                        vulnerability.Analysis.LastUpdated = null;
+                    }
+
+                    if (vulnerability.Ratings != null)
+                    {
+                        var i = 0;
+                        while (i < vulnerability.Ratings.Count)
+                        {
+                            if (vulnerability.Ratings[i].Method == ScoreMethod.CVSSV4 ||
+                                vulnerability.Ratings[i].Method == ScoreMethod.SSVC)
+                            {
+                                vulnerability.Ratings.RemoveAt(i);
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                    }
+                });
+                
+                EnumerateAllEvidence(bomCopy, (evidence) =>
+                {
+                    evidence.Identity = null;
+                    evidence.Occurrences = null;
+                    evidence.Callstack = null;
+                });
+                
+                EnumerateAllLicenseChoices(bomCopy, (licenseChoice) =>
+                {
+                    licenseChoice.BomRef = null;
+                });
+                
+                EnumerateAllLicenses(bomCopy, (license) =>
+                {
+                    license.BomRef = null;
+                    license.Licensing = null;
+                    license.Properties = null;
+                });
+
+                EnumerateAllOrganizationalEntity(bomCopy, (orgEntity) =>
+                {
+                    orgEntity.BomRef = null;
+                });
+
+                EnumerateAllOrganizationalContact(bomCopy, (orgContact) =>
+                {
+                    orgContact.BomRef = null;
+                });
+            }
+
+            // triggers a bunch of stuff, don't remove unless you know what you are doing
+            bomCopy.SpecVersion = bomCopy.SpecVersion;
+
             return bomCopy;
         }
 
@@ -157,56 +259,32 @@ namespace CycloneDX
             return bomCopy;
         }
 
+        public static void EnqueueMany<T>(this Queue<T> queue, IEnumerable<T> items)
+        {
+            if (items != null)
+                foreach (var item in items)
+                    queue.Enqueue(item);
+        }
+
         public static void EnumerateAllComponents(Bom bom, Action<Component> callback)
         {
             var q = new Queue<Component>();
 
-            if (bom.Metadata?.Component != null)
-            {
-                q.Enqueue(bom.Metadata.Component);
-            }
-
-            if (bom.Components != null)
-            {
-                foreach (var component in bom.Components)
-                {
-                    q.Enqueue(component);
-                }
-            }
+            q.Enqueue(bom.Metadata?.Component);
+            q.EnqueueMany(bom.Metadata?.Tools?.Components);
+            q.EnqueueMany(bom.Components);
 
             while (q.Count > 0)
             {
                 var currentComponent = q.Dequeue();
-                
-                callback(currentComponent);
-
-                if (currentComponent.Components != null)
+                if (currentComponent != null)
                 {
-                    foreach (var c in currentComponent.Components)
-                    {
-                        q.Enqueue(c);
-                    }
-                }
-                if (currentComponent.Pedigree?.Ancestors != null)
-                {
-                    foreach (var c in currentComponent.Pedigree.Ancestors)
-                    {
-                        q.Enqueue(c);
-                    }
-                }
-                if (currentComponent.Pedigree?.Descendants != null)
-                {
-                    foreach (var c in currentComponent.Pedigree.Descendants)
-                    {
-                        q.Enqueue(c);
-                    }
-                }
-                if (currentComponent.Pedigree?.Variants != null)
-                {
-                    foreach (var c in currentComponent.Pedigree.Variants)
-                    {
-                        q.Enqueue(c);
-                    }
+                    callback(currentComponent);
+                    
+                    q.EnqueueMany(currentComponent.Components);
+                    q.EnqueueMany(currentComponent.Pedigree?.Ancestors);
+                    q.EnqueueMany(currentComponent.Pedigree?.Descendants);
+                    q.EnqueueMany(currentComponent.Pedigree?.Variants);
                 }
             }
         }
@@ -214,29 +292,167 @@ namespace CycloneDX
         public static void EnumerateAllServices(Bom bom, Action<Service> callback)
         {
             var q = new Queue<Service>();
+            
+            q.EnqueueMany(bom.Metadata?.Tools?.Services);
+            q.EnqueueMany(bom.Services);
 
-            if (bom.Services != null)
+            while (q.Count > 0)
             {
-                foreach (var service in bom.Services)
+                var currentService = q.Dequeue();
+                if (currentService != null)
                 {
-                    q.Enqueue(service);
+                    callback(currentService);
+
+                    q.EnqueueMany(currentService.Services);
+                }
+            }
+        }
+
+        public static void EnumerateAllVulnerabilities(Bom bom, Action<Vulnerability> callback)
+        {
+            var q = new Queue<Vulnerability>();
+
+            if (bom.Vulnerabilities != null)
+            {
+                foreach (var vulnerability in bom.Vulnerabilities)
+                {
+                    q.Enqueue(vulnerability);
                 }
             }
 
             while (q.Count > 0)
             {
-                var currentService = q.Dequeue();
+                var currentVulnerability = q.Dequeue();
                 
-                callback(currentService);
+                callback(currentVulnerability);
+            }
+        }
+        public static void EnumerateAllEvidence(Bom bom, Action<Evidence> callback)
+        {
+            EnumerateAllComponents(bom, (component) =>
+            {
+                if (component.Evidence != null) callback(component.Evidence);
+            });
+        }
+        
+        public static void EnumerateAllLicenses(Bom bom, Action<License> callback)
+        {
+            EnumerateAllLicenseChoices(bom, (licenseChoice) =>
+            {
+                if (licenseChoice.License != null) callback(licenseChoice.License);
+            });
+        }
 
-                if (currentService.Services != null)
+        public static void EnumerateAllLicenseChoices(Bom bom, Action<LicenseChoice> callback)
+        {
+            if (bom.Metadata?.Licenses != null)
+            {
+                foreach (var license in bom.Metadata.Licenses)
                 {
-                    foreach (var s in currentService.Services)
+                    callback(license);
+                }
+                    
+            }
+            EnumerateAllComponents(bom, (component) =>
+            {
+                if (component.Licenses != null)
+                {
+                    foreach (var license in component.Licenses)
                     {
-                        q.Enqueue(s);
+                        callback(license);
                     }
                 }
+            });
+            
+            EnumerateAllServices(bom, (service) =>
+            {
+                if (service.Licenses != null)
+                {
+                    foreach (var license in service.Licenses)
+                    {
+                        callback(license);
+                    }
+                }
+            });
+
+            EnumerateAllEvidence(bom, (evidence) =>
+            {
+                if (evidence.Licenses != null)
+                {
+                    foreach (var license in evidence.Licenses)
+                    {
+                        callback(license);
+                    }
+                }
+            });
+        }
+
+        public static void EnumerateAllOrganizationalEntity(Bom bom, Action<OrganizationalEntity> callback)
+        {
+            if (bom.Metadata?.Manufacture != null) callback(bom.Metadata.Manufacture);
+            if (bom.Metadata?.Supplier != null) callback(bom.Metadata.Supplier);
+
+            if (bom.Annotations != null)
+            {
+                foreach (var annotation in bom.Annotations)
+                {
+                    if (annotation.Annotator?.Organization != null)
+                        callback(annotation.Annotator.Organization);
+                }
+                
             }
+                
+            EnumerateAllVulnerabilities(bom, (vulnerability) =>
+            {
+                if (vulnerability.Credits?.Organizations != null)
+                {
+                    foreach (var org in vulnerability.Credits.Organizations) callback(org);
+                }
+            });
+            EnumerateAllComponents(bom, (component) =>
+            {
+                if (component.Supplier != null) callback(component.Supplier);
+            });
+            EnumerateAllServices(bom, (service) =>
+            {
+                if (service.Provider != null) callback(service.Provider);
+            });
+        }
+
+        public static void EnumerateAllOrganizationalContact(Bom bom, Action<OrganizationalContact> callback)
+        {
+            EnumerateAllOrganizationalEntity(bom, (orgEntity) =>
+            {
+                if (orgEntity.Contact != null)
+                {
+                    foreach (var contact in orgEntity.Contact)
+                    {
+                        callback(contact);
+                    }
+                }
+            });
+            
+            EnumerateAllVulnerabilities(bom, (vulnerability) =>
+            {
+                if (vulnerability.Credits?.Individuals != null)
+                {
+                    foreach (var individual in vulnerability.Credits.Individuals)
+                    {
+                        callback(individual);
+                    }
+                }
+            });
+        }
+
+        public static void EnumerateAllToolChoices(Bom bom, Action<ToolChoices> callback)
+        {
+            if (bom.Metadata?.Tools != null)
+                callback(bom.Metadata.Tools);
+            EnumerateAllVulnerabilities(bom, (vuln) =>
+            {
+                if (vuln.Tools != null)
+                    callback(vuln.Tools);
+            });
         }
     }
 }

@@ -29,6 +29,6 @@ namespace CycloneDX.Models.Vulnerabilities
         [XmlEnum(Name = "affected")]
         Affected,
         [XmlEnum(Name = "not_affected")]
-        NotAffected,
+        Not_Affected,
     }
 }

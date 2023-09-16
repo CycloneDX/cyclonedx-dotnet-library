@@ -27,7 +27,6 @@
               <name>Acme Org</name>
               <url>https://issues.example.com/17240</url>
             </source>
-            <references />
           </issue>
           <issue type="security">
             <id>CVE-2019-9997</id>
@@ -53,7 +52,6 @@
             <text content-type="text/html" encoding="base64">PGgxPk15IG5ldyByZWxlYXNlPGgxPgo8cD5Ob3RhcyBkZSBsYSB2ZXJzacOzbiBhcXXDrTwvcD4=</text>
           </note>
         </notes>
-        <properties />
       </releaseNotes>
     </component>
   </components>
@@ -120,7 +118,6 @@
               <name>Acme Org</name>
               <url>https://issues.example.com/17240</url>
             </source>
-            <references />
           </issue>
           <issue type="security">
             <id>CVE-2019-9997</id>
@@ -146,7 +143,6 @@
             <text content-type="text/html" encoding="base64">PGgxPk15IG5ldyByZWxlYXNlPGgxPgo8cD5Ob3RhcyBkZSBsYSB2ZXJzacOzbiBhcXXDrTwvcD4=</text>
           </note>
         </notes>
-        <properties />
       </releaseNotes>
     </service>
   </services>

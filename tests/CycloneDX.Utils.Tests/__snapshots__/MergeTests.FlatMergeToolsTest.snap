@@ -1,11 +1,27 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "v1_4",
-  "SpecVersionString": "1.4",
+  "SpecVersion": "v1_5",
+  "SpecVersionString": "1.5",
   "SerialNumber": null,
   "Version": null,
   "Metadata": {
-    "Tools": [
+    "Tools": {
+      "Tools": [
+        {
+          "Vendor": null,
+          "Name": "Tool1",
+          "Version": "1",
+          "Hashes": null
+        },
+        {
+          "Vendor": null,
+          "Name": "Tool2",
+          "Version": "1",
+          "Hashes": null
+        }
+      ]
+    },
+    "ProtobufTools": [
       {
         "Vendor": null,
         "Name": "Tool1",

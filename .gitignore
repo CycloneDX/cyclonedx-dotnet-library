@@ -11,3 +11,4 @@ coverage-report/
 docfx/
 _exported_templates/
 **/BenchmarkDotNet.Artifacts/
+.DS_Store
