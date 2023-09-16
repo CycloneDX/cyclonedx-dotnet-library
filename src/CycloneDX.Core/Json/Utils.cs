@@ -18,6 +18,8 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using CycloneDX.Json.Converters;
+using CycloneDX.Models;
+using CycloneDX.Models.Vulnerabilities;
 
 namespace CycloneDX.Json
 {
@@ -26,6 +28,15 @@ namespace CycloneDX.Json
     /// </summary>
     public static class Utils
     {
+        public static JsonSerializerOptions GetBaseJsonSerializerOptions()
+        {
+            return new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            };
+        }
         /// <summary>
         /// Returns <c>JsonSerializerOptions</c> required to serialize and
         /// deserialize CycloneDX JSON documents.
@@ -33,29 +44,44 @@ namespace CycloneDX.Json
         /// <returns></returns>
         public static JsonSerializerOptions GetJsonSerializerOptions()
         {
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-            };
-            options.Converters.Add(new AggregateTypeConverter());
-            options.Converters.Add(new ComponentScopeConverter());
-            options.Converters.Add(new ComponentTypeConverter());
-            options.Converters.Add(new DataFlowConverter());
+            var options = GetBaseJsonSerializerOptions();
+            
+            options.Converters.Add(new UnderscoreEnumConverter<Composition.AggregateType>());
+            options.Converters.Add(new HyphenEnumConverter<Component.ComponentScope>());
+            options.Converters.Add(new HyphenEnumConverter<Component.Classification>());
+            options.Converters.Add(new HyphenEnumConverter<Licensing.LicenseType>());
+            options.Converters.Add(new HyphenEnumConverter<DataFlowDirection>());
             options.Converters.Add(new DateTimeConverter());
             options.Converters.Add(new DependencyConverter());
-            options.Converters.Add(new ExternalReferenceTypeConverter());
-            options.Converters.Add(new HashAlgorithmConverter());
-            options.Converters.Add(new IssueClassificationConverter());
-            options.Converters.Add(new LicenseConverter());
-            options.Converters.Add(new PatchClassificationConverter());
+            options.Converters.Add(new HyphenEnumConverter<ExternalReference.ExternalReferenceType>());
+            options.Converters.Add(new KeepCaseHyphenEnumConverter<Hash.HashAlgorithm>());
+            options.Converters.Add(new UnderscoreEnumConverter<Issue.IssueClassification>());
+            options.Converters.Add(new HyphenEnumConverter<Patch.PatchClassification>());
 
-            options.Converters.Add(new ImpactAnalysisJustificationConverter());
-            options.Converters.Add(new ImpactAnalysisStateConverter());
-            options.Converters.Add(new ResponseConverter());
+            options.Converters.Add(new UnderscoreEnumConverter<ImpactAnalysisJustification>());
+            options.Converters.Add(new UnderscoreEnumConverter<ImpactAnalysisState>());
+            options.Converters.Add(new UnderscoreEnumConverter<Response>());
+            
+            options.Converters.Add(new HyphenEnumConverter<Workspace.AccessModeType>());
+            options.Converters.Add(new HyphenEnumConverter<Lifecycles.LifecyclePhase>());
+
+            options.Converters.Add(new EnvironmentVarChoiceConverter());
+            options.Converters.Add(new ToolChoicesConverter());
+            
+            options.Converters.Add(new HyphenEnumConverter<EvidenceMethods.EvidenceTechnique>());
+            options.Converters.Add(new ScoreMethodConverter());
+            options.Converters.Add(new HyphenEnumConverter<Severity>());
+            options.Converters.Add(new HyphenEnumConverter<Trigger.TriggerType>());
+            options.Converters.Add(new HyphenEnumConverter<WorkflowTask.TaskType>());
+            options.Converters.Add(new HyphenEnumConverter<WorkflowTaskType>());
+            options.Converters.Add(new HyphenEnumConverter<Output.OutputType>());
+            options.Converters.Add(new HyphenEnumConverter<ModelCard.ModelParameterApproachType>());
+            options.Converters.Add(new UnderscoreEnumConverter<Status>());
 
             options.Converters.Add(new JsonStringEnumConverter());
+            
+            options.Converters.Add(new DataflowSourceDestinationConverter());
+            
             return options;
         }
     }

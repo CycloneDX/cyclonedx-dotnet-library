@@ -28,9 +28,9 @@ namespace CycloneDX.Spdx.Interop.Helpers
         {
             var creators = new List<string>();
 
-            if (bom.Metadata?.Tools != null)
+            if (bom.Metadata?.Tools?.Tools != null)
             {
-                foreach (var tool in bom.Metadata.Tools)
+                foreach (var tool in bom.Metadata.Tools.Tools)
                 {
                     creators.Add($"Tool: {tool.Name}-{tool.Version}");
                 }
@@ -67,11 +67,14 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     if (toolMatch.Success)
                     {
                         if (bom.Metadata == null) bom.Metadata = new Metadata();
-                        if (bom.Metadata?.Tools == null) bom.Metadata.Tools = new List<Tool>();
-                        bom.Metadata.Tools.Add(new Tool {
+                        #pragma warning disable 618
+                        if (bom.Metadata?.Tools?.Tools == null)
+                            bom.Metadata.Tools = new ToolChoices { Tools = new List<Tool>() };
+                        bom.Metadata.Tools.Tools.Add(new Tool {
                             Name = toolMatch.Groups["name"].ToString(),
                             Version = toolMatch.Groups["version"].ToString(),
                         });
+                        #pragma warning restore 618
                     }
                     else
                     {

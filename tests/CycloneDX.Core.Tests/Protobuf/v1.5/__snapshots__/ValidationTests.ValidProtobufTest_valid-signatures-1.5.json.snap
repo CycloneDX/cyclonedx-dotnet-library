@@ -1,0 +1,29 @@
+﻿spec_version: "1.5"
+version: 1
+serial_number: "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
+components {
+  type: CLASSIFICATION_APPLICATION
+  bom_ref: "5366293e-0740-4dcf-b1d0-0c1fc26e4981"
+  name: "amce app"
+  version: "1.0"
+}
+services {
+  bom_ref: "ee10d0a2-baba-4656-a5ac-d49e172a0d3d"
+  group: "org.partner"
+  name: "Stock ticker service"
+  version: "2020-Q2"
+  endpoints: "https://partner.org/api/v1/lookup"
+  endpoints: "https://partner.org/api/v1/stock"
+  authenticated: true
+  x_trust_boundary: true
+  data {
+    flow: DATA_FLOW_INBOUND
+    value: "PII"
+  }
+}
+compositions {
+  aggregate: AGGREGATE_COMPLETE
+  assemblies: "5366293e-0740-4dcf-b1d0-0c1fc26e4981"
+  assemblies: "ee10d0a2-baba-4656-a5ac-d49e172a0d3d"
+  dependencies: "5366293e-0740-4dcf-b1d0-0c1fc26e4981"
+}

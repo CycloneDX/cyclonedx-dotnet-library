@@ -32,6 +32,6 @@ namespace CycloneDX.Models.Vulnerabilities
         [XmlArray("individuals")]
         [XmlArrayItem("individual")]
         [ProtoMember(2)]
-        public List<OrganizationalEntity> Individuals { get; set; }
+        public List<OrganizationalContact> Individuals { get; set; }
     }
 }

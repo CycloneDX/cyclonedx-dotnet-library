@@ -1,7 +1,7 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "v1_4",
-  "SpecVersionString": "1.4",
+  "SpecVersion": "v1_5",
+  "SpecVersionString": "1.5",
   "SerialNumber": null,
   "Version": null,
   "Metadata": null,
@@ -18,7 +18,6 @@
       "Version": "1",
       "Description": null,
       "Scope": null,
-      "Hashes": null,
       "Licenses": null,
       "Copyright": null,
       "Cpe": null,
@@ -26,8 +25,9 @@
       "Swid": null,
       "Modified": null,
       "Pedigree": null,
-      "Components": null,
-      "Evidence": null
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null
     },
     {
       "Type": "Null",
@@ -41,7 +41,6 @@
       "Version": "1",
       "Description": null,
       "Scope": null,
-      "Hashes": null,
       "Licenses": null,
       "Copyright": null,
       "Cpe": null,
@@ -49,8 +48,9 @@
       "Swid": null,
       "Modified": null,
       "Pedigree": null,
-      "Components": null,
-      "Evidence": null
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null
     }
   ],
   "Compositions": null

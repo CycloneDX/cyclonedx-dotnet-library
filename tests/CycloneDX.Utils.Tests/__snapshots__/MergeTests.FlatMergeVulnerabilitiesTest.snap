@@ -1,7 +1,7 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "v1_4",
-  "SpecVersionString": "1.4",
+  "SpecVersion": "v1_5",
+  "SpecVersionString": "1.5",
   "SerialNumber": null,
   "Version": null,
   "Metadata": null,
@@ -12,20 +12,20 @@
       "BomRef": null,
       "Id": "cve1",
       "Source": null,
-      "References": null,
       "Ratings": null,
       "CWES": null,
       "Description": null,
       "Detail": null,
       "Recommendation": null,
+      "Workaround": null,
+      "ProofOfConcept": null,
       "Advisories": null,
       "Credits": null,
-      "Tools": null,
       "Analysis": null,
       "Affects": [
         {
           "Ref": "ref1",
-          "Range": null
+          "Versions": null
         }
       ]
     },
@@ -33,20 +33,20 @@
       "BomRef": null,
       "Id": "cve2",
       "Source": null,
-      "References": null,
       "Ratings": null,
       "CWES": null,
       "Description": null,
       "Detail": null,
       "Recommendation": null,
+      "Workaround": null,
+      "ProofOfConcept": null,
       "Advisories": null,
       "Credits": null,
-      "Tools": null,
       "Analysis": null,
       "Affects": [
         {
           "Ref": "ref2",
-          "Range": null
+          "Versions": null
         }
       ]
     }

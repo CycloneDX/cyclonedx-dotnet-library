@@ -32,16 +32,20 @@ namespace CycloneDX.Utils.Tests
         [Fact]
         public void FlatMergeToolsTest()
         {
+            #pragma warning disable 618
             var sbom1 = new Bom
             {
                 Metadata = new Metadata
                 {
-                    Tools = new List<Tool>
+                    Tools = new ToolChoices
                     {
-                        new Tool
+                        Tools = new List<Tool>
                         {
-                            Name = "Tool1",
-                            Version = "1"
+                            new Tool
+                            {
+                                Name = "Tool1",
+                                Version = "1"
+                            }
                         }
                     }
                 }
@@ -50,16 +54,20 @@ namespace CycloneDX.Utils.Tests
             {
                 Metadata = new Metadata
                 {
-                    Tools = new List<Tool>
+                    Tools = new ToolChoices
                     {
-                        new Tool
+                        Tools = new List<Tool>
                         {
-                            Name = "Tool2",
-                            Version = "1"
+                            new Tool
+                            {
+                                Name = "Tool2",
+                                Version = "1"
+                            }
                         }
                     }
                 }
             };
+            #pragma warning restore 618
 
             var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
 
