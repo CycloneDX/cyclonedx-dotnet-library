@@ -5,7 +5,6 @@
       <provider />
       <name>Stock ticker service</name>
       <endpoints />
-      <licenses />
     </service>
   </services>
 </bom>
