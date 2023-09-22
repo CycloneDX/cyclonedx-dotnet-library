@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("workflow")]
     [ProtoContract]
-    public class Workflow
+    public class Workflow : BomEntity
     {
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]

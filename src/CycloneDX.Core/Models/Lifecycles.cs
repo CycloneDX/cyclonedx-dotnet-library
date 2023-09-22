@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Lifecycles
+    public class Lifecycles : BomEntity
     {
         [ProtoContract]
         public enum LifecyclePhase

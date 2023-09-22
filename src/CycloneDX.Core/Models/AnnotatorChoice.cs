@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class AnnotatorChoice
+    public class AnnotatorChoice : BomEntity
     {
         [XmlElement("organization")]
         [ProtoMember(1)]

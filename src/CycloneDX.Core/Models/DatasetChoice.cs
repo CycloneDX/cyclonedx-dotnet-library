@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class DatasetChoice
+    public class DatasetChoice : BomEntity
     {
         [XmlElement("dataset")]
         [ProtoMember(1)]

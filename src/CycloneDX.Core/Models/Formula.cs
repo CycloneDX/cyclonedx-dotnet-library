@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("formula")]
     [ProtoContract]
-    public class Formula
+    public class Formula : BomEntity
     {
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]

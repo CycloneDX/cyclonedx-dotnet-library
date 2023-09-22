@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("data-governance")]
     [ProtoContract]
-    public class DataGovernance
+    public class DataGovernance : BomEntity
     {
         [XmlArray("custodians")]
         [XmlArrayItem("custodian")]
