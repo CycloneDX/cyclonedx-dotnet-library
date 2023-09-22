@@ -18,10 +18,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using System.Xml;
 
 namespace CycloneDX.Models
 {
@@ -1115,6 +1117,204 @@ namespace CycloneDX.Models
             throw new BomEntityConflictException(
                 "Base-method implementation treats equivalent but not equal entities as conflicting",
                 this.GetType());
+        }
+    }
+
+    /// <summary>
+    /// Helper class for Bom.GetBomRefsInContainers() et al discovery tracking.
+    /// </summary>
+    public class BomWalkResult
+    {
+        /// <summary>
+        /// The BomEntity (normally a whole Bom document)
+        /// which was walked and reported here.
+        /// </summary>
+        public BomEntity bomRoot = null;
+
+        /// <summary>
+        /// Populated by GetBomRefsInContainers(),
+        /// keys are "container" entities and values
+        /// are lists of "contained" entities which
+        /// have a BomRef or equivalent property.
+        /// </summary>
+        readonly public Dictionary<BomEntity, List<BomEntity>> dictRefsInContainers = new Dictionary<BomEntity, List<BomEntity>>();
+
+        /// <summary>
+        /// Populated by GetBomRefsInContainers(),
+        /// keys are "Ref" or equivalent string values
+        /// which link back to a "BomRef" hopefully
+        /// defined somewhere in the same Bom document
+        /// (but may be dangling, or sometimes co-opted
+        /// with external links to other Bom documents!),
+        /// and values are lists of entities which use
+        /// this same "ref" value.
+        /// </summary>
+        readonly public Dictionary<String, List<BomEntity>> dictBackrefs = new Dictionary<String, List<BomEntity>>();
+
+        public void reset()
+        {
+            dictRefsInContainers.Clear();
+            dictBackrefs.Clear();
+
+            bomRoot = null;
+        }
+
+        public void reset(BomEntity newRoot)
+        {
+            this.reset();
+            this.bomRoot = newRoot;
+        }
+
+        /// <summary>
+        /// Provide a Dictionary whose keys are container BomEntities
+        /// and values are lists of one or more directly contained
+        /// entities with a BomRef attribute, e.g. the Bom itself and
+        /// the Components in it; or the Metadata and the Component
+        /// description in it; or certain Components or Tools with a
+        /// set of further "structural" components.
+        ///
+        /// The assumption per CycloneDX spec, not directly challenged
+        /// in this method, is that each such listed "contained entity"
+        /// (likely Component instances) has an unique BomRef value across
+        /// the whole single Bom document. Other Bom documents may however
+        /// have the same BomRef value (trivially "1", "2", ...) which
+        /// is attached to description of an unrelated entity. This can
+        /// impact such operations as a FlatMerge() of different Boms.
+        ///
+        /// See also: GetBomRefsWithContainer() with transposed returns.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<BomEntity, List<BomEntity>> GetBomRefsByContainer()
+        {
+            Dictionary<BomEntity, List<BomEntity>> dict = new Dictionary<BomEntity, List<BomEntity>>();
+
+            // With CycloneDX spec 1.4 or older it might be feasible to
+            // walk specific properties of the Bom instance to look into
+            // their contents by known class types. As seen by excerpt
+            // from the spec below, just to list the locations where a
+            // "bom-ref" value can be set to identify an entity or where
+            // such value can be used to refer back to that entity, such
+            // approach is nearly infeasible starting with CDX 1.5 -- so
+            // use of reflection below is a more sustainable choice.
+            //
+            // Looking in schema definitions search for items that should
+            // be bom-refs (whether the attributes of certain entry types,
+            // or back-references from whoever uses them):
+            // * in "*.schema.json" search for "#/definitions/refType", or
+            // * in "*.xsd" search for "bom:refType" and its super-set for
+            //   certain use-cases "bom:bomReferenceType"
+            // Since CDX spec 1.5 note there is also a "refLinkType" with
+            // same formal syntax as "refType" but different purpose --
+            // to specify back-references (as separate from identifiers
+            // of new unique entries).  Also do not confuse with bomLink,
+            // bomLinkDocumentType, and bomLinkElementType which refer to
+            // entities in OTHER Bom documents (or those Boms themselves).
+            //
+            // As of CDX spec 1.4+, a "bom-ref" attribute can be specified in:
+            // * (1.4, 1.5) component/"bom-ref"
+            // * (1.4, 1.5) service/"bom-ref"
+            // * (1.4, 1.5) vulnerability/"bom-ref"
+            // * (1.5) organizationalEntity/"bom-ref"
+            // * (1.5) organizationalContact/"bom-ref"
+            // * (1.5) license/"bom-ref"
+            // * (1.5) license/licenseChoice/...expression.../"bom-ref"
+            // * (1.5) componentEvidence/occurrences[]/"bom-ref"
+            // * (1.5) compositions/"bom-ref"
+            // * (1.5) annotations/"bom-ref"
+            // * (1.5) modelCard/"bom-ref"
+            // * (1.5) componentData/"bom-ref"
+            // * (1.5) formula/"bom-ref"
+            // * (1.5) workflow/"bom-ref"
+            // * (1.5) task/"bom-ref"
+            // * (1.5) workspace/"bom-ref"
+            // * (1.5) trigger/"bom-ref"
+            // and referred from:
+            // * dependency/"ref" => only "component" (1.4), or
+            //   "component or service" (since 1.5)
+            // * dependency/"dependsOn[]" => only "component" (1.4),
+            //   or "component or service" (since 1.5)
+            // * (1.4, 1.5) compositions/"assemblies[]" => "component or service"
+            // * (1.4, 1.5) compositions/"dependencies[]" => "component or service"
+            // * (1.4, 1.5) vulnerability/affects/items/"ref" => "component or service"
+            // * (1.5) componentEvidence/identity/tools[] => any, see spec
+            // * (1.5) annotations/subjects[] => any
+            // * (1.5) modelCard/modelParameters/datasets[]/"ref" => "data component" (see "#/definitions/componentData")
+            // * (1.5) resourceReferenceChoice/"ref" => any
+            //
+            // Notably, CDX 1.5 also introduces resourceReferenceChoice
+            // which generalizes internal or external references, used in:
+            // * (1.5) workflow/resourceReferences[]
+            // * (1.5) task/resourceReferences[]
+            // * (1.5) workspace/resourceReferences[]
+            // * (1.5) trigger/resourceReferences[]
+            // * (1.5) event/{source,target}
+            // * (1.5) {inputType,outputType}/{source,target,resource}
+            // The CDX 1.5 tasks, workflows etc. also can reference each other.
+            //
+            // In particular, "component" instances (e.g. per JSON
+            // "#/definitions/component" spec search) can be direct
+            // properties (or property arrays) in:
+            // * (1.4, 1.5) component/pedigree/{ancestors,descendants,variants}
+            // * (1.4, 1.5) component/components[] -- structural hierarchy (not dependency tree)
+            // * (1.4, 1.5) bom/components[]
+            // * (1.4, 1.5) bom/metadata/component -- 0 or 1 item about the Bom itself
+            // * (1.5) bom/metadata/tools/components[] -- SW and HW tools used to create the Bom
+            // * (1.5) vulnerability/tools/components[] -- SW and HW tools used to describe the vuln
+            // * (1.5) formula/components[]
+            //
+            // Note that there may be potentially any level of nesting of
+            // components in components, and compositions, among other things.
+            //
+            // And "service" instances (per JSON "#/definitions/service"):
+            // * (1.4, 1.5) service/services[]
+            // * (1.4, 1.5) bom/services[]
+            // * (1.5) bom/metadata/tools/services[] -- services as tools used to create the Bom
+            // * (1.5) vulnerability/tools/services[] -- services as tools used to describe the vuln
+            // * (1.5) formula/services[]
+            //
+            // The CDX spec 1.5 also introduces "annotation" which can refer to
+            // such bom-ref carriers as service, component, organizationalEntity,
+            // organizationalContact.
+
+            return dict;
+        }
+
+        /// <summary>
+        /// Provide a Dictionary whose keys are "contained" entities
+        /// with a BomRef attribute and values are their direct
+        /// container BomEntities, e.g. each Bom.Components[] list
+        /// entry referring the Bom itself; or the Metadata.Component
+        /// entry referring the Metadata; or further "structural"
+        /// components in certain Component or Tool entities.
+        ///
+        /// The assumption per CycloneDX spec, not directly challenged
+        /// in this method, is that each such listed "contained entity"
+        /// (likely Component instances) has an unique BomRef value across
+        /// the whole single Bom document. Other Bom documents may however
+        /// have the same BomRef value (trivially "1", "2", ...) which
+        /// is attached to description of an unrelated entity. This can
+        /// impact such operations as a FlatMerge() of different Boms.
+        ///
+        /// See also: GetBomRefsByContainer() with transposed returns.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<BomEntity, BomEntity> GetBomRefsWithContainer()
+        {
+            Dictionary<BomEntity, List<BomEntity>> dictByC = this.GetBomRefsByContainer();
+            Dictionary<BomEntity, BomEntity> dictWithC = new Dictionary<BomEntity, BomEntity>();
+
+            foreach (var (container, listItems) in dictByC)
+            {
+                if (listItems is null || container is null || listItems.Count < 1) {
+                    continue;
+                }
+
+                foreach (var item in listItems) {
+                    dictWithC[item] = container;
+                }
+            }
+
+            return dictWithC;
         }
     }
 }
