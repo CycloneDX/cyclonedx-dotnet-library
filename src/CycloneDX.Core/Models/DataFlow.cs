@@ -24,7 +24,7 @@ namespace CycloneDX.Models
 {
     [XmlType("dataflow")]
     [ProtoContract]
-    public class DataFlow
+    public class DataFlow : BomEntity
     {
         [XmlIgnore]
         [JsonPropertyName("flow")]

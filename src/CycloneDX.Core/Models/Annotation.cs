@@ -24,10 +24,10 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Annotation
+    public class Annotation : BomEntity
     {
         [XmlType("subject")]
-        public class XmlAnnotationSubject
+        public class XmlAnnotationSubject : BomEntity
         {
             [XmlAttribute("ref")]
             public string Ref { get; set; }

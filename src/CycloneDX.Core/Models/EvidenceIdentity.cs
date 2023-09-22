@@ -28,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-identity")]
     [ProtoContract]
-    public class EvidenceIdentity
+    public class EvidenceIdentity : BomEntity
     {
         [ProtoContract]
         public enum EvidenceFieldType

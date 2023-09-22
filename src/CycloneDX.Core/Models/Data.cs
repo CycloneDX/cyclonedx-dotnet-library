@@ -25,7 +25,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Data
+    public class Data : BomEntity
     {
         [ProtoContract]
         public enum DataType
@@ -43,7 +43,7 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class DataContents
+        public class DataContents : BomEntity
         {
             [XmlElement("attachment")]
             [ProtoMember(1)]

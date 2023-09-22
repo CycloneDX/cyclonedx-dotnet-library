@@ -26,10 +26,10 @@ namespace CycloneDX.Models
 {
     [XmlType("model-parameters")]
     [ProtoContract]
-    public class ModelParameters
+    public class ModelParameters : BomEntity
     {
         [ProtoContract]
-        public class ModelApproach
+        public class ModelApproach : BomEntity
         {
             [XmlElement("type")]
             [ProtoMember(1)]
@@ -37,7 +37,7 @@ namespace CycloneDX.Models
         }
         
         [ProtoContract]
-        public class ModelDataset
+        public class ModelDataset : BomEntity
         {
             [XmlElement("dataset")]
             [ProtoMember(1)]
@@ -49,7 +49,7 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class MachineLearningInputOutputParameter
+        public class MachineLearningInputOutputParameter : BomEntity
         {
             [XmlElement("format")]
             [ProtoMember(1)]

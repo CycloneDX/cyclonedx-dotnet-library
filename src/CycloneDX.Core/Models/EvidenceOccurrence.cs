@@ -28,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-occurrence")]
     [ProtoContract]
-    public class EvidenceOccurrence
+    public class EvidenceOccurrence : BomEntity
     {
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]

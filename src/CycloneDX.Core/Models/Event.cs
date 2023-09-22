@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("event")]
     [ProtoContract]
-    public class Event
+    public class Event : BomEntity
     {
         [XmlElement("uid")]
         [ProtoMember(1)]

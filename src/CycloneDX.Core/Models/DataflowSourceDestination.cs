@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class DataflowSourceDestination
+    public class DataflowSourceDestination : BomEntity
     {
         [XmlElement("url")]
         [ProtoMember(1)]
