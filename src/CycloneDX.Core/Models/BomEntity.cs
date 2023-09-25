@@ -1166,6 +1166,143 @@ namespace CycloneDX.Models
         }
 
         /// <summary>
+        /// Helper for Bom.GetBomRefsByContainer().
+        /// </summary>
+        /// <param name="obj">A BomEntity instance currently being investigated</param>
+        /// <param name="container">A BomEntity instance whose attribute
+        ///    (or member of a List<> attribute) is currently being
+        ///    investigated. May be null when starting iteration
+        ///    from this.GetBomRefsByContainer() method.</param>
+        /// <param name="dict">Keys are "container" BomEntities,
+        ///    and values are the lists of "directly contained"
+        ///    BomEntities which have a BomRef attribute.</param>
+        private void SerializeBomEntity_BomRefs(BomEntity obj, BomEntity container, ref Dictionary<BomEntity, List<BomEntity>> dict)
+        {
+            Type type = obj.GetType();
+
+            // Sanity-check: we do not recurse into non-BomEntity types.
+            // Hopefully the compiler or runtime would not have let other obj's in...
+            if (type is null || (!(typeof(BomEntity).IsAssignableFrom(type))))
+            {
+                return;
+            }
+
+            foreach (PropertyInfo propInfo in type.GetProperties(BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance))
+            {
+                // We do not recurse into non-BomEntity types
+                if (propInfo is null)
+                {
+                    // Is this expected? Maybe throw?
+                    continue;
+                }
+
+                Type propType = propInfo.PropertyType;
+
+                // If the type of current "obj" contains a "bom-ref", or
+                // has annotations like [JsonPropertyName("bom-ref")] and
+                // [XmlAttribute("bom-ref")], save it into the dictionary.
+
+                // TODO: Pedantically it would be better to either parse
+                // and consult corresponding CycloneDX spec, somehow, for
+                // properties which have needed schema-defined type (see
+                // detailed comments in GetBomRefsByContainer() method).
+                if (
+                    (propType.GetTypeInfo().IsAssignableFrom(typeof(string)) && propInfo.Name == "BomRef")
+                    || (Array.Find(propInfo.GetCustomAttributes(typeof(JsonPropertyNameAttribute), true), x => ((JsonPropertyNameAttribute)x).Name == "bom-ref") != null)
+                    || (Array.Find(propInfo.GetCustomAttributes(typeof(XmlAttribute), true), x => ((XmlAttribute)x).Name == "bom-ref") != null)
+                )
+                {
+                    if (!(dict.ContainsKey(container)))
+                    {
+                        dict[container] = new List<BomEntity>();
+                    }
+
+                    dict[container].Add((BomEntity)obj);
+
+                    // Done with this string property, look at next
+                    continue;
+                }
+
+                // We do not recurse into non-BomEntity types
+                bool propIsListBomEntity = (
+                    (propType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(System.Collections.IList)))
+                    && (Array.Find(propType.GetTypeInfo().GenericTypeArguments,
+                        x => typeof(BomEntity).GetTypeInfo().IsAssignableFrom(x.GetTypeInfo())) != null)
+                );
+
+                if (!(
+                    propIsListBomEntity
+                    || (typeof(BomEntity).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
+                ))
+                {
+                    // Not a BomEntity or (potentially) a List of those
+                    continue;
+                }
+
+                var propVal = propInfo.GetValue(obj, null);
+                if (propVal is null)
+                {
+                    continue;
+                }
+
+                if (propIsListBomEntity)
+                {
+                    // Use cached info where available
+                    PropertyInfo listPropCount = null;
+                    MethodInfo listMethodGetItem = null;
+                    MethodInfo listMethodAdd = null;
+                    if (BomEntity.KnownEntityTypeLists.TryGetValue(propType, out BomEntityListReflection refInfo))
+                    {
+                        listPropCount = refInfo.propCount;
+                        listMethodGetItem = refInfo.methodGetItem;
+                        listMethodAdd = refInfo.methodAdd;
+                    }
+                    else
+                    {
+                        // No cached info about BomEntityListReflection[{propType}
+                        listPropCount = propType.GetProperty("Count");
+                        listMethodGetItem = propType.GetMethod("get_Item");
+                        listMethodAdd = propType.GetMethod("Add");
+                    }
+
+                    if (listMethodGetItem == null || listPropCount == null || listMethodAdd == null)
+                    {
+                        // Should not have happened, but...
+                        continue;
+                    }
+
+                    int propValCount = (int)listPropCount.GetValue(propVal, null);
+                    if (propValCount < 1)
+                    {
+                        // Empty list
+                        continue;
+                    }
+
+                    for (int o = 0; o < propValCount; o++)
+                    {
+                        var listVal = listMethodGetItem.Invoke(propVal, new object[] { o });
+                        if (listVal is null)
+                        {
+                            continue;
+                        }
+
+                        if (!(listVal is BomEntity))
+                        {
+                            break;
+                        }
+
+                        SerializeBomEntity_BomRefs((BomEntity)listVal, obj, ref dict);
+                    }
+
+                    // End of list, or a break per above
+                    continue;
+                }
+
+                SerializeBomEntity_BomRefs((BomEntity)propVal, obj, ref dict);
+            }
+        }
+
+        /// <summary>
         /// Provide a Dictionary whose keys are container BomEntities
         /// and values are lists of one or more directly contained
         /// entities with a BomRef attribute, e.g. the Bom itself and
@@ -1196,6 +1333,12 @@ namespace CycloneDX.Models
             // such value can be used to refer back to that entity, such
             // approach is nearly infeasible starting with CDX 1.5 -- so
             // use of reflection below is a more sustainable choice.
+
+            // Note: passing "container=null" should be safe here, as
+            // long as this Bom type does not have a BomRef property.
+            SerializeBomEntity_BomRefs(this, null, ref dict);
+
+            // TL:DR further details:
             //
             // Looking in schema definitions search for items that should
             // be bom-refs (whether the attributes of certain entry types,
