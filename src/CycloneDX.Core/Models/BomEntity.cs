@@ -1289,29 +1289,17 @@ namespace CycloneDX.Models
 
                 Type propType = propInfo.PropertyType;
 
-                object propVal = null;
-                try
-                {
-                    if (propInfo.Name.StartsWith("NonNullable")) {
-                        // It is a getter/setter-wrapped facade
-                        // of a Nullable<T> for some T - skip,
-                        // we would inspect the raw item instead
-                        // (factual nulls cause an exception and
-                        // try/catch overhead here).
-                        // FIXME: Is there an attribute for this,
-                        // to avoid a string comparison in a loop?
-                        continue;
-                    }
-                    propVal = propInfo.GetValue(obj, null);
+                if (propInfo.Name.StartsWith("NonNullable")) {
+                    // It is a getter/setter-wrapped facade
+                    // of a Nullable<T> for some T - skip,
+                    // we would inspect the raw item instead
+                    // (factual nulls would cause an exception
+                    // and require a try/catch overhead here).
+                    // FIXME: Is there an attribute for this,
+                    // to avoid a string comparison in a loop?
+                    continue;
                 }
-                catch (TargetInvocationException)
-                {
-                    propVal = null;
-                }
-                catch (InvalidOperationException)
-                {
-                    propVal = null;
-                }
+                var propVal = propInfo.GetValue(obj, null);
 
                 if (propVal is null)
                 {
