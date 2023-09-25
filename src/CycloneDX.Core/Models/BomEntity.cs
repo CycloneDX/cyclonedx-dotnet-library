@@ -1282,6 +1282,25 @@ namespace CycloneDX.Models
                     continue;
                 }
 
+                object propVal = null;
+                try
+                {
+                    propVal = propInfo.GetValue(obj, null);
+                }
+                catch (TargetInvocationException)
+                {
+                    propVal = null;
+                }
+                catch (InvalidOperationException)
+                {
+                    propVal = null;
+                }
+
+                if (propVal is null)
+                {
+                    continue;
+                }
+
                 Type propType = propInfo.PropertyType;
 
                 // If the type of current "obj" contains a "bom-ref", or
@@ -1322,12 +1341,6 @@ namespace CycloneDX.Models
                 ))
                 {
                     // Not a BomEntity or (potentially) a List of those
-                    continue;
-                }
-
-                var propVal = propInfo.GetValue(obj, null);
-                if (propVal is null)
-                {
                     continue;
                 }
 
