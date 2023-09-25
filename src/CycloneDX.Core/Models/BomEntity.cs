@@ -1264,16 +1264,21 @@ namespace CycloneDX.Models
             // The CDX spec 1.5 also introduces "annotation" which can refer to
             // such bom-ref carriers as service, component, organizationalEntity,
             // organizationalContact.
-            Type type = obj.GetType();
-
-            // Sanity-check: we do not recurse into non-BomEntity types.
-            // Hopefully the compiler or runtime would not have let other obj's in...
-            if (type is null || (!(typeof(BomEntity).IsAssignableFrom(type))))
+            if (obj is null)
             {
                 return;
             }
 
-            foreach (PropertyInfo propInfo in type.GetProperties(BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance))
+            Type objType = obj.GetType();
+
+            // Sanity-check: we do not recurse into non-BomEntity types.
+            // Hopefully the compiler or runtime would not have let other obj's in...
+            if (objType is null || (!(typeof(BomEntity).IsAssignableFrom(objType))))
+            {
+                return;
+            }
+
+            foreach (PropertyInfo propInfo in objType.GetProperties(BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance))
             {
                 // We do not recurse into non-BomEntity types
                 if (propInfo is null)
