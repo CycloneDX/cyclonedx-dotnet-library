@@ -1314,11 +1314,24 @@ namespace CycloneDX.Models
                 // and consult corresponding CycloneDX spec, somehow, for
                 // properties which have needed schema-defined type (see
                 // detailed comments in GetBomRefsByContainer() method).
-                if (
-                    (propType.GetTypeInfo().IsAssignableFrom(typeof(string)) && propInfo.Name == "BomRef")
-                    || (Array.Find(propInfo.GetCustomAttributes(typeof(JsonPropertyNameAttribute), true), x => ((JsonPropertyNameAttribute)x).Name == "bom-ref") != null)
-                    || (Array.Find(propInfo.GetCustomAttributes(typeof(XmlAttribute), true), x => ((XmlAttribute)x).Name == "bom-ref") != null)
-                )
+                bool propIsBomRef = (propType.GetTypeInfo().IsAssignableFrom(typeof(string)) && propInfo.Name == "BomRef");
+                if (!propIsBomRef)
+                {
+                    object[] attrs = propInfo.GetCustomAttributes(typeof(XmlAttribute), false);
+                    if (attrs.Length > 0)
+                    {
+                        propIsBomRef = (Array.Find(attrs, x => ((XmlAttribute)x).Name == "bom-ref") != null);
+                    }
+                }
+                if (!propIsBomRef)
+                {
+                    object[] attrs = propInfo.GetCustomAttributes(typeof(JsonPropertyNameAttribute), false);
+                    if (attrs.Length > 0)
+                    {
+                        propIsBomRef = (Array.Find(attrs, x => ((JsonPropertyNameAttribute)x).Name == "bom-ref") != null);
+                    }
+                }
+                if (propIsBomRef)
                 {
                     if (!(dict.ContainsKey(container)))
                     {
