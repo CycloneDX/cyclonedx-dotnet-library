@@ -1278,7 +1278,15 @@ namespace CycloneDX.Models
                 return;
             }
 
-            foreach (PropertyInfo propInfo in objType.GetProperties(BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance))
+            // TODO: Prepare a similar cache with only a subset of
+            // properties of interest for bom-ref search, to avoid
+            // looking into known dead ends in a loop.
+            PropertyInfo[] objProperties = BomEntity.KnownEntityTypeProperties[objType];
+            if (objProperties.Length < 1)
+            {
+                objProperties = objType.GetProperties(BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            }
+            foreach (PropertyInfo propInfo in objProperties)
             {
                 // We do not recurse into non-BomEntity types
                 if (propInfo is null)
