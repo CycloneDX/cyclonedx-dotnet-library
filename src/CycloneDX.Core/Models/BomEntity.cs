@@ -1167,6 +1167,7 @@ namespace CycloneDX.Models
         private int sbeCountPropInfo_EvalList { get; set; }
         private int sbeCountPropInfo_EvalListQuickExit { get; set; }
         private int sbeCountPropInfo_EvalListWalk { get; set; }
+        private int sbeCountNewBomRefCheckDict { get; set; }
         private int sbeCountNewBomRef { get; set; }
 
         // This one is null, outermost loop makes a new instance, starts and stops it:
@@ -1174,7 +1175,8 @@ namespace CycloneDX.Models
         private Stopwatch stopWatchEvalAttr = new Stopwatch();
         private Stopwatch stopWatchNewBomref = new Stopwatch();
         private Stopwatch stopWatchNewBomrefCheck = new Stopwatch();
-        private Stopwatch stopWatchNewBomrefNewList = new Stopwatch();
+        private Stopwatch stopWatchNewBomrefNewListSpawn = new Stopwatch();
+        private Stopwatch stopWatchNewBomrefNewListInDict = new Stopwatch();
         private Stopwatch stopWatchNewBomrefListAdd = new Stopwatch();
         private Stopwatch stopWatchGetValue = new Stopwatch();
 
@@ -1196,6 +1198,7 @@ namespace CycloneDX.Models
             sbeCountPropInfo_EvalList = 0;
             sbeCountPropInfo_EvalListQuickExit = 0;
             sbeCountPropInfo_EvalListWalk = 0;
+            sbeCountNewBomRefCheckDict = 0;
             sbeCountNewBomRef = 0;
 
             bomRoot = null;
@@ -1203,7 +1206,8 @@ namespace CycloneDX.Models
             stopWatchEvalAttr = new Stopwatch();
             stopWatchNewBomref = new Stopwatch();
             stopWatchNewBomrefCheck = new Stopwatch();
-            stopWatchNewBomrefNewList = new Stopwatch();
+            stopWatchNewBomrefNewListSpawn = new Stopwatch();
+            stopWatchNewBomrefNewListInDict = new Stopwatch();
             stopWatchNewBomrefListAdd = new Stopwatch();
             stopWatchGetValue = new Stopwatch();
         }
@@ -1244,8 +1248,10 @@ namespace CycloneDX.Models
                 $"sbeCountPropInfo_EvalJSONAttr={sbeCountPropInfo_EvalJSONAttr} " +
                 $"Timing.NewBomRef={StopWatchToString(stopWatchNewBomref)} (" +
                 $"Timing.NewBomRefCheck={StopWatchToString(stopWatchNewBomrefCheck)} " +
-                $"Timing.NewBomRefNewList={StopWatchToString(stopWatchNewBomrefNewList)} " +
+                $"Timing.NewBomRefNewListSpawn={StopWatchToString(stopWatchNewBomrefNewListSpawn)} " +
+                $"Timing.NewBomRefNewListInDict={StopWatchToString(stopWatchNewBomrefNewListInDict)} " +
                 $"Timing.NewBomRefListAdd={StopWatchToString(stopWatchNewBomrefListAdd)}) " +
+                $"sbeCountNewBomRefCheckDict={sbeCountNewBomRefCheckDict} " +
                 $"sbeCountNewBomRef={sbeCountNewBomRef} " +
                 $"sbeCountPropInfo_EvalList={sbeCountPropInfo_EvalList} " +
                 $"sbeCountPropInfoQuickExit2={sbeCountPropInfoQuickExit2} " +
@@ -1381,6 +1387,13 @@ namespace CycloneDX.Models
                 stopWatchWalkTotal.Start();
             }
 
+            // Looking up (comparing) keys in dictRefsInContainers[] is prohibitively
+            // expensive (may have to do with serialization into a string to implement
+            // GetHashCode() method), so we minimize interactions with that codepath.
+            // General assumption that we only look at same container once, but the
+            // code should cope with more visits (possibly at a cost).
+            List<BomEntity> containerList = null;
+
             // TODO: Prepare a similar cache with only a subset of
             // properties of interest for bom-ref search, to avoid
             // looking into known dead ends in a loop.
@@ -1463,23 +1476,32 @@ namespace CycloneDX.Models
 
                 if (propIsBomRef)
                 {
+                    // Save current object into tracking, and be done with this prop!
                     stopWatchNewBomref.Start();
-                    stopWatchNewBomrefCheck.Start();
-                    if (!(dictRefsInContainers.ContainsKey(container)))
+                    if (containerList is null)
                     {
+                        sbeCountNewBomRefCheckDict++;
+                        stopWatchNewBomrefCheck.Start();
+                        if (dictRefsInContainers.TryGetValue(container, out List<BomEntity> list))
+                        {
+                            containerList = list;
+                        }
                         stopWatchNewBomrefCheck.Stop();
-                        stopWatchNewBomrefNewList.Start();
-                        dictRefsInContainers[container] = new List<BomEntity>();
-                        stopWatchNewBomrefNewList.Stop();
-                    }
-                    else
-                    {
-                        stopWatchNewBomrefCheck.Stop();
+
+                        if (containerList is null)
+                        {
+                            stopWatchNewBomrefNewListSpawn.Start();
+                            containerList = new List<BomEntity>();
+                            stopWatchNewBomrefNewListSpawn.Stop();
+                            stopWatchNewBomrefNewListInDict.Start();
+                            dictRefsInContainers[container] = containerList;
+                            stopWatchNewBomrefNewListInDict.Stop();
+                        }
                     }
 
                     sbeCountNewBomRef++;
                     stopWatchNewBomrefListAdd.Start();
-                    dictRefsInContainers[container].Add((BomEntity)obj);
+                    containerList.Add((BomEntity)obj);
                     stopWatchNewBomrefListAdd.Stop();
                     stopWatchNewBomref.Stop();
 
