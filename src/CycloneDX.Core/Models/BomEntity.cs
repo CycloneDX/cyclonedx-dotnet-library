@@ -1166,13 +1166,14 @@ namespace CycloneDX.Models
         }
 
         /// <summary>
-        /// Helper for Bom.GetBomRefsByContainer().
+        /// Helper for Bom.GetBomRefsInContainers().
         /// </summary>
         /// <param name="obj">A BomEntity instance currently being investigated</param>
         /// <param name="container">A BomEntity instance whose attribute
         ///    (or member of a List<> attribute) is currently being
         ///    investigated. May be null when starting iteration
-        ///    from this.GetBomRefsByContainer() method.</param>
+        ///    from this.GetBomRefsInContainers() method.
+        /// </param>
         public void SerializeBomEntity_BomRefs(BomEntity obj, BomEntity container)
         {
             // With CycloneDX spec 1.4 or older it might be feasible to
@@ -1321,7 +1322,7 @@ namespace CycloneDX.Models
                 // TODO: Pedantically it would be better to either parse
                 // and consult corresponding CycloneDX spec, somehow, for
                 // properties which have needed schema-defined type (see
-                // detailed comments in GetBomRefsByContainer() method).
+                // detailed comments in GetBomRefsInContainers() method).
                 bool propIsBomRef = (propType.GetTypeInfo().IsAssignableFrom(typeof(string)) && propInfo.Name == "BomRef");
                 if (!propIsBomRef)
                 {
@@ -1444,7 +1445,7 @@ namespace CycloneDX.Models
         /// See also: GetBomRefsWithContainer() with transposed returns.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<BomEntity, List<BomEntity>> GetBomRefsByContainer()
+        public Dictionary<BomEntity, List<BomEntity>> GetBomRefsInContainers()
         {
             return dictRefsInContainers;
         }
@@ -1465,7 +1466,7 @@ namespace CycloneDX.Models
         /// is attached to description of an unrelated entity. This can
         /// impact such operations as a FlatMerge() of different Boms.
         ///
-        /// See also: GetBomRefsByContainer() with transposed returns.
+        /// See also: GetBomRefsInContainers() with transposed returns.
         /// </summary>
         /// <returns></returns>
         public Dictionary<BomEntity, BomEntity> GetBomRefsWithContainer()
