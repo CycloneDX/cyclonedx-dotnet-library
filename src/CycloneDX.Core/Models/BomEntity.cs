@@ -1173,10 +1173,7 @@ namespace CycloneDX.Models
         ///    (or member of a List<> attribute) is currently being
         ///    investigated. May be null when starting iteration
         ///    from this.GetBomRefsByContainer() method.</param>
-        /// <param name="dict">Keys are "container" BomEntities,
-        ///    and values are the lists of "directly contained"
-        ///    BomEntities which have a BomRef attribute.</param>
-        private void SerializeBomEntity_BomRefs(BomEntity obj, BomEntity container, ref Dictionary<BomEntity, List<BomEntity>> dict)
+        public void SerializeBomEntity_BomRefs(BomEntity obj, BomEntity container)
         {
             // With CycloneDX spec 1.4 or older it might be feasible to
             // walk specific properties of the Bom instance to look into
@@ -1412,13 +1409,7 @@ namespace CycloneDX.Models
         /// <returns></returns>
         public Dictionary<BomEntity, List<BomEntity>> GetBomRefsByContainer()
         {
-            Dictionary<BomEntity, List<BomEntity>> dict = new Dictionary<BomEntity, List<BomEntity>>();
-
-            // Note: passing "container=null" should be safe here, as
-            // long as this Bom type does not have a BomRef property.
-            SerializeBomEntity_BomRefs(this, null, ref dict);
-
-            return dict;
+            return dictRefsInContainers;
         }
 
         /// <summary>
@@ -1442,10 +1433,9 @@ namespace CycloneDX.Models
         /// <returns></returns>
         public Dictionary<BomEntity, BomEntity> GetBomRefsWithContainer()
         {
-            Dictionary<BomEntity, List<BomEntity>> dictByC = this.GetBomRefsByContainer();
             Dictionary<BomEntity, BomEntity> dictWithC = new Dictionary<BomEntity, BomEntity>();
 
-            foreach (var (container, listItems) in dictByC)
+            foreach (var (container, listItems) in dictRefsInContainers)
             {
                 if (listItems is null || container is null || listItems.Count < 1) {
                     continue;
