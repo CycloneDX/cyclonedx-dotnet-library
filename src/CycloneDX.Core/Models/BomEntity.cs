@@ -1482,9 +1482,25 @@ namespace CycloneDX.Models
                     {
                         sbeCountNewBomRefCheckDict++;
                         stopWatchNewBomrefCheck.Start();
-                        if (dictRefsInContainers.TryGetValue(container, out List<BomEntity> list))
+                        // "proper" dict key lookup probably goes via hashes
+                        // which go via serialization for BomEntity classes,
+                        // and so walking a Bom with a hundred Components
+                        // takes a second with "apparent" loop like:
+                        //    if (dictRefsInContainers.TryGetValue(container, out List<BomEntity> list))
+                        // but takes miniscule fractions as it should, when
+                        // we avoid hashing like this (and also maintain
+                        // consistent references if original objects get
+                        // modified - so serialization and hash changes;
+                        // this should not happen in this loop, and the
+                        // intention is to keep tabs on references to all
+                        // original objects so we can rename what we need):
+                        foreach (var (cont, list) in dictRefsInContainers)
                         {
-                            containerList = list;
+                            if (Object.ReferenceEquals(container, cont))
+                            {
+                                containerList = list;
+                                break;
+                            }
                         }
                         stopWatchNewBomrefCheck.Stop();
 
