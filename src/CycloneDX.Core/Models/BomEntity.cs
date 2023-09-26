@@ -1178,6 +1178,95 @@ namespace CycloneDX.Models
         ///    BomEntities which have a BomRef attribute.</param>
         private void SerializeBomEntity_BomRefs(BomEntity obj, BomEntity container, ref Dictionary<BomEntity, List<BomEntity>> dict)
         {
+            // With CycloneDX spec 1.4 or older it might be feasible to
+            // walk specific properties of the Bom instance to look into
+            // their contents by known class types. As seen by excerpt
+            // from the spec below, just to list the locations where a
+            // "bom-ref" value can be set to identify an entity or where
+            // such value can be used to refer back to that entity, such
+            // approach is nearly infeasible starting with CDX 1.5 -- so
+            // use of reflection below is a more sustainable choice.
+
+            // TL:DR further details:
+            //
+            // Looking in schema definitions search for items that should
+            // be bom-refs (whether the attributes of certain entry types,
+            // or back-references from whoever uses them):
+            // * in "*.schema.json" search for "#/definitions/refType", or
+            // * in "*.xsd" search for "bom:refType" and its super-set for
+            //   certain use-cases "bom:bomReferenceType"
+            // Since CDX spec 1.5 note there is also a "refLinkType" with
+            // same formal syntax as "refType" but different purpose --
+            // to specify back-references (as separate from identifiers
+            // of new unique entries).  Also do not confuse with bomLink,
+            // bomLinkDocumentType, and bomLinkElementType which refer to
+            // entities in OTHER Bom documents (or those Boms themselves).
+            //
+            // As of CDX spec 1.4+, a "bom-ref" attribute can be specified in:
+            // * (1.4, 1.5) component/"bom-ref"
+            // * (1.4, 1.5) service/"bom-ref"
+            // * (1.4, 1.5) vulnerability/"bom-ref"
+            // * (1.5) organizationalEntity/"bom-ref"
+            // * (1.5) organizationalContact/"bom-ref"
+            // * (1.5) license/"bom-ref"
+            // * (1.5) license/licenseChoice/...expression.../"bom-ref"
+            // * (1.5) componentEvidence/occurrences[]/"bom-ref"
+            // * (1.5) compositions/"bom-ref"
+            // * (1.5) annotations/"bom-ref"
+            // * (1.5) modelCard/"bom-ref"
+            // * (1.5) componentData/"bom-ref"
+            // * (1.5) formula/"bom-ref"
+            // * (1.5) workflow/"bom-ref"
+            // * (1.5) task/"bom-ref"
+            // * (1.5) workspace/"bom-ref"
+            // * (1.5) trigger/"bom-ref"
+            // and referred from:
+            // * dependency/"ref" => only "component" (1.4), or
+            //   "component or service" (since 1.5)
+            // * dependency/"dependsOn[]" => only "component" (1.4),
+            //   or "component or service" (since 1.5)
+            // * (1.4, 1.5) compositions/"assemblies[]" => "component or service"
+            // * (1.4, 1.5) compositions/"dependencies[]" => "component or service"
+            // * (1.4, 1.5) vulnerability/affects/items/"ref" => "component or service"
+            // * (1.5) componentEvidence/identity/tools[] => any, see spec
+            // * (1.5) annotations/subjects[] => any
+            // * (1.5) modelCard/modelParameters/datasets[]/"ref" => "data component" (see "#/definitions/componentData")
+            // * (1.5) resourceReferenceChoice/"ref" => any
+            //
+            // Notably, CDX 1.5 also introduces resourceReferenceChoice
+            // which generalizes internal or external references, used in:
+            // * (1.5) workflow/resourceReferences[]
+            // * (1.5) task/resourceReferences[]
+            // * (1.5) workspace/resourceReferences[]
+            // * (1.5) trigger/resourceReferences[]
+            // * (1.5) event/{source,target}
+            // * (1.5) {inputType,outputType}/{source,target,resource}
+            // The CDX 1.5 tasks, workflows etc. also can reference each other.
+            //
+            // In particular, "component" instances (e.g. per JSON
+            // "#/definitions/component" spec search) can be direct
+            // properties (or property arrays) in:
+            // * (1.4, 1.5) component/pedigree/{ancestors,descendants,variants}
+            // * (1.4, 1.5) component/components[] -- structural hierarchy (not dependency tree)
+            // * (1.4, 1.5) bom/components[]
+            // * (1.4, 1.5) bom/metadata/component -- 0 or 1 item about the Bom itself
+            // * (1.5) bom/metadata/tools/components[] -- SW and HW tools used to create the Bom
+            // * (1.5) vulnerability/tools/components[] -- SW and HW tools used to describe the vuln
+            // * (1.5) formula/components[]
+            //
+            // Note that there may be potentially any level of nesting of
+            // components in components, and compositions, among other things.
+            //
+            // And "service" instances (per JSON "#/definitions/service"):
+            // * (1.4, 1.5) service/services[]
+            // * (1.4, 1.5) bom/services[]
+            // * (1.5) bom/metadata/tools/services[] -- services as tools used to create the Bom
+            // * (1.5) vulnerability/tools/services[] -- services as tools used to describe the vuln
+            // * (1.5) formula/services[]
+            //
+            // The CDX spec 1.5 also introduces "annotation" which can refer to
+            // such bom-ref carriers as service, component, organizationalEntity,
+            // organizationalContact.
             Type type = obj.GetType();
 
             // Sanity-check: we do not recurse into non-BomEntity types.
@@ -1325,99 +1414,9 @@ namespace CycloneDX.Models
         {
             Dictionary<BomEntity, List<BomEntity>> dict = new Dictionary<BomEntity, List<BomEntity>>();
 
-            // With CycloneDX spec 1.4 or older it might be feasible to
-            // walk specific properties of the Bom instance to look into
-            // their contents by known class types. As seen by excerpt
-            // from the spec below, just to list the locations where a
-            // "bom-ref" value can be set to identify an entity or where
-            // such value can be used to refer back to that entity, such
-            // approach is nearly infeasible starting with CDX 1.5 -- so
-            // use of reflection below is a more sustainable choice.
-
             // Note: passing "container=null" should be safe here, as
             // long as this Bom type does not have a BomRef property.
             SerializeBomEntity_BomRefs(this, null, ref dict);
-
-            // TL:DR further details:
-            //
-            // Looking in schema definitions search for items that should
-            // be bom-refs (whether the attributes of certain entry types,
-            // or back-references from whoever uses them):
-            // * in "*.schema.json" search for "#/definitions/refType", or
-            // * in "*.xsd" search for "bom:refType" and its super-set for
-            //   certain use-cases "bom:bomReferenceType"
-            // Since CDX spec 1.5 note there is also a "refLinkType" with
-            // same formal syntax as "refType" but different purpose --
-            // to specify back-references (as separate from identifiers
-            // of new unique entries).  Also do not confuse with bomLink,
-            // bomLinkDocumentType, and bomLinkElementType which refer to
-            // entities in OTHER Bom documents (or those Boms themselves).
-            //
-            // As of CDX spec 1.4+, a "bom-ref" attribute can be specified in:
-            // * (1.4, 1.5) component/"bom-ref"
-            // * (1.4, 1.5) service/"bom-ref"
-            // * (1.4, 1.5) vulnerability/"bom-ref"
-            // * (1.5) organizationalEntity/"bom-ref"
-            // * (1.5) organizationalContact/"bom-ref"
-            // * (1.5) license/"bom-ref"
-            // * (1.5) license/licenseChoice/...expression.../"bom-ref"
-            // * (1.5) componentEvidence/occurrences[]/"bom-ref"
-            // * (1.5) compositions/"bom-ref"
-            // * (1.5) annotations/"bom-ref"
-            // * (1.5) modelCard/"bom-ref"
-            // * (1.5) componentData/"bom-ref"
-            // * (1.5) formula/"bom-ref"
-            // * (1.5) workflow/"bom-ref"
-            // * (1.5) task/"bom-ref"
-            // * (1.5) workspace/"bom-ref"
-            // * (1.5) trigger/"bom-ref"
-            // and referred from:
-            // * dependency/"ref" => only "component" (1.4), or
-            //   "component or service" (since 1.5)
-            // * dependency/"dependsOn[]" => only "component" (1.4),
-            //   or "component or service" (since 1.5)
-            // * (1.4, 1.5) compositions/"assemblies[]" => "component or service"
-            // * (1.4, 1.5) compositions/"dependencies[]" => "component or service"
-            // * (1.4, 1.5) vulnerability/affects/items/"ref" => "component or service"
-            // * (1.5) componentEvidence/identity/tools[] => any, see spec
-            // * (1.5) annotations/subjects[] => any
-            // * (1.5) modelCard/modelParameters/datasets[]/"ref" => "data component" (see "#/definitions/componentData")
-            // * (1.5) resourceReferenceChoice/"ref" => any
-            //
-            // Notably, CDX 1.5 also introduces resourceReferenceChoice
-            // which generalizes internal or external references, used in:
-            // * (1.5) workflow/resourceReferences[]
-            // * (1.5) task/resourceReferences[]
-            // * (1.5) workspace/resourceReferences[]
-            // * (1.5) trigger/resourceReferences[]
-            // * (1.5) event/{source,target}
-            // * (1.5) {inputType,outputType}/{source,target,resource}
-            // The CDX 1.5 tasks, workflows etc. also can reference each other.
-            //
-            // In particular, "component" instances (e.g. per JSON
-            // "#/definitions/component" spec search) can be direct
-            // properties (or property arrays) in:
-            // * (1.4, 1.5) component/pedigree/{ancestors,descendants,variants}
-            // * (1.4, 1.5) component/components[] -- structural hierarchy (not dependency tree)
-            // * (1.4, 1.5) bom/components[]
-            // * (1.4, 1.5) bom/metadata/component -- 0 or 1 item about the Bom itself
-            // * (1.5) bom/metadata/tools/components[] -- SW and HW tools used to create the Bom
-            // * (1.5) vulnerability/tools/components[] -- SW and HW tools used to describe the vuln
-            // * (1.5) formula/components[]
-            //
-            // Note that there may be potentially any level of nesting of
-            // components in components, and compositions, among other things.
-            //
-            // And "service" instances (per JSON "#/definitions/service"):
-            // * (1.4, 1.5) service/services[]
-            // * (1.4, 1.5) bom/services[]
-            // * (1.5) bom/metadata/tools/services[] -- services as tools used to create the Bom
-            // * (1.5) vulnerability/tools/services[] -- services as tools used to describe the vuln
-            // * (1.5) formula/services[]
-            //
-            // The CDX spec 1.5 also introduces "annotation" which can refer to
-            // such bom-ref carriers as service, component, organizationalEntity,
-            // organizationalContact.
 
             return dict;
         }
