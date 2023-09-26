@@ -1151,6 +1151,12 @@ namespace CycloneDX.Models
         /// </summary>
         readonly public Dictionary<String, List<BomEntity>> dictBackrefs = new Dictionary<String, List<BomEntity>>();
 
+        // Callers can enable performance monitoring
+        // (and printing in ToString() method) to help
+        // debug the data-walk overheads. Accounting
+        // does have a cost (~5% for a larger 20s run).
+        public bool debugPerformance = false;
+
         // Helpers for performance accounting - how hard
         // was it to discover the information in this
         // BomWalkResult object?
@@ -1234,7 +1240,7 @@ namespace CycloneDX.Models
 
         public override string ToString()
         {
-            return "BomWalkResult: " +
+            return "BomWalkResult: " + (debugPerformance ?
                 $"Timing.WalkTotal={StopWatchToString(stopWatchWalkTotal)} " +
                 $"sbeCountMethodEnter={sbeCountMethodEnter} " +
                 $"sbeCountMethodQuickExit={sbeCountMethodQuickExit} " +
@@ -1257,7 +1263,8 @@ namespace CycloneDX.Models
                 $"sbeCountPropInfoQuickExit2={sbeCountPropInfoQuickExit2} " +
                 $"sbeCountPropInfo_EvalListQuickExit={sbeCountPropInfo_EvalListQuickExit} " +
                 $"sbeCountPropInfo_EvalListWalk={sbeCountPropInfo_EvalListWalk} " +
-                $"sbeCountPropInfo={sbeCountPropInfo} " +
+                $"sbeCountPropInfo={sbeCountPropInfo} "
+                : "" ) +
                 $"dictRefsInContainers.Count={dictRefsInContainers.Count} " +
                 $"dictBackrefs.Count={dictBackrefs.Count}";
         }
@@ -1362,11 +1369,17 @@ namespace CycloneDX.Models
             // The CDX spec 1.5 also introduces "annotation" which can refer to
             // such bom-ref carriers as service, component, organizationalEntity,
             // organizationalContact.
-            sbeCountMethodEnter++;
+            if (debugPerformance)
+            {
+                sbeCountMethodEnter++;
+            }
 
             if (obj is null)
             {
-                sbeCountMethodQuickExit++;
+                if (debugPerformance)
+                {
+                    sbeCountMethodQuickExit++;
+                }
                 return;
             }
 
@@ -1376,12 +1389,15 @@ namespace CycloneDX.Models
             // Hopefully the compiler or runtime would not have let other obj's in...
             if (objType is null || (!(typeof(BomEntity).IsAssignableFrom(objType))))
             {
-                sbeCountMethodQuickExit++;
+                if (debugPerformance)
+                {
+                    sbeCountMethodQuickExit++;
+                }
                 return;
             }
 
             bool isTimeAccounter = (stopWatchWalkTotal is null);
-            if (isTimeAccounter)
+            if (isTimeAccounter && debugPerformance)
             {
                 stopWatchWalkTotal = new Stopwatch();
                 stopWatchWalkTotal.Start();
@@ -1404,18 +1420,27 @@ namespace CycloneDX.Models
             }
             foreach (PropertyInfo propInfo in objProperties)
             {
-                sbeCountPropInfoEnter++;
+                if (debugPerformance)
+                {
+                    sbeCountPropInfoEnter++;
+                }
 
                 // We do not recurse into non-BomEntity types
                 if (propInfo is null)
                 {
                     // Is this expected? Maybe throw?
-                    sbeCountPropInfoQuickExit++;
+                    if (debugPerformance)
+                    {
+                        sbeCountPropInfoQuickExit++;
+                    }
                     continue;
                 }
 
                 Type propType = propInfo.PropertyType;
-                stopWatchGetValue.Start();
+                if (debugPerformance)
+                {
+                    stopWatchGetValue.Start();
+                }
                 if (propInfo.Name.StartsWith("NonNullable")) {
                     // It is a getter/setter-wrapped facade
                     // of a Nullable<T> for some T - skip,
@@ -1424,16 +1449,25 @@ namespace CycloneDX.Models
                     // and require a try/catch overhead here).
                     // FIXME: Is there an attribute for this,
                     // to avoid a string comparison in a loop?
-                    sbeCountPropInfoQuickExit++;
-                    stopWatchGetValue.Stop();
+                    if (debugPerformance)
+                    {
+                        sbeCountPropInfoQuickExit++;
+                        stopWatchGetValue.Stop();
+                    }
                     continue;
                 }
                 var propVal = propInfo.GetValue(obj, null);
-                stopWatchGetValue.Stop();
+                if (debugPerformance)
+                {
+                    stopWatchGetValue.Stop();
+                }
 
                 if (propVal is null)
                 {
-                    sbeCountPropInfoQuickExit++;
+                    if (debugPerformance)
+                    {
+                        sbeCountPropInfoQuickExit++;
+                    }
                     continue;
                 }
 
@@ -1445,43 +1479,64 @@ namespace CycloneDX.Models
                 // and consult corresponding CycloneDX spec, somehow, for
                 // properties which have needed schema-defined type (see
                 // detailed comments in GetBomRefsInContainers() method).
-                sbeCountPropInfo_EvalIsBomref++;
+                if (debugPerformance)
+                {
+                    sbeCountPropInfo_EvalIsBomref++;
+                }
                 bool propIsBomRef = (propType.GetTypeInfo().IsAssignableFrom(typeof(string)) && propInfo.Name == "BomRef");
-                if (!propIsBomRef)
+                if (!propIsBomRef && debugPerformance)
                 {
                     sbeCountPropInfo_EvalIsNotBomref++;
                 }
                 if (!propIsBomRef)
                 {
-                    sbeCountPropInfo_EvalXMLAttr++;
-                    stopWatchEvalAttr.Start();
+                    if (debugPerformance)
+                    {
+                        sbeCountPropInfo_EvalXMLAttr++;
+                        stopWatchEvalAttr.Start();
+                    }
                     object[] attrs = propInfo.GetCustomAttributes(typeof(XmlAttribute), false);
                     if (attrs.Length > 0)
                     {
                         propIsBomRef = (Array.Find(attrs, x => ((XmlAttribute)x).Name == "bom-ref") != null);
                     }
-                    stopWatchEvalAttr.Stop();
+                    if (debugPerformance)
+                    {
+                        stopWatchEvalAttr.Stop();
+                    }
                 }
                 if (!propIsBomRef)
                 {
-                    sbeCountPropInfo_EvalJSONAttr++;
-                    stopWatchEvalAttr.Start();
+                    if (debugPerformance)
+                    {
+                        sbeCountPropInfo_EvalJSONAttr++;
+                        stopWatchEvalAttr.Start();
+                    }
                     object[] attrs = propInfo.GetCustomAttributes(typeof(JsonPropertyNameAttribute), false);
                     if (attrs.Length > 0)
                     {
                         propIsBomRef = (Array.Find(attrs, x => ((JsonPropertyNameAttribute)x).Name == "bom-ref") != null);
                     }
-                    stopWatchEvalAttr.Stop();
+                    if (debugPerformance)
+                    {
+                        stopWatchEvalAttr.Stop();
+                    }
                 }
 
                 if (propIsBomRef)
                 {
                     // Save current object into tracking, and be done with this prop!
-                    stopWatchNewBomref.Start();
+                    if (debugPerformance)
+                    {
+                        stopWatchNewBomref.Start();
+                    }
                     if (containerList is null)
                     {
-                        sbeCountNewBomRefCheckDict++;
-                        stopWatchNewBomrefCheck.Start();
+                        if (debugPerformance)
+                        {
+                            sbeCountNewBomRefCheckDict++;
+                            stopWatchNewBomrefCheck.Start();
+                        }
                         // "proper" dict key lookup probably goes via hashes
                         // which go via serialization for BomEntity classes,
                         // and so walking a Bom with a hundred Components
@@ -1502,31 +1557,52 @@ namespace CycloneDX.Models
                                 break;
                             }
                         }
-                        stopWatchNewBomrefCheck.Stop();
+                        if (debugPerformance)
+                        {
+                            stopWatchNewBomrefCheck.Stop();
+                        }
 
                         if (containerList is null)
                         {
-                            stopWatchNewBomrefNewListSpawn.Start();
+                            if (debugPerformance)
+                            {
+                                stopWatchNewBomrefNewListSpawn.Start();
+                            }
                             containerList = new List<BomEntity>();
-                            stopWatchNewBomrefNewListSpawn.Stop();
-                            stopWatchNewBomrefNewListInDict.Start();
+                            if (debugPerformance)
+                            {
+                                stopWatchNewBomrefNewListSpawn.Stop();
+                                stopWatchNewBomrefNewListInDict.Start();
+                            }
                             dictRefsInContainers[container] = containerList;
-                            stopWatchNewBomrefNewListInDict.Stop();
+                            if (debugPerformance)
+                            {
+                                stopWatchNewBomrefNewListInDict.Stop();
+                            }
                         }
                     }
 
-                    sbeCountNewBomRef++;
-                    stopWatchNewBomrefListAdd.Start();
+                    if (debugPerformance)
+                    {
+                        sbeCountNewBomRef++;
+                        stopWatchNewBomrefListAdd.Start();
+                    }
                     containerList.Add((BomEntity)obj);
-                    stopWatchNewBomrefListAdd.Stop();
-                    stopWatchNewBomref.Stop();
+                    if (debugPerformance)
+                    {
+                        stopWatchNewBomrefListAdd.Stop();
+                        stopWatchNewBomref.Stop();
+                    }
 
                     // Done with this string property, look at next
                     continue;
                 }
 
                 // We do not recurse into non-BomEntity types
-                sbeCountPropInfo_EvalList++;
+                if (debugPerformance)
+                {
+                    sbeCountPropInfo_EvalList++;
+                }
                 bool propIsListBomEntity = (
                     (propType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(System.Collections.IList)))
                     && (Array.Find(propType.GetTypeInfo().GenericTypeArguments,
@@ -1539,7 +1615,10 @@ namespace CycloneDX.Models
                 ))
                 {
                     // Not a BomEntity or (potentially) a List of those
-                    sbeCountPropInfoQuickExit2++;
+                    if (debugPerformance)
+                    {
+                        sbeCountPropInfoQuickExit2++;
+                    }
                     continue;
                 }
 
@@ -1566,7 +1645,10 @@ namespace CycloneDX.Models
                     if (listMethodGetItem == null || listPropCount == null || listMethodAdd == null)
                     {
                         // Should not have happened, but...
-                        sbeCountPropInfo_EvalListQuickExit++;
+                        if (debugPerformance)
+                        {
+                            sbeCountPropInfo_EvalListQuickExit++;
+                        }
                         continue;
                     }
 
@@ -1574,11 +1656,17 @@ namespace CycloneDX.Models
                     if (propValCount < 1)
                     {
                         // Empty list
-                        sbeCountPropInfo_EvalListQuickExit++;
+                        if (debugPerformance)
+                        {
+                            sbeCountPropInfo_EvalListQuickExit++;
+                        }
                         continue;
                     }
 
-                    sbeCountPropInfo_EvalListWalk++;
+                    if (debugPerformance)
+                    {
+                        sbeCountPropInfo_EvalListWalk++;
+                    }
                     for (int o = 0; o < propValCount; o++)
                     {
                         var listVal = listMethodGetItem.Invoke(propVal, new object[] { o });
@@ -1599,11 +1687,14 @@ namespace CycloneDX.Models
                     continue;
                 }
 
-                sbeCountPropInfo++;
+                if (debugPerformance)
+                {
+                    sbeCountPropInfo++;
+                }
                 SerializeBomEntity_BomRefs((BomEntity)propVal, obj);
             }
 
-            if (isTimeAccounter)
+            if (isTimeAccounter && debugPerformance)
             {
                 stopWatchWalkTotal.Stop();
             }
