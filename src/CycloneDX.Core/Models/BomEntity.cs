@@ -1167,7 +1167,8 @@ namespace CycloneDX.Models
         private int sbeCountPropInfoQuickExit2 { get; set; }
         private int sbeCountPropInfo { get; set; }
         private int sbeCountPropInfo_EvalIsBomref { get; set; }
-        private int sbeCountPropInfo_EvalIsNotBomref { get; set; }
+        private int sbeCountPropInfo_EvalIsNotStringBomref { get; set; }
+        private int sbeCountPropInfo_EvalIsStringNotNamedBomref { get; set; }
         private int sbeCountPropInfo_EvalXMLAttr { get; set; }
         private int sbeCountPropInfo_EvalJSONAttr { get; set; }
         private int sbeCountPropInfo_EvalList { get; set; }
@@ -1198,7 +1199,8 @@ namespace CycloneDX.Models
             sbeCountPropInfoQuickExit2 = 0;
             sbeCountPropInfo = 0;
             sbeCountPropInfo_EvalIsBomref = 0;
-            sbeCountPropInfo_EvalIsNotBomref = 0;
+            sbeCountPropInfo_EvalIsNotStringBomref = 0;
+            sbeCountPropInfo_EvalIsStringNotNamedBomref = 0;
             sbeCountPropInfo_EvalXMLAttr = 0;
             sbeCountPropInfo_EvalJSONAttr = 0;
             sbeCountPropInfo_EvalList = 0;
@@ -1248,7 +1250,8 @@ namespace CycloneDX.Models
                 $"sbeCountPropInfoQuickExit={sbeCountPropInfoQuickExit} " +
                 $"Timing.GetValue={StopWatchToString(stopWatchGetValue)} " +
                 $"sbeCountPropInfo_EvalIsBomref={sbeCountPropInfo_EvalIsBomref} " +
-                $"sbeCountPropInfo_EvalIsNotBomref={sbeCountPropInfo_EvalIsNotBomref} " +
+                $"sbeCountPropInfo_EvalIsNotStringBomref={sbeCountPropInfo_EvalIsNotStringBomref} " +
+                $"sbeCountPropInfo_EvalIsStringNotNamedBomref={sbeCountPropInfo_EvalIsStringNotNamedBomref} " +
                 $"Timing.EvalAttr={StopWatchToString(stopWatchEvalAttr)} " +
                 $"sbeCountPropInfo_EvalXMLAttr={sbeCountPropInfo_EvalXMLAttr} " +
                 $"sbeCountPropInfo_EvalJSONAttr={sbeCountPropInfo_EvalJSONAttr} " +
@@ -1474,7 +1477,7 @@ namespace CycloneDX.Models
                 // If the type of current "obj" contains a "bom-ref", or
                 // has annotations like [JsonPropertyName("bom-ref")] and
                 // [XmlAttribute("bom-ref")], save it into the dictionary.
-
+                //
                 // TODO: Pedantically it would be better to either parse
                 // and consult corresponding CycloneDX spec, somehow, for
                 // properties which have needed schema-defined type (see
@@ -1483,43 +1486,61 @@ namespace CycloneDX.Models
                 {
                     sbeCountPropInfo_EvalIsBomref++;
                 }
-                bool propIsBomRef = (propType.GetTypeInfo().IsAssignableFrom(typeof(string)) && propInfo.Name == "BomRef");
-                if (!propIsBomRef && debugPerformance)
+                bool propIsBomRef = false;
+                if (propType.GetTypeInfo().IsAssignableFrom(typeof(string)))
                 {
-                    sbeCountPropInfo_EvalIsNotBomref++;
+                    // NOTE: Current CycloneDX spec (1.5 and those before it)
+                    // explicitly specify reference fields as a string type.
+                    // Wondering if this would change in the future (more so
+                    // with higher-level grouping types like "refLinkType" or
+                    // "bomLink", or generic "link to somewhere" such as
+                    // "anyOf refLinkType or bomLinkElementType") which are
+                    // a frequent occurrence starting from CDX spec 1.5...
+                    propIsBomRef = (propInfo.Name == "BomRef");
+                    if (!propIsBomRef && debugPerformance)
+                    {
+                        sbeCountPropInfo_EvalIsStringNotNamedBomref++;
+                    }
+                    if (!propIsBomRef)
+                    {
+                        if (debugPerformance)
+                        {
+                            sbeCountPropInfo_EvalXMLAttr++;
+                            stopWatchEvalAttr.Start();
+                        }
+                        object[] attrs = propInfo.GetCustomAttributes(typeof(XmlAttribute), false);
+                        if (attrs.Length > 0)
+                        {
+                            propIsBomRef = (Array.Find(attrs, x => ((XmlAttribute)x).Name == "bom-ref") != null);
+                        }
+                        if (debugPerformance)
+                        {
+                            stopWatchEvalAttr.Stop();
+                        }
+                    }
+                    if (!propIsBomRef)
+                    {
+                        if (debugPerformance)
+                        {
+                            sbeCountPropInfo_EvalJSONAttr++;
+                            stopWatchEvalAttr.Start();
+                        }
+                        object[] attrs = propInfo.GetCustomAttributes(typeof(JsonPropertyNameAttribute), false);
+                        if (attrs.Length > 0)
+                        {
+                            propIsBomRef = (Array.Find(attrs, x => ((JsonPropertyNameAttribute)x).Name == "bom-ref") != null);
+                        }
+                        if (debugPerformance)
+                        {
+                            stopWatchEvalAttr.Stop();
+                        }
+                    }
                 }
-                if (!propIsBomRef)
+                else
                 {
                     if (debugPerformance)
                     {
-                        sbeCountPropInfo_EvalXMLAttr++;
-                        stopWatchEvalAttr.Start();
-                    }
-                    object[] attrs = propInfo.GetCustomAttributes(typeof(XmlAttribute), false);
-                    if (attrs.Length > 0)
-                    {
-                        propIsBomRef = (Array.Find(attrs, x => ((XmlAttribute)x).Name == "bom-ref") != null);
-                    }
-                    if (debugPerformance)
-                    {
-                        stopWatchEvalAttr.Stop();
-                    }
-                }
-                if (!propIsBomRef)
-                {
-                    if (debugPerformance)
-                    {
-                        sbeCountPropInfo_EvalJSONAttr++;
-                        stopWatchEvalAttr.Start();
-                    }
-                    object[] attrs = propInfo.GetCustomAttributes(typeof(JsonPropertyNameAttribute), false);
-                    if (attrs.Length > 0)
-                    {
-                        propIsBomRef = (Array.Find(attrs, x => ((JsonPropertyNameAttribute)x).Name == "bom-ref") != null);
-                    }
-                    if (debugPerformance)
-                    {
-                        stopWatchEvalAttr.Stop();
+                        sbeCountPropInfo_EvalIsNotStringBomref++;
                     }
                 }
 
