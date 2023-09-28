@@ -30,7 +30,7 @@ namespace CycloneDX.Models.Vulnerabilities
         CVSSV2,
         [XmlEnum(Name = "CVSSv3")]
         CVSSV3,
-        [XmlEnum(Name = "CVSSv3.1")]
+        [XmlEnum(Name = "CVSSv31")]
         CVSSV31,
         [XmlEnum(Name = "OWASP")]
         OWASP,
