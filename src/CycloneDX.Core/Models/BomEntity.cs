@@ -1452,18 +1452,32 @@ namespace CycloneDX.Models
             //   or "component or service" (since 1.5)
             // * (1.4, 1.5) compositions/"assemblies[]" => "component or service"
             // * (1.4, 1.5) compositions/"dependencies[]" => "component or service"
+            // * (1.5) compositions/"vulnerabilities[]" => "vulnerability"
             //   ** NOTE: As of this writing, Composition.cs file
-            //      defines assemblies[] and dependencies[] as lists
-            //      of strings, each treated as a "ref" in class
-            //      instance (de-)serializations
+            //      defines Assemblies[], Dependencies[] and
+            //      Vulnerabilities[] as lists of strings,
+            //      each treated as a "ref" in class instance
+            //      (de-)serializations
+            //   ** (1.5) Of these, Assemblies[] may be either
+            //      refLinkType or bomLinkElementType
             // * (1.4, 1.5) vulnerability/affects/items/"ref" => "component or service"
+            //   ** May be either refLinkType or bomLinkElementType
             // * (1.5) componentEvidence/identity/tools[] => any, see spec
+            //   ** May be either refLinkType or bomLinkElementType
             //   ** NOTE: As of this writing, EvidenceTools.cs is
             //      defined as a list of strings, each treated as
             //      a "ref" in class instance (de-)serializations
             // * (1.5) annotations/subjects[] => any
-            // * (1.5) modelCard/modelParameters/datasets[]/"ref" => "data component" (see "#/definitions/componentData")
+            //   ** May be either refLinkType or bomLinkElementType
+            //   ** In C# stored as List<XmlSubjects> and exposed as
+            //      a dynamically built List<string> - this one is
+            //      not of interest to the walk
+            // * (1.5) modelCard/modelParameters/datasets[]/"ref" =>
+            //      "data component" (see "#/definitions/componentData")
+            //   ** May be either refLinkType or bomLinkElementType
             // * (1.5) resourceReferenceChoice/"ref" => any
+            //   ** May be either refLinkType or bomLinkElementType
+            //   ** Used as a generalized reference type, summarized below
             //
             // Notably, CDX 1.5 also introduces resourceReferenceChoice
             // which generalizes internal or external references, used in:
