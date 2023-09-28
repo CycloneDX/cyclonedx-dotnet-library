@@ -422,6 +422,120 @@ namespace CycloneDX.Models
     }
 
     /// <summary>
+    /// Just a baseline interface for the big BomEntity
+    /// family to formally implement. In practice all
+    /// those classes are derived from BomEntity so it
+    /// can dispatch calls into them when used as a
+    /// generic base class, or serve default method
+    /// implementations.
+    /// </summary>
+    public interface IBomEntity : IEquatable<IBomEntity>
+    {
+        public string SerializeEntity();
+    }
+
+    /// <summary>
+    /// Interface assigned to BomEntity derived classes
+    /// which have a property generally conforming to
+    /// CycloneDX schema definition of "bom:refType"
+    /// (per XML schema) or "#/definitions/refType"
+    /// (per JSON schema).
+    /// Such a property is usually called "bom-ref"
+    /// in text representations of Bom documents and
+    /// is a C# string; however some more complex type
+    /// may be used in the future to multi-plex all the
+    /// different referencing use-cases.
+    ///
+    /// For specific practical hints, see also:
+    ///    IBomEntityWithRefType_String_BomRef
+    /// </summary>
+    public interface IBomEntityWithRefType : IBomEntity
+    {
+    }
+
+    /// <summary>
+    /// Interface assigned to BomEntity derived classes
+    /// which have a property with a CycloneDX Bom schema
+    /// "refType" attribute specifically named "BomRef"
+    /// and typed as a "string" in C#. It helps to know
+    /// where we can call GetBomRef() safely...
+    /// </summary>
+    public interface IBomEntityWithRefType_String_BomRef : IBomEntityWithRefType
+    {
+    }
+
+    /// <summary>
+    /// Interface assigned to BomEntity derived classes
+    /// which have a property generally conforming to
+    /// CycloneDX schema definition of
+    /// "bom:refLinkType" (per XML schema) or
+    /// "#/definitions/refLinkType" (per JSON schema).
+    /// Such a property is usually called "ref"
+    /// in text representations of Bom documents,
+    /// but can be items in certain lists as well.
+    ///
+    /// Technically it follows same schema definition
+    /// as a "refType" but is intended (since CDX 1.5)
+    /// to specify links pointing to someone else's
+    /// "bom-ref" values.
+    ///
+    /// For specific practical hints, see also:
+    ///    IBomEntityWithRefLinkType_String_Ref
+    ///    IBomEntityWithRefLinkType_StringList
+    /// </summary>
+    public interface IBomEntityWithRefLinkType : IBomEntity
+    {
+        /// <summary>
+        /// For each property in this class which can
+        /// convey a Bom "refLinkType" (single values
+        /// like a "ref" or lists full of references),
+        /// clarify which classes are expected to be
+        /// on the other end of the reference -- with
+        /// one of their instances having the "bom-ref"
+        /// identification value specified in this "ref".
+        /// The CycloneDX spec details that some refs
+        /// only point to a "component", others also
+        /// to a "service", some to a "componentData",
+        /// and some do not constrain.
+        ///
+        /// Note that there may be no hits in the
+        /// current Bom document, and not all items
+        /// with a "bom-ref" attribute would have
+        /// such back-links to them defined in the
+        /// same Bom document.
+        /// </summary>
+        /// <returns></returns>
+        // FIXME: Would a C# annotation serve this cause
+        //  better? Would it be faster in processing
+        //  (with reflection) e.g. to *find* which
+        //  properties to look at?
+        public Dictionary<PropertyInfo, List<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion);
+    }
+
+    /// <summary>
+    /// Interface assigned to BomEntity derived classes
+    /// which have a property with a CycloneDX Bom schema
+    /// "refLinkType" attribute specifically named "Ref"
+    /// and typed as a "string" in C#. It helps to know
+    /// where we can call GetRef() safely...
+    /// </summary>
+    public interface IBomEntityWithRefLinkType_String_Ref : IBomEntityWithRefLinkType
+    {
+    }
+
+    /// <summary>
+    /// Interface assigned to BomEntity derived classes
+    /// which have one or more properties which are lists,
+    /// whose items conform to CycloneDX Bom schema for
+    /// "refLinkType", and are typed as a "List<string>"
+    /// in C#. It helps to know where we can iterate
+    /// those safely... See also GetRefLinkConstraints().
+    /// </summary>
+    public interface IBomEntityWithRefLinkType_StringList : IBomEntityWithRefLinkType
+    {
+    }
+
+    /// <summary>
     /// BomEntity is intended as a base class for other classes in CycloneDX.Models,
     /// which in turn encapsulate different concepts and data types described by
     /// the specification. It allows them to share certain behaviors such as the
@@ -430,7 +544,7 @@ namespace CycloneDX.Models
     /// and to define the logic for merge-ability of such objects while coding much
     /// of the logical scaffolding only once.
     /// </summary>
-    public class BomEntity : IEquatable<BomEntity>
+    public class BomEntity : IBomEntity
     {
         // Keep this info initialized once to cut down on overheads of reflection
         // when running in our run-time loops.
@@ -777,7 +891,7 @@ namespace CycloneDX.Models
         /// </summary>
         /// <param name="obj">Another BomEntity-derived object of same type</param>
         /// <returns>True if two objects are deemed equal</returns>
-        public bool Equals(BomEntity obj)
+        public bool Equals(IBomEntity obj)
         {
             Type thisType = this.GetType();
             if (KnownTypeEquals.TryGetValue(thisType, out var methodEquals))
