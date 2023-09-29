@@ -326,6 +326,29 @@ namespace CycloneDX.Models
         }
 
         /// <summary>
+        /// Helper for sanity-check of inputs for methods that deal
+        /// with BomWalkResult arguments that should refer to "this"
+        /// exact Bom document instance as their bomRoot.
+        /// </summary>
+        /// <param name="res">Result of an earlier Bom.WalkThis() or equivalent call</param>
+        /// <exception cref="ArgumentNullException">The "res" argument should be non-null</exception>
+        /// <exception cref="BomEntityConflictException">The "res" argument should point to this Bom instance</exception>
+        private void AssertThisBomWalkResult(BomWalkResult res)
+        {
+            if (res == null)
+            {
+                throw new ArgumentNullException("res");
+            }
+
+            if (!(Object.ReferenceEquals(res.bomRoot, this)))
+            {
+                throw new BomEntityConflictException(
+                    "The specified BomWalkResult.bomRoot does not refer to this Bom document instance",
+                    res.bomRoot.GetType());
+            }
+        }
+
+        /// <summary>
         /// Provide a Dictionary whose keys are container BomEntities
         /// and values are lists of one or more directly contained
         /// entities with a BomRef attribute, e.g. the Bom itself and
@@ -346,11 +369,7 @@ namespace CycloneDX.Models
         /// <returns></returns>
         public Dictionary<BomEntity, List<BomEntity>> GetBomRefsInContainers(BomWalkResult res)
         {
-            if (res.bomRoot != this)
-            {
-                // throw?
-                return null;
-            }
+            AssertThisBomWalkResult(res);
             return res.dictRefsInContainers;
         }
 
@@ -387,11 +406,7 @@ namespace CycloneDX.Models
         /// <returns></returns>
         public Dictionary<BomEntity, BomEntity> GetBomRefsWithContainer(BomWalkResult res)
         {
-            if (res.bomRoot != this)
-            {
-                // throw?
-                return null;
-            }
+            AssertThisBomWalkResult(res);
             return res.GetBomRefsWithContainer();
         }
 
@@ -433,6 +448,7 @@ namespace CycloneDX.Models
         /// </returns>
         public bool RenameBomRef(string oldRef, string newRef, BomWalkResult res)
         {
+            AssertThisBomWalkResult(res);
             return false;
         }
 
