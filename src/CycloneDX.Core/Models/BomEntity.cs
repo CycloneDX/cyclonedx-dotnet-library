@@ -1286,6 +1286,7 @@ namespace CycloneDX.Models
         private int sbeCountPropInfo_EvalIsStringNotNamedRef { get; set; }
         private int sbeCountPropInfo_EvalXMLAttr { get; set; }
         private int sbeCountPropInfo_EvalJSONAttr { get; set; }
+        private int sbeCountPropInfo_EvalIsRefLinkListString { get; set; }
         private int sbeCountPropInfo_EvalList { get; set; }
         private int sbeCountPropInfo_EvalListQuickExit { get; set; }
         private int sbeCountPropInfo_EvalListWalk { get; set; }
@@ -1301,6 +1302,7 @@ namespace CycloneDX.Models
         private Stopwatch stopWatchNewBomrefNewListInDict = new Stopwatch();
         private Stopwatch stopWatchNewBomrefListAdd = new Stopwatch();
         private Stopwatch stopWatchNewRefLink = new Stopwatch();
+        private Stopwatch stopWatchNewRefLinkListString = new Stopwatch();
         private Stopwatch stopWatchGetValue = new Stopwatch();
 
         public void reset()
@@ -1320,6 +1322,7 @@ namespace CycloneDX.Models
             sbeCountPropInfo_EvalIsStringNotNamedRef = 0;
             sbeCountPropInfo_EvalXMLAttr = 0;
             sbeCountPropInfo_EvalJSONAttr = 0;
+            sbeCountPropInfo_EvalIsRefLinkListString = 0;
             sbeCountPropInfo_EvalList = 0;
             sbeCountPropInfo_EvalListQuickExit = 0;
             sbeCountPropInfo_EvalListWalk = 0;
@@ -1335,6 +1338,7 @@ namespace CycloneDX.Models
             stopWatchNewBomrefNewListInDict = new Stopwatch();
             stopWatchNewBomrefListAdd = new Stopwatch();
             stopWatchNewRefLink = new Stopwatch();
+            stopWatchNewRefLinkListString = new Stopwatch();
             stopWatchGetValue = new Stopwatch();
         }
 
@@ -1374,6 +1378,7 @@ namespace CycloneDX.Models
                 $"Timing.EvalAttr={StopWatchToString(stopWatchEvalAttr)} " +
                 $"sbeCountPropInfo_EvalXMLAttr={sbeCountPropInfo_EvalXMLAttr} " +
                 $"sbeCountPropInfo_EvalJSONAttr={sbeCountPropInfo_EvalJSONAttr} " +
+                $"sbeCountPropInfo_EvalIsRefLinkListString={sbeCountPropInfo_EvalIsRefLinkListString} " +
                 $"Timing.NewBomRef={StopWatchToString(stopWatchNewBomref)} (" +
                 $"Timing.NewBomRefCheck={StopWatchToString(stopWatchNewBomrefCheck)} " +
                 $"Timing.NewBomRefNewListSpawn={StopWatchToString(stopWatchNewBomrefNewListSpawn)} " +
@@ -1381,7 +1386,8 @@ namespace CycloneDX.Models
                 $"Timing.NewBomRefListAdd={StopWatchToString(stopWatchNewBomrefListAdd)}) " +
                 $"sbeCountNewBomRefCheckDict={sbeCountNewBomRefCheckDict} " +
                 $"sbeCountNewBomRef={sbeCountNewBomRef} " +
-                $"Timing.NewRefLink={StopWatchToString(stopWatchNewRefLink)} (" +
+                $"Timing.NewRefLink={StopWatchToString(stopWatchNewRefLink)} " +
+                $"Timing.NewRefLinkListString={StopWatchToString(stopWatchNewRefLinkListString)} " +
                 $"sbeCountPropInfo_EvalList={sbeCountPropInfo_EvalList} " +
                 $"sbeCountPropInfoQuickExit2={sbeCountPropInfoQuickExit2} " +
                 $"sbeCountPropInfo_EvalListQuickExit={sbeCountPropInfo_EvalListQuickExit} " +
@@ -1629,6 +1635,7 @@ namespace CycloneDX.Models
                 }
                 bool propIsBomRef = false;
                 bool propIsRefLink = false;
+                bool propIsRefLinkListString = false;
                 if (propType.GetTypeInfo().IsAssignableFrom(typeof(string)))
                 {
                     // NOTE: Current CycloneDX spec (1.5 and those before it)
@@ -1694,6 +1701,29 @@ namespace CycloneDX.Models
                     if (debugPerformance)
                     {
                         sbeCountPropInfo_EvalIsNotStringBomref++;
+                    }
+
+                    // Check for those few variables which are lists of strings
+                    // with "ref"-like items.
+                    // As noted above, "annotations/subjects[]" are not handled
+                    // here as a list of strings, because that is a shim view.
+                    if (propType.GetTypeInfo().IsAssignableFrom(typeof(List<string>)))
+                    {
+                        if (debugPerformance)
+                        {
+                            sbeCountPropInfo_EvalIsRefLinkListString++;
+                        }
+
+                        if ((
+                            objType == typeof(Composition) &&
+                                (propInfo.Name == "Assemblies"
+                                || propInfo.Name == "Dependencies"
+                                || propInfo.Name == "Vulnerabilities")
+                            ) || objType == typeof(EvidenceTools)
+                        )
+                        {
+                            propIsRefLinkListString = true;
+                        }
                     }
                 }
 
@@ -1777,7 +1807,7 @@ namespace CycloneDX.Models
                     // Save current object into "back-reference" tracking,
                     // and be done with this prop!
                     // Note: this approach covers only string "ref" properties,
-                    // but not those few with a "List<string>" at the moment!
+                    // but not those few with a "List<string>" - handled below.
                     // Note: It is currently somewhat up to the consumer
                     // of these results to guess (or find) which "obj"
                     // property is the reference (currently tends to be
@@ -1806,6 +1836,49 @@ namespace CycloneDX.Models
                     if (debugPerformance)
                     {
                         stopWatchNewRefLink.Stop();
+                    }
+
+                    // Done with this (string) property, look at next
+                    continue;
+                }
+
+                if (propIsRefLinkListString)
+                {
+                    // Save current object into "back-reference" tracking,
+                    // and be done with this prop!
+                    // Note: It is currently somewhat up to the consumer
+                    // of these results to guess (or find) which "obj"
+                    // property is the list with the reference (and which
+                    // list item, by number). For the greater purposes of
+                    // entities' "bom-ref" renaming this could surely be
+                    // optimized.
+                    if (debugPerformance)
+                    {
+                        stopWatchNewRefLinkListString.Start();
+                    }
+
+                    List<string> lsPropVal = (List<string>)propVal;
+                    if (lsPropVal.Count > 0)
+                    {
+                        // Walk all items and list in backrefs pointing to this object
+                        foreach (string sPropVal in lsPropVal)
+                        {
+                            if (sPropVal is null || sPropVal.Trim() == "")
+                            {
+                                continue;
+                            }
+                            if (!(dictBackrefs.TryGetValue(sPropVal, out List<BomEntity> listBackrefs)))
+                            {
+                                listBackrefs = new List<BomEntity>();
+                                dictBackrefs[sPropVal] = listBackrefs;
+                            }
+                            listBackrefs.Add(obj);
+                        }
+                    }
+
+                    if (debugPerformance)
+                    {
+                        stopWatchNewRefLinkListString.Stop();
                     }
 
                     // Done with this (string) property, look at next
