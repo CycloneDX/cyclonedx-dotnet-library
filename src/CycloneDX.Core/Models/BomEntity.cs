@@ -1821,7 +1821,7 @@ namespace CycloneDX.Models
 
                     string sPropVal = (string)propVal;
                     // nullness ruled out above
-                    if (sPropVal.Trim() == "")
+                    if (sPropVal == "")
                     {
                         continue;
                     }
@@ -1863,7 +1863,7 @@ namespace CycloneDX.Models
                         // Walk all items and list in backrefs pointing to this object
                         foreach (string sPropVal in lsPropVal)
                         {
-                            if (sPropVal is null || sPropVal.Trim() == "")
+                            if (sPropVal is null || sPropVal == "")
                             {
                                 continue;
                             }
