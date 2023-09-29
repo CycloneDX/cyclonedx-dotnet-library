@@ -308,6 +308,24 @@ namespace CycloneDX.Models
         }
 
         /// <summary>
+        /// Prepare a BomWalkResult discovery report starting from
+        /// this Bom document. Callers can cache it to re-use for
+        /// repetitive operations.
+        /// </summary>
+        /// <returns></returns>
+        public BomWalkResult WalkThis()
+        {
+            BomWalkResult res = new BomWalkResult();
+            res.reset(this);
+
+            // Note: passing "container=null" should be safe here, as
+            // long as this Bom type does not have a BomRef property.
+            res.SerializeBomEntity_BomRefs(this, null);
+
+            return res;
+        }
+
+        /// <summary>
         /// Provide a Dictionary whose keys are container BomEntities
         /// and values are lists of one or more directly contained
         /// entities with a BomRef attribute, e.g. the Bom itself and
@@ -326,99 +344,26 @@ namespace CycloneDX.Models
         /// See also: GetBomRefsWithContainer() with transposed returns.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<BomEntity, List<BomEntity>> GetBomRefsByContainer()
+        public Dictionary<BomEntity, List<BomEntity>> GetBomRefsInContainers(BomWalkResult res)
         {
-            Dictionary<BomEntity, List<BomEntity>> dict = new Dictionary<BomEntity, List<BomEntity>>();
+            if (res.bomRoot != this)
+            {
+                // throw?
+                return null;
+            }
+            return res.dictRefsInContainers;
+        }
 
-            // With CycloneDX spec 1.4 or older it might be feasible to
-            // walk specific properties of the Bom instance to look into
-            // their contents by known class types. As seen by excerpt
-            // from the spec below, just to list the locations where a
-            // "bom-ref" value can be set to identify an entity or where
-            // such value can be used to refer back to that entity, such
-            // approach is nearly infeasible starting with CDX 1.5 -- so
-            // use of reflection below is a more sustainable choice.
-            //
-            // Looking in schema definitions search for items that should
-            // be bom-refs (whether the attributes of certain entry types,
-            // or back-references from whoever uses them):
-            // * in "*.schema.json" search for "#/definitions/refType", or
-            // * in "*.xsd" search for "bom:refType" and its super-set for
-            //   certain use-cases "bom:bomReferenceType"
-            // Since CDX spec 1.5 note there is also a "refLinkType" with
-            // same formal syntax as "refType" but different purpose --
-            // to specify back-references (as separate from identifiers
-            // of new unique entries).  Also do not confuse with bomLink,
-            // bomLinkDocumentType, and bomLinkElementType which refer to
-            // entities in OTHER Bom documents (or those Boms themselves).
-            //
-            // As of CDX spec 1.4+, a "bom-ref" attribute can be specified in:
-            // * (1.4, 1.5) component/"bom-ref"
-            // * (1.4, 1.5) service/"bom-ref"
-            // * (1.4, 1.5) vulnerability/"bom-ref"
-            // * (1.5) organizationalEntity/"bom-ref"
-            // * (1.5) organizationalContact/"bom-ref"
-            // * (1.5) license/"bom-ref"
-            // * (1.5) license/licenseChoice/...expression.../"bom-ref"
-            // * (1.5) componentEvidence/occurrences[]/"bom-ref"
-            // * (1.5) compositions/"bom-ref"
-            // * (1.5) annotations/"bom-ref"
-            // * (1.5) modelCard/"bom-ref"
-            // * (1.5) componentData/"bom-ref"
-            // * (1.5) formula/"bom-ref"
-            // * (1.5) workflow/"bom-ref"
-            // * (1.5) task/"bom-ref"
-            // * (1.5) workspace/"bom-ref"
-            // * (1.5) trigger/"bom-ref"
-            // and referred from:
-            // * dependency/"ref" => only "component" (1.4), or
-            //   "component or service" (since 1.5)
-            // * dependency/"dependsOn[]" => only "component" (1.4),
-            //   or "component or service" (since 1.5)
-            // * (1.4, 1.5) compositions/"assemblies[]" => "component or service"
-            // * (1.4, 1.5) compositions/"dependencies[]" => "component or service"
-            // * (1.4, 1.5) vulnerability/affects/items/"ref" => "component or service"
-            // * (1.5) componentEvidence/identity/tools[] => any, see spec
-            // * (1.5) annotations/subjects[] => any
-            // * (1.5) modelCard/modelParameters/datasets[]/"ref" => "data component" (see "#/definitions/componentData")
-            // * (1.5) resourceReferenceChoice/"ref" => any
-            //
-            // Notably, CDX 1.5 also introduces resourceReferenceChoice
-            // which generalizes internal or external references, used in:
-            // * (1.5) workflow/resourceReferences[]
-            // * (1.5) task/resourceReferences[]
-            // * (1.5) workspace/resourceReferences[]
-            // * (1.5) trigger/resourceReferences[]
-            // * (1.5) event/{source,target}
-            // * (1.5) {inputType,outputType}/{source,target,resource}
-            // The CDX 1.5 tasks, workflows etc. also can reference each other.
-            //
-            // In particular, "component" instances (e.g. per JSON
-            // "#/definitions/component" spec search) can be direct
-            // properties (or property arrays) in:
-            // * (1.4, 1.5) component/pedigree/{ancestors,descendants,variants}
-            // * (1.4, 1.5) component/components[] -- structural hierarchy (not dependency tree)
-            // * (1.4, 1.5) bom/components[]
-            // * (1.4, 1.5) bom/metadata/component -- 0 or 1 item about the Bom itself
-            // * (1.5) bom/metadata/tools/components[] -- SW and HW tools used to create the Bom
-            // * (1.5) vulnerability/tools/components[] -- SW and HW tools used to describe the vuln
-            // * (1.5) formula/components[]
-            //
-            // Note that there may be potentially any level of nesting of
-            // components in components, and compositions, among other things.
-            //
-            // And "service" instances (per JSON "#/definitions/service"):
-            // * (1.4, 1.5) service/services[]
-            // * (1.4, 1.5) bom/services[]
-            // * (1.5) bom/metadata/tools/services[] -- services as tools used to create the Bom
-            // * (1.5) vulnerability/tools/services[] -- services as tools used to describe the vuln
-            // * (1.5) formula/services[]
-            //
-            // The CDX spec 1.5 also introduces "annotation" which can refer to
-            // such bom-ref carriers as service, component, organizationalEntity,
-            // organizationalContact.
-
-            return dict;
+        /// <summary>
+        /// This is a run-once method to get a dictionary.
+        /// See GetBomRefsInContainers(BomWalkResult) for one using a cache
+        /// prepared by WalkThis() for mass manipulations.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<BomEntity, List<BomEntity>> GetBomRefsInContainers()
+        {
+            BomWalkResult res = WalkThis();
+            return GetBomRefsInContainers(res);
         }
 
         /// <summary>
@@ -437,26 +382,29 @@ namespace CycloneDX.Models
         /// is attached to description of an unrelated entity. This can
         /// impact such operations as a FlatMerge() of different Boms.
         ///
-        /// See also: GetBomRefsByContainer() with transposed returns.
+        /// See also: GetBomRefsInContainers() with transposed returns.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<BomEntity, BomEntity> GetBomRefsWithContainer(BomWalkResult res)
+        {
+            if (res.bomRoot != this)
+            {
+                // throw?
+                return null;
+            }
+            return res.GetBomRefsWithContainer();
+        }
+
+        /// <summary>
+        /// This is a run-once method to get a dictionary.
+        /// See GetBomRefsWithContainer(BomWalkResult) for one using a cache
+        /// prepared by WalkThis() for mass manipulations.
         /// </summary>
         /// <returns></returns>
         public Dictionary<BomEntity, BomEntity> GetBomRefsWithContainer()
         {
-            Dictionary<BomEntity, List<BomEntity>> dictByC = this.GetBomRefsByContainer();
-            Dictionary<BomEntity, BomEntity> dictWithC = new Dictionary<BomEntity, BomEntity>();
-
-            foreach (var (container, listItems) in dictByC)
-            {
-                if (listItems is null || container is null || listItems.Count < 1) {
-                    continue;
-                }
-
-                foreach (var item in listItems) {
-                    dictWithC[item] = container;
-                }
-            }
-
-            return dictWithC;
+            BomWalkResult res = WalkThis();
+            return res.GetBomRefsWithContainer();
         }
 
         /// <summary>
@@ -483,7 +431,7 @@ namespace CycloneDX.Models
         ///     TODO: throw Exceptions instead of False,
         ///     to help callers discern the error cases?
         /// </returns>
-        public bool RenameBomRef(string oldRef, string newRef, Dictionary<BomEntity, BomEntity> dict)
+        public bool RenameBomRef(string oldRef, string newRef, BomWalkResult res)
         {
             return false;
         }
@@ -503,7 +451,8 @@ namespace CycloneDX.Models
         /// <returns>False if had no hits; True if renamed something without any errors</returns>
         public bool RenameBomRef(string oldRef, string newRef)
         {
-            return this.RenameBomRef(oldRef, newRef, this.GetBomRefsWithContainer());
+            BomWalkResult res = WalkThis();
+            return this.RenameBomRef(oldRef, newRef, res);
         }
     }
 }
