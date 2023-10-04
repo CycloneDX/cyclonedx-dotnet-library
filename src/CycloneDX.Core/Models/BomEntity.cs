@@ -1724,7 +1724,9 @@ namespace CycloneDX.Models
                                 (propInfo.Name == "Assemblies"
                                 || propInfo.Name == "Dependencies"
                                 || propInfo.Name == "Vulnerabilities")
-                            ) || objType == typeof(EvidenceTools)
+                            ) || (objType == typeof(EvidenceIdentity) &&
+                                propInfo.Name == "Tools"
+                            ) || objType == typeof(EvidenceTools)   // Actually this should not hit, presumably, as its "obj" is not a BomEntity and the EvidenceIdentity contains this (list class) as a property
                         )
                         {
                             propIsRefLinkListString = true;
