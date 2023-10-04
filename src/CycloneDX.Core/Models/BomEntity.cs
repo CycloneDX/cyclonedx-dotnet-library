@@ -440,6 +440,7 @@ namespace CycloneDX.Models
     /// CycloneDX schema definition of "bom:refType"
     /// (per XML schema) or "#/definitions/refType"
     /// (per JSON schema).
+    ///
     /// Such a property is usually called "bom-ref"
     /// in text representations of Bom documents and
     /// is a C# string; however some more complex type
@@ -462,6 +463,8 @@ namespace CycloneDX.Models
     /// </summary>
     public interface IBomEntityWithRefType_String_BomRef : IBomEntityWithRefType
     {
+        public string GetBomRef();
+        public void SetBomRef(string s);
     }
 
     /// <summary>
@@ -521,6 +524,8 @@ namespace CycloneDX.Models
     /// </summary>
     public interface IBomEntityWithRefLinkType_String_Ref : IBomEntityWithRefLinkType
     {
+        public string GetRef();
+        public void SetRef(string s);
     }
 
     /// <summary>
