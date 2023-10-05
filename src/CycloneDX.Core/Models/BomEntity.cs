@@ -1255,6 +1255,82 @@ namespace CycloneDX.Models
                 "Base-method implementation treats equivalent but not equal entities as conflicting",
                 this.GetType());
         }
+
+        /// <summary>
+        /// Default implementation for derived classes which implement IBomEntityWithRefType
+        /// </summary>
+        /// <returns></returns>
+        public string GetBomRef()
+        {
+            if (this is IBomEntityWithRefType)
+            {
+                Type thisType = this.GetType();
+                PropertyInfo propInfo = thisType.GetProperty("BomRef", typeof(string));
+                if (propInfo is null)
+                {
+                    throw new BomEntityIncompatibleException("No \"string BomRef\" attribute in class: " + thisType.Name);
+                }
+                return (string)propInfo.GetValue(this);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Default implementation for derived classes which implement IBomEntityWithRefType
+        /// </summary>
+        /// <returns></returns>
+        public void SetBomRef(string s)
+        {
+            if (this is IBomEntityWithRefType)
+            {
+                Type thisType = this.GetType();
+                PropertyInfo propInfo = thisType.GetProperty("BomRef", typeof(string));
+                if (propInfo is null)
+                {
+                    throw new BomEntityIncompatibleException("No \"string BomRef\" attribute in class: " + thisType.Name);
+                }
+                propInfo.SetValue(this, s);
+            }
+        }
+
+        /// <summary>
+        /// Default implementation for derived classes which implement IBomEntityWithRefLinkType
+        /// </summary>
+        /// <returns></returns>
+        public string GetRef()
+        {
+            if (this is IBomEntityWithRefLinkType)
+            {
+                Type thisType = this.GetType();
+                PropertyInfo propInfo = thisType.GetProperty("Ref", typeof(string));
+                if (propInfo is null)
+                {
+                    throw new BomEntityIncompatibleException("No \"string Ref\" attribute in class: " + thisType.Name);
+                }
+                return (string)propInfo.GetValue(this);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Default implementation for derived classes which implement IBomEntityWithRefLinkType
+        /// </summary>
+        /// <returns></returns>
+        public void SetRef(string s)
+        {
+            if (this is IBomEntityWithRefLinkType)
+            {
+                Type thisType = this.GetType();
+                PropertyInfo propInfo = thisType.GetProperty("Ref", typeof(string));
+                if (propInfo is null)
+                {
+                    throw new BomEntityIncompatibleException("No \"string Ref\" attribute in class: " + thisType.Name);
+                }
+                propInfo.SetValue(this, s);
+            }
+        }
     }
 
     /// <summary>

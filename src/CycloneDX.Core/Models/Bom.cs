@@ -467,7 +467,9 @@ namespace CycloneDX.Models
             // First check if there is anything to rename, and if the name is
             // already known as somebody's identifier.
             Dictionary<BomEntity, BomEntity> dictBomrefs = res.GetBomRefsWithContainer();
-            // At most we have one(!) object with "oldRef" name as its identifier:
+
+            // At most we have one(!) object with "oldRef" name as its identifier
+            // (stored as a property of this object):
             BomEntity namedObject = null;
             BomEntity namedObjectContainer = null;
             foreach (var (contained, container) in dictBomrefs)
