@@ -24,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Annotation : BomEntity
+    public class Annotation : BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [XmlType("subject")]
         public class XmlAnnotationSubject : BomEntity

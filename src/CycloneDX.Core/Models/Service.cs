@@ -24,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Service : BomEntity
+    public class Service : BomEntity, IBomEntityWithRefType_String_BomRef
     {
         public Service()
         {

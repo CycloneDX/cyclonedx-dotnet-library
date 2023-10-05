@@ -29,7 +29,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
     [ProtoContract]
-    public class Component: BomEntity
+    public class Component: BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [ProtoContract]
         public enum Classification

@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("workspace")]
     [ProtoContract]
-    public class Workspace : BomEntity
+    public class Workspace : BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [ProtoContract]
         public enum AccessModeType

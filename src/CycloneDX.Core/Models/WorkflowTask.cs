@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("task")]
     [ProtoContract]
-    public class WorkflowTask : BomEntity
+    public class WorkflowTask : BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [ProtoContract]
         public enum TaskType
