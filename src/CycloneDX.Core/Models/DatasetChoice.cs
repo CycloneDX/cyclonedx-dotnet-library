@@ -15,6 +15,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using static CycloneDX.SpecificationVersion;
+using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Reflection;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -30,5 +35,21 @@ namespace CycloneDX.Models
         [XmlElement("ref")]
         [ProtoMember(2)]
         public string Ref { get; set; }
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_ModelDataset =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        {
+            { typeof(DatasetChoice).GetProperty("Ref", typeof(string)), RefLinkConstraints_ModelDataset }
+        }.ToImmutableDictionary();
+
+        public ImmutableDictionary<PropertyInfo, ImmutableList<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion)
+        {
+            // TODO: switch/case for CDX spec newer than 1.5 where this type got introduced
+            if (specificationVersion == v1_5)
+            {
+                return RefLinkConstraints_StringRef_ModelDataset;
+            }
+            return null;
+        }
     }
 }

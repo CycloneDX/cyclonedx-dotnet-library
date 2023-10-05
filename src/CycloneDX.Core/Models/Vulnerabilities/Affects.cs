@@ -15,7 +15,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using static CycloneDX.SpecificationVersion;
+using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -34,5 +38,28 @@ namespace CycloneDX.Models.Vulnerabilities
         [JsonPropertyName("versions")]
         [ProtoMember(2)]
         public List<AffectedVersions> Versions { get; set; }
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_ComponentOrService =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        {
+            { typeof(Affects).GetProperty("Ref", typeof(string)), RefLinkConstraints_ComponentOrService }
+        }.ToImmutableDictionary();
+
+        public ImmutableDictionary<PropertyInfo, ImmutableList<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion)
+        {
+            switch (specificationVersion)
+            {
+                case v1_0:
+                case v1_1:
+                case v1_2:
+                case v1_3:
+                    return null;
+
+                case v1_4:
+                case v1_5:
+                default:
+                    return RefLinkConstraints_StringRef_ComponentOrService;
+            }
+        }
     }
 }

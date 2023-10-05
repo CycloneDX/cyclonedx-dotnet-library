@@ -15,8 +15,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using static CycloneDX.SpecificationVersion;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
@@ -210,6 +213,40 @@ namespace CycloneDX.Models
             sortHelper.SortByImpl(ascending, recursive, list,
                 o => (o?.Aggregate, o?.Assemblies, o?.Dependencies),
                 null);
+        }
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_List_v1_3 =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        {
+            { typeof(Composition).GetProperty("Assemblies", typeof(List<string>)), RefLinkConstraints_ComponentOrService },
+            { typeof(Composition).GetProperty("Dependencies", typeof(List<string>)), RefLinkConstraints_ComponentOrService }
+        }.ToImmutableDictionary();
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_List_v1_5 =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        {
+            { typeof(Composition).GetProperty("Assemblies", typeof(List<string>)), RefLinkConstraints_ComponentOrService },
+            { typeof(Composition).GetProperty("Dependencies", typeof(List<string>)), RefLinkConstraints_ComponentOrService },
+            { typeof(Composition).GetProperty("Vulnerabilities", typeof(List<string>)), RefLinkConstraints_Vulnerability }
+        }.ToImmutableDictionary();
+
+        public ImmutableDictionary<PropertyInfo, ImmutableList<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion)
+        {
+            switch (specificationVersion)
+            {
+                case v1_0:
+                case v1_1:
+                case v1_2:
+                    return null;
+
+                case v1_3:
+                case v1_4:
+                    return RefLinkConstraints_List_v1_3;
+
+                case v1_5:
+                default:
+                    return RefLinkConstraints_List_v1_5;
+            }
         }
     }
 }

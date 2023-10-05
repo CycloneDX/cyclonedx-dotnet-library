@@ -512,7 +512,7 @@ namespace CycloneDX.Models
         //  better? Would it be faster in processing
         //  (with reflection) e.g. to *find* which
         //  properties to look at?
-        public Dictionary<PropertyInfo, List<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion);
+        public ImmutableDictionary<PropertyInfo, ImmutableList<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion);
     }
 
     /// <summary>
@@ -859,6 +859,24 @@ namespace CycloneDX.Models
                 }
                 return ImmutableDictionary.CreateRange(dict);
             }) ();
+
+        /// <summary>Used by IBomEntityWithRefLinkType.GetRefLinkConstraints() in some descendant classes.</summary>
+        public static readonly ImmutableList<Type> RefLinkConstraints_AnyBomEntity = new List<Type>() {typeof(CycloneDX.Models.BomEntity)}.ToImmutableList();
+
+        /// <summary>Used by IBomEntityWithRefLinkType.GetRefLinkConstraints() in some descendant classes.</summary>
+        public static readonly ImmutableList<Type> RefLinkConstraints_Component = new List<Type>() {typeof(CycloneDX.Models.Component)}.ToImmutableList();
+
+        /// <summary>Used by IBomEntityWithRefLinkType.GetRefLinkConstraints() in some descendant classes.</summary>
+        public static readonly ImmutableList<Type> RefLinkConstraints_Service = new List<Type>() {typeof(CycloneDX.Models.Service)}.ToImmutableList();
+
+        /// <summary>Used by IBomEntityWithRefLinkType.GetRefLinkConstraints() in some descendant classes.</summary>
+        public static readonly ImmutableList<Type> RefLinkConstraints_ComponentOrService = new List<Type>() {typeof(CycloneDX.Models.Component), typeof(CycloneDX.Models.Service)}.ToImmutableList();
+
+        /// <summary>Used by IBomEntityWithRefLinkType.GetRefLinkConstraints() in some descendant classes.</summary>
+        public static readonly ImmutableList<Type> RefLinkConstraints_ModelDataset = new List<Type>() {typeof(CycloneDX.Models.Data)}.ToImmutableList();
+
+        /// <summary>Used by IBomEntityWithRefLinkType.GetRefLinkConstraints() in some descendant classes.</summary>
+        public static readonly ImmutableList<Type> RefLinkConstraints_Vulnerability = new List<Type>() {typeof(CycloneDX.Models.Vulnerabilities.Vulnerability)}.ToImmutableList();
 
         protected BomEntity()
         {

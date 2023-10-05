@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
@@ -644,7 +645,8 @@ namespace CycloneDX.Models
                         // In this class, at least one property is a list of strings
                         // where some item (maybe several in different lists) contains
                         // the back-reference of interest.
-                        Dictionary<PropertyInfo, List<Type>> refLinkConstraints = ((IBomEntityWithRefLinkType_StringList)referrer).GetRefLinkConstraints(_specVersion);
+                        ImmutableDictionary<PropertyInfo, ImmutableList<Type>> refLinkConstraints =
+                            ((IBomEntityWithRefLinkType_StringList)referrer).GetRefLinkConstraints(_specVersion);
 
                         foreach (var (referrerPropInfo, allowedTypes) in refLinkConstraints)
                         {

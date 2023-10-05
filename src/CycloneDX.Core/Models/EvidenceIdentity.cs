@@ -15,10 +15,13 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using static CycloneDX.SpecificationVersion;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -67,5 +70,22 @@ namespace CycloneDX.Models
         [XmlElement("tools")]
         [ProtoMember(4)]
         public EvidenceTools Tools { get; set; }
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_List_AnyBomEntity =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        {
+            // EvidenceTools is a List<string> as of CDX spec 1.5
+            { typeof(EvidenceIdentity).GetProperty("Tools", typeof(EvidenceTools)), RefLinkConstraints_AnyBomEntity }
+        }.ToImmutableDictionary();
+
+        public ImmutableDictionary<PropertyInfo, ImmutableList<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion)
+        {
+            // TODO: switch/case for CDX spec newer than 1.5 where this type got introduced
+            if (specificationVersion == v1_5)
+            {
+                return RefLinkConstraints_List_AnyBomEntity;
+            }
+            return null;
+        }
     }
 }
