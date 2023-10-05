@@ -449,7 +449,497 @@ namespace CycloneDX.Models
         public bool RenameBomRef(string oldRef, string newRef, BomWalkResult res)
         {
             AssertThisBomWalkResult(res);
-            return false;
+            if (oldRef is null || newRef is null || oldRef == newRef)
+            {
+                // Non-fatal, but no-op
+                // Note: not checking for xxxRef.Trim()=="" or trimmed-string
+                // equalities as it is up to the caller how things were or
+                // will be named.
+                return false;
+            }
+
+            if (newRef == "")
+            {
+                throw new ArgumentException("newRef is empty, must be at least 1 char");
+            }
+
+            // First check if there is anything to rename, and if the name is
+            // already known as somebody's identifier.
+            Dictionary<BomEntity, BomEntity> dictBomrefs = res.GetBomRefsWithContainer();
+            // At most we have one(!) object with "oldRef" name as its identifier:
+            BomEntity namedObject = null;
+            BomEntity namedObjectContainer = null;
+            foreach (var (contained, container) in dictBomrefs)
+            {
+                // Here and below: if casting fails and throws...
+                // it is the right thing to do in given situation :)
+                object containedBomRef = null;
+                if (contained is IBomEntityWithRefType_String_BomRef)
+                {
+                    containedBomRef = ((IBomEntityWithRefType_String_BomRef)contained).GetBomRef();
+                }
+                else
+                {
+                    var propInfo = contained.GetType().GetProperty("BomRef", typeof(string));
+                    if (propInfo is null)
+                    {
+                        throw new BomEntityIncompatibleException("No \"string BomRef\" attribute in class: " + contained.GetType().Name);
+                    }
+                    containedBomRef = propInfo.GetValue(contained);
+                }
+
+                if (containedBomRef.ToString() == oldRef)
+                {
+                    if (namedObject != null)
+                    {
+                        throw new BomEntityConflictException("Duplicate \"bom-ref\" identifier detected in Bom document: " + oldRef);
+                    }
+                    namedObject = contained;
+                    namedObjectContainer = container;
+                    // Do not "break" the loop, so we can detect dupes and newRef clashes here
+                }
+
+                if (containedBomRef.ToString() == newRef)
+                {
+                    throw new ArgumentException("newRef is already used to name a BomEntity: " + newRef);
+                }
+            }
+
+            // If we got here, the oldRef name exists among
+            // "contained" entities, and newRef does not.
+
+            // Can proceed with renaming of the item itself (if one exists)...:
+            if (!(namedObject is null))
+            {
+                bool objectHasStringBomRef = (namedObject is IBomEntityWithRefType_String_BomRef);
+
+                if (!objectHasStringBomRef)
+                {
+                    // Slower fallback to facilitate faster code evolution
+                    // (with classes not marked as implementors of interfaces)
+                    if (!(BomEntity.KnownEntityTypeProperties.TryGetValue(namedObject.GetType(), out PropertyInfo[] props)))
+                    {
+                        props = namedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
+                    }
+
+                    foreach (PropertyInfo propInfo in props)
+                    {
+                        if (propInfo.Name == "BomRef" && propInfo.PropertyType == typeof(string))
+                        {
+                            objectHasStringBomRef = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (objectHasStringBomRef)
+                {
+                    object currentRef = null;
+                    PropertyInfo propInfo = null;
+                    if (namedObject is IBomEntityWithRefType_String_BomRef)
+                    {
+                        currentRef = ((IBomEntityWithRefType_String_BomRef)namedObject).GetBomRef();
+                    }
+                    else
+                    {
+                        propInfo = namedObject.GetType().GetProperty("BomRef", typeof(string));
+                        if (propInfo is null)
+                        {
+                            throw new BomEntityIncompatibleException("No \"string BomRef\" attribute in class: " + namedObject.GetType().Name);
+                        }
+                        currentRef = propInfo.GetValue(namedObject);
+                    }
+
+                    if (currentRef.ToString() == oldRef)
+                    {
+                        if (namedObject is IBomEntityWithRefType_String_BomRef)
+                        {
+                            ((IBomEntityWithRefType_String_BomRef)namedObject).SetBomRef(newRef);
+                        }
+                        else
+                        {
+                            propInfo.SetValue(namedObject, newRef);
+                        }
+                    }
+                    else
+                    {
+                        if (currentRef.ToString() != newRef)
+                        {
+                            // Note: "is null" case is also considered an error
+                            throw new BomEntityConflictException("Object listed as having a \"bom-ref\" identifier, but currently its value does not refer to the old name: " + oldRef);
+                        } // else?
+                    }
+                }
+                else
+                {
+                    // TODO: Add handling for other use-cases (if any appear as we evolve)
+                    throw new BomEntityIncompatibleException("Object does not have a \"string BomRef\" property, but was listed as having a \"bom-ref\" identifier: " + oldRef);
+                }
+            }
+
+/*
+            if (!(namedObjectContainer is null))
+            {
+                bool containerHasStringBomRef = (namedObjectContainer is IBomEntityWithRefType_String_BomRef);
+
+                if (!containerHasStringBomRef)
+                {
+                    // Slower fallback to facilitate faster code evolution
+                    // (with classes not marked as implementors of interfaces)
+                    if (!(BomEntity.KnownEntityTypeProperties.TryGetValue(namedObjectContainer.GetType(), out PropertyInfo[] props)))
+                    {
+                        props = namedObjectContainer.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
+                    }
+
+                    foreach (PropertyInfo propInfo in props)
+                    {
+                        if (propInfo.Name == "BomRef" && propInfo.PropertyType == typeof(string))
+                        {
+                            containerHasStringBomRef = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (containerHasStringBomRef)
+                {
+                    var currentRef = ((IBomEntityWithRefType_String_BomRef)namedObjectContainer).GetBomRef();
+                    if (currentRef == oldRef)
+                    {
+                        ((IBomEntityWithRefType_String_BomRef)namedObjectContainer).SetBomRef(newRef);
+                    }
+                    else
+                    {
+                        if (currentRef != newRef)
+                        {
+                            // Note: "is null" case is also considered an error
+                            throw new BomEntityConflictException("Object listed as having a \"bom-ref\" identifier, but currently its value does not refer to the old name: " + oldRef);
+                        } // else?
+                    }
+                }
+                else
+                {
+                    // TODO: Add handling for other use-cases (if any appear as we evolve)
+                    throw new BomEntityIncompatibleException("Object does not have a \"string BomRef\" property, but was listed as having a \"bom-ref\" identifier: " + oldRef);
+                }
+            }
+*/
+
+            // ...and of back-references (if any):
+            foreach (var (containedRef, referrerList) in res.dictBackrefs)
+            {
+                if (containedRef is null || containedRef != oldRef)
+                {
+                    continue;
+                }
+
+                // Check each BomEntity known to refer to this "contained" item's name
+                foreach (var referrer in referrerList)
+                {
+                    // Track if we had at least one rename
+                    int referrerModified = 0;
+
+                    if (referrer is IBomEntityWithRefLinkType_StringList)
+                    {
+                        // In this class, at least one property is a list of strings
+                        // where some item (maybe several in different lists) contains
+                        // the back-reference of interest.
+                        Dictionary<PropertyInfo, List<Type>> refLinkConstraints = ((IBomEntityWithRefLinkType_StringList)referrer).GetRefLinkConstraints(_specVersion);
+
+                        foreach (var (referrerPropInfo, allowedTypes) in refLinkConstraints)
+                        {
+                            // NOTE: Here we care about properties in referrer
+                            // class that have (are) suitable lists; constraint
+                            // checks are for diligent validation calls, right?..
+                            Type propType = referrerPropInfo.PropertyType;
+                            if (!(propType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(System.Collections.IList))))
+                            {
+                                continue;
+                            }
+                            // TODO: Check if the list contents are string? So far
+                            // just assuming so - due to this class interface.
+
+                            // Use cached info where available
+                            PropertyInfo listPropCount = null;
+                            MethodInfo listMethodGetItem = null;
+                            MethodInfo listMethodAdd = null;
+                            if (BomEntity.KnownEntityTypeLists.TryGetValue(propType, out BomEntityListReflection refInfo))
+                            {
+                                listPropCount = refInfo.propCount;
+                                listMethodGetItem = refInfo.methodGetItem;
+                                listMethodAdd = refInfo.methodAdd;
+                            }
+                            else
+                            {
+                                // No cached info about BomEntityListReflection[propType]
+                                listPropCount = propType.GetProperty("Count");
+                                listMethodGetItem = propType.GetMethod("get_Item");
+                                listMethodAdd = propType.GetMethod("Add");
+                            }
+
+                            if (listMethodGetItem == null || listPropCount == null || listMethodAdd == null)
+                            {
+                                // Should not have happened, but...
+                                continue;
+                            }
+
+                            // Unlike so many other cases around BomEntity, here
+                            // we know the exact expected class at compile time!
+                            // Hope this is a reference to the same list in the
+                            // BomEntity class object, not a copy etc...
+                            List<string> referrerSubList = (List<string>)referrerPropInfo.GetValue(referrer);
+                            if (referrerSubList != null && referrerSubList.Count > 0)
+                            {
+                                // One of string list items should refer the "contained" entity
+                                // There can be only one (ref with this value in this list)...
+                                bool hadHit = false;
+
+                                for (int i = 0; i < referrerSubList.Count; i++)
+                                {
+                                    if (referrerSubList[i] == oldRef)
+                                    {
+                                        if (hadHit)
+                                        {
+                                            throw new BomEntityConflictException(
+                                                "Multiple references to a \"bom-ref\" identifier detected " +
+                                                "in the same list of unique items under " +
+                                                referrer.GetType() + "." + referrerPropInfo.Name + "[]: " +
+                                                oldRef);
+                                        }
+                                        referrerSubList[i] = newRef;
+                                        hadHit = true;
+                                        referrerModified++;
+                                    }
+                                }
+                            }
+                        }
+
+
+/*
+                        for (int i = 0; i < ((List<string>)referrer).Count; i++)
+                        {
+                            if (((List<string>)referrer)[i] == oldRef)
+                            {
+                                if (hadHit)
+                                {
+                                    throw new BomEntityConflictException("Multiple references to a \"bom-ref\" identifier detected in the same list of unique items: " + oldRef);
+                                }
+                                ((List<string>)referrer)[i] = newRef;
+                                hadHit = true;
+                            }
+                        }
+*/
+                    }
+                    else
+                    {
+                        // Fallback for a few known classes with lists of refs:
+                        Type referrerType = referrer.GetType();
+                        if (referrerType == typeof(Composition))
+                        {
+                            // This contains several lists of strings, and
+                            // at most one of string list items in each of
+                            // those should refer the "contained" entity.
+
+                            List<string> referrerSubList = ((Composition)referrer).Assemblies;
+                            if (referrerSubList != null && referrerSubList.Count > 0)
+                            {
+                                bool hadHit = false;
+
+                                for (int i = 0; i < referrerSubList.Count; i++)
+                                {
+                                    if (referrerSubList[i] == oldRef)
+                                    {
+                                        if (hadHit)
+                                        {
+                                            throw new BomEntityConflictException(
+                                                "Multiple references to a \"bom-ref\" identifier detected " +
+                                                "in the same list of unique items under " +
+                                                "Composition.Assemblies[]: " + oldRef);
+                                        }
+                                        referrerSubList[i] = newRef;
+                                        hadHit = true;
+                                        referrerModified++;
+                                    }
+                                }
+                            }
+
+                            referrerSubList = ((Composition)referrer).Dependencies;
+                            if (referrerSubList != null && referrerSubList.Count > 0)
+                            {
+                                bool hadHit = false;
+
+                                for (int i = 0; i < referrerSubList.Count; i++)
+                                {
+                                    if (referrerSubList[i] == oldRef)
+                                    {
+                                        if (hadHit)
+                                        {
+                                            throw new BomEntityConflictException(
+                                                "Multiple references to a \"bom-ref\" identifier detected " +
+                                                "in the same list of unique items under " +
+                                                "Composition.Dependencies[]: " + oldRef);
+                                        }
+                                        referrerSubList[i] = newRef;
+                                        hadHit = true;
+                                        referrerModified++;
+                                    }
+                                }
+                            }
+
+                            referrerSubList = ((Composition)referrer).Vulnerabilities;
+                            if (referrerSubList != null && referrerSubList.Count > 0)
+                            {
+                                bool hadHit = false;
+
+                                for (int i = 0; i < referrerSubList.Count; i++)
+                                {
+                                    if (referrerSubList[i] == oldRef)
+                                    {
+                                        if (hadHit)
+                                        {
+                                            throw new BomEntityConflictException(
+                                                "Multiple references to a \"bom-ref\" identifier detected " +
+                                                "in the same list of unique items under " +
+                                                "Composition.Vulnerabilities[]: " + oldRef);
+                                        }
+                                        referrerSubList[i] = newRef;
+                                        hadHit = true;
+                                        referrerModified++;
+                                    }
+                                }
+                            }
+
+/*
+                            if (((Composition)referrer).Assemblies != null && (((Composition)referrer).Assemblies).Count > 0)
+                            {
+                                bool hadHit = false;
+
+                                for (int i = 0; i < (((Composition)referrer).Assemblies).Count; i++)
+                                {
+                                    if (((List<string>)((Composition)referrer).Assemblies)[i] == oldRef)
+                                    {
+                                        if (hadHit)
+                                        {
+                                            throw new BomEntityConflictException(
+                                                "Multiple references to a \"bom-ref\" identifier detected " +
+                                                "in the same list of unique items under " +
+                                                "Composition.Assemblies[]: " + oldRef);
+                                        }
+                                        ((List<string>)((Composition)referrer).Assemblies)[i] = newRef;
+                                        hadHit = true;
+                                        referrerModified++;
+                                    }
+                                }
+                            }
+*/
+                        }
+
+                        if (referrerType == typeof(EvidenceIdentity))
+                        {
+                            List<string> referrerSubList = ((EvidenceIdentity)referrer).Tools;
+                            if (referrerSubList != null && referrerSubList.Count > 0)
+                            {
+                                bool hadHit = false;
+
+                                for (int i = 0; i < referrerSubList.Count; i++)
+                                {
+                                    if (referrerSubList[i] == oldRef)
+                                    {
+                                        if (hadHit)
+                                        {
+                                            throw new BomEntityConflictException(
+                                                "Multiple references to a \"bom-ref\" identifier detected " +
+                                                "in the same list of unique items under " +
+                                                "EvidenceIdentity.Tools[]: " + oldRef);
+                                        }
+                                        referrerSubList[i] = newRef;
+                                        hadHit = true;
+                                        referrerModified++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // An entity (possibly with a "Ref" property) that directly
+                    // references the "contained" entity. Not an "else" to cater
+                    // for the eventuality that some class would have both some
+                    // list(s) of refs and a "ref" property.
+                    bool referrerHasStringRef = (referrer is IBomEntityWithRefLinkType_String_Ref);
+
+                    if (!referrerHasStringRef)
+                    {
+                        // Slower fallback to facilitate faster code evolution
+                        PropertyInfo[] props =
+                            referrer.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance); // BindingFlags.DeclaredOnly
+                        foreach (var prop in props)
+                        {
+                            if (prop.Name == "Ref" && prop.PropertyType == typeof(string))
+                            {
+                                referrerHasStringRef = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (referrerHasStringRef)
+                    {
+                        object currentRef = null;
+                        PropertyInfo propInfo = null;
+                        if (referrer is IBomEntityWithRefLinkType_String_Ref)
+                        {
+                            currentRef = ((IBomEntityWithRefLinkType_String_Ref)referrer).GetRef();
+                        }
+                        else
+                        {
+                            propInfo = referrer.GetType().GetProperty("Ref", typeof(string));
+                            if (propInfo is null)
+                            {
+                                throw new BomEntityIncompatibleException("No \"string Ref\" attribute in class: " + referrer.GetType().Name);
+                            }
+                            currentRef = propInfo.GetValue(referrer);
+                        }
+
+                        if (currentRef.ToString() == oldRef)
+                        {
+                            if (referrer is IBomEntityWithRefLinkType_String_Ref)
+                            {
+                                ((IBomEntityWithRefLinkType_String_Ref)referrer).SetRef(newRef);
+                            }
+                            else
+                            {
+                                propInfo.SetValue(referrer, newRef);
+                            }
+                            referrerModified++;
+                        }
+                        else
+                        {
+                            if (currentRef.ToString() == newRef)
+                            {
+                                // We had no conflicts before, so must have achieved
+                                // this via several clones of a referrer?..
+                                referrerModified++;
+                            }
+                            else
+                            {
+                                throw new BomEntityConflictException("Object listed as having a reference to a \"bom-ref\" identifier, but currently its ref does not refer to the old name: " + oldRef);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Was it fixed-up as an object with lists, at least?..
+                        if (referrerModified == 0)
+                        {
+                            // TODO: Add handling for other use-cases (if any appear as we evolve)
+                            throw new BomEntityIncompatibleException("Object does not have a \"string Ref\" or a suitable list of strings property, but was listed as having a reference to a \"bom-ref\" identifier: " + oldRef);
+                        }
+                    }
+                }
+            }
+
+            // Survived without exceptions! ;)
+            return true;
         }
 
         /// <summary>
