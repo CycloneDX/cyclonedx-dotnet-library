@@ -57,6 +57,21 @@ namespace CycloneDX.Utils
             return FlatMerge(bom1, bom2, BomEntityListMergeHelperStrategy.Default());
         }
 
+        /// <summary>
+        /// Handle merging of two Bom object contents, possibly de-duplicating
+        /// or merging information from Equivalent() entries as further tuned
+        /// via listMergeHelperStrategy argument.
+        ///
+        /// NOTE: This sets a new timestamp into each newly merged Bom document.
+        /// However it is up to the caller to use Bom.BomMetadataReferThisToolkit()
+        /// for adding references to this library (and the run-time program
+        /// which consumes it) into the final merged document, to avoid the
+        /// overhead in a loop context.
+        /// </summary>
+        /// <param name="bom1"></param>
+        /// <param name="bom2"></param>
+        /// <param name="listMergeHelperStrategy"></param>
+        /// <returns></returns>
         public static Bom FlatMerge(Bom bom1, Bom bom2, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
@@ -64,16 +79,67 @@ namespace CycloneDX.Utils
                 iDebugLevel = 0;
             }
 
-            var result = new Bom();
-            result.Metadata = new Metadata
+            /* Initial use-case for BomWalkResult discoveries to see how they scale */
+            if (iDebugLevel >= 1)
             {
-                // Note: we recurse into this method from other FlatMerge() implementations
-                // (e.g. mass-merge of a big list of Bom documents), so the resulting
-                // document gets a new timestamp every time. It is unique after all.
-                // Also note that a merge of "new Bom()" with a real Bom is also different
-                // from that original (serialNumber, timestamp, possible entry order, etc.)
-                Timestamp = DateTime.Now
-            };
+                Console.WriteLine($"FLAT-MERGE: {DateTime.Now}: inspecting bom1...");
+            }
+            BomWalkResult bwr1 = bom1.WalkThis();
+            if (iDebugLevel >= 1)
+            {
+                Console.WriteLine($"FLAT-MERGE: {DateTime.Now}: inspecting bom1: got {bwr1}");
+            }
+            Dictionary<BomEntity, List<BomEntity>> dict1ByC = bwr1.GetBomRefsInContainers();
+            if (iDebugLevel >= 1)
+            {
+                Console.WriteLine($"FLAT-MERGE: {DateTime.Now}: inspecting bom1: got {dict1ByC.Count} BomRef-entity containers");
+            }
+            Dictionary<BomEntity, BomEntity> dict1 = bwr1.GetBomRefsWithContainer();
+            if (iDebugLevel >= 1)
+            {
+                Console.WriteLine($"FLAT-MERGE: {DateTime.Now}: inspecting bom1: got {dict1.Count} BomRefs");
+            }
+
+            BomWalkResult bwr2 = bom2.WalkThis();
+            if (iDebugLevel >= 1)
+            {
+                Console.WriteLine($"FLAT-MERGE: {DateTime.Now}: inspecting bom2: got {bwr2}");
+            }
+            Dictionary<BomEntity, List<BomEntity>> dict2ByC = bwr2.GetBomRefsInContainers();
+            if (iDebugLevel >= 1)
+            {
+                Console.WriteLine($"FLAT-MERGE: {DateTime.Now}: inspecting bom2: got {dict2ByC.Count} BomRef-entity containers");
+            }
+            Dictionary<BomEntity, BomEntity> dict2 = bwr2.GetBomRefsWithContainer();
+            if (iDebugLevel >= 1)
+            {
+                Console.WriteLine($"FLAT-MERGE: {DateTime.Now}: inspecting bom2: got {dict2.Count} BomRefs");
+            }
+
+            var result = new Bom();
+            // Note: we recurse into this method from other FlatMerge() implementations
+            // (e.g. mass-merge of a big list of Bom documents), so the resulting
+            // document gets a new timestamp every time. It is unique after all.
+            // Also note that a merge of "new Bom()" with a real Bom is also different
+            // from that original (serialNumber, timestamp, possible entry order, etc.)
+            // Adding Tools[] entries to refer to this library (and the run-time tool
+            // program which consumes it) costs a bit more, so this is toggled separately
+            // and should not waste CPU not in a loop.
+            // Note that these toggles default to `false` so should not impact the
+            // typical loop (calls from the other FlatMerge() implementations nearby).
+            if (listMergeHelperStrategy.doBomMetadataUpdate)
+            {
+                result.BomMetadataUpdate(listMergeHelperStrategy.doBomMetadataUpdateNewSerialNumber);
+            }
+            if (listMergeHelperStrategy.doBomMetadataUpdateReferThisToolkit)
+            {
+                result.BomMetadataReferThisToolkit();
+            }
+            if (result.Metadata is null)
+            {
+                // If none of the above...
+                result.Metadata = new Metadata();
+            }
 
             #pragma warning disable 618
             var toolsMerger = new ListMergeHelper<Tool>();
@@ -124,7 +190,7 @@ namespace CycloneDX.Utils
                         Console.WriteLine($"FLAT-MERGE: bom1.Metadata.Component is already equivalent to bom2.Metadata.Component: merging");
                     }
                     result.Metadata.Component = bom1.Metadata.Component;
-                    result.Metadata.Component.MergeWith(bom2.Metadata.Component);
+                    result.Metadata.Component.MergeWith(bom2.Metadata.Component, listMergeHelperStrategy);
                 }
                 else
                 {
@@ -224,52 +290,11 @@ namespace CycloneDX.Utils
             // the resulting collection with a lot fewer items to inspect with
             // the heavier logic.
             var resultSubj = new Bom();
-
-            // Add reference to this currently running build of cyclonedx-cli
-            // (likely) and this cyclonedx-dotnet-library into the metadata/tools
-            // of the merged BOM document. After all - any bugs appearing due
-            // to merge routines are our own and should be trackable...
-            // Per https://stackoverflow.com/a/36351902/4715872 :
-            // Use System.Reflection.Assembly.GetExecutingAssembly()
-            // to get the assembly (that this line of code is in), or
-            // use System.Reflection.Assembly.GetEntryAssembly() to
-            // get the assembly your project started with (most likely
-            // this is your app). In multi-project solutions this is
-            // something to keep in mind!
-            #pragma warning disable 618
-            Tool toolThisLibrary = new Tool
-            {
-                Vendor = "OWASP Foundation",
-                Name = Assembly.GetExecutingAssembly().GetName().Name, // "cyclonedx-dotnet-library"
-                Version = Assembly.GetExecutingAssembly().GetName().Version.ToString()
-            };
-            #pragma warning restore 618
-
-            resultSubj.Metadata = new Metadata
-            {
-                #pragma warning disable 618
-                Tools = new ToolChoices
-                {
-                    Tools = new List<Tool>(new [] {toolThisLibrary}),
-                }
-                #pragma warning restore 618
-            };
-
-            // At worst, these would dedup away?..
-            string toolThisScriptName = Assembly.GetEntryAssembly().GetName().Name; // "cyclonedx-cli" or similar
-            if (toolThisScriptName != toolThisLibrary.Name)
-            {
-                #pragma warning disable 618
-                Tool toolThisScript = new Tool
-                {
-                    Name = toolThisScriptName,
-                    Vendor = (toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx") ? "OWASP Foundation" : null),
-                    Version = Assembly.GetEntryAssembly().GetName().Version.ToString()
-                };
-                #pragma warning restore 618
-                resultSubj.Metadata.Tools.Tools.Add(toolThisScript);
-            }
-
+            // New merged document has its own identity (new SerialNumber,
+            // Version=1, Timestamp...) and its Tools collection refers to this
+            // library and the tool like cyclonedx-cli which consumes it.
+            resultSubj.BomMetadataUpdate(true);
+            resultSubj.BomMetadataReferThisToolkit();
 
             if (bomSubject is null)
             {
@@ -337,16 +362,11 @@ namespace CycloneDX.Utils
         public static Bom HierarchicalMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
-            result.Metadata = new Metadata
-            {
-                Timestamp = DateTime.Now,
-                #pragma warning disable 618
-                Tools = new ToolChoices
-                {
-                    Tools = new List<Tool>(),
-                }
-                #pragma warning restore 618
-            };
+            // New resulting Bom has its own identity (timestamp, serial)
+            // and its Tools collection refers to this library and the
+            // tool which consumes it.
+            result.BomMetadataUpdate(true);
+            result.BomMetadataReferThisToolkit();
 
             if (bomSubject != null)
             {
@@ -466,6 +486,7 @@ namespace CycloneDX.Utils
 
             if (!(result.Metadata.Component is null) && !(result.Components is null) && (result.Components?.Count > 0) && result.Components.Contains(result.Metadata.Component))
             {
+                BomEntityListMergeHelperStrategy safeStrategy = BomEntityListMergeHelperStrategy.Default();
                 if (iDebugLevel >= 2)
                 {
                     Console.WriteLine($"MERGE-CLEANUP: Searching in list");
@@ -487,7 +508,7 @@ namespace CycloneDX.Utils
                         {
                             Console.WriteLine($"MERGE-CLEANUP: Found in list: merging, cleaning...");
                         }
-                        result.Metadata.Component.MergeWith(component);
+                        result.Metadata.Component.MergeWith(component, safeStrategy);
                         result.Components.Remove(component);
                         return result;
                     }

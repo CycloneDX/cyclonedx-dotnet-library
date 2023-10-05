@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("trigger")]
     [ProtoContract]
-    public class Trigger : BomEntity
+    public class Trigger : BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [ProtoContract]
         public enum TriggerType

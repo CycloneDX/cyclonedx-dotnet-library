@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("modelCard")]
     [ProtoContract]
-    public class ModelCard : BomEntity
+    public class ModelCard : BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [ProtoContract]
         public enum ModelParameterApproachType

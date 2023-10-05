@@ -29,7 +29,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
     [ProtoContract]
-    public class Component: BomEntity
+    public class Component: BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [ProtoContract]
         public enum Classification
@@ -273,7 +273,10 @@ namespace CycloneDX.Models
                 null);
         }
 
-        public bool MergeWith(Component obj)
+        /// <summary>
+        /// See BomEntity.MergeWith()
+        /// </summary>
+        public bool MergeWith(Component obj, BomEntityListMergeHelperStrategy listMergeHelperStrategy)
         {
             if (!int.TryParse(System.Environment.GetEnvironmentVariable("CYCLONEDX_DEBUG_MERGE"), out int iDebugLevel) || iDebugLevel < 0)
             {
@@ -285,7 +288,7 @@ namespace CycloneDX.Models
                 // Basic checks for null, type compatibility,
                 // equality and non-equivalence; throws for
                 // the hard stuff to implement in the catch:
-                bool resBase = base.MergeWith(obj);
+                bool resBase = base.MergeWith(obj, listMergeHelperStrategy);
                 if (iDebugLevel >= 1)
                 {
                     if (resBase)
@@ -566,7 +569,7 @@ namespace CycloneDX.Models
                                 if (!KnownTypeMergeWith.TryGetValue(TType, out var methodMergeWith))
                                 {
                                     // No need to re-query now that we have BomEntity descendance:
-                                    // e.g. methodMergeWith = TType.GetMethod("MergeWith", 0, new [] { TType })
+                                    // e.g. methodMergeWith = TType.GetMethod("MergeWith", 0, new [] { TType, typeof(BomEntityListMergeHelperStrategy) })
                                     methodMergeWith = null;
                                 }
 
@@ -646,7 +649,7 @@ namespace CycloneDX.Models
                                                         {
                                                             Console.WriteLine($"Component.MergeWith(): Call futher {TType.ToString()}.mergeWith() for '{property.Name}': merge of {tmpItem?.ToString()} and {objItem?.ToString()}");
                                                         }
-                                                        if (!((bool)methodMergeWith.Invoke(tmpItem, new [] {objItem})))
+                                                        if (!((bool)methodMergeWith.Invoke(tmpItem, new [] {objItem, listMergeHelperStrategy})))
                                                         {
                                                             mergedOk = false;
                                                         }
@@ -827,7 +830,7 @@ namespace CycloneDX.Models
                                 if (!KnownTypeMergeWith.TryGetValue(TType, out var methodMergeWith))
                                 {
                                     // No need to re-query now that we have BomEntity descendance:
-                                    // e.g. methodMergeWith = TType.GetMethod("MergeWith", 0, new [] { TType })
+                                    // e.g. methodMergeWith = TType.GetMethod("MergeWith", 0, new [] { TType, typeof(BomEntityListMergeHelperStrategy) })
                                     methodMergeWith = null;
                                 }
 
@@ -835,7 +838,7 @@ namespace CycloneDX.Models
                                 {
                                     try
                                     {
-                                        if (!((bool)methodMergeWith.Invoke(propValTmp, new [] {propValObj})))
+                                        if (!((bool)methodMergeWith.Invoke(propValTmp, new [] {propValObj, listMergeHelperStrategy})))
                                         {
                                             mergedOk = false;
                                         }

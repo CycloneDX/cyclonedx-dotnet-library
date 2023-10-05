@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class OrganizationalEntity : BomEntity
+    public class OrganizationalEntity : BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [XmlElement("name")]
         [ProtoMember(1)]
