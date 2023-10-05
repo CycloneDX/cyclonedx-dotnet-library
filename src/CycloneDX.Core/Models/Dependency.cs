@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("dependency")]
     [ProtoContract]
-    public class Dependency : BomEntity
+    public class Dependency : BomEntity, IBomEntityWithRefLinkType_String_Ref
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]

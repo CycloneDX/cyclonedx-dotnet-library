@@ -25,9 +25,11 @@ namespace CycloneDX.Models
 {
     [ProtoContract]
     public class Annotation : BomEntity, IBomEntityWithRefType_String_BomRef
+    // NOTE: *Not* IBomEntityWithRefLinkType_StringList due
+    // to inlaid "subject" property type with dedicated class
     {
         [XmlType("subject")]
-        public class XmlAnnotationSubject : BomEntity
+        public class XmlAnnotationSubject : BomEntity, IBomEntityWithRefLinkType_String_Ref
         {
             [XmlAttribute("ref")]
             public string Ref { get; set; }

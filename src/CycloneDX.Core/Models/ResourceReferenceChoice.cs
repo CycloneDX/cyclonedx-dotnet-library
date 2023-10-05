@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ResourceReferenceChoice : BomEntity, IXmlSerializable
+    public class ResourceReferenceChoice : BomEntity, IXmlSerializable, IBomEntityWithRefLinkType_String_Ref
     {
         private static XmlSerializer _extRefSerializer;
         private static XmlSerializer GetExternalReferenceSerializer()

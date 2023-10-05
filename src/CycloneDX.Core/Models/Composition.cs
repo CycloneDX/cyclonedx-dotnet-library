@@ -25,7 +25,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Composition : BomEntity, IXmlSerializable, IBomEntityWithRefType_String_BomRef
+    public class Composition : BomEntity, IXmlSerializable, IBomEntityWithRefType_String_BomRef, IBomEntityWithRefLinkType_StringList
     {
         [ProtoContract]
         public enum AggregateType

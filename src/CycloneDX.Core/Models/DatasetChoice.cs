@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class DatasetChoice : BomEntity
+    public class DatasetChoice : BomEntity, IBomEntityWithRefLinkType_String_Ref
     {
         [XmlElement("dataset")]
         [ProtoMember(1)]
