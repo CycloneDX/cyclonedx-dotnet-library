@@ -2117,6 +2117,25 @@ namespace CycloneDX.Models
         }
 
         /// <summary>
+        /// Provide a Dictionary whose keys are "Ref" or equivalent
+        /// string values which link back to a "BomRef" hopefully
+        /// defined somewhere in the same Bom document (but may be
+        /// dangling, or sometimes co-opted with external links to
+        /// other Bom documents!), and whose values are lists of
+        /// BomEntities which use this same "ref" value.
+        ///
+        /// See also: GetBomRefsInContainers() with similar info
+        /// about keys which are BomEntity "containers" and values
+        /// are lists of BomEntity with a BomRef in those containers,
+        /// and GetBomRefsWithContainer() with transposed returns.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<String, List<BomEntity>> GetRefsInContainers()
+        {
+            return dictBackrefs;
+        }
+
+        /// <summary>
         /// Provide a Dictionary whose keys are "contained" entities
         /// with a BomRef attribute and values are their direct
         /// container BomEntities, e.g. each Bom.Components[] list
