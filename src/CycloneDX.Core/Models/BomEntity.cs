@@ -2088,7 +2088,8 @@ namespace CycloneDX.Models
                 SerializeBomEntity_BomRefs((BomEntity)propVal, obj);
             }
 
-            if (isTimeAccounter && debugPerformance)
+            // nullness check seems bogus, but Codacy insists...
+            if (isTimeAccounter && debugPerformance && !(stopWatchWalkTotal is null))
             {
                 stopWatchWalkTotal.Stop();
             }
