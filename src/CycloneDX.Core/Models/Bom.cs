@@ -481,6 +481,8 @@ namespace CycloneDX.Models
         /// </returns>
         public bool RenameBomRef(string oldRef, string newRef, BomWalkResult res)
         {
+            bool somethingModified = false;
+
             AssertThisBomWalkResult(res);
             if (oldRef is null || newRef is null || oldRef == newRef)
             {
@@ -488,7 +490,7 @@ namespace CycloneDX.Models
                 // Note: not checking for xxxRef.Trim()=="" or trimmed-string
                 // equalities as it is up to the caller how things were or
                 // will be named.
-                return false;
+                return somethingModified;
             }
 
             if (newRef == "")
@@ -890,11 +892,13 @@ namespace CycloneDX.Models
                                 "a reference to a \"bom-ref\" identifier: " + oldRef);
                         }
                     }
+
+                    somethingModified |= (referrerModified == 0);
                 }
             }
 
             // Survived without exceptions! ;)
-            return (referrerModified == 0);
+            return somethingModified;
         }
 
         /// <summary>
