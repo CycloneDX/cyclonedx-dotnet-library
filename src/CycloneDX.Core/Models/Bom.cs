@@ -486,7 +486,7 @@ namespace CycloneDX.Models
                     var propInfo = contained.GetType().GetProperty("BomRef", typeof(string));
                     if (propInfo is null)
                     {
-                        throw new BomEntityIncompatibleException("No \"string BomRef\" attribute in class: " + contained.GetType().Name);
+                        throw new BomEntityIncompatibleException($"No \"string BomRef\" attribute in class: {contained.GetType().Name}");
                     }
                     containedBomRef = propInfo.GetValue(contained);
                 }
@@ -495,7 +495,7 @@ namespace CycloneDX.Models
                 {
                     if (namedObject != null)
                     {
-                        throw new BomEntityConflictException("Duplicate \"bom-ref\" identifier detected in Bom document: " + oldRef);
+                        throw new BomEntityConflictException($"Duplicate \"bom-ref\" identifier detected in Bom document, previously under a BomEntity typed {namedObjectContainer.GetType().Name}: {oldRef}");
                     }
                     namedObject = contained;
                     namedObjectContainer = container;
@@ -504,7 +504,7 @@ namespace CycloneDX.Models
 
                 if (containedBomRef.ToString() == newRef)
                 {
-                    throw new ArgumentException("newRef is already used to name a BomEntity: " + newRef);
+                    throw new ArgumentException($"newRef is already used to name a BomEntity: {newRef}");
                 }
             }
 
@@ -548,7 +548,7 @@ namespace CycloneDX.Models
                         propInfo = namedObject.GetType().GetProperty("BomRef", typeof(string));
                         if (propInfo is null)
                         {
-                            throw new BomEntityIncompatibleException("No \"string BomRef\" attribute in class: " + namedObject.GetType().Name);
+                            throw new BomEntityIncompatibleException($"No \"string BomRef\" attribute in class: {namedObject.GetType().Name}");
                         }
                         currentRef = propInfo.GetValue(namedObject);
                     }
@@ -569,14 +569,14 @@ namespace CycloneDX.Models
                         if (currentRef.ToString() != newRef)
                         {
                             // Note: "is null" case is also considered an error
-                            throw new BomEntityConflictException("Object listed as having a \"bom-ref\" identifier, but currently its value does not refer to the old name: " + oldRef);
+                            throw new BomEntityConflictException($"Object listed as having a \"bom-ref\" identifier, but currently its value does not refer to the old name: {oldRef}");
                         } // else?
                     }
                 }
                 else
                 {
                     // TODO: Add handling for other use-cases (if any appear as we evolve)
-                    throw new BomEntityIncompatibleException("Object does not have a \"string BomRef\" property, but was listed as having a \"bom-ref\" identifier: " + oldRef);
+                    throw new BomEntityIncompatibleException($"Object does not have a \"string BomRef\" property, but was listed as having a \"bom-ref\" identifier: {oldRef}");
                 }
             }
 
@@ -811,7 +811,9 @@ namespace CycloneDX.Models
                             propInfo = referrer.GetType().GetProperty("Ref", typeof(string));
                             if (propInfo is null)
                             {
-                                throw new BomEntityIncompatibleException("No \"string Ref\" attribute in class: " + referrer.GetType().Name);
+                                throw new BomEntityIncompatibleException(
+                                    "No \"string Ref\" attribute in class: " +
+                                    referrer.GetType().Name);
                             }
                             currentRef = propInfo.GetValue(referrer);
                         }
@@ -838,7 +840,9 @@ namespace CycloneDX.Models
                             }
                             else
                             {
-                                throw new BomEntityConflictException("Object listed as having a reference to a \"bom-ref\" identifier, but currently its ref does not refer to the old name: " + oldRef);
+                                throw new BomEntityConflictException(
+                                    "Object listed as having a reference to a \"bom-ref\" identifier, " +
+                                    "but currently its ref does not refer to the old name: " + oldRef);
                             }
                         }
                     }
@@ -848,7 +852,10 @@ namespace CycloneDX.Models
                         if (referrerModified == 0)
                         {
                             // TODO: Add handling for other use-cases (if any appear as we evolve)
-                            throw new BomEntityIncompatibleException("Object does not have a \"string Ref\" or a suitable list of strings property, but was listed as having a reference to a \"bom-ref\" identifier: " + oldRef);
+                            throw new BomEntityIncompatibleException(
+                                "Object does not have a \"string Ref\" or a suitable " +
+                                "list of strings property, but was listed as having " +
+                                "a reference to a \"bom-ref\" identifier: " + oldRef);
                         }
                     }
                 }
