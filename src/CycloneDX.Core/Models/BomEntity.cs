@@ -1370,7 +1370,9 @@ namespace CycloneDX.Models
         // (and printing in ToString() method) to help
         // debug the data-walk overheads. Accounting
         // does have a cost (~5% for a larger 20s run).
+        #pragma warning disable S3052
         private bool debugPerformance { get; set; } = false;
+        #pragma warning restore S3052
 
         // Helpers for performance accounting - how hard
         // was it to discover the information in this
