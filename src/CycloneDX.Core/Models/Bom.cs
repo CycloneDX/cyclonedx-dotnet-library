@@ -350,6 +350,38 @@ namespace CycloneDX.Models
         }
 
         /// <summary>
+        /// Provide a Dictionary whose keys are "Ref" or equivalent
+        /// string values which link back to a "BomRef" hopefully
+        /// defined somewhere in the same Bom document (but may be
+        /// dangling, or sometimes co-opted with external links to
+        /// other Bom documents!), and whose values are lists of
+        /// BomEntities which use this same "ref" value.
+        ///
+        /// See also: GetBomRefsInContainers() with similar info
+        /// about keys which are BomEntity "containers" and values
+        /// are lists of BomEntity with a BomRef in those containers,
+        /// and GetBomRefsWithContainer() with transposed returns.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<BomEntity, List<BomEntity>> GetRefsInContainers(BomWalkResult res)
+        {
+            AssertThisBomWalkResult(res);
+            return res.GetRefsInContainers();
+        }
+
+        /// <summary>
+        /// This is a run-once method to get a dictionary.
+        /// See GetRefsInContainers(BomWalkResult) for one using a cache
+        /// prepared by WalkThis() for mass manipulations.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<BomEntity, List<BomEntity>> GetRefsInContainers()
+        {
+            BomWalkResult res = WalkThis();
+            return GetRefsInContainers(res);
+        }
+
+        /// <summary>
         /// Provide a Dictionary whose keys are container BomEntities
         /// and values are lists of one or more directly contained
         /// entities with a BomRef attribute, e.g. the Bom itself and
