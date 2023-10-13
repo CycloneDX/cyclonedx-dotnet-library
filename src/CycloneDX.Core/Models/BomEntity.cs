@@ -1896,7 +1896,7 @@ namespace CycloneDX.Models
                         sbeCountNewBomRef++;
                         stopWatchNewBomrefListAdd.Start();
                     }
-                    containerList.Add((BomEntity)obj);
+                    containerList.Add(obj);
                     if (debugPerformance)
                     {
                         stopWatchNewBomrefListAdd.Stop();
