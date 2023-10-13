@@ -363,7 +363,7 @@ namespace CycloneDX.Models
         /// and GetBomRefsWithContainer() with transposed returns.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<BomEntity, List<BomEntity>> GetRefsInContainers(BomWalkResult res)
+        public Dictionary<String, List<BomEntity>> GetRefsInContainers(BomWalkResult res)
         {
             AssertThisBomWalkResult(res);
             return res.GetRefsInContainers();
@@ -375,7 +375,7 @@ namespace CycloneDX.Models
         /// prepared by WalkThis() for mass manipulations.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<BomEntity, List<BomEntity>> GetRefsInContainers()
+        public Dictionary<String, List<BomEntity>> GetRefsInContainers()
         {
             BomWalkResult res = WalkThis();
             return GetRefsInContainers(res);
