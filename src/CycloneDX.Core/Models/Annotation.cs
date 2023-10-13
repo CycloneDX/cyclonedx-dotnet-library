@@ -38,7 +38,7 @@ namespace CycloneDX.Models
             public string Ref { get; set; }
 
             private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_AnyBomEntity =
-            new Dictionary<PropertyInfo, ImmutableList<Type>>()
+            new Dictionary<PropertyInfo, ImmutableList<Type>>
             {
                 { typeof(XmlAnnotationSubject).GetProperty("Ref", typeof(string)), RefLinkConstraints_AnyBomEntity }
             }.ToImmutableDictionary();

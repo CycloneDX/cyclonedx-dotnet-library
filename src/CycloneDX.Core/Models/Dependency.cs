@@ -57,13 +57,13 @@ namespace CycloneDX.Models
         }
 
         private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_Component =
-        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
         {
             { typeof(Dependency).GetProperty("Ref", typeof(string)), RefLinkConstraints_Component }
         }.ToImmutableDictionary();
 
         private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_ComponentOrService =
-        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
         {
             { typeof(Dependency).GetProperty("Ref", typeof(string)), RefLinkConstraints_ComponentOrService }
         }.ToImmutableDictionary();

@@ -40,7 +40,7 @@ namespace CycloneDX.Models.Vulnerabilities
         public List<AffectedVersions> Versions { get; set; }
 
         private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_ComponentOrService =
-        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
         {
             { typeof(Affects).GetProperty("Ref", typeof(string)), RefLinkConstraints_ComponentOrService }
         }.ToImmutableDictionary();

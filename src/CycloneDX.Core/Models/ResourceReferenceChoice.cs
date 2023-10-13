@@ -79,7 +79,7 @@ namespace CycloneDX.Models
         }
 
         private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_AnyBomEntity =
-        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
         {
             { typeof(ResourceReferenceChoice).GetProperty("Ref", typeof(string)), RefLinkConstraints_AnyBomEntity }
         }.ToImmutableDictionary();

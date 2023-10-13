@@ -37,7 +37,7 @@ namespace CycloneDX.Models
         public string Ref { get; set; }
 
         private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_ModelDataset =
-        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
         {
             { typeof(DatasetChoice).GetProperty("Ref", typeof(string)), RefLinkConstraints_ModelDataset }
         }.ToImmutableDictionary();
