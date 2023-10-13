@@ -1349,8 +1349,9 @@ namespace CycloneDX.Models
         /// keys are "container" entities and values
         /// are lists of "contained" entities which
         /// have a BomRef or equivalent property.
+        /// Exposed by GetBomRefsInContainers().
         /// </summary>
-        readonly public Dictionary<BomEntity, List<BomEntity>> dictRefsInContainers = new Dictionary<BomEntity, List<BomEntity>>();
+        readonly private Dictionary<BomEntity, List<BomEntity>> dictRefsInContainers = new Dictionary<BomEntity, List<BomEntity>>();
 
         /// <summary>
         /// Populated by GetBomRefsInContainers(),

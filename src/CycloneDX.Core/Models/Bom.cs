@@ -371,7 +371,7 @@ namespace CycloneDX.Models
         public Dictionary<BomEntity, List<BomEntity>> GetBomRefsInContainers(BomWalkResult res)
         {
             AssertThisBomWalkResult(res);
-            return res.dictRefsInContainers;
+            return res.GetBomRefsInContainers();
         }
 
         /// <summary>
