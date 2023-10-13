@@ -1342,7 +1342,7 @@ namespace CycloneDX.Models
         /// The BomEntity (normally a whole Bom document)
         /// which was walked and reported here.
         /// </summary>
-        private BomEntity bomRoot { get; set; }
+        private BomEntity bomRoot;
 
         /// <summary>
         /// Populated by GetBomRefsInContainers(),
@@ -2095,6 +2095,16 @@ namespace CycloneDX.Models
             {
                 stopWatchWalkTotal.Stop();
             }
+        }
+
+        public BomEntity GetBomRoot()
+        {
+            return bomRoot;
+        }
+
+        public void SetBomRoot(BomEntity be)
+        {
+            bomRoot = be;
         }
 
         /// <summary>

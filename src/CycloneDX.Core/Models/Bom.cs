@@ -341,11 +341,11 @@ namespace CycloneDX.Models
                 throw new ArgumentNullException("res");
             }
 
-            if (!(Object.ReferenceEquals(res.bomRoot, this)))
+            if (!(Object.ReferenceEquals(res.GetBomRoot(), this)))
             {
                 throw new BomEntityConflictException(
                     "The specified BomWalkResult.bomRoot does not refer to this Bom document instance",
-                    res.bomRoot.GetType());
+                    res.GetBomRoot().GetType());
             }
         }
 
