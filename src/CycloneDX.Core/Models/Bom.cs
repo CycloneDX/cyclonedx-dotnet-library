@@ -862,7 +862,7 @@ namespace CycloneDX.Models
             }
 
             // Survived without exceptions! ;)
-            return true;
+            return (referrerModified == 0);
         }
 
         /// <summary>
