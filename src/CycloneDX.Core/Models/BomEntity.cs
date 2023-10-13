@@ -1342,7 +1342,7 @@ namespace CycloneDX.Models
         /// The BomEntity (normally a whole Bom document)
         /// which was walked and reported here.
         /// </summary>
-        public BomEntity bomRoot = null;
+        private BomEntity bomRoot { get; set; }
 
         /// <summary>
         /// Populated by GetBomRefsInContainers(),
@@ -1368,7 +1368,7 @@ namespace CycloneDX.Models
         // (and printing in ToString() method) to help
         // debug the data-walk overheads. Accounting
         // does have a cost (~5% for a larger 20s run).
-        public bool debugPerformance = false;
+        private bool debugPerformance { get; set; }
 
         // Helpers for performance accounting - how hard
         // was it to discover the information in this
@@ -1392,8 +1392,9 @@ namespace CycloneDX.Models
         private int sbeCountNewBomRefCheckDict { get; set; }
         private int sbeCountNewBomRef { get; set; }
 
-        // This one is null, outermost loop makes a new instance, starts and stops it:
-        private Stopwatch stopWatchWalkTotal = null;
+        // This one is initially null: the outermost walk loop
+        // makes a new instance, starts and stops this stopwatch
+        private Stopwatch stopWatchWalkTotal;
         private Stopwatch stopWatchEvalAttr = new Stopwatch();
         private Stopwatch stopWatchNewBomref = new Stopwatch();
         private Stopwatch stopWatchNewBomrefCheck = new Stopwatch();
