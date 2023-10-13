@@ -1843,6 +1843,8 @@ namespace CycloneDX.Models
                             sbeCountNewBomRefCheckDict++;
                             stopWatchNewBomrefCheck.Start();
                         }
+
+                        #pragma warning disable S125
                         // "proper" dict key lookup probably goes via hashes
                         // which go via serialization for BomEntity classes,
                         // and so walking a Bom with a hundred Components
@@ -1855,6 +1857,7 @@ namespace CycloneDX.Models
                         // this should not happen in this loop, and the
                         // intention is to keep tabs on references to all
                         // original objects so we can rename what we need):
+                        #pragma warning restore S125
                         foreach (var (cont, list) in dictRefsInContainers)
                         {
                             if (Object.ReferenceEquals(container, cont))
