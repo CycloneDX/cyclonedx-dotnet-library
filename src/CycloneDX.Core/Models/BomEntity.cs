@@ -1370,7 +1370,7 @@ namespace CycloneDX.Models
         // (and printing in ToString() method) to help
         // debug the data-walk overheads. Accounting
         // does have a cost (~5% for a larger 20s run).
-        private bool debugPerformance { get; set; }
+        private bool debugPerformance { get; set; } = false;
 
         // Helpers for performance accounting - how hard
         // was it to discover the information in this
