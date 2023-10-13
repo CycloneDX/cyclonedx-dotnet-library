@@ -1361,8 +1361,9 @@ namespace CycloneDX.Models
         /// with external links to other Bom documents!),
         /// and values are lists of entities which use
         /// this same "ref" value.
+        /// Exposed by GetRefsInContainers().
         /// </summary>
-        readonly public Dictionary<String, List<BomEntity>> dictBackrefs = new Dictionary<String, List<BomEntity>>();
+        readonly private Dictionary<String, List<BomEntity>> dictBackrefs = new Dictionary<String, List<BomEntity>>();
 
         // Callers can enable performance monitoring
         // (and printing in ToString() method) to help

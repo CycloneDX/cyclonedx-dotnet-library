@@ -581,7 +581,7 @@ namespace CycloneDX.Models
             }
 
             // ...and of back-references (if any):
-            foreach (var (containedRef, referrerList) in res.dictBackrefs)
+            foreach (var (containedRef, referrerList) in res.GetRefsInContainers())
             {
                 if (containedRef is null || containedRef != oldRef)
                 {
