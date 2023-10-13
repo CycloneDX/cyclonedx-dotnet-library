@@ -72,7 +72,7 @@ namespace CycloneDX.Models
         public EvidenceTools Tools { get; set; }
 
         private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_List_AnyBomEntity =
-        new Dictionary<PropertyInfo, ImmutableList<Type>>()
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
         {
             // EvidenceTools is a List<string> as of CDX spec 1.5
             { typeof(EvidenceIdentity).GetProperty("Tools", typeof(EvidenceTools)), RefLinkConstraints_AnyBomEntity }
