@@ -1377,6 +1377,12 @@ namespace CycloneDX.Models
         // Helpers for performance accounting - how hard
         // was it to discover the information in this
         // BomWalkResult object?
+        // TOTHINK: Expose these values directly, for
+        // very curious callers (for whom ToString()
+        // would not suffice)?
+        // * Use public getter/private setter? or...
+        // * Method to export a Dictionary of values,
+        //   including a momentary reading of stopwatch?
         private int sbeCountMethodEnter { get; set; }
         private int sbeCountMethodQuickExit { get; set; }
         private int sbeCountPropInfoEnter { get; set; }
