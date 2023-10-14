@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Issue
+    public class Issue : BomEntity
     {
         [ProtoContract]
         public enum IssueClassification

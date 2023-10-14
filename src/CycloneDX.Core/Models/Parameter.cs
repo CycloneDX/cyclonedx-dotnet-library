@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Parameter
+    public class Parameter : BomEntity
     {
         [XmlElement("name")]
         [ProtoMember(1)]

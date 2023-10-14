@@ -24,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class ProofOfConcept
+    public class ProofOfConcept : BomEntity
     {
         [XmlElement("reproductionSteps")]
         [ProtoMember(1)]

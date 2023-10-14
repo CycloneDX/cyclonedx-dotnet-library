@@ -27,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("input")]
     [ProtoContract]
-    public class Input
+    public class Input : BomEntity
     {
         [XmlElement("resource")]
         [ProtoMember(3)]

@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("modelCard")]
     [ProtoContract]
-    public class ModelCard
+    public class ModelCard : BomEntity, IBomEntityWithRefType_String_BomRef
     {
         [ProtoContract]
         public enum ModelParameterApproachType
@@ -44,13 +44,13 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class ModelCardQuantitativeAnalysis
+        public class ModelCardQuantitativeAnalysis : BomEntity
         {
             [ProtoContract]
-            public class PerformanceMetric
+            public class PerformanceMetric : BomEntity
             {
                 [ProtoContract]
-                public class PerformanceMetricConfidenceInterval
+                public class PerformanceMetricConfidenceInterval : BomEntity
                 {
                     [XmlElement("lowerBound")]
                     [ProtoMember(1)]

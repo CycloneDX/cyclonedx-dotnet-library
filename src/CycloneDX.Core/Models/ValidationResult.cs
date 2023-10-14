@@ -23,7 +23,7 @@ namespace CycloneDX.Models
     /// <summary>
     /// The return type for all validation methods.
     /// </summary>
-    public class ValidationResult
+    public class ValidationResult : BomEntity
     {
         /// <summary>
         /// <c>true</c> if the document has been successfully validated.

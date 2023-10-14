@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("command")]
     [ProtoContract]
-    public class Command
+    public class Command : BomEntity
     {
         [XmlElement("executed")]
         [ProtoMember(1)]

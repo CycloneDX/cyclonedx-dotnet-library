@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class EnvironmentVarChoice
+    public class EnvironmentVarChoice : BomEntity
     {
         [ProtoMember(1)]
         public Property Property { get; set; }

@@ -24,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ToolChoices : IXmlSerializable
+    public class ToolChoices : BomEntity, IXmlSerializable
     {
         internal SpecificationVersion SpecVersion { get; set; }
 

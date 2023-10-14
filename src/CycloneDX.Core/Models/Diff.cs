@@ -21,11 +21,12 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Diff
+    public class Diff : BomEntity
     {
         [XmlElement("text")]
         [ProtoMember(1)]
         public AttachedText Text { get; set; }
+
         [XmlElement("url")]
         [ProtoMember(2)]
         public string Url { get; set; }

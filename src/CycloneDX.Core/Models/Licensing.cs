@@ -27,7 +27,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("licensing")]
     [ProtoContract]
-    public class Licensing
+    public class Licensing : BomEntity
     {
         [ProtoContract]
         public enum LicenseType

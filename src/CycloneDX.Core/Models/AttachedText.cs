@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class AttachedText
+    public class AttachedText : BomEntity
     {
         [XmlAttribute("content-type")]
         [ProtoMember(1)]

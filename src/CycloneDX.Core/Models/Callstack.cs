@@ -28,11 +28,11 @@ namespace CycloneDX.Models
 {
     [XmlType("callstack")]
     [ProtoContract]
-    public class Callstack
+    public class Callstack : BomEntity
     {
         [XmlType("frame")]
         [ProtoContract]
-        public class Frame
+        public class Frame : BomEntity
         {
             [XmlElement("package")]
             [ProtoMember(1)]

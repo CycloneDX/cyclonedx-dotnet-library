@@ -26,10 +26,10 @@ namespace CycloneDX.Models
 {
     [XmlType("modelCardConsiderations")]
     [ProtoContract]
-    public class ModelCardConsiderations
+    public class ModelCardConsiderations : BomEntity
     {
         [ProtoContract]
-        public class ModelCardEthicalConsideration
+        public class ModelCardEthicalConsideration : BomEntity
         {
             [XmlElement("name")]
             [ProtoMember(1)]
@@ -41,7 +41,7 @@ namespace CycloneDX.Models
         }
         
         [ProtoContract]
-        public class ModelCardFairnessAssessment
+        public class ModelCardFairnessAssessment : BomEntity
         {
             [XmlElement("groupAtRisk")]
             [ProtoMember(1)]

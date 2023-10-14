@@ -24,7 +24,7 @@ namespace CycloneDX.Models
 {
     [Obsolete("Tool is deprecated and will be removed in a future version")]
     [ProtoContract]
-    public class Tool: IEquatable<Tool>
+    public class Tool : BomEntity
     {
         [XmlElement("vendor")]
         [ProtoMember(1)]
@@ -48,14 +48,21 @@ namespace CycloneDX.Models
         public List<ExternalReference> ExternalReferences { get; set; }
         public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
 
-        public bool Equals(Tool obj)
+        /// <summary>
+        /// See BomEntity.NormalizeList() and ListMergeHelper.SortByImpl().
+        /// Note that as a static method this is not exactly an "override",
+        /// but the BomEntity base class implementation makes it behave
+        /// like that in practice.
+        /// </summary>
+        /// <param name="ascending">Ascending (true) or Descending (false)</param>
+        /// <param name="recursive">Passed to BomEntity.NormalizeList() (effective if recursing), not handled right here</param>
+        /// <param name="list">List<Tool> to sort</param>
+        public static void NormalizeList(bool ascending, bool recursive, List<Tool> list)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
-        }
-    
-        public override int GetHashCode()
-        {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+            var sortHelper = new ListMergeHelper<Tool>();
+            sortHelper.SortByImpl(ascending, recursive, list,
+                o => (o?.Vendor, o?.Name, o?.Version),
+                null);
         }
     }
 }

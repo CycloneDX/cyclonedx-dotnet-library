@@ -28,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-methods")]
     [ProtoContract]
-    public class EvidenceMethods
+    public class EvidenceMethods : BomEntity
     {
         [ProtoContract]
         public enum EvidenceTechnique

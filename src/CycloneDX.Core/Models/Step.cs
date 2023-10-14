@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("step")]
     [ProtoContract]
-    public class Step
+    public class Step : BomEntity
     {
         [XmlElement("name")]
         [ProtoMember(1)]

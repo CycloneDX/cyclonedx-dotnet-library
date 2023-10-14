@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Patch
+    public class Patch : BomEntity
     {
         [ProtoContract]
         public enum PatchClassification
