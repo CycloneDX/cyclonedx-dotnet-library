@@ -267,7 +267,7 @@
     <copyrightText>NOASSERTION</copyrightText>
     <downloadLocation>https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz</downloadLocation>
     <externalRefs>
-      <referenceCategory>PACKAGE_MANAGER</referenceCategory>
+      <referenceCategory>PACKAGE-MANAGER</referenceCategory>
       <referenceLocator>pkg:maven/org.apache.jena/apache-jena@3.12.0</referenceLocator>
       <referenceType>purl</referenceType>
     </externalRefs>

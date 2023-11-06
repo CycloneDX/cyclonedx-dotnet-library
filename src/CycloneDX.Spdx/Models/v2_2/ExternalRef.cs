@@ -16,6 +16,8 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
@@ -39,7 +41,16 @@ namespace CycloneDX.Spdx.Models.v2_2
         [JsonIgnore]
         public string ReferenceCategoryAsString
         {
-            get => ReferenceCategory.ToString();
+            get
+            {
+                switch (ReferenceCategory)
+                {
+                    case ExternalRefCategory.PACKAGE_MANAGER:
+                        return "PACKAGE-MANAGER";
+                    default:
+                        return ReferenceCategory.ToString();
+                }
+            }
             set
             {
                 switch (value.ToUpperInvariant())

@@ -40,7 +40,7 @@ namespace CycloneDX.Spdx.Serialization
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             };
-            options.Converters.Add(new HyphenToUnderscoreEnumConverter<ExternalRefCategory>());
+            options.Converters.Add(new HyphenEnumConverter<ExternalRefCategory>());
             options.Converters.Add(new JsonStringEnumConverter());
             return options;
         }

@@ -23,7 +23,7 @@ using System.Text.Json.Serialization;
 namespace CycloneDX.Spdx.Serialization.Converters
 {
 
-    public class HyphenToUnderscoreEnumConverter<T> : JsonConverter<T> where T: struct
+    public class HyphenEnumConverter<T> : JsonConverter<T> where T: struct
     {
         public override T Read(
             ref Utf8JsonReader reader,
@@ -56,7 +56,7 @@ namespace CycloneDX.Spdx.Serialization.Converters
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
-            writer.WriteStringValue(value.ToString());
+            writer.WriteStringValue(value.ToString().Replace('_', '-'));
         }
     }
 }
