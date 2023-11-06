@@ -29,6 +29,7 @@ namespace CycloneDX.Spdx.Tests
     {
         [Theory]
         [InlineData("document")]
+        [InlineData("document-with-hyphens-in-external-reference-category")]
         public void ValidateJsonStringTest(string baseFilename)
         {
             var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
@@ -41,6 +42,7 @@ namespace CycloneDX.Spdx.Tests
 
         [Theory]
         [InlineData("document")]
+        [InlineData("document-with-hyphens-in-external-reference-category")]
         public async Task ValidateJsonStreamTest(string baseFilename)
         {
             var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
