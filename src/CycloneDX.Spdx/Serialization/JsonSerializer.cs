@@ -21,6 +21,8 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using CycloneDX.Spdx.Models.v2_2;
+using CycloneDX.Spdx.Serialization.Converters;
 
 namespace CycloneDX.Spdx.Serialization
 {
@@ -38,6 +40,7 @@ namespace CycloneDX.Spdx.Serialization
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             };
+            options.Converters.Add(new HyphenToUnderscoreEnumConverter<ExternalRefCategory>());
             options.Converters.Add(new JsonStringEnumConverter());
             return options;
         }
