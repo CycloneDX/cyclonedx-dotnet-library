@@ -78,42 +78,30 @@ namespace CycloneDX.Spdx.Validation
         private static ValidationResult Validate(JsonSchema schema, JsonDocument jsonDocument)
         {
             var validationMessages = new List<string>();
-            var validationOptions = new ValidationOptions
+            var validationOptions = new EvaluationOptions
             {
-                OutputFormat = OutputFormat.Detailed,
+                OutputFormat = OutputFormat.List,
                 RequireFormatValidation = true
             };
 
-            var result = schema.Validate(jsonDocument.RootElement, validationOptions);
+            var result = schema.Evaluate(jsonDocument.RootElement, validationOptions);
 
             if (!result.IsValid)
             {
-                validationMessages.Add($"Validation failed: {result.Message}");
-                validationMessages.Add(result.SchemaLocation.ToString());
-
-                if (result.NestedResults != null)
+                validationMessages.Add("Validation failed:");
+                // because we requested the results as a flat list
+                // there will be no nested results
+                foreach (var detail in result.Details)
                 {
-                    var nestedResults = new Queue<ValidationResults>(result.NestedResults);
-
-                    while (nestedResults.Count > 0)
+                    if (detail.HasErrors)
                     {
-                        var nestedResult = nestedResults.Dequeue();
-
-                        if (
-                            !string.IsNullOrEmpty(nestedResult.Message)
-                            && nestedResult.NestedResults != null
-                            && nestedResult.NestedResults.Count > 0)
+                        foreach (var error in detail.Errors)
                         {
-                            validationMessages.Add($"{nestedResult.InstanceLocation}: {nestedResult.Message}");
+                            validationMessages.Add(error.Value);
                         }
-                        
-                        if (nestedResult.NestedResults != null)
-                        {
-                            foreach (var newNestedResult in nestedResult.NestedResults)
-                            {
-                                nestedResults.Enqueue(newNestedResult);
-                            }
-                        }
+                        validationMessages.Add(detail.SchemaLocation.ToString());
+                        validationMessages.Add($"On instance: {detail.InstanceLocation}:");
+                        validationMessages.Add(detail.InstanceLocation.Evaluate(jsonDocument.RootElement).ToString());
                     }
                 }
             }

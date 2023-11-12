@@ -51,6 +51,7 @@ namespace CycloneDX.Core.Tests.Json.v1_5
         [InlineData("valid-metadata-manufacture-1.5.json")]
         [InlineData("valid-metadata-supplier-1.5.json")]
         [InlineData("valid-metadata-timestamp-1.5.json")]
+        [InlineData("valid-metadata-timestamp-higher-precision-1.5.json")]
         [InlineData("valid-metadata-tool-1.5.json")]
         [InlineData("valid-metadata-tool-deprecated-1.5.json")]
         [InlineData("valid-minimal-viable-1.5.json")]
