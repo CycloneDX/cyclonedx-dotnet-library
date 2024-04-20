@@ -3,6 +3,9 @@ name: .NET Core CI
 
 on: [pull_request, workflow_dispatch]
 
+env:
+  SNAPSHOOTER_STRICT_MODE: true
+
 jobs:
   # Fail if there are build warnings
   #
