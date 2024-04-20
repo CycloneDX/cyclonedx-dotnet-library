@@ -39,7 +39,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: SnapshooterHotfixSymlink
-      run: ln -s "$(pwd)" /_
+      run: sudo ln -s "$GITHUB_WORKSPACE" /_
       shell: bash
     - uses: actions/setup-dotnet@v3
       with:
