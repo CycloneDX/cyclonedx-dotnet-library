@@ -85,6 +85,9 @@ namespace CycloneDX.Models
                     case "1.5":
                         SpecVersion = SpecificationVersion.v1_5;
                         break;
+                    case "1.6":
+                        SpecVersion = SpecificationVersion.v1_6;
+                        break;
                     default:
                         throw new ArgumentException($"Unsupported specification version: {value}");
                 }

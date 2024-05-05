@@ -107,7 +107,7 @@ namespace CycloneDX.Xml
         {
             Contract.Requires(bom != null);
 
-            var serializer = GetXmlSerializer(bom.SpecVersion);
+            var serializer = GetXmlSerializer(bom.SpecVersion);            
             using (var ms = new MemoryStream())
             {
                 Serialize(bom, ms);

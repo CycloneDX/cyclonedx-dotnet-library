@@ -32,14 +32,24 @@ namespace CycloneDX.Models
             if (_datasetSerializer == null)
             {
                 var rootAttr = new XmlRootAttribute("dataset");
-                rootAttr.Namespace = "http://cyclonedx.org/schema/bom/1.5";
+                rootAttr.Namespace = "http://cyclonedx.org/schema/bom/1.6";
                 _datasetSerializer = new XmlSerializer(typeof(Data), rootAttr);
             }
 
             return _datasetSerializer;
         }
-        
-        public System.Xml.Schema.XmlSchema GetSchema() {
+
+        private static XmlSerializer GetDatasetSerializerFor1_5()
+        {
+            //yep this is fucked up. But right now is really not the time to find out why this was hard coded to a bom version in the first place.
+            var rootAttr = new XmlRootAttribute("dataset");
+            rootAttr.Namespace = "http://cyclonedx.org/schema/bom/1.5";
+            _datasetSerializer = new XmlSerializer(typeof(Data), rootAttr);
+            return _datasetSerializer;
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
             return null;
         }
 
@@ -55,15 +65,26 @@ namespace CycloneDX.Models
                 }
                 else if (reader.LocalName == "dataset")
                 {
-                    var serializer = GetDatasetSerializer();
-                    var dataset = (Data)serializer.Deserialize(reader);
-                    this.Add(new DatasetChoice { DataSet = dataset });
+                    try
+                    {
+
+                        var serializer = GetDatasetSerializer();
+                        var dataset = (Data)serializer.Deserialize(reader);
+                        this.Add(new DatasetChoice { DataSet = dataset });
+                    }
+                    catch
+                    {
+                        var serializer = GetDatasetSerializerFor1_5();
+                        var dataset = (Data)serializer.Deserialize(reader);
+                        this.Add(new DatasetChoice { DataSet = dataset });
+                    }
                 }
             }
             reader.ReadEndElement();
         }
-        
-        public void WriteXml(System.Xml.XmlWriter writer) {
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
             foreach (var datasetChoice in this)
             {
                 if (datasetChoice.Ref != null)

@@ -1,0 +1,28 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serialNumber="urn:uuid:ed5c5ba0-2be6-4b58-ac29-01a7fd375123" version="1" xmlns="http://cyclonedx.org/schema/bom/1.6">
+  <components>
+    <component type="machine-learning-model" bom-ref="huggingface.co-meta-llama-Llama-2-7b">
+      <supplier>
+        <name>Hugging Face</name>
+      </supplier>
+      <publisher>meta</publisher>
+      <group>meta-llama</group>
+      <name>llama-2-7b</name>
+      <externalReferences>
+        <reference type="distribution">
+          <url>https://huggingface.co/meta-llama/Llama-2-7b</url>
+        </reference>
+      </externalReferences>
+      <modelCard>
+        <considerations>
+          <users />
+          <useCases />
+          <technicalLimitations />
+          <performanceTradeoffs />
+          <ethicalConsiderations />
+          <fairnessAssessments />
+        </considerations>
+      </modelCard>
+    </component>
+  </components>
+</bom>

@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using CycloneDX.Core.Models;
 using ProtoBuf;
 
 namespace CycloneDX.Models
@@ -58,6 +59,8 @@ namespace CycloneDX.Models
             Machine_Learning_Model,
             [XmlEnum(Name = "data")]
             Data,
+            [XmlEnum(Name = "cryptographic-asset")]
+            Cryptographic_Asset,
         }
 
         [ProtoContract]
@@ -214,6 +217,11 @@ namespace CycloneDX.Models
         [XmlElement("data")]
         [ProtoMember(26)]
         public Data Data { get; set; }
+
+        [XmlElement("cryptoProperties")]
+        [ProtoMember(27)]
+        public CryptoProperties CryptoProperties { get; set; }
+
 
         public bool Equals(Component obj)
         {
