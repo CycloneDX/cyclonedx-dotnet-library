@@ -32,9 +32,15 @@ namespace CycloneDX.Core.Models
 
         [XmlElement("version")]
         public string Version { get; set; }
-
-        [XmlElement("cipherSuites")]
+        [XmlIgnore]
         public List<CipherSuite> CipherSuites { get; set; }
+        [XmlElement("cipherSuites")]
+        public CipherSuiteCollection CipherSuites_XML
+        {
+            get { return new CipherSuiteCollection { CipherSuites = this.CipherSuites }; }
+            set { this.CipherSuites = new List<CipherSuite>(value.CipherSuites); }
+        }
+
 
         [XmlElement("ikev2TransformTypes")]
         public Ikev2TransformTypes Ikev2TransformTypes { get; set; }
@@ -83,17 +89,60 @@ namespace CycloneDX.Core.Models
     }
 
 
+    public class CipherSuiteCollection
+    {
+        [XmlElement("cipherSuite")]
+        public List<CipherSuite> CipherSuites { get; set; }
+    }
+
     public class CipherSuite
     {
         [XmlElement("name")]
         public string Name { get; set; }
 
-        [XmlElement("algorithms")]
+        [XmlIgnore]
         public List<string> Algorithms { get; set; }
 
+        [XmlElement("algorithms")]
+        public CipherSuiteAlgorithmCollection Algorithms_XML
+        {
+            get
+            {
+                return new CipherSuiteAlgorithmCollection { Algorithms = this.Algorithms };
+            }
+            set 
+            {
+                this.Algorithms = new List<string>(value.Algorithms);
+            }
+        }
+        [XmlIgnore]
+        public List<string> Identifiers { get; set; }
         [XmlElement("identifiers")]
+        public CipherSuiteIdentifierCollection Identifiers_XML
+        {
+            get
+            {
+                return new CipherSuiteIdentifierCollection { Identifiers = this.Identifiers };
+            }
+            set
+            {
+                this.Identifiers = new List<string>(value.Identifiers);
+            }
+        }
+    }
+
+    public class CipherSuiteAlgorithmCollection
+    {
+        [XmlElement("algorithm")]
+        public List<string> Algorithms { get; set; }
+    }
+    public class CipherSuiteIdentifierCollection
+    {
+        [XmlElement("identifier")]
         public List<string> Identifiers { get; set; }
     }
+
+
 
     public enum AssetType
     {

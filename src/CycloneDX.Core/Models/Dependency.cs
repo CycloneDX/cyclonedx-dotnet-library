@@ -36,6 +36,10 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
 
+        [XmlElement("provides")]
+        [ProtoMember(3)]
+        public List<Provides> Provides { get; set; }
+
         public bool Equals(Dependency obj)
         {
             return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
@@ -45,5 +49,13 @@ namespace CycloneDX.Models
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
+    }
+
+    [ProtoContract]
+    public class Provides
+    {
+        [XmlAttribute("ref")]
+        [ProtoMember(1)]
+        public string Ref { get; set; }
     }
 }

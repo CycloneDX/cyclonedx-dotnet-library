@@ -1,92 +1,98 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Core.Models
 {
     public class AlgorithmProperties
     {
-        //[XmlIgnore]
-        [XmlElement("primitive")]
+        #region primitive
+        [XmlIgnore]
         public Primitive? Primitive { get; set; }
-        //[XmlElement("primitive")]
-        //public string Primitive_XML
-        //{
-        //    get => Primitive?.ToString();
-        //    set
-        //    {
-        //        if (string.IsNullOrEmpty(value))
-        //            Primitive = null;
-        //        else
-        //            Primitive = (Primitive)Enum.Parse(typeof(Primitive), value);
-        //    }
-        //}
+        [XmlElement("primitive"), JsonIgnore]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public Primitive Primitive_XML
+        {
+            get { return Primitive.Value; }
+            set { Primitive = value; }
+        }        
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePrimitive_XML()
+        {
+            return Primitive.HasValue;
+        }
+        #endregion
+
         [XmlElement("parameterSetIdentifier")]
         public string ParameterSetIdentifier { get; set; }
         [XmlElement("curve")]
         public string Curve { get; set; }
-        [XmlIgnore]
-        public ExecutionEnvironment? ExecutionEnvironment { get; set; }
+        //[XmlIgnore]
         [XmlElement("executionEnvironment")]
-        public string ExecutionEnvironment_XML
-        {
-            get => ExecutionEnvironment?.ToString();
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    ExecutionEnvironment = null;
-                else
-                    ExecutionEnvironment = (ExecutionEnvironment)Enum.Parse(typeof(ExecutionEnvironment), value);
-            }
-        }
-        [XmlIgnore]
-        public ImplementationPlatform? ImplementationPlatform { get; set; }
+        public ExecutionEnvironment? ExecutionEnvironment { get; set; }
+        //[XmlElement("executionEnvironment")]
+        //public string ExecutionEnvironment_XML
+        //{
+        //    get => ExecutionEnvironment?.ToString();
+        //    set
+        //    {
+        //        if (string.IsNullOrEmpty(value))
+        //            ExecutionEnvironment = null;
+        //        else
+        //            ExecutionEnvironment = (ExecutionEnvironment)Enum.Parse(typeof(ExecutionEnvironment), value);
+        //    }
+        //}
         [XmlElement("implementationPlatform")]
-        public string ImplementationPlatform_XML
-        {
-            get => ImplementationPlatform?.ToString();
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    ImplementationPlatform = null;
-                else
-                    ImplementationPlatform = (ImplementationPlatform)Enum.Parse(typeof(ImplementationPlatform), value);
-            }
-        }
+        public ImplementationPlatform? ImplementationPlatform { get; set; }
+        //[XmlElement("implementationPlatform")]
+        //public string ImplementationPlatform_XML
+        //{
+        //    get => ImplementationPlatform?.ToString();
+        //    set
+        //    {
+        //        if (string.IsNullOrEmpty(value))
+        //            ImplementationPlatform = null;
+        //        else
+        //            ImplementationPlatform = (ImplementationPlatform)Enum.Parse(typeof(ImplementationPlatform), value);
+        //    }
+        //}
         [XmlElement("certificationLevel")]
         public List<CertificationLevel> CertificationLevel { get; set; }
-        [XmlIgnore]
-        public AlgorithmMode? Mode { get; set; }
         [XmlElement("mode")]
-        public string Mode_XML
-        {
-            get => Mode?.ToString();
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    Mode = null;
-                else
-                    Mode = (AlgorithmMode)Enum.Parse(typeof(AlgorithmMode), value);
-            }
-        }
+        public AlgorithmMode? Mode { get; set; }
+        //[XmlElement("mode")]
+        //public string Mode_XML
+        //{
+        //    get => Mode?.ToString();
+        //    set
+        //    {
+        //        if (string.IsNullOrEmpty(value))
+        //            Mode = null;
+        //        else
+        //            Mode = (AlgorithmMode)Enum.Parse(typeof(AlgorithmMode), value);
+        //    }
+        //}
+
+        #region Padding
         [XmlIgnore]
         public PaddingScheme? Padding { get; set; }
-        [XmlElement("padding")]
-        public string Padding_XML
+        [XmlElement("padding"), JsonIgnore]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public PaddingScheme Padding_XML
         {
-            get => Padding?.ToString();
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    Padding = null;
-                else
-                    Padding = (PaddingScheme)Enum.Parse(typeof(PaddingScheme), value);
-            }
-        }
-        [XmlIgnore]
+            get { return Padding.Value; }
+            set { Padding = value; }
+        }        
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePadding_XML() => Padding.HasValue;
+        #endregion Padding
+
+        [XmlIgnore]        
         public List<CryptoFunction> CryptoFunctions { get; set; }
-        
-                
+
+
         [XmlElement("cryptoFunctions")]
         public CryptoFunctionCollection CryptoFunctionSerializable_XML
         {

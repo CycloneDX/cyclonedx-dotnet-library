@@ -18,7 +18,12 @@
           <implementationPlatform>x86_64</implementationPlatform>
           <certificationLevel>none</certificationLevel>
           <mode>gcm</mode>
-          <padding>pkcs5</padding>
+          <cryptoFunctions>
+            <cryptoFunction>keygen</cryptoFunction>
+            <cryptoFunction>encrypt</cryptoFunction>
+            <cryptoFunction>decrypt</cryptoFunction>
+            <cryptoFunction>tag</cryptoFunction>
+          </cryptoFunctions>
           <classicalSecurityLevel>128</classicalSecurityLevel>
           <nistQuantumSecurityLevel>1</nistQuantumSecurityLevel>
         </algorithmProperties>
@@ -40,6 +45,7 @@
     </dependency>
     <dependency ref="crypto-library">
       <dependency ref="some-library" />
+      <provides ref="aes128gcm" />
     </dependency>
   </dependencies>
 </bom>
