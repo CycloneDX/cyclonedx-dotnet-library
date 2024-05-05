@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
@@ -320,6 +321,7 @@ namespace CycloneDX
 
             q.EnqueueMany(bom.Metadata?.Tools?.Services);
             q.EnqueueMany(bom.Services);
+            q.EnqueueMany(bom.Annotations?.Select(an => an.Annotator).Where(anor => anor.Service != null).Select(anor => anor.Service) ?? new List<Service>());
 
             while (q.Count > 0)
             {
@@ -497,6 +499,15 @@ namespace CycloneDX
 
                     q.EnqueueMany(currentDependency.Dependencies);
                 }
+            }
+        }
+
+        public static void EnumerateAllDatasetChoices(Bom bom, Action<DatasetChoices> callback)
+        {
+            var x = bom.Components?.Select(c => c.ModelCard?.ModelParameters?.Datasets).Where(o => o != null) ?? new List<DatasetChoices>();
+            foreach (var item in x)
+            {
+                callback(item);
             }
         }
     }

@@ -26,25 +26,23 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class DatasetChoices : List<DatasetChoice>, IXmlSerializable
     {
-        private static XmlSerializer _datasetSerializer;
-        private static XmlSerializer GetDatasetSerializer()
+        internal SpecificationVersion SpecVersion { get; set; }
+
+        public DatasetChoices()
+        {
+            SpecVersion = SpecificationVersionHelpers.CurrentVersion;
+        }
+
+        private XmlSerializer _datasetSerializer;
+        private XmlSerializer GetDatasetSerializer()
         {
             if (_datasetSerializer == null)
             {
                 var rootAttr = new XmlRootAttribute("dataset");
-                rootAttr.Namespace = "http://cyclonedx.org/schema/bom/1.6";
+                rootAttr.Namespace = SpecificationVersionHelpers.XmlNamespace(SpecVersion);
                 _datasetSerializer = new XmlSerializer(typeof(Data), rootAttr);
             }
 
-            return _datasetSerializer;
-        }
-
-        private static XmlSerializer GetDatasetSerializerFor1_5()
-        {
-            //yep this is fucked up. But right now is really not the time to find out why this was hard coded to a bom version in the first place.
-            var rootAttr = new XmlRootAttribute("dataset");
-            rootAttr.Namespace = "http://cyclonedx.org/schema/bom/1.5";
-            _datasetSerializer = new XmlSerializer(typeof(Data), rootAttr);
             return _datasetSerializer;
         }
 
@@ -65,19 +63,9 @@ namespace CycloneDX.Models
                 }
                 else if (reader.LocalName == "dataset")
                 {
-                    try
-                    {
-
-                        var serializer = GetDatasetSerializer();
-                        var dataset = (Data)serializer.Deserialize(reader);
-                        this.Add(new DatasetChoice { DataSet = dataset });
-                    }
-                    catch
-                    {
-                        var serializer = GetDatasetSerializerFor1_5();
-                        var dataset = (Data)serializer.Deserialize(reader);
-                        this.Add(new DatasetChoice { DataSet = dataset });
-                    }
+                    var serializer = GetDatasetSerializer();
+                    var dataset = (Data)serializer.Deserialize(reader);
+                    this.Add(new DatasetChoice { DataSet = dataset });
                 }
             }
             reader.ReadEndElement();

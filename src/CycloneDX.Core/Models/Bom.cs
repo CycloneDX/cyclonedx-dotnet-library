@@ -51,6 +51,14 @@ namespace CycloneDX.Models
                 BomUtils.EnumerateAllServices(this, (service) =>
                 {
                     service.SpecVersion = _specVersion;
+                    if (service.XmlData != null)
+                    {
+                        service.XmlData.SpecVersion = _specVersion;
+                    }
+                });
+                BomUtils.EnumerateAllDatasetChoices(this, (DatasetChoices) =>
+                {
+                    DatasetChoices.SpecVersion = _specVersion;
                 });
             }
         }

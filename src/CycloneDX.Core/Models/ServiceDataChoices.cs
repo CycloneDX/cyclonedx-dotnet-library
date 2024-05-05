@@ -67,8 +67,7 @@ namespace CycloneDX.Models
         }
         
         public void WriteXml(System.Xml.XmlWriter writer)
-        {        
-
+        {
             if (this.DataClassifications != null)
             {
                 var serializer = Xml.Serializer.GetElementSerializer<DataClassification>(SpecVersion, "classification");
@@ -80,9 +79,8 @@ namespace CycloneDX.Models
             {
                 var serializer = Xml.Serializer.GetElementSerializer<DataFlow>(SpecVersion, "dataflow");
                 foreach (var df in this.DataFlows)
-                    serializer.Serialize(writer, df, null);
+                    serializer.Serialize(writer, df);
             }
-
         }
 
         public bool ShouldSerialize()
