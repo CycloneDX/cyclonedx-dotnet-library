@@ -30,30 +30,25 @@ namespace CycloneDX.Models
 
         public DatasetChoices()
         {
-            SpecVersion = SpecificationVersionHelpers.CurrentVersion;
+            SpecVersion = SpecificationVersionHelpers.CurrentVersion; 
         }
 
-        private XmlSerializer _datasetSerializer;
-        private XmlSerializer GetDatasetSerializer()
+        private XmlSerializer GetDatasetSerializer(string namespaceUri)
         {
-            if (_datasetSerializer == null)
+            var rootAttr = new XmlRootAttribute("dataset")
             {
-                var rootAttr = new XmlRootAttribute("dataset");
-                rootAttr.Namespace = SpecificationVersionHelpers.XmlNamespace(SpecVersion);
-                _datasetSerializer = new XmlSerializer(typeof(Data), rootAttr);
-            }
-
-            return _datasetSerializer;
+                Namespace = namespaceUri
+            };
+            return new XmlSerializer(typeof(Data), rootAttr);
         }
 
-        public System.Xml.Schema.XmlSchema GetSchema()
-        {
-            return null;
-        }
+        public System.Xml.Schema.XmlSchema GetSchema() => null;
 
         public void ReadXml(XmlReader reader)
         {
             reader.ReadStartElement();
+            string namespaceUri = reader.NamespaceURI; 
+
             while (reader.LocalName == "ref" || reader.LocalName == "dataset")
             {
                 if (reader.LocalName == "ref")
@@ -63,7 +58,7 @@ namespace CycloneDX.Models
                 }
                 else if (reader.LocalName == "dataset")
                 {
-                    var serializer = GetDatasetSerializer();
+                    var serializer = GetDatasetSerializer(namespaceUri);
                     var dataset = (Data)serializer.Deserialize(reader);
                     this.Add(new DatasetChoice { DataSet = dataset });
                 }
@@ -71,17 +66,19 @@ namespace CycloneDX.Models
             reader.ReadEndElement();
         }
 
-        public void WriteXml(System.Xml.XmlWriter writer)
+        public void WriteXml(XmlWriter writer)
         {
+            string namespaceUri = SpecificationVersionHelpers.XmlNamespace(SpecVersion);
             foreach (var datasetChoice in this)
             {
                 if (datasetChoice.Ref != null)
                 {
-                    writer.WriteElementString("ref", datasetChoice.Ref);
+                    writer.WriteElementString("ref", namespaceUri, datasetChoice.Ref);
                 }
-                else
+                else if (datasetChoice.DataSet != null)
                 {
-                    GetDatasetSerializer().Serialize(writer, datasetChoice.DataSet);
+                    var serializer = GetDatasetSerializer(namespaceUri);
+                    serializer.Serialize(writer, datasetChoice.DataSet);
                 }
             }
         }
