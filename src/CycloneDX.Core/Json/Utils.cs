@@ -67,7 +67,8 @@ namespace CycloneDX.Json
 
             options.Converters.Add(new EnvironmentVarChoiceConverter());
             options.Converters.Add(new ToolChoicesConverter());
-            
+
+            options.Converters.Add(new HyphenEnumConverter<EvidenceIdentity.EvidenceFieldType>());
             options.Converters.Add(new HyphenEnumConverter<EvidenceMethods.EvidenceTechnique>());
             options.Converters.Add(new ScoreMethodConverter());
             options.Converters.Add(new HyphenEnumConverter<Severity>());
