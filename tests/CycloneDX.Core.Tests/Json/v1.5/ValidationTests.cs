@@ -200,7 +200,7 @@ namespace CycloneDX.Core.Tests.Json.v1_5
 
             var validationResult = Validator.Validate(jsonBom, SpecificationVersion.v1_5);
 
-            Assert.True(validationResult.Valid);
+            Assert.True(validationResult.Valid, string.Join(Environment.NewLine, validationResult.Messages));
         }
     }
 }
