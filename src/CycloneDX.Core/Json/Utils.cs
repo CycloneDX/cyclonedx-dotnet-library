@@ -73,7 +73,6 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<Severity>());
             options.Converters.Add(new HyphenEnumConverter<Trigger.TriggerType>());
             options.Converters.Add(new HyphenEnumConverter<WorkflowTask.TaskType>());
-            options.Converters.Add(new HyphenEnumConverter<WorkflowTaskType>());
             options.Converters.Add(new HyphenEnumConverter<Output.OutputType>());
             options.Converters.Add(new HyphenEnumConverter<ModelCard.ModelParameterApproachType>());
             options.Converters.Add(new UnderscoreEnumConverter<Status>());
