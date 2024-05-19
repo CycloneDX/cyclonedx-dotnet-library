@@ -187,9 +187,8 @@ namespace CycloneDX.Models
         public List<ExternalReference> ExternalReferences { get; set; }
         public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
 
-        [XmlArray("components")]
-        [ProtoMember(21)]
-        public List<Component> Components { get; set; }
+        //In the xml format, Properties is in front of Components.
+        //XML serialization uses the member order unless explicitly specified differently.
         public bool ShouldSerializeComponents() { return Components?.Count > 0; }
 
         [XmlArray("properties")]
@@ -197,6 +196,10 @@ namespace CycloneDX.Models
         [ProtoMember(22)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        [XmlArray("components")]
+        [ProtoMember(21)]
+        public List<Component> Components { get; set; }
         
         [XmlElement("evidence")]
         [ProtoMember(23)]
