@@ -33,7 +33,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+#       os: [ubuntu-latest, windows-latest, macos-latest] 
+#       macos currently disabled. see issue #285 for more info.
+        os: [ubuntu-latest, windows-latest]
     timeout-minutes: 30
     
     steps:
@@ -42,7 +44,7 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: sudo ln -s "$GITHUB_WORKSPACE" /_
       shell: bash
-    - name: SnapshooterHotfixSymlinkLinux    
+    - name: SnapshooterHotfixSymlinkWindows  
       if: matrix.os == 'windows-latest'
       run:  New-Item -ItemType SymbolicLink -Path "/_" -Target "$env:GITHUB_WORKSPACE"
       shell: pwsh
