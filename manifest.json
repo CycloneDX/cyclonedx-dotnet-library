@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
+          "hash": "owLOnHLu++H+I600pSUxsWQZRdgJ7yw5P/usKMMDnUs="
         }
       },
       "is_incremental": false,
@@ -1545,7 +1545,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Workflow.html",
-          "hash": "mZcW1A9B2xl+/pKPu8U+7KoTKCgLigKPrdytcv0/Lxs="
+          "hash": "rvusNGqt+PC+2joa4PjobnixCnueEX9lnh85UigD8jw="
         }
       },
       "is_incremental": false,
@@ -1570,18 +1570,6 @@
         ".html": {
           "relative_path": "api/CycloneDX.Models.WorkflowTask.html",
           "hash": "GqtO1i1OSXgR/iK3v6vJr74nzSHag0CxQSl7aHnPSkU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Models.WorkflowTaskType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CycloneDX.Models.WorkflowTaskType.html",
-          "hash": "vkbBHwxF1LzRNsdUnyMgQniIAlPgfspKdcLFz85UvOA="
         }
       },
       "is_incremental": false,
@@ -1617,7 +1605,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.html",
-          "hash": "+w+GIwhveoAXtmCytOqte1xM5dIYxi/oz26okIBp8jo="
+          "hash": "6PXbIU6Wg+NicS+H3p5KwJ6ksLth9dRxgcDtfYE8YwI="
         }
       },
       "is_incremental": false,
@@ -2325,7 +2313,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "mF/32z0MrEEbOmidHrfFgxvHw0po2M3N7cH6bKPjbFs="
+          "hash": "RfyQ7V7aP11gxuhFZit6Em3BanU35hSMuMfN4rRQ8Zk="
         }
       },
       "is_incremental": false,
@@ -2433,7 +2421,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 201,
+          "total_file_count": 200,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
