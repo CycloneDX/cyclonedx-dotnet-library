@@ -162,9 +162,7 @@ namespace CycloneDX.Core.Tests.Json.v1_5
         [InlineData("valid-service-1.5.json")]
         [InlineData("valid-service-empty-objects-1.5.json")]
         [InlineData("valid-signatures-1.5.json")]
-        //TODO - I do not know why this particular one is failing
-        //Validating it with other tools works, maybe an obscure STJ bug???
-        //[InlineData("valid-vulnerability-1.5.json")]
+        [InlineData("valid-vulnerability-1.5.json")]
         public void JsonDowngradeTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.5", filename);
