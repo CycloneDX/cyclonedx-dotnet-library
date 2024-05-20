@@ -30,25 +30,25 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class Evidence
     {
-        [XmlElement("licenses")]
+        [XmlElement("licenses", Order = 3)]
         [ProtoMember(1)]
         public List<LicenseChoice> Licenses { get; set; }
 
-        [XmlArray("copyright")]
+        [XmlArray("copyright", Order = 4)]
         [XmlArrayItem("text")]
         [ProtoMember(2)]
         public List<EvidenceCopyright> Copyright { get; set; }
         
-        [XmlElement("identity")]
+        [XmlElement("identity", Order = 0)]
         [ProtoMember(3)]
         public EvidenceIdentity Identity { get; set; }
 
-        [XmlArray("occurrences")]
+        [XmlArray("occurrences", Order = 1)]
         [XmlArrayItem("occurrence")]
         [ProtoMember(4)]
         public List<EvidenceOccurrence> Occurrences { get; set; }
 
-        [XmlElement("callstack")]
+        [XmlElement("callstack", Order = 2)]
         [ProtoMember(5)]
         public Callstack Callstack { get; set; }
     }

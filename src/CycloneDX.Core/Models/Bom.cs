@@ -51,6 +51,14 @@ namespace CycloneDX.Models
                 BomUtils.EnumerateAllServices(this, (service) =>
                 {
                     service.SpecVersion = _specVersion;
+                    if (service.XmlData != null)
+                    {
+                        service.XmlData.SpecVersion = _specVersion;
+                    }
+                });
+                BomUtils.EnumerateAllDatasetChoices(this, (DatasetChoices) =>
+                {
+                    DatasetChoices.SpecVersion = _specVersion;
                 });
             }
         }
@@ -84,6 +92,9 @@ namespace CycloneDX.Models
                         break;
                     case "1.5":
                         SpecVersion = SpecificationVersion.v1_5;
+                        break;
+                    case "1.6":
+                        SpecVersion = SpecificationVersion.v1_6;
                         break;
                     default:
                         throw new ArgumentException($"Unsupported specification version: {value}");

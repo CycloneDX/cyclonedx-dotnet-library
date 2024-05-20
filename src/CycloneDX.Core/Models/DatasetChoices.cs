@@ -26,26 +26,29 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class DatasetChoices : List<DatasetChoice>, IXmlSerializable
     {
-        private static XmlSerializer _datasetSerializer;
-        private static XmlSerializer GetDatasetSerializer()
-        {
-            if (_datasetSerializer == null)
-            {
-                var rootAttr = new XmlRootAttribute("dataset");
-                rootAttr.Namespace = "http://cyclonedx.org/schema/bom/1.5";
-                _datasetSerializer = new XmlSerializer(typeof(Data), rootAttr);
-            }
+        internal SpecificationVersion SpecVersion { get; set; }
 
-            return _datasetSerializer;
+        public DatasetChoices()
+        {
+            SpecVersion = SpecificationVersionHelpers.CurrentVersion; 
         }
-        
-        public System.Xml.Schema.XmlSchema GetSchema() {
-            return null;
+
+        private XmlSerializer GetDatasetSerializer(string namespaceUri)
+        {
+            var rootAttr = new XmlRootAttribute("dataset")
+            {
+                Namespace = namespaceUri
+            };
+            return new XmlSerializer(typeof(Data), rootAttr);
         }
+
+        public System.Xml.Schema.XmlSchema GetSchema() => null;
 
         public void ReadXml(XmlReader reader)
         {
             reader.ReadStartElement();
+            string namespaceUri = reader.NamespaceURI; 
+
             while (reader.LocalName == "ref" || reader.LocalName == "dataset")
             {
                 if (reader.LocalName == "ref")
@@ -55,24 +58,27 @@ namespace CycloneDX.Models
                 }
                 else if (reader.LocalName == "dataset")
                 {
-                    var serializer = GetDatasetSerializer();
+                    var serializer = GetDatasetSerializer(namespaceUri);
                     var dataset = (Data)serializer.Deserialize(reader);
                     this.Add(new DatasetChoice { DataSet = dataset });
                 }
             }
             reader.ReadEndElement();
         }
-        
-        public void WriteXml(System.Xml.XmlWriter writer) {
+
+        public void WriteXml(XmlWriter writer)
+        {
+            string namespaceUri = SpecificationVersionHelpers.XmlNamespace(SpecVersion);
             foreach (var datasetChoice in this)
             {
                 if (datasetChoice.Ref != null)
                 {
-                    writer.WriteElementString("ref", datasetChoice.Ref);
+                    writer.WriteElementString("ref", namespaceUri, datasetChoice.Ref);
                 }
-                else
+                else if (datasetChoice.DataSet != null)
                 {
-                    GetDatasetSerializer().Serialize(writer, datasetChoice.DataSet);
+                    var serializer = GetDatasetSerializer(namespaceUri);
+                    serializer.Serialize(writer, datasetChoice.DataSet);
                 }
             }
         }

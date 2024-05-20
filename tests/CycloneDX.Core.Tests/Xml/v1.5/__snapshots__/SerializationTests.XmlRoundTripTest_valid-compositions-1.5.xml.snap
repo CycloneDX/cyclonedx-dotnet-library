@@ -60,10 +60,6 @@
       <source>
         <name>Acme Inc</name>
       </source>
-      <ratings />
-      <cwes />
-      <advisories />
-      <affects />
     </vulnerability>
   </vulnerabilities>
 </bom>

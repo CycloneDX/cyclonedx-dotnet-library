@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
@@ -69,7 +70,8 @@ namespace CycloneDX
                 bomCopy.SerialNumber = null;
                 bomCopy.ExternalReferences = null;
 
-                EnumerateAllComponents(bomCopy, (component) => {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
                     component.BomRef = null;
                     component.Pedigree = null;
                     component.ExternalReferences = null;
@@ -82,7 +84,8 @@ namespace CycloneDX
                 bomCopy.Dependencies = null;
                 bomCopy.Services = null;
 
-                EnumerateAllComponents(bomCopy, (component) => {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
                     component.Author = null;
                     component.MimeType = null;
                     component.Supplier = null;
@@ -103,7 +106,8 @@ namespace CycloneDX
                     bomCopy.Metadata.Licenses = null;
                     bomCopy.Metadata.Properties = null;
                 }
-                EnumerateAllComponents(bomCopy, (component) => {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
                     component.Properties = null;
                     component.Evidence = null;
                     if (component.ExternalReferences != null)
@@ -114,7 +118,8 @@ namespace CycloneDX
                         }
                     }
                 });
-                EnumerateAllServices(bomCopy, (service) => {
+                EnumerateAllServices(bomCopy, (service) =>
+                {
                     service.Properties = null;
                     if (service.ExternalReferences != null)
                     {
@@ -128,14 +133,16 @@ namespace CycloneDX
 
             if (bomCopy.SpecVersion < SpecificationVersion.v1_4)
             {
-                EnumerateAllComponents(bomCopy, (component) => {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
                     component.ReleaseNotes = null;
                     if (component.Version == null)
                     {
                         component.Version = "0.0.0";
                     }
                 });
-                EnumerateAllServices(bomCopy, (service) => {
+                EnumerateAllServices(bomCopy, (service) =>
+                {
                     service.ReleaseNotes = null;
                 });
                 bomCopy.Vulnerabilities = null;
@@ -157,7 +164,7 @@ namespace CycloneDX
                         composition.Vulnerabilities = null;
                     }
                 }
-                
+
                 EnumerateAllToolChoices(bomCopy, (toolchoice) =>
                 {
                     toolchoice.Components = null;
@@ -170,7 +177,7 @@ namespace CycloneDX
                     component.Data = null;
                     if ((int)component.Type > 8) component.Type = Component.Classification.Library;
                 });
-                
+
                 EnumerateAllServices(bomCopy, (service) =>
                 {
                     service.TrustZone = null;
@@ -186,7 +193,7 @@ namespace CycloneDX
                         }
                     }
                 });
-                
+
                 EnumerateAllVulnerabilities(bomCopy, (vulnerability) =>
                 {
                     vulnerability.Rejected = null;
@@ -215,19 +222,19 @@ namespace CycloneDX
                         }
                     }
                 });
-                
+
                 EnumerateAllEvidence(bomCopy, (evidence) =>
                 {
                     evidence.Identity = null;
                     evidence.Occurrences = null;
                     evidence.Callstack = null;
                 });
-                
+
                 EnumerateAllLicenseChoices(bomCopy, (licenseChoice) =>
                 {
                     licenseChoice.BomRef = null;
                 });
-                
+
                 EnumerateAllLicenses(bomCopy, (license) =>
                 {
                     license.BomRef = null;
@@ -244,6 +251,25 @@ namespace CycloneDX
                 {
                     orgContact.BomRef = null;
                 });
+            }
+
+            if (bomCopy.SpecVersion < SpecificationVersion.v1_6)
+            {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
+                    component.CryptoProperties = null;
+                    if (component.Type == Component.Classification.Cryptographic_Asset)
+                    {
+                        component.Type = Component.Classification.Library;
+                    }
+                });
+
+                EnumerateAllDependencies(bomCopy, (dependency) =>
+                {
+                    dependency.Provides = null;
+                });
+
+
             }
 
             // triggers a bunch of stuff, don't remove unless you know what you are doing
@@ -280,7 +306,7 @@ namespace CycloneDX
                 if (currentComponent != null)
                 {
                     callback(currentComponent);
-                    
+
                     q.EnqueueMany(currentComponent.Components);
                     q.EnqueueMany(currentComponent.Pedigree?.Ancestors);
                     q.EnqueueMany(currentComponent.Pedigree?.Descendants);
@@ -292,9 +318,10 @@ namespace CycloneDX
         public static void EnumerateAllServices(Bom bom, Action<Service> callback)
         {
             var q = new Queue<Service>();
-            
+
             q.EnqueueMany(bom.Metadata?.Tools?.Services);
             q.EnqueueMany(bom.Services);
+            q.EnqueueMany(bom.Annotations?.Select(an => an.Annotator).Where(anor => anor.Service != null).Select(anor => anor.Service) ?? new List<Service>());
 
             while (q.Count > 0)
             {
@@ -323,7 +350,7 @@ namespace CycloneDX
             while (q.Count > 0)
             {
                 var currentVulnerability = q.Dequeue();
-                
+
                 callback(currentVulnerability);
             }
         }
@@ -334,7 +361,7 @@ namespace CycloneDX
                 if (component.Evidence != null) callback(component.Evidence);
             });
         }
-        
+
         public static void EnumerateAllLicenses(Bom bom, Action<License> callback)
         {
             EnumerateAllLicenseChoices(bom, (licenseChoice) =>
@@ -351,7 +378,7 @@ namespace CycloneDX
                 {
                     callback(license);
                 }
-                    
+
             }
             EnumerateAllComponents(bom, (component) =>
             {
@@ -363,7 +390,7 @@ namespace CycloneDX
                     }
                 }
             });
-            
+
             EnumerateAllServices(bom, (service) =>
             {
                 if (service.Licenses != null)
@@ -399,9 +426,9 @@ namespace CycloneDX
                     if (annotation.Annotator?.Organization != null)
                         callback(annotation.Annotator.Organization);
                 }
-                
+
             }
-                
+
             EnumerateAllVulnerabilities(bom, (vulnerability) =>
             {
                 if (vulnerability.Credits?.Organizations != null)
@@ -431,7 +458,7 @@ namespace CycloneDX
                     }
                 }
             });
-            
+
             EnumerateAllVulnerabilities(bom, (vulnerability) =>
             {
                 if (vulnerability.Credits?.Individuals != null)
@@ -453,6 +480,35 @@ namespace CycloneDX
                 if (vuln.Tools != null)
                     callback(vuln.Tools);
             });
+        }
+
+        public static void EnumerateAllDependencies(Bom bom, Action<Dependency> callback)
+        {
+            var q = new Queue<Dependency>();
+
+            
+            q.EnqueueMany(bom.Dependencies);
+            
+
+            while (q.Count > 0)
+            {
+                var currentDependency = q.Dequeue();
+                if (currentDependency != null)
+                {
+                    callback(currentDependency);
+
+                    q.EnqueueMany(currentDependency.Dependencies);
+                }
+            }
+        }
+
+        public static void EnumerateAllDatasetChoices(Bom bom, Action<DatasetChoices> callback)
+        {
+            var x = bom.Components?.Select(c => c.ModelCard?.ModelParameters?.Datasets).Where(o => o != null) ?? new List<DatasetChoices>();
+            foreach (var item in x)
+            {
+                callback(item);
+            }
         }
     }
 }
