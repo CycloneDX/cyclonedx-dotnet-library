@@ -41,6 +41,11 @@ jobs:
           export PATH="$PATH:$HOME/.local/bin"
 
       # The tests should have already been run during the PR workflow, so this is really just a sanity check
+      # See issue #285 for info why the symlink is necessary.
+      - name: SnapshooterHotfixSymlinkLinux          
+        run: sudo ln -s "$GITHUB_WORKSPACE" /_
+        shell: bash
+      
       - name: Tests
         run: dotnet test
 
