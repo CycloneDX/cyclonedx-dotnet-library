@@ -13,18 +13,6 @@
       </licenses>
       <purl>pkg:maven/com.google.code.findbugs/findbugs-project@3.0.0</purl>
       <evidence>
-        <licenses>
-          <license>
-            <id>Apache-2.0</id>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-          </license>
-        </licenses>
-        <copyright>
-          <text>Copyright 2012 Google Inc. All Rights Reserved.</text>
-          <text>Copyright (C) 2004,2005 Dave Brosius &lt;dbrosius@users.sourceforge.net&gt;</text>
-          <text>Copyright (C) 2005 William Pugh</text>
-          <text>Copyright (C) 2004,2005 University of Maryland</text>
-        </copyright>
         <identity>
           <field>purl</field>
           <confidence>1</confidence>
@@ -82,6 +70,18 @@
             </frame>
           </frames>
         </callstack>
+        <licenses>
+          <license>
+            <id>Apache-2.0</id>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+          </license>
+        </licenses>
+        <copyright>
+          <text>Copyright 2012 Google Inc. All Rights Reserved.</text>
+          <text>Copyright (C) 2004,2005 Dave Brosius &lt;dbrosius@users.sourceforge.net&gt;</text>
+          <text>Copyright (C) 2005 William Pugh</text>
+          <text>Copyright (C) 2004,2005 University of Maryland</text>
+        </copyright>
       </evidence>
     </component>
   </components>
