@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("output")]
     [ProtoContract]
-    public class Output
+    public class Output : BomEntity
     {
         [ProtoContract]
         public enum OutputType

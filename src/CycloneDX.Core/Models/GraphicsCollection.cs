@@ -26,10 +26,10 @@ namespace CycloneDX.Models
 {
     [XmlType("graphics")]
     [ProtoContract]
-    public class GraphicsCollection
+    public class GraphicsCollection : BomEntity
     {
         [ProtoContract]
-        public class Graphic
+        public class Graphic : BomEntity
         {
             [XmlElement("name")]
             [ProtoMember(1)]

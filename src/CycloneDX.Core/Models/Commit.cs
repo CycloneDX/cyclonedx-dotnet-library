@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Commit
+    public class Commit : BomEntity
     {
         [XmlElement("uid")]
         [ProtoMember(1)]

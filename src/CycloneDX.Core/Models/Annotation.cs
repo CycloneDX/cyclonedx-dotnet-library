@@ -15,8 +15,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using static CycloneDX.SpecificationVersion;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Reflection;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
 using ProtoBuf;
@@ -24,13 +27,31 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Annotation
+    public class Annotation : BomEntity, IBomEntityWithRefType_String_BomRef
+    // NOTE: *Not* IBomEntityWithRefLinkType_StringList due
+    // to inlaid "subject" property type with dedicated class
     {
         [XmlType("subject")]
-        public class XmlAnnotationSubject
+        public class XmlAnnotationSubject : BomEntity, IBomEntityWithRefLinkType_String_Ref
         {
             [XmlAttribute("ref")]
             public string Ref { get; set; }
+
+            private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_AnyBomEntity =
+            new Dictionary<PropertyInfo, ImmutableList<Type>>
+            {
+                { typeof(XmlAnnotationSubject).GetProperty("Ref", typeof(string)), RefLinkConstraints_AnyBomEntity }
+            }.ToImmutableDictionary();
+
+            public ImmutableDictionary<PropertyInfo, ImmutableList<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion)
+            {
+                // TODO: switch/case for CDX spec newer than 1.5 where this type got introduced
+                if (specificationVersion == v1_5)
+                {
+                    return RefLinkConstraints_StringRef_AnyBomEntity;
+                }
+                return null;
+            }
         }
         
         [XmlAttribute("bom-ref")]

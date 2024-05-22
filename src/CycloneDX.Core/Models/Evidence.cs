@@ -28,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence")]
     [ProtoContract]
-    public class Evidence
+    public class Evidence : BomEntity
     {
         [XmlElement("licenses", Order = 3)]
         [ProtoMember(1)]

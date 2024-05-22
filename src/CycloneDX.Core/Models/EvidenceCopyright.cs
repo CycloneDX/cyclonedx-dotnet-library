@@ -21,7 +21,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class EvidenceCopyright
+    public class EvidenceCopyright : BomEntity
     {
         [XmlText]
         [ProtoMember(1)]

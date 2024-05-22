@@ -15,9 +15,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using static CycloneDX.SpecificationVersion;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Collections.Immutable;
+using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +29,7 @@ namespace CycloneDX.Models
 {
     [XmlType("dependency")]
     [ProtoContract]
-    public class Dependency: IEquatable<Dependency>
+    public class Dependency : BomEntity, IBomEntityWithRefLinkType_String_Ref
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]
@@ -36,14 +39,60 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
 
-        public bool Equals(Dependency obj)
+        /// <summary>
+        /// See BomEntity.NormalizeList() and ListMergeHelper.SortByImpl().
+        /// Note that as a static method this is not exactly an "override",
+        /// but the BomEntity base class implementation makes it behave
+        /// like that in practice.
+        /// </summary>
+        /// <param name="ascending">Ascending (true) or Descending (false)</param>
+        /// <param name="recursive">Passed to BomEntity.NormalizeList() (effective if recursing), not handled right here</param>
+        /// <param name="list">List<Dependency> to sort</param>
+        public static void NormalizeList(bool ascending, bool recursive, List<Dependency> list)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            var sortHelper = new ListMergeHelper<Dependency>();
+            sortHelper.SortByImpl(ascending, recursive, list,
+                o => (o?.Ref),
+                null);
         }
-    
-        public override int GetHashCode()
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_Component =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
         {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+            { typeof(Dependency).GetProperty("Ref", typeof(string)), RefLinkConstraints_Component }
+        }.ToImmutableDictionary();
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_StringRef_ComponentOrService =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
+        {
+            { typeof(Dependency).GetProperty("Ref", typeof(string)), RefLinkConstraints_ComponentOrService }
+        }.ToImmutableDictionary();
+
+        /// <summary>
+        /// See IBomEntityWithRefLinkType.GetRefLinkConstraints().
+        /// </summary>
+        /// <param name="specificationVersion"></param>
+        /// <returns></returns>
+        public ImmutableDictionary<PropertyInfo, ImmutableList<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion)
+        {
+            switch (specificationVersion)
+            {
+                case v1_0:
+                case v1_1:
+                    return null;
+
+                case v1_2:
+                case v1_3:
+                case v1_4:
+                    // NOTE: XML and JSON schema descriptions differ:
+                    // * in JSON, specs v1.2, 1.3 and 1.4 dealt with "components"
+                    // * in XML since 1.2, and in JSON since 1.5, with "components or services"
+                    //TOTHINK//return RefLinkConstraints_StringRef_Component?..
+
+                case v1_5:
+                default:
+                    return RefLinkConstraints_StringRef_ComponentOrService;
+            }
         }
     }
 }

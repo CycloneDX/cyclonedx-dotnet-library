@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("volume")]
     [ProtoContract]
-    public class Volume
+    public class Volume : BomEntity
     {
         [ProtoContract]
         public enum VolumeMode

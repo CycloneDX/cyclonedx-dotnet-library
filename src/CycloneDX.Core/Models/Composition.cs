@@ -15,8 +15,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using static CycloneDX.SpecificationVersion;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
@@ -25,7 +28,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Composition : IXmlSerializable
+    public class Composition : BomEntity, IXmlSerializable, IBomEntityWithRefType_String_BomRef, IBomEntityWithRefLinkType_StringList
     {
         [ProtoContract]
         public enum AggregateType
@@ -192,6 +195,57 @@ namespace CycloneDX.Models
                     writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
+            }
+        }
+
+        /// <summary>
+        /// See BomEntity.NormalizeList() and ListMergeHelper.SortByImpl().
+        /// Note that as a static method this is not exactly an "override",
+        /// but the BomEntity base class implementation makes it behave
+        /// like that in practice.
+        /// </summary>
+        /// <param name="ascending">Ascending (true) or Descending (false)</param>
+        /// <param name="recursive">Passed to BomEntity.NormalizeList() (effective if recursing), not handled right here</param>
+        /// <param name="list">List<Composition> to sort</param>
+        public static void NormalizeList(bool ascending, bool recursive, List<Composition> list)
+        {
+            var sortHelper = new ListMergeHelper<Composition>();
+            sortHelper.SortByImpl(ascending, recursive, list,
+                o => (o?.Aggregate, o?.Assemblies, o?.Dependencies),
+                null);
+        }
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_List_v1_3 =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
+        {
+            { typeof(Composition).GetProperty("Assemblies", typeof(List<string>)), RefLinkConstraints_ComponentOrService },
+            { typeof(Composition).GetProperty("Dependencies", typeof(List<string>)), RefLinkConstraints_ComponentOrService }
+        }.ToImmutableDictionary();
+
+        private static readonly ImmutableDictionary<PropertyInfo, ImmutableList<Type>> RefLinkConstraints_List_v1_5 =
+        new Dictionary<PropertyInfo, ImmutableList<Type>>
+        {
+            { typeof(Composition).GetProperty("Assemblies", typeof(List<string>)), RefLinkConstraints_ComponentOrService },
+            { typeof(Composition).GetProperty("Dependencies", typeof(List<string>)), RefLinkConstraints_ComponentOrService },
+            { typeof(Composition).GetProperty("Vulnerabilities", typeof(List<string>)), RefLinkConstraints_Vulnerability }
+        }.ToImmutableDictionary();
+
+        public ImmutableDictionary<PropertyInfo, ImmutableList<Type>> GetRefLinkConstraints(SpecificationVersion specificationVersion)
+        {
+            switch (specificationVersion)
+            {
+                case v1_0:
+                case v1_1:
+                case v1_2:
+                    return null;
+
+                case v1_3:
+                case v1_4:
+                    return RefLinkConstraints_List_v1_3;
+
+                case v1_5:
+                default:
+                    return RefLinkConstraints_List_v1_5;
             }
         }
     }

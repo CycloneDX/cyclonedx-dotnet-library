@@ -24,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Metadata
+    public class Metadata : BomEntity
     {
         private DateTime? _timestamp;
         [XmlElement("timestamp")]

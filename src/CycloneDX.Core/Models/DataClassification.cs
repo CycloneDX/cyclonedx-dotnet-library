@@ -25,7 +25,7 @@ namespace CycloneDX.Models
     // this is the version that was prior to v1.5
     [XmlType("classification")]
     [ProtoContract]
-    public class DataClassification
+    public class DataClassification : BomEntity
     {
         [XmlAttribute("flow")]
         [ProtoMember(1, IsRequired=true)]
