@@ -23,7 +23,7 @@ using CycloneDX.Utils.Exceptions;
 
 namespace CycloneDX.Utils
 {
-    class ListMergeHelper<T>
+    class ListMergeHelper<T> where T : IEquatable<T>
     {
         public List<T> Merge(List<T> list1, List<T> list2)
         {
@@ -31,12 +31,36 @@ namespace CycloneDX.Utils
             if (list2 is null) return list1;
 
             var result = new List<T>(list1);
+            // We want to avoid the costly computation of the hashes if possible.
+            // Therefore, we use a nullable type.
+            var resultHashes = new List<int?>(list1.Count);
+            for (int i = 0; i < list1.Count; i++)
+            {
+                resultHashes.Add(null);
+            }
 
             foreach (var item in list2)
             {
-                if (!(result.Contains(item))) 
+                int hash = item.GetHashCode();
+                bool found = false;
+                for (int i = 0; i < result.Count; i++)
+                {
+                    var resultItem = result[i];
+                    if (resultHashes[i] == null)
+                    {
+                        resultHashes[i] = resultItem.GetHashCode();
+                    }
+                    int resultHash = resultHashes[i].Value;
+                    if (hash == resultHash && item.Equals(resultItem))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) 
                 {
                     result.Add(item);
+                    resultHashes.Add(hash);
                 }
             }
 

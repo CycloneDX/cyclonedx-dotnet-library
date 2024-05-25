@@ -106,6 +106,31 @@ namespace CycloneDX.Utils.Tests
         }
 
         [Fact]
+        public void FlatMergeDuplicatedComponentsTest()
+        {
+            var sboms = new List<Bom>();
+            for (int i = 0; i < 3; i++)
+            {
+                var bom = new Bom
+                {
+                    Components = new List<Component>
+                    {
+                        new Component
+                        {
+                            Name = "Component1",
+                            Version = "1"
+                        }
+                    }
+                };
+                sboms.Add(bom);
+            }
+            var result = CycloneDXUtils.FlatMerge(sboms);
+
+            Assert.Single(result.Components);
+        }
+
+
+        [Fact]
         public void FlatMergeVulnerabilitiesTest()
         {
             var sbom1 = new Bom
