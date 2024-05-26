@@ -35,7 +35,7 @@ namespace CycloneDX.Models
         [ProtoMember(1)]
         public List<LicenseChoice> Licenses { get; set; }
         
-        [XmlElement("licenses"), Order = 3]
+        [XmlElement("licenses", Order = 3)]
         [JsonIgnore]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public LicenseChoiceList LicensesSerialized
