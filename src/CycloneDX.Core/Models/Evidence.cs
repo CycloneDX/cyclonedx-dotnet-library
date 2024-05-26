@@ -36,16 +36,16 @@ namespace CycloneDX.Models
         public List<LicenseChoice> Licenses { get; set; }
         
         [XmlElement("licenses", Order = 3)]
-        [JsonIgnore]
+        [JsonIgnore, ProtoIgnore]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         public LicenseChoiceList LicensesSerialized
         {
             get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
             set { Licenses = value.Licenses; }
-        }
+        }        
         public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
-        [XmlArray("copyright")]
+        [XmlArray("copyright", Order = 4)]
         [XmlArrayItem("text")]
         [ProtoMember(2)]
         public List<EvidenceCopyright> Copyright { get; set; }

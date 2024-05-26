@@ -89,7 +89,7 @@ namespace CycloneDX.Models
 
 
         [XmlElement("licenses")]
-        [JsonIgnore]
+        [JsonIgnore, ProtoIgnore]
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         // This is a serialization workaround
         public LicenseChoiceList LicensesSerialized
