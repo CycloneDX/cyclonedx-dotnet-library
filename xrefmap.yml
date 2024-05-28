@@ -1862,6 +1862,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.Licenses
   nameWithType: Component.Licenses
+- uid: CycloneDX.Models.Component.LicensesSerialized
+  name: LicensesSerialized
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_LicensesSerialized
+  commentId: P:CycloneDX.Models.Component.LicensesSerialized
+  fullName: CycloneDX.Models.Component.LicensesSerialized
+  nameWithType: Component.LicensesSerialized
+- uid: CycloneDX.Models.Component.LicensesSerialized*
+  name: LicensesSerialized
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_LicensesSerialized_
+  commentId: Overload:CycloneDX.Models.Component.LicensesSerialized
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.LicensesSerialized
+  nameWithType: Component.LicensesSerialized
 - uid: CycloneDX.Models.Component.MimeType
   name: MimeType
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_MimeType
@@ -2057,6 +2070,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.ShouldSerializeHashes
   nameWithType: Component.ShouldSerializeHashes
+- uid: CycloneDX.Models.Component.ShouldSerializeLicensesSerialized
+  name: ShouldSerializeLicensesSerialized()
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeLicensesSerialized
+  commentId: M:CycloneDX.Models.Component.ShouldSerializeLicensesSerialized
+  fullName: CycloneDX.Models.Component.ShouldSerializeLicensesSerialized()
+  nameWithType: Component.ShouldSerializeLicensesSerialized()
+- uid: CycloneDX.Models.Component.ShouldSerializeLicensesSerialized*
+  name: ShouldSerializeLicensesSerialized
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeLicensesSerialized_
+  commentId: Overload:CycloneDX.Models.Component.ShouldSerializeLicensesSerialized
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.ShouldSerializeLicensesSerialized
+  nameWithType: Component.ShouldSerializeLicensesSerialized
 - uid: CycloneDX.Models.Component.ShouldSerializeNonNullableModified
   name: ShouldSerializeNonNullableModified()
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeNonNullableModified
@@ -3286,6 +3312,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Evidence.Licenses
   nameWithType: Evidence.Licenses
+- uid: CycloneDX.Models.Evidence.LicensesSerialized
+  name: LicensesSerialized
+  href: api/CycloneDX.Models.Evidence.html#CycloneDX_Models_Evidence_LicensesSerialized
+  commentId: P:CycloneDX.Models.Evidence.LicensesSerialized
+  fullName: CycloneDX.Models.Evidence.LicensesSerialized
+  nameWithType: Evidence.LicensesSerialized
+- uid: CycloneDX.Models.Evidence.LicensesSerialized*
+  name: LicensesSerialized
+  href: api/CycloneDX.Models.Evidence.html#CycloneDX_Models_Evidence_LicensesSerialized_
+  commentId: Overload:CycloneDX.Models.Evidence.LicensesSerialized
+  isSpec: "True"
+  fullName: CycloneDX.Models.Evidence.LicensesSerialized
+  nameWithType: Evidence.LicensesSerialized
 - uid: CycloneDX.Models.Evidence.Occurrences
   name: Occurrences
   href: api/CycloneDX.Models.Evidence.html#CycloneDX_Models_Evidence_Occurrences
@@ -3299,6 +3338,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Evidence.Occurrences
   nameWithType: Evidence.Occurrences
+- uid: CycloneDX.Models.Evidence.ShouldSerializeLicensesSerialized
+  name: ShouldSerializeLicensesSerialized()
+  href: api/CycloneDX.Models.Evidence.html#CycloneDX_Models_Evidence_ShouldSerializeLicensesSerialized
+  commentId: M:CycloneDX.Models.Evidence.ShouldSerializeLicensesSerialized
+  fullName: CycloneDX.Models.Evidence.ShouldSerializeLicensesSerialized()
+  nameWithType: Evidence.ShouldSerializeLicensesSerialized()
+- uid: CycloneDX.Models.Evidence.ShouldSerializeLicensesSerialized*
+  name: ShouldSerializeLicensesSerialized
+  href: api/CycloneDX.Models.Evidence.html#CycloneDX_Models_Evidence_ShouldSerializeLicensesSerialized_
+  commentId: Overload:CycloneDX.Models.Evidence.ShouldSerializeLicensesSerialized
+  isSpec: "True"
+  fullName: CycloneDX.Models.Evidence.ShouldSerializeLicensesSerialized
+  nameWithType: Evidence.ShouldSerializeLicensesSerialized
 - uid: CycloneDX.Models.EvidenceCopyright
   name: EvidenceCopyright
   href: api/CycloneDX.Models.EvidenceCopyright.html
@@ -4695,6 +4747,86 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.LicenseChoice.License
   nameWithType: LicenseChoice.License
+- uid: CycloneDX.Models.LicenseChoiceList
+  name: LicenseChoiceList
+  href: api/CycloneDX.Models.LicenseChoiceList.html
+  commentId: T:CycloneDX.Models.LicenseChoiceList
+  fullName: CycloneDX.Models.LicenseChoiceList
+  nameWithType: LicenseChoiceList
+- uid: CycloneDX.Models.LicenseChoiceList.#ctor
+  name: LicenseChoiceList()
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList__ctor
+  commentId: M:CycloneDX.Models.LicenseChoiceList.#ctor
+  fullName: CycloneDX.Models.LicenseChoiceList.LicenseChoiceList()
+  nameWithType: LicenseChoiceList.LicenseChoiceList()
+- uid: CycloneDX.Models.LicenseChoiceList.#ctor(List{CycloneDX.Models.LicenseChoice})
+  name: LicenseChoiceList(List<LicenseChoice>)
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList__ctor_List_CycloneDX_Models_LicenseChoice__
+  commentId: M:CycloneDX.Models.LicenseChoiceList.#ctor(List{CycloneDX.Models.LicenseChoice})
+  name.vb: LicenseChoiceList(List(Of LicenseChoice))
+  fullName: CycloneDX.Models.LicenseChoiceList.LicenseChoiceList(List<CycloneDX.Models.LicenseChoice>)
+  fullName.vb: CycloneDX.Models.LicenseChoiceList.LicenseChoiceList(List(Of CycloneDX.Models.LicenseChoice))
+  nameWithType: LicenseChoiceList.LicenseChoiceList(List<LicenseChoice>)
+  nameWithType.vb: LicenseChoiceList.LicenseChoiceList(List(Of LicenseChoice))
+- uid: CycloneDX.Models.LicenseChoiceList.#ctor*
+  name: LicenseChoiceList
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList__ctor_
+  commentId: Overload:CycloneDX.Models.LicenseChoiceList.#ctor
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoiceList.LicenseChoiceList
+  nameWithType: LicenseChoiceList.LicenseChoiceList
+- uid: CycloneDX.Models.LicenseChoiceList.GetSchema
+  name: GetSchema()
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList_GetSchema
+  commentId: M:CycloneDX.Models.LicenseChoiceList.GetSchema
+  fullName: CycloneDX.Models.LicenseChoiceList.GetSchema()
+  nameWithType: LicenseChoiceList.GetSchema()
+- uid: CycloneDX.Models.LicenseChoiceList.GetSchema*
+  name: GetSchema
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList_GetSchema_
+  commentId: Overload:CycloneDX.Models.LicenseChoiceList.GetSchema
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoiceList.GetSchema
+  nameWithType: LicenseChoiceList.GetSchema
+- uid: CycloneDX.Models.LicenseChoiceList.Licenses
+  name: Licenses
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList_Licenses
+  commentId: P:CycloneDX.Models.LicenseChoiceList.Licenses
+  fullName: CycloneDX.Models.LicenseChoiceList.Licenses
+  nameWithType: LicenseChoiceList.Licenses
+- uid: CycloneDX.Models.LicenseChoiceList.Licenses*
+  name: Licenses
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList_Licenses_
+  commentId: Overload:CycloneDX.Models.LicenseChoiceList.Licenses
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoiceList.Licenses
+  nameWithType: LicenseChoiceList.Licenses
+- uid: CycloneDX.Models.LicenseChoiceList.ReadXml(System.Xml.XmlReader)
+  name: ReadXml(System.Xml.XmlReader)
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList_ReadXml_System_Xml_XmlReader_
+  commentId: M:CycloneDX.Models.LicenseChoiceList.ReadXml(System.Xml.XmlReader)
+  fullName: CycloneDX.Models.LicenseChoiceList.ReadXml(System.Xml.XmlReader)
+  nameWithType: LicenseChoiceList.ReadXml(System.Xml.XmlReader)
+- uid: CycloneDX.Models.LicenseChoiceList.ReadXml*
+  name: ReadXml
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList_ReadXml_
+  commentId: Overload:CycloneDX.Models.LicenseChoiceList.ReadXml
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoiceList.ReadXml
+  nameWithType: LicenseChoiceList.ReadXml
+- uid: CycloneDX.Models.LicenseChoiceList.WriteXml(System.Xml.XmlWriter)
+  name: WriteXml(System.Xml.XmlWriter)
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList_WriteXml_System_Xml_XmlWriter_
+  commentId: M:CycloneDX.Models.LicenseChoiceList.WriteXml(System.Xml.XmlWriter)
+  fullName: CycloneDX.Models.LicenseChoiceList.WriteXml(System.Xml.XmlWriter)
+  nameWithType: LicenseChoiceList.WriteXml(System.Xml.XmlWriter)
+- uid: CycloneDX.Models.LicenseChoiceList.WriteXml*
+  name: WriteXml
+  href: api/CycloneDX.Models.LicenseChoiceList.html#CycloneDX_Models_LicenseChoiceList_WriteXml_
+  commentId: Overload:CycloneDX.Models.LicenseChoiceList.WriteXml
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoiceList.WriteXml
+  nameWithType: LicenseChoiceList.WriteXml
 - uid: CycloneDX.Models.Licensing
   name: Licensing
   href: api/CycloneDX.Models.Licensing.html
@@ -5122,6 +5254,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Metadata.Licenses
   nameWithType: Metadata.Licenses
+- uid: CycloneDX.Models.Metadata.LicensesSerialized
+  name: LicensesSerialized
+  href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_LicensesSerialized
+  commentId: P:CycloneDX.Models.Metadata.LicensesSerialized
+  fullName: CycloneDX.Models.Metadata.LicensesSerialized
+  nameWithType: Metadata.LicensesSerialized
+- uid: CycloneDX.Models.Metadata.LicensesSerialized*
+  name: LicensesSerialized
+  href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_LicensesSerialized_
+  commentId: Overload:CycloneDX.Models.Metadata.LicensesSerialized
+  isSpec: "True"
+  fullName: CycloneDX.Models.Metadata.LicensesSerialized
+  nameWithType: Metadata.LicensesSerialized
 - uid: CycloneDX.Models.Metadata.Lifecycles
   name: Lifecycles
   href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_Lifecycles
@@ -5187,6 +5332,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Metadata.ShouldSerializeLicenses
   nameWithType: Metadata.ShouldSerializeLicenses
+- uid: CycloneDX.Models.Metadata.ShouldSerializeLicensesSerialized
+  name: ShouldSerializeLicensesSerialized()
+  href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_ShouldSerializeLicensesSerialized
+  commentId: M:CycloneDX.Models.Metadata.ShouldSerializeLicensesSerialized
+  fullName: CycloneDX.Models.Metadata.ShouldSerializeLicensesSerialized()
+  nameWithType: Metadata.ShouldSerializeLicensesSerialized()
+- uid: CycloneDX.Models.Metadata.ShouldSerializeLicensesSerialized*
+  name: ShouldSerializeLicensesSerialized
+  href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_ShouldSerializeLicensesSerialized_
+  commentId: Overload:CycloneDX.Models.Metadata.ShouldSerializeLicensesSerialized
+  isSpec: "True"
+  fullName: CycloneDX.Models.Metadata.ShouldSerializeLicensesSerialized
+  nameWithType: Metadata.ShouldSerializeLicensesSerialized
 - uid: CycloneDX.Models.Metadata.ShouldSerializeLifecycles
   name: ShouldSerializeLifecycles()
   href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_ShouldSerializeLifecycles
@@ -6862,6 +7020,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Service.Licenses
   nameWithType: Service.Licenses
+- uid: CycloneDX.Models.Service.LicensesSerialized
+  name: LicensesSerialized
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_LicensesSerialized
+  commentId: P:CycloneDX.Models.Service.LicensesSerialized
+  fullName: CycloneDX.Models.Service.LicensesSerialized
+  nameWithType: Service.LicensesSerialized
+- uid: CycloneDX.Models.Service.LicensesSerialized*
+  name: LicensesSerialized
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_LicensesSerialized_
+  commentId: Overload:CycloneDX.Models.Service.LicensesSerialized
+  isSpec: "True"
+  fullName: CycloneDX.Models.Service.LicensesSerialized
+  nameWithType: Service.LicensesSerialized
 - uid: CycloneDX.Models.Service.Name
   name: Name
   href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_Name
@@ -6979,6 +7150,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Service.ShouldSerializeExternalReferences
   nameWithType: Service.ShouldSerializeExternalReferences
+- uid: CycloneDX.Models.Service.ShouldSerializeLicensesSerialized
+  name: ShouldSerializeLicensesSerialized()
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_ShouldSerializeLicensesSerialized
+  commentId: M:CycloneDX.Models.Service.ShouldSerializeLicensesSerialized
+  fullName: CycloneDX.Models.Service.ShouldSerializeLicensesSerialized()
+  nameWithType: Service.ShouldSerializeLicensesSerialized()
+- uid: CycloneDX.Models.Service.ShouldSerializeLicensesSerialized*
+  name: ShouldSerializeLicensesSerialized
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_ShouldSerializeLicensesSerialized_
+  commentId: Overload:CycloneDX.Models.Service.ShouldSerializeLicensesSerialized
+  isSpec: "True"
+  fullName: CycloneDX.Models.Service.ShouldSerializeLicensesSerialized
+  nameWithType: Service.ShouldSerializeLicensesSerialized
 - uid: CycloneDX.Models.Service.ShouldSerializeNonNullableAuthenticated
   name: ShouldSerializeNonNullableAuthenticated()
   href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_ShouldSerializeNonNullableAuthenticated
@@ -13501,6 +13685,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Xml.Serializer.Deserialize
   nameWithType: Serializer.Deserialize
+- uid: CycloneDX.Xml.Serializer.GetNamespace(XmlWriter)
+  name: GetNamespace(XmlWriter)
+  href: api/CycloneDX.Xml.Serializer.html#CycloneDX_Xml_Serializer_GetNamespace_XmlWriter_
+  commentId: M:CycloneDX.Xml.Serializer.GetNamespace(XmlWriter)
+  fullName: CycloneDX.Xml.Serializer.GetNamespace(XmlWriter)
+  nameWithType: Serializer.GetNamespace(XmlWriter)
+- uid: CycloneDX.Xml.Serializer.GetNamespace*
+  name: GetNamespace
+  href: api/CycloneDX.Xml.Serializer.html#CycloneDX_Xml_Serializer_GetNamespace_
+  commentId: Overload:CycloneDX.Xml.Serializer.GetNamespace
+  isSpec: "True"
+  fullName: CycloneDX.Xml.Serializer.GetNamespace
+  nameWithType: Serializer.GetNamespace
 - uid: CycloneDX.Xml.Serializer.Serialize(CycloneDX.Models.Bom)
   name: Serialize(Bom)
   href: api/CycloneDX.Xml.Serializer.html#CycloneDX_Xml_Serializer_Serialize_CycloneDX_Models_Bom_
