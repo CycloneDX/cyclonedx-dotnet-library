@@ -17,7 +17,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -138,9 +140,22 @@ namespace CycloneDX.Models
         public List<Hash> Hashes { get; set; }
         public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
 
-        [XmlElement("licenses")]
+        [XmlIgnore]
         [ProtoMember(13)]
         public List<LicenseChoice> Licenses { get; set; }
+
+
+        [XmlElement("licenses")]
+        [JsonIgnore, ProtoIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        // This is a serialization workaround
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
         [XmlElement("copyright")]
         [ProtoMember(14)]
