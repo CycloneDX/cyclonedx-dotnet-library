@@ -37,12 +37,13 @@ namespace CycloneDX.Models
         
         [XmlElement("licenses", Order = 3)]
         [JsonIgnore, ProtoIgnore]
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public LicenseChoiceList LicensesSerialized
         {
             get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
             set { Licenses = value.Licenses; }
-        }        
+        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
         [XmlArray("copyright", Order = 4)]
