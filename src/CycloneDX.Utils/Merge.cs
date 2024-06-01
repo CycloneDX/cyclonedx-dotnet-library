@@ -67,13 +67,19 @@ namespace CycloneDX.Utils
             var toolsMerger = new ListMergeHelper<Tool>();
             #pragma warning restore 618
             var tools = toolsMerger.Merge(bom1.Metadata?.Tools?.Tools, bom2.Metadata?.Tools?.Tools);
-            if (tools != null)
+            var toolsComponentsMerger = new ListMergeHelper<Component>();
+            var toolsComponents = toolsComponentsMerger.Merge(bom1.Metadata?.Tools?.Components, bom2.Metadata?.Tools?.Components);
+            var toolsServicesMerger = new ListMergeHelper<Service>();
+            var toolsServices = toolsServicesMerger.Merge(bom1.Metadata?.Tools?.Services, bom2.Metadata?.Tools?.Services);
+            if (tools != null || toolsComponents != null || toolsServices != null)
             {
                 result.Metadata = new Metadata
                 {
                     Tools = new ToolChoices
                     {
                         Tools = tools,
+                        Components = toolsComponents,
+                        Services = toolsServices,
                     }
                 };
             }
@@ -229,6 +235,22 @@ namespace CycloneDX.Utils
                 if (bom.Metadata?.Tools?.Tools?.Count > 0)
                 {
                     result.Metadata.Tools.Tools.AddRange(bom.Metadata.Tools.Tools);
+                }
+                if (bom.Metadata?.Tools?.Components?.Count > 0)
+                {
+                    if (result.Metadata.Tools.Components == null)
+                    {
+                        result.Metadata.Tools.Components = new List<Component>();
+                    }
+                    result.Metadata.Tools.Components.AddRange(bom.Metadata.Tools.Components);
+                }
+                if (bom.Metadata?.Tools?.Services?.Count > 0)
+                {
+                    if (result.Metadata.Tools.Services == null)
+                    {
+                        result.Metadata.Tools.Services = new List<Service>();
+                    }
+                    result.Metadata.Tools.Services.AddRange(bom.Metadata.Tools.Services);
                 }
 
                 var thisComponent = bom.Metadata.Component;

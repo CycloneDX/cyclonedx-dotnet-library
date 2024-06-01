@@ -264,6 +264,116 @@ namespace CycloneDX.Utils.Tests
         }
 
         [Fact]
+        public void HierarchicalMergeToolsComponentsTest()
+        {
+            var subject = new Component
+            {
+                Name = "Thing",
+                Version = "1",
+            };
+
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System1",
+                        Version = "1",
+                        BomRef = "System1@1"
+                    },
+                    Tools = new ToolChoices
+                    {
+                        Components = new List<Component>
+                        {
+                            new Component
+                            {
+                                Name = "ToolComponent1",
+                                Version = "1",
+                                BomRef = "ToolComponent1@1",
+                            }
+                        }
+                    }
+                },
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component1",
+                        Version = "1",
+                        BomRef = "Component1@1"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "System1@1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "Component1@1"
+                            }
+                        }
+                    }
+                },
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System2",
+                        Version = "1",
+                        BomRef = "System2@1"
+                    },
+                    Tools = new ToolChoices
+                    {
+                        Components = new List<Component>
+                        {
+                            new Component
+                            {
+                                Name = "ToolComponent2",
+                                Version = "1",
+                                BomRef = "ToolComponent2@1",
+                            }
+                        }
+                    }
+                },
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component2",
+                        Version = "1",
+                        BomRef = "Component2@1"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "System2@1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "Component2@1"
+                            }
+                        }
+                    }
+                },
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
+
+            Snapshot.Match(result);
+        }
+
+
+        [Fact]
         public void HierarchicalMergeVulnerabilitiesTest()
         {
             var subject = new Component
