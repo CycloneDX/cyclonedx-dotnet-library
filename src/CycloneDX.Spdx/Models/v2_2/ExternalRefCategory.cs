@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.Runtime.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_2
 {
@@ -23,6 +24,7 @@ namespace CycloneDX.Spdx.Models.v2_2
     {
         OTHER,
         SECURITY,
+        [EnumMember(Value = "PACKAGE-MANAGER")]
         PACKAGE_MANAGER,
     }
 }
