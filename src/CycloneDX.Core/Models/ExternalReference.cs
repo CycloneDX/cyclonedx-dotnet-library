@@ -128,6 +128,17 @@ namespace CycloneDX.Models
         public List<Hash> Hashes { get; set; }
         public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
 
+        public override bool Equals(object obj)
+        {
+            var other = obj as ExternalReference;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
+
         public bool Equals(ExternalReference obj)
         {
             return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);

@@ -36,6 +36,17 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            var other = obj as Dependency;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
+
         public bool Equals(Dependency obj)
         {
             return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
