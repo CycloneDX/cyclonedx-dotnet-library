@@ -231,6 +231,12 @@ namespace CycloneDX.Models
 
         public bool Equals(Component obj)
         {
+            // quick check without Serializer for improved performance
+            if (obj == null || Name != obj.Name)
+            {
+                return false;
+            }
+
             return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
         }
     
