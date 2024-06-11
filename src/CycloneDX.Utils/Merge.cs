@@ -23,7 +23,7 @@ using CycloneDX.Utils.Exceptions;
 
 namespace CycloneDX.Utils
 {
-    class ListMergeHelper<T>
+    class ListMergeHelper<T> where T : IEquatable<T>
     {
         public List<T> Merge(List<T> list1, List<T> list2)
         {
@@ -34,7 +34,7 @@ namespace CycloneDX.Utils
 
             foreach (var item in list2)
             {
-                if (!(result.Contains(item))) 
+                if (!(result.Contains(item)))
                 {
                     result.Add(item);
                 }

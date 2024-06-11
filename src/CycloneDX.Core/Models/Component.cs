@@ -233,8 +233,25 @@ namespace CycloneDX.Models
         [ProtoMember(26)]
         public Data Data { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            var other = obj as Component;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
+
         public bool Equals(Component obj)
         {
+            // quick check without Serializer for improved performance
+            if (obj == null || Name != obj.Name)
+            {
+                return false;
+            }
+
             return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
         }
     
