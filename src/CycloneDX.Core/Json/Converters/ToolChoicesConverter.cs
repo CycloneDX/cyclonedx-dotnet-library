@@ -85,7 +85,7 @@ namespace CycloneDX.Json.Converters
                 }
                 writer.WriteEndArray();
             }
-            else if (value.Components != null || value.Services != null)
+            else
             {
                 writer.WriteStartObject();
                 if (value.Components != null)
@@ -99,10 +99,6 @@ namespace CycloneDX.Json.Converters
                     JsonSerializer.Serialize(writer, value.Services, options);
                 }
                 writer.WriteEndObject();                
-            }
-            else
-            {
-                writer.WriteNullValue();
             }
         }
     }
