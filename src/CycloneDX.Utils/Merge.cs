@@ -244,7 +244,7 @@ namespace CycloneDX.Utils
                     }
                     foreach (var component in bom.Metadata.Tools.Components)
                     {
-                        component.BomRef = NamespacedBomRef(bom.Metadata.Component, component.BomRef);
+                        NamespaceComponentBomRefs(ComponentBomRefNamespace(bom.Metadata.Component), component);
                         if (!result.Metadata.Tools.Components.Contains(component))
                         {
                             result.Metadata.Tools.Components.Add(component);
@@ -357,6 +357,11 @@ namespace CycloneDX.Utils
 
         private static void NamespaceComponentBomRefs(Component topComponent)
         {
+            NamespaceComponentBomRefs(ComponentBomRefNamespace(topComponent), topComponent);
+        }
+
+        private static void NamespaceComponentBomRefs(string bomRefNamespace, Component topComponent)
+        {
             var components = new Stack<Component>();
             components.Push(topComponent);
 
@@ -365,12 +370,14 @@ namespace CycloneDX.Utils
                 var currentComponent = components.Pop();
 
                 if (currentComponent.Components != null)
-                foreach (var subComponent in currentComponent.Components)
                 {
-                    components.Push(subComponent);
+                    foreach (var subComponent in currentComponent.Components)
+                    {
+                        components.Push(subComponent);
+                    }
                 }
 
-                currentComponent.BomRef = NamespacedBomRef(topComponent, currentComponent.BomRef);
+                currentComponent.BomRef = NamespacedBomRef(bomRefNamespace, currentComponent.BomRef);
             }
         }
 
