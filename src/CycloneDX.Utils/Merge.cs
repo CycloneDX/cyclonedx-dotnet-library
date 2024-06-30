@@ -242,7 +242,14 @@ namespace CycloneDX.Utils
                     {
                         result.Metadata.Tools.Components = new List<Component>();
                     }
-                    result.Metadata.Tools.Components.AddRange(bom.Metadata.Tools.Components);
+                    foreach (var component in bom.Metadata.Tools.Components)
+                    {
+                        component.BomRef = NamespacedBomRef(bom.Metadata.Component, component.BomRef);
+                        if (!result.Metadata.Tools.Components.Contains(component))
+                        {
+                            result.Metadata.Tools.Components.Add(component);
+                        }
+                    }
                 }
                 if (bom.Metadata?.Tools?.Services?.Count > 0)
                 {
@@ -250,7 +257,14 @@ namespace CycloneDX.Utils
                     {
                         result.Metadata.Tools.Services = new List<Service>();
                     }
-                    result.Metadata.Tools.Services.AddRange(bom.Metadata.Tools.Services);
+                    foreach (var service in bom.Metadata.Tools.Services)
+                    {
+                        service.BomRef = NamespacedBomRef(bom.Metadata.Component, service.BomRef);
+                        if (!result.Metadata.Tools.Services.Contains(service))
+                        {
+                            result.Metadata.Tools.Services.Add(service);
+                        }
+                    }
                 }
 
                 var thisComponent = bom.Metadata.Component;
