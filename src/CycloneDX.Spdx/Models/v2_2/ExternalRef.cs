@@ -16,6 +16,9 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_2
@@ -28,8 +31,45 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// <summary>
         /// Category for the external reference
         /// </summary>
-        [XmlElement("referenceCategory")]
+        [XmlIgnore]
         public ExternalRefCategory ReferenceCategory { get; set; }
+        
+        /// <summary>
+        /// Category for the external reference, adjusted to allow values with hyphens and underscores
+        /// </summary>
+        [XmlElement("referenceCategory")]
+        [JsonIgnore]
+        public string ReferenceCategoryAsString
+        {
+            get
+            {
+                switch (ReferenceCategory)
+                {
+                    case ExternalRefCategory.PACKAGE_MANAGER:
+                        return "PACKAGE-MANAGER";
+                    default:
+                        return ReferenceCategory.ToString();
+                }
+            }
+            set
+            {
+                switch (value.ToUpperInvariant())
+                {
+                    case "OTHER":
+                        ReferenceCategory = ExternalRefCategory.OTHER;
+                        break;
+                    case "SECURITY":
+                        ReferenceCategory = ExternalRefCategory.SECURITY;
+                        break;
+                    case "PACKAGE_MANAGER":
+                    case "PACKAGE-MANAGER":
+                        ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
+            }
+        }
 
         /// <summary>
         /// The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location. The format of the locator is subject to constraints defined by the &lt;type&gt;.
