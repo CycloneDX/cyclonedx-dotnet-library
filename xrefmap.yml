@@ -1777,6 +1777,12 @@ references:
   commentId: M:CycloneDX.Models.Component.Equals(CycloneDX.Models.Component)
   fullName: CycloneDX.Models.Component.Equals(CycloneDX.Models.Component)
   nameWithType: Component.Equals(Component)
+- uid: CycloneDX.Models.Component.Equals(System.Object)
+  name: Equals(Object)
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_Equals_System_Object_
+  commentId: M:CycloneDX.Models.Component.Equals(System.Object)
+  fullName: CycloneDX.Models.Component.Equals(System.Object)
+  nameWithType: Component.Equals(Object)
 - uid: CycloneDX.Models.Component.Equals*
   name: Equals
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_Equals_
@@ -2311,6 +2317,38 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Composition.Dependencies
   nameWithType: Composition.Dependencies
+- uid: CycloneDX.Models.Composition.Equals(CycloneDX.Models.Composition)
+  name: Equals(Composition)
+  href: api/CycloneDX.Models.Composition.html#CycloneDX_Models_Composition_Equals_CycloneDX_Models_Composition_
+  commentId: M:CycloneDX.Models.Composition.Equals(CycloneDX.Models.Composition)
+  fullName: CycloneDX.Models.Composition.Equals(CycloneDX.Models.Composition)
+  nameWithType: Composition.Equals(Composition)
+- uid: CycloneDX.Models.Composition.Equals(System.Object)
+  name: Equals(Object)
+  href: api/CycloneDX.Models.Composition.html#CycloneDX_Models_Composition_Equals_System_Object_
+  commentId: M:CycloneDX.Models.Composition.Equals(System.Object)
+  fullName: CycloneDX.Models.Composition.Equals(System.Object)
+  nameWithType: Composition.Equals(Object)
+- uid: CycloneDX.Models.Composition.Equals*
+  name: Equals
+  href: api/CycloneDX.Models.Composition.html#CycloneDX_Models_Composition_Equals_
+  commentId: Overload:CycloneDX.Models.Composition.Equals
+  isSpec: "True"
+  fullName: CycloneDX.Models.Composition.Equals
+  nameWithType: Composition.Equals
+- uid: CycloneDX.Models.Composition.GetHashCode
+  name: GetHashCode()
+  href: api/CycloneDX.Models.Composition.html#CycloneDX_Models_Composition_GetHashCode
+  commentId: M:CycloneDX.Models.Composition.GetHashCode
+  fullName: CycloneDX.Models.Composition.GetHashCode()
+  nameWithType: Composition.GetHashCode()
+- uid: CycloneDX.Models.Composition.GetHashCode*
+  name: GetHashCode
+  href: api/CycloneDX.Models.Composition.html#CycloneDX_Models_Composition_GetHashCode_
+  commentId: Overload:CycloneDX.Models.Composition.GetHashCode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Composition.GetHashCode
+  nameWithType: Composition.GetHashCode
 - uid: CycloneDX.Models.Composition.GetSchema
   name: GetSchema()
   href: api/CycloneDX.Models.Composition.html#CycloneDX_Models_Composition_GetSchema
@@ -2989,6 +3027,12 @@ references:
   commentId: M:CycloneDX.Models.Dependency.Equals(CycloneDX.Models.Dependency)
   fullName: CycloneDX.Models.Dependency.Equals(CycloneDX.Models.Dependency)
   nameWithType: Dependency.Equals(Dependency)
+- uid: CycloneDX.Models.Dependency.Equals(System.Object)
+  name: Equals(Object)
+  href: api/CycloneDX.Models.Dependency.html#CycloneDX_Models_Dependency_Equals_System_Object_
+  commentId: M:CycloneDX.Models.Dependency.Equals(System.Object)
+  fullName: CycloneDX.Models.Dependency.Equals(System.Object)
+  nameWithType: Dependency.Equals(Object)
 - uid: CycloneDX.Models.Dependency.Equals*
   name: Equals
   href: api/CycloneDX.Models.Dependency.html#CycloneDX_Models_Dependency_Equals_
@@ -3689,6 +3733,25 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.ExternalReference.Comment
   nameWithType: ExternalReference.Comment
+- uid: CycloneDX.Models.ExternalReference.Equals(CycloneDX.Models.ExternalReference)
+  name: Equals(ExternalReference)
+  href: api/CycloneDX.Models.ExternalReference.html#CycloneDX_Models_ExternalReference_Equals_CycloneDX_Models_ExternalReference_
+  commentId: M:CycloneDX.Models.ExternalReference.Equals(CycloneDX.Models.ExternalReference)
+  fullName: CycloneDX.Models.ExternalReference.Equals(CycloneDX.Models.ExternalReference)
+  nameWithType: ExternalReference.Equals(ExternalReference)
+- uid: CycloneDX.Models.ExternalReference.Equals(System.Object)
+  name: Equals(Object)
+  href: api/CycloneDX.Models.ExternalReference.html#CycloneDX_Models_ExternalReference_Equals_System_Object_
+  commentId: M:CycloneDX.Models.ExternalReference.Equals(System.Object)
+  fullName: CycloneDX.Models.ExternalReference.Equals(System.Object)
+  nameWithType: ExternalReference.Equals(Object)
+- uid: CycloneDX.Models.ExternalReference.Equals*
+  name: Equals
+  href: api/CycloneDX.Models.ExternalReference.html#CycloneDX_Models_ExternalReference_Equals_
+  commentId: Overload:CycloneDX.Models.ExternalReference.Equals
+  isSpec: "True"
+  fullName: CycloneDX.Models.ExternalReference.Equals
+  nameWithType: ExternalReference.Equals
 - uid: CycloneDX.Models.ExternalReference.ExternalReferenceType
   name: ExternalReference.ExternalReferenceType
   href: api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html
@@ -3929,6 +3992,19 @@ references:
   commentId: F:CycloneDX.Models.ExternalReference.ExternalReferenceType.Website
   fullName: CycloneDX.Models.ExternalReference.ExternalReferenceType.Website
   nameWithType: ExternalReference.ExternalReferenceType.Website
+- uid: CycloneDX.Models.ExternalReference.GetHashCode
+  name: GetHashCode()
+  href: api/CycloneDX.Models.ExternalReference.html#CycloneDX_Models_ExternalReference_GetHashCode
+  commentId: M:CycloneDX.Models.ExternalReference.GetHashCode
+  fullName: CycloneDX.Models.ExternalReference.GetHashCode()
+  nameWithType: ExternalReference.GetHashCode()
+- uid: CycloneDX.Models.ExternalReference.GetHashCode*
+  name: GetHashCode
+  href: api/CycloneDX.Models.ExternalReference.html#CycloneDX_Models_ExternalReference_GetHashCode_
+  commentId: Overload:CycloneDX.Models.ExternalReference.GetHashCode
+  isSpec: "True"
+  fullName: CycloneDX.Models.ExternalReference.GetHashCode
+  nameWithType: ExternalReference.GetHashCode
 - uid: CycloneDX.Models.ExternalReference.Hashes
   name: Hashes
   href: api/CycloneDX.Models.ExternalReference.html#CycloneDX_Models_ExternalReference_Hashes
@@ -6961,6 +7037,12 @@ references:
   commentId: M:CycloneDX.Models.Service.Equals(CycloneDX.Models.Service)
   fullName: CycloneDX.Models.Service.Equals(CycloneDX.Models.Service)
   nameWithType: Service.Equals(Service)
+- uid: CycloneDX.Models.Service.Equals(System.Object)
+  name: Equals(Object)
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_Equals_System_Object_
+  commentId: M:CycloneDX.Models.Service.Equals(System.Object)
+  fullName: CycloneDX.Models.Service.Equals(System.Object)
+  nameWithType: Service.Equals(Object)
 - uid: CycloneDX.Models.Service.Equals*
   name: Equals
   href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_Equals_
@@ -7615,6 +7697,12 @@ references:
   commentId: M:CycloneDX.Models.Tool.Equals(CycloneDX.Models.Tool)
   fullName: CycloneDX.Models.Tool.Equals(CycloneDX.Models.Tool)
   nameWithType: Tool.Equals(Tool)
+- uid: CycloneDX.Models.Tool.Equals(System.Object)
+  name: Equals(Object)
+  href: api/CycloneDX.Models.Tool.html#CycloneDX_Models_Tool_Equals_System_Object_
+  commentId: M:CycloneDX.Models.Tool.Equals(System.Object)
+  fullName: CycloneDX.Models.Tool.Equals(System.Object)
+  nameWithType: Tool.Equals(Object)
 - uid: CycloneDX.Models.Tool.Equals*
   name: Equals
   href: api/CycloneDX.Models.Tool.html#CycloneDX_Models_Tool_Equals_
@@ -9231,6 +9319,12 @@ references:
   commentId: M:CycloneDX.Models.Vulnerabilities.Vulnerability.Equals(CycloneDX.Models.Vulnerabilities.Vulnerability)
   fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals(CycloneDX.Models.Vulnerabilities.Vulnerability)
   nameWithType: Vulnerability.Equals(Vulnerability)
+- uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals(System.Object)
+  name: Equals(Object)
+  href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Equals_System_Object_
+  commentId: M:CycloneDX.Models.Vulnerabilities.Vulnerability.Equals(System.Object)
+  fullName: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals(System.Object)
+  nameWithType: Vulnerability.Equals(Object)
 - uid: CycloneDX.Models.Vulnerabilities.Vulnerability.Equals*
   name: Equals
   href: api/CycloneDX.Models.Vulnerabilities.Vulnerability.html#CycloneDX_Models_Vulnerabilities_Vulnerability_Equals_
