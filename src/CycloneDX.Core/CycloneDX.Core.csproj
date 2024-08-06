@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
     <Product>CycloneDX.Core</Product>
     <Description>A .NET Standard library for CycloneDX bill-of-material documents.</Description>
     <PackageId>CycloneDX.Core</PackageId>
@@ -15,9 +15,13 @@
     <PackageReference Include="JsonSchema.Net" Version="5.3.1" />
     <PackageReference Include="protobuf-net" Version="3.2.26" />
     <PackageReference Include="protobuf-net.BuildTools" Version="3.2.12" PrivateAssets="all" IncludeAssets="runtime;build;native;contentfiles;analyzers;buildtransitive" />
+  </ItemGroup>
+
+    <!--The below packages are natively provided by the framework hence are not need for the frameworks which they are included in. What is included can be checked via https://apisof.net/-->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <EmbeddedResource Include="Schemas\*" />
   </ItemGroup>
