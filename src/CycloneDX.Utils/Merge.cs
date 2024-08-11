@@ -170,6 +170,11 @@ namespace CycloneDX.Utils
         public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
+            // New resulting Bom has its own identity (timestamp, serial)
+            // and its Tools collection refers to this library and the
+            // tool which consumes it.
+            result.BomMetadataUpdate(true);
+            result.BomMetadataReferThisToolkit();
             
             foreach (var bom in boms)
             {
@@ -222,19 +227,16 @@ namespace CycloneDX.Utils
         public static Bom HierarchicalMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
             var result = new Bom();
+            // New resulting Bom has its own identity (timestamp, serial)
+            // and its Tools collection refers to this library and the
+            // tool which consumes it.
+            result.BomMetadataUpdate(true);
+            result.BomMetadataReferThisToolkit();
+
             if (bomSubject != null)
             {
                 if (bomSubject.BomRef is null) bomSubject.BomRef = ComponentBomRefNamespace(bomSubject);
-                result.Metadata = new Metadata
-                {
-                    Component = bomSubject,
-                    #pragma warning disable 618
-                    Tools = new ToolChoices
-                    {
-                        Tools = new List<Tool>(),
-                    }
-                    #pragma warning restore 618
-                };
+                result.Metadata.Component = bomSubject;
             }
 
             result.Components = new List<Component>();
