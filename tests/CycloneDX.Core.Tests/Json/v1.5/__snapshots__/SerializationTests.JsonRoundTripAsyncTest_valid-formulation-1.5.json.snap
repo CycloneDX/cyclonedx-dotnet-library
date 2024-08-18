@@ -269,7 +269,7 @@
               "volume": {
                 "uid": "volume-1",
                 "name": "My volume",
-                "mode": "Filesystem",
+                "mode": "filesystem",
                 "path": "/",
                 "sizeAllocated": "10GB",
                 "persistent": true,

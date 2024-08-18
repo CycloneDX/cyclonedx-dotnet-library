@@ -17,7 +17,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using CycloneDX.Core.Models;
@@ -141,9 +143,22 @@ namespace CycloneDX.Models
         public List<Hash> Hashes { get; set; }
         public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
 
-        [XmlElement("licenses")]
+        [XmlIgnore]
         [ProtoMember(13)]
         public List<LicenseChoice> Licenses { get; set; }
+
+
+        [XmlElement("licenses")]
+        [JsonIgnore, ProtoIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        // This is a serialization workaround
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
         [XmlElement("copyright")]
         [ProtoMember(14)]
@@ -190,9 +205,8 @@ namespace CycloneDX.Models
         public List<ExternalReference> ExternalReferences { get; set; }
         public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
 
-        [XmlArray("components")]
-        [ProtoMember(21)]
-        public List<Component> Components { get; set; }
+        //In the xml format, Properties is in front of Components.
+        //XML serialization uses the member order unless explicitly specified differently.
         public bool ShouldSerializeComponents() { return Components?.Count > 0; }
 
         [XmlArray("properties")]
@@ -200,6 +214,10 @@ namespace CycloneDX.Models
         [ProtoMember(22)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        [XmlArray("components")]
+        [ProtoMember(21)]
+        public List<Component> Components { get; set; }
         
         [XmlElement("evidence")]
         [ProtoMember(23)]
@@ -222,6 +240,17 @@ namespace CycloneDX.Models
         [ProtoMember(27)]
         public CryptoProperties CryptoProperties { get; set; }
 
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Component;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
 
         public bool Equals(Component obj)
         {

@@ -23,7 +23,7 @@ using CycloneDX.Utils.Exceptions;
 
 namespace CycloneDX.Utils
 {
-    class ListMergeHelper<T>
+    class ListMergeHelper<T> where T : IEquatable<T>
     {
         public List<T> Merge(List<T> list1, List<T> list2)
         {
@@ -31,12 +31,36 @@ namespace CycloneDX.Utils
             if (list2 is null) return list1;
 
             var result = new List<T>(list1);
+            // We want to avoid the costly computation of the hashes if possible.
+            // Therefore, we use a nullable type.
+            var resultHashes = new List<int?>(list1.Count);
+            for (int i = 0; i < list1.Count; i++)
+            {
+                resultHashes.Add(null);
+            }
 
             foreach (var item in list2)
             {
-                if (!(result.Contains(item))) 
+                int hash = item.GetHashCode();
+                bool found = false;
+                for (int i = 0; i < result.Count; i++)
+                {
+                    var resultItem = result[i];
+                    if (resultHashes[i] == null)
+                    {
+                        resultHashes[i] = resultItem.GetHashCode();
+                    }
+                    int resultHash = resultHashes[i].Value;
+                    if (hash == resultHash && item.Equals(resultItem))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) 
                 {
                     result.Add(item);
+                    resultHashes.Add(hash);
                 }
             }
 
@@ -67,13 +91,19 @@ namespace CycloneDX.Utils
             var toolsMerger = new ListMergeHelper<Tool>();
             #pragma warning restore 618
             var tools = toolsMerger.Merge(bom1.Metadata?.Tools?.Tools, bom2.Metadata?.Tools?.Tools);
-            if (tools != null)
+            var toolsComponentsMerger = new ListMergeHelper<Component>();
+            var toolsComponents = toolsComponentsMerger.Merge(bom1.Metadata?.Tools?.Components, bom2.Metadata?.Tools?.Components);
+            var toolsServicesMerger = new ListMergeHelper<Service>();
+            var toolsServices = toolsServicesMerger.Merge(bom1.Metadata?.Tools?.Services, bom2.Metadata?.Tools?.Services);
+            if (tools != null || toolsComponents != null || toolsServices != null)
             {
                 result.Metadata = new Metadata
                 {
                     Tools = new ToolChoices
                     {
                         Tools = tools,
+                        Components = toolsComponents,
+                        Services = toolsServices,
                     }
                 };
             }
@@ -230,6 +260,36 @@ namespace CycloneDX.Utils
                 {
                     result.Metadata.Tools.Tools.AddRange(bom.Metadata.Tools.Tools);
                 }
+                if (bom.Metadata?.Tools?.Components?.Count > 0)
+                {
+                    if (result.Metadata.Tools.Components == null)
+                    {
+                        result.Metadata.Tools.Components = new List<Component>();
+                    }
+                    foreach (var component in bom.Metadata.Tools.Components)
+                    {
+                        NamespaceComponentBomRefs(ComponentBomRefNamespace(bom.Metadata.Component), component);
+                        if (!result.Metadata.Tools.Components.Contains(component))
+                        {
+                            result.Metadata.Tools.Components.Add(component);
+                        }
+                    }
+                }
+                if (bom.Metadata?.Tools?.Services?.Count > 0)
+                {
+                    if (result.Metadata.Tools.Services == null)
+                    {
+                        result.Metadata.Tools.Services = new List<Service>();
+                    }
+                    foreach (var service in bom.Metadata.Tools.Services)
+                    {
+                        service.BomRef = NamespacedBomRef(bom.Metadata.Component, service.BomRef);
+                        if (!result.Metadata.Tools.Services.Contains(service))
+                        {
+                            result.Metadata.Tools.Services.Add(service);
+                        }
+                    }
+                }
 
                 var thisComponent = bom.Metadata.Component;
                 if (thisComponent.Components is null) bom.Metadata.Component.Components = new List<Component>();
@@ -321,6 +381,11 @@ namespace CycloneDX.Utils
 
         private static void NamespaceComponentBomRefs(Component topComponent)
         {
+            NamespaceComponentBomRefs(ComponentBomRefNamespace(topComponent), topComponent);
+        }
+
+        private static void NamespaceComponentBomRefs(string bomRefNamespace, Component topComponent)
+        {
             var components = new Stack<Component>();
             components.Push(topComponent);
 
@@ -329,12 +394,14 @@ namespace CycloneDX.Utils
                 var currentComponent = components.Pop();
 
                 if (currentComponent.Components != null)
-                foreach (var subComponent in currentComponent.Components)
                 {
-                    components.Push(subComponent);
+                    foreach (var subComponent in currentComponent.Components)
+                    {
+                        components.Push(subComponent);
+                    }
                 }
 
-                currentComponent.BomRef = NamespacedBomRef(topComponent, currentComponent.BomRef);
+                currentComponent.BomRef = NamespacedBomRef(bomRefNamespace, currentComponent.BomRef);
             }
         }
 

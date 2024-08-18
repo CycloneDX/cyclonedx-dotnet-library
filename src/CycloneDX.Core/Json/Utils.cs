@@ -67,16 +67,18 @@ namespace CycloneDX.Json
 
             options.Converters.Add(new EnvironmentVarChoiceConverter());
             options.Converters.Add(new ToolChoicesConverter());
-            
+
+            options.Converters.Add(new HyphenEnumConverter<EvidenceIdentity.EvidenceFieldType>());
             options.Converters.Add(new HyphenEnumConverter<EvidenceMethods.EvidenceTechnique>());
             options.Converters.Add(new ScoreMethodConverter());
             options.Converters.Add(new HyphenEnumConverter<Severity>());
             options.Converters.Add(new HyphenEnumConverter<Trigger.TriggerType>());
             options.Converters.Add(new HyphenEnumConverter<WorkflowTask.TaskType>());
-            options.Converters.Add(new HyphenEnumConverter<WorkflowTaskType>());
             options.Converters.Add(new HyphenEnumConverter<Output.OutputType>());
             options.Converters.Add(new HyphenEnumConverter<ModelCard.ModelParameterApproachType>());
             options.Converters.Add(new UnderscoreEnumConverter<Status>());
+            options.Converters.Add(new HyphenEnumConverter<Volume.VolumeMode>());
+            options.Converters.Add(new HyphenEnumConverter<Data.DataType>());
 
             options.Converters.Add(new JsonStringEnumConverter());
             

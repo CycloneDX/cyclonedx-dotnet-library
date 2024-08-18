@@ -25,7 +25,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Composition : IXmlSerializable
+    public class Composition : IXmlSerializable, IEquatable<Composition>
     {
         [ProtoContract]
         public enum AggregateType
@@ -193,6 +193,27 @@ namespace CycloneDX.Models
                 }
                 writer.WriteEndElement();
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Composition;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
+
+        public bool Equals(Composition obj)
+        {
+            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
     }
 }
