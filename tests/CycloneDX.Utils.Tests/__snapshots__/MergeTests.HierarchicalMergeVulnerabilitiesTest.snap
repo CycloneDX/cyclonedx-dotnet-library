@@ -1,7 +1,7 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "v1_5",
-  "SpecVersionString": "1.5",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
   "SerialNumber": null,
   "Version": null,
   "Metadata": {
@@ -31,7 +31,8 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null
+      "Data": null,
+      "CryptoProperties": null
     },
     "Manufacture": null,
     "Supplier": null
@@ -58,7 +59,8 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null
+      "Data": null,
+      "CryptoProperties": null
     },
     {
       "Type": "Null",
@@ -81,7 +83,8 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null
+      "Data": null,
+      "CryptoProperties": null
     }
   ],
   "Dependencies": [
@@ -90,13 +93,16 @@
       "Dependencies": [
         {
           "Ref": "System1@1:System1@1",
-          "Dependencies": null
+          "Dependencies": null,
+          "Provides": null
         },
         {
           "Ref": "System2@1:System2@1",
-          "Dependencies": null
+          "Dependencies": null,
+          "Provides": null
         }
-      ]
+      ],
+      "Provides": null
     }
   ],
   "Compositions": null,
