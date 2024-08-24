@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -80,12 +81,25 @@ namespace CycloneDX.Models
         [XmlElement("supplier")]
         [ProtoMember(6)]
         public OrganizationalEntity Supplier { get; set; }
-        
-        [XmlElement("licenses")]
+
+        [XmlIgnore]
         [ProtoMember(7)]
         public List<LicenseChoice> Licenses { get; set; }
         public bool ShouldSerializeLicenses() { return Licenses?.Count > 0; }
-        
+
+
+        [XmlElement("licenses")]
+        [JsonIgnore, ProtoIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        // This is a serialization workaround
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
+
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(8)]

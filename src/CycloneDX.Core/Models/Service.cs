@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -165,10 +166,22 @@ namespace CycloneDX.Models
             }
         }
         public bool ShouldSerializeXmlData() => ShouldSerializeData();
-        
-        [XmlElement("licenses")]
+
+        [XmlIgnore]
         [ProtoMember(11)]
         public List<LicenseChoice> Licenses { get; set; }
+
+        [XmlElement("licenses")]
+        [JsonIgnore, ProtoIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        // This is a serialization workaround
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
@@ -193,6 +206,17 @@ namespace CycloneDX.Models
         public List<Property> Properties { get; set; }
 
         public bool ShouldSerializeProperties() => Properties?.Count > 0;
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Service;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
 
         public bool Equals(Service obj)
         {

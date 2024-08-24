@@ -3,6 +3,9 @@ name: .NET Core CI
 
 on: [pull_request, workflow_dispatch]
 
+env:
+  SNAPSHOOTER_STRICT_MODE: true
+
 jobs:
   # Fail if there are build warnings
   #
@@ -30,11 +33,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+#       os: [ubuntu-latest, windows-latest, macos-latest] 
+#       macos currently disabled. see issue #285 for more info.
+        os: [ubuntu-latest, windows-latest]
     timeout-minutes: 30
     
     steps:
     - uses: actions/checkout@v3
+    - name: SnapshooterHotfixSymlinkLinux    
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo ln -s "$GITHUB_WORKSPACE" /_
+      shell: bash
+    - name: SnapshooterHotfixSymlinkWindows  
+      if: matrix.os == 'windows-latest'
+      run:  New-Item -ItemType SymbolicLink -Path "/_" -Target "$env:GITHUB_WORKSPACE"
+      shell: pwsh
     - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0.x'

@@ -5,6 +5,10 @@
       <license>
         <id>Apache-2.0</id>
       </license>
+      <license>
+        <name>My License</name>
+        <text content-type="text/plain">My License Text</text>
+      </license>
     </licenses>
   </metadata>
 </bom>

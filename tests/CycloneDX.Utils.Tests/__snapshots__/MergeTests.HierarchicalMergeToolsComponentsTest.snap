@@ -6,7 +6,57 @@
   "Version": null,
   "Metadata": {
     "Tools": {
-      "Tools": null
+      "Tools": null,
+      "Components": [
+        {
+          "Type": "Null",
+          "MimeType": null,
+          "BomRef": "System1@1:ToolComponent1@1",
+          "Supplier": null,
+          "Author": null,
+          "Publisher": null,
+          "Group": null,
+          "Name": "ToolComponent1",
+          "Version": "1",
+          "Description": null,
+          "Scope": null,
+          "Licenses": null,
+          "Copyright": null,
+          "Cpe": null,
+          "Purl": null,
+          "Swid": null,
+          "Modified": null,
+          "Pedigree": null,
+          "Evidence": null,
+          "ModelCard": null,
+          "Data": null,
+          "CryptoProperties": null
+        },
+        {
+          "Type": "Null",
+          "MimeType": null,
+          "BomRef": "System2@1:ToolComponent2@1",
+          "Supplier": null,
+          "Author": null,
+          "Publisher": null,
+          "Group": null,
+          "Name": "ToolComponent2",
+          "Version": "1",
+          "Description": null,
+          "Scope": null,
+          "Licenses": null,
+          "Copyright": null,
+          "Cpe": null,
+          "Purl": null,
+          "Swid": null,
+          "Modified": null,
+          "Pedigree": null,
+          "Evidence": null,
+          "ModelCard": null,
+          "Data": null,
+          "CryptoProperties": null
+        }
+      ]
     },
     "ProtobufTools": null,
     "Authors": null,
@@ -179,28 +229,5 @@
       "Provides": null
     }
   ],
-  "Compositions": [
-    {
-      "Aggregate": "Complete",
-      "Assemblies": [
-        "System1@1:System1@1"
-      ],
-      "Dependencies": [
-        "System1@1:System1@1"
-      ],
-      "Vulnerabilities": null,
-      "BomRef": null
-    },
-    {
-      "Aggregate": "Complete",
-      "Assemblies": [
-        "System2@1:System2@1"
-      ],
-      "Dependencies": [
-        "System2@1:System2@1"
-      ],
-      "Vulnerabilities": null,
-      "BomRef": null
-    }
-  ]
+  "Compositions": null
 }

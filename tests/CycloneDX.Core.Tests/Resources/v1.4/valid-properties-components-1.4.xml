@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<bom serialNumber="urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79" version="1" xmlns="http://cyclonedx.org/schema/bom/1.4">
+    <metadata>
+        <properties>
+            <property name="Foo">Bar</property>
+            <property name="Foo">You</property>
+            <property name="Foo">Two</property>
+            <property name="Bar">Foo</property>
+        </properties>
+    </metadata>
+    <components>
+        <component type="library">
+            <name>acme-library</name>
+            <version>1.0.0</version>
+            <properties>
+                <property name="Foo">Bar</property>
+                <property name="Bar">Foo</property>
+            </properties>
+            <components>
+                <component type="library">
+                    <name>acme-sub-library</name>
+                    <version>1.0.0</version>
+                    <properties>
+                        <property name="Foo">Bar</property>
+                        <property name="Bar">Foo</property>
+                    </properties>
+                </component>
+            </components>
+        </component>
+    </components>
+</bom>

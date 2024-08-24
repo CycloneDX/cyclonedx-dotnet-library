@@ -89,5 +89,18 @@ namespace CycloneDX.Json
             Contract.Requires(vulnerability != null);
             return JsonSerializer.Serialize(vulnerability, _options);
         }
+
+        internal static string Serialize(Models.Composition composition)
+        {
+            Contract.Requires(composition != null);
+            return JsonSerializer.Serialize(composition, _options);
+        }
+
+        internal static string Serialize(Models.ExternalReference externalReference)
+        {
+            Contract.Requires(externalReference != null);
+            return JsonSerializer.Serialize(externalReference, _options);
+        }
+
     }
 }

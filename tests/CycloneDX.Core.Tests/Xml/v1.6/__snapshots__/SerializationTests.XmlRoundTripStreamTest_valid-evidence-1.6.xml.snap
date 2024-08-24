@@ -75,6 +75,10 @@
             <id>Apache-2.0</id>
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
           </license>
+          <license>
+            <id>LGPL-2.1-only</id>
+            <url>https://opensource.org/licenses/LGPL-2.1</url>
+          </license>
         </licenses>
         <copyright>
           <text>Copyright 2012 Google Inc. All Rights Reserved.</text>
