@@ -1,0 +1,21 @@
+﻿spec_version: "1.6"
+version: 1
+serial_number: "urn:uuid:ed5c5ba0-2be6-4b58-ac29-01a7fd375123"
+components {
+  type: CLASSIFICATION_MACHINE_LEARNING_MODEL
+  bom_ref: "huggingface.co-meta-llama-Llama-2-7b"
+  supplier {
+    name: "Hugging Face"
+  }
+  publisher: "meta"
+  group: "meta-llama"
+  name: "Llama-2-7b"
+  external_references {
+    type: EXTERNAL_REFERENCE_TYPE_DISTRIBUTION
+    url: "https://huggingface.co/meta-llama/Llama-2-7b"
+  }
+  modelCard {
+    considerations {
+    }
+  }
+}
