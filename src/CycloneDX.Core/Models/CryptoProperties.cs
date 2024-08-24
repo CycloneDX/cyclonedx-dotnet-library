@@ -35,6 +35,7 @@ namespace CycloneDX.Core.Models
         [XmlIgnore]
         public List<CipherSuite> CipherSuites { get; set; }
         [XmlElement("cipherSuites")]
+        [JsonIgnore]
         public CipherSuiteCollection CipherSuites_XML
         {
             get { return new CipherSuiteCollection { CipherSuites = this.CipherSuites }; }
@@ -104,6 +105,7 @@ namespace CycloneDX.Core.Models
         public List<string> Algorithms { get; set; }
 
         [XmlElement("algorithms")]
+        [JsonIgnore]
         public CipherSuiteAlgorithmCollection Algorithms_XML
         {
             get
@@ -118,6 +120,7 @@ namespace CycloneDX.Core.Models
         [XmlIgnore]
         public List<string> Identifiers { get; set; }
         [XmlElement("identifiers")]
+        [JsonIgnore]
         public CipherSuiteIdentifierCollection Identifiers_XML
         {
             get
@@ -154,7 +157,7 @@ namespace CycloneDX.Core.Models
         [XmlEnum("protocol")]
         Protocol,
         [XmlEnum("related-crypto-material")]
-        ReleatedCryptoMaterial,
+        Related_Crypto_Material,
 
     }
 
@@ -202,11 +205,11 @@ namespace CycloneDX.Core.Models
     {
   //      Null,
         [XmlEnum("private-key")]
-        PrivateKey,
+        Private_Key,
         [XmlEnum("public-key")]
-        PublicKey,
+        Public_Key,
         [XmlEnum("secret-key")]
-        SecretKey,
+        Secret_Key,
         [XmlEnum("key")]
         Key,
         [XmlEnum("ciphertext")]
@@ -216,7 +219,7 @@ namespace CycloneDX.Core.Models
         [XmlEnum("digest")]
         Digest,
         [XmlEnum("initialization-vector")]
-        InitializationVector,
+        Initialization_Vector,
         [XmlEnum("nonce")]
         Nonce,
         [XmlEnum("seed")]
@@ -224,11 +227,11 @@ namespace CycloneDX.Core.Models
         [XmlEnum("salt")]
         Salt,
         [XmlEnum("shared-secret")]
-        SharedSecret,
+        Shared_Secret,
         [XmlEnum("tag")]
         Tag,
         [XmlEnum("additional-data")]
-        AdditionalData,
+        Additional_Data,
         [XmlEnum("password")]
         Password,
         [XmlEnum("credential")]
@@ -244,7 +247,7 @@ namespace CycloneDX.Core.Models
     public enum KeyState
     {
         [XmlEnum("pre-activation")]
-        PreActivation,
+        Pre_Activation,
         [XmlEnum("active")]
         Active,
         [XmlEnum("suspended")]

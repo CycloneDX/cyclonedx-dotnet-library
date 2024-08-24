@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -91,6 +92,32 @@ namespace CycloneDX.Json.Converters
                             }
                         }
                     }
+                    else if (propertyName == "provides")
+                    {
+                        dependency.Provides = new List<Provides>();
+                        while (reader.Read())
+                        {
+                            if (reader.TokenType == JsonTokenType.EndArray)
+                            {
+                                break;
+                            }
+                            else if (reader.TokenType == JsonTokenType.String)
+                            {
+                                dependency.Provides.Add(new Provides
+                                {
+                                    Ref = reader.GetString()
+                                });
+                            }
+                            else if (reader.TokenType == JsonTokenType.StartArray)
+                            {
+                                // this happens the first time through
+                            }
+                            else
+                            {
+                                throw new JsonException();
+                            }
+                        }
+                    }
                 }
                 throw new JsonException();
             }
@@ -118,6 +145,17 @@ namespace CycloneDX.Json.Converters
                 foreach (var dependency in value.Dependencies)
                 {
                     writer.WriteStringValue(dependency.Ref);
+                }
+                writer.WriteEndArray();
+            }
+
+            if (value.Provides != null)
+            {
+                writer.WritePropertyName("provides");
+                writer.WriteStartArray();
+                foreach (var provides in value.Provides)
+                {
+                    writer.WriteStringValue(provides.Ref);
                 }
                 writer.WriteEndArray();
             }

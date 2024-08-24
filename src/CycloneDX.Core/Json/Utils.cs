@@ -17,6 +17,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CycloneDX.Core.Models;
 using CycloneDX.Json.Converters;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
@@ -67,6 +68,17 @@ namespace CycloneDX.Json
 
             options.Converters.Add(new EnvironmentVarChoiceConverter());
             options.Converters.Add(new ToolChoicesConverter());
+            options.Converters.Add(new HyphenEnumConverter<ExecutionEnvironment>());
+            options.Converters.Add(new HyphenEnumConverter<CertificationLevel>());
+            options.Converters.Add(new HyphenEnumConverter<AssetType>());
+            options.Converters.Add(new HyphenEnumConverter<RelatedCryptoMaterialType>());
+            options.Converters.Add(new HyphenEnumConverter<KeyState>());
+            options.Converters.Add(new HyphenEnumConverter<CryptoFunction>());
+            options.Converters.Add(new HyphenEnumConverter<AlgorithmMode>());
+            options.Converters.Add(new HyphenEnumConverter<ProtocolType>());
+            options.Converters.Add(new HyphenEnumConverter<Primitive>());
+            options.Converters.Add(new HyphenEnumConverter<PaddingScheme>());
+            options.Converters.Add(new UnderscoreEnumConverter<ImplementationPlatform>());//todo: fix this
 
             options.Converters.Add(new HyphenEnumConverter<EvidenceIdentity.EvidenceFieldType>());
             options.Converters.Add(new HyphenEnumConverter<EvidenceMethods.EvidenceTechnique>());

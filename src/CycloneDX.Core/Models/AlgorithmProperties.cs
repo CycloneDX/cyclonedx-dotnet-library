@@ -94,6 +94,7 @@ namespace CycloneDX.Core.Models
 
 
         [XmlElement("cryptoFunctions")]
+        [JsonIgnore]
         public CryptoFunctionCollection CryptoFunctionSerializable_XML
         {
             get { return new CryptoFunctionCollection { CryptoFunctions = CryptoFunctions }; }
@@ -260,11 +261,11 @@ namespace CycloneDX.Core.Models
     {
         Null,
         [XmlEnum("software-plain-ram")]
-        SoftwarePlainRam,
+        Software_Plain_Ram,
         [XmlEnum("software-encrypted-ram")]
-        SoftwareEncyptedRam,
+        Software_Encypted_Ram,
         [XmlEnum("software-tee")]
-        SoftwareTEE,
+        Software_TEE,
         [XmlEnum("hardware")]
         Hardware,
         [XmlEnum("other")]
@@ -282,9 +283,9 @@ namespace CycloneDX.Core.Models
         [XmlEnum("mac")]
         MAC,
         [XmlEnum("block-cipher")]
-        BlockCipher,
+        Block_Cipher,
         [XmlEnum("stream-cipher")]
-        StreamCipher,
+        Stream_Cipher,
         [XmlEnum("signature")]
         Signature,
         [XmlEnum("hash")]
@@ -296,7 +297,7 @@ namespace CycloneDX.Core.Models
         [XmlEnum("kdf")]
         KDF,
         [XmlEnum("key-agree")]
-        KeyAgree,
+        Key_Agree,
         [XmlEnum("kem")]
         KEM,
         [XmlEnum("ae")]
