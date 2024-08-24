@@ -282,6 +282,12 @@ namespace CycloneDX
         {
             var protoBom = Protobuf.Serializer.SerializeForDeepCopy(bom);
             var bomCopy = Protobuf.Serializer.Deserialize(protoBom);
+            // workaround for the incorrect Protobuf serialization of Tools
+            if (bom?.Metadata?.Tools?.Tools?.Count > 0 || bom?.Metadata?.Tools?.Components?.Count > 0 || bom?.Metadata?.Tools?.Services?.Count > 0)
+            {
+                var serializedTools = Json.Serializer.Serialize(bom.Metadata.Tools);
+                bomCopy.Metadata.Tools = Json.Serializer.DeserializeToolChoices(serializedTools);
+            }
             return bomCopy;
         }
 

@@ -33,12 +33,12 @@ namespace CycloneDX.Models
         public List<Tool> Tools { get; set; }
         #pragma warning restore 618
         
-        [ProtoMember(2)]
+        [ProtoMember(6)]
         public List<Component> Components { get; set; }
 
         public bool ShouldSerializeComponents() => Components?.Count > 0;
 
-        [ProtoMember(3)]
+        [ProtoMember(7)]
         public List<Service> Services { get; set; }
 
         public bool ShouldSerializeServices() => Services?.Count > 0;
