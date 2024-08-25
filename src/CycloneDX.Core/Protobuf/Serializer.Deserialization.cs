@@ -71,7 +71,11 @@ namespace CycloneDX.Protobuf
             if (bom.Components != null)
                 foreach (var component in bom.Components)
                     CleanupEmptyArrays(component);
-            
+
+            if (bom.Services != null)
+                foreach (var service in bom.Services)
+                    CleanupEmptyArrays(service);
+
             if (bom.Dependencies != null)
                 foreach (var dependency in bom.Dependencies)
                     if (dependency.Dependencies?.Count == 0) dependency.Dependencies = null;
@@ -84,12 +88,25 @@ namespace CycloneDX.Protobuf
             if (component.Hashes?.Count == 0) component.Hashes = null;
             if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
             if (component.Components?.Count == 0) component.Components = null;
+            if (component.Tags?.Count == 0) component.Tags = null;
 
             if (component.Components != null)
             foreach (var subComponent in component.Components)
                 CleanupEmptyArrays(subComponent);
             
             if (component.Pedigree != null) CleanupEmptyArrays(component.Pedigree);
+        }
+
+        private static void CleanupEmptyArrays(Service service)
+        {
+            if (service.Tags?.Count == 0) service.Tags = null;
+            if (service.Services != null)
+            {
+                foreach (var subService in service.Services)
+                {
+                    CleanupEmptyArrays(subService);
+                }
+            }
         }
 
         private static void CleanupEmptyArrays(Pedigree pedigree)
