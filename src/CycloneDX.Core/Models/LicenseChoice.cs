@@ -25,6 +25,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
 
+
     [ProtoContract]
     public class LicenseChoice
     {
@@ -35,11 +36,18 @@ namespace CycloneDX.Models
         [XmlElement("expression")]
         [ProtoMember(2)]
         public string Expression { get; set; }
-        
+
         [XmlElement("bom-ref")]
         [JsonPropertyName("bom-ref")]
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public string BomRef { get; set; }
+
+
+        [XmlElement("acknowledgement")]
+        [ProtoMember(3)]
+        public LicenseAcknowledgementEnumeration? Acknowledgement { get; set; }
+        public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue; }
+
     }
 
     // This is a workaround to serialize licenses correctly

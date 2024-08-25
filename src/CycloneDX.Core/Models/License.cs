@@ -22,6 +22,15 @@ using ProtoBuf;
 
 namespace CycloneDX.Models
 {
+    public enum LicenseAcknowledgementEnumeration
+    {
+        Null,
+        [XmlEnum(Name = "declared")]
+        Declared,
+        [XmlEnum(Name = "concluded")]
+        Concluded,
+    }
+
     [XmlType("license")]
     [ProtoContract]
     public class License
@@ -58,5 +67,10 @@ namespace CycloneDX.Models
         [ProtoMember(7)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        [XmlElement("acknowledgement")]
+        [ProtoMember(8)]
+        public LicenseAcknowledgementEnumeration? Acknowledgement { get; set; }
+        public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue; }
     }
 }

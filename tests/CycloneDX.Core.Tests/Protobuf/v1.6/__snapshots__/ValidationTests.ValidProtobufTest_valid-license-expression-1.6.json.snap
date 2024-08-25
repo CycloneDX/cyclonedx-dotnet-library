@@ -9,6 +9,7 @@ components {
   version: "9.0.14"
   licenses {
     expression: "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0"
-    3: "my-license"
+    acknowledgement: LICENSE_ACKNOWLEDGEMENT_ENUMERATION_DECLARED
+    4: "my-license"
   }
 }

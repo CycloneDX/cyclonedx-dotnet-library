@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
+using static CycloneDX.Models.EvidenceIdentity;
 
 namespace CycloneDX
 {
@@ -264,7 +265,22 @@ namespace CycloneDX
                     {
                         component.Type = Component.Classification.Library;
                     }
+                    component.Tags = null;
+                    component.OmniborId = null;
+                    component.Swhid = null;
+                    component.Authors = null;
+                    component.Manufacturer = null;
                 });
+
+                EnumerateAllServices(bomCopy, (service) =>
+                {
+                    service.Tags = null;
+                });
+
+                if (bomCopy.Metadata != null)
+                {
+                    bomCopy.Metadata.Manufacturer = null;
+                }
 
                 EnumerateAllDependencies(bomCopy, (dependency) =>
                 {
@@ -277,6 +293,25 @@ namespace CycloneDX
                     {
                         evidence.Identity.RemoveRange(1, evidence.Identity.Count - 1);
                     }
+                    if (evidence.Identity?.Count == 1 &&
+                        (evidence.Identity[0].Field == EvidenceFieldType.OmniborId
+                        || evidence.Identity[0].Field == EvidenceFieldType.Swhid))
+                    {
+                        evidence.Identity.Clear();
+                    }
+                    if (evidence.Identity?.Count == 1)
+                    {
+                        evidence.Identity[0].ConcludedValue = null;
+                    }
+                });
+
+                EnumerateAllLicenseChoices(bomCopy, (licenseChoice) =>
+                {
+                    if (licenseChoice.License != null)
+                    {
+                        licenseChoice.License.Acknowledgement = null;
+                    }
+                    licenseChoice.Acknowledgement = null;
                 });
 
             }
