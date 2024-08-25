@@ -264,6 +264,12 @@ namespace CycloneDX
                     {
                         component.Type = Component.Classification.Library;
                     }
+                    component.Tags = null;
+                });
+
+                EnumerateAllServices(bomCopy, (service) =>
+                {
+                    service.Tags = null;
                 });
 
                 EnumerateAllDependencies(bomCopy, (dependency) =>

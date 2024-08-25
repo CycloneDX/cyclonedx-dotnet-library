@@ -240,6 +240,13 @@ namespace CycloneDX.Models
         [XmlElement("cryptoProperties")]
         [ProtoMember(27)]
         public CryptoProperties CryptoProperties { get; set; }
+
+        [XmlArray("tags")]
+        [XmlArrayItem("tag")]
+        [ProtoMember(30)]
+        public List<string> Tags { get; set; }
+        public bool ShouldSerializeTags() { return Tags?.Count > 0; }
+
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }

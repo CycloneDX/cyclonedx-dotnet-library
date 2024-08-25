@@ -212,6 +212,12 @@ namespace CycloneDX.Models
         [XmlIgnore]
         public Signature Signature { get; set; }
 
+        [XmlArray("tags")]
+        [XmlArrayItem("tag")]
+        [ProtoMember(17)]
+        public List<string> Tags { get; set; }
+        public bool ShouldSerializeTags() { return Tags?.Count > 0; }
+
         public override bool Equals(object obj)
         {
             var other = obj as Service;

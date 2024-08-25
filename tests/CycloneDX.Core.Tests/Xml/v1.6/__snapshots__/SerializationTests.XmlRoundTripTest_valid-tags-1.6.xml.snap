@@ -4,6 +4,11 @@
     <component type="library">
       <name>my-json-parser</name>
       <version>1.0</version>
+      <tags>
+        <tag>json-parser</tag>
+        <tag>javascript</tag>
+        <tag>node.js</tag>
+      </tags>
     </component>
   </components>
   <services>
@@ -12,6 +17,12 @@
       <endpoints>
         <endpoint>https://example.com/myservice</endpoint>
       </endpoints>
+      <tags>
+        <tag>microservice</tag>
+        <tag>golang</tag>
+        <tag>aws</tag>
+        <tag>us-east-1</tag>
+      </tags>
     </service>
   </services>
 </bom>
