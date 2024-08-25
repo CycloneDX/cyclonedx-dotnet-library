@@ -51,6 +51,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<Component.ComponentScope>());
             options.Converters.Add(new HyphenEnumConverter<Component.Classification>());
             options.Converters.Add(new HyphenEnumConverter<Licensing.LicenseType>());
+            options.Converters.Add(new HyphenEnumConverter<LicenseAcknowledgementEnumeration>());
             options.Converters.Add(new HyphenEnumConverter<DataFlowDirection>());
             options.Converters.Add(new DateTimeConverter());
             options.Converters.Add(new DependencyConverter());

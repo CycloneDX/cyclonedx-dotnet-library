@@ -301,6 +301,15 @@ namespace CycloneDX
                     }
                 });
 
+                EnumerateAllLicenseChoices(bomCopy, (licenseChoice) =>
+                {
+                    if (licenseChoice.License != null)
+                    {
+                        licenseChoice.License.Acknowledgement = null;
+                    }
+                    licenseChoice.Acknowledgement = null;
+                });
+
             }
 
             // triggers a bunch of stuff, don't remove unless you know what you are doing
