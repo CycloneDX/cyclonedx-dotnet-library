@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
+using static CycloneDX.Models.EvidenceIdentity;
 
 namespace CycloneDX
 {
@@ -263,6 +264,8 @@ namespace CycloneDX
                         component.Type = Component.Classification.Library;
                     }
                     component.Tags = null;
+                    component.OmniborId = null;
+                    component.Swhid = null;
                 });
 
                 EnumerateAllServices(bomCopy, (service) =>
@@ -280,6 +283,12 @@ namespace CycloneDX
                     if (evidence?.Identity?.Count > 1)
                     {
                         evidence.Identity.RemoveRange(1, evidence.Identity.Count - 1);
+                    }
+                    if (evidence.Identity?.Count == 1 &&
+                        (evidence.Identity[0].Field == EvidenceFieldType.OmniborId
+                        || evidence.Identity[0].Field == EvidenceFieldType.Swhid))
+                    {
+                        evidence.Identity.Clear();
                     }
                 });
 

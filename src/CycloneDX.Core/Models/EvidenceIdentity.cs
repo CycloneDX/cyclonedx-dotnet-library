@@ -49,6 +49,10 @@ namespace CycloneDX.Models
             Swid,
             [XmlEnum(Name = "hash")]
             Hash,
+            [XmlEnum(Name = "omniborId")]
+            OmniborId,
+            [XmlEnum(Name = "swhid")]
+            Swhid,
         }
 
         [XmlElement("field")]

@@ -246,6 +246,16 @@ namespace CycloneDX.Models
         public List<string> Tags { get; set; }
         public bool ShouldSerializeTags() { return Tags?.Count > 0; }
 
+        [XmlElement("omniborId")]
+        [ProtoMember(31)]
+        public List<string> OmniborId { get; set; }
+        public bool ShouldSerializeOmniborId() { return OmniborId?.Count > 0; }
+
+        [XmlElement("swhid")]
+        [ProtoMember(32)]
+        public List<string> Swhid { get; set; }
+        public bool ShouldSerializeSwhid() { return Swhid?.Count > 0; }
+
         public override bool Equals(object obj)
         {
             var other = obj as Component;
