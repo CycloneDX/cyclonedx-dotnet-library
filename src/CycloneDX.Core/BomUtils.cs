@@ -578,11 +578,12 @@ namespace CycloneDX
 
         public static void EnumerateAllDatasetChoices(Bom bom, Action<DatasetChoices> callback)
         {
-            var x = bom.Components?.Select(c => c.ModelCard?.ModelParameters?.Datasets).Where(o => o != null) ?? new List<DatasetChoices>();
-            foreach (var item in x)
-            {
-                callback(item);
-            }
+            EnumerateAllComponents(bom, (component) => {
+                if (component?.ModelCard?.ModelParameters?.Datasets != null)
+                {
+                    callback(component.ModelCard.ModelParameters.Datasets);
+                }
+            });
         }
     }
 }
