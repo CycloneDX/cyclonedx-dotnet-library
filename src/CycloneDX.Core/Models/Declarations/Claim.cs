@@ -24,43 +24,47 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Declarations
+    public class Claim
     {
-        [XmlArray("assessors")]
-        [XmlArrayItem("assessor")]
+        [XmlAttribute("bom-ref")]
+        [JsonPropertyName("bom-ref")]
         [ProtoMember(1)]
-        public List<Assessor> Assessors { get; set; }
+        public string BomRef { get; set; }
 
-        [XmlArray("attestations")]
-        [XmlArrayItem("attestation")]
+        [XmlElement("target")]
         [ProtoMember(2)]
-        public List<Attestation> Attestations { get; set; }
+        public string Target { get; set; }
 
-        [XmlArray("claims")]
-        [XmlArrayItem("claim")]
-
+        [XmlElement("predicate")]
         [ProtoMember(3)]
-        public List<Claim> Claims { get; set; }
+        public string Predicate { get; set; }
 
-        [XmlArray("evidence")]
-        [XmlArrayItem("evidence")]
+        [XmlArray("mitigationStrategies")]
+        [XmlArrayItem("mitigationStrategy")]
         [ProtoMember(4)]
-        public List<DeclarationsEvidence> Evidence { get; set; }
-        [XmlElement("targets")]
-        [ProtoMember(5)]
-        public Targets Targets { get; set; }
-        [XmlElement("affirmation")]
+        public List<string> MitigationStrategies { get; set; }
 
+        [XmlElement("reasoning")]
+        [ProtoMember(5)]
+        public string Reasoning { get; set; }
+
+        [XmlElement("evidence")]
         [ProtoMember(6)]
-        public Affirmation Affirmation { get; set; }
+        public List<string> Evidence { get; set; }
+
+        [XmlElement("counterEvidence")]
+        [ProtoMember(7)]
+        public List<string> CounterEvidence { get; set; }
+
+        [XmlArray("externalReferences")]
+        [XmlArrayItem("reference")]
+        [ProtoMember(8)]
+        public List<ExternalReference> ExternalReferences { get; set; }
 
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }
         [XmlIgnore]
         public Signature Signature { get; set; }
-
     }
-
-
 }

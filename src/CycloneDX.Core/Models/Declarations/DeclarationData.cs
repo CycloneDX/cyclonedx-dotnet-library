@@ -17,50 +17,29 @@
 
 using ProtoBuf;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Declarations
+    public class DeclarationData
     {
-        [XmlArray("assessors")]
-        [XmlArrayItem("assessor")]
+        [XmlElement("name")]
         [ProtoMember(1)]
-        public List<Assessor> Assessors { get; set; }
-
-        [XmlArray("attestations")]
-        [XmlArrayItem("attestation")]
+        public string Name { get; set; }
+        [XmlElement("contents")]
         [ProtoMember(2)]
-        public List<Attestation> Attestations { get; set; }
-
-        [XmlArray("claims")]
-        [XmlArrayItem("claim")]
-
+        public DeclarationDataContents Contents { get; set; }
+        [XmlElement("classification")]
         [ProtoMember(3)]
-        public List<Claim> Claims { get; set; }
+        public string Classification { get; set; }
 
-        [XmlArray("evidence")]
-        [XmlArrayItem("evidence")]
+        [XmlElement("sensitiveData")]
         [ProtoMember(4)]
-        public List<DeclarationsEvidence> Evidence { get; set; }
-        [XmlElement("targets")]
+        public List<string> SensitiveData { get; set; }
+        [XmlElement("governance")]
         [ProtoMember(5)]
-        public Targets Targets { get; set; }
-        [XmlElement("affirmation")]
-
-        [ProtoMember(6)]
-        public Affirmation Affirmation { get; set; }
-
-        [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-        [JsonIgnore]
-        public XmlElement XmlSignature { get; set; }
-        [XmlIgnore]
-        public Signature Signature { get; set; }
-
+        public DataGovernance Governance { get; set; }
     }
-
-
 }

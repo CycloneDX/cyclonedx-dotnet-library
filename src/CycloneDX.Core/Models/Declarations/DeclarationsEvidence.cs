@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -24,35 +25,48 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Declarations
+    public class DeclarationsEvidence
     {
-        [XmlArray("assessors")]
-        [XmlArrayItem("assessor")]
+        [XmlAttribute("bom-ref")]
+        [JsonPropertyName("bom-ref")]
         [ProtoMember(1)]
-        public List<Assessor> Assessors { get; set; }
-
-        [XmlArray("attestations")]
-        [XmlArrayItem("attestation")]
+        public string BomRef { get; set; }
+        [XmlElement("propertyName")]
         [ProtoMember(2)]
-        public List<Attestation> Attestations { get; set; }
-
-        [XmlArray("claims")]
-        [XmlArrayItem("claim")]
-
+        public string PropertyName { get; set; }
+        [XmlElement("description")]
         [ProtoMember(3)]
-        public List<Claim> Claims { get; set; }
+        public string Description { get; set; }
 
-        [XmlArray("evidence")]
-        [XmlArrayItem("evidence")]
+        [XmlElement("data")]
         [ProtoMember(4)]
-        public List<DeclarationsEvidence> Evidence { get; set; }
-        [XmlElement("targets")]
-        [ProtoMember(5)]
-        public Targets Targets { get; set; }
-        [XmlElement("affirmation")]
+        public List<DeclarationData> Data { get; set; }
 
+        private DateTime? _created;
+
+        [XmlElement("created")]
+        [ProtoMember(5)]
+        public DateTime? Created
+        {
+            get => _created;
+            set { _created = BomUtils.UtcifyDateTime(value); }
+        }
+
+        private DateTime? _expires;
+
+        [XmlElement("expires")]
         [ProtoMember(6)]
-        public Affirmation Affirmation { get; set; }
+        public DateTime? Expires
+        {
+            get => _expires;
+            set { _expires = BomUtils.UtcifyDateTime(value); }
+        }
+        [XmlElement("author")]
+        [ProtoMember(7)]
+        public OrganizationalContact Author { get; set; }
+        [XmlElement("reviewer")]
+        [ProtoMember(8)]
+        public OrganizationalContact Reviewer { get; set; }
 
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
@@ -61,6 +75,4 @@ namespace CycloneDX.Models
         public Signature Signature { get; set; }
 
     }
-
-
 }

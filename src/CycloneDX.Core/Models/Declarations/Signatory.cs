@@ -16,7 +16,6 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
-using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -24,43 +23,24 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Declarations
+    public class Signatory
     {
-        [XmlArray("assessors")]
-        [XmlArrayItem("assessor")]
+        [XmlElement("name")]
         [ProtoMember(1)]
-        public List<Assessor> Assessors { get; set; }
-
-        [XmlArray("attestations")]
-        [XmlArrayItem("attestation")]
+        public string Name { get; set; }
+        [XmlElement("role")]
         [ProtoMember(2)]
-        public List<Attestation> Attestations { get; set; }
-
-        [XmlArray("claims")]
-        [XmlArrayItem("claim")]
-
+        public string Role { get; set; }
+        [XmlElement("organization")]
         [ProtoMember(3)]
-        public List<Claim> Claims { get; set; }
-
-        [XmlArray("evidence")]
-        [XmlArrayItem("evidence")]
+        public OrganizationalEntity Organization { get; set; }
+        [XmlElement("externalReference")]
         [ProtoMember(4)]
-        public List<DeclarationsEvidence> Evidence { get; set; }
-        [XmlElement("targets")]
-        [ProtoMember(5)]
-        public Targets Targets { get; set; }
-        [XmlElement("affirmation")]
-
-        [ProtoMember(6)]
-        public Affirmation Affirmation { get; set; }
-
+        public ExternalReference ExternalReference { get; set; }
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }
         [XmlIgnore]
         public Signature Signature { get; set; }
-
     }
-
-
 }

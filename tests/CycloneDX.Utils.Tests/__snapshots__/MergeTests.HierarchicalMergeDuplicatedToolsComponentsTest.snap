@@ -30,7 +30,9 @@
           "Evidence": null,
           "ModelCard": null,
           "Data": null,
-          "CryptoProperties": null
+          "CryptoProperties": null,
+          "XmlSignature": null,
+          "Signature": null
         }
       ]
     },
@@ -58,7 +60,9 @@
       "Evidence": null,
       "ModelCard": null,
       "Data": null,
-      "CryptoProperties": null
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     },
     "Manufacture": null,
     "Supplier": null
@@ -106,13 +110,17 @@
           "Evidence": null,
           "ModelCard": null,
           "Data": null,
-          "CryptoProperties": null
+          "CryptoProperties": null,
+          "XmlSignature": null,
+          "Signature": null
         }
       ],
       "Evidence": null,
       "ModelCard": null,
       "Data": null,
-      "CryptoProperties": null
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     },
     {
       "Type": "Null",
@@ -156,13 +164,17 @@
           "Evidence": null,
           "ModelCard": null,
           "Data": null,
-          "CryptoProperties": null
+          "CryptoProperties": null,
+          "XmlSignature": null,
+          "Signature": null
         }
       ],
       "Evidence": null,
       "ModelCard": null,
       "Data": null,
-      "CryptoProperties": null
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     }
   ],
   "Dependencies": [
@@ -205,5 +217,7 @@
       "Provides": null
     }
   ],
-  "Compositions": null
+  "Compositions": null,
+  "XmlSignature": null,
+  "Signature": null
 }

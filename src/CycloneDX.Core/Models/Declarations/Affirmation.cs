@@ -24,35 +24,16 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Declarations
+    public class Affirmation
     {
-        [XmlArray("assessors")]
-        [XmlArrayItem("assessor")]
+        [XmlElement("statement")]
         [ProtoMember(1)]
-        public List<Assessor> Assessors { get; set; }
+        public string Statement { get; set; }
 
-        [XmlArray("attestations")]
-        [XmlArrayItem("attestation")]
+        [XmlArray("signatories")]
+        [XmlArrayItem("signatory")]
         [ProtoMember(2)]
-        public List<Attestation> Attestations { get; set; }
-
-        [XmlArray("claims")]
-        [XmlArrayItem("claim")]
-
-        [ProtoMember(3)]
-        public List<Claim> Claims { get; set; }
-
-        [XmlArray("evidence")]
-        [XmlArrayItem("evidence")]
-        [ProtoMember(4)]
-        public List<DeclarationsEvidence> Evidence { get; set; }
-        [XmlElement("targets")]
-        [ProtoMember(5)]
-        public Targets Targets { get; set; }
-        [XmlElement("affirmation")]
-
-        [ProtoMember(6)]
-        public Affirmation Affirmation { get; set; }
+        public List<Signatory> Signatories { get; set; }
 
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
@@ -61,6 +42,4 @@ namespace CycloneDX.Models
         public Signature Signature { get; set; }
 
     }
-
-
 }
