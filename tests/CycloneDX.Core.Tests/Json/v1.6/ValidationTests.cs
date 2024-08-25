@@ -219,12 +219,12 @@ namespace CycloneDX.Core.Tests.Json.v1_6
         public void ValidateRoundTripTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.6", filename);
-            var jsonBom = File.ReadAllText(resourceFilename);
+            var jsonBomInput = File.ReadAllText(resourceFilename);
 
-            var bom = Serializer.Deserialize(jsonBom);
-            jsonBom = Serializer.Serialize(bom);
+            var bom = Serializer.Deserialize(jsonBomInput);
+            var jsonBomOutput = Serializer.Serialize(bom);
 
-            var validationResult = Validator.Validate(jsonBom, SpecificationVersion.v1_6);
+            var validationResult = Validator.Validate(jsonBomOutput, SpecificationVersion.v1_6);
 
             Assert.True(validationResult.Valid, string.Join(Environment.NewLine, validationResult.Messages));
         }
