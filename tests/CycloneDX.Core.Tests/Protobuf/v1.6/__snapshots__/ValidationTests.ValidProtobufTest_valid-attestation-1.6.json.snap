@@ -143,7 +143,7 @@ declarations {
         name: "Acme Inc"
       }
       externalReference {
-        type: EXTERNAL_REFERENCE_TYPE_LOG
+        type: EXTERNAL_REFERENCE_TYPE_ELECTRONIC_SIGNATURE
         url: "https://example.com/coo-sig.png"
       }
     }
