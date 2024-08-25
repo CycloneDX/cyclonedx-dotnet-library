@@ -151,6 +151,28 @@
           }
         ]
       },
+      "manufacturer": {
+        "name": "Example-2, Inc.",
+        "url": [
+          "https://example.org"
+        ],
+        "contact": [
+          {
+            "email": "support@example.org"
+          }
+        ]
+      },
+      "authors": [
+        {
+          "name": "Anthony Edward Stark",
+          "email": "ironman@example.org",
+          "phone": "555-212-970-4133"
+        },
+        {
+          "name": "Peter Benjamin Parker",
+          "email": "spiderman@example.org"
+        }
+      ],
       "group": "org.example",
       "name": "mylibrary",
       "version": "1.0.0",

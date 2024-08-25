@@ -112,6 +112,24 @@
           <email>support@apac.example.com</email>
         </contact>
       </supplier>
+      <manufacturer>
+        <name>Example-2, Inc.Example-2, Inc.</name>
+        <url>https://example.org</url>
+        <contact>
+          <email>support@example.org</email>
+        </contact>
+      </manufacturer>
+      <authors>
+        <author>
+          <name>Anthony Edward Stark</name>
+          <email>ironman@example.org</email>
+          <phone>555-212-970-4133</phone>
+        </author>
+        <author>
+          <name>Peter Benjamin Parker</name>
+          <email>spiderman@example.org</email>
+        </author>
+      </authors>
       <group>org.example</group>
       <name>mylibrary</name>
       <version>1.0.0</version>
