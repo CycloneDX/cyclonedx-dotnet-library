@@ -75,12 +75,12 @@ namespace CycloneDX.Core.Tests.Json.v1_6
         public void JsonRoundTripTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.6", filename);
-            var jsonBom = File.ReadAllText(resourceFilename);
+            var jsonBomInput = File.ReadAllText(resourceFilename);
 
-            var bom = Serializer.Deserialize(jsonBom);
-            jsonBom = Serializer.Serialize(bom);
+            var bom = Serializer.Deserialize(jsonBomInput);
+            var jsonBomOutput = Serializer.Serialize(bom);
 
-            Snapshot.Match(jsonBom, SnapshotNameExtension.Create(filename));
+            Snapshot.Match(jsonBomOutput, SnapshotNameExtension.Create(filename));
         }
 
         [Theory]

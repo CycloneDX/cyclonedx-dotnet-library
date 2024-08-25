@@ -29,6 +29,7 @@ namespace CycloneDX.Core.Models
         [ProtoMember(5)]
         public ProtocolProperties ProtocolProperties { get; set; }
         [XmlElement("oid")]
+        [JsonPropertyName("oid")]
         [ProtoMember(6)]
         public string ObjectIdentifier { get; set; }
     }
