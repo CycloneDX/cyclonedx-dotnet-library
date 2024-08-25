@@ -14,7 +14,8 @@
         {
           "license": {
             "id": "Apache-2.0",
-            "bom-ref": "my-license"
+            "bom-ref": "my-license",
+            "acknowledgement": "declared"
           }
         }
       ]

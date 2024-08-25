@@ -11,6 +11,7 @@ components {
     license {
       id: "Apache-2.0"
       bom_ref: "my-license"
+      acknowledgement: LICENSE_ACKNOWLEDGEMENT_ENUMERATION_DECLARED
     }
   }
 }
