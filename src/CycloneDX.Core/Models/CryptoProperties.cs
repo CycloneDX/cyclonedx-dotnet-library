@@ -9,30 +9,42 @@ using System.Xml.Serialization;
 namespace CycloneDX.Core.Models
 {
     [XmlType("cryptoProperties")]
+    [ProtoContract]
     public class CryptoProperties
     {
         [XmlElement("assetType")]
+        [ProtoMember(1)]
         public AssetType AssetType { get; set; }
         [XmlElement("algorithmProperties")]
+        [ProtoMember(2)]
         public AlgorithmProperties AlgorithmProperties { get; set; }
         [XmlElement("certificateProperties")]
+        [ProtoMember(3)]
+
         public CertificateProperties CertificateProperties { get; set; }
         [XmlElement("relatedCryptoMaterialProperties")]
+        [ProtoMember(4)]
         public RelatedCryptoMaterialProperties RelatedCryptoMaterialProperties { get; set; }
         [XmlElement("protocolProperties")]
+        [ProtoMember(5)]
         public ProtocolProperties ProtocolProperties { get; set; }
         [XmlElement("oid")]
+        [ProtoMember(6)]
         public string ObjectIdentifier { get; set; }
     }
 
+    [ProtoContract]
     public class ProtocolProperties
     {
         [XmlElement("type")]
+        [ProtoMember(1)]
         public ProtocolType Type { get; set; }
 
         [XmlElement("version")]
+        [ProtoMember(2)]
         public string Version { get; set; }
         [XmlIgnore]
+        [ProtoMember(3)]
         public List<CipherSuite> CipherSuites { get; set; }
         [XmlElement("cipherSuites")]
         [JsonIgnore]
@@ -44,6 +56,7 @@ namespace CycloneDX.Core.Models
 
 
         [XmlElement("ikev2TransformTypes")]
+        [ProtoMember(4)]
         public Ikev2TransformTypes Ikev2TransformTypes { get; set; }
     }
 
@@ -68,24 +81,31 @@ namespace CycloneDX.Core.Models
         Unknown
     }
 
+    [ProtoContract]
     public class Ikev2TransformTypes
     {
         [XmlElement("encr")]
+        [ProtoMember(1)]
         public List<string> EncryptionAlgorithms { get; set; }
 
         [XmlElement("prf")]
+        [ProtoMember(2)]
         public List<string> PseudorandomFunctions { get; set; }
 
         [XmlElement("integ")]
+        [ProtoMember(3)]
         public List<string> IntegrityAlgorithms { get; set; }
 
         [XmlElement("ke")]
+        [ProtoMember(4)]
         public List<string> KeyExchangeMethods { get; set; }
 
         [XmlElement("esn")]
+        [ProtoMember(5)]
         public List<bool> ExtendedSequenceNumbers { get; set; }
 
         [XmlElement("auth")]
+        [ProtoMember(6)]
         public List<string> AuthenticationMethods { get; set; }
     }
 
@@ -96,12 +116,15 @@ namespace CycloneDX.Core.Models
         public List<CipherSuite> CipherSuites { get; set; }
     }
 
+    [ProtoContract]
     public class CipherSuite
     {
         [XmlElement("name")]
+        [ProtoMember(1)]
         public string Name { get; set; }
 
         [XmlIgnore]
+        [ProtoMember(2)]
         public List<string> Algorithms { get; set; }
 
         [XmlElement("algorithms")]
@@ -118,6 +141,7 @@ namespace CycloneDX.Core.Models
             }
         }
         [XmlIgnore]
+        [ProtoMember(3)]
         public List<string> Identifiers { get; set; }
         [XmlElement("identifiers")]
         [JsonIgnore]
@@ -161,40 +185,58 @@ namespace CycloneDX.Core.Models
 
     }
 
+    [ProtoContract]
     public class RelatedCryptoMaterialProperties
     {
         [XmlElement("type")]
+        [ProtoMember(1)]
         public RelatedCryptoMaterialType Type { get; set; }
         [XmlElement("id")]
+        [ProtoMember(2)]
         public string Id { get; set; }
         [XmlElement("state")]
+        [ProtoMember(3)]
         public KeyState State { get; set; }
         [XmlElement("algorithmRef")]
+        [ProtoMember(4)]
         public string AlgorithmRef { get; set; }
         [XmlElement("creationDate")]
+        [ProtoMember(5)]
         public DateTime CreationDate { get; set; }
         [XmlElement("activationDate")]
+        [ProtoMember(6)]
         public DateTime ActivationDate { get; set; }
         [XmlElement("updateDate")]
+        [ProtoMember(7)]
         public DateTime UpdateDate { get; set; }
         [XmlElement("expirationDate")]
+        [ProtoMember(8)]
         public DateTime ExpirationDate { get; set; }
         [XmlElement("value")]
+        [ProtoMember(9)]
         public string Value { get; set; }
         [XmlElement("size")]
+        [ProtoMember(10)]
         public int Size { get; set; }
         [XmlElement("format")]
+        [ProtoMember(11)]
         public string Format { get; set; }
         [XmlElement("securedBy")]
+        [ProtoMember(12)]
         public SecuredBy SecuredBy { get; set; }
 
     }
 
+    [ProtoContract]
     public class SecuredBy
     {
         [XmlElement("mechanism")]
+        [ProtoMember(1)]
+
         public string Mechanism { get; set; }
         [XmlElement("algorithmRef")]
+        [ProtoMember(2)]
+
         public string AlgorithmRef { get; set; }
 
 
@@ -260,23 +302,32 @@ namespace CycloneDX.Core.Models
         Destroyed
     }
 
+    [ProtoContract]
     public class CertificateProperties
     {
         [XmlElement("subjectName")]
+        [ProtoMember(1)]
         public string SubjectName { get; set; }
         [XmlElement("issuerName")]
+        [ProtoMember(2)]
         public string IssuerName { get; set; }
         [XmlElement("notValidBefore")]
+        [ProtoMember(3)]
         public DateTime NotValidBefore { get; set; }
         [XmlElement("notValidAfter")]
+        [ProtoMember(4)]
         public DateTime NotValidAfter { get; set; }
         [XmlElement("signatureAlgorithmRef")]
+        [ProtoMember(5)]
         public string SignatureAlgorithmRef { get; set; }
         [XmlElement("subjectPublicKeyRef")]
+        [ProtoMember(6)]
         public string SubjectPublicKeyRef { get; set; }
         [XmlElement("certificateFormat")]
+        [ProtoMember(7)]
         public string CertificateFormat { get; set; }
         [XmlElement("certificateExtension")]
+        [ProtoMember(8)]
         public string CertificateExtension { get; set; }
     }
 

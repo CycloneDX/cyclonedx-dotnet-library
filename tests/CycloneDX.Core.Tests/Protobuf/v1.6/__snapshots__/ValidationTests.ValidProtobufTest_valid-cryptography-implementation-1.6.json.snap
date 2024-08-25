@@ -1,0 +1,57 @@
+﻿spec_version: "1.6"
+version: 1
+serial_number: "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
+metadata {
+  component {
+    type: CLASSIFICATION_APPLICATION
+    bom_ref: "acme-application"
+    name: "Acme Application"
+    version: "1.0"
+  }
+}
+components {
+  type: CLASSIFICATION_CRYPTOGRAPHIC_ASSET
+  bom_ref: "aes128gcm"
+  name: "AES"
+  cryptoProperties {
+    algorithmProperties {
+      primitive: CRYPTO_PRIMITIVE_KEY_AGREE
+      parameterSetIdentifier: "128"
+      executionEnvironment: CRYPTO_EXECUTION_ENVIRONMENT_UNKNOWN
+      implementationPlatform: CRYPTO_IMPLEMENTATION_PLATFORM_GENERIC
+      mode: CRYPTO_ALGORITHM_MODE_ECB
+      cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_OTHER
+      cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_GENERATE
+      cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_KEYGEN
+      cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_DECRYPT
+      classicalSecurityLevel: 128
+      nistQuantumSecurityLevel: 1
+      6: 1
+    }
+  }
+}
+components {
+  type: CLASSIFICATION_LIBRARY
+  bom_ref: "crypto-library"
+  name: "Crypto library"
+  version: "1.0.0"
+}
+components {
+  type: CLASSIFICATION_LIBRARY
+  bom_ref: "some-library"
+  name: "Some library"
+  version: "1.0.0"
+}
+dependencies {
+  ref: "acme-application"
+  dependencies {
+    ref: "crypto-library"
+  }
+}
+dependencies {
+  ref: "crypto-library"
+  dependencies {
+    ref: "some-library"
+  }
+  provides: "\n\taes128gcm"
+}

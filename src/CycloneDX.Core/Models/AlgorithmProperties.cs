@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
@@ -6,10 +7,12 @@ using System.Xml.Serialization;
 
 namespace CycloneDX.Core.Models
 {
+    [ProtoContract]
     public class AlgorithmProperties
     {
         #region primitive
         [XmlIgnore]
+        [ProtoMember(1)]
         public Primitive? Primitive { get; set; }
         [XmlElement("primitive"), JsonIgnore]
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -26,11 +29,14 @@ namespace CycloneDX.Core.Models
         #endregion
 
         [XmlElement("parameterSetIdentifier")]
+        [ProtoMember(2)]
         public string ParameterSetIdentifier { get; set; }
         [XmlElement("curve")]
+        [ProtoMember(3)]
         public string Curve { get; set; }
         //[XmlIgnore]
         [XmlElement("executionEnvironment")]
+        [ProtoMember(4)]
         public ExecutionEnvironment? ExecutionEnvironment { get; set; }
         //[XmlElement("executionEnvironment")]
         //public string ExecutionEnvironment_XML
@@ -45,6 +51,7 @@ namespace CycloneDX.Core.Models
         //    }
         //}
         [XmlElement("implementationPlatform")]
+        [ProtoMember(5)]
         public ImplementationPlatform? ImplementationPlatform { get; set; }
         //[XmlElement("implementationPlatform")]
         //public string ImplementationPlatform_XML
@@ -59,7 +66,9 @@ namespace CycloneDX.Core.Models
         //    }
         //}
         [XmlElement("certificationLevel")]
+        [ProtoMember(6)]
         public List<CertificationLevel> CertificationLevel { get; set; }
+        [ProtoMember(7)]
         [XmlElement("mode")]
         public AlgorithmMode? Mode { get; set; }
         //[XmlElement("mode")]
@@ -77,6 +86,7 @@ namespace CycloneDX.Core.Models
 
         #region Padding
         [XmlIgnore]
+        [ProtoMember(8)]
         public PaddingScheme? Padding { get; set; }
         [XmlElement("padding"), JsonIgnore]
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -89,7 +99,8 @@ namespace CycloneDX.Core.Models
         public bool ShouldSerializePadding_XML() => Padding.HasValue;
         #endregion Padding
 
-        [XmlIgnore]        
+        [XmlIgnore]
+        [ProtoMember(9)]
         public List<CryptoFunction> CryptoFunctions { get; set; }
 
 
@@ -102,8 +113,10 @@ namespace CycloneDX.Core.Models
         }
 
         [XmlElement("classicalSecurityLevel")]
+        [ProtoMember(10)]
         public int ClassicalSecurityLevel { get; set; }
         [XmlElement("nistQuantumSecurityLevel")]
+        [ProtoMember(11)]
         public int NistQuantumSecurityLevel { get; set; }
         
 
