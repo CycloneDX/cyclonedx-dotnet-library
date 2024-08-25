@@ -100,12 +100,6 @@ namespace CycloneDX.Models
             Model_Card,
             [XmlEnum(Name = "poam")]
             Poam,
-            [XmlEnum(Name = "electronic-signature")]
-            Electronic_Signature,
-            [XmlEnum(Name = "digital-signature")]
-            Digital_Signature,
-            [XmlEnum(Name = "rfc-9116")]
-            Rfc_9116,
             [XmlEnum(Name = "log")]
             Log,
             [XmlEnum(Name = "configuration")]
@@ -114,6 +108,14 @@ namespace CycloneDX.Models
             Evidence,
             [XmlEnum(Name = "formulation")]
             Formulation,
+            [XmlEnum(Name = "source-distribution")]
+            Source_Distribution,
+            [XmlEnum(Name = "electronic-signature")]
+            Electronic_Signature,
+            [XmlEnum(Name = "digital-signature")]
+            Digital_Signature,
+            [XmlEnum(Name = "rfc-9116")]
+            Rfc_9116,
             [XmlEnum(Name = "release-notes")]
             Release_Notes,
         }
