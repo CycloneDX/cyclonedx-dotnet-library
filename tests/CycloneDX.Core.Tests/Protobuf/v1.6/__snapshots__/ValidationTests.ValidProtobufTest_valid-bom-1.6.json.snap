@@ -48,6 +48,14 @@ metadata {
       email: "distribution@example.com"
     }
   }
+  manufacturer {
+    name: "Acme, Inc."
+    url: "https://example.com"
+    contact {
+      name: "Acme Professional Services"
+      email: "professional.services@example.com"
+    }
+  }
 }
 components {
   type: CLASSIFICATION_LIBRARY

@@ -275,6 +275,11 @@ namespace CycloneDX
                     service.Tags = null;
                 });
 
+                if (bomCopy.Metadata != null)
+                {
+                    bomCopy.Metadata.Manufacturer = null;
+                }
+
                 EnumerateAllDependencies(bomCopy, (dependency) =>
                 {
                     dependency.Provides = null;

@@ -47,6 +47,18 @@
         }
       }
     },
+    "manufacturer": {
+      "name": "Acme, Inc.",
+      "url": [
+        "https://example.com"
+      ],
+      "contact": [
+        {
+          "name": "Acme Professional Services",
+          "email": "professional.services@example.com"
+        }
+      ]
+    },
     "supplier": {
       "name": "Acme, Inc.",
       "url": [
