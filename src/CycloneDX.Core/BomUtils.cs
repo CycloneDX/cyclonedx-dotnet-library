@@ -269,6 +269,13 @@ namespace CycloneDX
                     dependency.Provides = null;
                 });
 
+                EnumerateAllEvidence(bomCopy, (evidence) =>
+                {
+                    if (evidence?.Identity?.Count > 1)
+                    {
+                        evidence.Identity.RemoveRange(1, evidence.Identity.Count - 1);
+                    }
+                });
 
             }
 

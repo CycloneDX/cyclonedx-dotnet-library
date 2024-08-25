@@ -105,6 +105,28 @@
             </method>
           </methods>
         </identity>
+        <identity>
+          <field>name</field>
+          <confidence>0.1</confidence>
+          <methods>
+            <method>
+              <technique>filename</technique>
+              <confidence>0.1</confidence>
+              <value>example-project-1.0.0.jar</value>
+            </method>
+          </methods>
+        </identity>
+        <identity>
+          <field>version</field>
+          <confidence>0.1</confidence>
+          <methods>
+            <method>
+              <technique>filename</technique>
+              <confidence>0.1</confidence>
+              <value>example-project-1.0.0.jar</value>
+            </method>
+          </methods>
+        </identity>
         <occurrences />
       </evidence>
     </component>

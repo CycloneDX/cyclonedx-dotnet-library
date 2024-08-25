@@ -79,6 +79,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<Primitive>());
             options.Converters.Add(new HyphenEnumConverter<PaddingScheme>());
             options.Converters.Add(new UnderscoreEnumConverter<ImplementationPlatform>());//todo: fix this
+            options.Converters.Add(new EvidenceIdentityListConverter());
 
             options.Converters.Add(new HyphenEnumConverter<EvidenceIdentity.EvidenceFieldType>());
             options.Converters.Add(new HyphenEnumConverter<EvidenceMethods.EvidenceTechnique>());
