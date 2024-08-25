@@ -97,6 +97,17 @@ namespace CycloneDX.Models
         [ProtoMember(4)]
         public OrganizationalEntity Supplier { get; set; }
 
+        [XmlElement("manufacturer")]
+        [ProtoMember(28)]
+        public OrganizationalEntity Manufacturer { get; set; }
+        public bool ShouldSerializeManufacturer() { return Manufacturer != null; }
+
+        [XmlArray("authors")]
+        [XmlArrayItem("author")]
+        [ProtoMember(29)]
+        public List<OrganizationalContact> Authors { get; set; }
+        public bool ShouldSerializeAuthors() { return Authors?.Count > 0; }
+
         [XmlElement("author")]
         [ProtoMember(5)]
         public string Author { get; set; }

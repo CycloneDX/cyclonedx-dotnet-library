@@ -268,12 +268,19 @@ namespace CycloneDX
                     component.Tags = null;
                     component.OmniborId = null;
                     component.Swhid = null;
+                    component.Authors = null;
+                    component.Manufacturer = null;
                 });
 
                 EnumerateAllServices(bomCopy, (service) =>
                 {
                     service.Tags = null;
                 });
+
+                if (bomCopy.Metadata != null)
+                {
+                    bomCopy.Metadata.Manufacturer = null;
+                }
 
                 EnumerateAllDependencies(bomCopy, (dependency) =>
                 {
