@@ -57,7 +57,7 @@ namespace CycloneDX.Core.Models
 
     public enum ProtocolType
     {
-    //    Null,
+        Null,
         [XmlEnum("tls")]
         Tls,
         [XmlEnum("ssh")]
@@ -133,7 +133,7 @@ namespace CycloneDX.Core.Models
 
     public enum AssetType
     {
-   //     Null,
+        Null,
         [XmlEnum("algorithm")]
         Algorithm,
         [XmlEnum("certificate")]
@@ -205,7 +205,7 @@ namespace CycloneDX.Core.Models
 
     public enum RelatedCryptoMaterialType
     {
-  //      Null,
+        Null,
         [XmlEnum("private-key")]
         Private_Key,
         [XmlEnum("public-key")]
@@ -248,6 +248,7 @@ namespace CycloneDX.Core.Models
 
     public enum KeyState
     {
+        Null,
         [XmlEnum("pre-activation")]
         Pre_Activation,
         [XmlEnum("active")]

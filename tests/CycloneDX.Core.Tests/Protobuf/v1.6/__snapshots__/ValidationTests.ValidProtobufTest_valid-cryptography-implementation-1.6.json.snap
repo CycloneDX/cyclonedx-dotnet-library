@@ -14,6 +14,7 @@ components {
   bom_ref: "aes128gcm"
   name: "AES"
   cryptoProperties {
+    assetType: CRYPTO_ASSET_TYPE_ALGORITHM
     algorithmProperties {
       primitive: CRYPTO_PRIMITIVE_KEY_AGREE
       parameterSetIdentifier: "128"

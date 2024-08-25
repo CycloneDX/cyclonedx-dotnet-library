@@ -6,6 +6,7 @@ components {
   bom_ref: "asset-1"
   name: "Name here"
   cryptoProperties {
+    assetType: CRYPTO_ASSET_TYPE_ALGORITHM
     algorithmProperties {
       primitive: CRYPTO_PRIMITIVE_KEY_AGREE
       parameterSetIdentifier: "128"
@@ -30,7 +31,7 @@ components {
   bom_ref: "asset-2"
   name: "Name here"
   cryptoProperties {
-    assetType: CRYPTO_ASSET_TYPE_ALGORITHM
+    assetType: CRYPTO_ASSET_TYPE_CERTIFICATE
     certificateProperties {
       subjectName: "Subject name here"
       issuerName: "Issuer name here"
@@ -53,8 +54,9 @@ components {
   bom_ref: "asset-3"
   name: "Name here"
   cryptoProperties {
-    assetType: CRYPTO_ASSET_TYPE_CERTIFICATE
+    assetType: CRYPTO_ASSET_TYPE_PROTOCOL
     protocolProperties {
+      type: CRYPTO_PROTOCOL_TYPE_UNKNOWN
       version: "1.3"
       cipherSuites {
         name: "TLS_DHE_RSA_WITH_AES_128_CCM"
@@ -70,10 +72,11 @@ components {
   bom_ref: "asset-4"
   name: "Name here"
   cryptoProperties {
-    assetType: CRYPTO_ASSET_TYPE_PROTOCOL
+    assetType: CRYPTO_ASSET_TYPE_RELATED_CRYPTO_MATERIAL
     relatedCryptoMaterialProperties {
+      type: CRYPTO_RELATED_TYPE_UNKNOWN
       id: "12345"
-      state: CRYPTO_RELATED_STATE_PRE_ACTIVATION
+      state: CRYPTO_RELATED_STATE_ACTIVE
       algorithmRef: "bom-ref-to-algorithm"
       creationDate {
         seconds: 39446
