@@ -118,53 +118,18 @@ namespace CycloneDX.Core.Models
         [ProtoMember(1)]
         public string Name { get; set; }
 
-        [XmlIgnore]
+
+        [XmlArray("algorithms")]
+        [XmlArrayItem("algorithm")]
         [ProtoMember(2)]
         public List<string> Algorithms { get; set; }
 
-        [XmlElement("algorithms")]
-        [JsonIgnore]
-        public CipherSuiteAlgorithmCollection Algorithms_XML
-        {
-            get
-            {
-                return new CipherSuiteAlgorithmCollection { Algorithms = this.Algorithms };
-            }
-            set 
-            {
-                this.Algorithms = new List<string>(value.Algorithms);
-            }
-        }
-        [XmlIgnore]
+        [XmlArray("identifiers")]
+        [XmlArrayItem("identifier")]
         [ProtoMember(3)]
         public List<string> Identifiers { get; set; }
-        [XmlElement("identifiers")]
-        [JsonIgnore]
-        public CipherSuiteIdentifierCollection Identifiers_XML
-        {
-            get
-            {
-                return new CipherSuiteIdentifierCollection { Identifiers = this.Identifiers };
-            }
-            set
-            {
-                this.Identifiers = new List<string>(value.Identifiers);
-            }
-        }
+        
     }
-
-    public class CipherSuiteAlgorithmCollection
-    {
-        [XmlElement("algorithm")]
-        public List<string> Algorithms { get; set; }
-    }
-    public class CipherSuiteIdentifierCollection
-    {
-        [XmlElement("identifier")]
-        public List<string> Identifiers { get; set; }
-    }
-
-
 
     public enum AssetType
     {
