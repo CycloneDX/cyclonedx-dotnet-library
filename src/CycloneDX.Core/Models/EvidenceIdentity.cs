@@ -62,7 +62,11 @@ namespace CycloneDX.Models
         [XmlElement("confidence")]
         [ProtoMember(2)]
         public float? Confidence { get; set; }
-        
+
+        [XmlElement("concludedValue")]
+        [ProtoMember(5)]
+        public string ConcludedValue { get; set; }
+
         [XmlArray("methods")]
         [XmlArrayItem("method")]
         [ProtoMember(3)]
@@ -71,5 +75,6 @@ namespace CycloneDX.Models
         [XmlElement("tools")]
         [ProtoMember(4)]
         public EvidenceTools Tools { get; set; }
+
     }
 }

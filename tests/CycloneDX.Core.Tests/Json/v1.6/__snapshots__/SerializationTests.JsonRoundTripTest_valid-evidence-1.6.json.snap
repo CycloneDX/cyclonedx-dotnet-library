@@ -119,6 +119,7 @@
           {
             "field": "group",
             "confidence": 0.1,
+            "concludedValue": "com.example",
             "methods": [
               {
                 "technique": "filename",
@@ -130,6 +131,7 @@
           {
             "field": "name",
             "confidence": 0.1,
+            "concludedValue": "example-project",
             "methods": [
               {
                 "technique": "filename",
@@ -141,6 +143,7 @@
           {
             "field": "version",
             "confidence": 0.1,
+            "concludedValue": "1.0.0",
             "methods": [
               {
                 "technique": "filename",

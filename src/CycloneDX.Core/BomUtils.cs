@@ -299,6 +299,10 @@ namespace CycloneDX
                     {
                         evidence.Identity.Clear();
                     }
+                    if (evidence.Identity?.Count == 1)
+                    {
+                        evidence.Identity[0].ConcludedValue = null;
+                    }
                 });
 
             }

@@ -104,6 +104,7 @@ components {
         confidence: 0.1
         value: "example-project-1.0.0.jar"
       }
+      concludedValue: "com.example"
     }
     identity {
       field: EVIDENCE_FIELD_NAME
@@ -113,6 +114,7 @@ components {
         confidence: 0.1
         value: "example-project-1.0.0.jar"
       }
+      concludedValue: "example-project"
     }
     identity {
       field: EVIDENCE_FIELD_VERSION
@@ -122,6 +124,7 @@ components {
         confidence: 0.1
         value: "example-project-1.0.0.jar"
       }
+      concludedValue: "1.0.0"
     }
   }
 }
