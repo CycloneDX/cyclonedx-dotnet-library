@@ -29,6 +29,7 @@ namespace CycloneDX.Core.Models
         [ProtoMember(5)]
         public ProtocolProperties ProtocolProperties { get; set; }
         [XmlElement("oid")]
+        [JsonPropertyName("oid")]
         [ProtoMember(6)]
         public string ObjectIdentifier { get; set; }
     }
@@ -43,17 +44,11 @@ namespace CycloneDX.Core.Models
         [XmlElement("version")]
         [ProtoMember(2)]
         public string Version { get; set; }
-        [XmlIgnore]
+
+        [XmlArray("cipherSuites")]
+        [XmlArrayItem("cipherSuite")]
         [ProtoMember(3)]
         public List<CipherSuite> CipherSuites { get; set; }
-        [XmlElement("cipherSuites")]
-        [JsonIgnore]
-        public CipherSuiteCollection CipherSuites_XML
-        {
-            get { return new CipherSuiteCollection { CipherSuites = this.CipherSuites }; }
-            set { this.CipherSuites = new List<CipherSuite>(value.CipherSuites); }
-        }
-
 
         [XmlElement("ikev2TransformTypes")]
         [ProtoMember(4)]

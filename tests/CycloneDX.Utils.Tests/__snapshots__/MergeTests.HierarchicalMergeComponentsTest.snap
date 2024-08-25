@@ -32,7 +32,9 @@
       "Evidence": null,
       "ModelCard": null,
       "Data": null,
-      "CryptoProperties": null
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     },
     "Manufacture": null,
     "Supplier": null
@@ -80,13 +82,17 @@
           "Evidence": null,
           "ModelCard": null,
           "Data": null,
-          "CryptoProperties": null
+          "CryptoProperties": null,
+          "XmlSignature": null,
+          "Signature": null
         }
       ],
       "Evidence": null,
       "ModelCard": null,
       "Data": null,
-      "CryptoProperties": null
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     },
     {
       "Type": "Null",
@@ -130,13 +136,17 @@
           "Evidence": null,
           "ModelCard": null,
           "Data": null,
-          "CryptoProperties": null
+          "CryptoProperties": null,
+          "XmlSignature": null,
+          "Signature": null
         }
       ],
       "Evidence": null,
       "ModelCard": null,
       "Data": null,
-      "CryptoProperties": null
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     }
   ],
   "Dependencies": [
@@ -189,7 +199,9 @@
         "System1@1:System1@1"
       ],
       "Vulnerabilities": null,
-      "BomRef": null
+      "BomRef": null,
+      "XmlSignature": null,
+      "Signature": null
     },
     {
       "Aggregate": "Complete",
@@ -200,7 +212,11 @@
         "System2@1:System2@1"
       ],
       "Vulnerabilities": null,
-      "BomRef": null
+      "BomRef": null,
+      "XmlSignature": null,
+      "Signature": null
     }
-  ]
+  ],
+  "XmlSignature": null,
+  "Signature": null
 }

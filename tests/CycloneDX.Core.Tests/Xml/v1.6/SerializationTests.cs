@@ -79,19 +79,19 @@ namespace CycloneDX.Core.Tests.Xml.v1_6
         public void XmlRoundTripTest(string filename)
         {
             var resourceFilename = Path.Join("Resources", "v1.6", filename);
-            var xmlBom = File.ReadAllText(resourceFilename);
+            var xmlBomInput = File.ReadAllText(resourceFilename);
 
-            var bom = Serializer.Deserialize(xmlBom);
-            xmlBom = Serializer.Serialize(bom);
+            var bom = Serializer.Deserialize(xmlBomInput);
+            var xmlBomOutput = Serializer.Serialize(bom);
 
 
             
             //File.WriteAllText("C:/temp/testedBom.xml", xmlBom.ToString());
-            var validationResult = Validator.Validate(xmlBom, SpecificationVersion.v1_6);
+            var validationResult = Validator.Validate(xmlBomOutput, SpecificationVersion.v1_6);
 
             Assert.True(validationResult.Valid, validationResult.Messages?.FirstOrDefault());
 
-            Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
+            Snapshot.Match(xmlBomOutput, SnapshotNameExtension.Create(filename));
         }
         
         [Theory]

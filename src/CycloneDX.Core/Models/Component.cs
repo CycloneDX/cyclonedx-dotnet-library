@@ -21,6 +21,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Text.Json.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 using CycloneDX.Core.Models;
 using ProtoBuf;
@@ -255,6 +256,12 @@ namespace CycloneDX.Models
         [ProtoMember(32)]
         public List<string> Swhid { get; set; }
         public bool ShouldSerializeSwhid() { return Swhid?.Count > 0; }
+
+        [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        [JsonIgnore]
+        public XmlElement XmlSignature { get; set; }
+        [XmlIgnore]
+        public Signature Signature { get; set; }
 
         public override bool Equals(object obj)
         {

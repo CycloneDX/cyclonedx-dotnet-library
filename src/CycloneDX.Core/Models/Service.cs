@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -206,6 +207,10 @@ namespace CycloneDX.Models
         public List<Property> Properties { get; set; }
 
         public bool ShouldSerializeProperties() => Properties?.Count > 0;
+        [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public XmlElement XmlSignature { get; set; }
+        [XmlIgnore]
+        public Signature Signature { get; set; }
 
         [XmlArray("tags")]
         [XmlArrayItem("tag")]

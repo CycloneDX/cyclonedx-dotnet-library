@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -99,6 +100,12 @@ namespace CycloneDX.Models
             Model_Card,
             [XmlEnum(Name = "poam")]
             Poam,
+            [XmlEnum(Name = "electronic-signature")]
+            Electronic_Signature,
+            [XmlEnum(Name = "digital-signature")]
+            Digital_Signature,
+            [XmlEnum(Name = "rfc-9116")]
+            Rfc_9116,
             [XmlEnum(Name = "log")]
             Log,
             [XmlEnum(Name = "configuration")]
