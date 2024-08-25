@@ -62,44 +62,99 @@ namespace CycloneDX.Protobuf
         
         private static void CleanupEmptyArrays(Bom bom)
         {
-            if (bom.Metadata?.Authors?.Count == 0) bom.Metadata.Authors = null;
-            if (bom.Components?.Count == 0) bom.Components = null;
-            if (bom.Services?.Count == 0) bom.Services = null;
-            if (bom.ExternalReferences?.Count == 0) bom.ExternalReferences = null;
-            if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
+            if (bom.Metadata?.Authors?.Count == 0)
+            {
+                bom.Metadata.Authors = null;
+            }
+            if (bom.Components?.Count == 0)
+            {
+                bom.Components = null;
+            }
+            if (bom.Services?.Count == 0)
+            {
+                bom.Services = null;
+            }
+            if (bom.ExternalReferences?.Count == 0)
+            {
+                bom.ExternalReferences = null;
+            }
+            if (bom.Dependencies?.Count == 0)
+            {
+                bom.Dependencies = null;
+            }
 
             if (bom.Components != null)
+            {
                 foreach (var component in bom.Components)
+                {
                     CleanupEmptyArrays(component);
+                }
+            }
 
             if (bom.Services != null)
+            {
                 foreach (var service in bom.Services)
+                {
                     CleanupEmptyArrays(service);
+                }
+            }
 
             if (bom.Dependencies != null)
+            {
                 foreach (var dependency in bom.Dependencies)
-                    if (dependency.Dependencies?.Count == 0) dependency.Dependencies = null;
+                {
+                    if (dependency.Dependencies?.Count == 0)
+                    {
+                        dependency.Dependencies = null;
+                    }
+                }
+            }
 
-            if (bom.Dependencies?.Count == 0) bom.Dependencies = null;
+            if (bom.Dependencies?.Count == 0)
+            {
+                bom.Dependencies = null;
+            }
         }
         
         private static void CleanupEmptyArrays(Component component)
         {
-            if (component.Hashes?.Count == 0) component.Hashes = null;
-            if (component.ExternalReferences?.Count == 0) component.ExternalReferences = null;
-            if (component.Components?.Count == 0) component.Components = null;
-            if (component.Tags?.Count == 0) component.Tags = null;
+            if (component.Hashes?.Count == 0)
+            {
+                component.Hashes = null;
+            }
+            if (component.ExternalReferences?.Count == 0)
+            {
+                component.ExternalReferences = null;
+            }
+            if (component.Components?.Count == 0)
+            {
+                component.Components = null;
+            }
+            if (component.Tags?.Count == 0)
+            {
+                component.Tags = null;
+            }
 
             if (component.Components != null)
-            foreach (var subComponent in component.Components)
-                CleanupEmptyArrays(subComponent);
-            
-            if (component.Pedigree != null) CleanupEmptyArrays(component.Pedigree);
+            {
+                foreach (var subComponent in component.Components)
+                {
+                    CleanupEmptyArrays(subComponent);
+                }
+            }
+
+            if (component.Pedigree != null)
+            {
+                CleanupEmptyArrays(component.Pedigree);
+            }
         }
 
         private static void CleanupEmptyArrays(Service service)
         {
-            if (service.Tags?.Count == 0) service.Tags = null;
+            if (service.Tags?.Count == 0)
+            {
+                service.Tags = null;
+            }
             if (service.Services != null)
             {
                 foreach (var subService in service.Services)
