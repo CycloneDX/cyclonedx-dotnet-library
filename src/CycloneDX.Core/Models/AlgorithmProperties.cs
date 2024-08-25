@@ -99,18 +99,10 @@ namespace CycloneDX.Core.Models
         public bool ShouldSerializePadding_XML() => Padding.HasValue;
         #endregion Padding
 
-        [XmlIgnore]
+        [XmlArray("cryptoFunctions")]
+        [XmlArrayItem("cryptoFunction")]
         [ProtoMember(9)]
         public List<CryptoFunction> CryptoFunctions { get; set; }
-
-
-        [XmlElement("cryptoFunctions")]
-        [JsonIgnore]
-        public CryptoFunctionCollection CryptoFunctionSerializable_XML
-        {
-            get { return new CryptoFunctionCollection { CryptoFunctions = CryptoFunctions }; }
-            set { CryptoFunctions = new List<CryptoFunction>(value.CryptoFunctions); }
-        }
 
         [XmlElement("classicalSecurityLevel")]
         [ProtoMember(10)]
@@ -121,13 +113,6 @@ namespace CycloneDX.Core.Models
         
 
     }
-
-    public class CryptoFunctionCollection
-    {
-        [XmlElement("cryptoFunction")]
-        public List<CryptoFunction> CryptoFunctions { get; set; }
-    }
-
 
     public enum PaddingScheme
     {       
