@@ -22,6 +22,7 @@ components {
       nistQuantumSecurityLevel: 1
       6: 5
     }
+    oid: "oid:1.2.3.4.5.6.7.8.9"
   }
 }
 components {
@@ -44,6 +45,7 @@ components {
       certificateFormat: "X.509"
       certificateExtension: "crt"
     }
+    oid: "oid:1.2.3.4.5.6.7.8.9"
   }
 }
 components {
@@ -60,6 +62,7 @@ components {
         identifiers: "0xC0"
       }
     }
+    oid: "oid:1.2.3.4.5.6.7.8.9"
   }
 }
 components {
@@ -92,5 +95,6 @@ components {
         algorithmRef: "bom-ref-to-algorithm"
       }
     }
+    oid: "oid:1.2.3.4.5.6.7.8.9"
   }
 }

@@ -29,7 +29,8 @@
           ],
           "classicalSecurityLevel": 128,
           "nistQuantumSecurityLevel": 1
-        }
+        },
+        "oid": "oid:1.2.3.4.5.6.7.8.9"
       }
     },
     {
@@ -47,7 +48,8 @@
           "subjectPublicKeyRef": "bom-ref-to-public-key",
           "certificateFormat": "X.509",
           "certificateExtension": "crt"
-        }
+        },
+        "oid": "oid:1.2.3.4.5.6.7.8.9"
       }
     },
     {
@@ -70,7 +72,8 @@
               ]
             }
           ]
-        }
+        },
+        "oid": "oid:1.2.3.4.5.6.7.8.9"
       }
     },
     {
@@ -95,7 +98,8 @@
             "mechanism": "HSM",
             "algorithmRef": "bom-ref-to-algorithm"
           }
-        }
+        },
+        "oid": "oid:1.2.3.4.5.6.7.8.9"
       }
     }
   ]

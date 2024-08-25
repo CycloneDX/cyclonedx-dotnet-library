@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Json\v1.6\__snapshots__\__mismatch__\" />
     <Folder Include="Models\v1.0" />
     <Folder Include="Models\v1.1" />
     <Folder Include="Models\v1.3" />
