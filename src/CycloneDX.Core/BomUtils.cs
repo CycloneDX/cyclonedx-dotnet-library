@@ -270,6 +270,16 @@ namespace CycloneDX
                     component.Swhid = null;
                     component.Authors = null;
                     component.Manufacturer = null;
+
+                    if (component.ModelCard?.Considerations != null)
+                    {
+                        component.ModelCard.Considerations.EnvironmentalConsiderations = null;
+                    }
+                });
+
+                EnumerateAllOrganizationalEntity(bomCopy, (oe) =>
+                {
+                    oe.Address = null;
                 });
 
                 EnumerateAllServices(bomCopy, (service) =>
@@ -477,7 +487,7 @@ namespace CycloneDX
                         callback(annotation.Annotator.Organization);
                 }
 
-            }
+            }           
 
             EnumerateAllVulnerabilities(bom, (vulnerability) =>
             {
@@ -489,6 +499,20 @@ namespace CycloneDX
             EnumerateAllComponents(bom, (component) =>
             {
                 if (component.Supplier != null) callback(component.Supplier);
+
+
+                component.ModelCard?.Considerations?.EnvironmentalConsiderations?.EnergyConsumptions?
+                    .ForEach(energyConsumption =>
+                        energyConsumption?.EnergyProviders?
+                            .ForEach(energyProvider =>
+                            {
+                                if (energyProvider?.Organization != null)
+                                {
+                                    callback(energyProvider.Organization);
+                                }   
+                            }));
+
+
             });
             EnumerateAllServices(bom, (service) =>
             {

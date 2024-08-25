@@ -41,5 +41,9 @@ namespace CycloneDX.Models
         [XmlAttribute("bom-ref")]
         [ProtoMember(4)]
         public string BomRef { get; set; }
+
+        [XmlElement("address")]
+        [ProtoMember(5)]
+        public PostalAddress Address { get; set; }
     }
 }

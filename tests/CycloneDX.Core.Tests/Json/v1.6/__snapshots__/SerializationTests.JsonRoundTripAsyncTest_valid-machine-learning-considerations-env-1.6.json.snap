@@ -20,7 +20,45 @@
         }
       ],
       "modelCard": {
-        "considerations": {}
+        "considerations": {
+          "environmentalConsiderations": {
+            "energyConsumptions": [
+              {
+                "activity": "training",
+                "energyProviders": [
+                  {
+                    "description": "Meta data-center, US-East",
+                    "organization": {
+                      "name": "Meta",
+                      "address": {
+                        "country": "United States",
+                        "region": "New Jersey",
+                        "locality": "Newark"
+                      }
+                    },
+                    "energySource": "natural-gas",
+                    "energyProvided": {
+                      "value": 0.4,
+                      "unit": "kWh"
+                    }
+                  }
+                ],
+                "activityEnergyCost": {
+                  "value": 0.4,
+                  "unit": "kWh"
+                },
+                "co2CostEquivalent": {
+                  "value": 31.22,
+                  "unit": "tCO2eq"
+                },
+                "co2CostOffset": {
+                  "value": 31.22,
+                  "unit": "tCO2eq"
+                }
+              }
+            ]
+          }
+        }
       }
     }
   ]

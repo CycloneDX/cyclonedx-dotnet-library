@@ -93,6 +93,8 @@ namespace CycloneDX.Json
             options.Converters.Add(new UnderscoreEnumConverter<Status>());
             options.Converters.Add(new HyphenEnumConverter<Volume.VolumeMode>());
             options.Converters.Add(new HyphenEnumConverter<Data.DataType>());
+            options.Converters.Add(new HyphenEnumConverter<ActivityType>());
+            options.Converters.Add(new HyphenEnumConverter<EnergySource>());
 
             options.Converters.Add(new JsonStringEnumConverter());
             

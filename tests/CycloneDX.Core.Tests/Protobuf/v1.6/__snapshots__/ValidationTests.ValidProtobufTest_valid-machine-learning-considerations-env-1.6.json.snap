@@ -16,6 +16,51 @@ components {
   }
   modelCard {
     considerations {
+      environmentalConsiderations {
+        energyConsumptions {
+          activity: ACTIVITY_TYPE_DATA_PREPARATION
+          energyProviders {
+            description: "Meta data-center, US-East"
+            organization {
+              name: "Meta"
+              address {
+                country: "United States"
+                region: "New Jersey"
+                locality: "Newark"
+              }
+            }
+            energySource: ENERGY_SOURCE_TYPE_COAL
+            energyProvided {
+              unit: ENERGY_MEASURE_UNIT_TYPE_KILOWATT_HOURS
+              1 {
+                1: 4
+                3: 2
+              }
+            }
+          }
+          activityEnergyCost {
+            unit: ENERGY_MEASURE_UNIT_TYPE_KILOWATT_HOURS
+            1 {
+              1: 4
+              3: 2
+            }
+          }
+          co2CostEquivalent {
+            unit: CO2_MEASURE_UNIT_TYPE_TONNES_CO2_EQUIVALENT
+            1 {
+              1: 3122
+              3: 4
+            }
+          }
+          co2CostOffset {
+            unit: CO2_MEASURE_UNIT_TYPE_TONNES_CO2_EQUIVALENT
+            1 {
+              1: 3122
+              3: 4
+            }
+          }
+        }
+      }
     }
   }
 }
