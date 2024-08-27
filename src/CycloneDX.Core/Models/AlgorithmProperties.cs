@@ -117,6 +117,10 @@ namespace CycloneDX.Core.Models
     public enum PaddingScheme
     {       
         Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
         [XmlEnum("pkcs5")]
         PKCS5,
         [XmlEnum("pkcs7")]
@@ -126,18 +130,16 @@ namespace CycloneDX.Core.Models
         [XmlEnum("oaep")]
         OAEP,
         [XmlEnum("raw")]
-        Raw,
-        [XmlEnum("other")]
-        Other,
-        [XmlEnum("unknown")]
-        Unknown
-
-
+        Raw
     }
 
     public enum AlgorithmMode
     {
         Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
         [XmlEnum("cbc")]
         Cbc,
         [XmlEnum("ecb")]
@@ -151,11 +153,7 @@ namespace CycloneDX.Core.Models
         [XmlEnum("ofb")]
         Ofb,
         [XmlEnum("ctr")]
-        Ctr,
-        [XmlEnum("other")]
-        Other,
-        [XmlEnum("unknown")]
-        Unknown
+        Ctr
     }
 
     public enum CertificationLevel
@@ -225,6 +223,10 @@ namespace CycloneDX.Core.Models
     public enum ImplementationPlatform
     {
         Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
         [XmlEnum("generic")]
         Generic,
         [XmlEnum("x86_32")]
@@ -248,16 +250,16 @@ namespace CycloneDX.Core.Models
         [XmlEnum("ppc64")]
         Ppc64,
         [XmlEnum("ppc64le")]
-        Ppc64le,
-        [XmlEnum("other")]
-        Other,
-        [XmlEnum("unknown")]
-        Unknown
+        Ppc64le
     }
 
     public enum ExecutionEnvironment
     {
         Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
         [XmlEnum("software-plain-ram")]
         Software_Plain_Ram,
         [XmlEnum("software-encrypted-ram")]
@@ -265,17 +267,16 @@ namespace CycloneDX.Core.Models
         [XmlEnum("software-tee")]
         Software_TEE,
         [XmlEnum("hardware")]
-        Hardware,
-        [XmlEnum("other")]
-        Other,
-        [XmlEnum("unknown")]
-        Unknown
-
+        Hardware
     }
 
     public enum Primitive
     {
         Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
         [XmlEnum("drbg")]
         DRGB,
         [XmlEnum("mac")]
@@ -301,17 +302,16 @@ namespace CycloneDX.Core.Models
         [XmlEnum("ae")]
         AE,
         [XmlEnum("combiner")]
-        Combiner,
-        [XmlEnum("other")]
-        Other,
-        [XmlEnum("unknown")]
-        Unknown
-
+        Combiner
     }
 
     public enum CryptoFunction
     {
         Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
         [XmlEnum("generate")]
         Generate,
         [XmlEnum("keygen")]
@@ -334,9 +334,5 @@ namespace CycloneDX.Core.Models
         Encapsulate,
         [XmlEnum("decapsulate")]
         Decapsulate,
-        [XmlEnum("other")]
-        Other,
-        [XmlEnum("unknown")]
-        Unknown
     }
 }

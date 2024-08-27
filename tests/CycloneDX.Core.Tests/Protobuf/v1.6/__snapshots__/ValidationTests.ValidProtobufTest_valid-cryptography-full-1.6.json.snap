@@ -8,17 +8,17 @@ components {
   cryptoProperties {
     assetType: CRYPTO_ASSET_TYPE_ALGORITHM
     algorithmProperties {
-      primitive: CRYPTO_PRIMITIVE_KEY_AGREE
+      primitive: CRYPTO_PRIMITIVE_AE
       parameterSetIdentifier: "128"
       curve: "brainpoolP160r1"
-      executionEnvironment: CRYPTO_EXECUTION_ENVIRONMENT_UNKNOWN
-      implementationPlatform: CRYPTO_IMPLEMENTATION_PLATFORM_GENERIC
-      mode: CRYPTO_ALGORITHM_MODE_ECB
-      padding: CRYPTO_ALGORITHM_PADDING_UNKNOWN
-      cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_OTHER
-      cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_GENERATE
+      executionEnvironment: CRYPTO_EXECUTION_ENVIRONMENT_SOFTWARE_PLAIN_RAM
+      implementationPlatform: CRYPTO_IMPLEMENTATION_PLATFORM_X86_64
+      mode: CRYPTO_ALGORITHM_MODE_GCM
+      padding: CRYPTO_ALGORITHM_PADDING_PKCS5
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_KEYGEN
+      cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_ENCRYPT
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_DECRYPT
+      cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_TAG
       classicalSecurityLevel: 128
       nistQuantumSecurityLevel: 1
       6: 5
@@ -56,7 +56,7 @@ components {
   cryptoProperties {
     assetType: CRYPTO_ASSET_TYPE_PROTOCOL
     protocolProperties {
-      type: CRYPTO_PROTOCOL_TYPE_UNKNOWN
+      type: CRYPTO_PROTOCOL_TYPE_TLS
       version: "1.3"
       cipherSuites {
         name: "TLS_DHE_RSA_WITH_AES_128_CCM"
@@ -74,7 +74,7 @@ components {
   cryptoProperties {
     assetType: CRYPTO_ASSET_TYPE_RELATED_CRYPTO_MATERIAL
     relatedCryptoMaterialProperties {
-      type: CRYPTO_RELATED_TYPE_UNKNOWN
+      type: CRYPTO_RELATED_TYPE_PRIVATE_KEY
       id: "12345"
       state: CRYPTO_RELATED_STATE_ACTIVE
       algorithmRef: "bom-ref-to-algorithm"

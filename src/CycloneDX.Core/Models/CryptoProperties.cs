@@ -58,6 +58,10 @@ namespace CycloneDX.Core.Models
     public enum ProtocolType
     {
         Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
         [XmlEnum("tls")]
         Tls,
         [XmlEnum("ssh")]
@@ -69,11 +73,7 @@ namespace CycloneDX.Core.Models
         [XmlEnum("sstp")]
         Sstp,
         [XmlEnum("wpa")]
-        Wpa,
-        [XmlEnum("other")]
-        Other,
-        [XmlEnum("unknown")]
-        Unknown
+        Wpa
     }
 
     [ProtoContract]
@@ -206,6 +206,10 @@ namespace CycloneDX.Core.Models
     public enum RelatedCryptoMaterialType
     {
         Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
         [XmlEnum("private-key")]
         Private_Key,
         [XmlEnum("public-key")]
@@ -239,11 +243,7 @@ namespace CycloneDX.Core.Models
         [XmlEnum("credential")]
         Credential,
         [XmlEnum("token")]
-        Token,
-        [XmlEnum("other")]
-        Other,
-        [XmlEnum("unknown")]
-        Unknown
+        Token
     }
 
     public enum KeyState
