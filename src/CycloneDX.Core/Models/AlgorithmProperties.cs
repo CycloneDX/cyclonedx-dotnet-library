@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
@@ -66,8 +67,38 @@ namespace CycloneDX.Core.Models
         //    }
         //}
         [XmlElement("certificationLevel")]
-        [ProtoMember(6)]
         public List<CertificationLevel> CertificationLevel { get; set; }
+        [ProtoMember(6)]
+        [XmlIgnore]
+        [JsonIgnore]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public List<string> CertificationLevel_Protobuf
+        {
+            get
+            {
+                if (CertificationLevel == null)
+                {
+                    return null;
+                }
+                return CertificationLevel.Select((certificationLevel) =>
+                {
+                    return certificationLevel.ToString();
+                }).ToList();
+            }
+            set
+            {
+                if (value == null)
+                {
+                    CertificationLevel = null;
+                    return;
+                }
+                CertificationLevel = value.Select((certificationLevel) =>
+                {
+                    return (CertificationLevel)Enum.Parse(typeof(CertificationLevel), certificationLevel);
+                }).ToList();
+            }
+        }
+
         [ProtoMember(7)]
         [XmlElement("mode")]
         public AlgorithmMode? Mode { get; set; }
