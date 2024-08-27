@@ -20,6 +20,7 @@ components {
       parameterSetIdentifier: "128"
       executionEnvironment: CRYPTO_EXECUTION_ENVIRONMENT_SOFTWARE_PLAIN_RAM
       implementationPlatform: CRYPTO_IMPLEMENTATION_PLATFORM_X86_64
+      certificationLevel: "none"
       mode: CRYPTO_ALGORITHM_MODE_GCM
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_KEYGEN
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_ENCRYPT
@@ -27,7 +28,6 @@ components {
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_TAG
       classicalSecurityLevel: 128
       nistQuantumSecurityLevel: 1
-      6: 1
     }
     oid: "oid:2.16.840.1.101.3.4.1.6"
   }
