@@ -70,7 +70,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new EnvironmentVarChoiceConverter());
             options.Converters.Add(new ToolChoicesConverter());
             options.Converters.Add(new HyphenEnumConverter<ExecutionEnvironment>());
-            options.Converters.Add(new HyphenEnumConverter<CertificationLevel>());
+            options.Converters.Add(new EnumMemberConverter<CertificationLevel>());
             options.Converters.Add(new HyphenEnumConverter<AssetType>());
             options.Converters.Add(new HyphenEnumConverter<RelatedCryptoMaterialType>());
             options.Converters.Add(new HyphenEnumConverter<KeyState>());
@@ -79,7 +79,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<ProtocolType>());
             options.Converters.Add(new HyphenEnumConverter<Primitive>());
             options.Converters.Add(new HyphenEnumConverter<PaddingScheme>());
-            options.Converters.Add(new UnderscoreEnumConverter<ImplementationPlatform>());//todo: fix this
+            options.Converters.Add(new EnumMemberConverter<ImplementationPlatform>());
             options.Converters.Add(new EvidenceIdentityListConverter());
 
             options.Converters.Add(new HyphenEnumConverter<EvidenceIdentity.EvidenceFieldType>());
