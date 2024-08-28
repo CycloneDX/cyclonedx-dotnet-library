@@ -16,34 +16,39 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Attestation
+    public enum ActivityType
     {
-        [XmlElement("summary")]
-        [ProtoMember(1)]
-        public string Summary { get; set; }
+        Null,
+        [XmlEnum("design")]
+        Design,
 
-        [XmlElement("assessor")]
-        [ProtoMember(2)]
-        public string Assessor { get; set; }
+        [XmlEnum("data-collection")]
+        Data_Collection,
 
-        [XmlElement("map")]
-        [ProtoMember(3)]
-        public List<Map> Map { get; set; }
+        [XmlEnum("data-preparation")]
+        Data_Preparation,
 
-        [JsonIgnore]
-        [XmlAnyElement]
-        public List<System.Xml.XmlElement> Any { get; set; }
+        [XmlEnum("training")]
+        Training,
 
-        [XmlIgnore]
-        public Signature Signature { get; set; }
+        [XmlEnum("fine-tuning")]
+        Fine_Tuning,
 
+        [XmlEnum("validation")]
+        Validation,
+
+        [XmlEnum("deployment")]
+        Deployment,
+
+        [XmlEnum("inference")]
+        Inference,
+
+        [XmlEnum("other")]
+        Other
     }
 }

@@ -18,32 +18,41 @@
 using ProtoBuf;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Attestation
+    public class Definitions
     {
-        [XmlElement("summary")]
+        [XmlElement("standards"), JsonIgnore]
+        public StandardsType Standards_XML { get; set; }
+
+        [JsonPropertyName("standards"), XmlIgnore]
         [ProtoMember(1)]
-        public string Summary { get; set; }
+        public List<Standard> Standards
+        {
+            get => Standards_XML?.Standards;
+            set
+            {
+                if (Standards_XML == null)
+                {
+                    Standards_XML = new StandardsType();
+                }
+                Standards_XML.Standards = value;
+            }
+        }
+    }
 
-        [XmlElement("assessor")]
-        [ProtoMember(2)]
-        public string Assessor { get; set; }
+    public class StandardsType
+    {
+        [XmlElement("standard")]
+        public List<Standard> Standards { get; set; }
 
-        [XmlElement("map")]
-        [ProtoMember(3)]
-        public List<Map> Map { get; set; }
-
-        [JsonIgnore]
         [XmlAnyElement]
         public List<System.Xml.XmlElement> Any { get; set; }
 
-        [XmlIgnore]
-        public Signature Signature { get; set; }
-
+        [XmlAnyAttribute]
+        public System.Xml.XmlAttribute[] AnyAttr { get; set; }
     }
 }

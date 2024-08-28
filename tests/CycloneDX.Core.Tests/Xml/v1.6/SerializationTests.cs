@@ -85,8 +85,6 @@ namespace CycloneDX.Core.Tests.Xml.v1_6
             var xmlBomOutput = Serializer.Serialize(bom);
 
 
-            
-            //File.WriteAllText("C:/temp/testedBom.xml", xmlBom.ToString());
             var validationResult = Validator.Validate(xmlBomOutput, SpecificationVersion.v1_6);
 
             Assert.True(validationResult.Valid, validationResult.Messages?.FirstOrDefault());
