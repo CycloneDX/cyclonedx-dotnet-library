@@ -1,7 +1,9 @@
-﻿using ProtoBuf;
+﻿using CycloneDX.Models;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
@@ -228,20 +230,28 @@ namespace CycloneDX.Core.Models
         [XmlEnum("generic")]
         Generic,
         [XmlEnum("x86_32")]
+        [EnumMember(Value = "x86_32")]
         X86_32,
         [XmlEnum("x86_64")]
+        [EnumMember(Value = "x86_64")]
         X86_64,
         [XmlEnum("armv7-a")]
+        [EnumMember(Value = "armv7-a")]
         Armv7A,
         [XmlEnum("armv7-m")]
+        [EnumMember(Value = "armv7-m")]
         Armv7M,
         [XmlEnum("armv8-a")]
+        [EnumMember(Value = "armv8-a")]
         Armv8A,
         [XmlEnum("armv8-m")]
+        [EnumMember(Value = "armv8-m")]
         Armv8M,
         [XmlEnum("armv9-a")]
+        [EnumMember(Value = "armv9-a")]
         Armv9A,
         [XmlEnum("armv9-m")]
+        [EnumMember(Value = "armv9-m")]
         Armv9M,
         [XmlEnum("s390x")]
         S390X,
