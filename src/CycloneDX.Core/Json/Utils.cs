@@ -70,7 +70,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new EnvironmentVarChoiceConverter());
             options.Converters.Add(new ToolChoicesConverter());
             options.Converters.Add(new HyphenEnumConverter<ExecutionEnvironment>());
-            options.Converters.Add(new HyphenEnumConverter<CertificationLevel>());
+            options.Converters.Add(new EnumMemberConverter<CertificationLevel>());
             options.Converters.Add(new HyphenEnumConverter<AssetType>());
             options.Converters.Add(new HyphenEnumConverter<RelatedCryptoMaterialType>());
             options.Converters.Add(new HyphenEnumConverter<KeyState>());
