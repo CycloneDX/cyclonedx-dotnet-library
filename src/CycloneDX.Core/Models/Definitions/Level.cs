@@ -18,32 +18,36 @@
 using ProtoBuf;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Attestation
+    public class Level
     {
-        [XmlElement("summary")]
+        [XmlAttribute("bom-ref")]
+        [JsonPropertyName("bom-ref")]
         [ProtoMember(1)]
-        public string Summary { get; set; }
+        public string BomRef { get; set; }
 
-        [XmlElement("assessor")]
+        [XmlElement("identifier")]
         [ProtoMember(2)]
-        public string Assessor { get; set; }
+        public string Identifier { get; set; }
 
-        [XmlElement("map")]
+        [XmlElement("title")]
         [ProtoMember(3)]
-        public List<Map> Map { get; set; }
+        public string Title { get; set; }
 
-        [JsonIgnore]
-        [XmlAnyElement]
-        public List<System.Xml.XmlElement> Any { get; set; }
+        [XmlElement("description")]
+        [ProtoMember(4)]
+        public string Description { get; set; }
 
-        [XmlIgnore]
-        public Signature Signature { get; set; }
+        [XmlArray("requirements")]
+        [XmlArrayItem("requirement")]
+        [ProtoMember(5)]
+        public List<string> Requirements { get; set; }
 
+        [XmlAnyAttribute]
+        public System.Xml.XmlAttribute[] AnyAttr { get; set; }
     }
 }

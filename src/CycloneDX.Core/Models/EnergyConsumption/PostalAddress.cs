@@ -16,34 +16,41 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Attestation
+    public class PostalAddress
     {
-        [XmlElement("summary")]
+        [XmlAttribute("bom-ref")]
         [ProtoMember(1)]
-        public string Summary { get; set; }
+        public string BomRef { get; set; }
 
-        [XmlElement("assessor")]
+        [XmlElement("country")]
         [ProtoMember(2)]
-        public string Assessor { get; set; }
+        public string Country { get; set; }
 
-        [XmlElement("map")]
+        [XmlElement("region")]
         [ProtoMember(3)]
-        public List<Map> Map { get; set; }
+        public string Region { get; set; }
 
-        [JsonIgnore]
-        [XmlAnyElement]
-        public List<System.Xml.XmlElement> Any { get; set; }
+        [XmlElement("locality")]
+        [ProtoMember(4)]
+        public string Locality { get; set; }
 
-        [XmlIgnore]
-        public Signature Signature { get; set; }
+        [XmlElement("postOfficeBoxNumber")]
+        [ProtoMember(5)]
+        public string PostOfficeBoxNumber { get; set; }
+
+        [XmlElement("postalCode")]
+        [ProtoMember(6)]
+        public string PostalCode { get; set; }
+
+        [XmlElement("streetAddress")]
+        [ProtoMember(7)]
+        public string StreetAddress { get; set; }
+
 
     }
 }

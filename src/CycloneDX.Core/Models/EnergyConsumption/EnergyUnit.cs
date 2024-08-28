@@ -16,34 +16,15 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Attestation
-    {
-        [XmlElement("summary")]
-        [ProtoMember(1)]
-        public string Summary { get; set; }
-
-        [XmlElement("assessor")]
-        [ProtoMember(2)]
-        public string Assessor { get; set; }
-
-        [XmlElement("map")]
-        [ProtoMember(3)]
-        public List<Map> Map { get; set; }
-
-        [JsonIgnore]
-        [XmlAnyElement]
-        public List<System.Xml.XmlElement> Any { get; set; }
-
-        [XmlIgnore]
-        public Signature Signature { get; set; }
-
+    public enum EnergyUnit
+    { 
+        Null,
+        [XmlEnum("kWh")]
+        kWh
     }
 }

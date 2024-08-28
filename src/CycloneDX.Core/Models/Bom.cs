@@ -186,6 +186,11 @@ namespace CycloneDX.Models
         [ProtoMember(14)]
         public Declarations Declarations { get; set; }
         public bool ShouldSerializeDeclarations() { return Declarations != null; }
+
+        [XmlElement("definitions")]
+        [ProtoMember(15)]
+        public Definitions Definitions { get; set; }
+
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }

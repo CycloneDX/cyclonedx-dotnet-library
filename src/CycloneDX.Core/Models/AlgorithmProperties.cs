@@ -1,8 +1,10 @@
-﻿using ProtoBuf;
+﻿using CycloneDX.Models;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
@@ -219,29 +221,36 @@ namespace CycloneDX.Core.Models
         [XmlEnum("cc-eal1")]
         CC_EAL1,
         [XmlEnum("cc-eal1+")]
+        [EnumMember(Value = "cc-eal1+")]
         CC_EAL1plus,
         [XmlEnum("cc-eal2")]
         CC_EAL2,
         [XmlEnum("cc-eal2+")]
+        [EnumMember(Value = "cc-eal2+")]
         CC_EAL2plus,
         [XmlEnum("cc-eal3")]
         CC_EAL3,
         [XmlEnum("cc-eal3+")]
+        [EnumMember(Value = "cc-eal3+")]
         CC_EAL3plus,
         [XmlEnum("cc-eal4")]
         CC_EAL4,
         [XmlEnum("cc-eal4+")]
+        [EnumMember(Value = "cc-eal4+")]
         CC_EAL4plus,
         [XmlEnum("cc-eal5")]
         CC_EAL5,
+        [EnumMember(Value = "cc-eal5+")]
         [XmlEnum("cc-eal5+")]
         CC_EAL5plus,
         [XmlEnum("cc-eal6")]
         CC_EAL6,
+        [EnumMember(Value = "cc-eal6+")]
         [XmlEnum("cc-eal6+")]
         CC_EAL6plus,
         [XmlEnum("cc-eal7")]
         CC_EAL7,
+        [EnumMember(Value = "cc-eal7+")]
         [XmlEnum("cc-eal7+")]
         CC_EAL7plus,
         [XmlEnum("other")]
@@ -338,20 +347,28 @@ namespace CycloneDX.Core.Models
         [XmlEnum("generic")]
         Generic,
         [XmlEnum("x86_32")]
+        [EnumMember(Value = "x86_32")]
         X86_32,
         [XmlEnum("x86_64")]
+        [EnumMember(Value = "x86_64")]
         X86_64,
         [XmlEnum("armv7-a")]
+        [EnumMember(Value = "armv7-a")]
         Armv7A,
         [XmlEnum("armv7-m")]
+        [EnumMember(Value = "armv7-m")]
         Armv7M,
         [XmlEnum("armv8-a")]
+        [EnumMember(Value = "armv8-a")]
         Armv8A,
         [XmlEnum("armv8-m")]
+        [EnumMember(Value = "armv8-m")]
         Armv8M,
         [XmlEnum("armv9-a")]
+        [EnumMember(Value = "armv9-a")]
         Armv9A,
         [XmlEnum("armv9-m")]
+        [EnumMember(Value = "armv9-m")]
         Armv9M,
         [XmlEnum("s390x")]
         S390X,

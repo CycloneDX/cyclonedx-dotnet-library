@@ -16,34 +16,45 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Attestation
+    public enum EnergySource
     {
-        [XmlElement("summary")]
-        [ProtoMember(1)]
-        public string Summary { get; set; }
+        Null,
+        [XmlEnum("coal")]
+        Coal,
 
-        [XmlElement("assessor")]
-        [ProtoMember(2)]
-        public string Assessor { get; set; }
+        [XmlEnum("oil")]
+        Oil,
 
-        [XmlElement("map")]
-        [ProtoMember(3)]
-        public List<Map> Map { get; set; }
+        [XmlEnum("natural-gas")]
+        Natural_Gas,
 
-        [JsonIgnore]
-        [XmlAnyElement]
-        public List<System.Xml.XmlElement> Any { get; set; }
+        [XmlEnum("nuclear")]
+        Nuclear,
 
-        [XmlIgnore]
-        public Signature Signature { get; set; }
+        [XmlEnum("wind")]
+        Wind,
 
+        [XmlEnum("solar")]
+        Solar,
+
+        [XmlEnum("geothermal")]
+        Geothermal,
+
+        [XmlEnum("hydropower")]
+        Hydropower,
+
+        [XmlEnum("biofuel")]
+        Biofuel,
+
+        [XmlEnum("unknown")]
+        Unknown,
+
+        [XmlEnum("other")]
+        Other
     }
 }
