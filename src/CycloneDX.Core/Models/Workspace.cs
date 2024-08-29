@@ -87,7 +87,7 @@ namespace CycloneDX.Models
 
         [XmlElement("managedDataType")]
         [ProtoMember(10)]
-        public string ManagedDateType { get; set; }
+        public string ManagedDataType { get; set; }
 
         [XmlElement("volumeRequest")]
         [ProtoMember(11)]

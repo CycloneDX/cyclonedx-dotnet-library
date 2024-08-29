@@ -133,6 +133,6 @@ namespace CycloneDX.Models
         [XmlArray("runtimeTopology")]
         [XmlArrayItem("dependency")]
         [ProtoMember(17)]
-        public List<Dependency> RuntimeTopologies { get; set; }
+        public List<Dependency> RuntimeTopology { get; set; }
     }
 }
