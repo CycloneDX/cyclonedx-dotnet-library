@@ -257,6 +257,7 @@ namespace CycloneDX
             if (bomCopy.SpecVersion < SpecificationVersion.v1_6)
             {
                 bomCopy.Declarations = null;
+                bomCopy.Definitions = null;
 
                 EnumerateAllComponents(bomCopy, (component) =>
                 {

@@ -1,8 +1,10 @@
-﻿using ProtoBuf;
+﻿using CycloneDX.Models;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
@@ -82,7 +84,7 @@ namespace CycloneDX.Core.Models
                 }
                 return CertificationLevel.Select((certificationLevel) =>
                 {
-                    return certificationLevel.ToString();
+                    return CertificationLevelExtensions.CertificationLevelToString(certificationLevel);
                 }).ToList();
             }
             set
@@ -94,7 +96,7 @@ namespace CycloneDX.Core.Models
                 }
                 CertificationLevel = value.Select((certificationLevel) =>
                 {
-                    return (CertificationLevel)Enum.Parse(typeof(CertificationLevel), certificationLevel);
+                    return CertificationLevelExtensions.CertificationLevelFromString(certificationLevel);
                 }).ToList();
             }
         }
@@ -219,29 +221,36 @@ namespace CycloneDX.Core.Models
         [XmlEnum("cc-eal1")]
         CC_EAL1,
         [XmlEnum("cc-eal1+")]
+        [EnumMember(Value = "cc-eal1+")]
         CC_EAL1plus,
         [XmlEnum("cc-eal2")]
         CC_EAL2,
         [XmlEnum("cc-eal2+")]
+        [EnumMember(Value = "cc-eal2+")]
         CC_EAL2plus,
         [XmlEnum("cc-eal3")]
         CC_EAL3,
         [XmlEnum("cc-eal3+")]
+        [EnumMember(Value = "cc-eal3+")]
         CC_EAL3plus,
         [XmlEnum("cc-eal4")]
         CC_EAL4,
         [XmlEnum("cc-eal4+")]
+        [EnumMember(Value = "cc-eal4+")]
         CC_EAL4plus,
         [XmlEnum("cc-eal5")]
         CC_EAL5,
+        [EnumMember(Value = "cc-eal5+")]
         [XmlEnum("cc-eal5+")]
         CC_EAL5plus,
         [XmlEnum("cc-eal6")]
         CC_EAL6,
+        [EnumMember(Value = "cc-eal6+")]
         [XmlEnum("cc-eal6+")]
         CC_EAL6plus,
         [XmlEnum("cc-eal7")]
         CC_EAL7,
+        [EnumMember(Value = "cc-eal7+")]
         [XmlEnum("cc-eal7+")]
         CC_EAL7plus,
         [XmlEnum("other")]
@@ -250,6 +259,83 @@ namespace CycloneDX.Core.Models
         Unknown
 
     }
+
+    public static class CertificationLevelExtensions {
+        public static CertificationLevel CertificationLevelFromString(string value)
+        {
+            switch (value)
+            {
+                case "none": return CertificationLevel.None;
+                case "fips140-1-l1": return CertificationLevel.FIPS140_1_L1;
+                case "fips140-1-l2": return CertificationLevel.FIPS140_1_L2;
+                case "fips140-1-l3": return CertificationLevel.FIPS140_1_L3;
+                case "fips140-1-l4": return CertificationLevel.FIPS140_1_L4;
+                case "fips140-2-l1": return CertificationLevel.FIPS140_2_L1;
+                case "fips140-2-l2": return CertificationLevel.FIPS140_2_L2;
+                case "fips140-2-l3": return CertificationLevel.FIPS140_2_L3;
+                case "fips140-2-l4": return CertificationLevel.FIPS140_2_L4;
+                case "fips140-3-l1": return CertificationLevel.FIPS140_3_L1;
+                case "fips140-3-l2": return CertificationLevel.FIPS140_3_L2;
+                case "fips140-3-l3": return CertificationLevel.FIPS140_3_L3;
+                case "fips140-3-l4": return CertificationLevel.FIPS140_3_L4;
+                case "cc-eal1": return CertificationLevel.CC_EAL1;
+                case "cc-eal1+": return CertificationLevel.CC_EAL1plus;
+                case "cc-eal2": return CertificationLevel.CC_EAL2;
+                case "cc-eal2+": return CertificationLevel.CC_EAL2plus;
+                case "cc-eal3": return CertificationLevel.CC_EAL3;
+                case "cc-eal3+": return CertificationLevel.CC_EAL3plus;
+                case "cc-eal4": return CertificationLevel.CC_EAL4;
+                case "cc-eal4+": return CertificationLevel.CC_EAL4plus;
+                case "cc-eal5": return CertificationLevel.CC_EAL5;
+                case "cc-eal5+": return CertificationLevel.CC_EAL5plus;
+                case "cc-eal6": return CertificationLevel.CC_EAL6;
+                case "cc-eal6+": return CertificationLevel.CC_EAL6plus;
+                case "cc-eal7": return CertificationLevel.CC_EAL7;
+                case "cc-eal7+": return CertificationLevel.CC_EAL7plus;
+                case "other": return CertificationLevel.Other;
+                case "unknown": return CertificationLevel.Unknown;
+                default: return CertificationLevel.Null;
+            }
+        }
+
+        public static string CertificationLevelToString(CertificationLevel level)
+        {
+            switch (level)
+            {
+                case CertificationLevel.None: return "none";
+                case CertificationLevel.FIPS140_1_L1: return "fips140-1-l1";
+                case CertificationLevel.FIPS140_1_L2: return "fips140-1-l2";
+                case CertificationLevel.FIPS140_1_L3: return "fips140-1-l3";
+                case CertificationLevel.FIPS140_1_L4: return "fips140-1-l4";
+                case CertificationLevel.FIPS140_2_L1: return "fips140-2-l1";
+                case CertificationLevel.FIPS140_2_L2: return "fips140-2-l2";
+                case CertificationLevel.FIPS140_2_L3: return "fips140-2-l3";
+                case CertificationLevel.FIPS140_2_L4: return "fips140-2-l4";
+                case CertificationLevel.FIPS140_3_L1: return "fips140-3-l1";
+                case CertificationLevel.FIPS140_3_L2: return "fips140-3-l2";
+                case CertificationLevel.FIPS140_3_L3: return "fips140-3-l3";
+                case CertificationLevel.FIPS140_3_L4: return "fips140-3-l4";
+                case CertificationLevel.CC_EAL1: return "cc-eal1";
+                case CertificationLevel.CC_EAL1plus: return "cc-eal1+";
+                case CertificationLevel.CC_EAL2: return "cc-eal2";
+                case CertificationLevel.CC_EAL2plus: return "cc-eal2+";
+                case CertificationLevel.CC_EAL3: return "cc-eal3";
+                case CertificationLevel.CC_EAL3plus: return "cc-eal3+";
+                case CertificationLevel.CC_EAL4: return "cc-eal4";
+                case CertificationLevel.CC_EAL4plus: return "cc-eal4+";
+                case CertificationLevel.CC_EAL5: return "cc-eal5";
+                case CertificationLevel.CC_EAL5plus: return "cc-eal5+";
+                case CertificationLevel.CC_EAL6: return "cc-eal6";
+                case CertificationLevel.CC_EAL6plus: return "cc-eal6+";
+                case CertificationLevel.CC_EAL7: return "cc-eal7";
+                case CertificationLevel.CC_EAL7plus: return "cc-eal7+";
+                case CertificationLevel.Other: return "other";
+                case CertificationLevel.Unknown: return "unknown";
+                default: return "null";
+            }
+        }
+    }
+
 
     public enum ImplementationPlatform
     {
@@ -261,20 +347,28 @@ namespace CycloneDX.Core.Models
         [XmlEnum("generic")]
         Generic,
         [XmlEnum("x86_32")]
+        [EnumMember(Value = "x86_32")]
         X86_32,
         [XmlEnum("x86_64")]
+        [EnumMember(Value = "x86_64")]
         X86_64,
         [XmlEnum("armv7-a")]
+        [EnumMember(Value = "armv7-a")]
         Armv7A,
         [XmlEnum("armv7-m")]
+        [EnumMember(Value = "armv7-m")]
         Armv7M,
         [XmlEnum("armv8-a")]
+        [EnumMember(Value = "armv8-a")]
         Armv8A,
         [XmlEnum("armv8-m")]
+        [EnumMember(Value = "armv8-m")]
         Armv8M,
         [XmlEnum("armv9-a")]
+        [EnumMember(Value = "armv9-a")]
         Armv9A,
         [XmlEnum("armv9-m")]
+        [EnumMember(Value = "armv9-m")]
         Armv9M,
         [XmlEnum("s390x")]
         S390X,

@@ -17,33 +17,37 @@
 
 using ProtoBuf;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Attestation
+    public class EnergyProvider
     {
-        [XmlElement("summary")]
-        [ProtoMember(1)]
-        public string Summary { get; set; }
-
-        [XmlElement("assessor")]
+        [XmlElement("description")]
         [ProtoMember(2)]
-        public string Assessor { get; set; }
+        public string Description { get; set; }
 
-        [XmlElement("map")]
+        [XmlElement("organization")]
         [ProtoMember(3)]
-        public List<Map> Map { get; set; }
+        public OrganizationalEntity Organization { get; set; }
 
-        [JsonIgnore]
-        [XmlAnyElement]
-        public List<System.Xml.XmlElement> Any { get; set; }
+        [XmlElement("energySource")]
+        [ProtoMember(4)]
+        public EnergySource EnergySource { get; set; }
 
-        [XmlIgnore]
-        public Signature Signature { get; set; }
+        [XmlElement("energyProvided")]
+        [ProtoMember(5)]
+        public EnergyMeasure EnergyProvided { get; set; }
 
+        [XmlArray("externalReferences")]
+        [XmlArrayItem("externalReference")]
+        [ProtoMember(6)]
+        public List<ExternalReference> ExternalReferences { get; set; }
+        public bool ShouldSerializeExternalReferences() => ExternalReferences?.Count > 0;
+
+        [XmlAttribute("bom-ref")]
+        [ProtoMember(1)]
+        public string BomRef { get; set; }
     }
 }

@@ -16,40 +16,60 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class EnergyConsumption
+    public class Requirement
     {
-        [XmlElement("activity")]
+        [XmlAttribute("bom-ref")]
+        [JsonPropertyName("bom-ref")]
         [ProtoMember(1)]
-        public ActivityType Activity { get; set; }
+        public string BomRef { get; set; }
 
-        [XmlElement("energyProviders")]
+        [XmlElement("identifier")]
         [ProtoMember(2)]
-        public List<EnergyProvider> EnergyProviders { get; set; }
+        public string Identifier { get; set; }
 
-        [XmlElement("activityEnergyCost")]
+        [XmlElement("title")]
         [ProtoMember(3)]
-        public EnergyMeasure ActivityEnergyCost { get; set; }
+        public string Title { get; set; }
 
-        [XmlElement("co2CostEquivalent")]
+        [XmlElement("text")]
         [ProtoMember(4)]
-        public Co2Measure Co2CostEquivalent { get; set; }
+        public string Text { get; set; }
 
-        [XmlElement("co2CostOffset")]
+        [XmlArray("descriptions")]
+        [XmlArrayItem("description")]
         [ProtoMember(5)]
-        public Co2Measure Co2CostOffset { get; set; }
+        //This is maxOccurs="1" in xsd
+        public List<string> Descriptions { get; set; }
+        public bool ShouldSerializeDescriptions() => Descriptions?.Count > 0;
+
+
+        [XmlElement("openCre")]
+        [ProtoMember(6)]
+        public List<string> OpenCre { get; set; }
+
+        [XmlElement("parent")]
+        [ProtoMember(7)]
+        public string Parent { get; set; }
 
         [XmlArray("properties")]
         [XmlArrayItem("property")]
-        [ProtoMember(6)]
+        [ProtoMember(8)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() => Properties?.Count > 0;
+
+        [XmlArray("externalReferences")]
+        [XmlArrayItem("externalReference")]
+        [ProtoMember(9)]
+        public List<ExternalReference> ExternalReferences { get; set; }
+        public bool ShouldSerializeExternalReferences() => ExternalReferences?.Count > 0;
+
+
     }
 }
