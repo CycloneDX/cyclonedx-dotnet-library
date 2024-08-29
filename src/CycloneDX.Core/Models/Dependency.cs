@@ -18,15 +18,17 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using CycloneDX.Core.Models;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [XmlType("dependency")]
     [ProtoContract]
-    public class Dependency: IEquatable<Dependency>
+    public class Dependency : IEquatable<Dependency>
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]
@@ -37,8 +39,32 @@ namespace CycloneDX.Models
         public List<Dependency> Dependencies { get; set; }
 
         [XmlElement("provides")]
-        [ProtoMember(3)]
         public List<Provides> Provides { get; set; }
+
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(3)]
+        public List<string> Provides_Protobuf
+        {
+            get
+            {
+                if (Provides == null)
+                {
+                    return null;
+                }
+                return Provides.Select((provides) => provides.Ref).ToList();
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Provides = null;
+                    return;
+                }
+                Provides = value.Select((reference) => new Provides { Ref = reference }).ToList();
+            }
+        }
+        public bool ShouldSerializeProvides_Protobuf() { return Provides?.Count > 0; }
 
         public override bool Equals(object obj)
         {
@@ -55,7 +81,7 @@ namespace CycloneDX.Models
         {
             return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
         }
-    
+
         public override int GetHashCode()
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
