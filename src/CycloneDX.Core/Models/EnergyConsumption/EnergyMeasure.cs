@@ -25,7 +25,7 @@ namespace CycloneDX.Models
     {
         [XmlElement("value")]
         [ProtoMember(1)]
-        public decimal Value { get; set; }
+        public float Value { get; set; }
 
         [XmlElement("unit")]
         [ProtoMember(2)]
