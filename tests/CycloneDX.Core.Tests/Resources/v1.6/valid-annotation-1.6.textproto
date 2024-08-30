@@ -24,8 +24,8 @@ annotations {
     }
   }
   timestamp {
-    seconds: 3173618478
-    nanos: 3
+    seconds: 1640995200
+    nanos: 0
   }
   text: "This is a sample annotation made by an organization"
 }
@@ -40,10 +40,10 @@ annotations {
     }
   }
   timestamp {
-    seconds: 3173618478
-    nanos: 3
+    seconds: 1640995200
+    nanos: 0
   }
-  text: "This is a sample annotation made by an person"
+  text: "This is a sample annotation made by a person"
 }
 annotations {
   bom_ref: "annotation-3"
@@ -56,8 +56,8 @@ annotations {
     }
   }
   timestamp {
-    seconds: 3173618478
-    nanos: 3
+    seconds: 1640995200
+    nanos: 0
   }
   text: "This is a sample annotation made by a component"
 }
@@ -90,8 +90,8 @@ annotations {
     }
   }
   timestamp {
-    seconds: 3173618478
-    nanos: 3
+    seconds: 1640995200
+    nanos: 0
   }
   text: "This is a sample annotation made by a service"
 }

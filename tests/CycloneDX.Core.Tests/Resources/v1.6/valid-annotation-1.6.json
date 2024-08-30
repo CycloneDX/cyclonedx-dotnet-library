@@ -77,7 +77,14 @@
             "name": "Partner Org",
             "url": [
               "https://partner.org"
-            ]
+            ],
+			"contact" : [
+			  {
+			    "name": "Support",
+                "email": "support@partner",
+                "phone": "800-555-1212"
+			  }
+			]
           },
           "group": "org.partner",
           "name": "BOM Annotation Service",
