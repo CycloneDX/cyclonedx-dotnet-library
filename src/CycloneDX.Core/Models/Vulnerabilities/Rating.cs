@@ -29,7 +29,7 @@ namespace CycloneDX.Models.Vulnerabilities
 
         [XmlElement("score")]
         [ProtoMember(2)]
-        public decimal Score { get; set; }
+        public double Score { get; set; }
 
         [XmlElement("severity")]
         [ProtoMember(3)]
