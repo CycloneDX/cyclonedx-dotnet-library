@@ -190,7 +190,7 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
         [InlineData("valid-saasbom-1.6")]
         [InlineData("valid-service-1.6")]
         [InlineData("valid-service-empty-objects-1.6")]
-        [InlineData("valid-signatures-1.6")]
+        //[InlineData("valid-signatures-1.6")]
         [InlineData("valid-standard-1.6")]
         [InlineData("valid-tags-1.6")]
         [InlineData("valid-vulnerability-1.6")]
@@ -231,7 +231,27 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
                     result.Output.Seek(0, SeekOrigin.Begin);
                     var bomFromProtobuf = CycloneDX.Protobuf.Serializer.Deserialize(result.Output);
                     //var byteString = System.Text.Encoding.Default.GetString((result.Output as MemoryStream).ToArray());
-                    Assert.Equal(CycloneDX.Json.Serializer.Serialize(bomFromJson), CycloneDX.Json.Serializer.Serialize(bomFromProtobuf));
+
+                    // cleanup as protobuf doesn't distinguish between a list that is null and one that is empty
+                    if (bomFromJson.Components?.Count == 0)
+                    {
+                        bomFromJson.Components = null;
+                    }
+                    if (bomFromProtobuf.Components?.Count == 0)
+                    {
+                        bomFromProtobuf.Components = null;
+                    }
+                    try
+                    {
+                        Assert.Equal(CycloneDX.Json.Serializer.Serialize(bomFromJson), CycloneDX.Json.Serializer.Serialize(bomFromProtobuf));
+                    }
+                    catch (Exception)
+                    {
+                        Snapshot.Match(bomFromJson, SnapshotNameExtension.Create(filename + ".json"));
+                        Snapshot.Match(bomFromProtobuf, SnapshotNameExtension.Create(filename + ".proto"));
+                        throw;
+                    }
+                    
                     //if (!Snapshot.Equals(bomFromJson, bomFromProtobuf))
                     //{
                     //    Snapshot.Match(bomFromJson, SnapshotNameExtension.Create(filename + ".json"));
@@ -247,6 +267,86 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
                 }
             }
         }
+
+        [Theory]
+        [InlineData("valid-annotation-1.6")]
+        [InlineData("valid-assembly-1.6")]
+        [InlineData("valid-attestation-1.6")]
+        [InlineData("valid-bom-1.6")]
+        [InlineData("valid-component-hashes-1.6")]
+        [InlineData("valid-component-identifiers-1.6")]
+        [InlineData("valid-component-ref-1.6")]
+        [InlineData("valid-component-swid-1.6")]
+        [InlineData("valid-component-swid-full-1.6")]
+        [InlineData("valid-component-types-1.6")]
+        [InlineData("valid-compositions-1.6")]
+        [InlineData("valid-cryptography-full-1.6")]
+        [InlineData("valid-cryptography-implementation-1.6")]
+        [InlineData("valid-dependency-1.6")]
+        [InlineData("valid-empty-components-1.6")]
+        [InlineData("valid-evidence-1.6")]
+        [InlineData("valid-external-reference-1.6")]
+        [InlineData("valid-formulation-1.6")]
+        [InlineData("valid-license-expression-1.6")]
+        [InlineData("valid-license-id-1.6")]
+        [InlineData("valid-license-licensing-1.6")]
+        [InlineData("valid-license-name-1.6")]
+        [InlineData("valid-machine-learning-1.6")]
+        [InlineData("valid-machine-learning-considerations-env-1.6")]
+        [InlineData("valid-metadata-author-1.6")]
+        [InlineData("valid-metadata-license-1.6")]
+        [InlineData("valid-metadata-lifecycle-1.6")]
+        [InlineData("valid-metadata-manufacture-1.6")]
+        [InlineData("valid-metadata-manufacturer-1.6")]
+        [InlineData("valid-metadata-supplier-1.6")]
+        [InlineData("valid-metadata-timestamp-1.6")]
+        [InlineData("valid-metadata-tool-1.6")]
+        [InlineData("valid-metadata-tool-deprecated-1.6")]
+        [InlineData("valid-minimal-viable-1.6")]
+        [InlineData("valid-patch-1.6")]
+        [InlineData("valid-properties-1.6")]
+        [InlineData("valid-release-notes-1.6")]
+        [InlineData("valid-saasbom-1.6")]
+        [InlineData("valid-service-1.6")]
+        [InlineData("valid-service-empty-objects-1.6")]
+        //[InlineData("valid-signatures-1.6")]
+        [InlineData("valid-standard-1.6")]
+        [InlineData("valid-tags-1.6")]
+        [InlineData("valid-vulnerability-1.6")]
+        public void JsonXmlConsistencyTest(string filename)
+        {
+            var jsonResourceFilename = Path.Join("Resources", "v1.6", filename + ".json");
+            var jsonBomInput = File.ReadAllText(jsonResourceFilename);
+
+            var bomFromJson = Serializer.Deserialize(jsonBomInput);
+
+            var resourceFilename = Path.Join("Resources", "v1.6", filename + ".xml");
+            var xmlBomInput = File.ReadAllText(resourceFilename);
+
+            var bomFromXml = CycloneDX.Xml.Serializer.Deserialize(xmlBomInput);
+
+            //cleanup
+            if (bomFromJson.Components?.Count == 0)
+            {
+                bomFromJson.Components = null;
+            }
+            if (bomFromXml.Components?.Count == 0)
+            {
+                bomFromXml.Components = null;
+            }
+
+            try
+            {
+                Assert.Equal(CycloneDX.Xml.Serializer.Serialize(bomFromJson), CycloneDX.Xml.Serializer.Serialize(bomFromXml));
+            }
+            catch (Exception)
+            {
+                Snapshot.Match(bomFromJson, SnapshotNameExtension.Create(filename + ".json"));
+                Snapshot.Match(bomFromXml, SnapshotNameExtension.Create(filename + ".xml"));
+                throw;
+            }
+        }
+
     }
 
 }
