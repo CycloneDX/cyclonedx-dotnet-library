@@ -16,6 +16,14 @@ components {
       architectureFamily: "the architecture family goes here"
       modelArchitecture: "The architecture of the model."
       datasets {
+        dataset {
+          type: COMPONENT_DATA_TYPE_DATASET
+          name: "Training Data"
+          contents {
+            url: "https://example.com/path/to/dataset"
+          }
+          classification: "public"
+        }
       }
       inputs {
         format: "string"

@@ -90,6 +90,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<WorkflowTask.TaskType>());
             options.Converters.Add(new HyphenEnumConverter<Output.OutputType>());
             options.Converters.Add(new HyphenEnumConverter<ModelCard.ModelParameterApproachType>());
+            options.Converters.Add(new DatasetChoicesConverter());
             options.Converters.Add(new UnderscoreEnumConverter<Status>());
             options.Converters.Add(new HyphenEnumConverter<Volume.VolumeMode>());
             options.Converters.Add(new HyphenEnumConverter<Data.DataType>());

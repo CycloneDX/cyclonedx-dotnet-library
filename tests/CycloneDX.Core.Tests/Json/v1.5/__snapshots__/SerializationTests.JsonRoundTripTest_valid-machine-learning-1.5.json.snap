@@ -20,7 +20,14 @@
           "architectureFamily": "the architecture family goes here",
           "modelArchitecture": "The architecture of the model.",
           "datasets": [
-            {}
+            {
+              "type": "dataset",
+              "name": "Training Data",
+              "contents": {
+                "url": "https://example.com/path/to/dataset"
+              },
+              "classification": "public"
+            }
           ],
           "inputs": [
             {
