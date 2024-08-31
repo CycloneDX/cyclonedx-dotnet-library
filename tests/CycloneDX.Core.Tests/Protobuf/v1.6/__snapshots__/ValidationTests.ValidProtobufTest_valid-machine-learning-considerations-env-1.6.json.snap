@@ -32,32 +32,20 @@ components {
             energySource: ENERGY_SOURCE_TYPE_COAL
             energyProvided {
               unit: ENERGY_MEASURE_UNIT_TYPE_KILOWATT_HOURS
-              1 {
-                1: 4
-                3: 2
-              }
+              1: "0.4"
             }
           }
           activityEnergyCost {
             unit: ENERGY_MEASURE_UNIT_TYPE_KILOWATT_HOURS
-            1 {
-              1: 4
-              3: 2
-            }
+            1: "0.4"
           }
           co2CostEquivalent {
             unit: CO2_MEASURE_UNIT_TYPE_TONNES_CO2_EQUIVALENT
-            1 {
-              1: 3122
-              3: 4
-            }
+            1: "31.22"
           }
           co2CostOffset {
             unit: CO2_MEASURE_UNIT_TYPE_TONNES_CO2_EQUIVALENT
-            1 {
-              1: 3122
-              3: 4
-            }
+            1: "31.22"
           }
         }
       }
