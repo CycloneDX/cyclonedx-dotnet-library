@@ -74,14 +74,14 @@ services {
     group: "com.example"
     name: "Microservice 1"
     version:"2022-1"
-	description: "Example Microservice"
+    description: "Example Microservice"
     endpoints: "https://ms-1.example.com"
     authenticated: true
     trustZone:  "Acme Private Zone"
     data {
       flow: DATA_FLOW_BI_DIRECTIONAL
       value: "PII"
-      name: "Stock Service to MS-1"	  
+      name: "Stock Service to MS-1"      
       description: "Traffic to/from stock service to microservice-1"
       governance: {
         owners: [
@@ -91,7 +91,7 @@ services {
             }
           }
         ]
-      }	  
+      }      
       source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
       destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
     }
@@ -117,7 +117,7 @@ services {
     group: "com.example"
     name: "Microservice 2"
     version:"2022-1"
-	description: "Example Microservice"
+    description: "Example Microservice"
     endpoints: "https://ms-2.example.com"
     authenticated: true
     trustZone:  "Acme Private Zone"
@@ -143,7 +143,7 @@ services {
     group: "com.example"
     name: "Microservice 3"
     version:"2022-1"
-	description: "Example Microservice"
+    description: "Example Microservice"
     endpoints: "https://ms-3.example.com"
     authenticated: true
     trustZone:  "Acme Private Zone"

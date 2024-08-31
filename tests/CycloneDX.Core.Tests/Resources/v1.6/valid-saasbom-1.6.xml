@@ -83,15 +83,15 @@
                     <data>
                         <dataflow name="Stock Service to MS-1" description="Traffic to/from stock service to microservice-1">
                             <classification flow="bi-directional">PII</classification>
-							<governance>
-								<owners>
-									<owner>
-										<organization>
-											<name>Customer Name</name>
-										</organization>
-									</owner>
-								</owners>
-							</governance>
+                            <governance>
+                                <owners>
+                                    <owner>
+                                        <organization>
+                                            <name>Customer Name</name>
+                                        </organization>
+                                    </owner>
+                                </owners>
+                            </governance>
                             <source>
                                 <url>urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service</url>
                             </source>
@@ -154,7 +154,7 @@
                     <group>com.example</group>
                     <name>Microservice 3</name>
                     <version>2022-1</version>
-                    <description>Example Microservice</description>					
+                    <description>Example Microservice</description>                    
                     <endpoints>
                         <endpoint>https://ms-3.example.com</endpoint>
                     </endpoints>

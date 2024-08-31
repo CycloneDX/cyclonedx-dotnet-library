@@ -17,7 +17,7 @@ components {
     timestamp {
       seconds: 1631839878
       nanos: 0
-    }	
+    }    
     aliases: "Project Orion"
     tags: "CMS"
     tags: "SEO"
@@ -40,10 +40,10 @@ components {
         name: "NVD"
         url: "https://nvd.nist.gov/vuln/detail/CVE-2019-9997"
       }
-	  references: "http://some/other/site-1"
-	  references: "http://some/other/site-2"	  
+      references: "http://some/other/site-1"
+      references: "http://some/other/site-2"      
     }
-	notes {
+    notes {
       locale: "en-US"
       text: {
         content_type: "text/html"
@@ -51,7 +51,7 @@ components {
         value: "PGgxPk15IG5ldyByZWxlYXNlPGgxPgo8cD5SZWxlYXNlIG5vdGVzIGhlcmU8L3A+"
       }
     }
-	notes {
+    notes {
       locale: "es",
       text: {
         content_type: "text/html"
@@ -118,7 +118,7 @@ services {
     timestamp {
       seconds: 1631839878
       nanos: 0
-    }		
+    }        
     aliases: "Project Orion"
     tags: "CMS"
     tags: "SEO"
@@ -141,10 +141,10 @@ services {
         name: "NVD"
         url: "https://nvd.nist.gov/vuln/detail/CVE-2019-9997"
       }
-	  references: "http://some/other/site-1"
-	  references: "http://some/other/site-2"	  
+      references: "http://some/other/site-1"
+      references: "http://some/other/site-2"      
     }
-	notes {
+    notes {
       locale: "en-US"
       text: {
         content_type: "text/html"
@@ -152,7 +152,7 @@ services {
         value: "PGgxPk15IG5ldyByZWxlYXNlPGgxPgo8cD5SZWxlYXNlIG5vdGVzIGhlcmU8L3A+"
       }
     }
-	notes {
+    notes {
       locale: "es",
       text: {
         content_type: "text/html"
