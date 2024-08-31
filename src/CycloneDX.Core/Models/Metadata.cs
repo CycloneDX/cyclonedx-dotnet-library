@@ -79,6 +79,7 @@ namespace CycloneDX.Models
         public OrganizationalEntity Manufacturer { get; set; }
         public bool ShouldSerializeManufacturer() { return Manufacturer != null; }
 
+        [Obsolete("This will be removed in a future version.Use the @.component.manufacturer instead.")]
         [XmlElement("manufacture")]
         [ProtoMember(5)]
         public OrganizationalEntity Manufacture { get; set; }

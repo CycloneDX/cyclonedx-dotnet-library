@@ -108,6 +108,7 @@ namespace CycloneDX.Models
         public List<OrganizationalContact> Authors { get; set; }
         public bool ShouldSerializeAuthors() { return Authors?.Count > 0; }
 
+        [Obsolete("This will be removed in a future version. Use @.authors or @.manufacturer instead.")]
         [XmlElement("author")]
         [ProtoMember(5)]
         public string Author { get; set; }

@@ -87,7 +87,9 @@ namespace CycloneDX
 
                 EnumerateAllComponents(bomCopy, (component) =>
                 {
+                    #pragma warning disable 618
                     component.Author = null;
+                    #pragma warning restore 618
                     component.MimeType = null;
                     component.Supplier = null;
                     component.Swid = null;
@@ -477,7 +479,12 @@ namespace CycloneDX
 
         public static void EnumerateAllOrganizationalEntity(Bom bom, Action<OrganizationalEntity> callback)
         {
-            if (bom.Metadata?.Manufacture != null) callback(bom.Metadata.Manufacture);
+            #pragma warning disable 618
+            if (bom.Metadata?.Manufacture != null)
+            {
+                callback(bom.Metadata.Manufacture);
+            }
+            #pragma warning restore 618
             if (bom.Metadata?.Supplier != null) callback(bom.Metadata.Supplier);
 
             if (bom.Annotations != null)
