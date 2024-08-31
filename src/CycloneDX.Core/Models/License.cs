@@ -68,9 +68,25 @@ namespace CycloneDX.Models
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
 
-        [XmlElement("acknowledgement")]
+        [XmlIgnore]
         [ProtoMember(8)]
         public LicenseAcknowledgementEnumeration? Acknowledgement { get; set; }
         public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue; }
+
+        // XML serialization doesn't like nullable value types
+        [XmlAttribute("acknowledgement")]
+        [JsonIgnore]
+        public LicenseAcknowledgementEnumeration NonNullableAcknowledgement
+        {
+            get
+            {
+                return Acknowledgement.Value;
+            }
+            set
+            {
+                Acknowledgement = value;
+            }
+        }
+        public bool ShouldSerializeNonNullableAcknowledgement() { return Acknowledgement.HasValue; }
     }
 }

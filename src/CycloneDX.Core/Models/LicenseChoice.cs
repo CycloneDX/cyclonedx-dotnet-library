@@ -37,13 +37,13 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public string Expression { get; set; }
 
-        [XmlElement("bom-ref")]
+        [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
         [ProtoMember(4)]
         public string BomRef { get; set; }
 
 
-        [XmlElement("acknowledgement")]
+        [XmlAttribute("acknowledgement")]
         [ProtoMember(3)]
         public LicenseAcknowledgementEnumeration? Acknowledgement { get; set; }
         public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue; }
@@ -91,9 +91,24 @@ namespace CycloneDX.Models
                     }
                     if (reader.Name == "expression")
                     {
+                        string bomRef = null;
+                        LicenseAcknowledgementEnumeration? acknowledgement = null;
+                        if (reader.GetAttribute("bom-ref") != null)
+                        {
+                            bomRef = reader.GetAttribute("bom-ref");
+                        }
+                        if (reader.GetAttribute("acknowledgement") != null)
+                        {
+                            var acknowledgementStr = reader.GetAttribute("acknowledgement");
+                            LicenseAcknowledgementEnumeration acknowledgementNonNull;
+                            if (Enum.TryParse<LicenseAcknowledgementEnumeration>(acknowledgementStr, true, out acknowledgementNonNull))
+                            {
+                                acknowledgement = acknowledgementNonNull;
+                            }
+                        }
                         reader.ReadStartElement();
                         var expression = reader.ReadContentAsString();
-                        Licenses.Add(new LicenseChoice { Expression = expression });
+                        Licenses.Add(new LicenseChoice { Expression = expression, BomRef = bomRef, Acknowledgement = acknowledgement });                        
                         finished = false;
                         reader.ReadEndElement();
                     }
@@ -124,6 +139,14 @@ namespace CycloneDX.Models
                     if (license.Expression != null)
                     {
                         writer.WriteStartElement("expression");
+                        if (license.BomRef != null)
+                        {
+                            writer.WriteAttributeString("bom-ref", license.BomRef);
+                        }
+                        if (license.Acknowledgement.HasValue)
+                        {
+                            writer.WriteAttributeString("acknowledgement", license.Acknowledgement.Value.ToString().ToLower());
+                        }
                         writer.WriteString(license.Expression);
                         writer.WriteEndElement();
                     }
