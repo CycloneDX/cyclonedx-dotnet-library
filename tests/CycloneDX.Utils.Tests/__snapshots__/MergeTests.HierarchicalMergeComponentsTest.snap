@@ -8,7 +8,7 @@
     "Tools": {
       "Tools": null
     },
-    "ProtobufTools": null,
+    "ProtobufTools": [],
     "Authors": null,
     "Component": {
       "Type": "Null",

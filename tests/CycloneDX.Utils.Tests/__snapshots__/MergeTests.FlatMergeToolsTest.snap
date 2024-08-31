@@ -26,13 +26,19 @@
         "Vendor": null,
         "Name": "Tool1",
         "Version": "1",
-        "Hashes": null
+        "Hashes": null,
+        "ExternalReferences": null,
+        "Components": null,
+        "Services": null
       },
       {
         "Vendor": null,
         "Name": "Tool2",
         "Version": "1",
-        "Hashes": null
+        "Hashes": null,
+        "ExternalReferences": null,
+        "Components": null,
+        "Services": null
       }
     ],
     "Authors": null,

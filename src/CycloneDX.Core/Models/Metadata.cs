@@ -40,28 +40,87 @@ namespace CycloneDX.Models
         [XmlElement("tools")]
         public ToolChoices Tools { get; set; }
         
-        // this is to support a bug in v1.5 of the protobuf spec
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(2)]
-        #pragma warning disable 618
-        public List<Tool> ProtobufTools
-        #pragma warning restore 618
+        public List<ProtobufTools> ProtobufTools
         {
-            get => Tools?.Tools;
+            get {
+                if (Tools == null)
+                {
+                    return null;
+                }
+                var protobufTools = new List<ProtobufTools>();
+                if (Tools.Tools != null)
+                {
+                    foreach(var tool in Tools.Tools)
+                    {
+                        protobufTools.Add(new ProtobufTools(tool));
+                    }
+                }
+                if (Tools.Components != null)
+                {
+                    if (protobufTools.Count == 0)
+                    {
+                        protobufTools.Add(new ProtobufTools());
+                    }
+                    protobufTools[0].Components = Tools.Components;
+                }
+                if (Tools.Services != null)
+                {
+                    if (protobufTools.Count == 0)
+                    {
+                        protobufTools.Add(new ProtobufTools());
+                    }
+                    protobufTools[0].Services = Tools.Services;
+                }
+                return protobufTools;
+            }
             set
             {
                 if (value == null)
                 {
                     Tools = null;
+                    return;
                 }
-                else
+                #pragma warning disable 618
+                List<Tool> tools = null;
+                #pragma warning restore 618
+                List<Component> components = null;
+                List<Service> services = null;
+                foreach (var protobufTools in value)
                 {
-                    Tools = new ToolChoices
+                    if (!(protobufTools.Components?.Count > 0 || (protobufTools.Services?.Count > 0)))
                     {
-                        Tools = value
-                    };
+                        if (tools == null)
+                        {
+                            #pragma warning disable 618
+                            tools = new List<Tool>();
+                            #pragma warning restore 618
+                        }
+                        tools.Add(protobufTools.ToTool());
+                    }
+                    if (protobufTools.Components != null)
+                    {
+                        if (components == null)
+                        {
+                            components = new List<Component>();
+                        }
+                        components.AddRange(protobufTools.Components);
+                    }
+                    if (protobufTools.Services != null)
+                    {
+                        if (services == null)
+                        {
+                            services = new List<Service>();
+                        }
+                        services.AddRange(protobufTools.Services);
+                    }
                 }
+                Tools = new ToolChoices
+                {
+                    Tools = tools, Components = components, Services = services
+                };
             }
         }
 

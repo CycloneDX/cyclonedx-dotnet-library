@@ -36,7 +36,44 @@
         }
       ]
     },
-    "ProtobufTools": null,
+    "ProtobufTools": [
+      {
+        "Vendor": null,
+        "Name": null,
+        "Version": null,
+        "Hashes": null,
+        "ExternalReferences": null,
+        "Components": [
+          {
+            "Type": "Null",
+            "MimeType": null,
+            "BomRef": null,
+            "Supplier": null,
+            "Author": null,
+            "Publisher": null,
+            "Group": null,
+            "Name": "ToolComponent1",
+            "Version": "1",
+            "Description": null,
+            "Scope": null,
+            "Licenses": null,
+            "Copyright": null,
+            "Cpe": null,
+            "Purl": null,
+            "Swid": null,
+            "Modified": null,
+            "Pedigree": null,
+            "Evidence": null,
+            "ModelCard": null,
+            "Data": null,
+            "CryptoProperties": null,
+            "XmlSignature": null,
+            "Signature": null
+          }
+        ],
+        "Services": null
+      }
+    ],
     "Authors": null,
     "Component": {
       "Type": "Null",
