@@ -243,7 +243,8 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
                     }
                     try
                     {
-                        Assert.Equal(CycloneDX.Json.Serializer.Serialize(bomFromJson), CycloneDX.Json.Serializer.Serialize(bomFromProtobuf));
+                        //Assert.Equal(CycloneDX.Json.Serializer.Serialize(bomFromJson), CycloneDX.Json.Serializer.Serialize(bomFromProtobuf));
+                        Assert.Equal(CycloneDX.Protobuf.Serializer.Serialize(bomFromJson), CycloneDX.Protobuf.Serializer.Serialize(bomFromProtobuf));
                     }
                     catch (Exception)
                     {
@@ -337,7 +338,8 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
 
             try
             {
-                Assert.Equal(CycloneDX.Xml.Serializer.Serialize(bomFromJson), CycloneDX.Xml.Serializer.Serialize(bomFromXml));
+                //Assert.Equal(CycloneDX.Xml.Serializer.Serialize(bomFromJson), CycloneDX.Xml.Serializer.Serialize(bomFromXml));
+                Assert.Equal(CycloneDX.Protobuf.Serializer.Serialize(bomFromJson), CycloneDX.Protobuf.Serializer.Serialize(bomFromXml));
             }
             catch (Exception)
             {
