@@ -30,32 +30,32 @@ services {
     value: "Customer"
     name: "Consumer to Stock Service"
     description: "Traffic to/from consumer to service"
-    source: "\n\017https://0.0.0.0"
-    destination: "\n\017https://0.0.0.0"
+    source: "https://0.0.0.0"
+    destination: "https://0.0.0.0"
   }
   data {
     flow: DATA_FLOW_BI_DIRECTIONAL
     value: "PII"
     name: "Stock Service to MS-1"
     description: "Traffic to/from stock service to microservice-1"
-    source: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1.example.com"
-    destination: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1.example.com"
+    source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1.example.com"
+    destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1.example.com"
   }
   data {
     flow: DATA_FLOW_BI_DIRECTIONAL
     value: "PIFI"
     name: "Stock Service to MS-2"
     description: "Traffic to/from stock service to microservice-2"
-    source: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-2.example.com"
-    destination: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-2.example.com"
+    source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-2.example.com"
+    destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-2.example.com"
   }
   data {
     flow: DATA_FLOW_BI_DIRECTIONAL
     value: "Public"
     name: "Stock Service to MS-3"
     description: "Traffic to/from stock service to microservice-3"
-    source: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-3.example.com"
-    destination: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-3.example.com"
+    source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-3.example.com"
+    destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-3.example.com"
   }
   external_references {
     type: EXTERNAL_REFERENCE_TYPE_DOCUMENTATION
@@ -78,8 +78,8 @@ services {
       value: "PII"
       name: "Stock Service to MS-1"
       description: "Traffic to/from stock service to microservice-1"
-      source: "\nCurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
-      destination: "\nCurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
+      source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
+      destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
       governance {
         owners {
           organization {
@@ -93,8 +93,8 @@ services {
       value: "PII"
       name: "MS-1 to Database"
       description: "Traffic to/from microservice-1 to database"
-      source: "\nEurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1-pgsql.example.com"
-      destination: "\nEurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1-pgsql.example.com"
+      source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1-pgsql.example.com"
+      destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1-pgsql.example.com"
     }
     external_references {
       type: EXTERNAL_REFERENCE_TYPE_DOCUMENTATION
@@ -119,8 +119,8 @@ services {
       value: "PIFI"
       name: "Stock Service to MS-2"
       description: "Traffic to/from stock service to microservice-2"
-      source: "\nCurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
-      destination: "\nCurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
+      source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
+      destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
     }
     external_references {
       type: EXTERNAL_REFERENCE_TYPE_DOCUMENTATION
@@ -145,15 +145,15 @@ services {
       value: "Public"
       name: "Stock Service to MS-3"
       description: "Traffic to/from stock service to microservice-3"
-      source: "\nCurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
-      destination: "\nCurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
+      source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
+      destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#stock-ticker-service"
     }
     data {
       flow: DATA_FLOW_OUTBOUND
       value: "Public"
       name: "MS-3 to S3"
       description: "Data pushed from microservice-3 to S3 bucket"
-      destination: "\nDurn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#s3-example.amazon.com"
+      destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#s3-example.amazon.com"
     }
     external_references {
       type: EXTERNAL_REFERENCE_TYPE_DOCUMENTATION
@@ -174,8 +174,8 @@ services {
       value: "PII"
       name: "MS-1 to Database"
       description: "Traffic to/from microservice-1 to database"
-      source: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1.example.com"
-      destination: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1.example.com"
+      source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1.example.com"
+      destination: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-1.example.com"
     }
     trustZone: "Acme Private Zone"
   }
@@ -191,7 +191,7 @@ services {
       value: "Public"
       name: "MS-3 to S3"
       description: "Data pushed from microservice-3 to S3 bucket"
-      source: "\n?urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-3.example.com"
+      source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-3.example.com"
     }
     trustZone: "Public Internet"
   }
