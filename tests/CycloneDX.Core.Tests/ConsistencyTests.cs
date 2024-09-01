@@ -27,6 +27,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Diagnostics;
 using Xunit.Abstractions;
+using CycloneDX.Core.Models;
 
 
 namespace CycloneDX.Core.Tests.Consistency.v1_6
@@ -347,6 +348,73 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
                 Snapshot.Match(bomFromXml, SnapshotNameExtension.Create(filename + ".xml"));
                 throw;
             }
+        }
+
+        [Theory]
+        [InlineData(typeof(PaddingScheme))]
+        [InlineData(typeof(AlgorithmMode))]
+        [InlineData(typeof(CertificationLevel))]
+        [InlineData(typeof(ImplementationPlatform))]
+        [InlineData(typeof(ExecutionEnvironment))]
+        [InlineData(typeof(Primitive))]
+        [InlineData(typeof(CryptoFunction))]
+        [InlineData(typeof(Component.Classification))]
+        [InlineData(typeof(Component.ComponentScope))]
+        [InlineData(typeof(Composition.AggregateType))]
+        [InlineData(typeof(ProtocolType))]
+        [InlineData(typeof(AssetType))]
+        [InlineData(typeof(RelatedCryptoMaterialType))]
+        [InlineData(typeof(KeyState))]
+        [InlineData(typeof(Data.DataType))]
+        [InlineData(typeof(DataFlowDirection))]
+        [InlineData(typeof(ActivityType))]
+        [InlineData(typeof(CO2Unit))]
+        [InlineData(typeof(EnergySource))]
+        [InlineData(typeof(EnergyUnit))]
+        [InlineData(typeof(EvidenceIdentity.EvidenceFieldType))]
+        [InlineData(typeof(EvidenceMethods.EvidenceTechnique))]
+        [InlineData(typeof(ExternalReference.ExternalReferenceType))]
+        [InlineData(typeof(Hash.HashAlgorithm))]
+        [InlineData(typeof(Issue.IssueClassification))]
+        [InlineData(typeof(LicenseAcknowledgementEnumeration))]
+        [InlineData(typeof(Licensing.LicenseType))]
+        [InlineData(typeof(Lifecycles.LifecyclePhase))]
+        [InlineData(typeof(ModelCard.ModelParameterApproachType))]
+        [InlineData(typeof(Output.OutputType))]
+        [InlineData(typeof(Patch.PatchClassification))]
+        [InlineData(typeof(Trigger.TriggerType))]
+        [InlineData(typeof(Volume.VolumeMode))]
+        [InlineData(typeof(CycloneDX.Models.Vulnerabilities.ImpactAnalysisJustification))]
+        [InlineData(typeof(CycloneDX.Models.Vulnerabilities.ImpactAnalysisState))]
+        [InlineData(typeof(CycloneDX.Models.Vulnerabilities.Response))]
+        [InlineData(typeof(CycloneDX.Models.Vulnerabilities.ScoreMethod))]
+        [InlineData(typeof(CycloneDX.Models.Vulnerabilities.Severity))]
+        [InlineData(typeof(CycloneDX.Models.Vulnerabilities.Status))]
+        [InlineData(typeof(WorkflowTask.TaskType))]
+        [InlineData(typeof(Workspace.AccessModeType))]
+        public void JsonXmlEnumConsistencyTest(Type type)
+        {
+
+            foreach(var value in type.GetEnumValues())
+            {
+                var jsonValue = CycloneDX.Json.Serializer.Serialize(value, type);
+                // strip quotes
+                jsonValue = jsonValue.Substring(1, jsonValue.Length - 2);
+                jsonValue = jsonValue.Replace("\\u002B", "+");
+                if (jsonValue == "null")
+                {
+                    continue;
+                }
+
+                string xmlValue = CycloneDX.Xml.Serializer.Serialize(value, type, SpecificationVersion.v1_6);
+                // strip first tag
+                xmlValue = xmlValue.Substring(xmlValue.IndexOf(">") + 1);
+                // extract content of enum tag
+                xmlValue = xmlValue.Substring(xmlValue.IndexOf(">") + 1, xmlValue.LastIndexOf("<") - xmlValue.IndexOf(">") - 1);
+
+                Assert.Equal(xmlValue, jsonValue);
+            }
+
         }
 
     }

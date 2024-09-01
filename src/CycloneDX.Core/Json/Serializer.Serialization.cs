@@ -18,12 +18,15 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using CycloneDX;
 using CycloneDX.Models;
+
+[assembly: InternalsVisibleTo("CycloneDX.Core.Tests")]
 
 namespace CycloneDX.Json
 {
@@ -106,6 +109,20 @@ namespace CycloneDX.Json
         {
             Contract.Requires(externalReference != null);
             return JsonSerializer.Serialize(externalReference, _options);
+        }
+
+        internal static string Serialize<TValue>(TValue value)
+        {
+            Contract.Requires(value != null);
+            var json = JsonSerializer.Serialize<TValue>(value, _options);
+            return json;
+        }
+
+        internal static string Serialize(object value, Type type)
+        {
+            Contract.Requires(value != null);
+            var json = JsonSerializer.Serialize(value, type, _options);
+            return json;
         }
 
     }

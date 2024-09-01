@@ -19,11 +19,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using CycloneDX.Models;
+
+[assembly: InternalsVisibleTo("CycloneDX.Core.Tests")]
 
 namespace CycloneDX.Xml
 {
@@ -82,6 +85,12 @@ namespace CycloneDX.Xml
             }
         }
 
+        internal static XmlSerializer GetXmlSerializer(Type type,SpecificationVersion specificationVersion)
+        {
+            var attributeOverrides = GetOverrides(specificationVersion);
+            return new XmlSerializer(type, attributeOverrides);
+        }
+
         // Todo: this is a workaround to set the correct namespace
         // when writing licenses. Can this be avoided?
         private readonly static Dictionary<XmlWriter, string> WriterToNamespace = new Dictionary<XmlWriter, string>();
@@ -119,6 +128,25 @@ namespace CycloneDX.Xml
             }
         }
 
+        internal static void Serialize(object value, Type type, SpecificationVersion specVersion, Stream outputStream)
+        {
+            Contract.Requires(value != null);
+
+            var serializer = GetXmlSerializer(type, specVersion);
+            using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
+            {
+                lock (WriterToNamespace)
+                {
+                    WriterToNamespace[xmlWriter] = SpecificationVersionHelpers.XmlNamespace(specVersion);
+                }
+                serializer.Serialize(xmlWriter, value);
+                lock (WriterToNamespace)
+                {
+                    WriterToNamespace.Remove(xmlWriter);
+                }
+            }
+        }
+
         /// <summary>
         /// Serializes a CycloneDX BOM to a string.
         /// </summary>
@@ -131,6 +159,17 @@ namespace CycloneDX.Xml
             using (var ms = new MemoryStream())
             {
                 Serialize(bom, ms);
+                return Encoding.UTF8.GetString(ms.ToArray());
+            }
+        }
+
+        internal static string Serialize(object value, Type type, SpecificationVersion specVersion)
+        {
+            Contract.Requires(value != null);
+
+            using (var ms = new MemoryStream())
+            {
+                Serialize(value, type, specVersion, ms);
                 return Encoding.UTF8.GetString(ms.ToArray());
             }
         }
