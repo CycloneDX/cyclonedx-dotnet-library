@@ -73,8 +73,8 @@
                 </workspace>
               </workspaces>
               <runtimeTopology>
-                <dependency ref="component-1">
-                  <dependency ref="component-2" />
+                <dependency ref="task-1">
+                  <dependency ref="task-2" />
                 </dependency>
               </runtimeTopology>
             </task>
@@ -85,11 +85,11 @@
             </dependency>
           </taskDependencies>
           <taskTypes>
-            <taskType>clean</taskType>
+            <taskType>clone</taskType>
             <taskType>build</taskType>
           </taskTypes>
           <trigger bom-ref="trigger-2">
-            <uid>trigger-uid-1</uid>
+            <uid>trigger-uid-2</uid>
             <name>My trigger</name>
             <description>Description here</description>
             <resourceReferences>
@@ -102,7 +102,7 @@
               <uid>event-1</uid>
               <description>Description here</description>
               <timeReceived>2023-01-01T00:00:00Z</timeReceived>
-              <data content-type="text/plain">FooBar</data>
+              <data content-type="text/plain">Foo/Bar</data>
               <source>
                 <ref>component-g</ref>
               </source>
@@ -208,7 +208,7 @@
             </output>
           </outputs>
           <timeStart>2023-01-01T00:00:00Z</timeStart>
-          <timeEnd>2023-01-01T00:00:00Z</timeEnd>
+          <timeEnd>2023-01-01T00:00:10Z</timeEnd>
           <workspaces>
             <workspace bom-ref="workspace-2">
               <uid>workspace-1</uid>

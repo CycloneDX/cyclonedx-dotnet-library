@@ -218,10 +218,10 @@ formulation {
       seconds: 1672531200
     }
     timeEnd {
-      seconds: 1672495200
+      seconds: 1672531210
     }
     workspaces {
-      bom_ref: "workspace-1"
+      bom_ref: "workspace-2"
       uid: "workspace-1"
       name: "My workspace"
       aliases: "default-workspace"

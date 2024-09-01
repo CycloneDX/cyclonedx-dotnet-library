@@ -4,6 +4,7 @@ serial_number: "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
 components {
   type: CLASSIFICATION_MACHINE_LEARNING_MODEL
   bom_ref: "component-a"
+  publisher: "Acme Inc"
   group: "CompVis"
   name: "stable-diffusion"
   version: "1.4"

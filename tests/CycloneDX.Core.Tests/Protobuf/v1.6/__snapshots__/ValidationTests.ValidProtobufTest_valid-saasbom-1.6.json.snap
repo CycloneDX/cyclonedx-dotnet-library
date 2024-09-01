@@ -187,7 +187,7 @@ services {
     authenticated: true
     data {
       flow: DATA_FLOW_INBOUND
-      value: "Public"
+      value: "PII"
       name: "MS-3 to S3"
       description: "Data pushed from microservice-3 to S3 bucket"
       source: "urn:cdx:3e671687-395b-41f5-a30f-a58921a69b79/1#ms-3.example.com"

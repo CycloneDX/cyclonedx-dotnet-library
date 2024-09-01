@@ -256,10 +256,10 @@
             }
           ],
           "timeStart": "2023-01-01T00:00:00Z",
-          "timeEnd": "2022-12-31T14:00:00Z",
+          "timeEnd": "2023-01-01T00:00:10Z",
           "workspaces": [
             {
-              "bom-ref": "workspace-1",
+              "bom-ref": "workspace-2",
               "uid": "workspace-1",
               "name": "My workspace",
               "aliases": [
