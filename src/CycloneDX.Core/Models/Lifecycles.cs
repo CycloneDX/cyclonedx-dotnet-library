@@ -28,8 +28,8 @@ namespace CycloneDX.Models
         [ProtoContract]
         public enum LifecyclePhase
         {
-            // to make working with protobuf easier
-            Null,
+            // no Null value, design is field 0 in protobuf serialization
+            //Null,
             [XmlEnum(Name = "design")]
             Design,
             [XmlEnum(Name = "pre-build")]
@@ -48,22 +48,14 @@ namespace CycloneDX.Models
 
         [XmlElement("phase")]
         [ProtoMember(1)]
-        [JsonIgnore]
-        public LifecyclePhase Phase { get; set; }
-        public bool ShouldSerializePhase() => Phase != LifecyclePhase.Null;
+        public LifecyclePhase? Phase { get; set; }
+        public bool ShouldSerializePhase() => Phase.HasValue;
 
-        [XmlIgnore]
-        [JsonPropertyName("phase")]
-        public LifecyclePhase? JsonPhase
-        {
-            get => Phase == LifecyclePhase.Null ? (LifecyclePhase?)null : Phase;
-            set => Phase = (value == null ? LifecyclePhase.Null : value.Value);
-        }
 
         [XmlElement("name")]
         [ProtoMember(2)]
         public string Name { get; set; }
-        
+
         [XmlElement("description")]
         [ProtoMember(3)]
         public string Description { get; set; }

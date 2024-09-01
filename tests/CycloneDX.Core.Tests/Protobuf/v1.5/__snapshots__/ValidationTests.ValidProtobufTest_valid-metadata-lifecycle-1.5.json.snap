@@ -3,10 +3,10 @@ version: 1
 serial_number: "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
 metadata {
   lifecycles {
-    phase: LIFECYCLE_PHASE_POST_BUILD
+    phase: LIFECYCLE_PHASE_BUILD
   }
   lifecycles {
-    phase: LIFECYCLE_PHASE_OPERATIONS
+    phase: LIFECYCLE_PHASE_POST_BUILD
   }
   lifecycles {
     name: "platform-integration-testing"
