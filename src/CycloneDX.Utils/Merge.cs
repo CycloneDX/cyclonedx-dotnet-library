@@ -159,9 +159,12 @@ namespace CycloneDX.Utils
             {
                 //dont merge higher level signatures or the affirmation. The previously signed/affirmed data likely is changed.
                 result.Declarations = new Declarations();
-                var standardMerger = new ListMergeHelper<Assessor>();
-                var standardMerger2 = new ListMergeHelper<Attestation>();
-                var Claim = new ListMergeHelper<Claim>();
+                var AssesorMerger = new ListMergeHelper<Assessor>();
+                result.Declarations.Assessors = AssesorMerger.Merge(bom1.Declarations.Assessors, bom2.Declarations.Assessors);
+                var attestationMerger = new ListMergeHelper<Attestation>();
+                result.Declarations.Attestations = attestationMerger.Merge(bom1.Declarations.Attestations, bom2.Declarations.Attestations);
+                var claimmerger = new ListMergeHelper<Claim>();
+                result.Declarations.Claims = claimmerger.Merge(bom1.Declarations.Claims, bom2.Declarations.Claims);
 
                 if (bom1.Declarations?.Targets != null && bom2.Declarations?.Targets != null)
                 {
@@ -475,7 +478,10 @@ namespace CycloneDX.Utils
 
         private static void NamespaceBomRefs(Component bomSubject, IEnumerable<IHasBomRef> references)
         {
-            if (references == null) return;
+            if (references == null)
+            {
+                return;
+            }
             foreach (IHasBomRef item in references)
             {
                 item.BomRef = NamespacedBomRef(bomSubject, item.BomRef);
