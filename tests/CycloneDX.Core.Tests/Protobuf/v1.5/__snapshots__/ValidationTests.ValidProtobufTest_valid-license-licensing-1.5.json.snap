@@ -38,12 +38,10 @@ components {
         purchaseOrder: "PO-12345"
         licenseTypes: LICENSING_TYPE_APPLIANCE
         lastRenewal {
-          seconds: 3299762478
-          nanos: 3
+          seconds: 1649881239
         }
         expiration {
-          seconds: 3362834478
-          nanos: 3
+          seconds: 1681417239
         }
       }
     }

@@ -57,15 +57,21 @@ formulation {
         }
       }
       timeStart {
-        seconds: 38716
+        seconds: 1672531200
       }
       timeEnd {
-        seconds: 38716
+        seconds: 1672531200
       }
       workspaces {
         bom_ref: "workspace-1"
         uid: "workspace-uid-1"
         name: "workspace"
+      }
+      runtimeTopology {
+        ref: "task-1"
+        dependencies {
+          ref: "task-2"
+        }
       }
     }
     taskDependencies {
@@ -93,7 +99,7 @@ formulation {
         uid: "event-1"
         description: "Description here"
         timeReceived {
-          seconds: 38716
+          seconds: 1672531200
         }
         data {
           content_type: "text/plain"
@@ -119,7 +125,7 @@ formulation {
         }
       }
       timeActivated {
-        seconds: 38716
+        seconds: 1672531200
       }
       inputs {
         source {
@@ -209,11 +215,10 @@ formulation {
       }
     }
     timeStart {
-      seconds: 38716
+      seconds: 1672531200
     }
     timeEnd {
-      seconds: 929164
-      nanos: 1
+      seconds: 1672495200
     }
     workspaces {
       bom_ref: "workspace-1"
@@ -226,6 +231,7 @@ formulation {
       }
       accessMode: ACCESS_MODE_READ_WRITE
       mountPath: "/tmp/workspace"
+      managedDataType: "ConfigMap"
       volumeRequest: "requestedVolumeClaim"
       volume {
         uid: "volume-1"
@@ -234,6 +240,12 @@ formulation {
         sizeAllocated: "10GB"
         persistent: true
         remote: false
+      }
+    }
+    runtimeTopology {
+      ref: "component-s"
+      dependencies {
+        ref: "component-r"
       }
     }
   }

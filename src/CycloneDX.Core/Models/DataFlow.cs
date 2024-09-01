@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -55,23 +56,71 @@ namespace CycloneDX.Models
         [XmlAttribute("name")]
         [ProtoMember(3)]
         public string Name { get; set; }
-        
+
         [XmlAttribute("description")]
         [ProtoMember(4)]
         public string Description { get; set; }
-        
+
         [XmlElement("governance")]
         [ProtoMember(7)]
         public DataGovernance Governance { get; set; }
 
         [XmlElement("source")]
-        [ProtoMember(5)]
         public List<DataflowSourceDestination> Source { get; set; }
         public bool ShouldSerializeSource() => Source != null;
-        
+
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(5)]
+        public List<string> Source_Protobuf
+        {
+            get
+            {
+                if (Source == null)
+                {
+                    return null;
+                }
+                return Source.Select((source) => source.Url).ToList();
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Source = null;
+                    return;
+                }
+                Source = value.Select((source) => new DataflowSourceDestination { Url = source }).ToList();
+            }
+        }
+        public bool ShouldSerializeSource_Protobuf() => Source != null;
+
         [XmlElement("destination")]
-        [ProtoMember(6)]
         public List<DataflowSourceDestination> Destination { get; set; }
         public bool ShouldSerializeDestination() => Destination != null;
+
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(6)]
+        public List<string> Destination_Protobuf
+        {
+            get
+            {
+                if (Destination == null)
+                {
+                    return null;
+                }
+                return Destination.Select((destination) => destination.Url).ToList();
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Destination = null;
+                    return;
+                }
+                Destination = value.Select((destination) => new DataflowSourceDestination { Url = destination }).ToList();
+            }
+        }
+        public bool ShouldSerializeDestination_Protobuf() => Destination != null;
     }
 }

@@ -24,6 +24,10 @@ namespace CycloneDX.Models
     public enum ActivityType
     {
         Null,
+
+        [XmlEnum("other")]
+        Other,
+
         [XmlEnum("design")]
         Design,
 
@@ -46,9 +50,7 @@ namespace CycloneDX.Models
         Deployment,
 
         [XmlEnum("inference")]
-        Inference,
+        Inference
 
-        [XmlEnum("other")]
-        Other
     }
 }

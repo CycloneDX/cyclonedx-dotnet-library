@@ -12,8 +12,7 @@ components {
     socialImage: "https://example.com/social_image.png"
     description: "The main description of your release"
     timestamp {
-      seconds: 3263679756
-      nanos: 3
+      seconds: 1631839878
     }
     aliases: "Project Orion"
     tags: "CMS"
@@ -113,8 +112,7 @@ services {
     socialImage: "https://example.com/social_image.png"
     description: "The main description of your release"
     timestamp {
-      seconds: 3263679756
-      nanos: 3
+      seconds: 1631839878
     }
     aliases: "Project Orion"
     tags: "CMS"
