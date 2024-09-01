@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -50,6 +51,7 @@ namespace CycloneDX.Models
             [XmlEnum(Name = "hash")]
             Hash,
             [XmlEnum(Name = "omniborId")]
+            [EnumMember(Value = "omniborId")]
             OmniborId,
             [XmlEnum(Name = "swhid")]
             Swhid,

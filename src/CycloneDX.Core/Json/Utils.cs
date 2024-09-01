@@ -82,7 +82,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new EnumMemberConverter<ImplementationPlatform>());
             options.Converters.Add(new EvidenceIdentityListConverter());
 
-            options.Converters.Add(new HyphenEnumConverter<EvidenceIdentity.EvidenceFieldType>());
+            options.Converters.Add(new EnumMemberConverter<EvidenceIdentity.EvidenceFieldType>());
             options.Converters.Add(new HyphenEnumConverter<EvidenceMethods.EvidenceTechnique>());
             options.Converters.Add(new ScoreMethodConverter());
             options.Converters.Add(new HyphenEnumConverter<Severity>());
