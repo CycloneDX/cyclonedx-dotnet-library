@@ -67,6 +67,12 @@ formulation {
         uid: "workspace-uid-1"
         name: "workspace"
       }
+      runtimeTopology {
+        ref: "task-1"
+        dependencies {
+          ref: "task-2"
+        }
+      }
     }
     taskDependencies {
       ref: "task-1"
@@ -225,6 +231,7 @@ formulation {
       }
       accessMode: ACCESS_MODE_READ_WRITE
       mountPath: "/tmp/workspace"
+      managedDataType: "ConfigMap"
       volumeRequest: "requestedVolumeClaim"
       volume {
         uid: "volume-1"
@@ -233,6 +240,12 @@ formulation {
         sizeAllocated: "10GB"
         persistent: true
         remote: false
+      }
+    }
+    runtimeTopology {
+      ref: "component-s"
+      dependencies {
+        ref: "component-r"
       }
     }
   }

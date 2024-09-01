@@ -24,6 +24,13 @@ namespace CycloneDX.Models
     public enum EnergySource
     {
         Null,
+
+        [XmlEnum("unknown")]
+        Unknown,
+
+        [XmlEnum("other")]
+        Other,
+
         [XmlEnum("coal")]
         Coal,
 
@@ -49,12 +56,8 @@ namespace CycloneDX.Models
         Hydropower,
 
         [XmlEnum("biofuel")]
-        Biofuel,
+        Biofuel
 
-        [XmlEnum("unknown")]
-        Unknown,
 
-        [XmlEnum("other")]
-        Other
     }
 }

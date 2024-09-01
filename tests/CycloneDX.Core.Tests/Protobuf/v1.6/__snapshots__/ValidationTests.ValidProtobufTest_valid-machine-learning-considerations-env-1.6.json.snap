@@ -18,7 +18,7 @@ components {
     considerations {
       environmentalConsiderations {
         energyConsumptions {
-          activity: ACTIVITY_TYPE_DATA_PREPARATION
+          activity: ACTIVITY_TYPE_TRAINING
           energyProviders {
             description: "Meta data-center, US-East"
             organization {
@@ -29,23 +29,23 @@ components {
                 locality: "Newark"
               }
             }
-            energySource: ENERGY_SOURCE_TYPE_COAL
+            energySource: ENERGY_SOURCE_TYPE_NATURAL_GAS
             energyProvided {
+              value: 0.4
               unit: ENERGY_MEASURE_UNIT_TYPE_KILOWATT_HOURS
-              1: "0.4"
             }
           }
           activityEnergyCost {
+            value: 0.4
             unit: ENERGY_MEASURE_UNIT_TYPE_KILOWATT_HOURS
-            1: "0.4"
           }
           co2CostEquivalent {
+            value: 31.22
             unit: CO2_MEASURE_UNIT_TYPE_TONNES_CO2_EQUIVALENT
-            1: "31.22"
           }
           co2CostOffset {
+            value: 31.22
             unit: CO2_MEASURE_UNIT_TYPE_TONNES_CO2_EQUIVALENT
-            1: "31.22"
           }
         }
       }

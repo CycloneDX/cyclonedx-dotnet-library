@@ -55,5 +55,5 @@ dependencies {
   dependencies {
     ref: "some-library"
   }
-  provides: "\n\taes128gcm"
+  provides: "aes128gcm"
 }
