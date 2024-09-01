@@ -36,10 +36,10 @@ components {
       subjectName: "Subject name here"
       issuerName: "Issuer name here"
       notValidBefore {
-        seconds: 37986
+        seconds: 1640995200
       }
       notValidAfter {
-        seconds: 39446
+        seconds: 1704067200
       }
       signatureAlgorithmRef: "bom-ref-to-algorithm"
       subjectPublicKeyRef: "bom-ref-to-public-key"
@@ -79,16 +79,16 @@ components {
       state: CRYPTO_RELATED_STATE_ACTIVE
       algorithmRef: "bom-ref-to-algorithm"
       creationDate {
-        seconds: 39446
+        seconds: 1704067200
       }
       activationDate {
-        seconds: 39448
+        seconds: 1704153600
       }
       updateDate {
-        seconds: 39450
+        seconds: 1704240000
       }
       expirationDate {
-        seconds: 39452
+        seconds: 1704326400
       }
       value: "Value here"
       size: 1024

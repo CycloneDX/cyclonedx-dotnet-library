@@ -57,10 +57,10 @@ formulation {
         }
       }
       timeStart {
-        seconds: 38716
+        seconds: 1672531200
       }
       timeEnd {
-        seconds: 38716
+        seconds: 1672531200
       }
       workspaces {
         bom_ref: "workspace-1"
@@ -99,7 +99,7 @@ formulation {
         uid: "event-1"
         description: "Description here"
         timeReceived {
-          seconds: 38716
+          seconds: 1672531200
         }
         data {
           content_type: "text/plain"
@@ -125,7 +125,7 @@ formulation {
         }
       }
       timeActivated {
-        seconds: 38716
+        seconds: 1672531200
       }
       inputs {
         source {
@@ -215,11 +215,10 @@ formulation {
       }
     }
     timeStart {
-      seconds: 38716
+      seconds: 1672531200
     }
     timeEnd {
-      seconds: 929164
-      nanos: 1
+      seconds: 1672495200
     }
     workspaces {
       bom_ref: "workspace-1"

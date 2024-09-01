@@ -3,8 +3,7 @@ version: 1
 serial_number: "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
 metadata {
   timestamp {
-    seconds: 3173618478
-    nanos: 3
+    seconds: 1586809239
   }
   tools {
     vendor: "Awesome Vendor"
@@ -112,8 +111,7 @@ components {
       url: ""
       author {
         timestamp {
-          seconds: 3084280878
-          nanos: 3
+          seconds: 1542140439
         }
         name: ""
         email: ""

@@ -3,8 +3,7 @@ version: 1
 serial_number: "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
 metadata {
   timestamp {
-    seconds: 894600
-    nanos: 1
+    seconds: 1610280000
   }
   component {
     type: CLASSIFICATION_APPLICATION
