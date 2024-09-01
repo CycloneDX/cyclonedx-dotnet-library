@@ -388,7 +388,7 @@ namespace CycloneDX.Core.Models
         [XmlEnum("software-plain-ram")]
         Software_Plain_Ram,
         [XmlEnum("software-encrypted-ram")]
-        Software_Encypted_Ram,
+        Software_Encrypted_Ram,
         [XmlEnum("software-tee")]
         Software_TEE,
         [XmlEnum("hardware")]
@@ -403,7 +403,7 @@ namespace CycloneDX.Core.Models
         [XmlEnum("other")]
         Other,
         [XmlEnum("drbg")]
-        DRGB,
+        DRBG,
         [XmlEnum("mac")]
         MAC,
         [XmlEnum("block-cipher")]
