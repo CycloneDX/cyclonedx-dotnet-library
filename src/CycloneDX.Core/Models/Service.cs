@@ -26,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Service: IEquatable<Service>
+    public class Service: IEquatable<Service>, IHasBomRef
     {
         public Service()
         {

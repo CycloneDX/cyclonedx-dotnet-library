@@ -23,7 +23,7 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Level
+    public class Level : IHasBomRef
     {
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]

@@ -108,5 +108,32 @@ namespace CycloneDX.Json
             return JsonSerializer.Serialize(externalReference, _options);
         }
 
+        internal static string Serialize(Models.Standard standard)
+        {
+            Contract.Requires(standard != null);
+            return JsonSerializer.Serialize(standard, _options);
+        }
+
+        internal static string Serialize(Models.OrganizationalEntity organization)
+        {
+            Contract.Requires(organization != null);
+            return JsonSerializer.Serialize(organization, _options);
+        }
+
+        internal static string Serialize(Models.Claim obj)
+        {
+            Contract.Requires(obj != null);
+            return JsonSerializer.Serialize(obj, _options);
+        }
+        internal static string Serialize(Models.Assessor obj)
+        {
+            Contract.Requires(obj != null);
+            return JsonSerializer.Serialize(obj, _options);
+        }
+        internal static string Serialize(Models.Attestation obj)
+        {
+            Contract.Requires(obj != null);
+            return JsonSerializer.Serialize(obj, _options);
+        }
     }
 }
