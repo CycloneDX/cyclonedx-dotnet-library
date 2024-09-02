@@ -26,7 +26,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Remove="Resources\v2.2\document.xml" />
+    <None Remove="Resources\v2.3\document.xml" />
   </ItemGroup>
 
   <ItemGroup>

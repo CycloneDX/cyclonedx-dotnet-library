@@ -16,23 +16,26 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
-    public class PackageVerificationCode
+    public class ReviewInformation
     {
         /// <summary>
-        /// A file that was excluded when calculating the package verification code. This is usually a file containing SPDX data regarding the package. If a package contains more than one SPDX file all SPDX files must be excluded from the package verification code. If this is not done it would be impossible to correctly calculate the verification codes in both files.
+        /// The name and, optionally, contact information of the person who performed the review. Values of this property must conform to the agent and tool syntax.
         /// </summary>
-        [XmlElement("packageVerificationCodeExcludedFiles")]
-        public List<string> PackageVerificationCodeExcludedFiles { get; set; }
+        [XmlElement("reviewer")]
+        public string Reviewer { get; set; }
+
+        [XmlElement("comment")]
+        public string Comment { get; set; }
 
         /// <summary>
-        /// The actual package verification code as a hex encoded value.
+        /// The date and time at which the SpdxDocument was reviewed. This value must be in UTC and have 'Z' as its timezone indicator.
         /// </summary>
-        [XmlElement("packageVerificationCodeValue")]
-        public string PackageVerificationCodeValue { get; set; }
+        [XmlElement("reviewDate")]
+        public DateTime ReviewDate { get; set; }
+
     }
 }

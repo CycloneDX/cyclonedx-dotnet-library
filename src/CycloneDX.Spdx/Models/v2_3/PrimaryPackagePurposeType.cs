@@ -1,4 +1,4 @@
-// This file is part of CycloneDX Library for .NET
+﻿// This file is part of CycloneDX Library for .NET
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -15,13 +15,21 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
-
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
-    public enum AnnotationType
+    public enum PrimaryPackagePurposeType
     {
-        OTHER,
-        REVIEW,
+        APPLICATION,
+        FRAMEWORK,
+        LIBRARY,
+        CONTAINER,
+        OPERATING_SYSTEM,
+        DEVICE,
+        FIRMWARE,
+        SOURCE,
+        ARCHIVE,
+        FILE,
+        INSTALL,
+        OTHER
     }
 }

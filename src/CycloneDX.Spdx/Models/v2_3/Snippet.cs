@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
     public class Snippet
     {

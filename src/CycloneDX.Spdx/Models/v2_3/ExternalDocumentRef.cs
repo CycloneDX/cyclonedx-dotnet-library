@@ -18,29 +18,26 @@
 using System;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
-    public class Annotation
+    public class ExternalDocumentRef
     {
         /// <summary>
-        /// Identify when the comment was made. This is to be specified according to the combined date and time in the UTC format, as specified in the ISO 8601 standard.
+        /// externalDocumentId is a string containing letters, numbers, ., - and/or + which uniquely identifies an external document within this document.
         /// </summary>
-        [XmlElement("annotationDate")]
-        public DateTime AnnotationDate { get; set; }
+        [XmlElement("externalDocumentId")]
+        public string ExternalDocumentId { get; set; }
 
         /// <summary>
-        /// Type of the annotation.
+        /// A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.
         /// </summary>
-        [XmlElement("annotationType")]
-        public AnnotationType AnnotationType { get; set; }
+        [XmlElement("checksum")]
+        public Checksum Checksum { get; set; } = new Checksum();
 
         /// <summary>
-        /// This field identifies the person, organization or tool that has commented on a file, package, or the entire document.
+        /// SPDX ID for SpdxDocument.  A propoerty containing an SPDX document.
         /// </summary>
-        [XmlElement("annotator")]
-        public string Annotator { get; set; }
-
-        [XmlElement("comment")]
-        public string Comment { get; set; }
+        [XmlElement("spdxDocument")]
+        public string SpdxDocument { get; set; }
     }
 }

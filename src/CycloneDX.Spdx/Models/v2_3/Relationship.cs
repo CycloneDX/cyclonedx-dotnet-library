@@ -18,26 +18,29 @@
 using System;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
-    public class ExternalDocumentRef
+    public class Relationship
     {
         /// <summary>
-        /// externalDocumentId is a string containing letters, numbers, ., - and/or + which uniquely identifies an external document within this document.
+        /// Id to which the SPDX element is related
         /// </summary>
-        [XmlElement("externalDocumentId")]
-        public string ExternalDocumentId { get; set; }
+        [XmlElement("spdxElementId")]
+        public string SpdxElementId { get; set; }
+
+        [XmlElement("comment")]
+        public string Comment { get; set; }
 
         /// <summary>
-        /// A Checksum is value that allows the contents of a file to be authenticated. Even small changes to the content of the file will change its checksum. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.
+        /// SPDX ID for SpdxElement.  A related SpdxElement.
         /// </summary>
-        [XmlElement("checksum")]
-        public Checksum Checksum { get; set; } = new Checksum();
+        [XmlElement("relatedSpdxElement")]
+        public string RelatedSpdxElement { get; set; }
 
         /// <summary>
-        /// SPDX ID for SpdxDocument.  A propoerty containing an SPDX document.
+        /// Describes the type of relationship between two SPDX elements.
         /// </summary>
-        [XmlElement("spdxDocument")]
-        public string SpdxDocument { get; set; }
+        [XmlElement("relationshipType")]
+        public RelationshipType RelationshipType { get; set; }
     }
 }

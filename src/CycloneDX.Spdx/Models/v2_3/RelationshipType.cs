@@ -17,7 +17,7 @@
 
 using System;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
     public enum RelationshipType
     {
@@ -64,5 +64,7 @@ namespace CycloneDX.Spdx.Models.v2_2
         EXPANDED_FROM_ARCHIVE,
         DEV_TOOL_OF,
         EXAMPLE_OF,
+        REQUIREMENT_DESCRIPTION_FOR,
+        SPECIFICATION_FOR
     }
 }

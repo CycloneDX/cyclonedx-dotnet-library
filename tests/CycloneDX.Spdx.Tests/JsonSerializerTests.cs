@@ -31,7 +31,7 @@ namespace CycloneDX.Spdx.Tests
         [InlineData("document")]
         public void JsonRoundTripTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
             var document = File.ReadAllText(resourceFilename);
 
             var spdxDocument = JsonSerializer.Deserialize(document);
@@ -44,7 +44,7 @@ namespace CycloneDX.Spdx.Tests
         [InlineData("document")]
         public async Task JsonAsyncRoundTripTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
 
             using (var jsonStream = File.OpenRead(resourceFilename))
             using (var outputStream = new MemoryStream())

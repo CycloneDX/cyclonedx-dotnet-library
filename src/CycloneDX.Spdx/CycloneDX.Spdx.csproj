@@ -20,4 +20,9 @@
     <EmbeddedResource Include="Schemas\*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="schemas\spdx-2.3-schema.xsd" />
+    <None Remove="schemas\spdx-2.3.schema.json" />
+  </ItemGroup>
+
 </Project>

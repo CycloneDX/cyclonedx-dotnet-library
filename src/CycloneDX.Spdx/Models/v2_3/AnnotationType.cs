@@ -16,22 +16,12 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
-using System.Xml.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
-    public class Checksum
+    public enum AnnotationType
     {
-        /// <summary>
-        /// Identifies the algorithm used to produce the subject Checksum. Currently, SHA-1 is the only supported algorithm. It is anticipated that other algorithms will be supported at a later time.
-        /// </summary>
-        [XmlElement("algorithm")]
-        public ChecksumAlgorithm Algorithm { get; set; }
-
-        /// <summary>
-        /// The checksumValue property provides a lower case hexidecimal encoded digest value produced using a specific algorithm.
-        /// </summary>
-        [XmlElement("checksumValue")]
-        public string ChecksumValue { get; set; }
+        OTHER,
+        REVIEW,
     }
 }

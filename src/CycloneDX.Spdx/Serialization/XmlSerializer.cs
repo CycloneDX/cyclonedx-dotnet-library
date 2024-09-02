@@ -32,7 +32,8 @@ namespace CycloneDX.Spdx.Serialization
         private static readonly XmlWriterSettings WriterSettings = new XmlWriterSettings
         {
             Indent = true,
-            Encoding = Encoding.UTF8,
+            Encoding = new UTF8Encoding(false),
+            OmitXmlDeclaration = false
         };
 
         /// <summary>
@@ -40,14 +41,18 @@ namespace CycloneDX.Spdx.Serialization
         /// </summary>
         /// <param name="bom"></param>
         /// <returns></returns>
-        public static string Serialize(Models.v2_2.SpdxDocument document)
+        public static string Serialize(Models.v2_3.SpdxDocument document)
         {
             Contract.Requires(document != null);
 
             using (var ms = new MemoryStream())
             {
                 Serialize(document, ms);
-                return Encoding.UTF8.GetString(ms.ToArray());
+
+                string xml = Encoding.UTF8.GetString(ms.ToArray());
+
+                xml = xml.Replace("\"", "'").Replace("utf-8", "UTF-8");
+                return xml;
             }
         }
 
@@ -56,11 +61,11 @@ namespace CycloneDX.Spdx.Serialization
         /// </summary>
         /// <param name="document"></param>
         /// <param name="outputStream"></param>
-        public static void Serialize(Models.v2_2.SpdxDocument document, Stream outputStream)
+        public static void Serialize(Models.v2_3.SpdxDocument document, Stream outputStream)
         {
             Contract.Requires(document != null);
 
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Models.v2_2.SpdxDocument));
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Models.v2_3.SpdxDocument));
 
             using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
             {
@@ -73,7 +78,7 @@ namespace CycloneDX.Spdx.Serialization
         /// </summary>
         /// <param name="xmlString"></param>
         /// <returns></returns>
-        public static Models.v2_2.SpdxDocument Deserialize(string xmlString)
+        public static Models.v2_3.SpdxDocument Deserialize(string xmlString)
         {
             Contract.Requires(xmlString != null);
             using (var stream = new MemoryStream())
@@ -91,7 +96,7 @@ namespace CycloneDX.Spdx.Serialization
         /// </summary>
         /// <param name="xmlStream"></param>
         /// <returns></returns>
-        public static Models.v2_2.SpdxDocument Deserialize(Stream xmlStream)
+        public static Models.v2_3.SpdxDocument Deserialize(Stream xmlStream)
         {
             Contract.Requires(xmlStream != null);
 
@@ -109,11 +114,11 @@ namespace CycloneDX.Spdx.Serialization
             }
         }
 
-        private static Models.v2_2.SpdxDocument Deserialize(MemoryStream xmlStream)
+        private static Models.v2_3.SpdxDocument Deserialize(MemoryStream xmlStream)
         {
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Models.v2_2.SpdxDocument));
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Models.v2_3.SpdxDocument));
 
-            var document = (Models.v2_2.SpdxDocument)serializer.Deserialize(xmlStream);
+            var document = (Models.v2_3.SpdxDocument)serializer.Deserialize(xmlStream);
 
             return document;
         }

@@ -17,10 +17,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
     public class Package
     {
@@ -41,6 +42,12 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// </summary>
         [XmlElement("attributionTexts")]
         public List<string> AttributionTexts { get; set; }
+
+        /// <summary>
+        /// Provides a place for recording the actual date the package was built.
+        /// </summary>
+        [XmlElement("builtDate")]
+        public DateTime BuiltDate { get; set; }
 
         /// <summary>
         /// The checksum property provides a mechanism that can be used to verify that the contents of a File or Package have not changed.
@@ -161,5 +168,24 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// </summary>
         [XmlElement("versionInfo")]
         public string VersionInfo { get; set; }
+
+        /// <summary>
+        /// Provides information about the primary purpose of the identified package.
+        /// </summary>
+        [XmlElement("primaryPackagePurpose")]
+        [JsonConverter(typeof(PrimaryPackagePurposeTypeConverter))]
+        public PrimaryPackagePurposeType PrimaryPackagePurpose { get; set; }
+
+        /// <summary>
+        /// Provides a place for recording the date the package was released.
+        /// </summary>
+        [XmlElement("releaseDate")]
+        public DateTime ReleaseDate { get; set; }
+
+        /// <summary>
+        /// Provides a place for recording the end of the support period for a package from the supplier.
+        /// </summary>
+        [XmlElement("validUntilDate")]
+        public DateTime ValidUntilDate { get; set; }
     }
 }

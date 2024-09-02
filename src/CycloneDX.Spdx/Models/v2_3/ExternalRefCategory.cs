@@ -16,16 +16,13 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
-using System.Xml.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
-    public class Range
+    public enum ExternalRefCategory
     {
-        [XmlElement("endPointer")]
-        public RangePointer EndPointer { get; set; } = new RangePointer();
-
-        [XmlElement("startPointer")]
-        public RangePointer StartPointer { get; set; } = new RangePointer();
+        OTHER,
+        SECURITY,
+        PACKAGE_MANAGER,
     }
 }

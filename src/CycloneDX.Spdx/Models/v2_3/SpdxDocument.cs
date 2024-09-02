@@ -21,7 +21,7 @@ using System.Data.SqlTypes;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Spdx.Models.v2_2
+namespace CycloneDX.Spdx.Models.v2_3
 {
     [XmlRoot("Document", IsNullable = false)]
     public class SpdxDocument
@@ -37,7 +37,7 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// Provide a reference number that can be used to understand how to parse and interpret the rest of the file. It will enable both future changes to the specification and to support backward compatibility. The version number consists of a major and minor version indicator. The major field will be incremented when incompatible changes between versions are made (one or more sections are created, modified or deleted). The minor field will be incremented when backwards compatible changes are made.
         /// </summary>
         [XmlElement("spdxVersion")]
-        public string SpdxVersion { get; } = "SPDX-2.2";
+        public string SpdxVersion { get; } = "SPDX-2.3";
 
         /// <summary>
         /// One instance is required for each SPDX file produced. It provides the necessary information for forward and backward compatibility for processing tools.
@@ -83,18 +83,18 @@ namespace CycloneDX.Spdx.Models.v2_2
         /// </summary>
         [Obsolete("Revieweds is deprecated, use Annotation instead")]
         public List<ReviewInformation> Revieweds { get; set; }
+        
+        /// <summary>
+        /// Packages, files and/or Snippets described by this SPDX document
+        /// </summary>
+        [XmlElement("documentDescribes")]
+        public List<string> DocumentDescribes { get; set; }
 
         /// <summary>
         /// The URI provides an unambiguous mechanism for other SPDX documents to reference SPDX elements within this SPDX document.
         /// </summary>
         [XmlElement("documentNamespace")]
         public string DocumentNamespace { get; set; }
-
-        /// <summary>
-        /// Packages, files and/or Snippets described by this SPDX document
-        /// </summary>
-        [XmlElement("documentDescribes")]
-        public List<string> DocumentDescribes { get; set; }
 
         /// <summary>
         /// Packages referenced in the SPDX document

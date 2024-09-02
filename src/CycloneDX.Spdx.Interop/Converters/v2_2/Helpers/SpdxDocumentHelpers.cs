@@ -19,7 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CycloneDX.Models;
-using CycloneDX.Spdx.Models.v2_2;
+using CycloneDX.Spdx.Models.v2_3;
 
 namespace CycloneDX.Spdx.Interop.Helpers
 {
@@ -60,7 +60,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         package.SPDXID = $"SPDXRef-{component.BomRef}";
                     }
                 }
-                package.Annotations = component.Properties?.GetSpdxElements<Models.v2_2.Annotation>(PropertyTaxonomy.ANNOTATION);
+                package.Annotations = component.Properties?.GetSpdxElements<Models.v2_3.Annotation>(PropertyTaxonomy.ANNOTATION);
                 package.FilesAnalyzed = component.Properties?.GetSpdxElement<bool?>(PropertyTaxonomy.FILES_ANALYZED);
                 package.LicenseComments = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS);
                 package.LicenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED) ?? "NOASSERTION";

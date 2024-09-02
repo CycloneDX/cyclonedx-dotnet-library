@@ -31,7 +31,7 @@ namespace CycloneDX.Spdx.Tests
         [InlineData("document")]
         public void ValidateJsonStringTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
             var document = File.ReadAllText(resourceFilename);
 
             var result = JsonValidator.Validate(document);
@@ -43,7 +43,7 @@ namespace CycloneDX.Spdx.Tests
         [InlineData("document")]
         public async Task ValidateJsonStreamTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
             using (var jsonStream = File.OpenRead(resourceFilename))
             {
                 var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
