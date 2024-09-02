@@ -32,15 +32,17 @@ namespace CycloneDX.Spdx.Models.v2_3
         public string Comment { get; set; }
 
         /// <summary>
+        /// Describes the type of relationship between two SPDX elements.
+        /// </summary>
+        [XmlElement("relationshipType")]
+
+        public RelationshipType RelationshipType { get; set; }
+        /// <summary>
         /// SPDX ID for SpdxElement.  A related SpdxElement.
         /// </summary>
         [XmlElement("relatedSpdxElement")]
         public string RelatedSpdxElement { get; set; }
 
-        /// <summary>
-        /// Describes the type of relationship between two SPDX elements.
-        /// </summary>
-        [XmlElement("relationshipType")]
-        public RelationshipType RelationshipType { get; set; }
+
     }
 }

@@ -47,13 +47,16 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// Provides a place for recording the actual date the package was built.
         /// </summary>
         [XmlElement("builtDate")]
-        public DateTime BuiltDate { get; set; }
+        public DateTime? BuiltDate { get; set; }
 
         /// <summary>
         /// The checksum property provides a mechanism that can be used to verify that the contents of a File or Package have not changed.
         /// </summary>
         [XmlElement("checksums")]
         public List<Checksum> Checksums { get; set; }
+        
+        [XmlElement("comment")]
+        public string Comment { get; set; }
 
         /// <summary>
         /// The text of copyright declarations recited in the Package or File.
@@ -84,13 +87,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// </summary>
         [XmlElement("filesAnalyzed")]
         public bool? FilesAnalyzed { get; set; }
-
-        /// <summary>
-        /// Indicates that a particular file belongs to a package.
-        /// </summary>
-        [XmlElement("hasFiles")]
-        public List<string> HasFiles { get; set; }
-
+        
         [XmlElement("homepage")]
         public string Homepage { get; set; }
 
@@ -143,6 +140,25 @@ namespace CycloneDX.Spdx.Models.v2_3
         public PackageVerificationCode PackageVerificationCode { get; set; }
 
         /// <summary>
+        /// Provides information about the primary purpose of the identified package.
+        /// </summary>
+        [XmlElement("primaryPackagePurpose")]
+        [JsonConverter(typeof(UnderscoreConverter<PrimaryPackagePurposeType>))]
+        public PrimaryPackagePurposeType? PrimaryPackagePurpose { get; set; }
+
+        /// <summary>
+        /// Indicates that a particular file belongs to a package.
+        /// </summary>
+        [XmlElement("hasFiles")]
+        public List<string> HasFiles { get; set; }
+
+        /// <summary>
+        /// Provides a place for recording the date the package was released.
+        /// </summary>
+        [XmlElement("releaseDate")]
+        public DateTime? ReleaseDate { get; set; }
+
+        /// <summary>
         /// Allows the producer(s) of the SPDX document to describe how the package was acquired and/or changed from the original source.
         /// </summary>
         [XmlElement("sourceInfo")]
@@ -160,8 +176,11 @@ namespace CycloneDX.Spdx.Models.v2_3
         [XmlElement("supplier")]
         public string Supplier { get; set; }
 
-        [XmlElement("comment")]
-        public string Comment { get; set; }
+       /// <summary>
+        /// Provides a place for recording the end of the support period for a package from the supplier.
+        /// </summary>
+        [XmlElement("validUntilDate")]
+        public DateTime? ValidUntilDate { get; set; }
 
         /// <summary>
         /// Provides an indication of the version of the package that is described by this SpdxDocument.
@@ -169,23 +188,6 @@ namespace CycloneDX.Spdx.Models.v2_3
         [XmlElement("versionInfo")]
         public string VersionInfo { get; set; }
 
-        /// <summary>
-        /// Provides information about the primary purpose of the identified package.
-        /// </summary>
-        [XmlElement("primaryPackagePurpose")]
-        [JsonConverter(typeof(PrimaryPackagePurposeTypeConverter))]
-        public PrimaryPackagePurposeType PrimaryPackagePurpose { get; set; }
-
-        /// <summary>
-        /// Provides a place for recording the date the package was released.
-        /// </summary>
-        [XmlElement("releaseDate")]
-        public DateTime ReleaseDate { get; set; }
-
-        /// <summary>
-        /// Provides a place for recording the end of the support period for a package from the supplier.
-        /// </summary>
-        [XmlElement("validUntilDate")]
-        public DateTime ValidUntilDate { get; set; }
+ 
     }
 }

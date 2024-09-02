@@ -322,7 +322,7 @@
                 "referenceCategory": {
                   "description": "Category for the external reference",
                   "type": "string",
-                  "enum": [ "OTHER", "PERSISTENT_ID", "SECURITY", "PACKAGE_MANAGER" ]
+                  "enum": [ "OTHER", "PERSISTENT_ID", "SECURITY", "PACKAGE-MANAGER" ]
                 },
                 "referenceLocator": {
                   "description": "The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location. The format of the locator is subject to constraints defined by the <type>.",
@@ -341,14 +341,6 @@
           "filesAnalyzed": {
             "description": "Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document. If false indicates packages that represent metadata or URI references to a project, product, artifact, distribution or a component. If set to false, the package must not contain any files.",
             "type": "boolean"
-          },
-          "hasFiles": {
-            "description": "Indicates that a particular file belongs to a package.",
-            "type": "array",
-            "items": {
-              "description": "SPDX ID for File.  Indicates that a particular file belongs to a package.",
-              "type": "string"
-            }
           },
           "homepage": {
             "type": "string"
@@ -405,6 +397,23 @@
             "additionalProperties": false,
             "description": "A manifest based verification code (the algorithm is defined in section 4.7 of the full specification) of the SPDX Item. This allows consumers of this data and/or database to determine if an SPDX item they have in hand is identical to the SPDX item from which the data was produced. This algorithm works even if the SPDX document is included in the SPDX item."
           },
+          "primaryPackagePurpose": {
+            "description": "Provides information about the primary purpose of the identified package.",
+            "type": "string",
+            "enum": [ "APPLICATION", "FRAMEWORK", "LIBRARY", "CONTAINER", "OPERATING-SYSTEM", "DEVICE", "FIRMWARE", "SOURCE", "ARCHIVE", "FILE", "INSTALL", "OTHER" ]
+          },
+          "hasFiles": {
+            "description": "Indicates that a particular file belongs to a package.",
+            "type": "array",
+            "items": {
+              "description": "SPDX ID for File.  Indicates that a particular file belongs to a package.",
+              "type": "string"
+            }
+          },
+          "releaseDate": {
+            "description": "Provides a place for recording the date the package was released.",
+            "type": "string"
+          },
           "sourceInfo": {
             "description": "Allows the producer(s) of the SPDX document to describe how the package was acquired and/or changed from the original source.",
             "type": "string"
@@ -417,21 +426,12 @@
             "description": "The name and, optionally, contact information of the person or organization who was the immediate supplier of this package to the recipient. The supplier may be different than originator when the software has been repackaged. Values of this property must conform to the agent and tool syntax.",
             "type": "string"
           },
-          "versionInfo": {
-            "description": "Provides an indication of the version of the package that is described by this SpdxDocument.",
-            "type": "string"
-          },
-          "primaryPackagePurpose": {
-            "description": "Provides information about the primary purpose of the identified package.",
-            "type": "string",
-            "enum": [ "APPLICATION", "FRAMEWORK", "LIBRARY", "CONTAINER", "OPERATING-SYSTEM", "DEVICE", "FIRMWARE", "SOURCE", "ARCHIVE", "FILE", "INSTALL", "OTHER" ]
-          },
-          "releaseDate": {
-            "description": "Provides a place for recording the date the package was released.",
-            "type": "string"
-          },
           "validUntilDate": {
             "description": "Provides a place for recording the end of the support period for a package from the supplier.",
+            "type": "string"
+          },
+          "versionInfo": {
+            "description": "Provides an indication of the version of the package that is described by this SpdxDocument.",
             "type": "string"
           }
         },
@@ -720,14 +720,14 @@
           "comment": {
             "type": "string"
           },
-          "relatedSpdxElement": {
-            "description": "SPDX ID for SpdxElement.  A related SpdxElement.",
-            "type": "string"
-          },
           "relationshipType": {
             "description": "Describes the type of relationship between two SPDX elements.",
             "type": "string",
             "enum": [ "VARIANT_OF", "COPY_OF", "PATCH_FOR", "TEST_DEPENDENCY_OF", "CONTAINED_BY", "DATA_FILE_OF", "OPTIONAL_COMPONENT_OF", "ANCESTOR_OF", "GENERATES", "CONTAINS", "OPTIONAL_DEPENDENCY_OF", "FILE_ADDED", "DEV_DEPENDENCY_OF", "DEPENDENCY_OF", "BUILD_DEPENDENCY_OF", "DESCRIBES", "PREREQUISITE_FOR", "HAS_PREREQUISITE", "PROVIDED_DEPENDENCY_OF", "DYNAMIC_LINK", "DESCRIBED_BY", "METAFILE_OF", "DEPENDENCY_MANIFEST_OF", "PATCH_APPLIED", "RUNTIME_DEPENDENCY_OF", "TEST_OF", "TEST_TOOL_OF", "DEPENDS_ON", "FILE_MODIFIED", "DISTRIBUTION_ARTIFACT", "AMENDS", "DOCUMENTATION_OF", "GENERATED_FROM", "STATIC_LINK", "OTHER", "BUILD_TOOL_OF", "TEST_CASE_OF", "PACKAGE_OF", "DESCENDANT_OF", "FILE_DELETED", "EXPANDED_FROM_ARCHIVE", "DEV_TOOL_OF", "EXAMPLE_OF", "REQUIREMENT_DESCRIPTION_FOR", "SPECIFICATION_FOR" ]
+          },
+          "relatedSpdxElement": {
+            "description": "SPDX ID for SpdxElement.  A related SpdxElement.",
+            "type": "string"
           }
         },
         "required": [ "spdxElementId", "relatedSpdxElement", "relationshipType" ],

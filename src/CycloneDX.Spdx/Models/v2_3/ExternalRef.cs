@@ -30,7 +30,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// Category for the external reference
         /// </summary>
         [XmlElement("referenceCategory")]
-        //[JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(UnderscoreConverter<ExternalRefCategory>))]
         public ExternalRefCategory ReferenceCategory { get; set; }
 
         /// <summary>

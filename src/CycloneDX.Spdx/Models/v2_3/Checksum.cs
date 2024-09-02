@@ -27,7 +27,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// Identifies the algorithm used to produce the subject Checksum. Currently, SHA-1 is the only supported algorithm. It is anticipated that other algorithms will be supported at a later time.
         /// </summary>
         [XmlElement("algorithm")]
-        [JsonConverter(typeof(ChecksumAlgorithmConverter))]
+        [JsonConverter(typeof(UnderscoreConverter<ChecksumAlgorithm>))]
         public ChecksumAlgorithm Algorithm { get; set; }
 
         /// <summary>

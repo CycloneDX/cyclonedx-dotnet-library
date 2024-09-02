@@ -52,7 +52,7 @@ namespace CycloneDX.Spdx.Tests
                 var spdxDocument = await JsonSerializer.DeserializeAsync(jsonStream);
                 await JsonSerializer.SerializeAsync(spdxDocument, outputStream);
                 var result = System.Text.Encoding.UTF8.GetString(outputStream.ToArray());
-                Snapshot.Match(result, SnapshotNameExtension.Create(baseFilename));
+                 Snapshot.Match(result, SnapshotNameExtension.Create(baseFilename));
             }
         }
     }
