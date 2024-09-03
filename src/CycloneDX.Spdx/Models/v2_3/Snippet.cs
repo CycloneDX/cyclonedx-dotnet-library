@@ -78,6 +78,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// <summary>
         /// SPDX ID for File.  File containing the SPDX element (e.g. the file contaning a snippet).
         /// </summary>
+        [XmlElement("snippetFromFile")]
         public string SnippetFromFile { get; set; }
 
         /// <summary>

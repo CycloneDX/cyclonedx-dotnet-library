@@ -39,5 +39,8 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// </summary>
         [XmlElement("reference")]
         public string Reference { get; set; }
+
+        public bool ShouldSerializeOffset() => Offset.HasValue;
+        public bool ShouldSerializeLineNumber() => LineNumber.HasValue;
     }
 }

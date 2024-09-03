@@ -55,8 +55,8 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="documentNamespace" type="xs:string" />
 				<xs:element maxOccurs="unbounded" name="documentDescribes" type="xs:string" />
+				<xs:element name="documentNamespace" type="xs:string" />
 				<xs:element maxOccurs="unbounded" name="packages">
 					<xs:complexType>
 						<xs:sequence>
@@ -72,6 +72,7 @@
 								</xs:complexType>
 							</xs:element>
 							<xs:element minOccurs="0" name="attributionTexts" type="xs:string" />
+							<xs:element minOccurs="0" name="builtDate" type="xs:dateTime" />
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="checksums">
 								<xs:complexType>
 									<xs:sequence>
@@ -80,7 +81,8 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="copyrightText" type="xs:string" />
+							<xs:element minOccurs="0" name="comment" type="xs:string" />
+							<xs:element  minOccurs="0" name="copyrightText" type="xs:string" />
 							<xs:element minOccurs="0" name="description" type="xs:string" />
 							<xs:element name="downloadLocation" type="xs:string" />
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="externalRefs">
@@ -94,11 +96,10 @@
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="filesAnalyzed" type="xs:boolean" />
-							<xs:element minOccurs="0" maxOccurs="unbounded" name="hasFiles" type="xs:string" />
 							<xs:element name="homepage" type="xs:string" />
 							<xs:element minOccurs="0" name="licenseComments" type="xs:string" />
-							<xs:element name="licenseConcluded" type="xs:string" />
-							<xs:element name="licenseDeclared" type="xs:string" />
+							<xs:element minOccurs="0" name="licenseConcluded" type="xs:string" />
+							<xs:element minOccurs="0" name="licenseDeclared" type="xs:string" />
 							<xs:element minOccurs="0" maxOccurs="unbounded" name="licenseInfoFromFiles" type="xs:string" />
 							<xs:element name="name" type="xs:string" />
 							<xs:element minOccurs="0" name="originator" type="xs:string" />
@@ -111,14 +112,14 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
+							<xs:element minOccurs="0" name="primaryPackagePurpose" type="xs:string" />
+							<xs:element minOccurs="0" maxOccurs="unbounded" name="hasFiles" type="xs:string" />
+							<xs:element minOccurs="0" name="releaseDate" type="xs:dateTime" />
 							<xs:element minOccurs="0" name="sourceInfo" type="xs:string" />
 							<xs:element minOccurs="0" name="summary" type="xs:string" />
 							<xs:element minOccurs="0" name="supplier" type="xs:string" />
+							<xs:element minOccurs="0" name="validUntilDate" type="xs:dateTime" />
 							<xs:element minOccurs="0" name="versionInfo" type="xs:string" />
-							<xs:element name="primaryPackagePurpose" type="xs:string" />
-							<xs:element name="releaseDate" type="xs:dateTime" />
-							<xs:element name="builtDate" type="xs:dateTime" />
-							<xs:element name="validUntilDate" type="xs:dateTime" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -145,13 +146,13 @@
 								</xs:complexType>
 							</xs:element>
 							<xs:element minOccurs="0" name="comment" type="xs:string" />
-							<xs:element name="copyrightText" type="xs:string" />
-							<xs:element maxOccurs="unbounded" name="fileContributors" type="xs:string" />
+							<xs:element minOccurs="0" name="copyrightText" type="xs:string" />
+							<xs:element minOccurs="0" maxOccurs="unbounded" name="fileContributors" type="xs:string" />
 							<xs:element name="fileName" type="xs:string" />
-							<xs:element name="fileTypes" type="xs:string" />
+							<xs:element minOccurs="0" name="fileTypes" type="xs:string" />
 							<xs:element minOccurs="0" name="licenseComments" type="xs:string" />
-							<xs:element name="licenseConcluded" type="xs:string" />
-							<xs:element maxOccurs="unbounded" name="licenseInfoInFiles" type="xs:string" />
+							<xs:element minOccurs="0" name="licenseConcluded" type="xs:string" />
+							<xs:element minOccurs="0" maxOccurs="unbounded" name="licenseInfoInFiles" type="xs:string" />
 							<xs:element minOccurs="0" name="noticeText" type="xs:string" />
 						</xs:sequence>
 					</xs:complexType>
@@ -172,8 +173,8 @@
 										<xs:element name="endPointer">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element minOccurs="0" name="lineNumber" type="xs:unsignedByte" />
 													<xs:element minOccurs="0" name="offset" type="xs:unsignedShort" />
+													<xs:element minOccurs="0" name="lineNumber" type="xs:unsignedByte" />
 													<xs:element name="reference" type="xs:string" />
 												</xs:sequence>
 											</xs:complexType>
@@ -181,8 +182,8 @@
 										<xs:element name="startPointer">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element minOccurs="0" name="lineNumber" type="xs:unsignedByte" />
 													<xs:element minOccurs="0" name="offset" type="xs:unsignedShort" />
+													<xs:element minOccurs="0" name="lineNumber" type="xs:unsignedByte" />
 													<xs:element name="reference" type="xs:string" />
 												</xs:sequence>
 											</xs:complexType>
@@ -198,8 +199,8 @@
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="spdxElementId" type="xs:string" />
-							<xs:element name="relatedSpdxElement" type="xs:string" />
 							<xs:element name="relationshipType" type="xs:string" />
+							<xs:element name="relatedSpdxElement" type="xs:string" />		
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>

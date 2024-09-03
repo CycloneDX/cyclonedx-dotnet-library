@@ -188,6 +188,11 @@ namespace CycloneDX.Spdx.Models.v2_3
         [XmlElement("versionInfo")]
         public string VersionInfo { get; set; }
 
- 
+
+        public bool ShouldSerializeBuiltDate() => BuiltDate.HasValue;
+        public bool ShouldSerializePrimaryPackagePurpose() => PrimaryPackagePurpose.HasValue;
+        public bool ShouldSerializeReleaseDate() => ReleaseDate.HasValue;
+        public bool ShouldSerializeValidUntilDate() => ValidUntilDate.HasValue;
+
     }
 }
