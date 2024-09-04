@@ -114,8 +114,8 @@ namespace CycloneDX.Spdx.Interop
                 bom.Metadata.Properties.AddSpdxElement(PropertyTaxonomy.CREATION_INFO_LICENSE_LIST_VERSION, doc.CreationInfo.LicenseListVersion);
             }
 
-            bom.Metadata.Properties.AddSpdxElements<ExternalDocumentRef>(PropertyTaxonomy.DOCUMENT_EXTERNAL_DOCUMENT_REF, doc.ExternalDocumentRefs);
-            bom.Metadata.Properties.AddSpdxElements<Models.v2_3.Annotation>(PropertyTaxonomy.ANNOTATION, doc.Annotations);
+            bom.Metadata.Properties.AddSpdxElements(PropertyTaxonomy.DOCUMENT_EXTERNAL_DOCUMENT_REF, doc.ExternalDocumentRefs);
+            bom.Metadata.Properties.AddSpdxElements(PropertyTaxonomy.ANNOTATION, doc.Annotations);
             bom.Metadata.Properties.AddSpdxElements(PropertyTaxonomy.DOCUMENT_DESCRIBES, doc.DocumentDescribes);
 
             bom.AddSpdxPackages(doc);

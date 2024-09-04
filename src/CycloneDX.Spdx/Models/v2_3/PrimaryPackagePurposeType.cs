@@ -15,6 +15,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System.Runtime.Serialization;
+
 namespace CycloneDX.Spdx.Models.v2_3
 {
     public enum PrimaryPackagePurposeType

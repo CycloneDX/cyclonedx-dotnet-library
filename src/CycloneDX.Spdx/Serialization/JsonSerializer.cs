@@ -15,6 +15,10 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Spdx.Models.v2_3;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Diagnostics.Contracts;
 using System.IO;
@@ -43,22 +47,24 @@ namespace CycloneDX.Spdx.Serialization
             return options;
         }
 
+
         public static string Serialize(Models.v2_3.SpdxDocument document)
         {
             if (_options_v2_3 is null) { _options_v2_3 = GetJsonSerializerOptions_v2_3(); }
-            return System.Text.Json.JsonSerializer.Serialize<Models.v2_3.SpdxDocument>(document, _options_v2_3);
+            return System.Text.Json.JsonSerializer.Serialize(document, _options_v2_3);
         }
 
         public static async Task SerializeAsync(Models.v2_3.SpdxDocument document, Stream outputStream)
         {
             Contract.Requires(document != null && outputStream != null);
             if (_options_v2_3 is null) { _options_v2_3 = GetJsonSerializerOptions_v2_3(); }
-            await System.Text.Json.JsonSerializer.SerializeAsync<Models.v2_3.SpdxDocument>(outputStream, document, _options_v2_3).ConfigureAwait(false);
+            await System.Text.Json.JsonSerializer.SerializeAsync(outputStream, document, _options_v2_3).ConfigureAwait(false);
         }
 
         public static Models.v2_3.SpdxDocument Deserialize(string document)
         {
             if (_options_v2_3 is null) { _options_v2_3 = GetJsonSerializerOptions_v2_3(); }
+            return System.Text.Json.JsonSerializer.Deserialize<Models.v2_3.SpdxDocument>(document, _options_v2_3);
             return System.Text.Json.JsonSerializer.Deserialize<Models.v2_3.SpdxDocument>(document, _options_v2_3);
         }
 

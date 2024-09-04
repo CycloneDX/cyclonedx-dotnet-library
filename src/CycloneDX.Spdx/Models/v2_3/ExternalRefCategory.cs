@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Spdx.Models.v2_3
