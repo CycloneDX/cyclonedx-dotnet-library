@@ -31,7 +31,7 @@ namespace CycloneDX.Spdx.Interop.Tests
         [InlineData("document")]
         public void FromSpdxToCDXToSpdxRoundTripTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "Spdx", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "Spdx", "v2.3", baseFilename + ".json");
             var fileContents = File.ReadAllText(resourceFilename);
 
             var spdxDocument = JsonSerializer.Deserialize(fileContents);
@@ -46,7 +46,7 @@ namespace CycloneDX.Spdx.Interop.Tests
         [InlineData("document")]
         public void FromSpdxToCDXTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "Spdx", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "Spdx", "v2.3", baseFilename + ".json");
             var fileContents = File.ReadAllText(resourceFilename);
 
             var spdxDocument = JsonSerializer.Deserialize(fileContents);
