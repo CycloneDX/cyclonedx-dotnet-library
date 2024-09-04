@@ -143,7 +143,6 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// Provides information about the primary purpose of the identified package.
         /// </summary>
         [XmlElement("primaryPackagePurpose")]
-        [JsonConverter(typeof(UnderscoreConverter<PrimaryPackagePurposeType>))]
         public PrimaryPackagePurposeType? PrimaryPackagePurpose { get; set; }
 
         /// <summary>

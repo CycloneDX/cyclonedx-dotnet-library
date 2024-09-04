@@ -208,7 +208,7 @@
 			<checksumValue>11b6d3ee554eedf79299905a98f9b9a04e498210b59f15094c916c91d150efcd</checksumValue>
 		</checksums>
 		<checksums>
-			<algorithm>BLAKE2b-384</algorithm>
+			<algorithm>BLAKE2b_384</algorithm>
 			<checksumValue>aaabd89c926ab525c242e6621f2f5fa73aa4afe3d9e24aed727faaadd6af38b620bdb623dd2b4788b1c8086984af8706</checksumValue>
 		</checksums>
 		<copyrightText>Copyright 2008-2010 John Smith</copyrightText>
@@ -276,7 +276,7 @@
 		<SPDXID>SPDXRef-fromDoap-0</SPDXID>
 		<downloadLocation>https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz</downloadLocation>
 		<externalRefs>
-			<referenceCategory>PACKAGE-MANAGER</referenceCategory>
+			<referenceCategory>PACKAGE_MANAGER</referenceCategory>
 			<referenceLocator>pkg:maven/org.apache.jena/apache-jena@3.12.0</referenceLocator>
 			<referenceType>purl</referenceType>
 		</externalRefs>

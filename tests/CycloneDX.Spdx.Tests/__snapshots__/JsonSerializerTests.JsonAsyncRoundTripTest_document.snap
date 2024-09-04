@@ -97,7 +97,7 @@
           "checksumValue": "11b6d3ee554eedf79299905a98f9b9a04e498210b59f15094c916c91d150efcd"
         },
         {
-          "algorithm": "BLAKE2b-384",
+          "algorithm": "BLAKE2b_384",
           "checksumValue": "aaabd89c926ab525c242e6621f2f5fa73aa4afe3d9e24aed727faaadd6af38b620bdb623dd2b4788b1c8086984af8706"
         }
       ],
@@ -154,7 +154,7 @@
       "downloadLocation": "https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz",
       "externalRefs": [
         {
-          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceCategory": "PACKAGE_MANAGER",
           "referenceLocator": "pkg:maven/org.apache.jena/apache-jena@3.12.0",
           "referenceType": "purl"
         }

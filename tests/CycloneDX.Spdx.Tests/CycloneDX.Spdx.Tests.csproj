@@ -27,7 +27,6 @@
   
   <ItemGroup>
     <None Remove="Resources\v2.3\document.xml" />
-    <None Remove="Resources\v2.3\underscoreConvert.json" />
   </ItemGroup>
 
   <ItemGroup>
