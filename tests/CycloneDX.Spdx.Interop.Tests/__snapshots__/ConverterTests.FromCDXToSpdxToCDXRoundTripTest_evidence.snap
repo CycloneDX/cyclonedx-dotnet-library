@@ -36,7 +36,6 @@
           "expression": "LGPL-3.0-or-later"
         }
       ],
-      "copyright": "NOASSERTION",
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -51,18 +50,6 @@
         {
           "name": "spdx:spdxid",
           "value": "SPDXRef-Package-1"
-        },
-        {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
         },
         {
           "name": "spdx:download-location",

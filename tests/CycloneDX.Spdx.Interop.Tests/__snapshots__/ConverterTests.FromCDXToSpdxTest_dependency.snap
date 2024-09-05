@@ -11,47 +11,23 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-library-a",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "library-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0.0"
     },
     {
       "SPDXID": "SPDXRef-library-b",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "library-b",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0.0"
     },
     {
       "SPDXID": "SPDXRef-library-c",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "library-c",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0.0"
     }
   ]

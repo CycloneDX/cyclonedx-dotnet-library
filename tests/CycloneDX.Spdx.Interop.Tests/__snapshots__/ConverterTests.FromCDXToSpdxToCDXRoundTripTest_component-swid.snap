@@ -32,7 +32,9 @@
       "author": "Acme Super Heros",
       "name": "Acme Application",
       "version": "9.1.1",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -49,20 +51,8 @@
           "value": "SPDXRef-Package-1"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:package:originator:email",
           "value": ""
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
         },
         {
           "name": "spdx:download-location",
@@ -72,10 +62,7 @@
           "name": "spdx:homepage",
           "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     }
   ]
 }

@@ -47,6 +47,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// Provides a place for recording the actual date the package was built.
         /// </summary>
         [XmlElement("builtDate")]
+        [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime? BuiltDate { get; set; }
 
         /// <summary>
@@ -155,6 +156,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// Provides a place for recording the date the package was released.
         /// </summary>
         [XmlElement("releaseDate")]
+        [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime? ReleaseDate { get; set; }
 
         /// <summary>
@@ -179,6 +181,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// Provides a place for recording the end of the support period for a package from the supplier.
         /// </summary>
         [XmlElement("validUntilDate")]
+        [JsonConverter(typeof(UtcDateTimeConverter))]
         public DateTime? ValidUntilDate { get; set; }
 
         /// <summary>

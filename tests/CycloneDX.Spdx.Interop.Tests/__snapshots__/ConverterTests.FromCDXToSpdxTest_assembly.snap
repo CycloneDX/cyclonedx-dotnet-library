@@ -11,17 +11,9 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-Package-1",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "acme-library-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0.0"
     }
   ]

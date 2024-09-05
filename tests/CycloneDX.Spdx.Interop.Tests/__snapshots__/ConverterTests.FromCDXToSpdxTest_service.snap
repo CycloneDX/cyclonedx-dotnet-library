@@ -17,17 +17,10 @@
           "checksumValue": "e6b1000b94e835ffd37f4c6dcbdad43f4b48a02a"
         }
       ],
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "Apache-2.0",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "stock-java-client",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0.12"
     }
   ]

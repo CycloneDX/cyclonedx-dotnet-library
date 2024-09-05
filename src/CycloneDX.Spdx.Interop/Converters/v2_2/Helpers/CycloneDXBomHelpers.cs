@@ -52,6 +52,10 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_SOURCE_INFO, package.SourceInfo);
                 component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_SUMMARY, package.Summary);
                 component.Properties.AddSpdxElement(PropertyTaxonomy.COMMENT, package.Comment);
+                component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_BUILT_DATE, package.BuiltDate?.ToString("yyyy-MM-ddTHH:mm:ss'Z'"));
+                component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_RELEASE_DATE, package.ReleaseDate?.ToString("yyyy-MM-ddTHH:mm:ss'Z'"));
+                component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_VALID_UNTIL_DATE, package.ValidUntilDate?.ToString("yyyy-MM-ddTHH:mm:ss'Z'"));
+
 
                 if (package.LicenseInfoFromFiles != null && package.LicenseInfoFromFiles.Count > 0)
                 {

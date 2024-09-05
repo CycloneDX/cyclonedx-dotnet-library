@@ -11,101 +11,51 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-Package-1",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "application-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0"
     },
     {
       "SPDXID": "SPDXRef-Package-2",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "library-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0"
     },
     {
       "SPDXID": "SPDXRef-Package-3",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "framework-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0"
     },
     {
       "SPDXID": "SPDXRef-Package-4",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "container-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0"
     },
     {
       "SPDXID": "SPDXRef-Package-5",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "operating-system-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0"
     },
     {
       "SPDXID": "SPDXRef-Package-6",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "firmware-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0"
     }
   ],
   "files": [
     {
       "SPDXID": "SPDXRef-File-1",
-      "copyrightText": "NOASSERTION",
-      "fileName": "file-a",
-      "licenseConcluded": "NOASSERTION"
+      "fileName": "file-a"
     }
   ]
 }

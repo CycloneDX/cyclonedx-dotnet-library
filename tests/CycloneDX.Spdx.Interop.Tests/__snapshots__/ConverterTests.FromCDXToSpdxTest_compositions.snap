@@ -11,32 +11,16 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-pkg:maven/partner/shaded-library@1.0",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "Partner Shaded Library",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "1.0"
     },
     {
       "SPDXID": "SPDXRef-Package-2",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "Acme Library",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "3.0"
     }
   ]

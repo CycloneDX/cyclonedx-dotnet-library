@@ -31,7 +31,9 @@
       "type": "library",
       "name": "Partner Shaded Library",
       "version": "1.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -48,22 +50,6 @@
           "value": "SPDXRef-pkg:maven/partner/shaded-library@1.0"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
         },
@@ -71,16 +57,15 @@
           "name": "spdx:homepage",
           "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     },
     {
       "type": "library",
       "name": "Acme Library",
       "version": "3.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -97,22 +82,6 @@
           "value": "SPDXRef-Package-2"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
         },
@@ -120,10 +89,7 @@
           "name": "spdx:homepage",
           "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     }
   ]
 }

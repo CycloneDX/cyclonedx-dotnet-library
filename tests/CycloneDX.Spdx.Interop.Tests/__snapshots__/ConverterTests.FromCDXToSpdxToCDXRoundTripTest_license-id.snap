@@ -36,7 +36,6 @@
           "expression": "Apache-2.0"
         }
       ],
-      "copyright": "NOASSERTION",
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -53,18 +52,6 @@
           "value": "SPDXRef-Package-1"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
         },
@@ -72,10 +59,7 @@
           "name": "spdx:homepage",
           "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     }
   ]
 }

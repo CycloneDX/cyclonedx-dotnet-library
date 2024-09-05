@@ -70,6 +70,55 @@ namespace CycloneDX.Spdx.Interop.Helpers
                                 ChecksumValue = hash.Content,
                             });
                             break;
+                        case Hash.HashAlgorithm.SHA3_256:
+                            checksums.Add(new Checksum
+                            {
+                                Algorithm = ChecksumAlgorithm.SHA3_256,
+                                ChecksumValue = hash.Content,
+                            });
+                            break;
+                        case Hash.HashAlgorithm.SHA3_384:
+                            checksums.Add(new Checksum
+                            {
+                                Algorithm = ChecksumAlgorithm.SHA3_384,
+                                ChecksumValue = hash.Content,
+                            });
+                            break;
+                        case Hash.HashAlgorithm.SHA3_512:
+                            checksums.Add(new Checksum
+                            {
+                                Algorithm = ChecksumAlgorithm.SHA3_512,
+                                ChecksumValue = hash.Content,
+                            });
+                            break;
+                        case Hash.HashAlgorithm.BLAKE2b_256:
+                            checksums.Add(new Checksum
+                            {
+                                Algorithm = ChecksumAlgorithm.BLAKE2b_256,
+                                ChecksumValue = hash.Content,
+                            });
+                            break;
+                        case Hash.HashAlgorithm.BLAKE2b_384:
+                            checksums.Add(new Checksum
+                            {
+                                Algorithm = ChecksumAlgorithm.BLAKE2b_384,
+                                ChecksumValue = hash.Content,
+                            });
+                            break;
+                        case Hash.HashAlgorithm.BLAKE2b_512:
+                            checksums.Add(new Checksum
+                            {
+                                Algorithm = ChecksumAlgorithm.BLAKE2b_512,
+                                ChecksumValue = hash.Content,
+                            });
+                            break;
+                        case Hash.HashAlgorithm.BLAKE3:
+                            checksums.Add(new Checksum
+                            {
+                                Algorithm = ChecksumAlgorithm.BLAKE3,
+                                ChecksumValue = hash.Content,
+                            });
+                            break;
                     }
                 }
             }
@@ -105,6 +154,13 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             checksums.Add(new Checksum
                             {
                                 Algorithm = ChecksumAlgorithm.MD6,
+                                ChecksumValue = checksum.Value,
+                            });
+                            break;
+                        case PropertyTaxonomy.CHECKSUM_ADLER32:
+                            checksums.Add(new Checksum
+                            {
+                                Algorithm = ChecksumAlgorithm.ADLER32,
                                 ChecksumValue = checksum.Value,
                             });
                             break;
@@ -171,6 +227,58 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             break;
                         case ChecksumAlgorithm.MD6:
                             component.Properties.AddSpdxElement(PropertyTaxonomy.CHECKSUM_MD6, checksum.ChecksumValue);
+                            break;
+                        case ChecksumAlgorithm.SHA3_256:
+                            component.Hashes.Add(new Hash
+                            {
+                                Alg = Hash.HashAlgorithm.SHA3_256,
+                                Content = checksum.ChecksumValue,
+                            });
+                            break;
+                        case ChecksumAlgorithm.SHA3_384:
+                            component.Hashes.Add(new Hash
+                            {
+                                Alg = Hash.HashAlgorithm.SHA3_384,
+                                Content = checksum.ChecksumValue,
+                            });
+                            break;
+                        case ChecksumAlgorithm.SHA3_512:
+                            component.Hashes.Add(new Hash
+                            {
+                                Alg = Hash.HashAlgorithm.SHA3_512,
+                                Content = checksum.ChecksumValue,
+                            });
+                            break;
+                        case ChecksumAlgorithm.BLAKE2b_256:
+                            component.Hashes.Add(new Hash
+                            {
+                                Alg = Hash.HashAlgorithm.BLAKE2b_256,
+                                Content = checksum.ChecksumValue,
+                            });
+                            break;
+                        case ChecksumAlgorithm.BLAKE2b_384:
+                            component.Hashes.Add(new Hash
+                            {
+                                Alg = Hash.HashAlgorithm.BLAKE2b_384,
+                                Content = checksum.ChecksumValue,
+                            });
+                            break;
+                        case ChecksumAlgorithm.BLAKE2b_512:
+                            component.Hashes.Add(new Hash
+                            {
+                                Alg = Hash.HashAlgorithm.BLAKE2b_512,
+                                Content = checksum.ChecksumValue,
+                            });
+                            break;
+                        case ChecksumAlgorithm.BLAKE3:
+                            component.Hashes.Add(new Hash
+                            {
+                                Alg = Hash.HashAlgorithm.BLAKE3,
+                                Content = checksum.ChecksumValue,
+                            });
+                            break;
+                        case ChecksumAlgorithm.ADLER32:
+                            component.Properties.AddSpdxElement(PropertyTaxonomy.CHECKSUM_ADLER32, checksum.ChecksumValue);
                             break;
                     }
                 }

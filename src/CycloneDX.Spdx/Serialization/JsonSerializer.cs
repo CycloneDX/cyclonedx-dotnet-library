@@ -15,11 +15,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using CycloneDX.Spdx.Models.v2_3;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
-using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text.Json;
@@ -64,7 +59,6 @@ namespace CycloneDX.Spdx.Serialization
         public static Models.v2_3.SpdxDocument Deserialize(string document)
         {
             if (_options_v2_3 is null) { _options_v2_3 = GetJsonSerializerOptions_v2_3(); }
-            return System.Text.Json.JsonSerializer.Deserialize<Models.v2_3.SpdxDocument>(document, _options_v2_3);
             return System.Text.Json.JsonSerializer.Deserialize<Models.v2_3.SpdxDocument>(document, _options_v2_3);
         }
 

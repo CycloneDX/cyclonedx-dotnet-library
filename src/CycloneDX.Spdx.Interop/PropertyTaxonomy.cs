@@ -40,6 +40,9 @@ namespace CycloneDX.Spdx
         public const string PACKAGE_VERIFICATION_CODE_EXCLUDED_FILE = "spdx:package:verification-code:excluded-file";
         public const string PACKAGE_SOURCE_INFO = "spdx:package:source-info";
         public const string PACKAGE_SUMMARY = "spdx:package:summary";
+        public const string PACKAGE_BUILT_DATE = "spdx:package:built-date";
+        public const string PACKAGE_RELEASE_DATE = "spdx:package:release-date";
+        public const string PACKAGE_VALID_UNTIL_DATE = "spdx:package:valid-until-date";
         public const string FILE_TYPE = "spdx:file:type";
         public const string FILE_CONTRIBUTOR = "spdx:file:contributor";
         public const string FILE_NOTICE_TEXT = "spdx:file:notice-text";
@@ -48,6 +51,7 @@ namespace CycloneDX.Spdx
         public const string CHECKSUM_MD2 = "spdx:checksum:md2";
         public const string CHECKSUM_MD4 = "spdx:checksum:md4";
         public const string CHECKSUM_MD6 = "spdx:checksum:md6";
+        public const string CHECKSUM_ADLER32 = "spdx:checksum:adler32";
         public const string DOCUMENT_SPDX_VERSION = "spdx:document:spdx-version";
         public const string DOCUMENT_DATA_LICENSE = "spdx:document:data-license";
         public const string DOCUMENT_NAME = "spdx:document:name";

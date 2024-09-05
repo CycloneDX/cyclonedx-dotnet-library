@@ -36,16 +36,23 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     var file = new File
                     {
                         FileName = component.Name,
-                        CopyrightText = component.Copyright ?? "NOASSERTION",
+                        
                         SPDXID = component.Properties?.GetSpdxElement(PropertyTaxonomy.SPDXID),
                         Comment = component.Properties?.GetSpdxElement(PropertyTaxonomy.COMMENT),
                         Annotations = component.Properties?.GetSpdxElements<Models.v2_3.Annotation>(PropertyTaxonomy.ANNOTATION),
                         LicenseComments = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS),
-                        LicenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED) ?? "NOASSERTION",
                         AttributionTexts = component.GetSpdxAttributionTexts(),
                         FileContributors = component.Properties?.GetSpdxElements( PropertyTaxonomy.FILE_CONTRIBUTOR),
                         NoticeText = component.Properties?.GetSpdxElement(PropertyTaxonomy.FILE_NOTICE_TEXT),
                     };
+
+                    var copyrightText = component.Copyright;
+                    if (!String.IsNullOrEmpty(copyrightText) && copyrightText != "NOASSERTION")
+                        file.CopyrightText = copyrightText;
+
+                    var licenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED);
+                    if (!String.IsNullOrEmpty(licenseConcluded) && licenseConcluded != "NOASSERTION")
+                        file.LicenseConcluded = licenseConcluded;
 
                     if (file.SPDXID == null)
                     {

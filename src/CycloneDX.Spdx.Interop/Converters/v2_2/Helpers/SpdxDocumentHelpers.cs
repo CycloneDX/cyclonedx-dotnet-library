@@ -46,8 +46,12 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     Name = component.Name,
                     VersionInfo = component.Version,
                     Description = component.Description,
-                    CopyrightText = component.Copyright ?? "NOASSERTION",
                 };
+
+                var copyrightText = component.Copyright;
+                if (!String.IsNullOrEmpty(copyrightText) && copyrightText != "NOASSERTION")
+                    package.CopyrightText = copyrightText;
+
                 package.SPDXID = component.Properties?.GetSpdxElement(PropertyTaxonomy.SPDXID);
                 if (package.SPDXID == null)
                 {
@@ -63,8 +67,28 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 package.Annotations = component.Properties?.GetSpdxElements<Models.v2_3.Annotation>(PropertyTaxonomy.ANNOTATION);
                 package.FilesAnalyzed = component.Properties?.GetSpdxElement<bool?>(PropertyTaxonomy.FILES_ANALYZED);
                 package.LicenseComments = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS);
-                package.LicenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED) ?? "NOASSERTION";
+                
                 package.PackageFileName = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_FILENAME);
+
+                var licenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED);
+                if (!String.IsNullOrEmpty(licenseConcluded) && licenseConcluded != "NOASSERTION")
+                    package.LicenseConcluded = licenseConcluded;
+
+                    var builtDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_BUILT_DATE);
+                if ( ! String.IsNullOrEmpty(builtDate)){
+                    package.BuiltDate = DateTime.Parse(builtDate.Trim('"'));
+                }
+                
+                var releaseDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_RELEASE_DATE);
+                if ( ! String.IsNullOrEmpty(releaseDate)){
+                    package.ReleaseDate = DateTime.Parse(releaseDate.Trim('"'));
+                }
+                
+                var validUntilDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_VALID_UNTIL_DATE);
+                if ( ! String.IsNullOrEmpty(validUntilDate)){
+                    package.ValidUntilDate = DateTime.Parse(validUntilDate.Trim('"'));
+                }
+                
                 var packageVerificationCode = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_VERIFICATION_CODE_VALUE);
                 if (packageVerificationCode != null)
                 {
@@ -111,31 +135,21 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         }
                     }
                 }
-                if (package.LicenseInfoFromFiles == null || package.LicenseInfoFromFiles.Count == 0)
-                {
-                    package.LicenseInfoFromFiles = new List<string> { "NOASSERTION" };
-                }
 
                 // LicenseDeclared
-                package.LicenseDeclared = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_DECLARED);
-                if (component.Licenses == null || component.Licenses.Count == 0)
+                var licenseDeclared = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_DECLARED);
+                if(!String.IsNullOrEmpty(licenseDeclared) && licenseDeclared != "NOASSERTION")
+                    package.LicenseDeclared = licenseDeclared;
+                if  (component.Licenses != null && component.Licenses.Count == 1)
                 {
-                    package.LicenseDeclared = "NOASSERTION";
-                }
-                else
-                {
-                    if (component.Licenses.Count == 1)
-                    {
+
                         package.LicenseDeclared = component.Licenses.First().Expression ?? component.Licenses.First().License.Id;
-                    }
-                    else
-                    {
-                        package.LicenseDeclared = "NOASSERTION";
-                    }
                 }
+  
+             
 
                 // Package Originator
-                package.Originator = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR) ?? "NOASSERTION";
+                package.Originator = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR);
                 if (component.Author != null)
                 {
                     if (component.Author == component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR_ORGANIZATION))
@@ -148,7 +162,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     }
                 }
 
-                package.Supplier = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_SUPPLIER) ?? "NOASSERTION";
+                package.Supplier = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_SUPPLIER);
                 if (component.Supplier != null)
                 {
                     var supplierEmails = component.Supplier.Contact.Where(c => c.Email != null).ToList();

@@ -77,11 +77,11 @@
       "comment": "Another example reviewer."
     }
   ],
-  "documentNamespace": "http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301",
   "documentDescribes": [
     "SPDXRef-File",
     "SPDXRef-Package"
   ],
+  "documentNamespace": "http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301",
   "packages": [
     {
       "SPDXID": "SPDXRef-Package",
@@ -96,13 +96,14 @@
       "attributionTexts": [
         "The GNU C Library is free software.  See the file COPYING.LIB for copying conditions, and LICENSES for notices about a few contributions that require these additional notices to be distributed.  License copyright years may be listed using range notation, e.g., 1996-2015, indicating that every year in the range, inclusive, is a copyrightable year that would otherwise be listed individually."
       ],
+      "builtDate": "2011-01-29T18:30:22Z",
       "checksums": [
         {
-          "algorithm": "MD5",
+          "algorithm": "BLAKE2b_512",
           "checksumValue": "624c1abb3664f4b35547e7c73864ad24"
         },
         {
-          "algorithm": "SHA1",
+          "algorithm": "ADLER32",
           "checksumValue": "85ed0817af83a24ad8da68c2b5094de69833983c"
         },
         {
@@ -127,11 +128,6 @@
         }
       ],
       "filesAnalyzed": true,
-      "hasFiles": [
-        "SPDXRef-CommonsLangSrc",
-        "SPDXRef-JenaLib",
-        "SPDXRef-DoapSource"
-      ],
       "homepage": "http://ftp.gnu.org/gnu/glibc",
       "licenseComments": "The license for this project changed with the release of version x.y.  The version of the project included here post-dates the license change.",
       "licenseConcluded": "(LGPL-2.0-only OR LicenseRef-3)",
@@ -150,9 +146,16 @@
         ],
         "packageVerificationCodeValue": "d6a770ba38583ed4bb4525bd96e50461655d2758"
       },
+      "hasFiles": [
+        "SPDXRef-CommonsLangSrc",
+        "SPDXRef-JenaLib",
+        "SPDXRef-DoapSource"
+      ],
+      "releaseDate": "2012-01-29T18:30:22Z",
       "sourceInfo": "uses glibc-2_11-branch from git://sourceware.org/git/glibc.git.",
       "summary": "GNU C library.",
       "supplier": "Person: Jane Doe (jane.doe@example.com)",
+      "validUntilDate": "2014-01-29T18:30:22Z",
       "versionInfo": "2.11.1"
     },
     {
@@ -356,48 +359,56 @@
   "relationships": [
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "SPDXRef-Package",
-      "relationshipType": "CONTAINS"
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Package"
+
     },
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "DocumentRef-spdx-tool-1.2:SPDXRef-ToolsElement",
-      "relationshipType": "COPY_OF"
+      "relationshipType": "COPY_OF",
+      "relatedSpdxElement": "DocumentRef-spdx-tool-1.2:SPDXRef-ToolsElement"
+
     },
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "SPDXRef-File",
-      "relationshipType": "DESCRIBES"
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-File"
+
     },
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "SPDXRef-Package",
-      "relationshipType": "DESCRIBES"
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package"
+
     },
     {
       "spdxElementId": "SPDXRef-Package",
-      "relatedSpdxElement": "SPDXRef-JenaLib",
-      "relationshipType": "CONTAINS"
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-JenaLib"
+
     },
     {
       "spdxElementId": "SPDXRef-Package",
-      "relatedSpdxElement": "SPDXRef-Saxon",
-      "relationshipType": "DYNAMIC_LINK"
+      "relationshipType": "DYNAMIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Saxon"
+
     },
     {
       "spdxElementId": "SPDXRef-CommonsLangSrc",
-      "relatedSpdxElement": "NOASSERTION",
-      "relationshipType": "GENERATED_FROM"
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "NOASSERTION"
+
     },
     {
       "spdxElementId": "SPDXRef-JenaLib",
-      "relatedSpdxElement": "SPDXRef-Package",
-      "relationshipType": "CONTAINS"
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Package"
+
     },
     {
       "spdxElementId": "SPDXRef-File",
-      "relatedSpdxElement": "SPDXRef-fromDoap-0",
-      "relationshipType": "GENERATED_FROM"
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-fromDoap-0"
     }
   ]
 }

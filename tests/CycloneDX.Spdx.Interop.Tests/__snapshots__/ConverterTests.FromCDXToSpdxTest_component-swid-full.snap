@@ -11,17 +11,10 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-Package-1",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "Acme Application",
       "originator": "Person: Acme Super Heros ()",
-      "supplier": "NOASSERTION",
       "versionInfo": "9.1.1"
     }
   ]

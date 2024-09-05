@@ -11,17 +11,10 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-Package-1",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "tomcat-catalina",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "9.0.14"
     }
   ]

@@ -11,16 +11,9 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-Package-1",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "tomcat-catalina",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
       "versionInfo": "9.0.14"
     }
   ]
