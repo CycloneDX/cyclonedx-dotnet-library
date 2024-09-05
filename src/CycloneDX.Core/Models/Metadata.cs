@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -25,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Metadata
+    public class Metadata : ICloneable
     {
         private DateTime? _timestamp;
         [XmlElement("timestamp")]
@@ -35,7 +36,6 @@ namespace CycloneDX.Models
             get => _timestamp;
             set { _timestamp = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
         [XmlElement("tools")]
         public ToolChoices Tools { get; set; }
@@ -85,8 +85,6 @@ namespace CycloneDX.Models
         [XmlIgnore]
         [ProtoMember(7)]
         public List<LicenseChoice> Licenses { get; set; }
-        public bool ShouldSerializeLicenses() { return Licenses?.Count > 0; }
-
 
         [XmlElement("licenses")]
         [JsonIgnore, ProtoIgnore]
@@ -97,19 +95,40 @@ namespace CycloneDX.Models
             get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
             set { Licenses = value.Licenses; }
         }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
-
+        
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(8)]
         public List<Property> Properties { get; set; }
-        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
         
         [XmlArray("lifecycles")]
         [XmlArrayItem("lifecycle")]
         [ProtoMember(9)]
         public List<Lifecycles> Lifecycles { get; set; }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
+        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
+        public bool ShouldSerializeLicenses() { return Licenses?.Count > 0; }
         public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Metadata()
+            {
+                Authors = this.Authors.Select(x => (OrganizationalContact)x.Clone()).ToList(),
+                Component = (Component)this.Component.Clone(),
+                Licenses = this.Licenses.Select(x => (LicenseChoice)x.Clone()).ToList(),
+                LicensesSerialized = (LicenseChoiceList)this.LicensesSerialized.Clone(),
+                Lifecycles = this.Lifecycles.Select(x => (Lifecycles)x.Clone()).ToList(),
+                Manufacture = (OrganizationalEntity)this.Manufacture.Clone(),
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                ProtobufTools = this.ProtobufTools.Select(x => (Tool)x.Clone()).ToList(),
+                Supplier = (OrganizationalEntity)this.Supplier.Clone(),
+                Timestamp = this.Timestamp,
+                Tools = (ToolChoices)this.Tools.Clone(),
+            };
+        }
     }
 }

@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,14 +27,22 @@ namespace CycloneDX.Models
 {
     [XmlType("model-parameters")]
     [ProtoContract]
-    public class ModelParameters
+    public class ModelParameters : ICloneable
     {
         [ProtoContract]
-        public class ModelApproach
+        public class ModelApproach : ICloneable
         {
             [XmlElement("type")]
             [ProtoMember(1)]
-            public ModelCard.ModelParameterApproachType Type { get; set; }    
+            public ModelCard.ModelParameterApproachType Type { get; set; }
+
+            public object Clone()
+            {
+                return new ModelApproach()
+                {
+                    Type = this.Type
+                };
+            }
         }
         
         [ProtoContract]
@@ -49,11 +58,19 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class MachineLearningInputOutputParameter
+        public class MachineLearningInputOutputParameter : ICloneable
         {
             [XmlElement("format")]
             [ProtoMember(1)]
             public string Format { get; set; }
+
+            public object Clone()
+            {
+                return new MachineLearningInputOutputParameter()
+                {
+                    Format = this.Format 
+                };
+            }
         }
         
         [XmlElement("approach")]
@@ -85,5 +102,19 @@ namespace CycloneDX.Models
         [XmlArrayItem("output")]
         [ProtoMember(7)]
         public List<MachineLearningInputOutputParameter> Outputs { get; set; }
+
+        public object Clone()
+        {
+            return new ModelParameters()
+            {
+                Approach = (ModelApproach)this.Approach.Clone(),
+                ArchitectureFamily = this.ArchitectureFamily,
+                Datasets = (DatasetChoices)this.Datasets.Clone(),
+                Inputs = this.Inputs.Select(x => (MachineLearningInputOutputParameter)x.Clone()).ToList(),
+                ModelArchitecture = this.ModelArchitecture,
+                Outputs = this.Outputs.Select(x => (MachineLearningInputOutputParameter)x.Clone()).ToList(),
+                Task = this.Task
+            };
+        }
     }
 }

@@ -22,9 +22,17 @@ using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
-    public class EvidenceTools : List<string>, IXmlSerializable
+    public class EvidenceTools : List<string>, ICloneable, IXmlSerializable
     {
         private readonly string _elementName = "tool";
+
+        public object Clone()
+        {
+            return new EvidenceTools()
+            {
+                //to do determine how to handle this
+            };
+        }
 
         public System.Xml.Schema.XmlSchema GetSchema() {
             return null;

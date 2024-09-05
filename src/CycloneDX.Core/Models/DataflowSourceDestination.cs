@@ -15,16 +15,25 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class DataflowSourceDestination
+    public class DataflowSourceDestination : ICloneable
     {
         [XmlElement("url")]
         [ProtoMember(1)]
         public string Url { get; set; }
+
+        public object Clone()
+        {
+            return new DataflowSourceDestination()
+            { 
+                Url = this.Url 
+            };
+        }
     }
 }

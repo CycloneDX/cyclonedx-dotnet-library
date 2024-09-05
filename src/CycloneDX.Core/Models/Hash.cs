@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -22,7 +23,7 @@ namespace CycloneDX.Models
 {
     [XmlType("hash")]
     [ProtoContract]
-    public class Hash
+    public class Hash : ICloneable
     {
         [ProtoContract]
         public enum HashAlgorithm
@@ -62,5 +63,14 @@ namespace CycloneDX.Models
         [XmlText]
         [ProtoMember(2)]
         public string Content { get; set; }
+
+        public object Clone()
+        {
+            return new Hash()
+            {
+                Alg = this.Alg,
+                Content = this.Content
+            };
+        }
     }
 }

@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -23,12 +24,21 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class EnvironmentVarChoice
+    public class EnvironmentVarChoice : ICloneable
     {
         [ProtoMember(1)]
         public Property Property { get; set; }
 
         [ProtoMember(2)]
         public string Value { get; set; }
+
+        public object Clone()
+        {
+            return new EnvironmentVarChoice()
+            {
+                Property = this.Property,
+                Value = this.Value
+            };
+        }
     }
 }

@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("event")]
     [ProtoContract]
-    public class Event
+    public class Event : ICloneable
     {
         [XmlElement("uid")]
         [ProtoMember(1)]
@@ -44,7 +45,6 @@ namespace CycloneDX.Models
             get => _timeReceived;
             set { _timeReceived = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeTimeReceived() { return TimeReceived != null; }
         
         [XmlElement("data")]
         [ProtoMember(4)]
@@ -62,6 +62,22 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(7)]
         public List<Property> Properties { get; set; }
+        
+        public bool ShouldSerializeTimeReceived() { return TimeReceived != null; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Event()
+            {
+                Data = (AttachedText)this.Data.Clone(),
+                Description = this.Description,
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Source = (ResourceReferenceChoice)this.Source.Clone(),
+                Target  = (ResourceReferenceChoice)this.Target.Clone(),
+                TimeReceived = this.TimeReceived,
+                Uid = this.Uid
+            };
+        }
     }
 }

@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -28,7 +29,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-identity")]
     [ProtoContract]
-    public class EvidenceIdentity
+    public class EvidenceIdentity : ICloneable
     {
         [ProtoContract]
         public enum EvidenceFieldType
@@ -67,5 +68,16 @@ namespace CycloneDX.Models
         [XmlElement("tools")]
         [ProtoMember(4)]
         public EvidenceTools Tools { get; set; }
+
+        public object Clone()
+        {
+            return new EvidenceIdentity()
+            {
+                Confidence = this.Confidence,
+                Field = this.Field,
+                Methods = this.Methods.Select(x => (EvidenceMethods)x.Clone()).ToList(),
+                Tools = (EvidenceTools)this.Tools.Clone()
+            };
+        }
     }
 }

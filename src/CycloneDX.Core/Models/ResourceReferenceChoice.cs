@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -23,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ResourceReferenceChoice : IXmlSerializable
+    public class ResourceReferenceChoice : ICloneable, IXmlSerializable
     {
         private static XmlSerializer _extRefSerializer;
         private static XmlSerializer GetExternalReferenceSerializer()
@@ -71,6 +72,15 @@ namespace CycloneDX.Models
             {
                 GetExternalReferenceSerializer().Serialize(writer, this.ExternalReference);
             }
+        }
+
+        public object Clone()
+        {
+            return new ResourceReferenceChoice()
+            {
+                ExternalReference = this.ExternalReference,
+                Ref = this.Ref
+            };
         }
     }
 }

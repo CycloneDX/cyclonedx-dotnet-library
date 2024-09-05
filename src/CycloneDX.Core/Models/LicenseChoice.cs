@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
 
     [ProtoContract]
-    public class LicenseChoice
+    public class LicenseChoice : ICloneable
     {
         [XmlElement("license")]
         [ProtoMember(1)]
@@ -40,10 +41,20 @@ namespace CycloneDX.Models
         [JsonPropertyName("bom-ref")]
         [ProtoMember(3)]
         public string BomRef { get; set; }
+
+        public object Clone()
+        {
+            return new LicenseChoice()
+            {
+                BomRef = this.BomRef,
+                Expression = this.Expression,
+                License = (License)this.License.Clone()
+            };
+        }
     }
 
     // This is a workaround to serialize licenses correctly
-    public class LicenseChoiceList : IXmlSerializable
+    public class LicenseChoiceList : ICloneable, IXmlSerializable
     {
         public LicenseChoiceList(List<LicenseChoice> licenses)
         {
@@ -122,6 +133,14 @@ namespace CycloneDX.Models
                 }
             }
 
+        }
+
+        public object Clone()
+        {
+            return new LicenseChoiceList()
+            {
+                Licenses = this.Licenses.Select(x => (LicenseChoice)x.Clone()).ToList()
+            };
         }
     }
 }

@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -25,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Data
+    public class Data : ICloneable
     {
         [ProtoContract]
         public enum DataType
@@ -43,7 +44,7 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class DataContents
+        public class DataContents : ICloneable
         {
             [XmlElement("attachment")]
             [ProtoMember(1)]
@@ -57,7 +58,18 @@ namespace CycloneDX.Models
             [XmlArrayItem("property")]
             [ProtoMember(22)]
             public List<Property> Properties { get; set; }
+
             public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+            public object Clone()
+            {
+                return new DataContents()
+                {
+                    Attachment = (AttachedText)this.Attachment.Clone(),
+                    Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                    Url = this.Url
+                };
+            }
         }
 
         [JsonPropertyName("bom-ref")]
@@ -96,5 +108,21 @@ namespace CycloneDX.Models
         [XmlElement("governance")]
         [ProtoMember(9)]
         public DataGovernance Governance { get; set; }
+
+        public object Clone()
+        {
+            return new Data()
+            {
+                BomRef = this.BomRef,
+                Classification = this.Classification,
+                Contents = (DataContents)this.Contents.Clone(),
+                Description = this.Description,
+                Governance = (DataGovernance)this.Governance.Clone(),
+                Graphics = (GraphicsCollection)this.Graphics.Clone(),
+                Name = this.Name,
+                SensitiveData = this.SensitiveData,
+                Type = this.Type,
+            };
+        }
     }
 }

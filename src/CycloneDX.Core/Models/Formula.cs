@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("formula")]
     [ProtoContract]
-    public class Formula
+    public class Formula : ICloneable
     {
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]
@@ -42,8 +43,7 @@ namespace CycloneDX.Models
         [XmlArrayItem("service")]
         [ProtoMember(3)]
         public List<Service> Services { get; set; }
-        public bool ShouldSerializeServices() { return Services?.Count > 0; }
-
+        
         [XmlArray("workflows")]
         [XmlArrayItem("workflow")]
         [ProtoMember(4)]
@@ -53,6 +53,20 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(5)]
         public List<Property> Properties { get; set; }
+        
+        public bool ShouldSerializeServices() { return Services?.Count > 0; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Formula()
+            {
+                BomRef = this.BomRef,
+                Components = this.Components.Select(x => (Component)x.Clone()).ToList(),
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Services = this.Services.Select(x => (Service)x.Clone()).ToList(),
+                Workflows = this.Workflows.Select(x => (Workflow)x.Clone()).ToList()
+            };
+        }
     }
 }

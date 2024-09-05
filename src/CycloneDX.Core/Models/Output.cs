@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("output")]
     [ProtoContract]
-    public class Output
+    public class Output : ICloneable
     {
         [ProtoContract]
         public enum OutputType
@@ -52,8 +53,7 @@ namespace CycloneDX.Models
         [XmlElement("type")]
         [ProtoMember(1)]
         public OutputType? Type { get; set; }
-        public bool ShouldSerializeType() { return Type != null; }
-
+        
         [XmlElement("source")]
         [ProtoMember(2)]
         public ResourceReferenceChoice Source { get; set; }
@@ -69,12 +69,28 @@ namespace CycloneDX.Models
         [XmlElement("environmentVars")]
         [ProtoMember(6)]
         public EnvironmentVarChoices EnvironmentVars { get; set; }
-        public bool ShouldSerializeEnvironmentVars() { return EnvironmentVars?.Count > 0; }
         
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(7)]
         public List<Property> Properties { get; set; }
+        
+        public bool ShouldSerializeType() { return Type != null; }
+        public bool ShouldSerializeEnvironmentVars() { return EnvironmentVars?.Count > 0; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Output()
+            {
+                Data = (AttachedText)this.Data.Clone(),
+                EnvironmentVars = (EnvironmentVarChoices)this.EnvironmentVars.Clone(),
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Resource = (ResourceReferenceChoice)this.Resource.Clone(),
+                Source = (ResourceReferenceChoice)this.Source.Clone(),
+                Target = (ResourceReferenceChoice)this.Target.Clone(),
+                Type = this.Type
+            };
+        }
     }
 }

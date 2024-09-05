@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class IdentifiableAction
+    public class IdentifiableAction : ICloneable
     {
         private DateTime? _timestamp;
         [XmlElement("timestamp")]
@@ -32,7 +32,6 @@ namespace CycloneDX.Models
             get => _timestamp;
             set { _timestamp = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
         
         [XmlElement("name")]
         [ProtoMember(2)]
@@ -41,5 +40,17 @@ namespace CycloneDX.Models
         [XmlElement("email")]
         [ProtoMember(3)]
         public string Email { get; set; }
+
+        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
+
+        public object Clone()
+        {
+            return new IdentifiableAction()
+            {
+                Email = this.Email,
+                Name = this.Name,
+                Timestamp = this.Timestamp,
+            };
+        }
     }
 }

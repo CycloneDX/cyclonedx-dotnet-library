@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("modelCard")]
     [ProtoContract]
-    public class ModelCard
+    public class ModelCard : ICloneable
     {
         [ProtoContract]
         public enum ModelParameterApproachType
@@ -44,10 +45,10 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class ModelCardQuantitativeAnalysis
+        public class ModelCardQuantitativeAnalysis : ICloneable
         {
             [ProtoContract]
-            public class PerformanceMetric
+            public class PerformanceMetric : ICloneable
             {
                 [ProtoContract]
                 public class PerformanceMetricConfidenceInterval
@@ -76,6 +77,17 @@ namespace CycloneDX.Models
                 [XmlElement("confidenceInterval")]
                 [ProtoMember(4)]
                 public PerformanceMetricConfidenceInterval ConfidenceInterval { get; set; }
+
+                public object Clone()
+                {
+                    return new PerformanceMetric()
+                    {
+                        ConfidenceInterval = this.ConfidenceInterval,
+                        Slice = this.Slice,
+                        Type = this.Type,
+                        Value = this.Value
+                    };
+                }
             }
             
             [XmlArray("performanceMetrics")]
@@ -86,6 +98,15 @@ namespace CycloneDX.Models
             [XmlElement("graphics")]
             [ProtoMember(2)]
             public GraphicsCollection Graphics { get; set; }
+
+            public object Clone()
+            {
+                return new ModelCardQuantitativeAnalysis()
+                {
+                    Graphics = (GraphicsCollection)this.Graphics.Clone(),
+                    PerformanceMetrics = this.PerformanceMetrics.Select(x => (PerformanceMetric)x.Clone()).ToList()
+                };
+            }
         }
 
         [JsonPropertyName("bom-ref")]
@@ -104,5 +125,16 @@ namespace CycloneDX.Models
         [XmlElement("considerations")]
         [ProtoMember(4)]
         public ModelCardConsiderations Considerations { get; set; }
+
+        public object Clone()
+        {
+            return new ModelCard()
+            {
+                BomRef = this.BomRef,
+                Considerations = (ModelCardConsiderations)this.Considerations.Clone(),
+                ModelParameters = (ModelParameters)this.ModelParameters.Clone(),
+                QuantitativeAnalysis = (ModelCardQuantitativeAnalysis)this.QuantitativeAnalysis.Clone(),
+            };
+        }
     }
 }

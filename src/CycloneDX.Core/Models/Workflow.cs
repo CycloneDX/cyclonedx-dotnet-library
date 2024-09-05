@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("workflow")]
     [ProtoContract]
-    public class Workflow
+    public class Workflow : ICloneable
     {
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]
@@ -90,8 +91,7 @@ namespace CycloneDX.Models
             get => _timeStart;
             set { _timeStart = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeTimeStart() { return TimeStart != null; }
-
+        
         private DateTime? _timeEnd;
         [XmlElement("timeEnd")]
         [ProtoMember(15)]
@@ -100,7 +100,6 @@ namespace CycloneDX.Models
             get => _timeEnd;
             set { _timeEnd = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeTimeEnd() { return TimeEnd != null; }
 
         [XmlArray("workspaces")]
         [XmlArrayItem("workspace")]
@@ -116,6 +115,33 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(5)]
         public List<Property> Properties { get; set; }
+
+        public bool ShouldSerializeTimeStart() { return TimeStart != null; }
+        public bool ShouldSerializeTimeEnd() { return TimeEnd != null; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Workflow()
+            {
+                BomRef = this.BomRef,
+                Description = this.Description,
+                Inputs = this.Inputs.Select(x => (Input)x.Clone()).ToList(),
+                Name = this.Name,
+                Outputs = this.Outputs.Select(x => (Output)x.Clone()).ToList(),
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                ResourceReferences = (ResourceReferenceChoices)this.ResourceReferences.Clone(),
+                RuntimeTopologies = this.RuntimeTopologies.Select(x => (Dependency)x.Clone()).ToList(),
+                Steps = this.Steps.Select(x => (Step)x.Clone()).ToList(),
+                TaskDependencies = this.TaskDependencies.Select(x => (Dependency)x.Clone()).ToList(),
+                Tasks = this.Tasks.Select(x => (WorkflowTask)x.Clone()).ToList(),
+                TaskTypes = this.TaskTypes.Select(x => x).ToList(),
+                TimeEnd = this.TimeEnd,
+                TimeStart = this.TimeStart,
+                Trigger = (Trigger)this.Trigger.Clone(),
+                Uid = this.Uid,
+                Workspaces = this.Workspaces.Select(x => (Workspace)x.Clone()).ToList()
+            };
+        }
     }
 }

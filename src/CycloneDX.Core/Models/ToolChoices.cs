@@ -15,7 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -24,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ToolChoices : IXmlSerializable
+    public class ToolChoices : ICloneable, IXmlSerializable
     {
         internal SpecificationVersion SpecVersion { get; set; }
 
@@ -36,13 +38,10 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<Component> Components { get; set; }
 
-        public bool ShouldSerializeComponents() => Components?.Count > 0;
-
+        
         [ProtoMember(3)]
         public List<Service> Services { get; set; }
 
-        public bool ShouldSerializeServices() => Services?.Count > 0;
-        
         public ToolChoices()
         {
             SpecVersion = SpecificationVersionHelpers.CurrentVersion;
@@ -122,6 +121,20 @@ namespace CycloneDX.Models
                     serializer.Serialize(writer, service);
                 writer.WriteEndElement();
             }
+        }
+
+        public bool ShouldSerializeComponents() => Components?.Count > 0;
+        public bool ShouldSerializeServices() => Services?.Count > 0;
+
+        public object Clone()
+        {
+            return new ToolChoices()
+            {
+                Components = this.Components.Select(x => (Component)x.Clone()).ToList(),
+                Services = this.Services.Select(x => (Service)x.Clone()).ToList(),
+                SpecVersion = this.SpecVersion,
+                Tools = this.Tools.Select(x => (Tool)x.Clone()).ToList()
+            };
         }
     }
 }

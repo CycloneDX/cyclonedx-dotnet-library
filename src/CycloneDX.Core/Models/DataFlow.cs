@@ -15,7 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -24,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("dataflow")]
     [ProtoContract]
-    public class DataFlow
+    public class DataFlow : ICloneable
     {
         [XmlIgnore]
         [JsonPropertyName("flow")]
@@ -67,11 +69,27 @@ namespace CycloneDX.Models
         [XmlElement("source")]
         [ProtoMember(5)]
         public List<DataflowSourceDestination> Source { get; set; }
-        public bool ShouldSerializeSource() => Source != null;
         
         [XmlElement("destination")]
         [ProtoMember(6)]
         public List<DataflowSourceDestination> Destination { get; set; }
+        
+        public bool ShouldSerializeSource() => Source != null;
         public bool ShouldSerializeDestination() => Destination != null;
+
+        public object Clone()
+        {
+            return new DataFlow()
+            {
+                Classification = this.Classification,
+                Description = this.Description,
+                Destination = this.Destination.Select(x => (DataflowSourceDestination)x.Clone()).ToList(),
+                Flow = this.Flow,
+                Governance = (DataGovernance)this.Governance.Clone(),
+                Name = this.Name,
+                Source = this.Source.Select(x => (DataflowSourceDestination)x.Clone()).ToList(),
+                XmlClassification = (DataClassification)this.XmlClassification.Clone(),
+            };
+        }
     }
 }

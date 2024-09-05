@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -28,11 +29,11 @@ namespace CycloneDX.Models
 {
     [XmlType("callstack")]
     [ProtoContract]
-    public class Callstack
+    public class Callstack : ICloneable
     {
         [XmlType("frame")]
         [ProtoContract]
-        public class Frame
+        public class Frame : ICloneable
         {
             [XmlElement("package")]
             [ProtoMember(1)]
@@ -50,7 +51,6 @@ namespace CycloneDX.Models
             [XmlArrayItem("parameter")]
             [ProtoMember(4)]
             public List<string> Parameters { get; set; }
-            public bool ShouldSerializeParameters() { return Parameters?.Count > 0; }
 
             [XmlElement("line")]
             [ProtoMember(5)]
@@ -63,11 +63,35 @@ namespace CycloneDX.Models
             [XmlElement("fullFilename")]
             [ProtoMember(7)]
             public string FullFilename { get; set; }
+
+            public bool ShouldSerializeParameters() { return Parameters?.Count > 0; }
+
+            public object Clone()
+            {
+                return new Frame()
+                {
+                    Column = this.Column,
+                    FullFilename = this.FullFilename,
+                    Function = this.Function,
+                    Line = this.Line,
+                    Module = this.Module,
+                    Package = this.Package,
+                    Parameters = this.Parameters.Select(x => x).ToList()
+                };
+            }
         }
         
         [XmlArray("frames")]
         [XmlArrayItem("frame")]
         [ProtoMember(1)]
         public List<Frame> Frames { get; set; }
+
+        public object Clone()
+        {
+            return new Callstack()
+            {
+                Frames = this.Frames.Select(x => (Frame)x.Clone()).ToList()
+            };
+        }
     }
 }

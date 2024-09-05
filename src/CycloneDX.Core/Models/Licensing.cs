@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -27,7 +28,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("licensing")]
     [ProtoContract]
-    public class Licensing
+    public class Licensing : ICloneable
     {
         [ProtoContract]
         public enum LicenseType
@@ -93,7 +94,6 @@ namespace CycloneDX.Models
         [XmlArrayItem("licenseType")]
         [ProtoMember(6)]
         public List<LicenseType> LicenseTypes { get; set; }
-        public bool ShouldSerializeLicenseTypes() { return LicenseTypes?.Count > 0; }
         
         private DateTime? _lastRenewal;
         [XmlElement("lastRenewal")]
@@ -103,7 +103,6 @@ namespace CycloneDX.Models
             get => _lastRenewal;
             set { _lastRenewal = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeLastRenewal() { return LastRenewal != null; }
         
         private DateTime? _expiration;
         [XmlElement("expiration")]
@@ -113,6 +112,26 @@ namespace CycloneDX.Models
             get => _expiration;
             set { _expiration = BomUtils.UtcifyDateTime(value); }
         }
+        
+        public bool ShouldSerializeLicenseTypes() { return LicenseTypes?.Count > 0; }
+        public bool ShouldSerializeLastRenewal() { return LastRenewal != null; }
         public bool ShouldSerializeExpiration() { return Expiration != null; }
+
+        public object Clone()
+        {
+            return new Licensing()
+            {
+                AltIds = this.AltIds.Select(x => x).ToList(),
+                Expiration = this.Expiration,
+                LastRenewal = this.LastRenewal,
+                Licensee = (OrganizationalEntityOrContact)this.Licensee.Clone(),
+                LicenseTypes = this.LicenseTypes.Select(x => x).ToList(),
+                Licensor = (OrganizationalEntityOrContact)this.Licensor.Clone(),
+                PurchaseOrder = this.PurchaseOrder,
+                Purchaser = (OrganizationalEntityOrContact)this.Purchaser.Clone(),
+                _expiration = this._expiration,
+                _lastRenewal = this._lastRenewal,
+            };
+        }
     }
 }

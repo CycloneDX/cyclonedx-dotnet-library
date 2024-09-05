@@ -28,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-occurrence")]
     [ProtoContract]
-    public class EvidenceOccurrence
+    public class EvidenceOccurrence : ICloneable
     {
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]
@@ -38,5 +38,14 @@ namespace CycloneDX.Models
         [XmlElement("location")]
         [ProtoMember(2)]
         public string Location { get; set; }
+
+        public object Clone()
+        {
+            return new EvidenceOccurrence()
+            {
+                BomRef = this.BomRef,
+                Location = this.Location
+            };
+        }
     }
 }

@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -23,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class Affects
+    public class Affects : ICloneable
     {
         [XmlElement("ref")]
         [ProtoMember(1)]
@@ -34,5 +35,14 @@ namespace CycloneDX.Models.Vulnerabilities
         [JsonPropertyName("versions")]
         [ProtoMember(2)]
         public List<AffectedVersions> Versions { get; set; }
+
+        public object Clone()
+        {
+            return new Affects()
+            {
+                Ref = this.Ref,
+                Versions = this.Versions
+            };
+        }
     }
 }

@@ -15,7 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -24,18 +26,16 @@ namespace CycloneDX.Models
 {
     [XmlType("license")]
     [ProtoContract]
-    public class License
+    public class License : ICloneable
     {
         [XmlElement("id")]
         [ProtoMember(1)]
         public string Id { get; set; }
-        public bool ShouldSerializeId() { return Id != null; }
-
+        
         [XmlElement("name")]
         [ProtoMember(2)]
         public string Name { get; set; }
-        public bool ShouldSerializeName() { return string.IsNullOrEmpty(Id); }
-
+        
         [XmlElement("text")]
         [ProtoMember(3)]
         public AttachedText Text { get; set; }
@@ -57,6 +57,23 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(7)]
         public List<Property> Properties { get; set; }
+
+        public bool ShouldSerializeId() { return Id != null; }
+        public bool ShouldSerializeName() { return string.IsNullOrEmpty(Id); }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new License()
+            {
+                Id = this.Id,
+                BomRef = this.BomRef,
+                Licensing = (Licensing)this.Licensing.Clone(),
+                Name = this.Name,
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Text = (AttachedText)this.Text.Clone(),
+                Url = this.Url,
+            };
+        }
     }
 }

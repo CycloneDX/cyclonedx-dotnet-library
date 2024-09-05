@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -29,7 +30,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence")]
     [ProtoContract]
-    public class Evidence
+    public class Evidence : ICloneable
     {
         [XmlIgnore]
         [ProtoMember(1)]
@@ -43,8 +44,6 @@ namespace CycloneDX.Models
             get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
             set { Licenses = value.Licenses; }
         }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
         [XmlArray("copyright", Order = 4)]
         [XmlArrayItem("text")]
@@ -63,5 +62,21 @@ namespace CycloneDX.Models
         [XmlElement("callstack", Order = 2)]
         [ProtoMember(5)]
         public Callstack Callstack { get; set; }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Evidence()
+            {
+                Callstack = (Callstack)this.Callstack.Clone(),
+                Copyright = this.Copyright,
+                Identity = (EvidenceIdentity)this.Identity.Clone(),
+                Licenses = this.Licenses.Select(x => (LicenseChoice)x.Clone()).ToList(),
+                LicensesSerialized = (LicenseChoiceList)this.LicensesSerialized.Clone(),
+                Occurrences = this.Occurrences.Select(x => (EvidenceOccurrence)x.Clone()).ToList(),
+            };
+        }
     }
 }

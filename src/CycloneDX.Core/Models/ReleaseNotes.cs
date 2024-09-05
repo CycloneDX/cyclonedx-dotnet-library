@@ -17,13 +17,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ReleaseNotes
+    public class ReleaseNotes : ICloneable
     {
         [XmlElement("type")]
         [ProtoMember(1)]
@@ -53,8 +54,7 @@ namespace CycloneDX.Models
             get => _timestamp;
             set { _timestamp = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
-
+        
         [XmlArray("aliases")]
         [XmlArrayItem("alias")]
         [ProtoMember(7)]
@@ -79,5 +79,26 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(11)]
         public List<Property> Properties { get; set; }
+
+        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
+
+        public object Clone()
+        {
+            return new ReleaseNotes()
+            {
+                Aliases = this.Aliases.Select(x => x).ToList(),
+                Description = this.Description,
+                FeaturedImage = this.FeaturedImage,
+                Notes = this.Notes.Select(x => (Note)x.Clone()).ToList(),
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Resolves = this.Resolves.Select(x => (Issue)x.Clone()).ToList(),
+                SocialImage = this.SocialImage,
+                Tags = this.Tags.Select(x => x).ToList(),
+                Timestamp = this.Timestamp,
+                Title = this.Title,
+                Type = this.Type,
+            };
+        }
+
     }
 }

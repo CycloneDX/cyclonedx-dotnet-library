@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("volume")]
     [ProtoContract]
-    public class Volume
+    public class Volume : ICloneable
     {
         [ProtoContract]
         public enum VolumeMode
@@ -74,8 +75,7 @@ namespace CycloneDX.Models
                 Persistent = value;
             }
         }
-        public bool ShouldSerializeNonNullablePersistent() { return Persistent.HasValue; }
-
+        
         // XML serialization doesn't like nullable value types
         [XmlIgnore]
         [ProtoMember(7)]
@@ -93,12 +93,32 @@ namespace CycloneDX.Models
                 Remote = value;
             }
         }
-        public bool ShouldSerializeNonNullableRemote() { return Remote.HasValue; }
-
+        
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(8)]
         public List<Property> Properties { get; set; }
+        
+        public bool ShouldSerializeNonNullablePersistent() { return Persistent.HasValue; }
+        public bool ShouldSerializeNonNullableRemote() { return Remote.HasValue; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Volume()
+            {
+                Mode = this.Mode,
+                Name = this.Name,
+                NonNullablePersistent = this.NonNullablePersistent,
+                NonNullableRemote = this.NonNullableRemote,
+                Path = this.Path,
+                Persistent = this.Persistent,
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Remote = this.Remote,
+                SizeAllocated = this.SizeAllocated,
+                Uid = this.Uid,
+
+            };
+        }
     }
 }

@@ -19,6 +19,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -27,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("input")]
     [ProtoContract]
-    public class Input
+    public class Input : ICloneable
     {
         [XmlElement("resource")]
         [ProtoMember(3)]
@@ -45,12 +46,10 @@ namespace CycloneDX.Models
         [XmlArrayItem("parameter")]
         [ProtoMember(4)]
         public List<Parameter> Parameters { get; set; }
-        public bool ShouldSerializeParameters() { return Parameters?.Count > 0; }
         
         [XmlElement("environmentVars")]
         [ProtoMember(5)]
         public EnvironmentVarChoices EnvironmentVars { get; set; }
-        public bool ShouldSerializeEnvironmentVars() { return EnvironmentVars != null; }
         
         [XmlElement("data")]
         [ProtoMember(6)]
@@ -60,6 +59,24 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(7)]
         public List<Property> Properties { get; set; }
+        
+        public bool ShouldSerializeParameters() { return Parameters?.Count > 0; }
+        public bool ShouldSerializeEnvironmentVars() { return EnvironmentVars != null; }
+
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Input()
+            {
+                Data = (AttachedText)this.Data.Clone(),
+                EnvironmentVars = (EnvironmentVarChoices)this.EnvironmentVars.Clone(),
+                Parameters = this.Parameters.Select(x => (Parameter)x.Clone()).ToList(),
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Resource = (ResourceReferenceChoice)this.Resource.Clone(),
+                Source = (ResourceReferenceChoice)this.Source.Clone(),
+                Target = (ResourceReferenceChoice)this.Target.Clone(),
+            };
+        }
     }
 }
