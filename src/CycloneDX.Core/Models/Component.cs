@@ -235,18 +235,12 @@ namespace CycloneDX.Models
 
         public override bool Equals(object obj)
         {
-            var other = obj as Component;
-            if (other == null)
-            {
-                return false;
-            }
-
-            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+            return Equals(obj as Component);
         }
 
         public bool Equals(Component obj)
         {
-            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
+            return obj != null && Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
         }
     
         public override int GetHashCode()
