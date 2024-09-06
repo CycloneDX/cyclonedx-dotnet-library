@@ -34,7 +34,6 @@ namespace CycloneDX.Spdx.Interop.Helpers
             {
                 var component = new Component
                 {
-                    Type = Component.Classification.Library,
                     Name = package.Name,
                     Version = package.VersionInfo,
                     Copyright = package.CopyrightText,
@@ -55,6 +54,33 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_BUILT_DATE, package.BuiltDate?.ToString("yyyy-MM-ddTHH:mm:ss'Z'"));
                 component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_RELEASE_DATE, package.ReleaseDate?.ToString("yyyy-MM-ddTHH:mm:ss'Z'"));
                 component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_VALID_UNTIL_DATE, package.ValidUntilDate?.ToString("yyyy-MM-ddTHH:mm:ss'Z'"));
+
+                //Type
+                if (package.PrimaryPackagePurpose != null)
+                {
+                    switch (package.PrimaryPackagePurpose)
+                    {
+                        case PrimaryPackagePurposeType.APPLICATION:
+                            component.Type = Component.Classification.Application;
+                            break;
+                        case PrimaryPackagePurposeType.FIRMWARE:
+                            component.Type = Component.Classification.Firmware;
+                            break;
+                        case PrimaryPackagePurposeType.FRAMEWORK:
+                            component.Type = Component.Classification.Framework;
+                            break;
+                        case PrimaryPackagePurposeType.OPERATING_SYSTEM:
+                            component.Type = Component.Classification.Operating_System;
+                            break;
+                        case PrimaryPackagePurposeType.CONTAINER:
+                            component.Type = Component.Classification.Container;
+                            break;
+                        default:
+                            component.Type = Component.Classification.Library;
+                            break;
+                    }
+                } else
+                    component.Type = Component.Classification.Library;
 
 
                 if (package.LicenseInfoFromFiles != null && package.LicenseInfoFromFiles.Count > 0)

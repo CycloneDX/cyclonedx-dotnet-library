@@ -37,6 +37,7 @@
       "homepage": "NOASSERTION",
       "licenseDeclared": "Apache-2.0",
       "name": "tomcat-catalina",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "9.0.14"
     },
     {
@@ -45,6 +46,7 @@
       "homepage": "NOASSERTION",
       "name": "mylibrary",
       "originator": "Person: Example Super Heros ()",
+      "primaryPackagePurpose": "LIBRARY",
       "supplier": "Person: Example, Inc. (support@example.com)",
       "versionInfo": "1.0.0"
     }

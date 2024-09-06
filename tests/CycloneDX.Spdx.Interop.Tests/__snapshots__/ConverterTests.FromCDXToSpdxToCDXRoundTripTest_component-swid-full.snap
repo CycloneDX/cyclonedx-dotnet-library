@@ -28,7 +28,7 @@
   },
   "components": [
     {
-      "type": "library",
+      "type": "application",
       "author": "Acme Super Heros",
       "name": "Acme Application",
       "version": "9.1.1",

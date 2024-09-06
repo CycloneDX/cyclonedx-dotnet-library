@@ -25,6 +25,7 @@
         "LGPL-2.1-only"
       ],
       "name": "findbugs-project",
+      "primaryPackagePurpose": "APPLICATION",
       "versionInfo": "3.0.0"
     }
   ]

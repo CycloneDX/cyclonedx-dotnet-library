@@ -14,6 +14,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "application-a",
+      "primaryPackagePurpose": "APPLICATION",
       "versionInfo": "1.0"
     },
     {
@@ -21,6 +22,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "library-a",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0"
     },
     {
@@ -28,6 +30,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "framework-a",
+      "primaryPackagePurpose": "FRAMEWORK",
       "versionInfo": "1.0"
     },
     {
@@ -35,6 +38,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "container-a",
+      "primaryPackagePurpose": "CONTAINER",
       "versionInfo": "1.0"
     },
     {
@@ -42,6 +46,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "operating-system-a",
+      "primaryPackagePurpose": "OPERATING_SYSTEM",
       "versionInfo": "1.0"
     },
     {
@@ -49,6 +54,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "firmware-a",
+      "primaryPackagePurpose": "FIRMWARE",
       "versionInfo": "1.0"
     }
   ],

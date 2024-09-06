@@ -185,6 +185,29 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 package.DownloadLocation = component.Properties?.GetSpdxElement(PropertyTaxonomy.DOWNLOAD_LOCATION) ?? "NOASSERTION";
                 package.Homepage = component.Properties?.GetSpdxElement(PropertyTaxonomy.HOMEPAGE) ?? "NOASSERTION";
 
+                //PrimaryPackagePurpose
+                switch (component.Type)
+                {
+                    case Component.Classification.Application:
+                        package.PrimaryPackagePurpose = PrimaryPackagePurposeType.APPLICATION;
+                        break;
+                    case Component.Classification.Firmware:
+                        package.PrimaryPackagePurpose = PrimaryPackagePurposeType.FIRMWARE;
+                        break;
+                    case Component.Classification.Framework:
+                        package.PrimaryPackagePurpose = PrimaryPackagePurposeType.FRAMEWORK;
+                        break;
+                    case Component.Classification.Library:
+                        package.PrimaryPackagePurpose = PrimaryPackagePurposeType.LIBRARY;
+                        break;
+                    case Component.Classification.Operating_System:
+                        package.PrimaryPackagePurpose = PrimaryPackagePurposeType.OPERATING_SYSTEM;
+                        break;
+                    case Component.Classification.Container:
+                        package.PrimaryPackagePurpose = PrimaryPackagePurposeType.CONTAINER;
+                        break;
+                }
+
                 //TODO HasFile
 
                 doc.Packages.Add(package);

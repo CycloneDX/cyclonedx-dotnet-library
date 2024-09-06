@@ -15,6 +15,7 @@
       "homepage": "NOASSERTION",
       "licenseDeclared": "Apache-2.0",
       "name": "tomcat-catalina",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "9.0.14"
     }
   ]

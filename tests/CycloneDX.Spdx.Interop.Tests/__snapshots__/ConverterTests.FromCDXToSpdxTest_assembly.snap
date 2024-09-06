@@ -14,6 +14,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "acme-library-a",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     }
   ]

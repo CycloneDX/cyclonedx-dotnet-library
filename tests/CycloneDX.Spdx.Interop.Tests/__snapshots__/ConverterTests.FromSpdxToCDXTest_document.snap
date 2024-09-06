@@ -80,7 +80,7 @@
   },
   "components": [
     {
-      "type": "library",
+      "type": "framework",
       "supplier": {
         "name": "Jane Doe",
         "contact": [
@@ -276,7 +276,7 @@
       ]
     },
     {
-      "type": "library",
+      "type": "application",
       "name": "Jena",
       "version": "3.12.0",
       "copyright": "NOASSERTION",

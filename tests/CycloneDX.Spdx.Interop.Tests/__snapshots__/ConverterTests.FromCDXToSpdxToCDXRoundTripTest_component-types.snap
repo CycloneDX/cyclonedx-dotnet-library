@@ -28,7 +28,7 @@
   },
   "components": [
     {
-      "type": "library",
+      "type": "application",
       "name": "application-a",
       "version": "1.0",
       "licenses": [
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "type": "library",
+      "type": "framework",
       "name": "framework-a",
       "version": "1.0",
       "licenses": [
@@ -124,7 +124,7 @@
       ]
     },
     {
-      "type": "library",
+      "type": "container",
       "name": "container-a",
       "version": "1.0",
       "licenses": [
@@ -156,7 +156,7 @@
       ]
     },
     {
-      "type": "library",
+      "type": "operating-system",
       "name": "operating-system-a",
       "version": "1.0",
       "licenses": [
@@ -188,7 +188,7 @@
       ]
     },
     {
-      "type": "library",
+      "type": "firmware",
       "name": "firmware-a",
       "version": "1.0",
       "licenses": [

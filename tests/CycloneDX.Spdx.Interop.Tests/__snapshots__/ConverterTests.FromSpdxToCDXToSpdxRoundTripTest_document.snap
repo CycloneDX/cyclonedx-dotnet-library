@@ -123,6 +123,7 @@
         ],
         "packageVerificationCodeValue": "d6a770ba38583ed4bb4525bd96e50461655d2758"
       },
+      "primaryPackagePurpose": "FRAMEWORK",
       "releaseDate": "2012-01-29T18:30:22Z",
       "sourceInfo": "uses glibc-2_11-branch from git://sourceware.org/git/glibc.git.",
       "summary": "GNU C library.",
@@ -135,7 +136,8 @@
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "homepage": "http://commons.apache.org/proper/commons-lang/",
-      "name": "Apache Commons Lang"
+      "name": "Apache Commons Lang",
+      "primaryPackagePurpose": "LIBRARY"
     },
     {
       "SPDXID": "SPDXRef-fromDoap-0",
@@ -150,6 +152,7 @@
       "filesAnalyzed": false,
       "homepage": "http://www.openjena.org/",
       "name": "Jena",
+      "primaryPackagePurpose": "APPLICATION",
       "versionInfo": "3.12.0"
     },
     {
@@ -170,6 +173,7 @@
       "licenseDeclared": "MPL-1.0",
       "name": "Saxon",
       "packageFileName": "saxonB-8.8.zip",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "8.8"
     }
   ],

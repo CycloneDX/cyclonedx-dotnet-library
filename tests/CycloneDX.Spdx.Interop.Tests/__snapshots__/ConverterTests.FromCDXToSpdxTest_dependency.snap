@@ -14,6 +14,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "library-a",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     },
     {
@@ -21,6 +22,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "library-b",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     },
     {
@@ -28,6 +30,7 @@
       "downloadLocation": "NOASSERTION",
       "homepage": "NOASSERTION",
       "name": "library-c",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     }
   ]

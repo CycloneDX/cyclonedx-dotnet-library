@@ -15,6 +15,7 @@
       "homepage": "NOASSERTION",
       "name": "Acme Application",
       "originator": "Person: Acme Super Heros ()",
+      "primaryPackagePurpose": "APPLICATION",
       "versionInfo": "9.1.1"
     }
   ]
