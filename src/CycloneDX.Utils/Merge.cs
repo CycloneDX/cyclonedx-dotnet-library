@@ -511,7 +511,10 @@ namespace CycloneDX.Utils
         /// </remarks>
         private static void NamespaceProperty(Component bomSubject, IEnumerable<object> references, string property)
         {
-            if (references == null) return;
+            if (references == null)
+            {
+                return;
+            }
             if (string.IsNullOrEmpty(property))
             {
                 throw new ArgumentNullException(nameof(property), "Property name cannot be null or empty.");
