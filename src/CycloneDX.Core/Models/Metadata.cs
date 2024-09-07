@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -39,7 +40,7 @@ namespace CycloneDX.Models
 
         [XmlElement("tools")]
         public ToolChoices Tools { get; set; }
-        
+
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(2)]
