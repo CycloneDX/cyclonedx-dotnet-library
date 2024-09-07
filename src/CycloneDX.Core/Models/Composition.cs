@@ -21,6 +21,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
 using ProtoBuf;
+using System.Linq;
 
 namespace CycloneDX.Models
 {
@@ -202,7 +203,16 @@ namespace CycloneDX.Models
 
         public bool Equals(Composition obj)
         {
-            return obj != null && CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            return obj != null &&
+                (this.Aggregate == obj.Aggregate) &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Assemblies, obj.Assemblies) ||
+                this.Assemblies.SequenceEqual(obj.Assemblies)) &&
+                (object.ReferenceEquals(this.Dependencies, obj.Dependencies) ||
+                this.Dependencies.SequenceEqual(obj.Dependencies)) &&
+                (object.ReferenceEquals(this.Vulnerabilities, obj.Vulnerabilities) ||
+                this.Vulnerabilities.SequenceEqual(obj.Vulnerabilities));
         }
 
         public override int GetHashCode()

@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Net;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -240,7 +241,60 @@ namespace CycloneDX.Models
 
         public bool Equals(Component obj)
         {
-            return obj != null && Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
+            return obj != null &&
+                (object.ReferenceEquals(this.Author, obj.Author) ||
+                this.Author.Equals(obj.Author, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Components, obj.Components) ||
+                this.Components.SequenceEqual(obj.Components)) &&
+                (object.ReferenceEquals(this.Copyright, obj.Copyright) ||
+                this.Copyright.Equals(obj.Copyright, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Cpe, obj.Cpe) ||
+                this.Cpe.Equals(obj.Cpe, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Data, obj.Data) ||
+                this.Data.Equals(obj.Data)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Evidence, obj.Evidence) ||
+                this.Evidence.Equals(obj.Evidence)) &&
+                (object.ReferenceEquals(this.ExternalReferences, obj.ExternalReferences) ||
+                this.ExternalReferences.SequenceEqual(obj.ExternalReferences)) &&
+                (object.ReferenceEquals(this.Group, obj.Group) ||
+                this.Group.Equals(obj.Group, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Hashes, obj.Hashes) ||
+                this.Hashes.SequenceEqual(obj.Hashes)) &&
+                (object.ReferenceEquals(this.Licenses, obj.Licenses) ||
+                this.Licenses.SequenceEqual(obj.Licenses)) &&
+                (object.ReferenceEquals(this.LicensesSerialized, obj.LicensesSerialized) ||
+                this.LicensesSerialized.Equals(obj.LicensesSerialized)) &&
+                (object.ReferenceEquals(this.MimeType, obj.MimeType) ||
+                this.MimeType.Equals(obj.MimeType, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.ModelCard, obj.ModelCard) ||
+                this.ModelCard.Equals(obj.ModelCard)) &&
+                (this.Modified.Equals(obj.Modified)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.NonNullableModified.Equals(obj.NonNullableModified)) &&
+                (this.NonNullableScope == obj.NonNullableScope) &&
+                (object.ReferenceEquals(this.Pedigree, obj.Pedigree) ||
+                this.Pedigree.Equals(obj.Pedigree)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.Publisher, obj.Publisher) ||
+                this.Publisher.Equals(obj.Publisher, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Purl, obj.Purl) ||
+                this.Purl.Equals(obj.Purl, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.ReleaseNotes, obj.ReleaseNotes) ||
+                this.ReleaseNotes.Equals(obj.ReleaseNotes)) &&
+                (this.Scope == obj.Scope) &&
+                (object.ReferenceEquals(this.Supplier, obj.Supplier) ||
+                this.Supplier.Equals(obj.Supplier)) &&
+                (object.ReferenceEquals(this.Swid, obj.Swid) ||
+                this.Swid.Equals(obj.Swid)) &&
+                (this.Type == obj.Type) &&
+                (object.ReferenceEquals(this.Version, obj.Version) ||
+                this.Version.Equals(obj.Version, StringComparison.InvariantCultureIgnoreCase));
         }
     
         public override int GetHashCode()
