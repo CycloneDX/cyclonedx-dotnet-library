@@ -31,7 +31,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
     [ProtoContract]
-    public class Component: IEquatable<Component>
+    public class Component: IEquatable<Component>, IHasBomRef
     {
         [ProtoContract]
         public enum Classification

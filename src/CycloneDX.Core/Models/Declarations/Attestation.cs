@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -24,7 +25,7 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Attestation
+    public class Attestation : IEquatable<Attestation>
     {
         [XmlElement("summary")]
         [ProtoMember(1)]
@@ -44,6 +45,27 @@ namespace CycloneDX.Models
 
         [XmlIgnore]
         public Signature Signature { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Attestation;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
+
+        public bool Equals(Attestation obj)
+        {
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Json.Serializer.Serialize(this).GetHashCode();
+        }
 
     }
 }
