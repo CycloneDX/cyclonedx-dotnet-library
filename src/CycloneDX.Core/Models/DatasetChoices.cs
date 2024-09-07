@@ -15,7 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -24,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class DatasetChoices : List<DatasetChoice>, IXmlSerializable
+    public class DatasetChoices : List<DatasetChoice>, IEquatable<DatasetChoices>, IXmlSerializable
     {
         private static XmlSerializer _datasetSerializer;
         private static XmlSerializer GetDatasetSerializer()
@@ -39,7 +41,20 @@ namespace CycloneDX.Models
             return _datasetSerializer;
         }
         
-        public System.Xml.Schema.XmlSchema GetSchema() {
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as DatasetChoices);
+        }
+
+        public bool Equals(DatasetChoices obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this, obj) ||
+                (this.SequenceEqual(obj)));
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
             return null;
         }
 
@@ -62,8 +77,9 @@ namespace CycloneDX.Models
             }
             reader.ReadEndElement();
         }
-        
-        public void WriteXml(System.Xml.XmlWriter writer) {
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
             foreach (var datasetChoice in this)
             {
                 if (datasetChoice.Ref != null)

@@ -15,14 +15,16 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Patch
+    public class Patch : IEquatable<Patch>
     {
         [ProtoContract]
         public enum PatchClassification
@@ -51,5 +53,20 @@ namespace CycloneDX.Models
         [XmlArrayItem("issue")]        
         [ProtoMember(3)]
         public List<Issue> Resolves { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Patch);
+        }
+
+        public bool Equals(Patch obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Diff, obj.Diff) ||
+                this.Diff.Equals(obj.Diff)) &&
+                (object.ReferenceEquals(this.Resolves, obj.Resolves) ||
+                this.Resolves.SequenceEqual(obj.Resolves)) &&
+                (this.Type == obj.Type);
+        }
     }
 }

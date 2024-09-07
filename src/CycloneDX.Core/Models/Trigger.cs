@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("trigger")]
     [ProtoContract]
-    public class Trigger
+    public class Trigger : IEquatable<Trigger>
     {
         [ProtoContract]
         public enum TriggerType
@@ -42,7 +43,7 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class Condition
+        public class Condition : IEquatable<Condition>
         {
             [XmlElement("description")]
             [ProtoMember(1)]
@@ -57,6 +58,22 @@ namespace CycloneDX.Models
             [ProtoMember(3)]
             public List<Property> Properties { get; set; }
             public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as Condition);
+            }
+
+            public bool Equals(Condition obj)
+            {
+                return obj != null &&
+                    (object.ReferenceEquals(this.Description, obj.Description) ||
+                    this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                    (object.ReferenceEquals(this.Expression, obj.Expression) ||
+                    this.Expression.Equals(obj.Expression, StringComparison.InvariantCultureIgnoreCase)) &&
+                    (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                    this.Properties.SequenceEqual(obj.Properties));
+            }
         }
 
         [JsonPropertyName("bom-ref")]
@@ -120,5 +137,37 @@ namespace CycloneDX.Models
         [ProtoMember(5)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Trigger);
+        }
+
+        public bool Equals(Trigger obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Conditions, obj.Conditions) ||
+                this.Conditions.SequenceEqual(obj.Conditions)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Event, obj.Event) ||
+                this.Event.Equals(obj.Event)) &&
+                (object.ReferenceEquals(this.Inputs, obj.Inputs) ||
+                this.Inputs.SequenceEqual(obj.Inputs)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.SequenceEqual(obj.Name)) &&
+                (object.ReferenceEquals(this.Outputs, obj.Outputs) ||
+                this.Outputs.SequenceEqual(obj.Outputs)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.ResourceReferences, obj.ResourceReferences) ||
+                this.ResourceReferences.SequenceEqual(obj.ResourceReferences)) &&
+                (this.TimeActivated.Equals(obj.TimeActivated)) &&
+                (this.Type.Equals(obj.Type)) &&
+                (object.ReferenceEquals(this.Uid, obj.Uid) ||
+                this.Uid.Equals(obj.Uid, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

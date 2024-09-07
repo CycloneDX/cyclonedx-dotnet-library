@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("command")]
     [ProtoContract]
-    public class Command
+    public class Command : IEquatable<Command>
     {
         [XmlElement("executed")]
         [ProtoMember(1)]
@@ -37,5 +38,19 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Command);
+        }
+
+        public bool Equals(Command obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Executed, obj.Executed) ||
+                this.Executed.Equals(obj.Executed, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties));
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-methods")]
     [ProtoContract]
-    public class EvidenceMethods
+    public class EvidenceMethods : IEquatable<EvidenceMethods>
     {
         [ProtoContract]
         public enum EvidenceTechnique
@@ -66,5 +66,20 @@ namespace CycloneDX.Models
         [XmlElement("value")]
         [ProtoMember(3)]
         public string Value { get; set; }
+
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as EvidenceMethods);
+        }
+
+        public bool Equals(EvidenceMethods obj)
+        {
+            return obj != null &&
+                (this.Confidence.Equals(obj.Confidence)) &&
+                (this.Technique.Equals(obj.Technique)) &&
+                (object.ReferenceEquals(this.Value, obj.Value) ||
+                this.Value.Equals(obj.Value, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

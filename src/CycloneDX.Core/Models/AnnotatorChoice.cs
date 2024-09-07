@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class AnnotatorChoice
+    public class AnnotatorChoice : IEquatable<AnnotatorChoice>
     {
         [XmlElement("organization")]
         [ProtoMember(1)]
@@ -38,5 +39,23 @@ namespace CycloneDX.Models
         [XmlElement("service")]
         [ProtoMember(4)]
         public Service Service { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as AnnotatorChoice);
+        }
+
+        public bool Equals(AnnotatorChoice obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Component, obj.Component) ||
+                this.Component.Equals(obj.Component)) &&
+                (object.ReferenceEquals(this.Individual, obj.Individual) ||
+                this.Individual.Equals(obj.Individual)) &&
+                (object.ReferenceEquals(this.Organization, obj.Organization) ||
+                this.Organization.Equals(obj.Organization)) &&
+                (object.ReferenceEquals(this.Service, obj.Service) ||
+                this.Service.Equals(obj.Service));
+        }
     }
 }

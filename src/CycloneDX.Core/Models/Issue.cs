@@ -15,14 +15,16 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Issue
+    public class Issue : IEquatable<Issue>
     {
         [ProtoContract]
         public enum IssueClassification
@@ -61,5 +63,26 @@ namespace CycloneDX.Models
         [XmlArrayItem("url")]
         [ProtoMember(6)]
         public List<string> References { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Issue);
+        }
+
+        public bool Equals(Issue obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Id, obj.Id) ||
+                this.Id.Equals(obj.Id, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.References, obj.References) ||
+                this.References.SequenceEqual(obj.References)) &&
+                (object.ReferenceEquals(this.Source, obj.Source) ||
+                this.Source.Equals(obj.Source)) &&
+                (this.Type == obj.Type);
+        }
     }
 }

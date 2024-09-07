@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -27,7 +28,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("licensing")]
     [ProtoContract]
-    public class Licensing
+    public class Licensing : IEquatable<Licensing>
     {
         [ProtoContract]
         public enum LicenseType
@@ -114,5 +115,29 @@ namespace CycloneDX.Models
             set { _expiration = BomUtils.UtcifyDateTime(value); }
         }
         public bool ShouldSerializeExpiration() { return Expiration != null; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Licensing);
+        }
+
+        public bool Equals(Licensing obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.AltIds, obj.AltIds) ||
+                this.AltIds.SequenceEqual(obj.AltIds)) &&
+                (this.Expiration.Equals(obj.Expiration)) &&
+                (this.LastRenewal.Equals(obj.LastRenewal)) &&
+                (object.ReferenceEquals(this.Licensee, obj.Licensee) ||
+                this.Licensee.Equals(obj.Licensee)) &&
+                (object.ReferenceEquals(this.LicenseTypes, obj.LicenseTypes) ||
+                this.LicenseTypes.SequenceEqual(obj.LicenseTypes)) &&
+                (object.ReferenceEquals(this.Licensor, obj.Licensor) ||
+                this.Licensor.Equals(obj.Licensor)) &&
+                (object.ReferenceEquals(this.PurchaseOrder, obj.PurchaseOrder) ||
+                this.PurchaseOrder.SequenceEqual(obj.PurchaseOrder)) &&
+                (object.ReferenceEquals(this.Purchaser, obj.Purchaser) ||
+                this.Purchaser.Equals(obj.Purchaser));
+        }
     }
 }

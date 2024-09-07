@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("task")]
     [ProtoContract]
-    public class WorkflowTask
+    public class WorkflowTask : IEquatable<WorkflowTask>
     {
         [ProtoContract]
         public enum TaskType
@@ -134,5 +135,43 @@ namespace CycloneDX.Models
         [XmlArrayItem("dependency")]
         [ProtoMember(17)]
         public List<Dependency> RuntimeTopologies { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as WorkflowTask);
+        }
+
+        public bool Equals(WorkflowTask obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Inputs, obj.Inputs) ||
+                this.Inputs.SequenceEqual(obj.Inputs)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Outputs, obj.Outputs) ||
+                this.Outputs.SequenceEqual(obj.Outputs)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.ResourceReferences, obj.ResourceReferences) ||
+                this.ResourceReferences.Equals(obj.ResourceReferences)) &&
+                (object.ReferenceEquals(this.ResourceReferences, obj.RuntimeTopologies) ||
+                this.RuntimeTopologies.SequenceEqual(obj.RuntimeTopologies)) &&
+                (object.ReferenceEquals(this.Steps, obj.Steps) ||
+                this.Steps.SequenceEqual(obj.Steps)) &&
+                (object.ReferenceEquals(this.TaskTypes, obj.TaskTypes) ||
+                this.TaskTypes.SequenceEqual(obj.TaskTypes)) &&
+                (this.TimeEnd.Equals(obj.TimeEnd)) &&
+                (this.TimeStart.Equals(obj.TimeStart)) &&
+                (object.ReferenceEquals(this.Trigger, obj.Trigger) ||
+                this.Trigger.Equals(obj.Trigger)) &&
+                (object.ReferenceEquals(this.Uid, obj.Uid) ||
+                this.Uid.Equals(obj.Uid)) &&
+                (object.ReferenceEquals(this.Workspaces, obj.Workspaces) ||
+                this.Workspaces.SequenceEqual(obj.Workspaces));
+        }
     }
 }

@@ -22,7 +22,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class IdentifiableAction
+    public class IdentifiableAction : IEquatable<IdentifiableAction>
     {
         private DateTime? _timestamp;
         [XmlElement("timestamp")]
@@ -41,5 +41,19 @@ namespace CycloneDX.Models
         [XmlElement("email")]
         [ProtoMember(3)]
         public string Email { get; set; }
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as IdentifiableAction);
+        }
+
+        public bool Equals(IdentifiableAction obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Email, obj.Email) ||
+                this.Email.Equals(obj.Email, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.Timestamp.Equals(obj.Timestamp));
+        }
     }
 }

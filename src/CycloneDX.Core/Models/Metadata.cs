@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -25,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Metadata
+    public class Metadata : IEquatable<Metadata>
     {
         private DateTime? _timestamp;
         [XmlElement("timestamp")]
@@ -111,5 +112,36 @@ namespace CycloneDX.Models
         [ProtoMember(9)]
         public List<Lifecycles> Lifecycles { get; set; }
         public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Metadata);
+        }
+
+        public bool Equals(Metadata obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Authors, obj.Authors) ||
+                this.Authors.SequenceEqual(obj.Authors)) &&
+                (object.ReferenceEquals(this.Component, obj.Component) ||
+                this.Component.Equals(obj.Component)) &&
+                (object.ReferenceEquals(this.Licenses, obj.Licenses) ||
+                this.Licenses.SequenceEqual(obj.Licenses)) &&
+                (object.ReferenceEquals(this.LicensesSerialized, obj.LicensesSerialized) ||
+                this.LicensesSerialized.Equals(obj.LicensesSerialized)) &&
+                (object.ReferenceEquals(this.Lifecycles, obj.Lifecycles) ||
+                this.Lifecycles.SequenceEqual(obj.Lifecycles)) &&
+                (object.ReferenceEquals(this.Manufacture, obj.Manufacture) ||
+                this.Manufacture.Equals(obj.Manufacture)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.ProtobufTools, obj.ProtobufTools) ||
+                this.ProtobufTools.Equals(obj.ProtobufTools)) &&
+                (object.ReferenceEquals(this.Supplier, obj.Supplier) ||
+                this.Supplier.Equals(obj.Supplier)) &&
+                (this.Timestamp.Equals(obj.Timestamp)) &&
+                (object.ReferenceEquals(this.Tools, obj.Tools) ||
+                this.Tools.Equals(obj.Tools));
+        }
     }
 }

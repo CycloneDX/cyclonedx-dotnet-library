@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class DatasetChoice
+    public class DatasetChoice : IEquatable<DatasetChoice>
     {
         [XmlElement("dataset")]
         [ProtoMember(1)]
@@ -30,5 +31,19 @@ namespace CycloneDX.Models
         [XmlElement("ref")]
         [ProtoMember(2)]
         public string Ref { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as DatasetChoice);
+        }
+
+        public bool Equals(DatasetChoice obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.DataSet, obj.DataSet) ||
+                this.DataSet.Equals(obj.DataSet)) &&
+                (object.ReferenceEquals(this.Ref, obj.Ref) ||
+                this.Ref.Equals(obj.Ref, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Note
+    public class Note : IEquatable<Note>
     {
         [XmlElement("locale")]
         [ProtoMember(1)]
@@ -30,5 +31,19 @@ namespace CycloneDX.Models
         [XmlElement("text")]
         [ProtoMember(2)]
         public AttachedText Text { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Note);
+        }
+
+        public bool Equals(Note obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Locale, obj.Locale) ||
+                this.Locale.Equals(obj.Locale, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Text, obj.Text) ||
+                this.Text.Equals(obj.Text));
+        }
     }
 }

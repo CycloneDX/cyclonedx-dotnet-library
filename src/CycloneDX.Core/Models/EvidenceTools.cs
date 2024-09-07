@@ -22,11 +22,24 @@ using System.Xml.Serialization;
 
 namespace CycloneDX.Models
 {
-    public class EvidenceTools : List<string>, IXmlSerializable
+    public class EvidenceTools : List<string>, IEquatable<EvidenceTools>, IXmlSerializable
     {
         private readonly string _elementName = "tool";
 
-        public System.Xml.Schema.XmlSchema GetSchema() {
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as EvidenceTools);
+        }
+
+        public bool Equals(EvidenceTools obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this, obj) ||
+                this.Equals(obj));
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
             return null;
         }
 
@@ -40,8 +53,9 @@ namespace CycloneDX.Models
             }
             reader.ReadEndElement();
         }
-        
-        public void WriteXml(XmlWriter writer) {
+
+        public void WriteXml(XmlWriter writer)
+        {
             foreach (var bomref in this)
             {
                 writer.WriteStartElement(_elementName);
@@ -49,5 +63,6 @@ namespace CycloneDX.Models
                 writer.WriteEndElement();
             }
         }
+
     }
 }

@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -29,7 +30,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence")]
     [ProtoContract]
-    public class Evidence
+    public class Evidence : IEquatable<Evidence>
     {
         [XmlIgnore]
         [ProtoMember(1)]
@@ -63,5 +64,27 @@ namespace CycloneDX.Models
         [XmlElement("callstack", Order = 2)]
         [ProtoMember(5)]
         public Callstack Callstack { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Evidence);
+        }
+
+        public bool Equals(Evidence obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Callstack, obj.Callstack) ||
+                this.Callstack.Equals(obj.Callstack)) &&
+                (object.ReferenceEquals(this.Copyright, obj.Copyright) ||
+                this.Copyright.SequenceEqual(obj.Copyright)) &&
+                (object.ReferenceEquals(this.Identity, obj.Identity) ||
+                this.Identity.Equals(obj.Identity)) &&
+                (object.ReferenceEquals(this.Licenses, obj.Licenses) ||
+                this.Licenses.SequenceEqual(obj.Licenses)) &&
+                (object.ReferenceEquals(this.LicensesSerialized, obj.LicensesSerialized) ||
+                this.LicensesSerialized.Equals(obj.LicensesSerialized)) &&
+                (object.ReferenceEquals(this.Occurrences, obj.Occurrences) ||
+                this.Occurrences.Equals(obj.Occurrences));
+        }
     }
 }

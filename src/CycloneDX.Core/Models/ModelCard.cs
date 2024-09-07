@@ -26,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("modelCard")]
     [ProtoContract]
-    public class ModelCard
+    public class ModelCard : IEquatable<ModelCard>
     {
         [ProtoContract]
         public enum ModelParameterApproachType
@@ -44,13 +44,13 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class ModelCardQuantitativeAnalysis
+        public class ModelCardQuantitativeAnalysis : IEquatable<ModelCardQuantitativeAnalysis>
         {
             [ProtoContract]
-            public class PerformanceMetric
+            public class PerformanceMetric : IEquatable<PerformanceMetric>
             {
                 [ProtoContract]
-                public class PerformanceMetricConfidenceInterval
+                public class PerformanceMetricConfidenceInterval : IEquatable<PerformanceMetricConfidenceInterval>
                 {
                     [XmlElement("lowerBound")]
                     [ProtoMember(1)]
@@ -59,6 +59,20 @@ namespace CycloneDX.Models
                     [XmlElement("upperBound")]
                     [ProtoMember(2)]
                     public string UpperBound { get; set; }
+
+                    public override bool Equals(object obj)
+                    {
+                        return Equals(obj as PerformanceMetricConfidenceInterval);
+                    }
+
+                    public bool Equals(PerformanceMetricConfidenceInterval obj)
+                    {
+                        return obj != null &&
+                            (object.ReferenceEquals(this.LowerBound, obj.LowerBound) ||
+                            this.LowerBound.Equals(obj.LowerBound)) &&
+                            (object.ReferenceEquals(this.UpperBound, obj.UpperBound) ||
+                            this.UpperBound.Equals(obj.UpperBound));
+                    }
                 }
 
                 [XmlElement("type")]
@@ -76,6 +90,23 @@ namespace CycloneDX.Models
                 [XmlElement("confidenceInterval")]
                 [ProtoMember(4)]
                 public PerformanceMetricConfidenceInterval ConfidenceInterval { get; set; }
+
+                public override bool Equals(object obj)
+                {
+                    return Equals(obj as PerformanceMetric);
+                }
+
+                public bool Equals(PerformanceMetric obj)
+                {
+                    return obj != null &&
+                        (object.ReferenceEquals(this.ConfidenceInterval, obj.ConfidenceInterval) ||
+                        this.ConfidenceInterval.Equals(obj.ConfidenceInterval)) &&
+                        (object.ReferenceEquals(this.Slice, obj.Slice) ||
+                        this.Slice.Equals(obj.Slice, StringComparison.InvariantCultureIgnoreCase)) &&
+                        (this.Type == obj.Type) &&
+                        (object.ReferenceEquals(this.Value, obj.Value) ||
+                        this.Value.Equals(obj.Value, StringComparison.InvariantCultureIgnoreCase));
+                }
             }
             
             [XmlArray("performanceMetrics")]
@@ -86,6 +117,20 @@ namespace CycloneDX.Models
             [XmlElement("graphics")]
             [ProtoMember(2)]
             public GraphicsCollection Graphics { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as ModelCardQuantitativeAnalysis);
+            }
+
+            public bool Equals(ModelCardQuantitativeAnalysis obj)
+            {
+                return obj != null &&
+                    (object.ReferenceEquals(this.Graphics, obj.Graphics) ||
+                    this.Graphics.Equals(obj.Graphics)) &&
+                    (object.ReferenceEquals(this.PerformanceMetrics, obj.PerformanceMetrics) ||
+                    this.PerformanceMetrics.Equals(obj.PerformanceMetrics));
+            }
         }
 
         [JsonPropertyName("bom-ref")]
@@ -104,5 +149,23 @@ namespace CycloneDX.Models
         [XmlElement("considerations")]
         [ProtoMember(4)]
         public ModelCardConsiderations Considerations { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ModelCard);
+        }
+
+        public bool Equals(ModelCard obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Considerations, obj.Considerations) ||
+                this.Considerations.Equals(obj.Considerations)) &&
+                (object.ReferenceEquals(this.ModelParameters, obj.ModelParameters) ||
+                this.ModelParameters.Equals(obj.ModelParameters)) &&
+                (object.ReferenceEquals(this.QuantitativeAnalysis, obj.QuantitativeAnalysis) ||
+                this.QuantitativeAnalysis.Equals(obj.QuantitativeAnalysis));
+        }
     }
 }

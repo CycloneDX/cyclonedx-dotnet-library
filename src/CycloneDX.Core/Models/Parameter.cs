@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Parameter
+    public class Parameter : IEquatable<Parameter>
     {
         [XmlElement("name")]
         [ProtoMember(1)]
@@ -34,5 +35,22 @@ namespace CycloneDX.Models
         [XmlElement("data-type")]
         [ProtoMember(3)]
         public string DataType { get; set; }
+
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Parameter);
+        }
+
+        public bool Equals(Parameter obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.DataType, obj.DataType) ||
+                this.DataType.Equals(obj.DataType, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Value, obj.Value) ||
+                this.Value.Equals(obj.Value, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

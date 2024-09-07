@@ -29,7 +29,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlRoot("bom", IsNullable=false)]
     [ProtoContract]
-    public class Bom
+    public class Bom : IEquatable<Bom>
     {
         [XmlIgnore]
         public string BomFormat => "CycloneDX";
@@ -168,5 +168,44 @@ namespace CycloneDX.Models
         [ProtoMember(13)]
         public List<Formula> Formulation { get; set; }
         public bool ShouldSerializeFormulation() { return Formulation?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Bom);
+        }
+
+        public bool Equals(Bom obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Annotations, obj.Annotations) ||
+                this.Annotations.SequenceEqual(obj.Annotations)) &&
+                (object.ReferenceEquals(this.BomFormat, obj.BomFormat) ||
+                this.BomFormat.Equals(obj.BomFormat, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Components, obj.Components) ||
+                this.Components.SequenceEqual(obj.Components)) &&
+                (object.ReferenceEquals(this.Compositions, obj.Compositions) ||
+                this.Compositions.SequenceEqual(obj.Compositions)) &&
+                (object.ReferenceEquals(this.Dependencies, obj.Dependencies) ||
+                this.Dependencies.SequenceEqual(obj.Dependencies)) &&
+                (object.ReferenceEquals(this.ExternalReferences, obj.ExternalReferences) ||
+                this.ExternalReferences.SequenceEqual(obj.ExternalReferences)) &&
+                (object.ReferenceEquals(this.Formulation, obj.Formulation) ||
+                this.Formulation.SequenceEqual(obj.Formulation)) &&
+                (object.ReferenceEquals(this.Metadata, obj.Metadata) ||
+                this.Metadata.Equals(obj.Metadata)) &&
+                (this.NonNullableVersion.Equals(obj.NonNullableVersion)) &&
+
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.SerialNumber, obj.SerialNumber) ||
+                this.SerialNumber.Equals(obj.SerialNumber, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Services, obj.Services) ||
+                this.Services.SequenceEqual(obj.Services)) &&
+                (this.SpecVersion.Equals(obj.SpecVersion)) &&
+                (this.SpecVersionString.Equals(obj.SpecVersionString)) &&
+                (this.Version.Equals(obj.Version)) &&
+                (object.ReferenceEquals(this.Vulnerabilities, obj.Vulnerabilities) ||
+                this.Vulnerabilities.Equals(obj.Vulnerabilities));
+        }
     }
 }

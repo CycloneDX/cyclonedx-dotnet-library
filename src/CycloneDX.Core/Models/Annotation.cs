@@ -20,11 +20,12 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
 using ProtoBuf;
+using System.Linq;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Annotation
+    public class Annotation : IEquatable<Annotation>
     {
         [XmlType("subject")]
         public class XmlAnnotationSubject
@@ -81,9 +82,31 @@ namespace CycloneDX.Models
             set { _timestamp = BomUtils.UtcifyDateTime(value); }
         }
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
-        
+
+
         [XmlElement("text")]
         [ProtoMember(5)]
         public string Text { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Annotation);
+        }
+
+        public bool Equals(Annotation obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Annotator, obj.Annotator) ||
+                this.Annotator.Equals(obj.Annotator)) &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Subjects, obj.Subjects) ||
+                this.Subjects.SequenceEqual(obj.Subjects)) &&
+                (object.ReferenceEquals(this.Text, obj.Text) ||
+                this.Text.Equals(obj.Text)) &&
+                (this.Timestamp.Equals(obj.Timestamp)) &&
+                (object.ReferenceEquals(this.XmlSubjects, obj.XmlSubjects) ||
+                this.XmlSubjects.SequenceEqual(obj.XmlSubjects));
+        }
     }
 }

@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -23,7 +24,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ResourceReferenceChoice : IXmlSerializable
+    public class ResourceReferenceChoice : IEquatable<ResourceReferenceChoice>, IXmlSerializable
     {
         private static XmlSerializer _extRefSerializer;
         private static XmlSerializer GetExternalReferenceSerializer()
@@ -42,7 +43,22 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public ExternalReference ExternalReference { get; set; }
         
-        public System.Xml.Schema.XmlSchema GetSchema() {
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ResourceReferenceChoice);
+        }
+
+        public bool Equals(ResourceReferenceChoice obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.ExternalReference, obj.ExternalReference) ||
+                this.ExternalReference.Equals(obj.ExternalReference)) &&
+                (object.ReferenceEquals(this.Ref, obj.Ref) ||
+                this.Ref.Equals(obj.Ref, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
             return null;
         }
 
@@ -61,8 +77,9 @@ namespace CycloneDX.Models
             }
             reader.ReadEndElement();
         }
-        
-        public void WriteXml(XmlWriter writer) {
+
+        public void WriteXml(XmlWriter writer)
+        {
             if (this.Ref != null)
             {
                 writer.WriteElementString("ref", this.Ref);
