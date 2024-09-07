@@ -81,7 +81,7 @@ namespace CycloneDX.Models
                         Licenses.Add(new LicenseChoice { License = license });
                         finished = false;
                     }
-                    if (reader.Name == "expression")
+                    if (reader.LocalName == "expression")
                     {
                         reader.ReadStartElement();
                         var expression = reader.ReadContentAsString();
