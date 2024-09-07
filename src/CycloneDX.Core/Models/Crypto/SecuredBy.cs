@@ -15,14 +15,25 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+using ProtoBuf;
+using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
-    public interface IHasBomRef
+    [ProtoContract]
+    public class SecuredBy
     {
-        string BomRef { get; set; }
+        [XmlElement("mechanism")]
+        [ProtoMember(1)]
+
+        public string Mechanism { get; set; }
+        [XmlElement("algorithmRef")]
+        [ProtoMember(2)]
+
+        public string AlgorithmRef { get; set; }
+
+
     }
+
+
 }

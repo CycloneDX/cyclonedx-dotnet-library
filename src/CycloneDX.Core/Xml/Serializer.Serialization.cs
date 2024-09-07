@@ -26,9 +26,6 @@ using System.Xml.Serialization;
 using CycloneDX.Models;
 using ProtoBuf;
 
-// ensure that DateTime is correctly serialized
-[module: CompatibilityLevel(CompatibilityLevel.Level300)]
-
 namespace CycloneDX.Xml
 {
     /// <summary>

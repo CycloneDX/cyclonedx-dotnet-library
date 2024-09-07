@@ -15,14 +15,23 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
-    public interface IHasBomRef
+    public enum AssetType
     {
-        string BomRef { get; set; }
+        Null,
+        [XmlEnum("algorithm")]
+        Algorithm,
+        [XmlEnum("certificate")]
+        Certificate,
+        [XmlEnum("protocol")]
+        Protocol,
+        [XmlEnum("related-crypto-material")]
+        Related_Crypto_Material,
+
     }
+
+
 }

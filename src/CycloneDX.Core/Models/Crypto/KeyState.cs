@@ -15,14 +15,26 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
-    public interface IHasBomRef
+    public enum KeyState
     {
-        string BomRef { get; set; }
+        Null,
+        [XmlEnum("pre-activation")]
+        Pre_Activation,
+        [XmlEnum("active")]
+        Active,
+        [XmlEnum("suspended")]
+        Suspended,
+        [XmlEnum("deactivated")]
+        Deactivated,
+        [XmlEnum("compromised")]
+        Compromised,
+        [XmlEnum("destroyed")]
+        Destroyed
     }
+
+
 }

@@ -15,14 +15,16 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
-    public interface IHasBomRef
+    public class CipherSuiteCollection
     {
-        string BomRef { get; set; }
+        [XmlElement("cipherSuite")]
+        public List<CipherSuite> CipherSuites { get; set; }
     }
+
+
 }

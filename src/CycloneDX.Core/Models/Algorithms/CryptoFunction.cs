@@ -15,14 +15,38 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
-    public interface IHasBomRef
+    public enum CryptoFunction
     {
-        string BomRef { get; set; }
+        Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
+        [XmlEnum("generate")]
+        Generate,
+        [XmlEnum("keygen")]
+        Keygen,
+        [XmlEnum("encrypt")]
+        Encrypt,
+        [XmlEnum("decrypt")]
+        Decrypt,
+        [XmlEnum("digest")]
+        Digest,
+        [XmlEnum("tag")]
+        Tag,
+        [XmlEnum("keyderive")]
+        KeyDerive,
+        [XmlEnum("sign")]
+        Sign,
+        [XmlEnum("verify")]
+        Verify,
+        [XmlEnum("encapsulate")]
+        Encapsulate,
+        [XmlEnum("decapsulate")]
+        Decapsulate,
     }
 }

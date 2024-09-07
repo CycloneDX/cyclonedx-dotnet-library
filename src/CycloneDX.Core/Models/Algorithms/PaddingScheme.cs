@@ -15,14 +15,26 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
-    public interface IHasBomRef
-    {
-        string BomRef { get; set; }
+    public enum PaddingScheme
+    {       
+        Null,
+        [XmlEnum("unknown")]
+        Unknown,
+        [XmlEnum("other")]
+        Other,
+        [XmlEnum("pkcs5")]
+        PKCS5,
+        [XmlEnum("pkcs7")]
+        PKCS7,
+        [XmlEnum("pkcs1v15")]
+        PKCS1v15,
+        [XmlEnum("oaep")]
+        OAEP,
+        [XmlEnum("raw")]
+        Raw
     }
 }
