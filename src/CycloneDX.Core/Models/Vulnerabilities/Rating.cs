@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class Rating
+    public class Rating : IEquatable<Rating>
     {
         [XmlElement("source")]
         [ProtoMember(1)]
@@ -46,5 +47,24 @@ namespace CycloneDX.Models.Vulnerabilities
         [XmlElement("justification")]
         [ProtoMember(6)]
         public string Justification { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Rating);
+        }
+
+        public bool Equals(Rating obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Justification, obj.Justification) ||
+                this.Justification.Equals(obj.Justification, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.Method.Equals(obj.Method)) &&
+                (this.Score.Equals(obj.Score)) &&
+                (this.Severity.Equals(obj.Severity)) &&
+                (object.ReferenceEquals(this.Source, obj.Source) ||
+                this.Source.Equals(obj.Source)) &&
+                (object.ReferenceEquals(this.Vector, obj.Vector) ||
+                this.Vector.Equals(obj.Vector, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

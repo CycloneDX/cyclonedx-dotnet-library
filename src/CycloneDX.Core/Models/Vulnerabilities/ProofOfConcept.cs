@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -24,7 +25,7 @@ using ProtoBuf;
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class ProofOfConcept
+    public class ProofOfConcept : IEquatable<ProofOfConcept>
     {
         [XmlElement("reproductionSteps")]
         [ProtoMember(1)]
@@ -39,5 +40,21 @@ namespace CycloneDX.Models.Vulnerabilities
         [JsonPropertyName("supportingMaterial")]
         [ProtoMember(3)]
         public List<AttachedText> SupportingMaterials { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ProofOfConcept);
+        }
+
+        public bool Equals(ProofOfConcept obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Environment, obj.Environment) ||
+                this.Environment.Equals(obj.Environment, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.ReproductionSteps, obj.ReproductionSteps) ||
+                this.ReproductionSteps.Equals(obj.ReproductionSteps, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.SupportingMaterials, obj.SupportingMaterials) ||
+                this.SupportingMaterials.SequenceEqual(obj.SupportingMaterials));
+        }
     }
 }

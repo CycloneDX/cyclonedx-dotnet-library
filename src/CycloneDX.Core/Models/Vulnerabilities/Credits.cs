@@ -15,14 +15,16 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class Credits
+    public class Credits : IEquatable<Credits>
     {
         [XmlArray("organizations")]
         [XmlArrayItem("organization")]
@@ -33,5 +35,19 @@ namespace CycloneDX.Models.Vulnerabilities
         [XmlArrayItem("individual")]
         [ProtoMember(2)]
         public List<OrganizationalContact> Individuals { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Credits);
+        }
+
+        public bool Equals(Credits obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Individuals, obj.Individuals) ||
+                this.Individuals.SequenceEqual(obj.Individuals)) &&
+                (object.ReferenceEquals(this.Organizations, obj.Organizations) ||
+                this.Organizations.SequenceEqual(obj.Organizations));
+        }
     }
 }
