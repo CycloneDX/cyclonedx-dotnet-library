@@ -72,7 +72,7 @@ namespace CycloneDX.Models
         public System.Xml.XmlAttribute[] AnyAttr { get; set; }
 
         [XmlIgnore]
-        public Signature signature { get; set; }
+        public Signature Signature { get; set; }
 
 
 
