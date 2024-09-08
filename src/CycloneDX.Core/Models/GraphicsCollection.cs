@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,10 +27,10 @@ namespace CycloneDX.Models
 {
     [XmlType("graphics")]
     [ProtoContract]
-    public class GraphicsCollection
+    public class GraphicsCollection : ICloneable
     {
         [ProtoContract]
-        public class Graphic
+        public class Graphic : ICloneable
         {
             [XmlElement("name")]
             [ProtoMember(1)]
@@ -38,6 +39,15 @@ namespace CycloneDX.Models
             [XmlElement("image")]
             [ProtoMember(2)]
             public AttachedText Image { get; set; }
+
+            public object Clone()
+            {
+                return new Graphic()
+                {
+                    Image = (AttachedText)this.Image.Clone(),
+                    Name = this.Name,
+                };
+            }
         }
 
         [XmlElement("description")]
@@ -48,5 +58,14 @@ namespace CycloneDX.Models
         [XmlArrayItem("graphic")]
         [ProtoMember(2)]
         public List<Graphic> Collection { get; set; }
+
+        public object Clone()
+        {
+            return new GraphicsCollection()
+            {
+                Collection = this.Collection.Select(x => (Graphic)x.Clone()).ToList(),
+                Description = this.Description,
+            };
+        }
     }
 }

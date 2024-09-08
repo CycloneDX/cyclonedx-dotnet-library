@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -24,7 +25,7 @@ using ProtoBuf;
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class ProofOfConcept
+    public class ProofOfConcept : ICloneable
     {
         [XmlElement("reproductionSteps")]
         [ProtoMember(1)]
@@ -39,5 +40,15 @@ namespace CycloneDX.Models.Vulnerabilities
         [JsonPropertyName("supportingMaterial")]
         [ProtoMember(3)]
         public List<AttachedText> SupportingMaterials { get; set; }
+
+        public object Clone()
+        {
+            return new ProofOfConcept()
+            {
+                Environment = this.Environment,
+                ReproductionSteps = this.ReproductionSteps,
+                SupportingMaterials = this.SupportingMaterials.Select(x => (AttachedText)x.Clone()).ToList()
+            };
+        }
     }
 }

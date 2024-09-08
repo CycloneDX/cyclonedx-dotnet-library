@@ -254,9 +254,7 @@ namespace CycloneDX
 
         public static Bom Copy(this Bom bom)
         {
-            var protoBom = Protobuf.Serializer.SerializeForDeepCopy(bom);
-            var bomCopy = Protobuf.Serializer.Deserialize(protoBom);
-            return bomCopy;
+            return (Bom)bom.Clone();
         }
 
         public static void EnqueueMany<T>(this Queue<T> queue, IEnumerable<T> items)

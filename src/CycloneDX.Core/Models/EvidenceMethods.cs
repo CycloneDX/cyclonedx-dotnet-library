@@ -28,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-methods")]
     [ProtoContract]
-    public class EvidenceMethods
+    public class EvidenceMethods : ICloneable
     {
         [ProtoContract]
         public enum EvidenceTechnique
@@ -66,5 +66,15 @@ namespace CycloneDX.Models
         [XmlElement("value")]
         [ProtoMember(3)]
         public string Value { get; set; }
+
+        public object Clone()
+        {
+            return new EvidenceMethods()
+            {
+                Confidence = this.Confidence,
+                Technique = this.Technique,
+                Value = this.Value
+            };
+        }
     }
 }

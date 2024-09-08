@@ -25,7 +25,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ServiceDataChoices : IXmlSerializable
+    public class ServiceDataChoices : ICloneable, IXmlSerializable
     {
         internal SpecificationVersion SpecVersion { get; set; }
 
@@ -86,6 +86,16 @@ namespace CycloneDX.Models
         public bool ShouldSerialize()
         {
             return DataClassifications?.Count > 0 || DataFlows?.Count > 0;
+        }
+
+        public object Clone()
+        {
+            return new ServiceDataChoices()
+            {
+                DataClassifications = this.DataClassifications,
+                DataFlows = this.DataFlows,
+                SpecVersion = this.SpecVersion
+            };
         }
     }
 }

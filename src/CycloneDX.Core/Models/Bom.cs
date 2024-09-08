@@ -21,6 +21,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using CycloneDX.Models.Vulnerabilities;
 using ProtoBuf;
 
 namespace CycloneDX.Models
@@ -29,7 +30,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlRoot("bom", IsNullable=false)]
     [ProtoContract]
-    public class Bom
+    public class Bom : ICloneable
     {
         [XmlIgnore]
         public string BomFormat => "CycloneDX";
@@ -111,8 +112,7 @@ namespace CycloneDX.Models
                 Version = value;
             }
         }
-        public bool ShouldSerializeNonNullableVersion() { return Version.HasValue; }
-
+        
         [XmlElement("metadata")]
         [ProtoMember(4)]
         public Metadata Metadata { get; set; }
@@ -126,20 +126,17 @@ namespace CycloneDX.Models
         [XmlArrayItem("service")]
         [ProtoMember(6)]
         public List<Service> Services { get; set; }
-        public bool ShouldSerializeServices() { return Services?.Count > 0; }
-
+        
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
         [ProtoMember(7)]
         public List<ExternalReference> ExternalReferences { get; set; }
-        public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
-
+        
         [XmlArray("dependencies")]
         [XmlArrayItem("dependency")]
         [ProtoMember(8)]
         public List<Dependency> Dependencies { get; set; }
-        public bool ShouldSerializeDependencies() { return Dependencies?.Count > 0; }
-
+        
         [XmlArray("compositions")]
         [XmlArrayItem("composition")]
         [ProtoMember(9)]
@@ -149,24 +146,51 @@ namespace CycloneDX.Models
         [XmlArrayItem("vulnerability")]
         [ProtoMember(10)]
         public List<Vulnerabilities.Vulnerability> Vulnerabilities { get; set; }
-        public bool ShouldSerializeVulnerabilities() { return Vulnerabilities?.Count > 0; }
         
         [XmlArray("annotations")]
         [XmlArrayItem("annotation")]
         [ProtoMember(11)]
         public List<Annotation> Annotations { get; set; }
-        public bool ShouldSerializeAnnotations() { return Annotations?.Count > 0; }
         
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(12)]
         public List<Property> Properties { get; set; }
-        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
         
         [XmlArray("formulation")]
         [XmlArrayItem("formula")]
         [ProtoMember(13)]
         public List<Formula> Formulation { get; set; }
+        
+        public bool ShouldSerializeNonNullableVersion() { return Version.HasValue; }
+        public bool ShouldSerializeServices() { return Services?.Count > 0; }
+        public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
+        public bool ShouldSerializeDependencies() { return Dependencies?.Count > 0; }
+        public bool ShouldSerializeVulnerabilities() { return Vulnerabilities?.Count > 0; }
+        public bool ShouldSerializeAnnotations() { return Annotations?.Count > 0; }
+        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
         public bool ShouldSerializeFormulation() { return Formulation?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Bom()
+            {
+                Annotations = this.Annotations.Select(x => (Annotation)x.Clone()).ToList(),
+                Components = this.Components.Select(x => (Component)x.Clone()).ToList(),
+                Compositions = this.Compositions.Select(x => (Composition)x.Clone()).ToList(),
+                Dependencies = this.Dependencies.Select(x => (Dependency)x.Clone()).ToList(),
+                ExternalReferences = this.ExternalReferences.Select(x => (ExternalReference)x.Clone()).ToList(),
+                Formulation = this.Formulation.Select(x => (Formula)x.Clone()).ToList(),
+                Metadata = (Metadata)this.Metadata.Clone(),
+                NonNullableVersion = this.NonNullableVersion,
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                SerialNumber = this.SerialNumber,
+                Services = this.Services.Select(x => (Service)x.Clone()).ToList(),
+                SpecVersion = this.SpecVersion,
+                SpecVersionString = this.SpecVersionString,
+                Version = this.Version,
+                Vulnerabilities = this.Vulnerabilities.Select(x => (Vulnerability)x.Clone()).ToList(),
+            };
+        }
     }
 }

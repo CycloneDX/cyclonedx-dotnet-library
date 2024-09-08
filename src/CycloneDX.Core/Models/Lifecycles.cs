@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Lifecycles
+    public class Lifecycles : ICloneable
     {
         [ProtoContract]
         public enum LifecyclePhase
@@ -50,7 +50,6 @@ namespace CycloneDX.Models
         [ProtoMember(1)]
         [JsonIgnore]
         public LifecyclePhase Phase { get; set; }
-        public bool ShouldSerializePhase() => Phase != LifecyclePhase.Null;
 
         [XmlIgnore]
         [JsonPropertyName("phase")]
@@ -67,5 +66,18 @@ namespace CycloneDX.Models
         [XmlElement("description")]
         [ProtoMember(3)]
         public string Description { get; set; }
+
+        public bool ShouldSerializePhase() => Phase != LifecyclePhase.Null;
+
+        public object Clone()
+        {
+            return new Lifecycles()
+            {
+                Description = this.Description,
+                JsonPhase = this.JsonPhase,
+                Name = this.Name,
+                Phase = this.Phase,
+            };
+        }
     }
 }

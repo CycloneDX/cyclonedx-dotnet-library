@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -25,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Service: IEquatable<Service>
+    public class Service: ICloneable, IEquatable<Service>
     {
         public Service()
         {
@@ -81,8 +82,7 @@ namespace CycloneDX.Models
                 Authenticated = value;
             }
         }
-        public bool ShouldSerializeNonNullableAuthenticated() { return Authenticated.HasValue; }
-
+        
         [XmlIgnore]
         [JsonPropertyName("x-trust-boundary")]
         [ProtoMember(9)]
@@ -101,7 +101,6 @@ namespace CycloneDX.Models
                 XTrustBoundary = value;
             }
         }
-        public bool ShouldSerializeNonNullableXTrustBoundary() { return XTrustBoundary.HasValue; }
         
         [XmlElement("trustZone")]
         [ProtoMember(16)]
@@ -111,8 +110,7 @@ namespace CycloneDX.Models
         [JsonPropertyName("data")]
         [ProtoMember(10)]
         public List<DataFlow> Data { get; set; }
-        public bool ShouldSerializeData() => Data?.Count > 0;
-
+        
         [XmlElement("data")]
         [JsonIgnore]
         public ServiceDataChoices XmlData
@@ -165,8 +163,7 @@ namespace CycloneDX.Models
                 }
             }
         }
-        public bool ShouldSerializeXmlData() => ShouldSerializeData();
-
+        
         [XmlIgnore]
         [ProtoMember(11)]
         public List<LicenseChoice> Licenses { get; set; }
@@ -180,31 +177,35 @@ namespace CycloneDX.Models
             get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
             set { Licenses = value.Licenses; }
         }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
-
+        
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
         [ProtoMember(12)]
         public List<ExternalReference> ExternalReferences { get; set; }
-        public bool ShouldSerializeExternalReferences() => ExternalReferences?.Count > 0;
-
+        
         [XmlArray("services")]
         [XmlArrayItem("service")]
         [ProtoMember(13)]
         public List<Service> Services { get; set; }
-        public bool ShouldSerializeServices() => Services?.Count > 0;
-
+        
         [XmlElement("releaseNotes")]
         [ProtoMember(15)]
         public ReleaseNotes ReleaseNotes { get; set; }
-        public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
-
+        
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(14)]
         public List<Property> Properties { get; set; }
 
+        public bool ShouldSerializeNonNullableAuthenticated() { return Authenticated.HasValue; }
+        public bool ShouldSerializeNonNullableXTrustBoundary() { return XTrustBoundary.HasValue; }
+        public bool ShouldSerializeData() => Data?.Count > 0;
+        public bool ShouldSerializeXmlData() => ShouldSerializeData();
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
+        public bool ShouldSerializeExternalReferences() => ExternalReferences?.Count > 0;
+        public bool ShouldSerializeServices() => Services?.Count > 0;
+        public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
         public bool ShouldSerializeProperties() => Properties?.Count > 0;
 
         public override bool Equals(object obj)
@@ -226,6 +227,34 @@ namespace CycloneDX.Models
         public override int GetHashCode()
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+        }
+
+        public object Clone()
+        {
+            return new Service()
+            {
+                Authenticated = this.Authenticated,
+                NonNullableAuthenticated = this.NonNullableAuthenticated,
+                BomRef = this.BomRef,
+                Data = this.Data.Select(x => (DataFlow)x.Clone()).ToList(),
+                Description = this.Description,
+                Endpoints = this.Endpoints.Select(x => x).ToList(),
+                ExternalReferences = this.ExternalReferences.Select(x => (ExternalReference)x.Clone()).ToList(),
+                Group = this.Group,
+                Licenses = this.Licenses.Select(x => (LicenseChoice)x.Clone()).ToList(),
+                LicensesSerialized = (LicenseChoiceList)this.LicensesSerialized.Clone(),
+                Name = this.Name,
+                NonNullableXTrustBoundary = this.NonNullableXTrustBoundary,
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Provider = (OrganizationalEntity)this.Provider.Clone(),
+                ReleaseNotes = (ReleaseNotes)this.ReleaseNotes.Clone(),
+                Services = this.Services.Select(x => (Service)x.Clone()).ToList(),
+                SpecVersion = this.SpecVersion,
+                TrustZone = this.TrustZone,
+                Version = this.Version,
+                XmlData = (ServiceDataChoices)this.XmlData.Clone(),
+                XTrustBoundary = this.XTrustBoundary,
+            };
         }
     }
 }

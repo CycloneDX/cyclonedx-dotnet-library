@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     [ProtoContract]
-    public class ExternalReference : IEquatable<ExternalReference>
+    public class ExternalReference : ICloneable, IEquatable<ExternalReference>
     {
         [ProtoContract]
         public enum ExternalReferenceType
@@ -126,6 +127,7 @@ namespace CycloneDX.Models
         [XmlArray("hashes")]
         [ProtoMember(4)]
         public List<Hash> Hashes { get; set; }
+
         public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
 
         public override bool Equals(object obj)
@@ -147,6 +149,17 @@ namespace CycloneDX.Models
         public override int GetHashCode()
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+        }
+
+        public object Clone()
+        {
+            return new ExternalReference()
+            {
+                Comment = this.Comment,
+                Hashes = this.Hashes.Select(x => (Hash)x.Clone()).ToList(),
+                Type = this.Type,
+                Url = this.Url,
+            };
         }
     }
 }

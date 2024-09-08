@@ -20,17 +20,26 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
 using ProtoBuf;
+using System.Linq;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Annotation
+    public class Annotation : ICloneable
     {
         [XmlType("subject")]
-        public class XmlAnnotationSubject
+        public class XmlAnnotationSubject : ICloneable
         {
             [XmlAttribute("ref")]
             public string Ref { get; set; }
+
+            public object Clone()
+            {
+                return new XmlAnnotationSubject()
+                {
+                    Ref = this.Ref
+                };
+            }
         }
         
         [XmlAttribute("bom-ref")]
@@ -80,10 +89,24 @@ namespace CycloneDX.Models
             get => _timestamp;
             set { _timestamp = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
-        
+
         [XmlElement("text")]
         [ProtoMember(5)]
         public string Text { get; set; }
+
+        public bool ShouldSerializeTimestamp() { return Timestamp != null; }
+
+        public object Clone()
+        {
+            return new Annotation()
+            {
+                Annotator = (AnnotatorChoice)this.Annotator.Clone(),
+                BomRef = this.BomRef,
+                Subjects = this.Subjects.Select(x => x).ToList(),
+                Text = this.Text,
+                Timestamp = this.Timestamp,
+                XmlSubjects = this.XmlSubjects.Select(x => (XmlAnnotationSubject)x.Clone()).ToList()
+            };
+        }
     }
 }

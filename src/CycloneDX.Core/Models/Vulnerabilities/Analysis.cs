@@ -17,13 +17,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class Analysis
+    public class Analysis : ICloneable
     {
         [XmlElement("state")]
         [ProtoMember(1)]
@@ -50,8 +51,7 @@ namespace CycloneDX.Models.Vulnerabilities
             get => _firstIssued;
             set { _firstIssued = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeFirstIssued() { return FirstIssued != null; }
-
+        
         private DateTime? _lastUpdated;
         [XmlElement("lastUpdated")]
         [ProtoMember(6)]
@@ -60,6 +60,22 @@ namespace CycloneDX.Models.Vulnerabilities
             get => _lastUpdated;
             set { _lastUpdated = BomUtils.UtcifyDateTime(value); }
         }
+
+        public bool ShouldSerializeFirstIssued() { return FirstIssued != null; }
+
         public bool ShouldSerializeLastUpdated() { return LastUpdated != null; }
+
+        public object Clone()
+        {
+            return new Analysis()
+            {
+                Detail = this.Detail,
+                FirstIssued = this.FirstIssued,
+                Justification = this.Justification,
+                LastUpdated = this.LastUpdated,
+                Response = this.Response.Select(x => x).ToList(),
+                State = this.State
+            };
+        }
     }
 }

@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("step")]
     [ProtoContract]
-    public class Step
+    public class Step : ICloneable
     {
         [XmlElement("name")]
         [ProtoMember(1)]
@@ -40,12 +41,24 @@ namespace CycloneDX.Models
         [XmlArrayItem("command")]
         [ProtoMember(3)]
         public List<Command> Commands { get; set; }
-        public bool ShouldSerializeCommands() { return Commands?.Count > 0; }
         
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(4)]
         public List<Property> Properties { get; set; }
+        
+        public bool ShouldSerializeCommands() { return Commands?.Count > 0; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Step()
+            {
+                Commands = this.Commands.Select(x => (Command)x.Clone()).ToList(),
+                Description = this.Description,
+                Name = this.Name,
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList()
+            };
+        }
     }
 }

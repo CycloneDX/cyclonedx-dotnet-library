@@ -21,11 +21,12 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
 using ProtoBuf;
+using System.Linq;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Composition : IXmlSerializable, IEquatable<Composition>
+    public class Composition : ICloneable, IXmlSerializable, IEquatable<Composition>
     {
         [ProtoContract]
         public enum AggregateType
@@ -214,6 +215,18 @@ namespace CycloneDX.Models
         public override int GetHashCode()
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+        }
+
+        public object Clone()
+        {
+            return new Composition()
+            {
+                Aggregate = this.Aggregate,
+                Assemblies = this.Assemblies.Select(x => x).ToList(),
+                BomRef = this.BomRef,
+                Dependencies = this.Dependencies.Select(x => x).ToList(),
+                Vulnerabilities = this.Vulnerabilities.Select(x => x).ToList(),
+            };
         }
     }
 }

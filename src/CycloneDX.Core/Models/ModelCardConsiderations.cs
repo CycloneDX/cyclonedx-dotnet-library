@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,10 +27,10 @@ namespace CycloneDX.Models
 {
     [XmlType("modelCardConsiderations")]
     [ProtoContract]
-    public class ModelCardConsiderations
+    public class ModelCardConsiderations : ICloneable
     {
         [ProtoContract]
-        public class ModelCardEthicalConsideration
+        public class ModelCardEthicalConsideration : ICloneable
         {
             [XmlElement("name")]
             [ProtoMember(1)]
@@ -38,10 +39,19 @@ namespace CycloneDX.Models
             [XmlElement("mitigationStrategy")]
             [ProtoMember(2)]
             public string MitigationStrategy { get; set; }
+
+            public object Clone()
+            {
+                return new ModelCardEthicalConsideration()
+                {
+                    Name = this.Name,
+                    MitigationStrategy = this.MitigationStrategy
+                };
+            }
         }
         
         [ProtoContract]
-        public class ModelCardFairnessAssessment
+        public class ModelCardFairnessAssessment : ICloneable
         {
             [XmlElement("groupAtRisk")]
             [ProtoMember(1)]
@@ -58,6 +68,17 @@ namespace CycloneDX.Models
             [XmlElement("mitigationStrategy")]
             [ProtoMember(4)]
             public string MitigationStrategy { get; set; }
+
+            public object Clone()
+            {
+                return new ModelCardFairnessAssessment()
+                {
+                    Benefits = this.Benefits,
+                    GroupAtRisk = this.GroupAtRisk,
+                    Harms = this.Harms,
+                    MitigationStrategy = this.MitigationStrategy
+                };
+            }
         }
         
         [XmlArray("users")]
@@ -89,5 +110,18 @@ namespace CycloneDX.Models
         [XmlArrayItem("fairnessAssessment")]
         [ProtoMember(6)]
         public List<ModelCardFairnessAssessment> FairnessAssessments { get; set; }
+
+        public object Clone()
+        {
+            return new ModelCardConsiderations()
+            {
+                EthicalConsiderations = this.EthicalConsiderations.Select(x => (ModelCardEthicalConsideration)x.Clone()).ToList(),
+                FairnessAssessments = this.FairnessAssessments.Select(x => (ModelCardFairnessAssessment)x.Clone()).ToList(),
+                PerformanceTradeoffs = this.PerformanceTradeoffs.Select(x => x).ToList(),
+                TechnicalLimitations = this.TechnicalLimitations.Select(x => x).ToList(),
+                UseCases = this.UseCases.Select(x => x).ToList(),
+                Users = this.Users.Select(x => x).ToList(),
+            };
+        }
     }
 }

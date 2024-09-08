@@ -15,14 +15,16 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Patch
+    public class Patch : ICloneable
     {
         [ProtoContract]
         public enum PatchClassification
@@ -51,5 +53,15 @@ namespace CycloneDX.Models
         [XmlArrayItem("issue")]        
         [ProtoMember(3)]
         public List<Issue> Resolves { get; set; }
+
+        public object Clone()
+        {
+            return new Patch()
+            {
+                Diff = (Diff)this.Diff.Clone(),
+                Resolves = this.Resolves.Select(x => (Issue)x.Clone()).ToList(),
+                Type = this.Type
+            };
+        }
     }
 }

@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -22,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Issue
+    public class Issue : ICloneable
     {
         [ProtoContract]
         public enum IssueClassification
@@ -61,5 +62,18 @@ namespace CycloneDX.Models
         [XmlArrayItem("url")]
         [ProtoMember(6)]
         public List<string> References { get; set; }
+
+        public object Clone()
+        {
+            return new Issue()
+            {
+                Description = this.Description,
+                Id = this.Id,
+                Name = this.Name,
+                References = this.References,
+                Source = (Source)this.Source.Clone(),
+                Type = this.Type
+            };
+        }
     }
 }

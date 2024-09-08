@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("command")]
     [ProtoContract]
-    public class Command
+    public class Command : ICloneable
     {
         [XmlElement("executed")]
         [ProtoMember(1)]
@@ -36,6 +37,16 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(2)]
         public List<Property> Properties { get; set; }
+
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Command()
+            {
+                Executed = this.Executed,
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList()
+            };
+        }
     }
 }

@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -24,7 +25,7 @@ namespace CycloneDX.Models
 {
     [Obsolete("Tool is deprecated and will be removed in a future version")]
     [ProtoContract]
-    public class Tool: IEquatable<Tool>
+    public class Tool : ICloneable, IEquatable<Tool>
     {
         [XmlElement("vendor")]
         [ProtoMember(1)]
@@ -46,6 +47,7 @@ namespace CycloneDX.Models
         [XmlArrayItem("reference")]
         [ProtoMember(5)]
         public List<ExternalReference> ExternalReferences { get; set; }
+        
         public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
 
         public override bool Equals(object obj)
@@ -67,6 +69,18 @@ namespace CycloneDX.Models
         public override int GetHashCode()
         {
             return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+        }
+
+        public object Clone()
+        {
+            return new Tool()
+            {
+                ExternalReferences = this.ExternalReferences.Select(x => (ExternalReference)x.Clone()).ToList(),
+                Hashes = this.Hashes.Select(x => (Hash)x.Clone()).ToList(),
+                Name = this.Name,
+                Vendor = this.Vendor,
+                Version = this.Version,
+            };
         }
     }
 }

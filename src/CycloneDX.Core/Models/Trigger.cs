@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("trigger")]
     [ProtoContract]
-    public class Trigger
+    public class Trigger : ICloneable
     {
         [ProtoContract]
         public enum TriggerType
@@ -42,7 +43,7 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class Condition
+        public class Condition : ICloneable
         {
             [XmlElement("description")]
             [ProtoMember(1)]
@@ -56,7 +57,18 @@ namespace CycloneDX.Models
             [XmlArrayItem("property")]
             [ProtoMember(3)]
             public List<Property> Properties { get; set; }
+
             public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+            public object Clone()
+            {
+                return new Condition()
+                {
+                    Description = this.Description,
+                    Expression = this.Expression,
+                    Properties = this.Properties.Select(x => (Property)x.Clone()).ToList()
+                };
+            }
         }
 
         [JsonPropertyName("bom-ref")]
@@ -79,8 +91,7 @@ namespace CycloneDX.Models
         [XmlElement("resourceReferences")]
         [ProtoMember(6)]
         public ResourceReferenceChoices ResourceReferences { get; set; }
-        public bool ShouldSerializeResourceReferences() { return ResourceReferences?.Count > 0; }
-
+        
         [XmlElement("type")]
         [ProtoMember(7)]
         public TriggerType Type { get; set; }
@@ -93,8 +104,7 @@ namespace CycloneDX.Models
         [XmlArrayItem("condition")]
         [ProtoMember(9)]
         public List<Condition> Conditions { get; set; }
-        public bool ShouldSerializeConditions() { return Conditions?.Count > 0; }
-
+        
         private DateTime? _timeActivated;
         [XmlElement("timeActivated")]
         [ProtoMember(10)]
@@ -103,22 +113,44 @@ namespace CycloneDX.Models
             get => _timeActivated;
             set { _timeActivated = BomUtils.UtcifyDateTime(value); }
         }
-        public bool ShouldSerializeTimeActivated() { return TimeActivated != null; }
 
         [XmlArray("inputs")]
         [ProtoMember(11)]
         public List<Input> Inputs { get; set; }
-        public bool ShouldSerializeInputs() { return Inputs?.Count > 0; }
-
+        
         [XmlArray("outputs")]
         [ProtoMember(12)]
         public List<Output> Outputs { get; set; }
-        public bool ShouldSerializeOutputs() { return Outputs?.Count > 0; }
-
+        
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(5)]
         public List<Property> Properties { get; set; }
+        
+        public bool ShouldSerializeResourceReferences() { return ResourceReferences?.Count > 0; }
+        public bool ShouldSerializeConditions() { return Conditions?.Count > 0; }
+        public bool ShouldSerializeTimeActivated() { return TimeActivated != null; }
+        public bool ShouldSerializeInputs() { return Inputs?.Count > 0; }
+        public bool ShouldSerializeOutputs() { return Outputs?.Count > 0; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Trigger()
+            {
+                BomRef = this.BomRef,
+                Conditions = this.Conditions.Select(x => (Condition)x.Clone()).ToList(),
+                Description = this.Description,
+                Event = (Event)this.Event.Clone(),
+                Inputs = this.Inputs.Select(x => (Input)x.Clone()).ToList(),
+                Name = this.Name,
+                Outputs = this.Outputs.Select(x => (Output)x.Clone()).ToList(),
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                ResourceReferences = (ResourceReferenceChoices)this.ResourceReferences.Clone(),
+                TimeActivated = this.TimeActivated,
+                Type = this.Type,
+                Uid = this.Uid,
+            };
+        }
     }
 }

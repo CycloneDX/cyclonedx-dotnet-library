@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -25,7 +26,7 @@ namespace CycloneDX.Models
     // this is the version that was prior to v1.5
     [XmlType("classification")]
     [ProtoContract]
-    public class DataClassification
+    public class DataClassification : ICloneable
     {
         [XmlAttribute("flow")]
         [ProtoMember(1, IsRequired=true)]
@@ -34,5 +35,14 @@ namespace CycloneDX.Models
         [XmlText]
         [ProtoMember(2)]
         public string Classification { get; set; }
+
+        public object Clone()
+        {
+            return new DataClassification()
+            {
+                Classification = this.Classification,
+                Flow = this.Flow
+            };
+        }
     }
 }

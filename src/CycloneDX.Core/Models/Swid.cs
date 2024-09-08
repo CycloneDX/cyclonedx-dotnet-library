@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Swid
+    public class Swid : ICloneable
     {
         [XmlAttribute("tagId")]
         [ProtoMember(1)]
@@ -52,5 +52,19 @@ namespace CycloneDX.Models
         [XmlAttribute("url")]
         [ProtoMember(7)]
         public string Url { get; set; }
+
+        public object Clone()
+        {
+            return new Swid()
+            {
+                Name = this.Name,
+                Patch = this.Patch,
+                TagId = this.TagId,
+                TagVersion = this.TagVersion,
+                Text = (AttachedText)this.Text.Clone(),
+                Url = this.Url,
+                Version = this.Version,
+            };
+        }
     }
 }

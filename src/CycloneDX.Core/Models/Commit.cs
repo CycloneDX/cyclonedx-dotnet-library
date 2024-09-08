@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Commit
+    public class Commit : ICloneable
     {
         [XmlElement("uid")]
         [ProtoMember(1)]
@@ -42,5 +43,17 @@ namespace CycloneDX.Models
         [XmlElement("message")]
         [ProtoMember(5)]
         public string Message { get; set; }
+
+        public object Clone()
+        {
+            return new Commit()
+            {
+                Author = (IdentifiableAction)this.Author.Clone(),
+                Committer = (IdentifiableAction)this.Committer.Clone(),
+                Message = this.Message,
+                Uid = this.Uid,
+                Url = this.Url,
+            };
+        }
     }
 }

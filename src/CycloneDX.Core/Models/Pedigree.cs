@@ -15,14 +15,16 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Pedigree
+    public class Pedigree : ICloneable
     {
         [XmlArray("ancestors")]
         [XmlArrayItem("component")]
@@ -48,10 +50,24 @@ namespace CycloneDX.Models
         [XmlArrayItem("patch")]
         [ProtoMember(5)]
         public List<Patch> Patches { get; set; }
-        public bool ShouldSerializePatches() { return Patches?.Count > 0; }
 
         [XmlElement("notes")]
         [ProtoMember(6)]
         public string Notes { get; set; }
+
+        public bool ShouldSerializePatches() { return Patches?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Pedigree()
+            {
+                Ancestors = this.Ancestors.Select(x => (Component)x.Clone()).ToList(),
+                Commits = this.Commits.Select(x => (Commit)x.Clone()).ToList(),
+                Descendants = this.Descendants.Select(x => (Component)x.Clone()).ToList(),
+                Notes = this.Notes,
+                Patches = this.Patches.Select(x => (Patch)x.Clone()).ToList(),
+                Variants = this.Variants.Select(x => (Component)x.Clone()).ToList()
+            };
+        }
     }
 }

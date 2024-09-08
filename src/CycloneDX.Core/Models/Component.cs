@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Net;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -29,7 +30,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
     [ProtoContract]
-    public class Component: IEquatable<Component>
+    public class Component: ICloneable, IEquatable<Component>
     {
         [ProtoContract]
         public enum Classification
@@ -133,17 +134,14 @@ namespace CycloneDX.Models
                 Scope = value;
             }
         }
-        public bool ShouldSerializeNonNullableScope() { return Scope.HasValue; }
-
+        
         [XmlArray("hashes")]
         [ProtoMember(12)]
         public List<Hash> Hashes { get; set; }
-        public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
-
+        
         [XmlIgnore]
         [ProtoMember(13)]
         public List<LicenseChoice> Licenses { get; set; }
-
 
         [XmlElement("licenses")]
         [JsonIgnore, ProtoIgnore]
@@ -154,9 +152,7 @@ namespace CycloneDX.Models
             get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
             set { Licenses = value.Licenses; }
         }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
-
+        
         [XmlElement("copyright")]
         [ProtoMember(14)]
         public string Copyright { get; set; }
@@ -190,8 +186,7 @@ namespace CycloneDX.Models
                 Modified = value;
             }
         }
-        public bool ShouldSerializeNonNullableModified() { return Modified.HasValue; }
-
+        
         [XmlElement("pedigree")]
         [ProtoMember(19)]
         public Pedigree Pedigree { get; set; }
@@ -200,18 +195,12 @@ namespace CycloneDX.Models
         [XmlArrayItem("reference")]
         [ProtoMember(20)]
         public List<ExternalReference> ExternalReferences { get; set; }
-        public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
-
-        //In the xml format, Properties is in front of Components.
-        //XML serialization uses the member order unless explicitly specified differently.
-        public bool ShouldSerializeComponents() { return Components?.Count > 0; }
-
+        
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(22)]
         public List<Property> Properties { get; set; }
-        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
-
+        
         [XmlArray("components")]
         [ProtoMember(21)]
         public List<Component> Components { get; set; }
@@ -223,7 +212,6 @@ namespace CycloneDX.Models
         [XmlElement("releaseNotes")]
         [ProtoMember(24)]
         public ReleaseNotes ReleaseNotes { get; set; }
-        public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
         
         [XmlElement("modelCard")]
         [ProtoMember(25)]
@@ -252,6 +240,55 @@ namespace CycloneDX.Models
         public override int GetHashCode()
         {
             return Json.Serializer.Serialize(this).GetHashCode();
+        }
+
+        public bool ShouldSerializeNonNullableScope() { return Scope.HasValue; }
+        public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
+        public bool ShouldSerializeNonNullableModified() { return Modified.HasValue; }
+        public bool ShouldSerializeExternalReferences() { return ExternalReferences?.Count > 0; }
+
+        //In the xml format, Properties is in front of Components.
+        //XML serialization uses the member order unless explicitly specified differently.
+        public bool ShouldSerializeComponents() { return Components?.Count > 0; }
+        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+        public bool ShouldSerializeReleaseNotes() { return ReleaseNotes != null; }
+
+        public object Clone()
+        {
+            return new Component()
+            {
+                Author = this.Author,
+                BomRef = this.BomRef,
+                Components = this.Components.Select(x => (Component)x.Clone()).ToList(),
+                Copyright = this.Copyright,
+                Cpe = this.Cpe,
+                Data = (Data)this.Data.Clone(),
+                Description = this.Description,
+                Evidence = (Evidence)this.Evidence.Clone(),
+                ExternalReferences = this.ExternalReferences.Select(x => (ExternalReference)x.Clone()).ToList(),
+                Group = this.Group,
+                Hashes = this.Hashes.Select(x => (Hash)x.Clone()).ToList(),
+                Licenses = this.Licenses.Select(x => (LicenseChoice)x.Clone()).ToList(),
+                LicensesSerialized = (LicenseChoiceList)this.LicensesSerialized.Clone(),
+                MimeType = this.MimeType,
+                ModelCard = (ModelCard)this.ModelCard.Clone(),
+                Modified = this.Modified,
+                Name = this.Name,
+                NonNullableModified = this.NonNullableModified,
+                NonNullableScope = this.NonNullableScope,
+                Pedigree = (Pedigree)this.Pedigree.Clone(),
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                Publisher = this.Publisher,
+                Purl = this.Purl,
+                ReleaseNotes = (ReleaseNotes)this.ReleaseNotes.Clone(),
+                Scope = this.Scope,
+                Supplier = (OrganizationalEntity)this.Supplier.Clone(),
+                Swid = (Swid)this.Swid.Clone(),
+                Type = this.Type,
+                Version = this.Version,
+            };
         }
     }
 }

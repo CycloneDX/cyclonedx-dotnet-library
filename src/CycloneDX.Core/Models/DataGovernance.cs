@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,24 +27,35 @@ namespace CycloneDX.Models
 {
     [XmlType("data-governance")]
     [ProtoContract]
-    public class DataGovernance
+    public class DataGovernance : ICloneable
     {
         [XmlArray("custodians")]
         [XmlArrayItem("custodian")]
         [ProtoMember(1)]
         public List<OrganizationalEntityOrContact> Custodians { get; set; }
-        public bool ShouldSerializeCustodians() { return Custodians?.Count > 0; }
         
         [XmlArray("stewards")]
         [XmlArrayItem("steward")]
         [ProtoMember(2)]
         public List<OrganizationalEntityOrContact> Stewards { get; set; }
-        public bool ShouldSerializeStewards() { return Stewards?.Count > 0; }
-
+        
         [XmlArray("owners")]
         [XmlArrayItem("owner")]
         [ProtoMember(3)]
         public List<OrganizationalEntityOrContact> Owners { get; set; }
+
+        public bool ShouldSerializeCustodians() { return Custodians?.Count > 0; }
+        public bool ShouldSerializeStewards() { return Stewards?.Count > 0; }
         public bool ShouldSerializeOwners() { return Owners?.Count > 0; }
+
+        public object Clone()
+        {
+            return new DataGovernance()
+            {
+                Custodians = this.Custodians.Select(x => (OrganizationalEntityOrContact)x.Clone()).ToList(),
+                Owners = this.Owners.Select(x => (OrganizationalEntityOrContact)x.Clone()).ToList(),
+                Stewards = this.Stewards.Select(x => (OrganizationalEntityOrContact)x.Clone()).ToList(),
+            };
+        }
     }
 }

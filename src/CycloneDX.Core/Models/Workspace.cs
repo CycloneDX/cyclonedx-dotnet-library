@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("workspace")]
     [ProtoContract]
-    public class Workspace
+    public class Workspace : ICloneable
     {
         [ProtoContract]
         public enum AccessModeType
@@ -60,8 +61,7 @@ namespace CycloneDX.Models
         [XmlArrayItem("alias")]
         [ProtoMember(4)]
         public List<string> Aliases { get; set; }
-        public bool ShouldSerializeAliases() { return Aliases?.Count > 0; }
-
+        
         [XmlElement("description")]
         [ProtoMember(5)]
         public string Description { get; set; }
@@ -70,12 +70,10 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(6)]
         public List<Property> Properties { get; set; }
-        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
         
         [XmlElement("resourceReferences")]
         [ProtoMember(7)]
         public ResourceReferenceChoices ResourceReferences { get; set; }
-        public bool ShouldSerializeResourceReferences() { return ResourceReferences?.Count > 0; }
 
         [XmlElement("accessMode")]
         [ProtoMember(8)]
@@ -96,5 +94,29 @@ namespace CycloneDX.Models
         [XmlElement("volume")]
         [ProtoMember(12)]
         public Volume Volume { get; set; }
+
+        public bool ShouldSerializeAliases() { return Aliases?.Count > 0; }
+        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public bool ShouldSerializeResourceReferences() { return ResourceReferences?.Count > 0; }
+
+        public object Clone()
+        {
+            return new Workspace()
+            {
+                AccessMode = this.AccessMode,
+                Aliases = this.Aliases.Select(x => x).ToList(),
+                BomRef = this.BomRef,
+                Description = this.Description,
+                ManagedDateType = this.ManagedDateType,
+                MountPath = this.MountPath,
+                Name = this.Name,
+                Properties = this.Properties.Select(x => (Property)x.Clone()).ToList(),
+                ResourceReferences = (ResourceReferenceChoices)this.ResourceReferences.Clone(),
+                Uid = this.Uid,
+                Volume = (Volume)this.Volume.Clone(),
+                VolumeRequest = this.VolumeRequest,
+            };
+        }
     }
 }

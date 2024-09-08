@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("dependency")]
     [ProtoContract]
-    public class Dependency: IEquatable<Dependency>
+    public class Dependency : ICloneable, IEquatable<Dependency>
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]
@@ -35,6 +36,15 @@ namespace CycloneDX.Models
         [XmlElement("dependency")]
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
+
+        public object Clone()
+        {
+            return new Dependency()
+            {
+                Dependencies = this.Dependencies.Select(x => (Dependency)x.Clone()).ToList(),
+                Ref = this.Ref,
+            };
+        }
 
         public override bool Equals(object obj)
         {
