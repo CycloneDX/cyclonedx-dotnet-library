@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("step")]
     [ProtoContract]
-    public class Step
+    public class Step : IEquatable<Step>
     {
         [XmlElement("name")]
         [ProtoMember(1)]
@@ -47,5 +48,23 @@ namespace CycloneDX.Models
         [ProtoMember(4)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Step);
+        }
+
+        public bool Equals(Step obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Commands, obj.Commands) ||
+                this.Commands.SequenceEqual(obj.Commands)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties));
+        }
     }
 }

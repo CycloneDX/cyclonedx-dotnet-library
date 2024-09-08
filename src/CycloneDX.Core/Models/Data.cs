@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -25,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Data
+    public class Data : IEquatable<Data>
     {
         [ProtoContract]
         public enum DataType
@@ -43,7 +44,7 @@ namespace CycloneDX.Models
         }
 
         [ProtoContract]
-        public class DataContents
+        public class DataContents : IEquatable<DataContents>
         {
             [XmlElement("attachment")]
             [ProtoMember(1)]
@@ -58,6 +59,22 @@ namespace CycloneDX.Models
             [ProtoMember(22)]
             public List<Property> Properties { get; set; }
             public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as DataContents);
+            }
+
+            public bool Equals(DataContents obj)
+            {
+                return obj != null &&
+                    (object.ReferenceEquals(this.Attachment, obj.Attachment) ||
+                    this.Attachment.Equals(obj.Attachment)) &&
+                    (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                    this.Properties.SequenceEqual(obj.Properties)) &&
+                    (object.ReferenceEquals(this.Url, obj.Url) ||
+                    this.Url.Equals(obj.Url, StringComparison.InvariantCultureIgnoreCase));
+            }
         }
 
         [JsonPropertyName("bom-ref")]
@@ -96,5 +113,33 @@ namespace CycloneDX.Models
         [XmlElement("governance")]
         [ProtoMember(9)]
         public DataGovernance Governance { get; set; }
+
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Data);
+        }
+
+        public bool Equals(Data obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Classification, obj.Classification) ||
+                this.Classification.Equals(obj.Classification, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Contents, obj.Contents) ||
+                this.Contents.Equals(obj.Contents)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Governance, obj.Governance) ||
+                this.Governance.Equals(obj.Governance)) &&
+                (object.ReferenceEquals(this.Graphics, obj.Graphics) ||
+                this.Graphics.Equals(obj.Graphics)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.SensitiveData, obj.SensitiveData) ||
+                this.SensitiveData.Equals(obj.SensitiveData, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.Type.Equals(obj.Type));
+        }
     }
 }

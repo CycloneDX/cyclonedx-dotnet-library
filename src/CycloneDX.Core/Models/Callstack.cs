@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -28,11 +29,11 @@ namespace CycloneDX.Models
 {
     [XmlType("callstack")]
     [ProtoContract]
-    public class Callstack
+    public class Callstack : IEquatable<Callstack>
     {
         [XmlType("frame")]
         [ProtoContract]
-        public class Frame
+        public class Frame : IEquatable<Frame>
         {
             [XmlElement("package")]
             [ProtoMember(1)]
@@ -63,11 +64,45 @@ namespace CycloneDX.Models
             [XmlElement("fullFilename")]
             [ProtoMember(7)]
             public string FullFilename { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as Frame);
+            }
+
+            public bool Equals(Frame obj)
+            {
+                return obj != null &&
+                    (this.Column.Equals(obj.Column)) &&
+                    (object.ReferenceEquals(this.FullFilename, obj.FullFilename) ||
+                    this.FullFilename.SequenceEqual(obj.FullFilename)) &&
+                    (object.ReferenceEquals(this.Function, obj.Function) ||
+                    this.Function.Equals(obj.Function, StringComparison.InvariantCultureIgnoreCase)) &&
+                    (this.Line.Equals(obj.Line)) &&
+                    (object.ReferenceEquals(this.Module, obj.Module) ||
+                    this.Module.SequenceEqual(obj.Module)) &&
+                    (object.ReferenceEquals(this.Package, obj.Package) ||
+                    this.Package.Equals(obj.Package)) &&
+                    (object.ReferenceEquals(this.Parameters, obj.Parameters) ||
+                    this.Parameters.SequenceEqual(obj.Parameters));
+            }
         }
         
         [XmlArray("frames")]
         [XmlArrayItem("frame")]
         [ProtoMember(1)]
         public List<Frame> Frames { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Callstack);
+        }
+
+        public bool Equals(Callstack obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Frames, obj.Frames) ||
+                this.Frames.SequenceEqual(obj.Frames));
+        }
     }
 }

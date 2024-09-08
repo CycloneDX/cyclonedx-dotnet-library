@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -28,7 +29,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-identity")]
     [ProtoContract]
-    public class EvidenceIdentity
+    public class EvidenceIdentity : IEquatable<EvidenceIdentity>
     {
         [ProtoContract]
         public enum EvidenceFieldType
@@ -67,5 +68,21 @@ namespace CycloneDX.Models
         [XmlElement("tools")]
         [ProtoMember(4)]
         public EvidenceTools Tools { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as EvidenceIdentity);
+        }
+
+        public bool Equals(EvidenceIdentity obj)
+        {
+            return obj != null &&
+                (this.Confidence.Equals(obj.Confidence)) &&
+                (this.Field.Equals(obj.Field)) &&
+                (object.ReferenceEquals(this.Methods, obj.Methods) ||
+                this.Methods.SequenceEqual(obj.Methods)) &&
+                (object.ReferenceEquals(this.Tools, obj.Tools) ||
+                this.Tools.SequenceEqual(obj.Tools));
+        }
     }
 }

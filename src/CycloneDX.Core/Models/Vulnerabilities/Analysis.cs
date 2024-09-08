@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models.Vulnerabilities
 {
     [ProtoContract]
-    public class Analysis
+    public class Analysis : IEquatable<Analysis>
     {
         [XmlElement("state")]
         [ProtoMember(1)]
@@ -61,5 +61,23 @@ namespace CycloneDX.Models.Vulnerabilities
             set { _lastUpdated = BomUtils.UtcifyDateTime(value); }
         }
         public bool ShouldSerializeLastUpdated() { return LastUpdated != null; }
+
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Analysis);
+        }
+
+        public bool Equals(Analysis obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Detail, obj.Detail) ||
+                this.Detail.Equals(obj.Detail, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.FirstIssued.Equals(obj.FirstIssued)) &&
+                (this.Justification.Equals(obj.Justification)) &&
+                (this.LastUpdated.Equals(obj.LastUpdated)) &&
+                (this.Response.Equals(obj.Response)) &&
+                (this.State.Equals(obj.State));
+        }
     }
 }

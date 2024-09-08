@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Swid
+    public class Swid : IEquatable<Swid>
     {
         [XmlAttribute("tagId")]
         [ProtoMember(1)]
@@ -52,5 +52,27 @@ namespace CycloneDX.Models
         [XmlAttribute("url")]
         [ProtoMember(7)]
         public string Url { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Swid);
+        }
+
+        public bool Equals(Swid obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.Patch.Equals(obj.Patch)) &&
+                (object.ReferenceEquals(this.TagId, obj.TagId) ||
+                this.TagId.Equals(obj.TagId, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.TagVersion.Equals(obj.TagVersion)) &&
+                (object.ReferenceEquals(this.Text, obj.Text) ||
+                this.Text.Equals(obj.Text)) &&
+                (object.ReferenceEquals(this.Url, obj.Url) ||
+                this.Url.Equals(obj.Url, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Version, obj.Version) ||
+                this.Version.Equals(obj.Version, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

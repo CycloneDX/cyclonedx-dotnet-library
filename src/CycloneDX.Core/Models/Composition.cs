@@ -21,11 +21,12 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
 using ProtoBuf;
+using System.Linq;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Composition : IXmlSerializable, IEquatable<Composition>
+    public class Composition : IEquatable<Composition>, IXmlSerializable
     {
         [ProtoContract]
         public enum AggregateType
@@ -68,7 +69,32 @@ namespace CycloneDX.Models
         [ProtoMember(5)]
         public string BomRef { get; set; }
 
-        public System.Xml.Schema.XmlSchema GetSchema() {
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Composition);
+        }
+
+        public bool Equals(Composition obj)
+        {
+            return obj != null &&
+                (this.Aggregate == obj.Aggregate) &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Assemblies, obj.Assemblies) ||
+                this.Assemblies.SequenceEqual(obj.Assemblies)) &&
+                (object.ReferenceEquals(this.Dependencies, obj.Dependencies) ||
+                this.Dependencies.SequenceEqual(obj.Dependencies)) &&
+                (object.ReferenceEquals(this.Vulnerabilities, obj.Vulnerabilities) ||
+                this.Vulnerabilities.SequenceEqual(obj.Vulnerabilities));
+        }
+
+        public override int GetHashCode()
+        {
+            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
             return null;
         }
 
@@ -76,7 +102,7 @@ namespace CycloneDX.Models
         {
             BomRef = reader.GetAttribute("bom-ref");
             reader.ReadStartElement();
-            
+
             if (reader.LocalName == "aggregate")
             {
                 var aggregateString = reader.ReadElementContentAsString();
@@ -147,8 +173,9 @@ namespace CycloneDX.Models
 
             reader.ReadEndElement();
         }
-        
-        public void WriteXml(System.Xml.XmlWriter writer) {
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
             if (BomRef != null)
             {
                 writer.WriteAttributeString("bom-ref", BomRef);
@@ -193,27 +220,6 @@ namespace CycloneDX.Models
                 }
                 writer.WriteEndElement();
             }
-        }
-
-        public override bool Equals(object obj)
-        {
-            var other = obj as Composition;
-            if (other == null)
-            {
-                return false;
-            }
-
-            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
-        }
-
-        public bool Equals(Composition obj)
-        {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
         }
     }
 }

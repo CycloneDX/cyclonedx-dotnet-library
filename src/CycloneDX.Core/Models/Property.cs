@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -22,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Property
+    public class Property : IEquatable<Property>
     {
         [XmlAttribute("name")]
         [ProtoMember(1)]
@@ -31,5 +32,19 @@ namespace CycloneDX.Models
         [XmlText]
         [ProtoMember(2)]
         public string Value { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Property);
+        }
+
+        public bool Equals(Property obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Value, obj.Value) ||
+                this.Value.Equals(obj.Value, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

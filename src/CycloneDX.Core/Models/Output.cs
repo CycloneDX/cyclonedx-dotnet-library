@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("output")]
     [ProtoContract]
-    public class Output
+    public class Output : IEquatable<Output>
     {
         [ProtoContract]
         public enum OutputType
@@ -76,5 +77,28 @@ namespace CycloneDX.Models
         [ProtoMember(7)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Output);
+        }
+
+        public bool Equals(Output obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Data, obj.Data) ||
+                this.Data.Equals(obj.Data)) &&
+                (object.ReferenceEquals(this.EnvironmentVars, obj.EnvironmentVars) ||
+                this.EnvironmentVars.Equals(obj.EnvironmentVars)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.Resource, obj.Resource) ||
+                this.Resource.Equals(obj.Resource)) &&
+                (object.ReferenceEquals(this.Source, obj.Source) ||
+                this.Source.Equals(obj.Source)) &&
+                (object.ReferenceEquals(this.Target, obj.Target) ||
+                this.Target.Equals(obj.Target)) &&
+                (this.Type.Equals(obj.Type));
+        }
     }
 }

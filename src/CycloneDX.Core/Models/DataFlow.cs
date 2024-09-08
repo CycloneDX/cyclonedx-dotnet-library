@@ -15,7 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -24,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("dataflow")]
     [ProtoContract]
-    public class DataFlow
+    public class DataFlow : IEquatable<DataFlow>
     {
         [XmlIgnore]
         [JsonPropertyName("flow")]
@@ -73,5 +75,30 @@ namespace CycloneDX.Models
         [ProtoMember(6)]
         public List<DataflowSourceDestination> Destination { get; set; }
         public bool ShouldSerializeDestination() => Destination != null;
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as DataFlow);
+        }
+
+        public bool Equals(DataFlow obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Classification, obj.Classification) ||
+                this.Classification.Equals(obj.Classification, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Destination, obj.Destination) ||
+                this.Destination.SequenceEqual(obj.Destination)) &&
+                (this.Flow.Equals(obj.Flow)) &&
+                (object.ReferenceEquals(this.Governance, obj.Governance) ||
+                this.Governance.Equals(obj.Governance)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Source, obj.Source) ||
+                this.Source.SequenceEqual(obj.Source)) &&
+                (object.ReferenceEquals(this.XmlClassification, obj.XmlClassification) ||
+                this.XmlClassification.Equals(obj.XmlClassification));
+        }
     }
 }

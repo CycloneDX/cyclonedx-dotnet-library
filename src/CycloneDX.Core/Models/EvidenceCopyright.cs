@@ -15,16 +15,29 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class EvidenceCopyright
+    public class EvidenceCopyright : IEquatable<EvidenceCopyright>
     {
         [XmlText]
         [ProtoMember(1)]
         public string Text { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as EvidenceCopyright);
+        }
+
+        public bool Equals(EvidenceCopyright obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Text, obj.Text) ||
+                this.Text.Equals(obj.Text, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

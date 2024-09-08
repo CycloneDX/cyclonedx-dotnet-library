@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class AttachedText
+    public class AttachedText : IEquatable<AttachedText>
     {
         [XmlAttribute("content-type")]
         [ProtoMember(1)]
@@ -34,5 +35,21 @@ namespace CycloneDX.Models
         [XmlText]
         [ProtoMember(3)]
         public string Content { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as AttachedText);
+        }
+
+        public bool Equals(AttachedText obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Content, obj.Content) ||
+                this.Content.Equals(obj.Content, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.ContentType, obj.ContentType) ||
+                this.ContentType.Equals(obj.ContentType, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Encoding, obj.Encoding) ||
+                this.Encoding.Equals(obj.Encoding, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

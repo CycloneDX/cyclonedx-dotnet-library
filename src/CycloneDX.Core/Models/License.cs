@@ -15,7 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -24,7 +26,7 @@ namespace CycloneDX.Models
 {
     [XmlType("license")]
     [ProtoContract]
-    public class License
+    public class License : IEquatable<License>
     {
         [XmlElement("id")]
         [ProtoMember(1)]
@@ -58,5 +60,30 @@ namespace CycloneDX.Models
         [ProtoMember(7)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as License);
+        }
+
+        public bool Equals(License obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Id, obj.Id) ||
+                this.Id.Equals(obj.Id, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.Type == obj.Type) &&
+                (object.ReferenceEquals(this.Licensing, obj.Licensing) ||
+                this.Licensing.Equals(obj.Licensing)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Properties, obj.Id) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.Text, obj.Text) ||
+                this.Id.Equals(obj.Text)) &&
+                (object.ReferenceEquals(this.Url, obj.Url) ||
+                this.Url.Equals(obj.Url, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
 
     [ProtoContract]
-    public class LicenseChoice
+    public class LicenseChoice : IEquatable<LicenseChoice>
     {
         [XmlElement("license")]
         [ProtoMember(1)]
@@ -40,10 +41,26 @@ namespace CycloneDX.Models
         [JsonPropertyName("bom-ref")]
         [ProtoMember(3)]
         public string BomRef { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as LicenseChoice);
+        }
+
+        public bool Equals(LicenseChoice obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Expression, obj.Expression) ||
+                this.Expression.Equals(obj.Expression, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.License, obj.License) ||
+                this.License.Equals(obj.License));
+        }
     }
 
     // This is a workaround to serialize licenses correctly
-    public class LicenseChoiceList : IXmlSerializable
+    public class LicenseChoiceList : IEquatable<LicenseChoiceList>, IXmlSerializable
     {
         public LicenseChoiceList(List<LicenseChoice> licenses)
         {
@@ -53,6 +70,18 @@ namespace CycloneDX.Models
         public LicenseChoiceList() { }
 
         public List<LicenseChoice> Licenses { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as LicenseChoiceList);
+        }
+
+        public bool Equals(LicenseChoiceList obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Licenses, obj.Licenses) ||
+                this.Licenses.SequenceEqual(obj.Licenses));
+        }
 
         public System.Xml.Schema.XmlSchema GetSchema()
         {
@@ -123,5 +152,6 @@ namespace CycloneDX.Models
             }
 
         }
+
     }
 }

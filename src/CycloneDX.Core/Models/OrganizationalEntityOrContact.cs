@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class OrganizationalEntityOrContact
+    public class OrganizationalEntityOrContact : IEquatable<OrganizationalEntityOrContact>
     {
         [XmlElement("organization")]
         [ProtoMember(1)]
@@ -30,5 +31,19 @@ namespace CycloneDX.Models
         [XmlElement("individual")]
         [ProtoMember(2)]
         public OrganizationalContact Individual { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as OrganizationalEntityOrContact);
+        }
+
+        public bool Equals(OrganizationalEntityOrContact obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Individual, obj.Individual) ||
+                this.Individual.Equals(obj.Individual)) &&
+                (object.ReferenceEquals(this.Organization, obj.Organization) ||
+                this.Organization.Equals(obj.Organization));
+        }
     }
 }

@@ -15,7 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -24,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ToolChoices : IXmlSerializable
+    public class ToolChoices : IEquatable<ToolChoices>, IXmlSerializable
     {
         internal SpecificationVersion SpecVersion { get; set; }
 
@@ -47,7 +49,24 @@ namespace CycloneDX.Models
         {
             SpecVersion = SpecificationVersionHelpers.CurrentVersion;
         }
-        
+
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ToolChoices);
+        }
+
+        public bool Equals(ToolChoices obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Components, obj.Components) ||
+                this.Components.SequenceEqual(obj.Components)) &&
+                (object.ReferenceEquals(this.Services, obj.Services) ||
+                this.Services.SequenceEqual(obj.Services)) &&
+                (object.ReferenceEquals(this.Tools, obj.Tools) ||
+                this.Tools.SequenceEqual(obj.Tools));
+        }
+
         public System.Xml.Schema.XmlSchema GetSchema() {
             return null;
         }

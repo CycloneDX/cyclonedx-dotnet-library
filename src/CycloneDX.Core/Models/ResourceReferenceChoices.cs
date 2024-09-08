@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml;
@@ -24,11 +25,24 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ResourceReferenceChoices : List<ResourceReferenceChoice>, IXmlSerializable
+    public class ResourceReferenceChoices : List<ResourceReferenceChoice>, IEquatable<ResourceReferenceChoices>, IXmlSerializable
     {
         private string _elementName = "resourceReference";
 
-        public System.Xml.Schema.XmlSchema GetSchema() {
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ResourceReferenceChoices);
+        }
+
+        public bool Equals(ResourceReferenceChoices obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this, obj) ||
+                this.Equals(obj));
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
             return null;
         }
 
@@ -43,8 +57,9 @@ namespace CycloneDX.Models
             }
             reader.ReadEndElement();
         }
-        
-        public void WriteXml(XmlWriter writer) {
+
+        public void WriteXml(XmlWriter writer)
+        {
             foreach (var resRefChoice in this)
             {
                 writer.WriteStartElement(_elementName);
@@ -52,5 +67,6 @@ namespace CycloneDX.Models
                 writer.WriteEndElement();
             }
         }
+
     }
 }

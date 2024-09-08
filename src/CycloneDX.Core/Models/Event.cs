@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("event")]
     [ProtoContract]
-    public class Event
+    public class Event : IEquatable<Event>
     {
         [XmlElement("uid")]
         [ProtoMember(1)]
@@ -63,5 +64,28 @@ namespace CycloneDX.Models
         [ProtoMember(7)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Event);
+        }
+
+        public bool Equals(Event obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Data, obj.Data) ||
+                this.Data.Equals(obj.Data)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.Source, obj.Source) ||
+                this.Description.Equals(obj.Source)) &&
+                (object.ReferenceEquals(this.Target, obj.Target) ||
+                this.Description.Equals(obj.Target)) &&
+                (this.TimeReceived.Equals(obj.TimeReceived)) &&
+                (object.ReferenceEquals(this.Uid, obj.Uid) ||
+                this.Uid.Equals(obj.Uid, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

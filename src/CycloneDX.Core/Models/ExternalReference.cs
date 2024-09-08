@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -130,18 +131,19 @@ namespace CycloneDX.Models
 
         public override bool Equals(object obj)
         {
-            var other = obj as ExternalReference;
-            if (other == null)
-            {
-                return false;
-            }
-
-            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+            return Equals(obj as ExternalReference);
         }
 
         public bool Equals(ExternalReference obj)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            return obj != null &&
+                (object.ReferenceEquals(this.Comment, obj.Comment) ||
+                this.Comment.Equals(obj.Comment, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Hashes, obj.Hashes) ||
+                this.Hashes.SequenceEqual(obj.Hashes)) &&
+                (this.Type == obj.Type) &&
+                (object.ReferenceEquals(this.Url, obj.Url) ||
+                this.Comment.Equals(obj.Url, StringComparison.InvariantCultureIgnoreCase));;
         }
 
         public override int GetHashCode()

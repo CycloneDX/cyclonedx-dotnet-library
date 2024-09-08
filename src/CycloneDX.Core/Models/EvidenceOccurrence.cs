@@ -28,7 +28,7 @@ namespace CycloneDX.Models
 {
     [XmlType("evidence-occurrence")]
     [ProtoContract]
-    public class EvidenceOccurrence
+    public class EvidenceOccurrence : IEquatable<EvidenceOccurrence>
     {
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]
@@ -38,5 +38,19 @@ namespace CycloneDX.Models
         [XmlElement("location")]
         [ProtoMember(2)]
         public string Location { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Annotation);
+        }
+
+        public bool Equals(EvidenceOccurrence obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Location, obj.Location) ||
+                this.Location.Equals(obj.Location, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("workspace")]
     [ProtoContract]
-    public class Workspace
+    public class Workspace : IEquatable<Workspace>
     {
         [ProtoContract]
         public enum AccessModeType
@@ -96,5 +97,38 @@ namespace CycloneDX.Models
         [XmlElement("volume")]
         [ProtoMember(12)]
         public Volume Volume { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Workspace);
+        }
+
+        public bool Equals(Workspace obj)
+        {
+            return obj != null &&
+                (this.AccessMode.Equals(obj.AccessMode)) &&
+                (object.ReferenceEquals(this.Aliases, obj.Aliases) ||
+                this.Aliases.SequenceEqual(obj.Aliases)) &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description)) &&
+                (object.ReferenceEquals(this.ManagedDateType, obj.ManagedDateType) ||
+                this.ManagedDateType.Equals(obj.ManagedDateType, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.MountPath, obj.MountPath) ||
+                this.MountPath.Equals(obj.MountPath, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.ResourceReferences, obj.ResourceReferences) ||
+                this.ResourceReferences.Equals(obj.ResourceReferences)) &&
+                (object.ReferenceEquals(this.Uid, obj.Uid) ||
+                this.Uid.Equals(obj.Uid)) &&
+                (object.ReferenceEquals(this.Volume, obj.Volume) ||
+                this.Volume.Equals(obj.Volume)) &&
+                (object.ReferenceEquals(this.VolumeRequest, obj.VolumeRequest) ||
+                this.VolumeRequest.Equals(obj.VolumeRequest));
+        }
     }
 }

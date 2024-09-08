@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("volume")]
     [ProtoContract]
-    public class Volume
+    public class Volume : IEquatable<Volume>
     {
         [ProtoContract]
         public enum VolumeMode
@@ -100,5 +101,30 @@ namespace CycloneDX.Models
         [ProtoMember(8)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Volume);
+        }
+
+        public bool Equals(Volume obj)
+        {
+            return obj != null &&
+                (this.Mode.Equals(obj.Mode)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.NonNullablePersistent.Equals(obj.NonNullablePersistent)) &&
+                (this.NonNullableRemote.Equals(obj.NonNullableRemote)) &&
+                (object.ReferenceEquals(this.Path, obj.Path) ||
+                this.Name.Equals(obj.Path, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.Persistent.Equals(obj.Persistent)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (this.Remote.Equals(obj.Remote)) &&
+                (object.ReferenceEquals(this.SizeAllocated, obj.SizeAllocated) ||
+                this.SizeAllocated.Equals(obj.SizeAllocated)) &&
+                (object.ReferenceEquals(this.Uid, obj.Uid) ||
+                this.Uid.Equals(obj.Uid));
+        }
     }
 }

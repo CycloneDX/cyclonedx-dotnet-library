@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("formula")]
     [ProtoContract]
-    public class Formula
+    public class Formula : IEquatable<Formula>
     {
         [JsonPropertyName("bom-ref")]
         [XmlAttribute("bom-ref")]
@@ -54,5 +55,25 @@ namespace CycloneDX.Models
         [ProtoMember(5)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Formula);
+        }
+
+        public bool Equals(Formula obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef)) &&
+                (object.ReferenceEquals(this.Components, obj.Components) ||
+                this.Components.SequenceEqual(obj.Components)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.Services, obj.Services) ||
+                this.Services.SequenceEqual(obj.Services)) &&
+                (object.ReferenceEquals(this.Workflows, obj.Workflows) ||
+                this.Workflows.Equals(obj.Workflows));
+        }
     }
 }

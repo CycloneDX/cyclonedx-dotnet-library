@@ -15,7 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -24,9 +26,22 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class EnvironmentVarChoices : List<EnvironmentVarChoice>, IXmlSerializable
+    public class EnvironmentVarChoices : List<EnvironmentVarChoice>, IEquatable<EnvironmentVarChoices>, IXmlSerializable
     {
-        public System.Xml.Schema.XmlSchema GetSchema() {
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Annotation);
+        }
+
+        public bool Equals(EnvironmentVarChoices obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this, obj) ||
+                this.SequenceEqual(obj));
+        }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
             return null;
         }
 
@@ -44,13 +59,14 @@ namespace CycloneDX.Models
                 {
                     var nameString = reader.GetAttribute("name");
                     var valueString = reader.ReadElementContentAsString();
-                    this.Add(new EnvironmentVarChoice { Property = new Property { Name = nameString, Value = valueString }});
+                    this.Add(new EnvironmentVarChoice { Property = new Property { Name = nameString, Value = valueString } });
                 }
             }
             reader.ReadEndElement();
         }
-        
-        public void WriteXml(System.Xml.XmlWriter writer) {
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
             foreach (var envVar in this)
             {
                 if (envVar.Value != null)

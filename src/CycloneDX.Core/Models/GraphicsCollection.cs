@@ -26,10 +26,10 @@ namespace CycloneDX.Models
 {
     [XmlType("graphics")]
     [ProtoContract]
-    public class GraphicsCollection
+    public class GraphicsCollection : IEquatable<GraphicsCollection>
     {
         [ProtoContract]
-        public class Graphic
+        public class Graphic : IEquatable<Graphic> 
         {
             [XmlElement("name")]
             [ProtoMember(1)]
@@ -38,6 +38,20 @@ namespace CycloneDX.Models
             [XmlElement("image")]
             [ProtoMember(2)]
             public AttachedText Image { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as Graphic);
+            }
+
+            public bool Equals(Graphic obj)
+            {
+                return obj != null &&
+                    (object.ReferenceEquals(this.Image, obj.Image) ||
+                    this.Image.Equals(obj.Image)) &&
+                    (object.ReferenceEquals(this.Name, obj.Name) ||
+                    this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase));
+            }
         }
 
         [XmlElement("description")]
@@ -48,5 +62,19 @@ namespace CycloneDX.Models
         [XmlArrayItem("graphic")]
         [ProtoMember(2)]
         public List<Graphic> Collection { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as GraphicsCollection);
+        }
+
+        public bool Equals(GraphicsCollection obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Collection, obj.Collection) ||
+                this.Collection.Equals(obj.Collection)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

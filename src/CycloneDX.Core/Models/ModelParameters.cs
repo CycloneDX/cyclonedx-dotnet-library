@@ -26,18 +26,29 @@ namespace CycloneDX.Models
 {
     [XmlType("model-parameters")]
     [ProtoContract]
-    public class ModelParameters
+    public class ModelParameters : IEquatable<ModelParameters>
     {
         [ProtoContract]
-        public class ModelApproach
+        public class ModelApproach : IEquatable<ModelApproach>
         {
             [XmlElement("type")]
             [ProtoMember(1)]
-            public ModelCard.ModelParameterApproachType Type { get; set; }    
+            public ModelCard.ModelParameterApproachType Type { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as ModelApproach);
+            }
+
+            public bool Equals(ModelApproach obj)
+            {
+                return obj != null &&
+                    (this.Type == obj.Type);
+            }
         }
         
         [ProtoContract]
-        public class ModelDataset
+        public class ModelDataset : IEquatable<ModelDataset>
         {
             [XmlElement("dataset")]
             [ProtoMember(1)]
@@ -45,15 +56,41 @@ namespace CycloneDX.Models
             
             [XmlElement("ref")]
             [ProtoMember(2)]
-            public string Ref { get; set; }    
+            public string Ref { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as ModelDataset);
+            }
+
+            public bool Equals(ModelDataset obj)
+            {
+                return obj != null &&
+                    (object.ReferenceEquals(this.Data, obj.Data) ||
+                    this.Data.Equals(obj.Data)) &&
+                    (object.ReferenceEquals(this.Ref, obj.Ref) ||
+                    this.Ref.Equals(obj.Ref, StringComparison.InvariantCultureIgnoreCase));
+            }
         }
 
         [ProtoContract]
-        public class MachineLearningInputOutputParameter
+        public class MachineLearningInputOutputParameter : IEquatable<MachineLearningInputOutputParameter>
         {
             [XmlElement("format")]
             [ProtoMember(1)]
             public string Format { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as MachineLearningInputOutputParameter);
+            }
+
+            public bool Equals(MachineLearningInputOutputParameter obj)
+            {
+                return obj != null &&
+                    (object.ReferenceEquals(this.Format, obj.Format) ||
+                    this.Format.Equals(obj.Format, StringComparison.InvariantCultureIgnoreCase));
+            }
         }
         
         [XmlElement("approach")]
@@ -85,5 +122,29 @@ namespace CycloneDX.Models
         [XmlArrayItem("output")]
         [ProtoMember(7)]
         public List<MachineLearningInputOutputParameter> Outputs { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ModelParameters);
+        }
+
+        public bool Equals(ModelParameters obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Approach, obj.Approach) ||
+                this.Approach.Equals(obj.Approach)) &&
+                (object.ReferenceEquals(this.ArchitectureFamily, obj.ArchitectureFamily) ||
+                this.ArchitectureFamily.Equals(obj.ArchitectureFamily , StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Datasets, obj.Datasets) ||
+                this.Datasets.Equals(obj.Datasets)) &&
+                (object.ReferenceEquals(this.Inputs, obj.Inputs) ||
+                this.Inputs.Equals(obj.Inputs)) &&
+                (object.ReferenceEquals(this.ModelArchitecture, obj.ModelArchitecture) ||
+                this.ModelArchitecture.Equals(obj.ModelArchitecture)) &&
+                (object.ReferenceEquals(this.Outputs, obj.Outputs) ||
+                this.Outputs.Equals(obj.Outputs)) &&
+                (object.ReferenceEquals(this.Task, obj.Task) ||
+                this.Task.Equals(obj.Task, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

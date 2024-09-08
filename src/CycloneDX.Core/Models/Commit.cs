@@ -15,13 +15,14 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Commit
+    public class Commit : IEquatable<Commit>
     {
         [XmlElement("uid")]
         [ProtoMember(1)]
@@ -42,5 +43,25 @@ namespace CycloneDX.Models
         [XmlElement("message")]
         [ProtoMember(5)]
         public string Message { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Commit);
+        }
+
+        public bool Equals(Commit obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Author, obj.Author) ||
+                this.Author.Equals(obj.Author)) &&
+                (object.ReferenceEquals(this.Committer, obj.Committer) ||
+                this.Committer.Equals(obj.Committer)) &&
+                (object.ReferenceEquals(this.Message, obj.Message) ||
+                this.Message.Equals(obj.Message, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Uid, obj.Uid) ||
+                this.Uid.Equals(obj.Uid, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Url, obj.Url) ||
+                this.Url.Equals(obj.Url, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

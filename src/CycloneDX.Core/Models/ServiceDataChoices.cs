@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -25,7 +26,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ServiceDataChoices : IXmlSerializable
+    public class ServiceDataChoices : IEquatable<ServiceDataChoices>, IXmlSerializable
     {
         internal SpecificationVersion SpecVersion { get; set; }
 
@@ -37,7 +38,21 @@ namespace CycloneDX.Models
         {
             SpecVersion = SpecificationVersionHelpers.CurrentVersion;
         }
-        
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ServiceDataChoices);
+        }
+
+        public bool Equals(ServiceDataChoices obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.DataClassifications, obj.DataClassifications) ||
+                this.DataClassifications.SequenceEqual(obj.DataClassifications)) &&
+                (object.ReferenceEquals(this.DataFlows, obj.DataFlows) ||
+                this.DataFlows.SequenceEqual(obj.DataFlows));
+        }
+
         public System.Xml.Schema.XmlSchema GetSchema() {
             return null;
         }

@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -209,18 +210,49 @@ namespace CycloneDX.Models
 
         public override bool Equals(object obj)
         {
-            var other = obj as Service;
-            if (other == null)
-            {
-                return false;
-            }
-
-            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+            return Equals(obj as Service);
         }
 
         public bool Equals(Service obj)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            return obj != null &&
+                (this.Authenticated == obj.Authenticated) &&
+                (object.ReferenceEquals(this.BomRef, obj.BomRef) ||
+                this.BomRef.Equals(obj.BomRef, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Data, obj.Data) ||
+                this.Data.SequenceEqual(obj.Data)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.BomRef.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Endpoints, obj.Endpoints) ||
+                this.Endpoints.SequenceEqual(obj.Endpoints)) &&
+                (object.ReferenceEquals(this.ExternalReferences, obj.ExternalReferences) ||
+                this.ExternalReferences.SequenceEqual(obj.ExternalReferences)) &&
+                (object.ReferenceEquals(this.Group, obj.Group) ||
+                this.Group.Equals(obj.Group, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Licenses, obj.Licenses) ||
+                this.Licenses.SequenceEqual(obj.Licenses)) &&
+                (object.ReferenceEquals(this.LicensesSerialized, obj.LicensesSerialized) ||
+                this.LicensesSerialized.Equals(obj.LicensesSerialized)) &&
+                (object.ReferenceEquals(this.Name, obj.Name) ||
+                this.Name.Equals(obj.Name, StringComparison.InvariantCultureIgnoreCase)) &&
+                (this.NonNullableAuthenticated.Equals(obj.NonNullableAuthenticated)) &&
+                (this.NonNullableXTrustBoundary.Equals(obj.NonNullableXTrustBoundary)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.Provider, obj.Provider) ||
+                this.Provider.Equals(obj.Provider)) &&
+                (object.ReferenceEquals(this.ReleaseNotes, obj.ReleaseNotes) ||
+                this.ReleaseNotes.Equals(obj.ReleaseNotes)) &&
+                (object.ReferenceEquals(this.Services, obj.Services) ||
+                this.Services.SequenceEqual(obj.Services)) &&
+                (this.SpecVersion.Equals(obj.SpecVersion)) &&
+                (object.ReferenceEquals(this.TrustZone, obj.TrustZone) ||
+                this.TrustZone.Equals(obj.TrustZone, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Version, obj.Version) ||
+                this.Version.Equals(obj.Version, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.XmlData, obj.XmlData) ||
+                this.XmlData.Equals(obj.XmlData)) &&
+                (this.TrustZone.Equals(obj.XTrustBoundary));
         }
     
         public override int GetHashCode()

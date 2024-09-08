@@ -17,13 +17,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class ReleaseNotes
+    public class ReleaseNotes : IEquatable<ReleaseNotes>
     {
         [XmlElement("type")]
         [ProtoMember(1)]
@@ -79,5 +80,35 @@ namespace CycloneDX.Models
         [XmlArrayItem("property")]
         [ProtoMember(11)]
         public List<Property> Properties { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ReleaseNotes);
+        }
+
+        public bool Equals(ReleaseNotes obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Aliases, obj.Aliases) ||
+                this.Aliases.SequenceEqual(obj.Aliases)) &&
+                (object.ReferenceEquals(this.Description, obj.Description) ||
+                this.Description.Equals(obj.Description, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.FeaturedImage, obj.FeaturedImage) ||
+                this.FeaturedImage.Equals(obj.FeaturedImage, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Notes, obj.Notes) ||
+                this.Notes.SequenceEqual(obj.Notes)) &&
+                (object.ReferenceEquals(this.Properties, obj.Properties) ||
+                this.Properties.SequenceEqual(obj.Properties)) &&
+                (object.ReferenceEquals(this.Resolves, obj.Resolves) ||
+                this.Resolves.SequenceEqual(obj.Resolves)) &&
+                (object.ReferenceEquals(this.SocialImage, obj.SocialImage) ||
+                this.SocialImage.SequenceEqual(obj.SocialImage)) &&
+                (object.ReferenceEquals(this.Tags, obj.Tags) ||
+                this.Tags.SequenceEqual(obj.Tags)) &&
+                (object.ReferenceEquals(this.Title, obj.Title) ||
+                this.Title.Equals(obj.Title, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Type, obj.Type) ||
+                this.Type.Equals(obj.Type, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

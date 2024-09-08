@@ -15,14 +15,16 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Pedigree
+    public class Pedigree : IEquatable<Pedigree>
     {
         [XmlArray("ancestors")]
         [XmlArrayItem("component")]
@@ -53,5 +55,27 @@ namespace CycloneDX.Models
         [XmlElement("notes")]
         [ProtoMember(6)]
         public string Notes { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Annotation);
+        }
+
+        public bool Equals(Pedigree obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Ancestors, obj.Ancestors) ||
+                this.Ancestors.SequenceEqual(obj.Ancestors)) &&
+                (object.ReferenceEquals(this.Commits, obj.Commits) ||
+                this.Commits.SequenceEqual(obj.Commits)) &&
+                (object.ReferenceEquals(this.Descendants, obj.Descendants) ||
+                this.Descendants.SequenceEqual(obj.Descendants)) &&
+                (object.ReferenceEquals(this.Notes, obj.Notes) ||
+                this.Notes.Equals(obj.Notes, StringComparison.InvariantCultureIgnoreCase)) &&
+                (object.ReferenceEquals(this.Patches, obj.Patches) ||
+                this.Patches.SequenceEqual(obj.Patches)) &&
+                (object.ReferenceEquals(this.Variants, obj.Variants) ||
+                this.Variants.SequenceEqual(obj.Variants));
+        }
     }
 }

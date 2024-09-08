@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -26,7 +27,7 @@ namespace CycloneDX.Models
 {
     [XmlType("data-governance")]
     [ProtoContract]
-    public class DataGovernance
+    public class DataGovernance : IEquatable<DataGovernance>
     {
         [XmlArray("custodians")]
         [XmlArrayItem("custodian")]
@@ -45,5 +46,21 @@ namespace CycloneDX.Models
         [ProtoMember(3)]
         public List<OrganizationalEntityOrContact> Owners { get; set; }
         public bool ShouldSerializeOwners() { return Owners?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as DataGovernance);
+        }
+
+        public bool Equals(DataGovernance obj)
+        {
+            return obj != null &&
+                (object.ReferenceEquals(this.Custodians, obj.Custodians) ||
+                this.Custodians.SequenceEqual(obj.Custodians)) &&
+                (object.ReferenceEquals(this.Owners, obj.Owners) ||
+                this.Owners.SequenceEqual(obj.Owners)) &&
+                (object.ReferenceEquals(this.Stewards, obj.Stewards) ||
+                this.Stewards.SequenceEqual(obj.Stewards));
+        }
     }
 }
