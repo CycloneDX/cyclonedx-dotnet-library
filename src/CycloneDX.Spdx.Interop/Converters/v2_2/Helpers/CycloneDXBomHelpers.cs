@@ -131,10 +131,14 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         var originatorMatch = originatorRegex.Match(package.Originator);
                         if (originatorMatch.Success)
                         {
+                            #pragma warning disable 618
                             component.Author = originatorMatch.Groups["name"].ToString();
+                            #pragma warning restore 618
                             if (package.Originator.ToLowerInvariant().StartsWith("organization:"))
                             {
+                                #pragma warning disable 618
                                 component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR_ORGANIZATION, component.Author);
+                                #pragma warning restore 618
                             }
                             component.Properties.AddSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR_EMAIL, originatorMatch.Groups["email"].ToString());
                         }

@@ -108,9 +108,19 @@ namespace CycloneDX.Models
         public List<OrganizationalContact> Authors { get; set; }
         public bool ShouldSerializeAuthors() { return Authors?.Count > 0; }
 
-        [XmlElement("author")]
+        [Obsolete("This will be removed in a future version. Use @.authors or @.manufacturer instead.")]
+        [XmlIgnore]
         [ProtoMember(5)]
         public string Author { get; set; }
+
+        #pragma warning disable 618
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [XmlElement("author")]
+        [JsonIgnore]
+        public string Author_Xml { get { return Author; } set { Author = value; } }
+        public bool ShouldSerializeAuthor_Xml() { return Author != null; }
+        #pragma warning restore 618
+
 
         [XmlElement("publisher")]
         [ProtoMember(6)]
