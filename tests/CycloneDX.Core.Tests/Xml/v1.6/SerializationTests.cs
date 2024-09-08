@@ -207,7 +207,6 @@ namespace CycloneDX.Core.Tests.Xml.v1_6
             xmlBom = Serializer.Serialize(bom);
 
 
-            //File.WriteAllText("C:/temp/testedBom.xml", xmlBom.ToString());
             var result = Validator.Validate(xmlBom, SpecificationVersion.v1_5);
 
             Assert.True(result.Valid, $"BOM version downgrade failed validation: Validation failed: {result}");
