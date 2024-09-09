@@ -48,11 +48,15 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
                     var copyrightText = component.Copyright;
                     if (!String.IsNullOrEmpty(copyrightText) && copyrightText != "NOASSERTION")
+                    {
                         file.CopyrightText = copyrightText;
+                    }
 
                     var licenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED);
                     if (!String.IsNullOrEmpty(licenseConcluded) && licenseConcluded != "NOASSERTION")
+                    {
                         file.LicenseConcluded = licenseConcluded;
+                    }
 
                     if (file.SPDXID == null)
                     {
@@ -102,7 +106,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     component.Properties.AddSpdxElement(PropertyTaxonomy.SPDXID, file.SPDXID);
                     component.Properties.AddSpdxElement(PropertyTaxonomy.COMMENT, file.Comment);
                     component.Properties.AddSpdxElements(PropertyTaxonomy.FILE_TYPE, file.FileTypes);
-                    component.Properties.AddSpdxElements<Models.v2_3.Annotation>(PropertyTaxonomy.ANNOTATION, file.Annotations);
+                    component.Properties.AddSpdxElements(PropertyTaxonomy.ANNOTATION, file.Annotations);
                     component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS, file.LicenseComments);
                     component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED, file.LicenseConcluded);
                     component.Properties.AddSpdxElements(PropertyTaxonomy.FILE_CONTRIBUTOR, file.FileContributors);

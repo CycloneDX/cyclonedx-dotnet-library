@@ -79,8 +79,11 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             component.Type = Component.Classification.Library;
                             break;
                     }
-                } else
+                }
+                else
+                {
                     component.Type = Component.Classification.Library;
+                }
 
 
                 if (package.LicenseInfoFromFiles != null && package.LicenseInfoFromFiles.Count > 0)

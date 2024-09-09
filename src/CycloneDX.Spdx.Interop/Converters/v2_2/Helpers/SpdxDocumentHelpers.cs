@@ -50,7 +50,9 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
                 var copyrightText = component.Copyright;
                 if (!String.IsNullOrEmpty(copyrightText) && copyrightText != "NOASSERTION")
+                {
                     package.CopyrightText = copyrightText;
+                }
 
                 package.SPDXID = component.Properties?.GetSpdxElement(PropertyTaxonomy.SPDXID);
                 if (package.SPDXID == null)
@@ -72,20 +74,25 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
                 var licenseConcluded = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED);
                 if (!String.IsNullOrEmpty(licenseConcluded) && licenseConcluded != "NOASSERTION")
+                {
                     package.LicenseConcluded = licenseConcluded;
+                }
 
-                    var builtDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_BUILT_DATE);
-                if ( ! String.IsNullOrEmpty(builtDate)){
+                var builtDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_BUILT_DATE);
+                if ( ! String.IsNullOrEmpty(builtDate))
+                {
                     package.BuiltDate = DateTime.Parse(builtDate.Trim('"'));
                 }
                 
                 var releaseDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_RELEASE_DATE);
-                if ( ! String.IsNullOrEmpty(releaseDate)){
+                if ( ! String.IsNullOrEmpty(releaseDate))
+                {
                     package.ReleaseDate = DateTime.Parse(releaseDate.Trim('"'));
                 }
                 
                 var validUntilDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_VALID_UNTIL_DATE);
-                if ( ! String.IsNullOrEmpty(validUntilDate)){
+                if ( ! String.IsNullOrEmpty(validUntilDate))
+                {
                     package.ValidUntilDate = DateTime.Parse(validUntilDate.Trim('"'));
                 }
                 
@@ -138,8 +145,11 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
                 // LicenseDeclared
                 var licenseDeclared = component.Properties?.GetSpdxElement(PropertyTaxonomy.LICENSE_DECLARED);
-                if(!String.IsNullOrEmpty(licenseDeclared) && licenseDeclared != "NOASSERTION")
+                if (!String.IsNullOrEmpty(licenseDeclared) && licenseDeclared != "NOASSERTION")
+                {
                     package.LicenseDeclared = licenseDeclared;
+                }
+
                 if  (component.Licenses != null && component.Licenses.Count == 1)
                 {
 
@@ -197,14 +207,15 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     case Component.Classification.Framework:
                         package.PrimaryPackagePurpose = PrimaryPackagePurposeType.FRAMEWORK;
                         break;
-                    case Component.Classification.Library:
-                        package.PrimaryPackagePurpose = PrimaryPackagePurposeType.LIBRARY;
-                        break;
+                    
                     case Component.Classification.Operating_System:
                         package.PrimaryPackagePurpose = PrimaryPackagePurposeType.OPERATING_SYSTEM;
                         break;
                     case Component.Classification.Container:
                         package.PrimaryPackagePurpose = PrimaryPackagePurposeType.CONTAINER;
+                        break;
+                    default:
+                        package.PrimaryPackagePurpose = PrimaryPackagePurposeType.LIBRARY;
                         break;
                 }
 
