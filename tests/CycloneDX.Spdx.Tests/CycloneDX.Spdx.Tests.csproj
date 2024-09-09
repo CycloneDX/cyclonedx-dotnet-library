@@ -27,6 +27,8 @@
   
   <ItemGroup>
     <None Remove="Resources\v2.3\document.xml" />
+    <None Remove="__snapshots__\JsonSerializerTests.JsonAsyncRoundTripTest_document.snap" />
+    <None Remove="__snapshots__\JsonSerializerTests.JsonRoundTripTest_document.snap" />
     <None Remove="__snapshots__\XmlSerializerTests.XmlRoundTripTest_document.snap" />
   </ItemGroup>
 
@@ -42,6 +44,18 @@
 
   <ItemGroup>
     <Folder Include="__snapshots__\__mismatch__\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\JsonSerializerTests.JsonAsyncRoundTripTest_document.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\JsonSerializerTests.JsonRoundTripTest_document.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

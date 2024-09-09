@@ -189,7 +189,7 @@
           "value": "cpe:2.3:a:pivotal_software:spring_framework:4.1.0:*:*:*:*:*:*:*"
         },
         {
-          "name": "spdx:external-reference:other:http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301#LocationRef-acmeforge",
+          "name": "spdx:external-reference:persistent-id:swh",
           "value": "acmecorp/acmenator/4.1.3-alpha This is the external ref for Acme"
         },
         {

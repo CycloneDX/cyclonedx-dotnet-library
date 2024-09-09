@@ -99,9 +99,9 @@
         },
         {
           "comment": "This is the external ref for Acme",
-          "referenceCategory": "OTHER",
+          "referenceCategory": "PERSISTENT_ID",
           "referenceLocator": "acmecorp/acmenator/4.1.3-alpha",
-          "referenceType": "http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301#LocationRef-acmeforge"
+          "referenceType": "swh"
         }
       ],
       "filesAnalyzed": true,

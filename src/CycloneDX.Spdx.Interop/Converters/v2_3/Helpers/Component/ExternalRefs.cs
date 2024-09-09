@@ -71,15 +71,14 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
                             extRef.ReferenceType = "purl";
                             break;
+                        case PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH:
+                             extRef.ReferenceCategory = ExternalRefCategory.PERSISTENT_ID;
+                             extRef.ReferenceType = "swh";
+                             break;
                         default:
                             break;
                     }
-                    //TODO add this back in once the SPDX JSON schema is fixed https://github.com/spdx/spdx-spec/issues/612
                     //TODO and write corresponding code in AddExternalRefsToCDX
-                    // case PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH:
-                    //     extRef.ReferenceCategory = ExternalRefCategory.PERSISTENT_ID;
-                    //     extRef.ReferenceType = "swh";
-                    //     break;
                 }
                 if (extRef.ReferenceType != null)
                 {
@@ -131,6 +130,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                                 break;
                         }
                     }
+                    else if (extRef.ReferenceCategory == ExternalRefCategory.PERSISTENT_ID) { refPropName = PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH; }
                     else if (extRef.ReferenceCategory == ExternalRefCategory.OTHER)
                     {
                         refPropName = $"{PropertyTaxonomy.EXTERNAL_REFERENCE_OTHER}:{extRef.ReferenceType}";

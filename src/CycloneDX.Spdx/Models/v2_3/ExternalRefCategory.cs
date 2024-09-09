@@ -27,5 +27,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         SECURITY,
         [XmlEnum("PACKAGE-MANAGER")]
         PACKAGE_MANAGER,
+        [XmlEnum("PERSISTENT-ID")]
+        PERSISTENT_ID,
     }
 }
