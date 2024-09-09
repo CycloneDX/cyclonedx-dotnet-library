@@ -40,36 +40,38 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     extRef.ReferenceCategory = ExternalRefCategory.OTHER;
                     extRef.ReferenceType = extRefProp.Name.Substring(PropertyTaxonomy.EXTERNAL_REFERENCE_OTHER.Length + 1);
                 }
-                else switch (extRefProp.Name)
-                {
-                    case PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22:
-                        extRef.ReferenceCategory = ExternalRefCategory.SECURITY;
-                        extRef.ReferenceType = "cpe22Type";
-                        break;
-                    case PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23:
-                        extRef.ReferenceCategory = ExternalRefCategory.SECURITY;
-                        extRef.ReferenceType = "cpe23Type";
-                        break;
-                    case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_MAVEN_CENTRAL:
-                        extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
-                        extRef.ReferenceType = "maven-central";
-                        break;
-                    case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NPM:
-                        extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
-                        extRef.ReferenceType = "npm";
-                        break;
-                    case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NUGET:
-                        extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
-                        extRef.ReferenceType = "nuget";
-                        break;
-                    case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_BOWER:
-                        extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
-                        extRef.ReferenceType = "bower";
-                        break;
-                    case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL:
-                        extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
-                        extRef.ReferenceType = "purl";
-                        break;
+                else {
+                    switch (extRefProp.Name)
+                    {
+                        case PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22:
+                            extRef.ReferenceCategory = ExternalRefCategory.SECURITY;
+                            extRef.ReferenceType = "cpe22Type";
+                            break;
+                        case PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23:
+                            extRef.ReferenceCategory = ExternalRefCategory.SECURITY;
+                            extRef.ReferenceType = "cpe23Type";
+                            break;
+                        case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_MAVEN_CENTRAL:
+                            extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
+                            extRef.ReferenceType = "maven-central";
+                            break;
+                        case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NPM:
+                            extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
+                            extRef.ReferenceType = "npm";
+                            break;
+                        case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_NUGET:
+                            extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
+                            extRef.ReferenceType = "nuget";
+                            break;
+                        case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_BOWER:
+                            extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
+                            extRef.ReferenceType = "bower";
+                            break;
+                        case PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL:
+                            extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
+                            extRef.ReferenceType = "purl";
+                            break;
+                    }
                     //TODO add this back in once the SPDX JSON schema is fixed https://github.com/spdx/spdx-spec/issues/612
                     //TODO and write corresponding code in AddExternalRefsToCDX
                     // case PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH:
@@ -95,7 +97,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
         {
             if (externalRefs != null && externalRefs.Count > 0)
             {
-                if (component.Properties == null) component.Properties = new List<Property>();
+                if (component.Properties == null) { component.Properties = new List<Property>(); }
                 foreach (var extRef in externalRefs)
                 {
                     string refPropName = null;

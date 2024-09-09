@@ -66,10 +66,9 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     var toolMatch = toolRegex.Match(creator);
                     if (toolMatch.Success)
                     {
-                        if (bom.Metadata == null) bom.Metadata = new Metadata();
+                        if (bom.Metadata == null) { bom.Metadata = new Metadata(); }
                         #pragma warning disable 618
-                        if (bom.Metadata?.Tools?.Tools == null)
-                            bom.Metadata.Tools = new ToolChoices { Tools = new List<Tool>() };
+                        if (bom.Metadata?.Tools?.Tools == null) { bom.Metadata.Tools = new ToolChoices { Tools = new List<Tool>() }; }
                         bom.Metadata.Tools.Tools.Add(new Tool {
                             Name = toolMatch.Groups["name"].ToString(),
                             Version = toolMatch.Groups["version"].ToString(),
@@ -81,7 +80,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         var nonToolMatch = nonToolRegex.Match(creator);
                         if (nonToolMatch.Success)
                         {
-                            if (bom.Metadata.Authors == null) bom.Metadata.Authors = new List<OrganizationalContact>();
+                            if (bom.Metadata.Authors == null) { bom.Metadata.Authors = new List<OrganizationalContact>(); }
                             bom.Metadata.Authors.Add(new OrganizationalContact
                             {
                                 Name = nonToolMatch.Groups["name"].ToString(),

@@ -112,7 +112,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 // LicenseInfoFromFiles
                 if (component.Evidence?.Licenses != null && component.Evidence.Licenses.Count > 0)
                 {
-                    if (package.LicenseInfoFromFiles == null) package.LicenseInfoFromFiles = new List<string>();
+                    if (package.LicenseInfoFromFiles == null) { package.LicenseInfoFromFiles = new List<string>(); }
                     foreach (var license in component.Evidence.Licenses)
                     {
                         if (license.Expression != null)
@@ -128,7 +128,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             }
                             else
                             {
-                                if (doc.HasExtractedLicensingInfos == null) doc.HasExtractedLicensingInfos = new List<ExtractedLicensingInfo>();
+                                if (doc.HasExtractedLicensingInfos == null) { doc.HasExtractedLicensingInfos = new List<ExtractedLicensingInfo>(); } 
                                 var extLicInfo = new ExtractedLicensingInfo
                                 {
                                     LicenseId = $"LicenseRef-{doc.HasExtractedLicensingInfos.Count + 1}",

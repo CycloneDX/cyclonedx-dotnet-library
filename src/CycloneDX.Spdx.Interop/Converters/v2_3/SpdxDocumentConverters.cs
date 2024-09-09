@@ -27,7 +27,7 @@ namespace CycloneDX.Spdx.Interop
     {
         public static SpdxDocument ToSpdx(this Bom bom)
         {
-            var doc = new SpdxDocument()
+            var doc = new SpdxDocument
             {
                 CreationInfo = new CreationInfo(),
             };
@@ -90,7 +90,7 @@ namespace CycloneDX.Spdx.Interop
 
         public static Bom ToCycloneDX(this SpdxDocument doc)
         {
-            var bom = new Bom()
+            var bom = new Bom
             {
                 Metadata = new Metadata
                 {

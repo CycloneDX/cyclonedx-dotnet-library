@@ -29,7 +29,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
         public static void AddSpdxPackages(this Bom bom, SpdxDocument doc)
         {
             if (doc.Packages == null || doc.Packages.Count == 0) { return; }
-            if (bom.Components == null) bom.Components = new List<Component>();
+            if (bom.Components == null) { bom.Components = new List<Component>(); }
             foreach (var package in doc.Packages)
             {
                 var component = new Component
@@ -88,8 +88,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
                 if (package.LicenseInfoFromFiles != null && package.LicenseInfoFromFiles.Count > 0)
                 {
-                    if (component.Evidence == null) component.Evidence = new Evidence();
-                    if (component.Evidence.Licenses == null) component.Evidence.Licenses = new List<LicenseChoice>();
+                    if (component.Evidence == null) { component.Evidence = new Evidence(); }
+                    if (component.Evidence.Licenses == null) { component.Evidence.Licenses = new List<LicenseChoice>(); }
                     foreach (var licenseInfo in package.LicenseInfoFromFiles)
                     {
                         if (licenseInfo.StartsWith("LicenseRef-")
@@ -211,7 +211,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 
                 if (package.DownloadLocation != null)
                 {
-                    if (component.ExternalReferences == null) component.ExternalReferences = new List<ExternalReference>();
+                    if (component.ExternalReferences == null) { component.ExternalReferences = new List<ExternalReference>(); }
                     component.ExternalReferences.Add(new ExternalReference
                     {
                         Type = ExternalReference.ExternalReferenceType.Distribution,

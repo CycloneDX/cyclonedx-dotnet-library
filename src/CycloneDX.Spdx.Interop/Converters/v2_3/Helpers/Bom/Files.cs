@@ -90,9 +90,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
         public static void AddSpdxFiles(this Bom bom, List<File> files)
         {
-            if (files != null && files.Count > 0)
-            {
-                if (bom.Components == null) bom.Components = new List<Component>();
+            if (files != null && files.Count > 0) { bom.Components = new List<Component>(); }
                 foreach (var file in files)
                 {
                     var component = new Component
