@@ -119,6 +119,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
                                 ChecksumValue = hash.Content,
                             });
                             break;
+                        default:
+                            break;
                     }
                 }
             }
@@ -163,6 +165,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
                                 Algorithm = ChecksumAlgorithm.ADLER32,
                                 ChecksumValue = checksum.Value,
                             });
+                            break;
+                        default:
                             break;
                     }
                 }
@@ -279,6 +283,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             break;
                         case ChecksumAlgorithm.ADLER32:
                             component.Properties.AddSpdxElement(PropertyTaxonomy.CHECKSUM_ADLER32, checksum.ChecksumValue);
+                            break;
+                        default:
                             break;
                     }
                 }

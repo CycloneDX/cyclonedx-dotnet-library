@@ -71,6 +71,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             extRef.ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
                             extRef.ReferenceType = "purl";
                             break;
+                        default:
+                            break;
                     }
                     //TODO add this back in once the SPDX JSON schema is fixed https://github.com/spdx/spdx-spec/issues/612
                     //TODO and write corresponding code in AddExternalRefsToCDX
@@ -103,15 +105,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     string refPropName = null;
                     if (extRef.ReferenceCategory == ExternalRefCategory.SECURITY)
                     {
-                        switch (extRef.ReferenceType)
-                        {
-                            case "cpe22Type":
-                                refPropName = PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22;
-                                break;
-                            case "cpe23Type":
-                                refPropName = PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23;
-                                break;
-                        }
+                        if(extRef.ReferenceType == "cpe22Type") { refPropName = PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22; }
+                        else if(extRef.ReferenceType == "cpe23Type"){ refPropName = PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23; } 
                     }
                     else if (extRef.ReferenceCategory == ExternalRefCategory.PACKAGE_MANAGER)
                     {
@@ -131,6 +126,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
                                 break;
                             case "purl":
                                 refPropName = PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL;
+                                break;
+                            default:
                                 break;
                         }
                     }
