@@ -222,7 +222,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
                 if (package.Homepage != null)
                 {
-                    if (component.ExternalReferences == null) component.ExternalReferences = new List<ExternalReference>();
+                    if (component.ExternalReferences == null) { component.ExternalReferences = new List<ExternalReference>(); }
                     component.ExternalReferences.Add(new ExternalReference
                     {
                         Type = ExternalReference.ExternalReferenceType.Website,
