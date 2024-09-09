@@ -91,31 +91,30 @@ namespace CycloneDX.Spdx.Interop.Helpers
         public static void AddSpdxFiles(this Bom bom, List<File> files)
         {
             if (files != null && files.Count > 0) { bom.Components = new List<Component>(); }
-                foreach (var file in files)
+            foreach (var file in files)
+            {
+                var component = new Component
                 {
-                    var component = new Component
-                    {
-                        Type = Component.Classification.File,
-                        Name = file.FileName,
-                        Copyright = file.CopyrightText,
-                        Properties = new List<Property>(),
-                    };
+                   Type = Component.Classification.File,
+                   Name = file.FileName,
+                   Copyright = file.CopyrightText,
+                   Properties = new List<Property>(),
+                };
 
-                    component.Properties.AddSpdxElement(PropertyTaxonomy.SPDXID, file.SPDXID);
-                    component.Properties.AddSpdxElement(PropertyTaxonomy.COMMENT, file.Comment);
-                    component.Properties.AddSpdxElements(PropertyTaxonomy.FILE_TYPE, file.FileTypes);
-                    component.Properties.AddSpdxElements(PropertyTaxonomy.ANNOTATION, file.Annotations);
-                    component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS, file.LicenseComments);
-                    component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED, file.LicenseConcluded);
-                    component.Properties.AddSpdxElements(PropertyTaxonomy.FILE_CONTRIBUTOR, file.FileContributors);
-                    component.Properties.AddSpdxElement(PropertyTaxonomy.FILE_NOTICE_TEXT, file.NoticeText);
+                 component.Properties.AddSpdxElement(PropertyTaxonomy.SPDXID, file.SPDXID);
+                 component.Properties.AddSpdxElement(PropertyTaxonomy.COMMENT, file.Comment);
+                 component.Properties.AddSpdxElements(PropertyTaxonomy.FILE_TYPE, file.FileTypes);
+                 component.Properties.AddSpdxElements(PropertyTaxonomy.ANNOTATION, file.Annotations);
+                 component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_COMMENTS, file.LicenseComments);
+                 component.Properties.AddSpdxElement(PropertyTaxonomy.LICENSE_CONCLUDED, file.LicenseConcluded);
+                 component.Properties.AddSpdxElements(PropertyTaxonomy.FILE_CONTRIBUTOR, file.FileContributors);
+                 component.Properties.AddSpdxElement(PropertyTaxonomy.FILE_NOTICE_TEXT, file.NoticeText);
 
-                    component.AddSpdxAttributionTexts(file.AttributionTexts);
-                    component.AddSpdxChecksums(file.Checksums);
+                 component.AddSpdxAttributionTexts(file.AttributionTexts);
+                 component.AddSpdxChecksums(file.Checksums);
 
-                    bom.Components.Add(component);
-                }
+                 bom.Components.Add(component);
             }
-        }    
-    }
+        }
+    }    
 }
