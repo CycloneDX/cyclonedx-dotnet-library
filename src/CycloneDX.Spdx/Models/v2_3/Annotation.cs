@@ -33,7 +33,6 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// Type of the annotation.
         /// </summary>
         [XmlElement("annotationType")]
-        //[JsonConverter(typeof(JsonStringEnumConverter))]
         public AnnotationType AnnotationType { get; set; }
 
         /// <summary>

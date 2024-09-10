@@ -15,18 +15,10 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Linq;
-using System.Net.Security;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace CycloneDX.Spdx.Serialization
 {
@@ -35,9 +27,7 @@ namespace CycloneDX.Spdx.Serialization
         private static readonly XmlWriterSettings WriterSettings = new XmlWriterSettings
         {
             Indent = true,
-            IndentChars = "\t",
-            Encoding = new UTF8Encoding(false),
-            OmitXmlDeclaration = false
+            Encoding = Encoding.UTF8,
         };
 
         /// <summary>
@@ -52,14 +42,7 @@ namespace CycloneDX.Spdx.Serialization
             using (var ms = new MemoryStream())
             {
                 Serialize(document, ms);
-
-                string xml = Encoding.UTF8.GetString(ms.ToArray());
-
-                string pattern = @"<\?xml\s+version=\\?""1\.0\\?""\s+encoding=\\?""utf-8\\?""\s*\?>";
-                xml = Regex.Replace(xml, pattern, "<?xml version='1.0' encoding='UTF-8'?>");
-                xml = RemoveNamespaceDeclarations(xml);
-
-                return xml;
+                return Encoding.UTF8.GetString(ms.ToArray());
             }
         }
 
@@ -128,15 +111,6 @@ namespace CycloneDX.Spdx.Serialization
             var document = (Models.v2_3.SpdxDocument)serializer.Deserialize(xmlStream);
 
             return document;
-        }
-
-        private static string RemoveNamespaceDeclarations(string xml)
-        {
-            // Regex to remove any xmlns:* declarations
-            return System.Text.RegularExpressions.Regex.Replace(
-                xml,
-                @"\s+xmlns(:\w+)?=""[^""]*""",
-                string.Empty);
         }
     }
 }
