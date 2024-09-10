@@ -65,7 +65,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
         public static void AddSpdxElement<T>(this List<Property> properties, string propertyName, T spdxElement)
         {
-            if (spdxElement != null)
+            if (!EqualityComparer<T>.Default.Equals(spdxElement, default(T)))
             {
                 properties.Add(new Property
                 {
