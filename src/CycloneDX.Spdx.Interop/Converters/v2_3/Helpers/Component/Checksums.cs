@@ -167,7 +167,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             });
                             break;
                         default:
-                            break;
+                            throw new ArgumentOutOfRangeException(nameof(checksum.Name), $"Unsupported hash algorithm: {checksum.Name}");
                     }
                 }
             }
@@ -285,7 +285,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             component.Properties.AddSpdxElement(PropertyTaxonomy.CHECKSUM_ADLER32, checksum.ChecksumValue);
                             break;
                         default:
-                            break;
+                            throw new ArgumentOutOfRangeException(nameof(checksum.Algorithm), $"Unsupported checksum algorithm: {checksum.Algorithm}");
                     }
                 }
             }

@@ -76,9 +76,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
                              extRef.ReferenceType = "swh";
                              break;
                         default:
-                            throw new ArgumentOutOfRangeException(nameof(extRefProp.Name), $"Unsupported external reference category: {extRefProp.Name}");
+                            throw new ArgumentOutOfRangeException(nameof(extRefProp.Name), $"Unsupported external reference property: {extRefProp.Name}");
                     }
-                    //TODO and write corresponding code in AddExternalRefsToCDX
                 }
                 if (extRef.ReferenceType != null)
                 {
@@ -127,7 +126,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                                 refPropName = PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL;
                                 break;
                             default:
-                                break;
+                                throw new ArgumentOutOfRangeException(nameof(extRef.ReferenceType), $"Unsupported external reference type: {extRef.ReferenceType}");
                         }
                     }
                     else if (extRef.ReferenceCategory == ExternalRefCategory.PERSISTENT_ID) { refPropName = PropertyTaxonomy.EXTERNAL_REFERENCE_PERSISTENT_ID_SWH; }
