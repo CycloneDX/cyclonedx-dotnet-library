@@ -120,7 +120,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             });
                             break;
                         default:
-                            break;
+                            throw new ArgumentOutOfRangeException(nameof(hash.Alg), $"Unsupported hash algorithm: {hash.Alg}");    
                     }
                 }
             }

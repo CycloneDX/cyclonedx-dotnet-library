@@ -76,7 +76,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                              extRef.ReferenceType = "swh";
                              break;
                         default:
-                            break;
+                            throw new ArgumentOutOfRangeException(nameof(extRefProp.Name), $"Unsupported external reference category: {extRefProp.Name}");
                     }
                     //TODO and write corresponding code in AddExternalRefsToCDX
                 }
