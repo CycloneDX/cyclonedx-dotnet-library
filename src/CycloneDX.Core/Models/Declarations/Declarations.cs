@@ -38,7 +38,6 @@ namespace CycloneDX.Models
 
         [XmlArray("claims")]
         [XmlArrayItem("claim")]
-
         [ProtoMember(3)]
         public List<Claim> Claims { get; set; }
 
@@ -46,17 +45,19 @@ namespace CycloneDX.Models
         [XmlArrayItem("evidence")]
         [ProtoMember(4)]
         public List<DeclarationsEvidence> Evidence { get; set; }
+
         [XmlElement("targets")]
         [ProtoMember(5)]
         public Targets Targets { get; set; }
-        [XmlElement("affirmation")]
 
+        [XmlElement("affirmation")]
         [ProtoMember(6)]
         public Affirmation Affirmation { get; set; }
 
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }
+
         [XmlIgnore]
         public Signature Signature { get; set; }
 

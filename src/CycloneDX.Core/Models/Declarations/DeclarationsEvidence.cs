@@ -32,9 +32,11 @@ namespace CycloneDX.Models
         [JsonPropertyName("bom-ref")]
         [ProtoMember(1)]
         public string BomRef { get; set; }
+
         [XmlElement("propertyName")]
         [ProtoMember(2)]
         public string PropertyName { get; set; }
+
         [XmlElement("description")]
         [ProtoMember(3)]
         public string Description { get; set; }
@@ -62,9 +64,11 @@ namespace CycloneDX.Models
             get => _expires;
             set { _expires = BomUtils.UtcifyDateTime(value); }
         }
+
         [XmlElement("author")]
         [ProtoMember(7)]
         public OrganizationalContact Author { get; set; }
+
         [XmlElement("reviewer")]
         [ProtoMember(8)]
         public OrganizationalContact Reviewer { get; set; }
@@ -72,6 +76,7 @@ namespace CycloneDX.Models
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }
+
         [XmlIgnore]
         public Signature Signature { get; set; }
 

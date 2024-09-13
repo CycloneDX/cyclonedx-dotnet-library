@@ -28,13 +28,14 @@ namespace CycloneDX.Models
         [XmlElement("score")]
         [ProtoMember(1)]
         public double Score { get; set; }
+
         [XmlElement("rationale")]
         [ProtoMember(2)]
         public string Rationale { get; set; }
-        [ProtoMember(3)]
-
+        
         [XmlArray("mitigationStrategies")]
         [XmlArrayItem("mitigationStrategy")]
+        [ProtoMember(3)]
         public List<string> MitigationStrategies { get; set; }
     }
 }

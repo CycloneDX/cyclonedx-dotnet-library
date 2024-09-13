@@ -30,19 +30,23 @@ namespace CycloneDX.Core.Models
         [XmlElement("assetType")]
         [ProtoMember(1)]
         public AssetType AssetType { get; set; }
+
         [XmlElement("algorithmProperties")]
         [ProtoMember(2)]
         public AlgorithmProperties AlgorithmProperties { get; set; }
+
         [XmlElement("certificateProperties")]
         [ProtoMember(3)]
-
         public CertificateProperties CertificateProperties { get; set; }
+
         [XmlElement("relatedCryptoMaterialProperties")]
         [ProtoMember(4)]
         public RelatedCryptoMaterialProperties RelatedCryptoMaterialProperties { get; set; }
+
         [XmlElement("protocolProperties")]
         [ProtoMember(5)]
         public ProtocolProperties ProtocolProperties { get; set; }
+
         [XmlElement("oid")]
         [JsonPropertyName("oid")]
         [ProtoMember(6)]

@@ -28,18 +28,23 @@ namespace CycloneDX.Models
         [XmlElement("name")]
         [ProtoMember(1)]
         public string Name { get; set; }
+
         [XmlElement("role")]
         [ProtoMember(2)]
         public string Role { get; set; }
+
         [XmlElement("organization")]
         [ProtoMember(3)]
         public OrganizationalEntity Organization { get; set; }
+
         [XmlElement("externalReference")]
         [ProtoMember(4)]
         public ExternalReference ExternalReference { get; set; }
+
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }
+
         [XmlIgnore]
         public Signature Signature { get; set; }
     }

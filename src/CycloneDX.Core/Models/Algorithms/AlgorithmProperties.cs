@@ -50,10 +50,11 @@ namespace CycloneDX.Core.Models
         [XmlElement("parameterSetIdentifier")]
         [ProtoMember(2)]
         public string ParameterSetIdentifier { get; set; }
+
         [XmlElement("curve")]
         [ProtoMember(3)]
         public string Curve { get; set; }
-        //[XmlIgnore]
+
         [XmlElement("executionEnvironment")]
         [ProtoMember(4)]
         public ExecutionEnvironment? ExecutionEnvironment { get; set; }
@@ -64,9 +65,10 @@ namespace CycloneDX.Core.Models
 
         [XmlElement("certificationLevel")]
         public List<CertificationLevel> CertificationLevel { get; set; }
-        [ProtoMember(6)]
+
         [XmlIgnore]
         [JsonIgnore]
+        [ProtoMember(6)]
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public List<string> CertificationLevel_Protobuf
         {
@@ -122,10 +124,10 @@ namespace CycloneDX.Core.Models
         [XmlElement("classicalSecurityLevel")]
         [ProtoMember(10)]
         public int ClassicalSecurityLevel { get; set; }
+
         [XmlElement("nistQuantumSecurityLevel")]
         [ProtoMember(11)]
         public int NistQuantumSecurityLevel { get; set; }
         
-
     }
 }
