@@ -169,7 +169,7 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
         [InlineData("valid-evidence-1.6")]
         [InlineData("valid-external-reference-1.6")]
         [InlineData("valid-formulation-1.6")]
-        [InlineData("valid-license-expression-1.6")]
+        [InlineData("valid-license-expression-1.6", Skip = "Requires resolution of https://github.com/CycloneDX/specification/issues/515")]
         [InlineData("valid-license-id-1.6")]
         [InlineData("valid-license-licensing-1.6")]
         [InlineData("valid-license-name-1.6")]
