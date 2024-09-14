@@ -48,7 +48,7 @@ services {
   }
   data {
     flow: DATA_FLOW_BI_DIRECTIONAL
-    value: "pubic"
+    value: "public"
   }
   data {
     flow: DATA_FLOW_UNKNOWN

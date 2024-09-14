@@ -270,7 +270,7 @@
           "data": [
             {
               "flow": "inbound",
-              "classification": "Public",
+              "classification": "PII",
               "name": "MS-3 to S3",
               "description": "Data pushed from microservice-3 to S3 bucket",
               "source": [
