@@ -195,6 +195,6 @@ namespace CycloneDX.Models
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }
         [XmlIgnore]
-        public Signature Signature { get; set; }
+        public SignatureChoice Signature { get; set; }
     }
 }

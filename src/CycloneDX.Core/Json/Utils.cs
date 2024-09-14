@@ -96,6 +96,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<Data.DataType>());
             options.Converters.Add(new HyphenEnumConverter<ActivityType>());
             options.Converters.Add(new HyphenEnumConverter<EnergySource>());
+            options.Converters.Add(new SignatureChoiceConverter());
 
             options.Converters.Add(new JsonStringEnumConverter());
             

@@ -78,7 +78,7 @@ namespace CycloneDX.Models
         public XmlElement XmlSignature { get; set; }
 
         [XmlIgnore]
-        public Signature Signature { get; set; }
+        public SignatureChoice Signature { get; set; }
 
     }
 }
