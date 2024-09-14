@@ -21,7 +21,9 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Text.Json.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
+using CycloneDX.Core.Models;
 using ProtoBuf;
 
 namespace CycloneDX.Models
@@ -29,7 +31,7 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     [XmlType("component")]
     [ProtoContract]
-    public class Component: IEquatable<Component>
+    public class Component: IEquatable<Component>, IHasBomRef
     {
         [ProtoContract]
         public enum Classification
@@ -60,6 +62,8 @@ namespace CycloneDX.Models
             Machine_Learning_Model,
             [XmlEnum(Name = "data")]
             Data,
+            [XmlEnum(Name = "cryptographic-asset")]
+            Cryptographic_Asset,
         }
 
         [ProtoContract]
@@ -93,9 +97,30 @@ namespace CycloneDX.Models
         [ProtoMember(4)]
         public OrganizationalEntity Supplier { get; set; }
 
-        [XmlElement("author")]
+        [XmlElement("manufacturer")]
+        [ProtoMember(28)]
+        public OrganizationalEntity Manufacturer { get; set; }
+        public bool ShouldSerializeManufacturer() { return Manufacturer != null; }
+
+        [XmlArray("authors")]
+        [XmlArrayItem("author")]
+        [ProtoMember(29)]
+        public List<OrganizationalContact> Authors { get; set; }
+        public bool ShouldSerializeAuthors() { return Authors?.Count > 0; }
+
+        [Obsolete("This will be removed in a future version. Use @.authors or @.manufacturer instead.")]
+        [XmlIgnore]
         [ProtoMember(5)]
         public string Author { get; set; }
+
+        #pragma warning disable 618
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [XmlElement("author")]
+        [JsonIgnore]
+        public string Author_Xml { get { return Author; } set { Author = value; } }
+        public bool ShouldSerializeAuthor_Xml() { return Author != null; }
+        #pragma warning restore 618
+
 
         [XmlElement("publisher")]
         [ProtoMember(6)]
@@ -232,6 +257,32 @@ namespace CycloneDX.Models
         [XmlElement("data")]
         [ProtoMember(26)]
         public Data Data { get; set; }
+
+        [XmlElement("cryptoProperties")]
+        [ProtoMember(27)]
+        public CryptoProperties CryptoProperties { get; set; }
+
+        [XmlArray("tags")]
+        [XmlArrayItem("tag")]
+        [ProtoMember(30)]
+        public List<string> Tags { get; set; }
+        public bool ShouldSerializeTags() { return Tags?.Count > 0; }
+
+        [XmlElement("omniborId")]
+        [ProtoMember(31)]
+        public List<string> OmniborId { get; set; }
+        public bool ShouldSerializeOmniborId() { return OmniborId?.Count > 0; }
+
+        [XmlElement("swhid")]
+        [ProtoMember(32)]
+        public List<string> Swhid { get; set; }
+        public bool ShouldSerializeSwhid() { return Swhid?.Count > 0; }
+
+        [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        [JsonIgnore]
+        public XmlElement XmlSignature { get; set; }
+        [XmlIgnore]
+        public SignatureChoice Signature { get; set; }
 
         public override bool Equals(object obj)
         {

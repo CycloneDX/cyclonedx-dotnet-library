@@ -1,14 +1,14 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "v1_5",
-  "SpecVersionString": "1.5",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
   "SerialNumber": null,
   "Version": null,
   "Metadata": {
     "Tools": {
       "Tools": null
     },
-    "ProtobufTools": null,
+    "ProtobufTools": [],
     "Authors": null,
     "Component": {
       "Type": "Null",
@@ -31,7 +31,10 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     },
     "Manufacture": null,
     "Supplier": null
@@ -78,12 +81,18 @@
           "Pedigree": null,
           "Evidence": null,
           "ModelCard": null,
-          "Data": null
+          "Data": null,
+          "CryptoProperties": null,
+          "XmlSignature": null,
+          "Signature": null
         }
       ],
       "Evidence": null,
       "ModelCard": null,
-      "Data": null
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     },
     {
       "Type": "Null",
@@ -126,12 +135,18 @@
           "Pedigree": null,
           "Evidence": null,
           "ModelCard": null,
-          "Data": null
+          "Data": null,
+          "CryptoProperties": null,
+          "XmlSignature": null,
+          "Signature": null
         }
       ],
       "Evidence": null,
       "ModelCard": null,
-      "Data": null
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     }
   ],
   "Dependencies": [
@@ -140,31 +155,38 @@
       "Dependencies": [
         {
           "Ref": "System1@1:Component1@1",
-          "Dependencies": null
+          "Dependencies": null,
+          "Provides": null
         }
-      ]
+      ],
+      "Provides": null
     },
     {
       "Ref": "System2@1:System2@1",
       "Dependencies": [
         {
           "Ref": "System2@1:Component2@1",
-          "Dependencies": null
+          "Dependencies": null,
+          "Provides": null
         }
-      ]
+      ],
+      "Provides": null
     },
     {
       "Ref": "Thing@1",
       "Dependencies": [
         {
           "Ref": "System1@1:System1@1",
-          "Dependencies": null
+          "Dependencies": null,
+          "Provides": null
         },
         {
           "Ref": "System2@1:System2@1",
-          "Dependencies": null
+          "Dependencies": null,
+          "Provides": null
         }
-      ]
+      ],
+      "Provides": null
     }
   ],
   "Compositions": [
@@ -177,7 +199,9 @@
         "System1@1:System1@1"
       ],
       "Vulnerabilities": null,
-      "BomRef": null
+      "BomRef": null,
+      "XmlSignature": null,
+      "Signature": null
     },
     {
       "Aggregate": "Complete",
@@ -188,7 +212,31 @@
         "System2@1:System2@1"
       ],
       "Vulnerabilities": null,
-      "BomRef": null
+      "BomRef": null,
+      "XmlSignature": null,
+      "Signature": null
     }
-  ]
+  ],
+  "Declarations": {
+    "Assessors": [],
+    "Attestations": [],
+    "Claims": [],
+    "Evidence": [],
+    "Targets": {
+      "Organizations": []
+    },
+    "Affirmation": null,
+    "XmlSignature": null,
+    "Signature": null
+  },
+  "Definitions": {
+    "Standards_XML": {
+      "Standards": [],
+      "Any": null,
+      "AnyAttr": null
+    },
+    "Standards": []
+  },
+  "XmlSignature": null,
+  "Signature": null
 }

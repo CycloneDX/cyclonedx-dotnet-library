@@ -21,7 +21,7 @@ annotations {
     }
   }
   timestamp {
-    seconds: 37986
+    seconds: 1640995200
   }
   text: "This is a sample annotation made by an organization"
 }
@@ -36,7 +36,7 @@ annotations {
     }
   }
   timestamp {
-    seconds: 37986
+    seconds: 1640995200
   }
   text: "This is a sample annotation made by a person"
 }
@@ -51,7 +51,7 @@ annotations {
     }
   }
   timestamp {
-    seconds: 37986
+    seconds: 1640995200
   }
   text: "This is a sample annotation made by a component"
 }
@@ -79,7 +79,7 @@ annotations {
     }
   }
   timestamp {
-    seconds: 37986
+    seconds: 1640995200
   }
   text: "This is a sample annotation made by a service"
 }

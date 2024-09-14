@@ -102,7 +102,11 @@ namespace CycloneDX.Json
                 if (properties.Name == "specVersion")
                 {
                     var specVersion = properties.Value.GetString();
-                    if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_5))
+                    if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_6))
+                    {
+                        specificationVersion = SpecificationVersion.v1_6;
+                    }
+                    else if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_5))
                     {
                         specificationVersion = SpecificationVersion.v1_5;
                     }

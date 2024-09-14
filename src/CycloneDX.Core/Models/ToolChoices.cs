@@ -33,12 +33,12 @@ namespace CycloneDX.Models
         public List<Tool> Tools { get; set; }
         #pragma warning restore 618
         
-        [ProtoMember(2)]
+        [ProtoMember(6)]
         public List<Component> Components { get; set; }
 
         public bool ShouldSerializeComponents() => Components?.Count > 0;
 
-        [ProtoMember(3)]
+        [ProtoMember(7)]
         public List<Service> Services { get; set; }
 
         public bool ShouldSerializeServices() => Services?.Count > 0;
@@ -123,5 +123,57 @@ namespace CycloneDX.Models
                 writer.WriteEndElement();
             }
         }
+    }
+
+    [ProtoContract]
+    public class ProtobufTools
+    {
+
+        public ProtobufTools()
+        {
+
+        }
+
+        #pragma warning disable 618
+        public ProtobufTools(Tool tool)
+        {
+            if (tool == null)
+            {
+                return;
+            }
+            Vendor = tool.Vendor;
+            Name = tool.Name;
+            Version = tool.Version;
+            Hashes = tool.Hashes;
+            ExternalReferences = tool.ExternalReferences;
+        }
+        
+        public Tool ToTool()
+        {
+            return new Tool { Vendor = Vendor, Name = Name, Version = Version, Hashes = Hashes, ExternalReferences = ExternalReferences };
+        }
+        #pragma warning restore 618
+
+        [ProtoMember(1)]
+        public string Vendor { get; set; }
+
+        [ProtoMember(2)]
+        public string Name { get; set; }
+
+        [ProtoMember(3)]
+        public string Version { get; set; }
+
+        [ProtoMember(4)]
+        public List<Hash> Hashes { get; set; }
+
+        [ProtoMember(5)]
+        public List<ExternalReference> ExternalReferences { get; set; }
+
+        [ProtoMember(6)]
+        public List<Component> Components { get; set; }
+
+        [ProtoMember(7)]
+        public List<Service> Services { get; set; }
+
     }
 }

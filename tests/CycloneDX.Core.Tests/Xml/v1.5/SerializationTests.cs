@@ -23,6 +23,7 @@ using Xunit;
 using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Xml;
+using System.Linq;
 
 namespace CycloneDX.Core.Tests.Xml.v1_5
 {
@@ -74,6 +75,11 @@ namespace CycloneDX.Core.Tests.Xml.v1_5
 
             var bom = Serializer.Deserialize(xmlBom);
             xmlBom = Serializer.Serialize(bom);
+
+            var validationResult = Validator.Validate(xmlBom, SpecificationVersion.v1_5);
+
+
+            Assert.True(validationResult.Valid, validationResult.Messages?.FirstOrDefault());
 
             Snapshot.Match(xmlBom, SnapshotNameExtension.Create(filename));
         }

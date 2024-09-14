@@ -47,5 +47,6 @@ namespace CycloneDX.Json
             Contract.Requires(!string.IsNullOrEmpty(jsonString));
             return JsonSerializer.Deserialize<Bom>(jsonString, _options);
         }
+
     }
 }

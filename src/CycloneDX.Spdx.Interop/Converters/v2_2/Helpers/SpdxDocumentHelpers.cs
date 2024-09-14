@@ -136,6 +136,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
 
                 // Package Originator
                 package.Originator = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR) ?? "NOASSERTION";
+                #pragma warning disable 618
                 if (component.Author != null)
                 {
                     if (component.Author == component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR_ORGANIZATION))
@@ -147,7 +148,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         package.Originator = $"Person: {component.Author} ({component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR_EMAIL) ?? ""})";
                     }
                 }
-
+                #pragma warning restore 618
                 package.Supplier = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_SUPPLIER) ?? "NOASSERTION";
                 if (component.Supplier != null)
                 {
