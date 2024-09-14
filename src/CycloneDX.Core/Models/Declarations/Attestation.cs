@@ -44,7 +44,7 @@ namespace CycloneDX.Models
         public List<System.Xml.XmlElement> Any { get; set; }
 
         [XmlIgnore]
-        public Signature Signature { get; set; }
+        public SignatureChoice Signature { get; set; }
 
         public override bool Equals(object obj)
         {

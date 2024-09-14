@@ -68,7 +68,7 @@ namespace CycloneDX.Models
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }
         [XmlIgnore]
-        public Signature Signature { get; set; }
+        public SignatureChoice Signature { get; set; }
 
         public override bool Equals(object obj)
         {

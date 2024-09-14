@@ -31,6 +31,13 @@ namespace CycloneDX.Models
         public string Value { get; set; }
     }
 
+    public class SignatureChoice
+    {
+        public List<Signature> Signers { get; set; }
+        public List<Signature> Chain { get; set; }
+        public Signature Signature { get; set; }
+    }
+
     public enum KeyTypeIndicator
     {
         EC,
