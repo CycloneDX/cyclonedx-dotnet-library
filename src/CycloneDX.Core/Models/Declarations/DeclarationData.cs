@@ -28,9 +28,11 @@ namespace CycloneDX.Models
         [XmlElement("name")]
         [ProtoMember(1)]
         public string Name { get; set; }
+
         [XmlElement("contents")]
         [ProtoMember(2)]
         public DeclarationDataContents Contents { get; set; }
+
         [XmlElement("classification")]
         [ProtoMember(3)]
         public string Classification { get; set; }
@@ -38,6 +40,7 @@ namespace CycloneDX.Models
         [XmlElement("sensitiveData")]
         [ProtoMember(4)]
         public List<string> SensitiveData { get; set; }
+
         [XmlElement("governance")]
         [ProtoMember(5)]
         public DataGovernance Governance { get; set; }

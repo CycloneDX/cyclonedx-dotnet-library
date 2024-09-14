@@ -31,21 +31,19 @@ namespace CycloneDX.Models
 
         [XmlArray("claims")]
         [XmlArrayItem("claim")]
-
         [ProtoMember(2)]
         public List<string> Claims { get; set; }
 
         [XmlArray("counterClaims")]
         [XmlArrayItem("counterClaim")]
-
         [ProtoMember(3)]
         public List<string> CounterClaims { get; set; }
-        [XmlElement("conformance")]
 
+        [XmlElement("conformance")]
         [ProtoMember(4)]
         public Conformance Conformance { get; set; }
-        [XmlElement("confidence")]
 
+        [XmlElement("confidence")]
         [ProtoMember(5)]
         public Confidence Confidence { get; set; }
     }

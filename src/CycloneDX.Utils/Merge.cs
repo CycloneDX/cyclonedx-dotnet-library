@@ -286,13 +286,13 @@ namespace CycloneDX.Utils
             result.Compositions = new List<Composition>();
             result.Vulnerabilities = new List<Vulnerability>();
 
-            result.Declarations = new Declarations()
+            result.Declarations = new Declarations
             {
                 Assessors = new List<Assessor>(),
                 Attestations = new List<Attestation>(),
                 Claims = new List<Claim>(),
                 Evidence = new List<DeclarationsEvidence>(),
-                Targets = new Targets()
+                Targets = new Targets
                 {
                     Components = new List<Component>(),
                     Organizations = new List<OrganizationalEntity>(),
@@ -300,7 +300,7 @@ namespace CycloneDX.Utils
                 }
             };
 
-            result.Definitions = new Definitions()
+            result.Definitions = new Definitions
             {
                 Standards = new List<Standard>()
             };

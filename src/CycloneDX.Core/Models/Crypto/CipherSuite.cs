@@ -28,7 +28,6 @@ namespace CycloneDX.Core.Models
         [ProtoMember(1)]
         public string Name { get; set; }
 
-
         [XmlArray("algorithms")]
         [XmlArrayItem("algorithm")]
         [ProtoMember(2)]

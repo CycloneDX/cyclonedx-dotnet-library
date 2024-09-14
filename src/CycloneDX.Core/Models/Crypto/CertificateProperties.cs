@@ -27,24 +27,31 @@ namespace CycloneDX.Core.Models
         [XmlElement("subjectName")]
         [ProtoMember(1)]
         public string SubjectName { get; set; }
+
         [XmlElement("issuerName")]
         [ProtoMember(2)]
         public string IssuerName { get; set; }
+
         [XmlElement("notValidBefore")]
         [ProtoMember(3)]
         public DateTime NotValidBefore { get; set; }
+
         [XmlElement("notValidAfter")]
         [ProtoMember(4)]
         public DateTime NotValidAfter { get; set; }
+
         [XmlElement("signatureAlgorithmRef")]
         [ProtoMember(5)]
         public string SignatureAlgorithmRef { get; set; }
+
         [XmlElement("subjectPublicKeyRef")]
         [ProtoMember(6)]
         public string SubjectPublicKeyRef { get; set; }
+
         [XmlElement("certificateFormat")]
         [ProtoMember(7)]
         public string CertificateFormat { get; set; }
+
         [XmlElement("certificateExtension")]
         [ProtoMember(8)]
         public string CertificateExtension { get; set; }

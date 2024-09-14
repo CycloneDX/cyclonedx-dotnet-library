@@ -24,7 +24,6 @@ using System.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using CycloneDX.Models;
-using ProtoBuf;
 
 namespace CycloneDX.Xml
 {

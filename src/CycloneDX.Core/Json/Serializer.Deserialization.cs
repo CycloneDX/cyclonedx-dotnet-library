@@ -48,10 +48,5 @@ namespace CycloneDX.Json
             return JsonSerializer.Deserialize<Bom>(jsonString, _options);
         }
 
-        public static ToolChoices DeserializeToolChoices(string jsonString)
-        {
-            Contract.Requires(!string.IsNullOrEmpty(jsonString));
-            return JsonSerializer.Deserialize<ToolChoices>(jsonString, _options);
-        }
     }
 }

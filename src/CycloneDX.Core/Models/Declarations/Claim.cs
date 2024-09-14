@@ -67,6 +67,7 @@ namespace CycloneDX.Models
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
         public XmlElement XmlSignature { get; set; }
+
         [XmlIgnore]
         public Signature Signature { get; set; }
 

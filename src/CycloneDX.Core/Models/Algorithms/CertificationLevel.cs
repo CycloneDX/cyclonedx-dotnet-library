@@ -71,18 +71,18 @@ namespace CycloneDX.Core.Models
         CC_EAL4plus,
         [XmlEnum("cc-eal5")]
         CC_EAL5,
-        [EnumMember(Value = "cc-eal5+")]
         [XmlEnum("cc-eal5+")]
+        [EnumMember(Value = "cc-eal5+")]
         CC_EAL5plus,
         [XmlEnum("cc-eal6")]
         CC_EAL6,
-        [EnumMember(Value = "cc-eal6+")]
         [XmlEnum("cc-eal6+")]
+        [EnumMember(Value = "cc-eal6+")]
         CC_EAL6plus,
         [XmlEnum("cc-eal7")]
         CC_EAL7,
-        [EnumMember(Value = "cc-eal7+")]
         [XmlEnum("cc-eal7+")]
+        [EnumMember(Value = "cc-eal7+")]
         CC_EAL7plus,
         [XmlEnum("other")]
         Other,

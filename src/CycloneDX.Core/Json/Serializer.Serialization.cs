@@ -84,12 +84,6 @@ namespace CycloneDX.Json
         }
         #pragma warning restore 618
 
-        internal static string Serialize(ToolChoices toolChoices)
-        {
-            Contract.Requires(toolChoices != null);
-            return JsonSerializer.Serialize(toolChoices, _options);
-        }
-
         internal static string Serialize(Models.Vulnerabilities.Vulnerability vulnerability)
         {
             Contract.Requires(vulnerability != null);

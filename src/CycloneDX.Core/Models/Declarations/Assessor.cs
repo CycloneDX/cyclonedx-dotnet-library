@@ -31,6 +31,7 @@ namespace CycloneDX.Models
         [JsonPropertyName("bom-ref")]
         [ProtoMember(1)]
         public string BomRef { get; set; }
+
         [XmlElement("thirdParty")]
         [ProtoMember(2)]
         public bool ThirdParty { get; set; }
