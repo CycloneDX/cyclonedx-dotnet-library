@@ -17,6 +17,7 @@
 
 using ProtoBuf;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Core.Models
@@ -25,26 +26,32 @@ namespace CycloneDX.Core.Models
     public class Ikev2TransformTypes
     {
         [XmlElement("encr")]
+        [JsonPropertyName("encr")]
         [ProtoMember(1)]
         public List<string> EncryptionAlgorithms { get; set; }
 
         [XmlElement("prf")]
+        [JsonPropertyName("prf")]
         [ProtoMember(2)]
         public List<string> PseudorandomFunctions { get; set; }
 
         [XmlElement("integ")]
+        [JsonPropertyName("integ")]
         [ProtoMember(3)]
         public List<string> IntegrityAlgorithms { get; set; }
 
         [XmlElement("ke")]
+        [JsonPropertyName("ke")]
         [ProtoMember(4)]
         public List<string> KeyExchangeMethods { get; set; }
 
         [XmlElement("esn")]
+        [JsonPropertyName("esn")]
         [ProtoMember(5)]
         public List<bool> ExtendedSequenceNumbers { get; set; }
 
         [XmlElement("auth")]
+        [JsonPropertyName("auth")]
         [ProtoMember(6)]
         public List<string> AuthenticationMethods { get; set; }
     }
