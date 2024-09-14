@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Core.Models;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class DeclarationsEvidence
+    public class DeclarationsEvidence : IHasBomRef
     {
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]

@@ -17,37 +17,37 @@
 
 using ProtoBuf;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
     [ProtoContract]
-    public class Level : IHasBomRef
+    public class Ikev2TransformTypes
     {
-        [XmlAttribute("bom-ref")]
-        [JsonPropertyName("bom-ref")]
+        [XmlElement("encr")]
         [ProtoMember(1)]
-        public string BomRef { get; set; }
+        public List<string> EncryptionAlgorithms { get; set; }
 
-        [XmlElement("identifier")]
+        [XmlElement("prf")]
         [ProtoMember(2)]
-        public string Identifier { get; set; }
+        public List<string> PseudorandomFunctions { get; set; }
 
-        [XmlElement("title")]
+        [XmlElement("integ")]
         [ProtoMember(3)]
-        public string Title { get; set; }
+        public List<string> IntegrityAlgorithms { get; set; }
 
-        [XmlElement("description")]
+        [XmlElement("ke")]
         [ProtoMember(4)]
-        public string Description { get; set; }
+        public List<string> KeyExchangeMethods { get; set; }
 
-        [XmlArray("requirements")]
-        [XmlArrayItem("requirement")]
+        [XmlElement("esn")]
         [ProtoMember(5)]
-        public List<string> Requirements { get; set; }
+        public List<bool> ExtendedSequenceNumbers { get; set; }
 
-        [XmlAnyAttribute]
-        public System.Xml.XmlAttribute[] AnyAttr { get; set; }
+        [XmlElement("auth")]
+        [ProtoMember(6)]
+        public List<string> AuthenticationMethods { get; set; }
     }
+
+
 }

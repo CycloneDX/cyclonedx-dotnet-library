@@ -16,38 +16,36 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
-using System.Collections.Generic;
+using System.Net.Sockets;
+using System.Text;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
+    [XmlType("cryptoProperties")]
     [ProtoContract]
-    public class Level : IHasBomRef
+    public class CryptoProperties
     {
-        [XmlAttribute("bom-ref")]
-        [JsonPropertyName("bom-ref")]
+        [XmlElement("assetType")]
         [ProtoMember(1)]
-        public string BomRef { get; set; }
-
-        [XmlElement("identifier")]
+        public AssetType AssetType { get; set; }
+        [XmlElement("algorithmProperties")]
         [ProtoMember(2)]
-        public string Identifier { get; set; }
-
-        [XmlElement("title")]
+        public AlgorithmProperties AlgorithmProperties { get; set; }
+        [XmlElement("certificateProperties")]
         [ProtoMember(3)]
-        public string Title { get; set; }
 
-        [XmlElement("description")]
+        public CertificateProperties CertificateProperties { get; set; }
+        [XmlElement("relatedCryptoMaterialProperties")]
         [ProtoMember(4)]
-        public string Description { get; set; }
-
-        [XmlArray("requirements")]
-        [XmlArrayItem("requirement")]
+        public RelatedCryptoMaterialProperties RelatedCryptoMaterialProperties { get; set; }
+        [XmlElement("protocolProperties")]
         [ProtoMember(5)]
-        public List<string> Requirements { get; set; }
-
-        [XmlAnyAttribute]
-        public System.Xml.XmlAttribute[] AnyAttr { get; set; }
+        public ProtocolProperties ProtocolProperties { get; set; }
+        [XmlElement("oid")]
+        [JsonPropertyName("oid")]
+        [ProtoMember(6)]
+        public string ObjectIdentifier { get; set; }
     }
 }

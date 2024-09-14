@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -39,7 +40,7 @@ namespace CycloneDX.Models
 
         [XmlElement("tools")]
         public ToolChoices Tools { get; set; }
-        
+
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(2)]
@@ -138,9 +139,19 @@ namespace CycloneDX.Models
         public OrganizationalEntity Manufacturer { get; set; }
         public bool ShouldSerializeManufacturer() { return Manufacturer != null; }
 
-        [XmlElement("manufacture")]
+        [Obsolete("This will be removed in a future version.Use the @.component.manufacturer instead.")]
+        [XmlIgnore]
         [ProtoMember(5)]
         public OrganizationalEntity Manufacture { get; set; }
+
+        #pragma warning disable 618
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [XmlElement("manufacture")]
+        [JsonIgnore]
+        public OrganizationalEntity Manufacture_Xml { get { return Manufacture; } set { Manufacture = value; } }
+        public bool ShouldSerializeManufacture_Xml() { return Manufacture != null; }
+        #pragma warning restore 618
+
 
         [XmlElement("supplier")]
         [ProtoMember(6)]

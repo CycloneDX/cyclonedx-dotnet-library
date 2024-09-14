@@ -17,37 +17,29 @@
 
 using ProtoBuf;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
     [ProtoContract]
-    public class Level : IHasBomRef
+    public class CipherSuite
     {
-        [XmlAttribute("bom-ref")]
-        [JsonPropertyName("bom-ref")]
+        [XmlElement("name")]
         [ProtoMember(1)]
-        public string BomRef { get; set; }
+        public string Name { get; set; }
 
-        [XmlElement("identifier")]
+
+        [XmlArray("algorithms")]
+        [XmlArrayItem("algorithm")]
         [ProtoMember(2)]
-        public string Identifier { get; set; }
+        public List<string> Algorithms { get; set; }
 
-        [XmlElement("title")]
+        [XmlArray("identifiers")]
+        [XmlArrayItem("identifier")]
         [ProtoMember(3)]
-        public string Title { get; set; }
-
-        [XmlElement("description")]
-        [ProtoMember(4)]
-        public string Description { get; set; }
-
-        [XmlArray("requirements")]
-        [XmlArrayItem("requirement")]
-        [ProtoMember(5)]
-        public List<string> Requirements { get; set; }
-
-        [XmlAnyAttribute]
-        public System.Xml.XmlAttribute[] AnyAttr { get; set; }
+        public List<string> Identifiers { get; set; }
+        
     }
+
+
 }

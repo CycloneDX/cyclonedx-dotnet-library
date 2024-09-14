@@ -24,6 +24,8 @@ using CycloneDX;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
 using CycloneDX.Utils;
+using System.IO;
+using CycloneDX.Json;
 
 namespace CycloneDX.Utils.Tests
 {
@@ -32,7 +34,7 @@ namespace CycloneDX.Utils.Tests
         [Fact]
         public void FlatMergeToolsTest()
         {
-            #pragma warning disable 618
+#pragma warning disable 618
             var sbom1 = new Bom
             {
                 Metadata = new Metadata
@@ -67,7 +69,7 @@ namespace CycloneDX.Utils.Tests
                     }
                 }
             };
-            #pragma warning restore 618
+#pragma warning restore 618
 
             var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
 
@@ -283,7 +285,7 @@ namespace CycloneDX.Utils.Tests
                 }
             };
 
-            var result = CycloneDXUtils.HierarchicalMerge(new [] { sbom1, sbom2 }, subject);
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
 
             Snapshot.Match(result);
         }
@@ -566,9 +568,58 @@ namespace CycloneDX.Utils.Tests
                 }
             };
 
-            var result = CycloneDXUtils.HierarchicalMerge(new [] { sbom1, sbom2 }, subject);
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
 
             Snapshot.Match(result);
+        }
+
+        [Theory]
+        [InlineData("valid-attestation-1.6.json")]
+        [InlineData("valid-standard-1.6.json")]
+        public void HierarchicalMergeTest1_6(string filename)
+        {
+            var subject = new Component
+            {
+                Type = Component.Classification.Application,
+                Name = "Thing",
+                Version = "1",
+            };
+            var resourceFilename = Path.Join("MergeTests_Resources", filename);
+            var jsonString = File.ReadAllText(resourceFilename);
+
+            var bom1 = Serializer.Deserialize(jsonString);
+            var bom2 = Serializer.Deserialize(jsonString);
+
+            bom1.Metadata = new Metadata
+            {
+                Component = new Component
+                {
+                    Type = Component.Classification.Application,
+                    BomRef = "bom1",
+                    Name = "bom1name"
+                }
+            };
+
+            bom2.Metadata = new Metadata
+            {
+                Component = new Component
+                {
+                    Type = Component.Classification.Application,
+                    BomRef = "bom2",
+                    Name = "bom2name"
+                }
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { bom1, bom2 }, subject);
+            result.SpecVersion = SpecificationVersion.v1_6;
+
+            jsonString = Serializer.Serialize(result);
+
+
+            var validationResult = Validator.Validate(jsonString, SpecificationVersion.v1_6);
+            Assert.True(validationResult.Valid, string.Join(Environment.NewLine, validationResult.Messages));
+
+            Snapshot.Match(jsonString, SnapshotNameExtension.Create(filename));
         }
     }
 }

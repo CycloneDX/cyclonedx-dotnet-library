@@ -16,38 +16,39 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using System;
 using System.Xml.Serialization;
 
-namespace CycloneDX.Models
+namespace CycloneDX.Core.Models
 {
     [ProtoContract]
-    public class Level : IHasBomRef
+    public class CertificateProperties
     {
-        [XmlAttribute("bom-ref")]
-        [JsonPropertyName("bom-ref")]
+        [XmlElement("subjectName")]
         [ProtoMember(1)]
-        public string BomRef { get; set; }
-
-        [XmlElement("identifier")]
+        public string SubjectName { get; set; }
+        [XmlElement("issuerName")]
         [ProtoMember(2)]
-        public string Identifier { get; set; }
-
-        [XmlElement("title")]
+        public string IssuerName { get; set; }
+        [XmlElement("notValidBefore")]
         [ProtoMember(3)]
-        public string Title { get; set; }
-
-        [XmlElement("description")]
+        public DateTime NotValidBefore { get; set; }
+        [XmlElement("notValidAfter")]
         [ProtoMember(4)]
-        public string Description { get; set; }
-
-        [XmlArray("requirements")]
-        [XmlArrayItem("requirement")]
+        public DateTime NotValidAfter { get; set; }
+        [XmlElement("signatureAlgorithmRef")]
         [ProtoMember(5)]
-        public List<string> Requirements { get; set; }
-
-        [XmlAnyAttribute]
-        public System.Xml.XmlAttribute[] AnyAttr { get; set; }
+        public string SignatureAlgorithmRef { get; set; }
+        [XmlElement("subjectPublicKeyRef")]
+        [ProtoMember(6)]
+        public string SubjectPublicKeyRef { get; set; }
+        [XmlElement("certificateFormat")]
+        [ProtoMember(7)]
+        public string CertificateFormat { get; set; }
+        [XmlElement("certificateExtension")]
+        [ProtoMember(8)]
+        public string CertificateExtension { get; set; }
     }
+
+
 }

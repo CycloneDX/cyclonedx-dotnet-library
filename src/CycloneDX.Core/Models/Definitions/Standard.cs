@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -23,7 +24,7 @@ using System.Xml.Serialization;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Standard
+    public class Standard : IEquatable<Standard>, IHasBomRef
     {
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
@@ -62,6 +63,8 @@ namespace CycloneDX.Models
         public List<ExternalReference> ExternalReferences { get; set; }
         public bool ShouldSerializeExternalReferences() => ExternalReferences?.Count > 0;
 
+
+
         [XmlAnyElement]
         public List<System.Xml.XmlElement> Any { get; set; }
 
@@ -69,6 +72,30 @@ namespace CycloneDX.Models
         public System.Xml.XmlAttribute[] AnyAttr { get; set; }
 
         [XmlIgnore]
-        public Signature signature { get; set; }
+        public Signature Signature { get; set; }
+
+
+
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Standard;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
+
+        public bool Equals(Standard obj)
+        {
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Json.Serializer.Serialize(this).GetHashCode();
+        }
     }
 }

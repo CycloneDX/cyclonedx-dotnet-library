@@ -156,7 +156,26 @@
       ]
     }
   ],
-  "Definitions": null,
+  "Declarations": {
+    "Assessors": [],
+    "Attestations": [],
+    "Claims": [],
+    "Evidence": [],
+    "Targets": {
+      "Organizations": []
+    },
+    "Affirmation": null,
+    "XmlSignature": null,
+    "Signature": null
+  },
+  "Definitions": {
+    "Standards_XML": {
+      "Standards": [],
+      "Any": null,
+      "AnyAttr": null
+    },
+    "Standards": []
+  },
   "XmlSignature": null,
   "Signature": null
 }

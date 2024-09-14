@@ -18,7 +18,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
 using static CycloneDX.Models.EvidenceIdentity;
@@ -87,7 +86,9 @@ namespace CycloneDX
 
                 EnumerateAllComponents(bomCopy, (component) =>
                 {
+                    #pragma warning disable 618
                     component.Author = null;
+                    #pragma warning restore 618
                     component.MimeType = null;
                     component.Supplier = null;
                     component.Swid = null;
@@ -343,8 +344,12 @@ namespace CycloneDX
         public static void EnqueueMany<T>(this Queue<T> queue, IEnumerable<T> items)
         {
             if (items != null)
-                foreach (var item in items)
-                    queue.Enqueue(item);
+            {
+                foreach (var item in items.Where(item => item != null))
+                {
+                    queue.Enqueue(item);                    
+                }
+            }
         }
 
         public static void EnumerateAllComponents(Bom bom, Action<Component> callback)
@@ -354,6 +359,10 @@ namespace CycloneDX
             q.Enqueue(bom.Metadata?.Component);
             q.EnqueueMany(bom.Metadata?.Tools?.Components);
             q.EnqueueMany(bom.Components);
+            q.EnqueueMany(bom.Annotations?.Select(an => an.Annotator).Where(anor => anor.Component != null).Select(anor => anor.Component) ?? new List<Component>());          
+            q.EnqueueMany(bom.Declarations?.Targets?.Components);
+            q.EnqueueMany(bom.Formulation?.Where(f => f.Components != null).SelectMany(f => f.Components));
+            q.EnqueueMany(bom.Vulnerabilities?.Where(v => v.Tools?.Components != null).SelectMany(v => v.Tools.Components));
 
             while (q.Count > 0)
             {
@@ -377,6 +386,9 @@ namespace CycloneDX
             q.EnqueueMany(bom.Metadata?.Tools?.Services);
             q.EnqueueMany(bom.Services);
             q.EnqueueMany(bom.Annotations?.Select(an => an.Annotator).Where(anor => anor.Service != null).Select(anor => anor.Service) ?? new List<Service>());
+            q.EnqueueMany(bom.Declarations?.Targets?.Services);            
+            q.EnqueueMany(bom.Formulation?.Where(f => f.Services != null).SelectMany(f => f.Services));
+            q.EnqueueMany(bom.Vulnerabilities?.Where(v => v.Tools?.Services != null).SelectMany(v => v.Tools.Services));
 
             while (q.Count > 0)
             {
@@ -471,7 +483,12 @@ namespace CycloneDX
 
         public static void EnumerateAllOrganizationalEntity(Bom bom, Action<OrganizationalEntity> callback)
         {
-            if (bom.Metadata?.Manufacture != null) callback(bom.Metadata.Manufacture);
+            #pragma warning disable 618
+            if (bom.Metadata?.Manufacture != null)
+            {
+                callback(bom.Metadata.Manufacture);
+            }
+            #pragma warning restore 618
             if (bom.Metadata?.Supplier != null) callback(bom.Metadata.Supplier);
 
             if (bom.Annotations != null)
@@ -481,8 +498,9 @@ namespace CycloneDX
                     if (annotation.Annotator?.Organization != null)
                         callback(annotation.Annotator.Organization);
                 }
+            }
 
-            }           
+            bom.Declarations?.Targets?.Organizations?.ForEach(callback);
 
             EnumerateAllVulnerabilities(bom, (vulnerability) =>
             {
@@ -538,6 +556,18 @@ namespace CycloneDX
                     }
                 }
             });
+
+            if (bom.Declarations?.Evidence != null)
+            {
+                foreach (var item in bom.Declarations?.Evidence?.Select(x => x.Author))
+                {
+                    callback(item);
+                }
+                foreach (var item in bom.Declarations?.Evidence?.Select(x => x.Reviewer))
+                {
+                    callback(item);
+                }
+            }
         }
 
         public static void EnumerateAllToolChoices(Bom bom, Action<ToolChoices> callback)
