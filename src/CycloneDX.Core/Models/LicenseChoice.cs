@@ -89,7 +89,7 @@ namespace CycloneDX.Models
                         Licenses.Add(new LicenseChoice { License = license });
                         finished = false;
                     }
-                    if (reader.Name == "expression")
+                    if (reader.LocalName == "expression")
                     {
                         string bomRef = null;
                         LicenseAcknowledgementEnumeration? acknowledgement = null;
