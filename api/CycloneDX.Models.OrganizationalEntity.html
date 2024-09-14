@@ -81,20 +81,54 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">OrganizationalEntity</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CycloneDX.Models.IHasBomRef.html">IHasBomRef</a></div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="CycloneDX.Models.html">CycloneDX.Models</a></h6>
   <h6><strong>Assembly</strong>: CycloneDX.Core.dll</h6>
   <h5 id="CycloneDX_Models_OrganizationalEntity_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class OrganizationalEntity : object</code></pre>
+    <pre><code class="lang-csharp hljs">public class OrganizationalEntity : IEquatable&lt;OrganizationalEntity&gt;, IHasBomRef</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity_Address.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity.Address%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L46">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_OrganizationalEntity_Address_" data-uid="CycloneDX.Models.OrganizationalEntity.Address*"></a>
+  <h4 id="CycloneDX_Models_OrganizationalEntity_Address" data-uid="CycloneDX.Models.OrganizationalEntity.Address">Address</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PostalAddress Address { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.PostalAddress.html">PostalAddress</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity_BomRef.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity.BomRef%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L40">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L41">View Source</a>
   </span>
   <a id="CycloneDX_Models_OrganizationalEntity_BomRef_" data-uid="CycloneDX.Models.OrganizationalEntity.BomRef*"></a>
   <h4 id="CycloneDX_Models_OrganizationalEntity_BomRef" data-uid="CycloneDX.Models.OrganizationalEntity.BomRef">BomRef</h4>
@@ -124,7 +158,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity_Contact.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity.Contact%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L36">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L37">View Source</a>
   </span>
   <a id="CycloneDX_Models_OrganizationalEntity_Contact_" data-uid="CycloneDX.Models.OrganizationalEntity.Contact*"></a>
   <h4 id="CycloneDX_Models_OrganizationalEntity_Contact" data-uid="CycloneDX.Models.OrganizationalEntity.Contact">Contact</h4>
@@ -154,7 +188,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity_Name.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L28">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L29">View Source</a>
   </span>
   <a id="CycloneDX_Models_OrganizationalEntity_Name_" data-uid="CycloneDX.Models.OrganizationalEntity.Name*"></a>
   <h4 id="CycloneDX_Models_OrganizationalEntity_Name" data-uid="CycloneDX.Models.OrganizationalEntity.Name">Name</h4>
@@ -184,7 +218,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity_Url.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity.Url%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L32">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L33">View Source</a>
   </span>
   <a id="CycloneDX_Models_OrganizationalEntity_Url_" data-uid="CycloneDX.Models.OrganizationalEntity.Url*"></a>
   <h4 id="CycloneDX_Models_OrganizationalEntity_Url" data-uid="CycloneDX.Models.OrganizationalEntity.Url">Url</h4>
@@ -209,6 +243,136 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity_Equals_CycloneDX_Models_OrganizationalEntity_.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity.Equals(CycloneDX.Models.OrganizationalEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L61">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_OrganizationalEntity_Equals_" data-uid="CycloneDX.Models.OrganizationalEntity.Equals*"></a>
+  <h4 id="CycloneDX_Models_OrganizationalEntity_Equals_CycloneDX_Models_OrganizationalEntity_" data-uid="CycloneDX.Models.OrganizationalEntity.Equals(CycloneDX.Models.OrganizationalEntity)">Equals(OrganizationalEntity)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(OrganizationalEntity obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.OrganizationalEntity.html">OrganizationalEntity</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity_Equals_System_Object_.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L50">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_OrganizationalEntity_Equals_" data-uid="CycloneDX.Models.OrganizationalEntity.Equals*"></a>
+  <h4 id="CycloneDX_Models_OrganizationalEntity_Equals_System_Object_" data-uid="CycloneDX.Models.OrganizationalEntity.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity_GetHashCode.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L66">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_OrganizationalEntity_GetHashCode_" data-uid="CycloneDX.Models.OrganizationalEntity.GetHashCode*"></a>
+  <h4 id="CycloneDX_Models_OrganizationalEntity_GetHashCode" data-uid="CycloneDX.Models.OrganizationalEntity.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CycloneDX.Models.IHasBomRef.html">IHasBomRef</a>
+  </div>
 </article>
           </div>
           
@@ -220,7 +384,7 @@
                     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_OrganizationalEntity.md&amp;value=---%0Auid%3A%20CycloneDX.Models.OrganizationalEntity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L25" class="contribution-link">View Source</a>
+                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/OrganizationalEntity.cs/#L26" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

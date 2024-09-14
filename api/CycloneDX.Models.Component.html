@@ -81,11 +81,15 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Component</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CycloneDX.Models.IHasBomRef.html">IHasBomRef</a></div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="CycloneDX.Models.html">CycloneDX.Models</a></h6>
   <h6><strong>Assembly</strong>: CycloneDX.Core.dll</h6>
   <h5 id="CycloneDX_Models_Component_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Component : IEquatable&lt;Component&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class Component : IEquatable&lt;Component&gt;, IHasBomRef</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -94,7 +98,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Author.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Author%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L96">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L111">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Author_" data-uid="CycloneDX.Models.Component.Author*"></a>
   <h4 id="CycloneDX_Models_Component_Author" data-uid="CycloneDX.Models.Component.Author">Author</h4>
@@ -121,10 +125,70 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Author_Xml.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Author_Xml%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L117">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_Author_Xml_" data-uid="CycloneDX.Models.Component.Author_Xml*"></a>
+  <h4 id="CycloneDX_Models_Component_Author_Xml" data-uid="CycloneDX.Models.Component.Author_Xml">Author_Xml</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Author_Xml { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Authors.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Authors%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L105">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_Authors_" data-uid="CycloneDX.Models.Component.Authors*"></a>
+  <h4 id="CycloneDX_Models_Component_Authors" data-uid="CycloneDX.Models.Component.Authors">Authors</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;OrganizationalContact&gt; Authors { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="CycloneDX.Models.OrganizationalContact.html">OrganizationalContact</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_BomRef.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.BomRef%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L87">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L91">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_BomRef_" data-uid="CycloneDX.Models.Component.BomRef*"></a>
   <h4 id="CycloneDX_Models_Component_BomRef" data-uid="CycloneDX.Models.Component.BomRef">BomRef</h4>
@@ -154,7 +218,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Components.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Components%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L215">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L240">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Components_" data-uid="CycloneDX.Models.Component.Components*"></a>
   <h4 id="CycloneDX_Models_Component_Components" data-uid="CycloneDX.Models.Component.Components">Components</h4>
@@ -184,7 +248,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Copyright.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Copyright%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L160">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L185">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Copyright_" data-uid="CycloneDX.Models.Component.Copyright*"></a>
   <h4 id="CycloneDX_Models_Component_Copyright" data-uid="CycloneDX.Models.Component.Copyright">Copyright</h4>
@@ -214,7 +278,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Cpe.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Cpe%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L164">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L189">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Cpe_" data-uid="CycloneDX.Models.Component.Cpe*"></a>
   <h4 id="CycloneDX_Models_Component_Cpe" data-uid="CycloneDX.Models.Component.Cpe">Cpe</h4>
@@ -241,10 +305,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_CryptoProperties.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.CryptoProperties%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L261">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_CryptoProperties_" data-uid="CycloneDX.Models.Component.CryptoProperties*"></a>
+  <h4 id="CycloneDX_Models_Component_CryptoProperties" data-uid="CycloneDX.Models.Component.CryptoProperties">CryptoProperties</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CryptoProperties CryptoProperties { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Core.Models.CryptoProperties.html">CryptoProperties</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Data.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Data%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L232">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L257">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Data_" data-uid="CycloneDX.Models.Component.Data*"></a>
   <h4 id="CycloneDX_Models_Component_Data" data-uid="CycloneDX.Models.Component.Data">Data</h4>
@@ -274,7 +368,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Description.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L116">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L141">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Description_" data-uid="CycloneDX.Models.Component.Description*"></a>
   <h4 id="CycloneDX_Models_Component_Description" data-uid="CycloneDX.Models.Component.Description">Description</h4>
@@ -304,7 +398,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Evidence.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Evidence%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L219">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L244">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Evidence_" data-uid="CycloneDX.Models.Component.Evidence*"></a>
   <h4 id="CycloneDX_Models_Component_Evidence" data-uid="CycloneDX.Models.Component.Evidence">Evidence</h4>
@@ -334,7 +428,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ExternalReferences.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ExternalReferences%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L199">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L224">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ExternalReferences_" data-uid="CycloneDX.Models.Component.ExternalReferences*"></a>
   <h4 id="CycloneDX_Models_Component_ExternalReferences" data-uid="CycloneDX.Models.Component.ExternalReferences">ExternalReferences</h4>
@@ -364,7 +458,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Group.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Group%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L104">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L129">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Group_" data-uid="CycloneDX.Models.Component.Group*"></a>
   <h4 id="CycloneDX_Models_Component_Group" data-uid="CycloneDX.Models.Component.Group">Group</h4>
@@ -394,7 +488,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Hashes.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Hashes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L138">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L163">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Hashes_" data-uid="CycloneDX.Models.Component.Hashes*"></a>
   <h4 id="CycloneDX_Models_Component_Hashes" data-uid="CycloneDX.Models.Component.Hashes">Hashes</h4>
@@ -424,7 +518,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Licenses.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Licenses%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L143">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L168">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Licenses_" data-uid="CycloneDX.Models.Component.Licenses*"></a>
   <h4 id="CycloneDX_Models_Component_Licenses" data-uid="CycloneDX.Models.Component.Licenses">Licenses</h4>
@@ -454,7 +548,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_LicensesSerialized.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.LicensesSerialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L148">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L173">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_LicensesSerialized_" data-uid="CycloneDX.Models.Component.LicensesSerialized*"></a>
   <h4 id="CycloneDX_Models_Component_LicensesSerialized" data-uid="CycloneDX.Models.Component.LicensesSerialized">LicensesSerialized</h4>
@@ -481,10 +575,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Manufacturer.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Manufacturer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L100">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_Manufacturer_" data-uid="CycloneDX.Models.Component.Manufacturer*"></a>
+  <h4 id="CycloneDX_Models_Component_Manufacturer" data-uid="CycloneDX.Models.Component.Manufacturer">Manufacturer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OrganizationalEntity Manufacturer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.OrganizationalEntity.html">OrganizationalEntity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_MimeType.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.MimeType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L82">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L86">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_MimeType_" data-uid="CycloneDX.Models.Component.MimeType*"></a>
   <h4 id="CycloneDX_Models_Component_MimeType" data-uid="CycloneDX.Models.Component.MimeType">MimeType</h4>
@@ -514,7 +638,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ModelCard.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ModelCard%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L228">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L253">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ModelCard_" data-uid="CycloneDX.Models.Component.ModelCard*"></a>
   <h4 id="CycloneDX_Models_Component_ModelCard" data-uid="CycloneDX.Models.Component.ModelCard">ModelCard</h4>
@@ -544,7 +668,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Modified.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Modified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L177">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L202">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Modified_" data-uid="CycloneDX.Models.Component.Modified*"></a>
   <h4 id="CycloneDX_Models_Component_Modified" data-uid="CycloneDX.Models.Component.Modified">Modified</h4>
@@ -574,7 +698,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Name.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L108">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L133">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Name_" data-uid="CycloneDX.Models.Component.Name*"></a>
   <h4 id="CycloneDX_Models_Component_Name" data-uid="CycloneDX.Models.Component.Name">Name</h4>
@@ -604,7 +728,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_NonNullableModified.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.NonNullableModified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L180">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L205">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_NonNullableModified_" data-uid="CycloneDX.Models.Component.NonNullableModified*"></a>
   <h4 id="CycloneDX_Models_Component_NonNullableModified" data-uid="CycloneDX.Models.Component.NonNullableModified">NonNullableModified</h4>
@@ -634,7 +758,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_NonNullableScope.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.NonNullableScope%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L123">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L148">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_NonNullableScope_" data-uid="CycloneDX.Models.Component.NonNullableScope*"></a>
   <h4 id="CycloneDX_Models_Component_NonNullableScope" data-uid="CycloneDX.Models.Component.NonNullableScope">NonNullableScope</h4>
@@ -661,10 +785,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_OmniborId.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.OmniborId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L271">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_OmniborId_" data-uid="CycloneDX.Models.Component.OmniborId*"></a>
+  <h4 id="CycloneDX_Models_Component_OmniborId" data-uid="CycloneDX.Models.Component.OmniborId">OmniborId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; OmniborId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Pedigree.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Pedigree%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L195">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L220">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Pedigree_" data-uid="CycloneDX.Models.Component.Pedigree*"></a>
   <h4 id="CycloneDX_Models_Component_Pedigree" data-uid="CycloneDX.Models.Component.Pedigree">Pedigree</h4>
@@ -694,7 +848,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Properties.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Properties%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L209">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L234">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Properties_" data-uid="CycloneDX.Models.Component.Properties*"></a>
   <h4 id="CycloneDX_Models_Component_Properties" data-uid="CycloneDX.Models.Component.Properties">Properties</h4>
@@ -724,7 +878,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Publisher.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Publisher%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L100">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L125">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Publisher_" data-uid="CycloneDX.Models.Component.Publisher*"></a>
   <h4 id="CycloneDX_Models_Component_Publisher" data-uid="CycloneDX.Models.Component.Publisher">Publisher</h4>
@@ -754,7 +908,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Purl.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Purl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L168">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L193">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Purl_" data-uid="CycloneDX.Models.Component.Purl*"></a>
   <h4 id="CycloneDX_Models_Component_Purl" data-uid="CycloneDX.Models.Component.Purl">Purl</h4>
@@ -784,7 +938,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ReleaseNotes.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ReleaseNotes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L223">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L248">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ReleaseNotes_" data-uid="CycloneDX.Models.Component.ReleaseNotes*"></a>
   <h4 id="CycloneDX_Models_Component_ReleaseNotes" data-uid="CycloneDX.Models.Component.ReleaseNotes">ReleaseNotes</h4>
@@ -814,7 +968,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Scope.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Scope%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L120">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L145">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Scope_" data-uid="CycloneDX.Models.Component.Scope*"></a>
   <h4 id="CycloneDX_Models_Component_Scope" data-uid="CycloneDX.Models.Component.Scope">Scope</h4>
@@ -841,10 +995,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Signature.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Signature%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L284">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_Signature_" data-uid="CycloneDX.Models.Component.Signature*"></a>
+  <h4 id="CycloneDX_Models_Component_Signature" data-uid="CycloneDX.Models.Component.Signature">Signature</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SignatureChoice Signature { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.SignatureChoice.html">SignatureChoice</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Supplier.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Supplier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L92">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L96">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Supplier_" data-uid="CycloneDX.Models.Component.Supplier*"></a>
   <h4 id="CycloneDX_Models_Component_Supplier" data-uid="CycloneDX.Models.Component.Supplier">Supplier</h4>
@@ -871,10 +1055,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Swhid.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Swhid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L276">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_Swhid_" data-uid="CycloneDX.Models.Component.Swhid*"></a>
+  <h4 id="CycloneDX_Models_Component_Swhid" data-uid="CycloneDX.Models.Component.Swhid">Swhid</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Swhid { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Swid.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Swid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L172">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L197">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Swid_" data-uid="CycloneDX.Models.Component.Swid*"></a>
   <h4 id="CycloneDX_Models_Component_Swid" data-uid="CycloneDX.Models.Component.Swid">Swid</h4>
@@ -901,10 +1115,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Tags.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Tags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L265">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_Tags_" data-uid="CycloneDX.Models.Component.Tags*"></a>
+  <h4 id="CycloneDX_Models_Component_Tags" data-uid="CycloneDX.Models.Component.Tags">Tags</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Tags { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Type.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L78">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L82">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Type_" data-uid="CycloneDX.Models.Component.Type*"></a>
   <h4 id="CycloneDX_Models_Component_Type" data-uid="CycloneDX.Models.Component.Type">Type</h4>
@@ -934,7 +1178,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Version.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L112">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L137">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Version_" data-uid="CycloneDX.Models.Component.Version*"></a>
   <h4 id="CycloneDX_Models_Component_Version" data-uid="CycloneDX.Models.Component.Version">Version</h4>
@@ -959,6 +1203,36 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_XmlSignature.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.XmlSignature%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L281">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_XmlSignature_" data-uid="CycloneDX.Models.Component.XmlSignature*"></a>
+  <h4 id="CycloneDX_Models_Component_XmlSignature" data-uid="CycloneDX.Models.Component.XmlSignature">XmlSignature</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlElement XmlSignature { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">XmlElement</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -966,7 +1240,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Equals_CycloneDX_Models_Component_.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Equals(CycloneDX.Models.Component)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L247">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L298">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Equals_" data-uid="CycloneDX.Models.Component.Equals*"></a>
   <h4 id="CycloneDX_Models_Component_Equals_CycloneDX_Models_Component_" data-uid="CycloneDX.Models.Component.Equals(CycloneDX.Models.Component)">Equals(Component)</h4>
@@ -1013,7 +1287,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_Equals_System_Object_.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L236">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L287">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_Equals_" data-uid="CycloneDX.Models.Component.Equals*"></a>
   <h4 id="CycloneDX_Models_Component_Equals_System_Object_" data-uid="CycloneDX.Models.Component.Equals(System.Object)">Equals(Object)</h4>
@@ -1060,7 +1334,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_GetHashCode.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L252">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L303">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_GetHashCode_" data-uid="CycloneDX.Models.Component.GetHashCode*"></a>
   <h4 id="CycloneDX_Models_Component_GetHashCode" data-uid="CycloneDX.Models.Component.GetHashCode">GetHashCode()</h4>
@@ -1087,10 +1361,70 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeAuthor_Xml.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeAuthor_Xml%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L121">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_ShouldSerializeAuthor_Xml_" data-uid="CycloneDX.Models.Component.ShouldSerializeAuthor_Xml*"></a>
+  <h4 id="CycloneDX_Models_Component_ShouldSerializeAuthor_Xml" data-uid="CycloneDX.Models.Component.ShouldSerializeAuthor_Xml">ShouldSerializeAuthor_Xml()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShouldSerializeAuthor_Xml()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeAuthors.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeAuthors%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L109">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_ShouldSerializeAuthors_" data-uid="CycloneDX.Models.Component.ShouldSerializeAuthors*"></a>
+  <h4 id="CycloneDX_Models_Component_ShouldSerializeAuthors" data-uid="CycloneDX.Models.Component.ShouldSerializeAuthors">ShouldSerializeAuthors()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShouldSerializeAuthors()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeComponents.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeComponents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L207">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L232">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ShouldSerializeComponents_" data-uid="CycloneDX.Models.Component.ShouldSerializeComponents*"></a>
   <h4 id="CycloneDX_Models_Component_ShouldSerializeComponents" data-uid="CycloneDX.Models.Component.ShouldSerializeComponents">ShouldSerializeComponents()</h4>
@@ -1120,7 +1454,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeExternalReferences.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeExternalReferences%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L203">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L228">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ShouldSerializeExternalReferences_" data-uid="CycloneDX.Models.Component.ShouldSerializeExternalReferences*"></a>
   <h4 id="CycloneDX_Models_Component_ShouldSerializeExternalReferences" data-uid="CycloneDX.Models.Component.ShouldSerializeExternalReferences">ShouldSerializeExternalReferences()</h4>
@@ -1150,7 +1484,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeHashes.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeHashes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L141">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L166">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ShouldSerializeHashes_" data-uid="CycloneDX.Models.Component.ShouldSerializeHashes*"></a>
   <h4 id="CycloneDX_Models_Component_ShouldSerializeHashes" data-uid="CycloneDX.Models.Component.ShouldSerializeHashes">ShouldSerializeHashes()</h4>
@@ -1180,7 +1514,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeLicensesSerialized.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeLicensesSerialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L157">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L182">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ShouldSerializeLicensesSerialized_" data-uid="CycloneDX.Models.Component.ShouldSerializeLicensesSerialized*"></a>
   <h4 id="CycloneDX_Models_Component_ShouldSerializeLicensesSerialized" data-uid="CycloneDX.Models.Component.ShouldSerializeLicensesSerialized">ShouldSerializeLicensesSerialized()</h4>
@@ -1207,10 +1541,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeManufacturer.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeManufacturer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L103">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_ShouldSerializeManufacturer_" data-uid="CycloneDX.Models.Component.ShouldSerializeManufacturer*"></a>
+  <h4 id="CycloneDX_Models_Component_ShouldSerializeManufacturer" data-uid="CycloneDX.Models.Component.ShouldSerializeManufacturer">ShouldSerializeManufacturer()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShouldSerializeManufacturer()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeNonNullableModified.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeNonNullableModified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L193">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L218">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ShouldSerializeNonNullableModified_" data-uid="CycloneDX.Models.Component.ShouldSerializeNonNullableModified*"></a>
   <h4 id="CycloneDX_Models_Component_ShouldSerializeNonNullableModified" data-uid="CycloneDX.Models.Component.ShouldSerializeNonNullableModified">ShouldSerializeNonNullableModified()</h4>
@@ -1240,7 +1604,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeNonNullableScope.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeNonNullableScope%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L136">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L161">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ShouldSerializeNonNullableScope_" data-uid="CycloneDX.Models.Component.ShouldSerializeNonNullableScope*"></a>
   <h4 id="CycloneDX_Models_Component_ShouldSerializeNonNullableScope" data-uid="CycloneDX.Models.Component.ShouldSerializeNonNullableScope">ShouldSerializeNonNullableScope()</h4>
@@ -1267,10 +1631,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeOmniborId.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeOmniborId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L274">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_ShouldSerializeOmniborId_" data-uid="CycloneDX.Models.Component.ShouldSerializeOmniborId*"></a>
+  <h4 id="CycloneDX_Models_Component_ShouldSerializeOmniborId" data-uid="CycloneDX.Models.Component.ShouldSerializeOmniborId">ShouldSerializeOmniborId()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShouldSerializeOmniborId()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeProperties.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeProperties%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L213">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L238">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ShouldSerializeProperties_" data-uid="CycloneDX.Models.Component.ShouldSerializeProperties*"></a>
   <h4 id="CycloneDX_Models_Component_ShouldSerializeProperties" data-uid="CycloneDX.Models.Component.ShouldSerializeProperties">ShouldSerializeProperties()</h4>
@@ -1300,7 +1694,7 @@
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeReleaseNotes.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeReleaseNotes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L226">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L251">View Source</a>
   </span>
   <a id="CycloneDX_Models_Component_ShouldSerializeReleaseNotes_" data-uid="CycloneDX.Models.Component.ShouldSerializeReleaseNotes*"></a>
   <h4 id="CycloneDX_Models_Component_ShouldSerializeReleaseNotes" data-uid="CycloneDX.Models.Component.ShouldSerializeReleaseNotes">ShouldSerializeReleaseNotes()</h4>
@@ -1325,6 +1719,70 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeSwhid.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeSwhid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L279">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_ShouldSerializeSwhid_" data-uid="CycloneDX.Models.Component.ShouldSerializeSwhid*"></a>
+  <h4 id="CycloneDX_Models_Component_ShouldSerializeSwhid" data-uid="CycloneDX.Models.Component.ShouldSerializeSwhid">ShouldSerializeSwhid()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShouldSerializeSwhid()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component_ShouldSerializeTags.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component.ShouldSerializeTags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L269">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Component_ShouldSerializeTags_" data-uid="CycloneDX.Models.Component.ShouldSerializeTags*"></a>
+  <h4 id="CycloneDX_Models_Component_ShouldSerializeTags" data-uid="CycloneDX.Models.Component.ShouldSerializeTags">ShouldSerializeTags()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShouldSerializeTags()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CycloneDX.Models.IHasBomRef.html">IHasBomRef</a>
+  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html#CycloneDX_Spdx_Interop_Helpers_AttributionTexts_GetSpdxAttributionTexts_CycloneDX_Models_Component_">AttributionTexts.GetSpdxAttributionTexts(Component)</a>
@@ -1355,7 +1813,7 @@
                     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Component.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Component%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L29" class="contribution-link">View Source</a>
+                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Component.cs/#L31" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
