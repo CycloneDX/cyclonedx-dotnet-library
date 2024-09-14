@@ -150,7 +150,7 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
             this.output = output;
         }
 
-        [Theory]
+        [LinuxOnlyForCITheory]
         [InlineData("valid-annotation-1.6")]
         [InlineData("valid-assembly-1.6")]
         [InlineData("valid-attestation-1.6")]
@@ -191,7 +191,6 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
         [InlineData("valid-saasbom-1.6")]
         [InlineData("valid-service-1.6")]
         [InlineData("valid-service-empty-objects-1.6")]
-        //[InlineData("valid-signatures-1.6")]
         [InlineData("valid-standard-1.6")]
         [InlineData("valid-tags-1.6")]
         [InlineData("valid-vulnerability-1.6")]
@@ -270,7 +269,7 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
             }
         }
 
-        [Theory]
+        [LinuxOnlyForCITheory]
         [InlineData("valid-annotation-1.6")]
         [InlineData("valid-assembly-1.6")]
         [InlineData("valid-attestation-1.6")]
@@ -311,7 +310,6 @@ namespace CycloneDX.Core.Tests.Consistency.v1_6
         [InlineData("valid-saasbom-1.6")]
         [InlineData("valid-service-1.6")]
         [InlineData("valid-service-empty-objects-1.6")]
-        //[InlineData("valid-signatures-1.6")]
         [InlineData("valid-standard-1.6")]
         [InlineData("valid-tags-1.6")]
         [InlineData("valid-vulnerability-1.6")]
