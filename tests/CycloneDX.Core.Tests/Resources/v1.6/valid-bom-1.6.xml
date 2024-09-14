@@ -200,6 +200,4 @@
             <dependency ref="pkg:maven/com.example/myapplication@1.0.0?packaging=war"/>
         </dependency>
     </dependencies>	
-  ]
-
 </bom>
