@@ -95,7 +95,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
         {
             if (externalRefs != null && externalRefs.Count > 0)
             {
-                if (component.Properties == null) component.Properties = new List<Property>();
+                if (component.Properties == null) { component.Properties = new List<Property>(); }
                 foreach (var extRef in externalRefs)
                 {
                     string refPropName = null;

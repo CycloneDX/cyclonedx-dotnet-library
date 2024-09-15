@@ -49,7 +49,10 @@ namespace CycloneDX.Xml
         public OverrideXml Member(string name)
         {
             Commit();
-            if (_currentType == null) throw new InvalidOperationException("Current type is not defined. Use Override<T>() to define current type");
+            if (_currentType == null)
+            {
+                throw new InvalidOperationException("Current type is not defined. Use Override<T>() to define current type");
+            }
 
             // attempt to verify that such member indeed exists
             const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public;
@@ -330,7 +333,10 @@ namespace CycloneDX.Xml
 
         private void Open()
         {
-            if (_attributes == null) _attributes = new XmlAttributes();
+            if (_attributes == null)
+            {
+                _attributes = new XmlAttributes();
+            }
         }
     }
 }

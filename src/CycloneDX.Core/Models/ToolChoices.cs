@@ -61,7 +61,10 @@ namespace CycloneDX.Models
                 if (reader.LocalName == "tool")
                 {
                     #pragma warning disable 618
-                    if (this.Tools == null) this.Tools = new List<Tool>();
+                    if (this.Tools == null)
+                    {
+                        this.Tools = new List<Tool>();
+                    }
                     var serializer = Xml.Serializer.GetElementSerializer<Tool>(SpecVersion, "tool");
                     var tool = (Tool)serializer.Deserialize(reader);
                     #pragma warning restore 618
@@ -69,7 +72,10 @@ namespace CycloneDX.Models
                 }
                 if (reader.LocalName == "components")
                 {
-                    if (this.Components == null) this.Components = new List<Component>();
+                    if (this.Components == null)
+                    {
+                        this.Components = new List<Component>();
+                    }
                     var serializer = Xml.Serializer.GetElementSerializer<Component>(SpecVersion, "component");
                     reader.ReadStartElement();
                     while (reader.LocalName == "component")
@@ -81,7 +87,10 @@ namespace CycloneDX.Models
                 }
                 if (reader.LocalName == "services")
                 {
-                    if (this.Services == null) this.Services = new List<Service>();
+                    if (this.Services == null)
+                    {
+                        this.Services = new List<Service>();
+                    }
                     var serializer = Xml.Serializer.GetElementSerializer<Service>(SpecVersion, "service");
                     reader.ReadStartElement();
                     while (reader.LocalName == "service")
@@ -102,7 +111,9 @@ namespace CycloneDX.Models
                 var serializer = Xml.Serializer.GetElementSerializer<Tool>(SpecVersion, "tool");
                 #pragma warning restore 618
                 foreach (var tool in this.Tools)
+                {
                     serializer.Serialize(writer, tool);
+                }
             }
 
             if (this.Components != null)
@@ -110,7 +121,9 @@ namespace CycloneDX.Models
                 writer.WriteStartElement("components");
                 var serializer = Xml.Serializer.GetElementSerializer<Component>(SpecVersion, "component");
                 foreach (var component in this.Components)
+                {
                     serializer.Serialize(writer, component);
+                }
                 writer.WriteEndElement();
             }
 
@@ -119,7 +132,9 @@ namespace CycloneDX.Models
                 writer.WriteStartElement("services");
                 var serializer = Xml.Serializer.GetElementSerializer<Service>(SpecVersion, "service");
                 foreach (var service in this.Services)
+                {
                     serializer.Serialize(writer, service);
+                }
                 writer.WriteEndElement();
             }
         }

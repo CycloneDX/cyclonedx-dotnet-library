@@ -120,10 +120,10 @@ namespace CycloneDX.Models
         {
             get
             {
-                if (Data == null) return null;
+                if (Data == null) { return null; }
                 if (SpecVersion < SpecificationVersion.v1_5)
                 {
-                    var result = new ServiceDataChoices()
+                    var result = new ServiceDataChoices
                     {
                         SpecVersion = SpecVersion,
                         DataClassifications = new List<DataClassification>()
