@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.BomUtils.html",
-          "hash": "e+cAb8V5Gwq73o/CmhsJ3neXos4OoZbXJs48PmJt2f8="
+          "hash": "5yiiijeDVmsSDDPPce+CKUwuK7PYH9Z+xbLO8nNVhFU="
         }
       },
       "is_incremental": false,
@@ -525,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "owLOnHLu++H+I600pSUxsWQZRdgJ7yw5P/usKMMDnUs="
+          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
         }
       },
       "is_incremental": false,
@@ -585,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Annotation.html",
-          "hash": "YJv0HRYWJ9TDmvjMe7XEQH4KV/dIMyWxO2ch1vxqjQU="
+          "hash": "Hw/4Q3tN10ZeqPxBuyeODJrloIggRmBUWyY8Dnd0cCo="
         }
       },
       "is_incremental": false,
@@ -1821,7 +1821,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.ProtobufTools.html",
-          "hash": "n1nDs1GWJmrHSKg2Ams0bPy3ibKSR5qi8SIy1vBYaU4="
+          "hash": "Xg28zPTqfnIqYWzb9298ZmTj6PJCgA8PSqgEUdeypFE="
         }
       },
       "is_incremental": false,
@@ -1917,7 +1917,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.ServiceDataChoices.html",
-          "hash": "ckVnLMvbO7ZkmLapvLqlIal7SGQyFI7xlzmoerFxYJ8="
+          "hash": "PYpblWx4JJ46fe+7MsIaaR6vpX/TMk4XkfvWvJrUSsE="
         }
       },
       "is_incremental": false,
@@ -2049,7 +2049,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.ToolChoices.html",
-          "hash": "Oiizi5tUu1DsRgM30sUOU5U2/mpC8f+VGagt0Qy+r5g="
+          "hash": "VSBivcIrSSYoQg6YzffpaXLt1OM0yL2cwii4lcbw92o="
         }
       },
       "is_incremental": false,
