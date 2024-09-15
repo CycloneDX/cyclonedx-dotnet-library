@@ -1,0 +1,211 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": "asset-1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Name here",
+      "Version": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": {
+        "AssetType": "Algorithm",
+        "AlgorithmProperties": {
+          "Primitive": "AE",
+          "Primitive_XML": "AE",
+          "ParameterSetIdentifier": "128",
+          "Curve": "brainpoolP160r1",
+          "ExecutionEnvironment": "Software_Plain_Ram",
+          "ImplementationPlatform": "x86_64",
+          "CertificationLevel": [
+            "FIPS140_1_L4"
+          ],
+          "CertificationLevel_Protobuf": [
+            "fips140-1-l4"
+          ],
+          "Mode": "Gcm",
+          "Padding": "PKCS5",
+          "Padding_XML": "PKCS5",
+          "CryptoFunctions": [
+            "Keygen",
+            "Encrypt",
+            "Decrypt",
+            "Tag"
+          ],
+          "ClassicalSecurityLevel": 128,
+          "NistQuantumSecurityLevel": 1
+        },
+        "CertificateProperties": null,
+        "RelatedCryptoMaterialProperties": null,
+        "ProtocolProperties": null,
+        "ObjectIdentifier": "oid:1.2.3.4.5.6.7.8.9"
+      },
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": "asset-2",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Name here",
+      "Version": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": {
+        "AssetType": "Certificate",
+        "AlgorithmProperties": null,
+        "CertificateProperties": {
+          "SubjectName": "Subject name here",
+          "IssuerName": "Issuer name here",
+          "NotValidBefore": "2070-07-26T16:41:18Z",
+          "NotValidAfter": "2070-07-26T16:41:18Z",
+          "SignatureAlgorithmRef": "bom-ref-to-algorithm",
+          "SubjectPublicKeyRef": "bom-ref-to-public-key",
+          "CertificateFormat": "X.509",
+          "CertificateExtension": "crt"
+        },
+        "RelatedCryptoMaterialProperties": null,
+        "ProtocolProperties": null,
+        "ObjectIdentifier": "oid:1.2.3.4.5.6.7.8.9"
+      },
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": "asset-3",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Name here",
+      "Version": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": {
+        "AssetType": "Protocol",
+        "AlgorithmProperties": null,
+        "CertificateProperties": null,
+        "RelatedCryptoMaterialProperties": null,
+        "ProtocolProperties": {
+          "Type": "Tls",
+          "Version": "1.3",
+          "CipherSuites": [
+            {
+              "Name": "TLS_DHE_RSA_WITH_AES_128_CCM",
+              "Algorithms": [
+                "bom-ref-to-algorithm"
+              ],
+              "Identifiers": [
+                "0xC0"
+              ]
+            }
+          ],
+          "Ikev2TransformTypes": null
+        },
+        "ObjectIdentifier": "oid:1.2.3.4.5.6.7.8.9"
+      },
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": "asset-4",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Name here",
+      "Version": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": {
+        "AssetType": "Related_Crypto_Material",
+        "AlgorithmProperties": null,
+        "CertificateProperties": null,
+        "RelatedCryptoMaterialProperties": {
+          "Type": "Private_Key",
+          "Id": "12345",
+          "State": "Active",
+          "AlgorithmRef": "bom-ref-to-algorithm",
+          "CreationDate": "2070-07-26T16:41:18Z",
+          "ActivationDate": "2070-07-26T16:41:18Z",
+          "UpdateDate": "2070-07-26T16:41:18Z",
+          "ExpirationDate": "2070-07-26T16:41:18Z",
+          "Value": "Value here",
+          "Size": 1024,
+          "Format": "PEM",
+          "SecuredBy": {
+            "Mechanism": "HSM",
+            "AlgorithmRef": "bom-ref-to-algorithm"
+          }
+        },
+        "ProtocolProperties": null,
+        "ObjectIdentifier": "oid:1.2.3.4.5.6.7.8.9"
+      },
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

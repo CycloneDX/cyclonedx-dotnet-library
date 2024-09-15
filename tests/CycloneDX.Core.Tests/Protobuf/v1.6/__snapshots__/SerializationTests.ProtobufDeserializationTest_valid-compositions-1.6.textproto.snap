@@ -1,0 +1,202 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": {
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": null,
+    "Component": {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": "acme-application-1.0",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Acme Application",
+      "Version": "1.0",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    "Manufacture": null,
+    "Supplier": null
+  },
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": "pkg:maven/partner/shaded-library@1.0",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Partner Shaded Library",
+      "Version": "1.0",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": "pkg:maven/partner/shaded-library@1.0",
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Components": [
+        {
+          "Type": "Library",
+          "MimeType": null,
+          "BomRef": "pkg:maven/ossproject/library@2.0",
+          "Supplier": null,
+          "Author": null,
+          "Publisher": null,
+          "Group": null,
+          "Name": "Some Opensource Library",
+          "Version": "2.0",
+          "Description": null,
+          "Scope": null,
+          "Licenses": null,
+          "Copyright": null,
+          "Cpe": null,
+          "Purl": "pkg:maven/ossproject/library@2.0",
+          "Swid": null,
+          "Modified": null,
+          "Pedigree": null,
+          "Evidence": null,
+          "ModelCard": null,
+          "Data": null,
+          "CryptoProperties": null,
+          "XmlSignature": null,
+          "Signature": null
+        }
+      ],
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": "pkg:maven/acme/library@3.0",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Acme Library",
+      "Version": "3.0",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": "pkg:maven/acme/library@3.0",
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Dependencies": [
+    {
+      "Ref": "acme-application-1.0",
+      "Dependencies": [
+        {
+          "Ref": "pkg:maven/partner/shaded-library@1.0",
+          "Dependencies": null,
+          "Provides": null
+        },
+        {
+          "Ref": "pkg:maven/acme/library@3.0",
+          "Dependencies": null,
+          "Provides": null
+        }
+      ],
+      "Provides": null
+    }
+  ],
+  "Compositions": [
+    {
+      "Aggregate": "Complete",
+      "Assemblies": [
+        "pkg:maven/partner/shaded-library@1.0"
+      ],
+      "Dependencies": [
+        "acme-application-1.0"
+      ],
+      "Vulnerabilities": null,
+      "BomRef": "composition-1",
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Aggregate": "Unknown",
+      "Assemblies": [
+        "pkg:maven/acme/library@3.0"
+      ],
+      "Dependencies": null,
+      "Vulnerabilities": null,
+      "BomRef": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Aggregate": "Incomplete_First_Party_Only",
+      "Assemblies": null,
+      "Dependencies": null,
+      "Vulnerabilities": [
+        "vulnerability-1"
+      ],
+      "BomRef": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Vulnerabilities": [
+    {
+      "BomRef": "vulnerability-1",
+      "Id": "ACME-12345",
+      "Source": {
+        "Name": "Acme Inc",
+        "Url": null
+      },
+      "Ratings": null,
+      "CWES": null,
+      "Description": null,
+      "Detail": null,
+      "Recommendation": null,
+      "Workaround": null,
+      "ProofOfConcept": null,
+      "Advisories": null,
+      "Credits": null,
+      "Analysis": null,
+      "Affects": null
+    }
+  ],
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

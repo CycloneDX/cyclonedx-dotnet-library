@@ -1,0 +1,105 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:ed5c5ba0-2be6-4b58-ac29-01a7fd375123",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Machine_Learning_Model",
+      "MimeType": null,
+      "BomRef": "huggingface.co-meta-llama-Llama-2-7b",
+      "Supplier": {
+        "Name": "Hugging Face",
+        "Url": null,
+        "Contact": null,
+        "BomRef": null,
+        "Address": null
+      },
+      "Author": null,
+      "Publisher": "meta",
+      "Group": "meta-llama",
+      "Name": "Llama-2-7b",
+      "Version": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "ExternalReferences": [
+        {
+          "Url": "https://huggingface.co/meta-llama/Llama-2-7b",
+          "Type": "Distribution",
+          "Comment": null
+        }
+      ],
+      "Evidence": null,
+      "ModelCard": {
+        "BomRef": null,
+        "ModelParameters": null,
+        "QuantitativeAnalysis": null,
+        "Considerations": {
+          "EnvironmentalConsiderations": {
+            "EnergyConsumptions": [
+              {
+                "Activity": "Training",
+                "EnergyProviders": [
+                  {
+                    "Description": "Meta data-center, US-East",
+                    "Organization": {
+                      "Name": "Meta",
+                      "Url": null,
+                      "Contact": null,
+                      "BomRef": null,
+                      "Address": {
+                        "BomRef": null,
+                        "Country": "United States",
+                        "Region": "New Jersey",
+                        "Locality": "Newark",
+                        "PostOfficeBoxNumber": null,
+                        "PostalCode": null,
+                        "StreetAddress": null
+                      }
+                    },
+                    "EnergySource": "Natural_Gas",
+                    "EnergyProvided": {
+                      "Value": 0.4,
+                      "Unit": "kWh"
+                    },
+                    "BomRef": null
+                  }
+                ],
+                "ActivityEnergyCost": {
+                  "Value": 0.4,
+                  "Unit": "kWh"
+                },
+                "Co2CostEquivalent": {
+                  "Value": 31.22,
+                  "Unit": "tCO2eq"
+                },
+                "Co2CostOffset": {
+                  "Value": 31.22,
+                  "Unit": "tCO2eq"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}
