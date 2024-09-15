@@ -79,8 +79,7 @@
                 {
                   "bom-ref": "workspace-1",
                   "uid": "workspace-uid-1",
-                  "name": "workspace",
-                  "accessMode": "read-only"
+                  "name": "workspace"
                 }
               ],
               "runtimeTopology": [
