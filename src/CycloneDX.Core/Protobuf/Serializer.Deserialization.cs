@@ -40,9 +40,9 @@ namespace CycloneDX.Protobuf
             {
                 bom.Metadata.Timestamp = DateTime.SpecifyKind(bom.Metadata.Timestamp.Value, DateTimeKind.Utc);
             }
-            
+
             CleanupEmptyArrays(bom);
-            
+
             return bom;
         }
 
@@ -59,7 +59,7 @@ namespace CycloneDX.Protobuf
             var bom = Deserialize(ms);
             return bom;
         }
-        
+
         private static void CleanupEmptyArrays(Bom bom)
         {
             if (bom.Metadata?.Authors?.Count == 0)
@@ -115,7 +115,7 @@ namespace CycloneDX.Protobuf
                 bom.Dependencies = null;
             }
         }
-        
+
         private static void CleanupEmptyArrays(Component component)
         {
             if (component.Hashes?.Count == 0)
@@ -166,23 +166,35 @@ namespace CycloneDX.Protobuf
 
         private static void CleanupEmptyArrays(Pedigree pedigree)
         {
-            if (pedigree.Commits?.Count == 0) pedigree.Commits = null;
-            if (pedigree.Patches?.Count == 0) pedigree.Patches = null;
+            if (pedigree.Commits?.Count == 0) { pedigree.Commits = null; }
+            if (pedigree.Patches?.Count == 0) { pedigree.Patches = null; }
 
-            if (pedigree.Ancestors?.Count == 0) pedigree.Ancestors = null;
+            if (pedigree.Ancestors?.Count == 0) { pedigree.Ancestors = null; }
             if (pedigree.Ancestors != null)
-            foreach (var component in pedigree.Ancestors)
-                CleanupEmptyArrays(component);
+            {
+                foreach (var component in pedigree.Ancestors)
+                {
+                    CleanupEmptyArrays(component);
+                }
+            }
 
-            if (pedigree.Descendants?.Count == 0) pedigree.Descendants = null;
+            if (pedigree.Descendants?.Count == 0) { pedigree.Descendants = null; }
             if (pedigree.Descendants != null)
-            foreach (var component in pedigree.Descendants)
-                CleanupEmptyArrays(component);
+            {
+                foreach (var component in pedigree.Descendants)
+                {
+                    CleanupEmptyArrays(component);
+                }
+            }
 
-            if (pedigree.Variants?.Count == 0) pedigree.Variants = null;
+            if (pedigree.Variants?.Count == 0) { pedigree.Variants = null; }
             if (pedigree.Variants != null)
-            foreach (var component in pedigree.Variants)
-                CleanupEmptyArrays(component);
+            {
+                foreach (var component in pedigree.Variants)
+                {
+                    CleanupEmptyArrays(component);
+                }
+            }
         }
     }
 }

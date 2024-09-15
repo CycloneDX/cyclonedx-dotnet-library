@@ -79,7 +79,7 @@ namespace CycloneDX.Core.Tests.Protobuf.v1_4
                 var protoBom = stream.ToArray();
 
                 var runner = new ProtocRunner();
-                var result = runner.Run(tempDir.DirectoryPath, protoBom, new string[]
+                var result = runner.Run(tempDir.DirectoryPath, protoBom, new[]
                 {
                     "--proto_path=./",
                     "--decode=cyclonedx.v1_4.Bom",

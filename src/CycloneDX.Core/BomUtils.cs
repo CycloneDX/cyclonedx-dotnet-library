@@ -156,7 +156,10 @@ namespace CycloneDX
                 bomCopy.Properties = null;
                 bomCopy.Formulation = null;
 
-                if (bomCopy.Metadata != null) bomCopy.Metadata.Lifecycles = null;
+                if (bomCopy.Metadata != null)
+                {
+                    bomCopy.Metadata.Lifecycles = null;
+                }
 
                 if (bomCopy.Compositions != null)
                 {
@@ -177,7 +180,10 @@ namespace CycloneDX
                 {
                     component.ModelCard = null;
                     component.Data = null;
-                    if ((int)component.Type > 8) component.Type = Component.Classification.Library;
+                    if ((int)component.Type > 8)
+                    {
+                        component.Type = Component.Classification.Library;
+                    }
                 });
 
                 EnumerateAllServices(bomCopy, (service) =>
@@ -425,7 +431,10 @@ namespace CycloneDX
         {
             EnumerateAllComponents(bom, (component) =>
             {
-                if (component.Evidence != null) callback(component.Evidence);
+                if (component.Evidence != null)
+                {
+                    callback(component.Evidence);
+                }
             });
         }
 
@@ -433,7 +442,10 @@ namespace CycloneDX
         {
             EnumerateAllLicenseChoices(bom, (licenseChoice) =>
             {
-                if (licenseChoice.License != null) callback(licenseChoice.License);
+                if (licenseChoice.License != null)
+                {
+                    callback(licenseChoice.License);
+                }
             });
         }
 
@@ -496,7 +508,9 @@ namespace CycloneDX
                 foreach (var annotation in bom.Annotations)
                 {
                     if (annotation.Annotator?.Organization != null)
+                    {
                         callback(annotation.Annotator.Organization);
+                    }
                 }
             }
 
@@ -511,7 +525,10 @@ namespace CycloneDX
             });
             EnumerateAllComponents(bom, (component) =>
             {
-                if (component.Supplier != null) callback(component.Supplier);
+                if (component.Supplier != null)
+                {
+                    callback(component.Supplier);
+                }
 
 
                 component.ModelCard?.Considerations?.EnvironmentalConsiderations?.EnergyConsumptions?
@@ -529,7 +546,10 @@ namespace CycloneDX
             });
             EnumerateAllServices(bom, (service) =>
             {
-                if (service.Provider != null) callback(service.Provider);
+                if (service.Provider != null)
+                {
+                    callback(service.Provider);
+                }
             });
         }
 
@@ -577,7 +597,9 @@ namespace CycloneDX
             EnumerateAllVulnerabilities(bom, (vuln) =>
             {
                 if (vuln.Tools != null)
+                {
                     callback(vuln.Tools);
+                }
             });
         }
 

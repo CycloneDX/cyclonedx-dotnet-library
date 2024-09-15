@@ -465,13 +465,13 @@ namespace CycloneDX.Utils
             }
 
             // cleanup empty top level elements
-            if (result.Metadata.Tools.Tools.Count == 0) result.Metadata.Tools.Tools = null;
-            if (result.Components.Count == 0) result.Components = null;
-            if (result.Services.Count == 0) result.Services = null;
-            if (result.ExternalReferences.Count == 0) result.ExternalReferences = null;
-            if (result.Dependencies.Count == 0) result.Dependencies = null;
-            if (result.Compositions.Count == 0) result.Compositions = null;
-            if (result.Vulnerabilities.Count == 0) result.Vulnerabilities = null;
+            if (result.Metadata.Tools.Tools.Count == 0) { result.Metadata.Tools.Tools = null; }
+            if (result.Components.Count == 0) { result.Components = null; }
+            if (result.Services.Count == 0) { result.Services = null; }
+            if (result.ExternalReferences.Count == 0) { result.ExternalReferences = null; }
+            if (result.Dependencies.Count == 0) { result.Dependencies = null; }
+            if (result.Compositions.Count == 0) { result.Compositions = null; }
+            if (result.Vulnerabilities.Count == 0) { result.Vulnerabilities = null; }
 
             return result;
         }
@@ -654,16 +654,20 @@ namespace CycloneDX.Utils
             foreach (var composition in compositions)
             {
                 if (composition.Assemblies != null)
+                {
                     for (var i = 0; i < composition.Assemblies.Count; i++)
                     {
                         composition.Assemblies[i] = NamespacedBomRef(bomRefNamespace, composition.Assemblies[i]);
                     }
+                }
 
                 if (composition.Dependencies != null)
+                {
                     for (var i = 0; i < composition.Dependencies.Count; i++)
                     {
                         composition.Dependencies[i] = NamespacedBomRef(bomRefNamespace, composition.Dependencies[i]);
                     }
+                }
             }
         }
     }

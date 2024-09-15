@@ -50,14 +50,14 @@ namespace CycloneDX.Models
             {
                 if (reader.LocalName == "classification")
                 {
-                    if (this.DataClassifications == null) this.DataClassifications = new List<DataClassification>();
+                    if (this.DataClassifications == null) { this.DataClassifications = new List<DataClassification>(); }
                     var serializer = Xml.Serializer.GetElementSerializer<DataClassification>(SpecVersion, "classification");
                     var dataClassification = (DataClassification)serializer.Deserialize(reader);
                     this.DataClassifications.Add(dataClassification);
                 }
                 if (reader.LocalName == "dataflow")
                 {
-                    if (this.DataFlows == null) this.DataFlows = new List<DataFlow>();
+                    if (this.DataFlows == null) { this.DataFlows = new List<DataFlow>(); }
                     var serializer = Xml.Serializer.GetElementSerializer<DataFlow>(SpecVersion, "dataflow");
                     var dataflow = (DataFlow)serializer.Deserialize(reader);
                     this.DataFlows.Add(dataflow);
@@ -72,14 +72,18 @@ namespace CycloneDX.Models
             {
                 var serializer = Xml.Serializer.GetElementSerializer<DataClassification>(SpecVersion, "classification");
                 foreach (var dc in this.DataClassifications)
+                {
                     serializer.Serialize(writer, dc);
+                }
             }
 
             if (this.DataFlows != null)
             {
                 var serializer = Xml.Serializer.GetElementSerializer<DataFlow>(SpecVersion, "dataflow");
                 foreach (var df in this.DataFlows)
+                {
                     serializer.Serialize(writer, df);
+                }
             }
         }
 

@@ -138,7 +138,9 @@ namespace CycloneDX.Xml
         internal static XmlSerializer GetElementSerializer<T>(SpecificationVersion specVersion, string elementName)
         {
             if (!_elementSerializers.ContainsKey(specVersion))
+            {
                 _elementSerializers[specVersion] = new Dictionary<string, XmlSerializer>();
+            }
             var serKey = $"{typeof(T).FullName}:{elementName}";
             if (!_elementSerializers[specVersion].ContainsKey(serKey))
             {

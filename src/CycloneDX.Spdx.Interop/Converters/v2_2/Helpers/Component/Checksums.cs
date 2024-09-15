@@ -119,8 +119,8 @@ namespace CycloneDX.Spdx.Interop.Helpers
         {
             if (checksums != null && checksums.Count > 0)
             {
-                if (component.Properties == null) component.Properties = new List<Property>();
-                if (component.Hashes == null) component.Hashes = new List<Hash>();
+                if (component.Properties == null) { component.Properties = new List<Property>(); }
+                if (component.Hashes == null) { component.Hashes = new List<Hash>(); }
                 foreach (var checksum in checksums)
                 {
                     switch (checksum.Algorithm)
