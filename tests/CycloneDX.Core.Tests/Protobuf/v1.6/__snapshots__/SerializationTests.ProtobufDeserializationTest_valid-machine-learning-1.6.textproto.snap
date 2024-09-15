@@ -1,0 +1,123 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Machine_Learning_Model",
+      "MimeType": null,
+      "BomRef": "component-a",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": "CompVis",
+      "Name": "stable-diffusion",
+      "Version": "1.4",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": {
+        "BomRef": null,
+        "ModelParameters": {
+          "Approach": {
+            "Type": "Supervised"
+          },
+          "Task": "task goes here",
+          "ArchitectureFamily": "the architecture family goes here",
+          "ModelArchitecture": "The architecture of the model.",
+          "Datasets": [
+            {
+              "DataSet": {
+                "BomRef": null,
+                "Type": "Dataset",
+                "Name": "Training Data",
+                "Contents": {
+                  "Attachment": null,
+                  "Url": "https://example.com/path/to/dataset"
+                },
+                "Classification": "public",
+                "SensitiveData": null,
+                "Graphics": null,
+                "Description": null,
+                "Governance": null
+              },
+              "Ref": null
+            }
+          ],
+          "Inputs": [
+            {
+              "Format": "string"
+            }
+          ],
+          "Outputs": [
+            {
+              "Format": "string"
+            }
+          ]
+        },
+        "QuantitativeAnalysis": {
+          "PerformanceMetrics": [
+            {
+              "Type": "The type of performance metric",
+              "Value": "The value of the performance metric",
+              "Slice": "The name of the slice this metric was computed on. By default, assume this metric is not sliced",
+              "ConfidenceInterval": {
+                "LowerBound": "The lower bound of the confidence interval",
+                "UpperBound": "The upper bound of the confidence interval"
+              }
+            }
+          ],
+          "Graphics": null
+        },
+        "Considerations": {
+          "Users": [
+            "Who are the intended users of the model?"
+          ],
+          "UseCases": [
+            "Who are the intended users of the model?"
+          ],
+          "TechnicalLimitations": [
+            "What are the known technical limitations of the model? E.g. What kind(s) of data should the model be expected not to perform well on? What are the factors that might degrade model performance?"
+          ],
+          "PerformanceTradeoffs": [
+            "What are the known tradeoffs in accuracy/performance of the model?"
+          ],
+          "EthicalConsiderations": [
+            {
+              "Name": "The name of the risk",
+              "MitigationStrategy": "Strategy used to address this risk"
+            }
+          ],
+          "FairnessAssessments": [
+            {
+              "GroupAtRisk": "The groups or individuals at risk of being systematically disadvantaged by the model",
+              "Benefits": "Expected benefits to the identified groups",
+              "Harms": "Expected harms to the identified groups",
+              "MitigationStrategy": "With respect to the benefits and harms outlined, please describe any mitigation strategy implemented."
+            }
+          ],
+          "EnvironmentalConsiderations": null
+        }
+      },
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}
