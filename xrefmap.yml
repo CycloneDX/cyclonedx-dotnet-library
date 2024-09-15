@@ -15643,6 +15643,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Workspace.Name
   nameWithType: Workspace.Name
+- uid: CycloneDX.Models.Workspace.NonNullableAccessMode
+  name: NonNullableAccessMode
+  href: api/CycloneDX.Models.Workspace.html#CycloneDX_Models_Workspace_NonNullableAccessMode
+  commentId: P:CycloneDX.Models.Workspace.NonNullableAccessMode
+  fullName: CycloneDX.Models.Workspace.NonNullableAccessMode
+  nameWithType: Workspace.NonNullableAccessMode
+- uid: CycloneDX.Models.Workspace.NonNullableAccessMode*
+  name: NonNullableAccessMode
+  href: api/CycloneDX.Models.Workspace.html#CycloneDX_Models_Workspace_NonNullableAccessMode_
+  commentId: Overload:CycloneDX.Models.Workspace.NonNullableAccessMode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Workspace.NonNullableAccessMode
+  nameWithType: Workspace.NonNullableAccessMode
 - uid: CycloneDX.Models.Workspace.Properties
   name: Properties
   href: api/CycloneDX.Models.Workspace.html#CycloneDX_Models_Workspace_Properties
@@ -15682,6 +15695,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Workspace.ShouldSerializeAliases
   nameWithType: Workspace.ShouldSerializeAliases
+- uid: CycloneDX.Models.Workspace.ShouldSerializeNonNullableAccessMode
+  name: ShouldSerializeNonNullableAccessMode()
+  href: api/CycloneDX.Models.Workspace.html#CycloneDX_Models_Workspace_ShouldSerializeNonNullableAccessMode
+  commentId: M:CycloneDX.Models.Workspace.ShouldSerializeNonNullableAccessMode
+  fullName: CycloneDX.Models.Workspace.ShouldSerializeNonNullableAccessMode()
+  nameWithType: Workspace.ShouldSerializeNonNullableAccessMode()
+- uid: CycloneDX.Models.Workspace.ShouldSerializeNonNullableAccessMode*
+  name: ShouldSerializeNonNullableAccessMode
+  href: api/CycloneDX.Models.Workspace.html#CycloneDX_Models_Workspace_ShouldSerializeNonNullableAccessMode_
+  commentId: Overload:CycloneDX.Models.Workspace.ShouldSerializeNonNullableAccessMode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Workspace.ShouldSerializeNonNullableAccessMode
+  nameWithType: Workspace.ShouldSerializeNonNullableAccessMode
 - uid: CycloneDX.Models.Workspace.ShouldSerializeProperties
   name: ShouldSerializeProperties()
   href: api/CycloneDX.Models.Workspace.html#CycloneDX_Models_Workspace_ShouldSerializeProperties
