@@ -69,7 +69,6 @@
                 <workspace bom-ref="workspace-1">
                   <uid>workspace-uid-1</uid>
                   <name>workspace</name>
-                  <accessMode>read-only</accessMode>
                 </workspace>
               </workspaces>
               <runtimeTopology>
