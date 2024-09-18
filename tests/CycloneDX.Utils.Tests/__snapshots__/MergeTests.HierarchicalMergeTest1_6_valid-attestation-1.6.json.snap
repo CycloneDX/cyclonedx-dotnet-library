@@ -1,0 +1,419 @@
+﻿{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "metadata": {
+    "tools": {},
+    "component": {
+      "type": "application",
+      "bom-ref": "Thing@1",
+      "name": "Thing",
+      "version": "1"
+    }
+  },
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "bom1name@:bom1",
+      "name": "bom1name",
+      "components": []
+    },
+    {
+      "type": "application",
+      "bom-ref": "bom2name@:bom2",
+      "name": "bom2name",
+      "components": []
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "Thing@1",
+      "dependsOn": [
+        "bom1name@:bom1",
+        "bom2name@:bom2"
+      ]
+    }
+  ],
+  "declarations": {
+    "assessors": [
+      {
+        "bom-ref": "bom1name@:assessor-1",
+        "thirdParty": true,
+        "organization": {
+          "name": "Assessors Inc"
+        }
+      },
+      {
+        "bom-ref": "bom2name@:assessor-1",
+        "thirdParty": true,
+        "organization": {
+          "name": "Assessors Inc"
+        }
+      }
+    ],
+    "attestations": [
+      {
+        "summary": "Attestation summary here",
+        "assessor": "bom1name@:assessor-1",
+        "map": [
+          {
+            "requirement": "bom1name@:requirement-1",
+            "claims": [
+              "bom1name@:claim-1"
+            ],
+            "counterClaims": [
+              "bom1name@:counterClaim-1"
+            ],
+            "conformance": {
+              "score": 0.8,
+              "rationale": "Conformance rationale here",
+              "mitigationStrategies": [
+                "bom1name@:mitigationStrategy-1"
+              ]
+            },
+            "confidence": {
+              "score": 1,
+              "rationale": "Confidence rationale here"
+            }
+          }
+        ],
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      },
+      {
+        "summary": "Attestation summary here",
+        "assessor": "bom2name@:assessor-1",
+        "map": [
+          {
+            "requirement": "bom2name@:requirement-1",
+            "claims": [
+              "bom2name@:claim-1"
+            ],
+            "counterClaims": [
+              "bom2name@:counterClaim-1"
+            ],
+            "conformance": {
+              "score": 0.8,
+              "rationale": "Conformance rationale here",
+              "mitigationStrategies": [
+                "bom2name@:mitigationStrategy-1"
+              ]
+            },
+            "confidence": {
+              "score": 1,
+              "rationale": "Confidence rationale here"
+            }
+          }
+        ],
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      }
+    ],
+    "claims": [
+      {
+        "bom-ref": "bom1name@:claim-1",
+        "target": "bom1name@:acme-inc",
+        "predicate": "Predicate here",
+        "mitigationStrategies": [
+          "mitigationStrategy-1"
+        ],
+        "reasoning": "Reasoning here",
+        "evidence": [
+          "bom1name@:evidence-1"
+        ],
+        "counterEvidence": [
+          "bom1name@:counterEvidence-1"
+        ],
+        "externalReferences": [
+          {
+            "url": "https://alm.example.com",
+            "type": "issue-tracker"
+          }
+        ],
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      },
+      {
+        "bom-ref": "bom2name@:claim-1",
+        "target": "bom2name@:acme-inc",
+        "predicate": "Predicate here",
+        "mitigationStrategies": [
+          "mitigationStrategy-1"
+        ],
+        "reasoning": "Reasoning here",
+        "evidence": [
+          "bom2name@:evidence-1"
+        ],
+        "counterEvidence": [
+          "bom2name@:counterEvidence-1"
+        ],
+        "externalReferences": [
+          {
+            "url": "https://alm.example.com",
+            "type": "issue-tracker"
+          }
+        ],
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "bom-ref": "bom1name@:evidence-1",
+        "propertyName": "internal.com.acme.someProperty",
+        "description": "Description here",
+        "data": [
+          {
+            "name": "Name of the data",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "Evidence here"
+              }
+            },
+            "classification": "PII",
+            "sensitiveData": [
+              "Describe sensitive data here"
+            ]
+          }
+        ],
+        "created": "2023-04-25T00:00:00Z",
+        "expires": "2023-05-25T00:00:00Z",
+        "author": {
+          "name": "Mary"
+        },
+        "reviewer": {
+          "name": "Jane"
+        },
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      },
+      {
+        "bom-ref": "bom1name@:counterEvidence-1",
+        "propertyName": "internal.com.acme.someProperty",
+        "description": "Description here",
+        "data": [
+          {
+            "name": "Name of the data",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "Counter evidence here"
+              }
+            },
+            "classification": "Public",
+            "sensitiveData": [
+              "Describe sensitive data here"
+            ]
+          }
+        ],
+        "created": "2023-04-25T00:00:00Z",
+        "expires": "2023-05-25T00:00:00Z",
+        "author": {
+          "name": "Mary"
+        },
+        "reviewer": {
+          "name": "Jane"
+        },
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      },
+      {
+        "bom-ref": "bom1name@:mitigationStrategy-1",
+        "propertyName": "internal.com.acme.someProperty",
+        "description": "Description here",
+        "data": [
+          {
+            "name": "Name of the data",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "Mitigation strategy here"
+              }
+            },
+            "classification": "Company Confidential",
+            "sensitiveData": [
+              "Describe sensitive data here"
+            ]
+          }
+        ],
+        "created": "2023-04-25T00:00:00Z",
+        "expires": "2023-05-25T00:00:00Z",
+        "author": {
+          "name": "Mary"
+        },
+        "reviewer": {
+          "name": "Jane"
+        },
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      },
+      {
+        "bom-ref": "bom2name@:evidence-1",
+        "propertyName": "internal.com.acme.someProperty",
+        "description": "Description here",
+        "data": [
+          {
+            "name": "Name of the data",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "Evidence here"
+              }
+            },
+            "classification": "PII",
+            "sensitiveData": [
+              "Describe sensitive data here"
+            ]
+          }
+        ],
+        "created": "2023-04-25T00:00:00Z",
+        "expires": "2023-05-25T00:00:00Z",
+        "author": {
+          "name": "Mary"
+        },
+        "reviewer": {
+          "name": "Jane"
+        },
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      },
+      {
+        "bom-ref": "bom2name@:counterEvidence-1",
+        "propertyName": "internal.com.acme.someProperty",
+        "description": "Description here",
+        "data": [
+          {
+            "name": "Name of the data",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "Counter evidence here"
+              }
+            },
+            "classification": "Public",
+            "sensitiveData": [
+              "Describe sensitive data here"
+            ]
+          }
+        ],
+        "created": "2023-04-25T00:00:00Z",
+        "expires": "2023-05-25T00:00:00Z",
+        "author": {
+          "name": "Mary"
+        },
+        "reviewer": {
+          "name": "Jane"
+        },
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      },
+      {
+        "bom-ref": "bom2name@:mitigationStrategy-1",
+        "propertyName": "internal.com.acme.someProperty",
+        "description": "Description here",
+        "data": [
+          {
+            "name": "Name of the data",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "Mitigation strategy here"
+              }
+            },
+            "classification": "Company Confidential",
+            "sensitiveData": [
+              "Describe sensitive data here"
+            ]
+          }
+        ],
+        "created": "2023-04-25T00:00:00Z",
+        "expires": "2023-05-25T00:00:00Z",
+        "author": {
+          "name": "Mary"
+        },
+        "reviewer": {
+          "name": "Jane"
+        },
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      }
+    ],
+    "targets": {
+      "organizations": [
+        {
+          "name": "Acme Inc",
+          "bom-ref": "bom2name@:acme-inc"
+        },
+        {
+          "name": "Acme Inc",
+          "bom-ref": "acme-inc"
+        }
+      ],
+      "components": [],
+      "services": []
+    }
+  },
+  "definitions": {
+    "standards": []
+  }
+}

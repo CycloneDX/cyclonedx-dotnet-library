@@ -68,7 +68,10 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     {
                         if (bom.Metadata == null) { bom.Metadata = new Metadata(); }
                         #pragma warning disable 618
-                        if (bom.Metadata?.Tools?.Tools == null) { bom.Metadata.Tools = new ToolChoices { Tools = new List<Tool>() }; }
+                        if (bom.Metadata?.Tools?.Tools == null)
+                        {
+                            bom.Metadata.Tools = new ToolChoices { Tools = new List<Tool>() };
+                        }
                         bom.Metadata.Tools.Tools.Add(new Tool {
                             Name = toolMatch.Groups["name"].ToString(),
                             Version = toolMatch.Groups["version"].ToString(),

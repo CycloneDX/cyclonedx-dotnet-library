@@ -1,7 +1,7 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "v1_5",
-  "SpecVersionString": "1.5",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
   "SerialNumber": null,
   "Version": null,
   "Metadata": {
@@ -26,13 +26,19 @@
         "Vendor": null,
         "Name": "Tool1",
         "Version": "1",
-        "Hashes": null
+        "Hashes": null,
+        "ExternalReferences": null,
+        "Components": null,
+        "Services": null
       },
       {
         "Vendor": null,
         "Name": "Tool2",
         "Version": "1",
-        "Hashes": null
+        "Hashes": null,
+        "ExternalReferences": null,
+        "Components": null,
+        "Services": null
       }
     ],
     "Authors": null,
@@ -41,5 +47,8 @@
     "Supplier": null
   },
   "Components": null,
-  "Compositions": null
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
 }

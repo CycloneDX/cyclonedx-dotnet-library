@@ -31,7 +31,7 @@ namespace CycloneDX.Models
         public enum DataType
         {
             [XmlEnum(Name = "source-code")]
-            SourceCode,
+            Source_Code,
             [XmlEnum(Name = "configuration")]
             Configuration,
             [XmlEnum(Name = "dataset")]

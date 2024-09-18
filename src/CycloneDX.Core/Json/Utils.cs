@@ -17,6 +17,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CycloneDX.Core.Models;
 using CycloneDX.Json.Converters;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
@@ -50,6 +51,7 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<Component.ComponentScope>());
             options.Converters.Add(new HyphenEnumConverter<Component.Classification>());
             options.Converters.Add(new HyphenEnumConverter<Licensing.LicenseType>());
+            options.Converters.Add(new HyphenEnumConverter<LicenseAcknowledgementEnumeration>());
             options.Converters.Add(new HyphenEnumConverter<DataFlowDirection>());
             options.Converters.Add(new DateTimeConverter());
             options.Converters.Add(new DependencyConverter());
@@ -67,8 +69,20 @@ namespace CycloneDX.Json
 
             options.Converters.Add(new EnvironmentVarChoiceConverter());
             options.Converters.Add(new ToolChoicesConverter());
+            options.Converters.Add(new HyphenEnumConverter<ExecutionEnvironment>());
+            options.Converters.Add(new EnumMemberConverter<CertificationLevel>());
+            options.Converters.Add(new HyphenEnumConverter<AssetType>());
+            options.Converters.Add(new HyphenEnumConverter<RelatedCryptoMaterialType>());
+            options.Converters.Add(new HyphenEnumConverter<KeyState>());
+            options.Converters.Add(new HyphenEnumConverter<CryptoFunction>());
+            options.Converters.Add(new HyphenEnumConverter<AlgorithmMode>());
+            options.Converters.Add(new HyphenEnumConverter<ProtocolType>());
+            options.Converters.Add(new HyphenEnumConverter<Primitive>());
+            options.Converters.Add(new HyphenEnumConverter<PaddingScheme>());
+            options.Converters.Add(new EnumMemberConverter<ImplementationPlatform>());
+            options.Converters.Add(new EvidenceIdentityListConverter());
 
-            options.Converters.Add(new HyphenEnumConverter<EvidenceIdentity.EvidenceFieldType>());
+            options.Converters.Add(new EnumMemberConverter<EvidenceIdentity.EvidenceFieldType>());
             options.Converters.Add(new HyphenEnumConverter<EvidenceMethods.EvidenceTechnique>());
             options.Converters.Add(new ScoreMethodConverter());
             options.Converters.Add(new HyphenEnumConverter<Severity>());
@@ -76,9 +90,13 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<WorkflowTask.TaskType>());
             options.Converters.Add(new HyphenEnumConverter<Output.OutputType>());
             options.Converters.Add(new HyphenEnumConverter<ModelCard.ModelParameterApproachType>());
+            options.Converters.Add(new DatasetChoicesConverter());
             options.Converters.Add(new UnderscoreEnumConverter<Status>());
             options.Converters.Add(new HyphenEnumConverter<Volume.VolumeMode>());
             options.Converters.Add(new HyphenEnumConverter<Data.DataType>());
+            options.Converters.Add(new HyphenEnumConverter<ActivityType>());
+            options.Converters.Add(new HyphenEnumConverter<EnergySource>());
+            options.Converters.Add(new SignatureChoiceConverter());
 
             options.Converters.Add(new JsonStringEnumConverter());
             

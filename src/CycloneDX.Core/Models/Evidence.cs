@@ -50,10 +50,22 @@ namespace CycloneDX.Models
         [XmlArrayItem("text")]
         [ProtoMember(2)]
         public List<EvidenceCopyright> Copyright { get; set; }
-        
-        [XmlElement("identity", Order = 0)]
+
+
         [ProtoMember(3)]
-        public EvidenceIdentity Identity { get; set; }
+        [XmlElement("identity", Order = 0)]
+        [JsonIgnore]
+        public List<EvidenceIdentity> Identity { get; set; }
+
+
+        [JsonPropertyName("identity")]
+        [XmlIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public EvidenceIdentityList IdentitySerialized
+        {
+            get { return Identity != null ? new EvidenceIdentityList { Identities = Identity } : null; }
+            set { Identity = value.Identities; }
+        }
 
         [XmlArray("occurrences", Order = 1)]
         [XmlArrayItem("occurrence")]
@@ -63,5 +75,12 @@ namespace CycloneDX.Models
         [XmlElement("callstack", Order = 2)]
         [ProtoMember(5)]
         public Callstack Callstack { get; set; }
+    }
+
+
+    public class EvidenceIdentityList
+    {
+        public List<EvidenceIdentity> Identities { get; set; }
+
     }
 }

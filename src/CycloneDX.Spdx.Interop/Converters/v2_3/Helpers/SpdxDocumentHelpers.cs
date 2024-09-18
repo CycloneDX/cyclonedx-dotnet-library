@@ -79,19 +79,19 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 }
 
                 var builtDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_BUILT_DATE);
-                if ( ! String.IsNullOrEmpty(builtDate))
+                if ( !String.IsNullOrEmpty(builtDate))
                 {
                     package.BuiltDate = DateTime.Parse(builtDate.Trim('"'));
                 }
                 
                 var releaseDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_RELEASE_DATE);
-                if ( ! String.IsNullOrEmpty(releaseDate))
+                if ( !String.IsNullOrEmpty(releaseDate))
                 {
                     package.ReleaseDate = DateTime.Parse(releaseDate.Trim('"'));
                 }
                 
                 var validUntilDate = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_VALID_UNTIL_DATE);
-                if ( ! String.IsNullOrEmpty(validUntilDate))
+                if ( !String.IsNullOrEmpty(validUntilDate))
                 {
                     package.ValidUntilDate = DateTime.Parse(validUntilDate.Trim('"'));
                 }
@@ -149,7 +149,6 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 {
                     package.LicenseDeclared = licenseDeclared;
                 }
-
                 if  (component.Licenses != null && component.Licenses.Count == 1)
                 {
 
@@ -159,7 +158,12 @@ namespace CycloneDX.Spdx.Interop.Helpers
              
 
                 // Package Originator
-                package.Originator = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR);
+                var packageOriginator = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR);
+                if (!String.IsNullOrEmpty(packageOriginator) && packageOriginator != "NOASSERTION")
+                {
+                    package.Originator = packageOriginator;
+                }
+                #pragma warning disable 618
                 if (component.Author != null)
                 {
                     if (component.Author == component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR_ORGANIZATION))
@@ -171,8 +175,12 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         package.Originator = $"Person: {component.Author} ({component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_ORIGINATOR_EMAIL) ?? ""})";
                     }
                 }
-
-                package.Supplier = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_SUPPLIER);
+                #pragma warning restore 618
+                var packageSupplier = component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_SUPPLIER);
+                if (!String.IsNullOrEmpty(packageSupplier) && packageSupplier != "NOASSERTION")
+                {
+                    package.Supplier = packageSupplier;
+                }
                 if (component.Supplier != null)
                 {
                     var supplierEmails = component.Supplier.Contact.Where(c => c.Email != null).ToList();
@@ -207,7 +215,6 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     case Component.Classification.Framework:
                         package.PrimaryPackagePurpose = PrimaryPackagePurposeType.FRAMEWORK;
                         break;
-                    
                     case Component.Classification.Operating_System:
                         package.PrimaryPackagePurpose = PrimaryPackagePurposeType.OPERATING_SYSTEM;
                         break;

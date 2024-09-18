@@ -47,7 +47,10 @@ namespace CycloneDX.Models
             {
                 if (XmlSubjects == null) return null;
                 var result = new List<string>();
-                foreach (var subject in XmlSubjects) result.Add(subject.Ref);
+                foreach (var subject in XmlSubjects)
+                {
+                    result.Add(subject.Ref);
+                }
                 return result;
             }
             set
@@ -59,7 +62,10 @@ namespace CycloneDX.Models
                 else
                 {
                     XmlSubjects = new List<XmlAnnotationSubject>();
-                    foreach (var subject in value) XmlSubjects.Add(new XmlAnnotationSubject() { Ref = subject});
+                    foreach (var subject in value)
+                    {
+                        XmlSubjects.Add(new XmlAnnotationSubject { Ref = subject });
+                    }
                 }
             }
         }

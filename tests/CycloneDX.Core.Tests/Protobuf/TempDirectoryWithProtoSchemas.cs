@@ -27,7 +27,7 @@ namespace CycloneDX.Core.Tests.Protobuf
         public TempDirectoryWithProtoSchemas()
         {
             var assembly = typeof(CycloneDX.Protobuf.Serializer).GetTypeInfo().Assembly;
-            foreach (var versionString in new List<string> { "1.3", "1.4", "1.5" })
+            foreach (var versionString in new List<string> { "1.3", "1.4", "1.5", "1.6" })
             {
                 using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{versionString}.proto"))
                 {

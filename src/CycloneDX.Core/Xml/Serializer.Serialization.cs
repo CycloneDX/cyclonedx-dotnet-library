@@ -127,8 +127,7 @@ namespace CycloneDX.Xml
         public static string Serialize(Bom bom)
         {
             Contract.Requires(bom != null);
-
-            var serializer = GetXmlSerializer(bom.SpecVersion);
+  
             using (var ms = new MemoryStream())
             {
                 Serialize(bom, ms);
@@ -139,7 +138,9 @@ namespace CycloneDX.Xml
         internal static XmlSerializer GetElementSerializer<T>(SpecificationVersion specVersion, string elementName)
         {
             if (!_elementSerializers.ContainsKey(specVersion))
+            {
                 _elementSerializers[specVersion] = new Dictionary<string, XmlSerializer>();
+            }
             var serKey = $"{typeof(T).FullName}:{elementName}";
             if (!_elementSerializers[specVersion].ContainsKey(serKey))
             {

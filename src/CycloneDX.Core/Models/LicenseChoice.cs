@@ -25,6 +25,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
 
+
     [ProtoContract]
     public class LicenseChoice
     {
@@ -35,11 +36,18 @@ namespace CycloneDX.Models
         [XmlElement("expression")]
         [ProtoMember(2)]
         public string Expression { get; set; }
-        
-        [XmlElement("bom-ref")]
+
+        [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public string BomRef { get; set; }
+
+
+        [XmlAttribute("acknowledgement")]
+        [ProtoMember(3)]
+        public LicenseAcknowledgementEnumeration? Acknowledgement { get; set; }
+        public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue; }
+
     }
 
     // This is a workaround to serialize licenses correctly
@@ -81,11 +89,26 @@ namespace CycloneDX.Models
                         Licenses.Add(new LicenseChoice { License = license });
                         finished = false;
                     }
-                    if (reader.Name == "expression")
+                    if (reader.LocalName == "expression")
                     {
+                        string bomRef = null;
+                        LicenseAcknowledgementEnumeration? acknowledgement = null;
+                        if (reader.GetAttribute("bom-ref") != null)
+                        {
+                            bomRef = reader.GetAttribute("bom-ref");
+                        }
+                        if (reader.GetAttribute("acknowledgement") != null)
+                        {
+                            var acknowledgementStr = reader.GetAttribute("acknowledgement");
+                            LicenseAcknowledgementEnumeration acknowledgementNonNull;
+                            if (Enum.TryParse<LicenseAcknowledgementEnumeration>(acknowledgementStr, true, out acknowledgementNonNull))
+                            {
+                                acknowledgement = acknowledgementNonNull;
+                            }
+                        }
                         reader.ReadStartElement();
                         var expression = reader.ReadContentAsString();
-                        Licenses.Add(new LicenseChoice { Expression = expression });
+                        Licenses.Add(new LicenseChoice { Expression = expression, BomRef = bomRef, Acknowledgement = acknowledgement });                        
                         finished = false;
                         reader.ReadEndElement();
                     }
@@ -116,6 +139,14 @@ namespace CycloneDX.Models
                     if (license.Expression != null)
                     {
                         writer.WriteStartElement("expression");
+                        if (license.BomRef != null)
+                        {
+                            writer.WriteAttributeString("bom-ref", license.BomRef);
+                        }
+                        if (license.Acknowledgement.HasValue)
+                        {
+                            writer.WriteAttributeString("acknowledgement", license.Acknowledgement.Value.ToString().ToLower());
+                        }
                         writer.WriteString(license.Expression);
                         writer.WriteEndElement();
                     }

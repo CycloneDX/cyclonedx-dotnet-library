@@ -35,12 +35,12 @@ namespace CycloneDX.Models
             Supervised,
             [XmlEnum(Name = "unsupervised")]
             Unsupervised,
-            [XmlEnum(Name = "reinforced-learning")]
-            ReinforcedLearning,
+            [XmlEnum(Name = "reinforcement-learning")]
+            Reinforcement_Learning,
             [XmlEnum(Name = "semi-supervised")]
-            SemiSupervised,
+            Semi_Supervised,
             [XmlEnum(Name = "self-supervised")]
-            SelfSupervised,
+            Self_Supervised,
         }
 
         [ProtoContract]

@@ -19,13 +19,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Service: IEquatable<Service>
+    public class Service: IEquatable<Service>, IHasBomRef
     {
         public Service()
         {
@@ -119,10 +120,10 @@ namespace CycloneDX.Models
         {
             get
             {
-                if (Data == null) return null;
+                if (Data == null) { return null; }
                 if (SpecVersion < SpecificationVersion.v1_5)
                 {
-                    var result = new ServiceDataChoices()
+                    var result = new ServiceDataChoices
                     {
                         SpecVersion = SpecVersion,
                         DataClassifications = new List<DataClassification>()
@@ -206,6 +207,16 @@ namespace CycloneDX.Models
         public List<Property> Properties { get; set; }
 
         public bool ShouldSerializeProperties() => Properties?.Count > 0;
+        [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public XmlElement XmlSignature { get; set; }
+        [XmlIgnore]
+        public SignatureChoice Signature { get; set; }
+
+        [XmlArray("tags")]
+        [XmlArrayItem("tag")]
+        [ProtoMember(17)]
+        public List<string> Tags { get; set; }
+        public bool ShouldSerializeTags() { return Tags?.Count > 0; }
 
         public override bool Equals(object obj)
         {

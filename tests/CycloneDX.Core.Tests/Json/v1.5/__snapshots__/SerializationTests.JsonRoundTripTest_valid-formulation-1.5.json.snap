@@ -79,8 +79,15 @@
                 {
                   "bom-ref": "workspace-1",
                   "uid": "workspace-uid-1",
-                  "name": "workspace",
-                  "accessMode": "read-only"
+                  "name": "workspace"
+                }
+              ],
+              "runtimeTopology": [
+                {
+                  "ref": "task-1",
+                  "dependsOn": [
+                    "task-2"
+                  ]
                 }
               ]
             }
@@ -265,6 +272,7 @@
               ],
               "accessMode": "read-write",
               "mountPath": "/tmp/workspace",
+              "managedDataType": "ConfigMap",
               "volumeRequest": "requestedVolumeClaim",
               "volume": {
                 "uid": "volume-1",
@@ -275,6 +283,14 @@
                 "persistent": true,
                 "remote": false
               }
+            }
+          ],
+          "runtimeTopology": [
+            {
+              "ref": "component-s",
+              "dependsOn": [
+                "component-r"
+              ]
             }
           ],
           "properties": [
