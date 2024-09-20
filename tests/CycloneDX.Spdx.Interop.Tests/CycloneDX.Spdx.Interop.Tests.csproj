@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Spdx\v2.2\document.json" />
     <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_assembly.snap" />
     <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_bom.snap" />
     <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-hashes.snap" />
@@ -63,18 +64,11 @@
     <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_properties.snap" />
     <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_service.snap" />
     <None Remove="__snapshots__\ConverterTests.FromSpdxToCDXTest_document.snap" />
-    <None Remove="__snapshots__\ConverterTests.FromSpdxToCDXToSpdxRoundTripTest_document.snap" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\CycloneDX.Spdx\CycloneDX.Spdx.csproj" />
     <ProjectReference Include="..\..\src\CycloneDX.Spdx.Interop\CycloneDX.Spdx.Interop.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="__snapshots__\ConverterTests.FromSpdxToCDXToSpdxRoundTripTest_document.snap">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

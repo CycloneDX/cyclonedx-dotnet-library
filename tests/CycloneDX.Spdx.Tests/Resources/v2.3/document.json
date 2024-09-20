@@ -162,6 +162,7 @@
       "filesAnalyzed": false,
       "homepage": "http://www.openjena.org/",
       "name": "Jena",
+      "primaryPackagePurpose": "APPLICATION",
       "versionInfo": "3.12.0"
     },
     {
