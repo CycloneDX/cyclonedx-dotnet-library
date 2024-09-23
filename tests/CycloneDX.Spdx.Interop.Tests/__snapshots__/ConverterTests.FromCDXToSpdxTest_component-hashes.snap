@@ -62,7 +62,6 @@
         }
       ],
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
       "name": "acme-example",
       "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"

@@ -12,7 +12,6 @@
     {
       "SPDXID": "SPDXRef-Package-1",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
       "name": "Acme Application",
       "originator": "Person: Acme Super Heros ()",
       "primaryPackagePurpose": "APPLICATION",
