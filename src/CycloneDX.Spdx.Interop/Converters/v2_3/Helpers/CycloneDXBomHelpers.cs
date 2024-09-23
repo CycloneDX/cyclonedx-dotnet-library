@@ -224,7 +224,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                     component.Properties.AddSpdxElement(PropertyTaxonomy.DOWNLOAD_LOCATION, package.DownloadLocation);
                 }
 
-                if (package.Homepage != null)
+                if (package.Homepage != null && package.Homepage != "NOASSERTION")
                 {
                     if (component.ExternalReferences == null) { component.ExternalReferences = new List<ExternalReference>(); }
                     component.ExternalReferences.Add(new ExternalReference

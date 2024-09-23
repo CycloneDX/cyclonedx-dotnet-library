@@ -64,6 +64,8 @@
     <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_properties.snap" />
     <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_service.snap" />
     <None Remove="__snapshots__\ConverterTests.FromSpdxToCDXTest_document.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromSpdxToCDXTest_v2.3document.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromSpdxToCDXToSpdxRoundTripTest_v2.3document.snap" />
   </ItemGroup>
 
   <ItemGroup>
@@ -293,6 +295,18 @@
 
   <ItemGroup>
     <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_assembly.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromSpdxToCDXToSpdxRoundTripTest_v2.3document.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromSpdxToCDXTest_v2.3document.snap">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

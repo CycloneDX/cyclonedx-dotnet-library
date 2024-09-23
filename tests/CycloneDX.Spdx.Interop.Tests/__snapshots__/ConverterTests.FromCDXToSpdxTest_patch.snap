@@ -12,7 +12,6 @@
     {
       "SPDXID": "SPDXRef-Package-1",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
       "name": "sample-library",
       "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"

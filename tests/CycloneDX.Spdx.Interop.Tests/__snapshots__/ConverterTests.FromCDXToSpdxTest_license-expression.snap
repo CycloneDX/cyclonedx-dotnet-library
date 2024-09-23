@@ -12,7 +12,6 @@
     {
       "SPDXID": "SPDXRef-Package-1",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
       "licenseDeclared": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
       "name": "tomcat-catalina",
       "primaryPackagePurpose": "LIBRARY",

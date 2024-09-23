@@ -46,7 +46,7 @@ namespace CycloneDX.Spdx.Interop.Tests
 
         [Theory]
         [InlineData("v2.2")]
-        //[InlineData("v2.3")]
+        [InlineData("v2.3")]
         public void FromSpdxToCDXTest(string version)
         {
             var resourceFilename = Path.Join("Resources", "Spdx",version, "document" + ".json");

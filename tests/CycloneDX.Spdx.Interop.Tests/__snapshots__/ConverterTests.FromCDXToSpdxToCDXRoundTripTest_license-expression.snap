@@ -40,10 +40,6 @@
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -53,10 +49,6 @@
         },
         {
           "name": "spdx:download-location",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
           "value": "NOASSERTION"
         }
       ]

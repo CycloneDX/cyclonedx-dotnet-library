@@ -34,7 +34,6 @@
         }
       ],
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
       "licenseDeclared": "Apache-2.0",
       "name": "tomcat-catalina",
       "primaryPackagePurpose": "LIBRARY",
@@ -43,7 +42,6 @@
     {
       "SPDXID": "SPDXRef-Package-2",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
       "name": "mylibrary",
       "originator": "Person: Example Super Heros ()",
       "primaryPackagePurpose": "LIBRARY",

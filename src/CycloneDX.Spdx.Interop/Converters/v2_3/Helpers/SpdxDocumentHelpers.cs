@@ -201,7 +201,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 package.ExternalRefs = component.GetSpdxExternalRefs();
 
                 package.DownloadLocation = component.Properties?.GetSpdxElement(PropertyTaxonomy.DOWNLOAD_LOCATION) ?? "NOASSERTION";
-                package.Homepage = component.Properties?.GetSpdxElement(PropertyTaxonomy.HOMEPAGE) ?? "NOASSERTION";
+                package.Homepage = component.Properties?.GetSpdxElement(PropertyTaxonomy.HOMEPAGE);
 
                 //PrimaryPackagePurpose
                 switch (component.Type)
