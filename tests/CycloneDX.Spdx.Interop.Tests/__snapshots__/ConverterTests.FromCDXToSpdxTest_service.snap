@@ -1,6 +1,6 @@
 ﻿{
   "SPDXID": "SPDXRef-DOCUMENT",
-  "spdxVersion": "SPDX-2.2",
+  "spdxVersion": "SPDX-2.3",
   "creationInfo": {
     "comment": "This SPDX document has been converted from CycloneDX format.",
     "created": "2021-12-24T12:00:00Z"
@@ -17,17 +17,10 @@
           "checksumValue": "e6b1000b94e835ffd37f4c6dcbdad43f4b48a02a"
         }
       ],
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "Apache-2.0",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "stock-java-client",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.12"
     }
   ]

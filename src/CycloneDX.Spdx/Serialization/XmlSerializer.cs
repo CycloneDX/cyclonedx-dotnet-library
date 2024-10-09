@@ -15,14 +15,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Net.Security;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace CycloneDX.Spdx.Serialization
@@ -40,7 +35,7 @@ namespace CycloneDX.Spdx.Serialization
         /// </summary>
         /// <param name="bom"></param>
         /// <returns></returns>
-        public static string Serialize(Models.v2_2.SpdxDocument document)
+        public static string Serialize(Models.v2_3.SpdxDocument document)
         {
             Contract.Requires(document != null);
 
@@ -56,11 +51,11 @@ namespace CycloneDX.Spdx.Serialization
         /// </summary>
         /// <param name="document"></param>
         /// <param name="outputStream"></param>
-        public static void Serialize(Models.v2_2.SpdxDocument document, Stream outputStream)
+        public static void Serialize(Models.v2_3.SpdxDocument document, Stream outputStream)
         {
             Contract.Requires(document != null);
 
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Models.v2_2.SpdxDocument));
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Models.v2_3.SpdxDocument));
 
             using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
             {
@@ -73,7 +68,7 @@ namespace CycloneDX.Spdx.Serialization
         /// </summary>
         /// <param name="xmlString"></param>
         /// <returns></returns>
-        public static Models.v2_2.SpdxDocument Deserialize(string xmlString)
+        public static Models.v2_3.SpdxDocument Deserialize(string xmlString)
         {
             Contract.Requires(xmlString != null);
             using (var stream = new MemoryStream())
@@ -91,7 +86,7 @@ namespace CycloneDX.Spdx.Serialization
         /// </summary>
         /// <param name="xmlStream"></param>
         /// <returns></returns>
-        public static Models.v2_2.SpdxDocument Deserialize(Stream xmlStream)
+        public static Models.v2_3.SpdxDocument Deserialize(Stream xmlStream)
         {
             Contract.Requires(xmlStream != null);
 
@@ -109,11 +104,11 @@ namespace CycloneDX.Spdx.Serialization
             }
         }
 
-        private static Models.v2_2.SpdxDocument Deserialize(MemoryStream xmlStream)
+        private static Models.v2_3.SpdxDocument Deserialize(MemoryStream xmlStream)
         {
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Models.v2_2.SpdxDocument));
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(Models.v2_3.SpdxDocument));
 
-            var document = (Models.v2_2.SpdxDocument)serializer.Deserialize(xmlStream);
+            var document = (Models.v2_3.SpdxDocument)serializer.Deserialize(xmlStream);
 
             return document;
         }

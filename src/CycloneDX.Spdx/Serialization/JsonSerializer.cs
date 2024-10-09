@@ -15,7 +15,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text.Json;
@@ -28,44 +27,46 @@ namespace CycloneDX.Spdx.Serialization
     {
         // this is so we can "cache" the serialization options
         // instantiating a new instance each time tanks serialization performance
-        private static JsonSerializerOptions _options_v2_2;
+        private static JsonSerializerOptions _options_v2_3;
 
-        public static JsonSerializerOptions GetJsonSerializerOptions_v2_2()
+        public static JsonSerializerOptions GetJsonSerializerOptions_v2_3()
         {
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                
             };
             options.Converters.Add(new JsonStringEnumConverter());
             return options;
         }
 
-        public static string Serialize(Models.v2_2.SpdxDocument document)
+
+        public static string Serialize(Models.v2_3.SpdxDocument document)
         {
-            if (_options_v2_2 is null) { _options_v2_2 = GetJsonSerializerOptions_v2_2(); }
-            return System.Text.Json.JsonSerializer.Serialize<Models.v2_2.SpdxDocument>(document, _options_v2_2);
+            if (_options_v2_3 is null) { _options_v2_3 = GetJsonSerializerOptions_v2_3(); }
+            return System.Text.Json.JsonSerializer.Serialize(document, _options_v2_3);
         }
 
-        public static async Task SerializeAsync(Models.v2_2.SpdxDocument document, Stream outputStream)
+        public static async Task SerializeAsync(Models.v2_3.SpdxDocument document, Stream outputStream)
         {
             Contract.Requires(document != null && outputStream != null);
-            if (_options_v2_2 is null) { _options_v2_2 = GetJsonSerializerOptions_v2_2(); }
-            await System.Text.Json.JsonSerializer.SerializeAsync<Models.v2_2.SpdxDocument>(outputStream, document, _options_v2_2).ConfigureAwait(false);
+            if (_options_v2_3 is null) { _options_v2_3 = GetJsonSerializerOptions_v2_3(); }
+            await System.Text.Json.JsonSerializer.SerializeAsync(outputStream, document, _options_v2_3).ConfigureAwait(false);
         }
 
-        public static Models.v2_2.SpdxDocument Deserialize(string document)
+        public static Models.v2_3.SpdxDocument Deserialize(string document)
         {
-            if (_options_v2_2 is null) { _options_v2_2 = GetJsonSerializerOptions_v2_2(); }
-            return System.Text.Json.JsonSerializer.Deserialize<Models.v2_2.SpdxDocument>(document, _options_v2_2);
+            if (_options_v2_3 is null) { _options_v2_3 = GetJsonSerializerOptions_v2_3(); }
+            return System.Text.Json.JsonSerializer.Deserialize<Models.v2_3.SpdxDocument>(document, _options_v2_3);
         }
 
-        public static async Task<Models.v2_2.SpdxDocument> DeserializeAsync(Stream jsonStream)
+        public static async Task<Models.v2_3.SpdxDocument> DeserializeAsync(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
-            if (_options_v2_2 is null) { _options_v2_2 = GetJsonSerializerOptions_v2_2(); }
-            var doc = await System.Text.Json.JsonSerializer.DeserializeAsync<Models.v2_2.SpdxDocument>(jsonStream, _options_v2_2).ConfigureAwait(false);
+            if (_options_v2_3 is null) { _options_v2_3 = GetJsonSerializerOptions_v2_3(); }
+            var doc = await System.Text.Json.JsonSerializer.DeserializeAsync<Models.v2_3.SpdxDocument>(jsonStream, _options_v2_3).ConfigureAwait(false);
             return doc;
         }
     }

@@ -1,6 +1,6 @@
 ﻿{
   "SPDXID": "SPDXRef-DOCUMENT",
-  "spdxVersion": "SPDX-2.2",
+  "spdxVersion": "SPDX-2.3",
   "creationInfo": {
     "comment": "This SPDX document has been converted from CycloneDX format.",
     "created": "2021-12-24T12:00:00Z"
@@ -11,32 +11,16 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-123",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "acme-library",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     },
     {
       "SPDXID": "SPDXRef-456",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "acme-library",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     }
   ]
