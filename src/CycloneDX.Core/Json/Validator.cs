@@ -206,6 +206,22 @@ namespace CycloneDX.Json
                 // there will be no nested results
                 foreach (var detail in result.Details)
                 {
+                    // avoid misleading error messages:
+                    // check if any ancestor is valid
+                    var currentItem = detail;
+                    while (currentItem.Parent != null)
+                    {
+                        currentItem = currentItem.Parent;
+                        if (currentItem.IsValid)
+                        {
+                            break;
+                        }
+                    }
+                    if (currentItem.IsValid)
+                    {
+                        continue;
+                    }
+
                     if (detail.HasErrors)
                     {
                         foreach (var error in detail.Errors)
