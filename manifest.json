@@ -525,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Json.html",
-          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
+          "hash": "owLOnHLu++H+I600pSUxsWQZRdgJ7yw5P/usKMMDnUs="
         }
       },
       "is_incremental": false,
@@ -2229,7 +2229,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CycloneDX.Models.Vulnerabilities.Rating.html",
-          "hash": "OdkygzouKqOVRWSXWxfikggWCMDYYI1EpcUEm6vYBFA="
+          "hash": "tfSS3KDZGyiXAXtB/wJBwpjER6xcqiLw7f+gIaj57Ng="
         }
       },
       "is_incremental": false,

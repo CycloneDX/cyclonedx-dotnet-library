@@ -14272,6 +14272,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Vulnerabilities.Rating.Method
   nameWithType: Rating.Method
+- uid: CycloneDX.Models.Vulnerabilities.Rating.NonNullableScore
+  name: NonNullableScore
+  href: api/CycloneDX.Models.Vulnerabilities.Rating.html#CycloneDX_Models_Vulnerabilities_Rating_NonNullableScore
+  commentId: P:CycloneDX.Models.Vulnerabilities.Rating.NonNullableScore
+  fullName: CycloneDX.Models.Vulnerabilities.Rating.NonNullableScore
+  nameWithType: Rating.NonNullableScore
+- uid: CycloneDX.Models.Vulnerabilities.Rating.NonNullableScore*
+  name: NonNullableScore
+  href: api/CycloneDX.Models.Vulnerabilities.Rating.html#CycloneDX_Models_Vulnerabilities_Rating_NonNullableScore_
+  commentId: Overload:CycloneDX.Models.Vulnerabilities.Rating.NonNullableScore
+  isSpec: "True"
+  fullName: CycloneDX.Models.Vulnerabilities.Rating.NonNullableScore
+  nameWithType: Rating.NonNullableScore
 - uid: CycloneDX.Models.Vulnerabilities.Rating.Score
   name: Score
   href: api/CycloneDX.Models.Vulnerabilities.Rating.html#CycloneDX_Models_Vulnerabilities_Rating_Score
@@ -14298,6 +14311,32 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Vulnerabilities.Rating.Severity
   nameWithType: Rating.Severity
+- uid: CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeMethod
+  name: ShouldSerializeMethod()
+  href: api/CycloneDX.Models.Vulnerabilities.Rating.html#CycloneDX_Models_Vulnerabilities_Rating_ShouldSerializeMethod
+  commentId: M:CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeMethod
+  fullName: CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeMethod()
+  nameWithType: Rating.ShouldSerializeMethod()
+- uid: CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeMethod*
+  name: ShouldSerializeMethod
+  href: api/CycloneDX.Models.Vulnerabilities.Rating.html#CycloneDX_Models_Vulnerabilities_Rating_ShouldSerializeMethod_
+  commentId: Overload:CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeMethod
+  isSpec: "True"
+  fullName: CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeMethod
+  nameWithType: Rating.ShouldSerializeMethod
+- uid: CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeNonNullableScore
+  name: ShouldSerializeNonNullableScore()
+  href: api/CycloneDX.Models.Vulnerabilities.Rating.html#CycloneDX_Models_Vulnerabilities_Rating_ShouldSerializeNonNullableScore
+  commentId: M:CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeNonNullableScore
+  fullName: CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeNonNullableScore()
+  nameWithType: Rating.ShouldSerializeNonNullableScore()
+- uid: CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeNonNullableScore*
+  name: ShouldSerializeNonNullableScore
+  href: api/CycloneDX.Models.Vulnerabilities.Rating.html#CycloneDX_Models_Vulnerabilities_Rating_ShouldSerializeNonNullableScore_
+  commentId: Overload:CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeNonNullableScore
+  isSpec: "True"
+  fullName: CycloneDX.Models.Vulnerabilities.Rating.ShouldSerializeNonNullableScore
+  nameWithType: Rating.ShouldSerializeNonNullableScore
 - uid: CycloneDX.Models.Vulnerabilities.Rating.Source
   name: Source
   href: api/CycloneDX.Models.Vulnerabilities.Rating.html#CycloneDX_Models_Vulnerabilities_Rating_Source
