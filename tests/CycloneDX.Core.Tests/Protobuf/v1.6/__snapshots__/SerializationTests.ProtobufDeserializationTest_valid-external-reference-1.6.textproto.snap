@@ -1,0 +1,64 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": "Acme Inc",
+      "Group": "org.example",
+      "Name": "mylibrary",
+      "Version": "1.0.0",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "ExternalReferences": [
+        {
+          "Url": "https://example.org/security/feed/csaf",
+          "Type": "Advisories",
+          "Comment": "Security advisories from the vendor"
+        },
+        {
+          "Url": "https://example.org/support/sbom/portal-server/1.0.0",
+          "Type": "Bom",
+          "Comment": "An external SBOM that describes what this component includes",
+          "Hashes": [
+            {
+              "Alg": "SHA_256",
+              "Content": "708f1f53b41f11f02d12a11b1a38d2905d47b099afc71a0f1124ef8582ec7313"
+            }
+          ]
+        },
+        {
+          "Url": "https://example.org/support/documentation/portal-server/1.0.0",
+          "Type": "Documentation",
+          "Comment": "Vendor provided documentation for the product"
+        }
+      ],
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}
