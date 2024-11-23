@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -27,17 +28,34 @@ namespace CycloneDX.Models.Vulnerabilities
         [ProtoMember(1)]
         public Source Source { get; set; }
 
-        [XmlElement("score")]
+        [XmlIgnore]
         [ProtoMember(2)]
-        public double Score { get; set; }
+        public double? Score { get; set; }
+
+        [JsonIgnore]
+        [XmlElement("score")]
+        public double NonNullableScore
+        {
+            get
+            {
+                return Score.HasValue ? Score.Value : double.NaN;
+            }
+            set
+            {
+                Score = value;
+            }
+        }
+        public bool ShouldSerializeNonNullableScore() { return Score.HasValue; }
 
         [XmlElement("severity")]
         [ProtoMember(3)]
-        public Severity Severity { get; set; }
+        public Severity? Severity { get; set; }
 
         [XmlElement("method")]
         [ProtoMember(4)]
         public ScoreMethod Method { get; set; }
+        public bool ShouldSerializeMethod() { return Method != ScoreMethod.Null; }
+
 
         [XmlElement("vector")]
         [ProtoMember(5)]
