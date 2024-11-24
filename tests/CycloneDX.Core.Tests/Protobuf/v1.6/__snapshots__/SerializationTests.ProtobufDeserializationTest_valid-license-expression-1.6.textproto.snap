@@ -23,7 +23,7 @@
         {
           "License": null,
           "Expression": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
-          "BomRef": null,
+          "BomRef": "my-license",
           "Acknowledgement": "Declared"
         }
       ],
@@ -32,7 +32,7 @@
           {
             "License": null,
             "Expression": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
-            "BomRef": null,
+            "BomRef": "my-license",
             "Acknowledgement": "Declared"
           }
         ]

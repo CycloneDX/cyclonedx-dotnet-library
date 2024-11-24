@@ -17,6 +17,9 @@ definitions {
       bom_ref: "requirement-1.1"
       identifier: "v1.1"
       title: "Title here"
+      text: "Text here"
+      descriptions: "Requirement is described here"
+      descriptions: "and here"
       parent: "requirement-1"
     }
     requirements {

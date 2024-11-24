@@ -55,6 +55,249 @@
       "CryptoProperties": null,
       "XmlSignature": null,
       "Signature": null
+    },
+    {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "dummy",
+      "Version": null,
+      "Description": "this component has all external reference types possible",
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "ExternalReferences": [
+        {
+          "Url": "http://example.com/extref/vcs",
+          "Type": "Vcs",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/issue-tracker",
+          "Type": "Issue_Tracker",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/website",
+          "Type": "Website",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/advisories",
+          "Type": "Advisories",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/bom",
+          "Type": "Bom",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/mailing-list",
+          "Type": "Mailing_List",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/social",
+          "Type": "Social",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/chat",
+          "Type": "Chat",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/documentation",
+          "Type": "Documentation",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/support",
+          "Type": "Support",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/source-distribution",
+          "Type": "Source_Distribution",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/distribution",
+          "Type": "Distribution",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/distribution-intake",
+          "Type": "Distribution_Intake",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/license",
+          "Type": "License",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/build-meta",
+          "Type": "Build_Meta",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/build-system",
+          "Type": "Build_System",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/release-notes",
+          "Type": "Release_Notes",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/security-contact",
+          "Type": "Security_Contact",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/model-card",
+          "Type": "Model_Card",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/log",
+          "Type": "Log",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/configuration",
+          "Type": "Configuration",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/evidence",
+          "Type": "Evidence",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/formulation",
+          "Type": "Formulation",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/attestation",
+          "Type": "Attestation",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/threat-model",
+          "Type": "Threat_Model",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/adversary-model",
+          "Type": "Adversary_Model",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/risk-assessment",
+          "Type": "Risk_Assessment",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/vulnerability-assertion",
+          "Type": "Vulnerability_Assertion",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/exploitability-statement",
+          "Type": "Exploitability_Statement",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/pentest-report",
+          "Type": "Pentest_Report",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/static-analysis-report",
+          "Type": "Static_Analysis_Report",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/dynamic-analysis-report",
+          "Type": "Dynamic_Analysis_Report",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/runtime-analysis-report",
+          "Type": "Runtime_Analysis_Report",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/component-analysis-report",
+          "Type": "Component_Analysis_Report",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/maturity-report",
+          "Type": "Maturity_Report",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/certification-report",
+          "Type": "Certification_Report",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/quality-metrics",
+          "Type": "Quality_Metrics",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/codified-infrastructure",
+          "Type": "Codified_Infrastructure",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/poam",
+          "Type": "Poam",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/electronic-signature",
+          "Type": "Electronic_Signature",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/digital-signature",
+          "Type": "Digital_Signature",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/rfc-9116",
+          "Type": "Rfc_9116",
+          "Comment": null
+        },
+        {
+          "Url": "http://example.com/extref/other",
+          "Type": "Other",
+          "Comment": null
+        }
+      ],
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
     }
   ],
   "Compositions": null,

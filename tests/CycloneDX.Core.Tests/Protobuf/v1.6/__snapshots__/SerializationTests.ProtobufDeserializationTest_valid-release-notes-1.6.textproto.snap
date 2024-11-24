@@ -26,6 +26,13 @@
       "Swid": null,
       "Modified": null,
       "Pedigree": null,
+      "ExternalReferences": [
+        {
+          "Url": "https://example.com/releases/1.0.0",
+          "Type": "Release_Notes",
+          "Comment": null
+        }
+      ],
       "Evidence": null,
       "ReleaseNotes": {
         "Type": "major",
