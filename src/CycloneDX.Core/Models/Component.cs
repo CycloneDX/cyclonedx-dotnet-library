@@ -256,7 +256,7 @@ namespace CycloneDX.Models
 
         [XmlElement("data")]
         [ProtoMember(26)]
-        public Data Data { get; set; }
+        public List<Data> Data { get; set; }
 
         [XmlElement("cryptoProperties")]
         [ProtoMember(27)]
