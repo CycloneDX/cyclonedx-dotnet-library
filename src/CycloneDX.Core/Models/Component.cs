@@ -194,6 +194,16 @@ namespace CycloneDX.Models
         [ProtoMember(16)]
         public string Purl { get; set; }
 
+        [XmlElement("omniborId")]
+        [ProtoMember(31)]
+        public List<string> OmniborId { get; set; }
+        public bool ShouldSerializeOmniborId() { return OmniborId?.Count > 0; }
+
+        [XmlElement("swhid")]
+        [ProtoMember(32)]
+        public List<string> Swhid { get; set; }
+        public bool ShouldSerializeSwhid() { return Swhid?.Count > 0; }
+
         [XmlElement("swid")]
         [ProtoMember(17)]
         public Swid Swid { get; set; }
@@ -267,16 +277,6 @@ namespace CycloneDX.Models
         [ProtoMember(30)]
         public List<string> Tags { get; set; }
         public bool ShouldSerializeTags() { return Tags?.Count > 0; }
-
-        [XmlElement("omniborId")]
-        [ProtoMember(31)]
-        public List<string> OmniborId { get; set; }
-        public bool ShouldSerializeOmniborId() { return OmniborId?.Count > 0; }
-
-        [XmlElement("swhid")]
-        [ProtoMember(32)]
-        public List<string> Swhid { get; set; }
-        public bool ShouldSerializeSwhid() { return Swhid?.Count > 0; }
 
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]
