@@ -30,7 +30,10 @@
               "BomRef": "requirement-1.1",
               "Identifier": "v1.1",
               "Title": "Title here",
-              "Text": null,
+              "Text": "Text here",
+              "Descriptions": [
+                "Requirement is described hereand here"
+              ],
               "OpenCre": null,
               "Parent": "requirement-1"
             },
@@ -108,7 +111,10 @@
             "BomRef": "requirement-1.1",
             "Identifier": "v1.1",
             "Title": "Title here",
-            "Text": null,
+            "Text": "Text here",
+            "Descriptions": [
+              "Requirement is described hereand here"
+            ],
             "OpenCre": null,
             "Parent": "requirement-1"
           },
