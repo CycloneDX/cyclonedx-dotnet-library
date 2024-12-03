@@ -75,4 +75,4 @@ Tests are automatically run on Windows, MacOS and Linux for every pull request.
 And build warnings will break the build.
 
 If you are having trouble debugging a test that is failing for a platform you
-don't have access to please us know. 
+don't have access to please us know.
