@@ -46,7 +46,6 @@ minimising data loss during conversion, pull requests are welcome :)
 | --- | --- |
 | Component assemblies | Implementation pending - related to SPDX Relationship Information |
 | SWID Tags | SPDX doesn't support SWID tags. |
-| Component Type Information | SPDX doesn't support designating a component as a particular type (i.e. library, framework, container). |
 | CPE and Package URL for Component Identity | SPDX supports multiple CPEs and PURLs for a package. But doesn't support specifying if any are a component identifier. |
 | Device & Hardware Components | SPDX does not support devices or hardware as components. |
 | Composition | Implementation pending - related to SPDX Relationship Information |
@@ -76,4 +75,4 @@ Tests are automatically run on Windows, MacOS and Linux for every pull request.
 And build warnings will break the build.
 
 If you are having trouble debugging a test that is failing for a platform you
-don't have access to please us know.
+don't have access to please us know. 
