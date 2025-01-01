@@ -12,14 +12,14 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="JsonSchema.Net" Version="5.3.1" />
+    <PackageReference Include="JsonSchema.Net" Version="7.3.1" />
     <PackageReference Include="protobuf-net" Version="3.2.45" />
     <PackageReference Include="protobuf-net.BuildTools" Version="3.2.12" PrivateAssets="all" IncludeAssets="runtime;build;native;contentfiles;analyzers;buildtransitive" />
   </ItemGroup>
 
     <!--The below packages are natively provided by the framework hence are not need for the frameworks which they are included in. What is included can be checked via https://apisof.net/-->
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="System.Text.Json" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
