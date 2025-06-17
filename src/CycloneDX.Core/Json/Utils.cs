@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using CycloneDX.Core.Models;
@@ -36,6 +37,8 @@ namespace CycloneDX.Json
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                // Allows for unescaped characters in JSON
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             };
         }
         /// <summary>
