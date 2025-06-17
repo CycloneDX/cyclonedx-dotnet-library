@@ -1,5 +1,4 @@
 {
-  "homepages": [],
   "source_base_path": "/home/runner/work/cyclonedx-dotnet-library/cyclonedx-dotnet-library/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
@@ -8,3095 +7,3607 @@
       "source_relative_path": "api/CycloneDX.BomUtils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.BomUtils.html",
-          "hash": "5yiiijeDVmsSDDPPce+CKUwuK7PYH9Z+xbLO8nNVhFU="
+          "relative_path": "api/CycloneDX.BomUtils.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.BomUtils",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.AlgorithmMode.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.AlgorithmMode.html",
-          "hash": "J8C8INbCfOo036gtgWKF5ms1NVuta0Ir/T5ywFXENTo="
+          "relative_path": "api/CycloneDX.Core.Models.AlgorithmMode.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.AlgorithmMode",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.AlgorithmProperties.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.AlgorithmProperties.html",
-          "hash": "LldgUolGecxBSJrj87CB3qLFEMoOnHL5rNLVa1vjsNY="
+          "relative_path": "api/CycloneDX.Core.Models.AlgorithmProperties.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.AlgorithmProperties",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.AssetType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.AssetType.html",
-          "hash": "d9jYR98j7eXUZ0HL/0MQ9K6TDSDKBXVsDvurjQMwqDE="
+          "relative_path": "api/CycloneDX.Core.Models.AssetType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.AssetType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CertificateProperties.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.CertificateProperties.html",
-          "hash": "gJT3Fc2UIO6XeH7n5sg5O0Pfv2PEMwaBbDX3RsE+D6E="
+          "relative_path": "api/CycloneDX.Core.Models.CertificateProperties.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CertificateProperties",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CertificationLevel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.CertificationLevel.html",
-          "hash": "kMSDMleChU9jlmOspzBdSQL6gLWUTr3WD6Yx/fWsFBU="
+          "relative_path": "api/CycloneDX.Core.Models.CertificationLevel.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CertificationLevel",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CertificationLevelExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.CertificationLevelExtensions.html",
-          "hash": "Wlp3b3ghuppNJ2vHPXEBe0sChUW8+dCWDlwDpDOluUM="
+          "relative_path": "api/CycloneDX.Core.Models.CertificationLevelExtensions.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CertificationLevelExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CipherSuite.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.CipherSuite.html",
-          "hash": "Bj2w90oZLG+l1cF+HS6sB9uBnY8Z49x+Kyu+YnYPGAE="
+          "relative_path": "api/CycloneDX.Core.Models.CipherSuite.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CipherSuite",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CipherSuiteCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.CipherSuiteCollection.html",
-          "hash": "VjPXNGLrSgcqVyiKm8MZOoMuw8CXpvIhqx5tEdyhWKw="
+          "relative_path": "api/CycloneDX.Core.Models.CipherSuiteCollection.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CipherSuiteCollection",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CryptoFunction.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.CryptoFunction.html",
-          "hash": "eyjsPwtkfPaScgeFpWHoN8OkSGPajBySpSvoAquyQhg="
+          "relative_path": "api/CycloneDX.Core.Models.CryptoFunction.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CryptoFunction",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CryptoProperties.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.CryptoProperties.html",
-          "hash": "mTTlbv4VRPeBEGo1VN0RC+Y7x+v7ieQ1APXZ2+rPr7E="
+          "relative_path": "api/CycloneDX.Core.Models.CryptoProperties.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CryptoProperties",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.ExecutionEnvironment.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.ExecutionEnvironment.html",
-          "hash": "vu7ftF2KohTvYtK4uagMIH4t3issUVk+3tr0UYAop4o="
+          "relative_path": "api/CycloneDX.Core.Models.ExecutionEnvironment.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.ExecutionEnvironment",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.Ikev2TransformTypes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.Ikev2TransformTypes.html",
-          "hash": "/qcz18qnXNwn1pNQewCHOZt+pvDcUOde9qYbbZuEbwM="
+          "relative_path": "api/CycloneDX.Core.Models.Ikev2TransformTypes.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.Ikev2TransformTypes",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.ImplementationPlatform.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.ImplementationPlatform.html",
-          "hash": "RSDLXQ04sjbEvcMXzZ4q8FxxZoBqgzHAX0s5eAscyzw="
+          "relative_path": "api/CycloneDX.Core.Models.ImplementationPlatform.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.ImplementationPlatform",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.KeyState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.KeyState.html",
-          "hash": "rPmFtyKnBHLzBYV1Ipwiekj+pMUvH8gCC8KNzeFb7os="
+          "relative_path": "api/CycloneDX.Core.Models.KeyState.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.KeyState",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.PaddingScheme.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.PaddingScheme.html",
-          "hash": "nUMYbzuOiMVmj8rjser+FYv9KiDmBUSqS9cN+Ll+yG4="
+          "relative_path": "api/CycloneDX.Core.Models.PaddingScheme.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.PaddingScheme",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.Primitive.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.Primitive.html",
-          "hash": "/1ubtE5ZydX0bYp+RK949JZQgHDdCukBKmqMDQJZKIA="
+          "relative_path": "api/CycloneDX.Core.Models.Primitive.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.Primitive",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.ProtocolProperties.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.ProtocolProperties.html",
-          "hash": "/rg2Q9LKHxbmVSZeaH4B/uixImMes+aT/VBDO76luZg="
+          "relative_path": "api/CycloneDX.Core.Models.ProtocolProperties.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.ProtocolProperties",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.ProtocolType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.ProtocolType.html",
-          "hash": "23Qz0nRCefblS2orqk8louE75oR9ryKHc9hZdlJZ3gU="
+          "relative_path": "api/CycloneDX.Core.Models.ProtocolType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.ProtocolType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html",
-          "hash": "jF+N4rxgaEDlguu6MuQ2or0MS/ZvZ5O1MeIPyKvCfzo="
+          "relative_path": "api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.RelatedCryptoMaterialProperties",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.RelatedCryptoMaterialType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.RelatedCryptoMaterialType.html",
-          "hash": "xEIy8iqBVD5ZO0ndOnV5FbbzbLGZzC6Xfqc/3OpT7RU="
+          "relative_path": "api/CycloneDX.Core.Models.RelatedCryptoMaterialType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.RelatedCryptoMaterialType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.SecuredBy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.SecuredBy.html",
-          "hash": "EhH/70iTgq98UCs6PQ3D1dxEtbGQUoJNgB/h5YT7qQA="
+          "relative_path": "api/CycloneDX.Core.Models.SecuredBy.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.SecuredBy",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Core.Models.html",
-          "hash": "bm97sapIbQotOGNC2lfRdKc9D6tAHcdDWYz09RdZ+0Y="
+          "relative_path": "api/CycloneDX.Core.Models.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Exceptions.UnsupportedFormatSpecificationVersionException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Exceptions.UnsupportedFormatSpecificationVersionException.html",
-          "hash": "lOSUs8S8r3h1qlGeoDx7x0rGAC143wnPs6mvib5eRwA="
+          "relative_path": "api/CycloneDX.Exceptions.UnsupportedFormatSpecificationVersionException.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Exceptions.UnsupportedFormatSpecificationVersionException",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Exceptions.UnsupportedFormatSpecificationVersionException.yml\" sourcestartlinenumber=\"1\">Exception unsupported format and specification versions.</p>\n<p sourcefile=\"api/CycloneDX.Exceptions.UnsupportedFormatSpecificationVersionException.yml\" sourcestartlinenumber=\"3\">XML supports all versions<br>\nJSON supported from v1.2<br>\nProtobuf supported from v1.3</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Exceptions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Exceptions.html",
-          "hash": "Sr1P7OpDbq2pArYC/tvrzA+WCZVqF0Ooo34M/23xT0k="
+          "relative_path": "api/CycloneDX.Exceptions.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Exceptions",
+      "Summary": "\n<p sourcefile=\"namespaces/CycloneDX.Exceptions.md\" sourcestartlinenumber=\"5\">Namespace containing all custom exceptions the <code sourcefile=\"namespaces/CycloneDX.Exceptions.md\" sourcestartlinenumber=\"5\">CycloneDX.Core</code> library uses.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.DataflowSourceDestinationConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.DataflowSourceDestinationConverter.html",
-          "hash": "s5EWJwQvS85HSdYJRBc9RBSdzES/yqI+p3J1LfGSRTI="
+          "relative_path": "api/CycloneDX.Json.Converters.DataflowSourceDestinationConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.DataflowSourceDestinationConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.DatasetChoicesConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.DatasetChoicesConverter.html",
-          "hash": "I/uU3P1uk2LGva80N189TUpcRjFCzsuHrcMgHWa91Q4="
+          "relative_path": "api/CycloneDX.Json.Converters.DatasetChoicesConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.DatasetChoicesConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.DateTimeConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.DateTimeConverter.html",
-          "hash": "b04ZIgId5qI0Ql85Se7hHAfi5XHmLUoxGCEXOf/zqmk="
+          "relative_path": "api/CycloneDX.Json.Converters.DateTimeConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.DateTimeConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.DependencyConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.DependencyConverter.html",
-          "hash": "3P4hJPyUjiC1/DxK0J7NNWV15t6TOA9SKwacxTfVM1A="
+          "relative_path": "api/CycloneDX.Json.Converters.DependencyConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.DependencyConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.EnumMemberConverter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.EnumMemberConverter-1.html",
-          "hash": "t3KiXEpGH7p9u16wYEMJUlC/fW/h4xFp9zfYAGsMuGE="
+          "relative_path": "api/CycloneDX.Json.Converters.EnumMemberConverter-1.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.EnumMemberConverter<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.EnvironmentVarChoiceConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.EnvironmentVarChoiceConverter.html",
-          "hash": "Pq9jIJGHObnDeu61qhVIjR6ZV4ixe4OaIwwvC5MYbfU="
+          "relative_path": "api/CycloneDX.Json.Converters.EnvironmentVarChoiceConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.EnvironmentVarChoiceConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.EvidenceIdentityListConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.EvidenceIdentityListConverter.html",
-          "hash": "0mDh5B4Rc9nufXoRDva1T7XKtndPWy1N9SvzAWw/LZY="
+          "relative_path": "api/CycloneDX.Json.Converters.EvidenceIdentityListConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.EvidenceIdentityListConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.HyphenEnumConverter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.HyphenEnumConverter-1.html",
-          "hash": "w997od7FGcUccYFb0WNV8gT14dolQ7uU6KnIwYbEtAU="
+          "relative_path": "api/CycloneDX.Json.Converters.HyphenEnumConverter-1.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.HyphenEnumConverter<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter-1.html",
-          "hash": "rAOXMCMgzTTIfKedem4kJ20GyVv/yH9i1q1Vrpi7l/Y="
+          "relative_path": "api/CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter-1.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.RefObject.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.RefObject.html",
-          "hash": "kmvLzis+kO5T1a7jWlKL2IJgZOr853YePHv606j5VoE="
+          "relative_path": "api/CycloneDX.Json.Converters.RefObject.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.RefObject",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.ScoreMethodConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.ScoreMethodConverter.html",
-          "hash": "HKmhytH66i294e4YwqkUn8IsdzqOfdny58nMUYDvj4M="
+          "relative_path": "api/CycloneDX.Json.Converters.ScoreMethodConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.ScoreMethodConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.SignatureChoiceConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.SignatureChoiceConverter.html",
-          "hash": "X6vENb67DJBqou5hH/bMSv+QuR20jnvkp22hrAwZZLY="
+          "relative_path": "api/CycloneDX.Json.Converters.SignatureChoiceConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.SignatureChoiceConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.ToolChoicesConverter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.ToolChoicesConverter.html",
-          "hash": "mRH5fu6y3xLCoNFxrUM7ySBnOwEtV8Z4QZkbUHcOVyg="
+          "relative_path": "api/CycloneDX.Json.Converters.ToolChoicesConverter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.ToolChoicesConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.UnderscoreEnumConverter-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.UnderscoreEnumConverter-1.html",
-          "hash": "GkT998cjZiXAW/FGuVExfLw3DIK1ld7xqE1luPlQ2UI="
+          "relative_path": "api/CycloneDX.Json.Converters.UnderscoreEnumConverter-1.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.UnderscoreEnumConverter<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Converters.html",
-          "hash": "cr/OgjOGIHq9TaK5xAla2vgknba/4mlxYJdblqccMbw="
+          "relative_path": "api/CycloneDX.Json.Converters.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Serializer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Serializer.html",
-          "hash": "uFISlulbol8dvZtKqEP1Pl8vGJ7BSojkiEHDnwF4mrI="
+          "relative_path": "api/CycloneDX.Json.Serializer.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Serializer",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Json.Serializer.yml\" sourcestartlinenumber=\"1\">Contains all JSON serialization methods.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Utils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Utils.html",
-          "hash": "ClJTK6KEp42ufpS8P0fWXDMh/J3VApZpk5fr4Xm+e3A="
+          "relative_path": "api/CycloneDX.Json.Utils.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Utils",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Json.Utils.yml\" sourcestartlinenumber=\"1\">JSON utility methods.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Validator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.Validator.html",
-          "hash": "56ezkqkyVu38I9n0Vlnm1HR0JPqxhdtpcfVv2iJmmoE="
+          "relative_path": "api/CycloneDX.Json.Validator.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Validator",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Json.Validator.yml\" sourcestartlinenumber=\"1\">Contains all JSON validation methods.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Json.html",
-          "hash": "hPkqdfctxIwcu0xeFTsFZ9w8jCIKAhI5wYdbRmpDWFY="
+          "relative_path": "api/CycloneDX.Json.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json",
+      "Summary": "\n<p sourcefile=\"namespaces/CycloneDX.Protobuf.md\" sourcestartlinenumber=\"5\">Namespace containing all Protocol Buffer specific functionality. Including serialization and deserialization.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.MediaTypes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.MediaTypes.html",
-          "hash": "Ha/PKWusxKpvqypKSX/ExW/3b7KQ9hfAmvI94TKYP0E="
+          "relative_path": "api/CycloneDX.MediaTypes.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.MediaTypes",
+      "Summary": "<p sourcefile=\"api/CycloneDX.MediaTypes.yml\" sourcestartlinenumber=\"1\">Utility class for official CycloneDX Media Types</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ActivityType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ActivityType.html",
-          "hash": "k01DpapI154aMNKkPIpqPP5Kgc0pQhfE6jZDZqkrbmk="
+          "relative_path": "api/CycloneDX.Models.ActivityType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ActivityType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Affirmation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Affirmation.html",
-          "hash": "Q/7mACGEnz0F6ItLARTQQxNJDzVUSusRldnVC35ILDA="
+          "relative_path": "api/CycloneDX.Models.Affirmation.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Affirmation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Annotation.XmlAnnotationSubject.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Annotation.XmlAnnotationSubject.html",
-          "hash": "6PAqNceBRcvmnlDDy0cUdMw+eKMyn/1A4GqK0y+DXV4="
+          "relative_path": "api/CycloneDX.Models.Annotation.XmlAnnotationSubject.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Annotation.XmlAnnotationSubject",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Annotation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Annotation.html",
-          "hash": "Hw/4Q3tN10ZeqPxBuyeODJrloIggRmBUWyY8Dnd0cCo="
+          "relative_path": "api/CycloneDX.Models.Annotation.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Annotation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.AnnotatorChoice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.AnnotatorChoice.html",
-          "hash": "QSl3lDR0nWrb5B0sZruhmLSelY+2aO9J6KPhquHEJyo="
+          "relative_path": "api/CycloneDX.Models.AnnotatorChoice.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.AnnotatorChoice",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Assessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Assessor.html",
-          "hash": "tHsU+UwGLMQkqRQWeQK6xjD4SJXu+yZO319P3jIEMLQ="
+          "relative_path": "api/CycloneDX.Models.Assessor.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Assessor",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.AttachedText.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.AttachedText.html",
-          "hash": "M+iHLUUMFtAj3eu/OflMXZnNOVro4NNh+6H7CxwXKK8="
+          "relative_path": "api/CycloneDX.Models.AttachedText.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.AttachedText",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Attestation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Attestation.html",
-          "hash": "XF1q28j8abPdZUKSjv/FHpztXIUssU8e1wnrs2ZWBWA="
+          "relative_path": "api/CycloneDX.Models.Attestation.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Attestation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Bom.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Bom.html",
-          "hash": "pz/9dZuxMq82ginC2oQ/vkMFQ2Bcwmoo7GufJvENEfI="
+          "relative_path": "api/CycloneDX.Models.Bom.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Bom",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.CO2Unit.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.CO2Unit.html",
-          "hash": "sI8AlnNEn5+rQG84dC+xOC/qsx42OqDzo9atJDtI4UQ="
+          "relative_path": "api/CycloneDX.Models.CO2Unit.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.CO2Unit",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Callstack.Frame.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Callstack.Frame.html",
-          "hash": "f801lwaYfR01f3B9fyrSTRJd1pKcRSPCXv/Snmdv5Fs="
+          "relative_path": "api/CycloneDX.Models.Callstack.Frame.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Callstack.Frame",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Callstack.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Callstack.html",
-          "hash": "ISXbWq78WG20489NSw4QMXuW71wV/pXcbnQsCxILCMY="
+          "relative_path": "api/CycloneDX.Models.Callstack.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Callstack",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Claim.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Claim.html",
-          "hash": "s2NXw87baWxkxNCklu+P9ZhtTCWy09yVkGxRK256WX8="
+          "relative_path": "api/CycloneDX.Models.Claim.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Claim",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Co2Measure.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Co2Measure.html",
-          "hash": "4eXxhGcdevRjhCkJKwSJcNwRpu9uPFcB2f4KdxNihd0="
+          "relative_path": "api/CycloneDX.Models.Co2Measure.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Co2Measure",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Command.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Command.html",
-          "hash": "HcDvyYnF7mYSdJCp4pPjitje4SVkSgt/XPTZ0hcpOJU="
+          "relative_path": "api/CycloneDX.Models.Command.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Command",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Commit.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Commit.html",
-          "hash": "GZwACV5BftlrWnRKvEhrHn4IphGxLZrILggMli8ORdc="
+          "relative_path": "api/CycloneDX.Models.Commit.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Commit",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Component.Classification.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Component.Classification.html",
-          "hash": "9aR2PNNRLKqM3RQph7iYDG6+A3czJtyHXHAfOiR6vSU="
+          "relative_path": "api/CycloneDX.Models.Component.Classification.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Component.Classification",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Component.ComponentScope.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Component.ComponentScope.html",
-          "hash": "22Jh6kW9RFU2rkIB2Huo8LxTzlntDuprlsq4DQEXS7g="
+          "relative_path": "api/CycloneDX.Models.Component.ComponentScope.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Component.ComponentScope",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Component.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Component.html",
-          "hash": "ZE6Delk4rXMNCvcKqnle48hobG4p6gdewMEqJNjDWXI="
+          "relative_path": "api/CycloneDX.Models.Component.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Component",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Composition.AggregateType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Composition.AggregateType.html",
-          "hash": "TIs3XwDAJ3+nrk1fJmXOXsq2FTELU7asDbnnRKeqYk4="
+          "relative_path": "api/CycloneDX.Models.Composition.AggregateType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Composition.AggregateType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Composition.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Composition.html",
-          "hash": "kKtzuUzUen70V4bpcsvZesynRCj8IGKPE8uRzVs2sQU="
+          "relative_path": "api/CycloneDX.Models.Composition.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Composition",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Confidence.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Confidence.html",
-          "hash": "4uqkwlZaajcsijMvuXTi2Dd+dfjGe1oL3Qw/KFmGQ1U="
+          "relative_path": "api/CycloneDX.Models.Confidence.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Confidence",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Conformance.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Conformance.html",
-          "hash": "PbCCJiwuYymC6PK+Yk0j6SIZxvfhuJ/5kyzFqgbmlA8="
+          "relative_path": "api/CycloneDX.Models.Conformance.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Conformance",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Data.DataContents.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Data.DataContents.html",
-          "hash": "pHfFdEMCLdi+s2Z0pODR6RdJIcFbY2+4kZISgf28yTc="
+          "relative_path": "api/CycloneDX.Models.Data.DataContents.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Data.DataContents",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Data.DataType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Data.DataType.html",
-          "hash": "V4nlXFrMnF9YAYUrGJnDj9tKEqX8a4R3mWGkn61uiag="
+          "relative_path": "api/CycloneDX.Models.Data.DataType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Data.DataType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Data.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Data.html",
-          "hash": "zSv8i3nB4wYvdr46W0Yoxd12jcrY4JCYndhp11PASeI="
+          "relative_path": "api/CycloneDX.Models.Data.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Data",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DataClassification.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DataClassification.html",
-          "hash": "+xrYo/3ZsKlXECwikqTcC4yxk0W9n71aPLyouWMI86E="
+          "relative_path": "api/CycloneDX.Models.DataClassification.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DataClassification",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DataFlow.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DataFlow.html",
-          "hash": "H4Qvp3hzGUzGERrLfLUlvNffppFwIiFhbaPahCBwxxA="
+          "relative_path": "api/CycloneDX.Models.DataFlow.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DataFlow",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DataFlowDirection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DataFlowDirection.html",
-          "hash": "sVmKfEda2TPjvrdFFJ8mFZC+fzLoIeayv5FSlCG1lZ0="
+          "relative_path": "api/CycloneDX.Models.DataFlowDirection.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DataFlowDirection",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DataGovernance.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DataGovernance.html",
-          "hash": "gOGmR+sbdD5084ZUP9bJF7kTqxPjf3Wzm2HF0T1ndSw="
+          "relative_path": "api/CycloneDX.Models.DataGovernance.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DataGovernance",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DataflowSourceDestination.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DataflowSourceDestination.html",
-          "hash": "N26VQrR7QyreHLh8Cdbq8CiUOp+0uLL6dxr56sSBTbI="
+          "relative_path": "api/CycloneDX.Models.DataflowSourceDestination.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DataflowSourceDestination",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DatasetChoice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DatasetChoice.html",
-          "hash": "PxXRNyQAoDNbNJJopKzrojTbGjrJQIacXehNYCYi2sc="
+          "relative_path": "api/CycloneDX.Models.DatasetChoice.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DatasetChoice",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DatasetChoices.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DatasetChoices.html",
-          "hash": "QHom337XwDibEU1+y2y1j//ghMKyoG2lZKAm2D5LgJU="
+          "relative_path": "api/CycloneDX.Models.DatasetChoices.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DatasetChoices",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DeclarationData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DeclarationData.html",
-          "hash": "OGw2hgM/xqxFn/APUm6eNIhbXuF1U+RERa9y4qIT5Ak="
+          "relative_path": "api/CycloneDX.Models.DeclarationData.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DeclarationData",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DeclarationDataContents.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DeclarationDataContents.html",
-          "hash": "LB+w22J8l+ap3LZB356oJdxHx8ij3HpeHnRAtodLXGQ="
+          "relative_path": "api/CycloneDX.Models.DeclarationDataContents.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DeclarationDataContents",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Declarations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Declarations.html",
-          "hash": "pjINlWZX/ILmns6qEL7U6Ey4Dz8A9pK0JfMpgIus8dw="
+          "relative_path": "api/CycloneDX.Models.Declarations.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Declarations",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.DeclarationsEvidence.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.DeclarationsEvidence.html",
-          "hash": "l56VSVqeUN69pGamXvPDbw4Z/NVs4WtbqfWK7eQA/PQ="
+          "relative_path": "api/CycloneDX.Models.DeclarationsEvidence.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DeclarationsEvidence",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Definitions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Definitions.html",
-          "hash": "7LhaDz11J5ZEFMivVOtJyGh3zdrXzjR1hiRhgBFxoE0="
+          "relative_path": "api/CycloneDX.Models.Definitions.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Definitions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Dependency.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Dependency.html",
-          "hash": "7qLn5d5UsxcLklfDHbrjISE+7nXXd1E9LiGnsQj0oJ4="
+          "relative_path": "api/CycloneDX.Models.Dependency.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Dependency",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Diff.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Diff.html",
-          "hash": "yFfxotJDQqgt1zkjEteoXIMtujjAKNhr85pnJPg07Ic="
+          "relative_path": "api/CycloneDX.Models.Diff.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Diff",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EnergyConsumption.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EnergyConsumption.html",
-          "hash": "Yyux+fCwMYlXjcgYhrQUeMuLRCi9bu/51OmWHGdNwnw="
+          "relative_path": "api/CycloneDX.Models.EnergyConsumption.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EnergyConsumption",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EnergyMeasure.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EnergyMeasure.html",
-          "hash": "ilfLJu4yDL8TjQGhUcZFAE0u8t859XfJ3O0OPGk7OKk="
+          "relative_path": "api/CycloneDX.Models.EnergyMeasure.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EnergyMeasure",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EnergyProvider.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EnergyProvider.html",
-          "hash": "Mj7MqCBmh3slZLIuIpR/S/ED8RzLntJI7ntpqQWclA0="
+          "relative_path": "api/CycloneDX.Models.EnergyProvider.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EnergyProvider",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EnergySource.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EnergySource.html",
-          "hash": "c2TtkquA5U5h4yhWKxjgSWndRB1HRSl28hDSYASw64g="
+          "relative_path": "api/CycloneDX.Models.EnergySource.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EnergySource",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EnergyUnit.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EnergyUnit.html",
-          "hash": "eJnA5touI9/dhktD5akdHCKeJPK6XRIDPQlGqMFvM30="
+          "relative_path": "api/CycloneDX.Models.EnergyUnit.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EnergyUnit",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EnvironmentVarChoice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EnvironmentVarChoice.html",
-          "hash": "bwm5qri8sLC/zg03GQRd6HsCHoiupKYxYi4Lz0YV1F4="
+          "relative_path": "api/CycloneDX.Models.EnvironmentVarChoice.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EnvironmentVarChoice",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EnvironmentVarChoices.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EnvironmentVarChoices.html",
-          "hash": "dSe2Pmve2CKyZbw5FDnnFpOTblcn+6wdW0wcQ+fJ2rE="
+          "relative_path": "api/CycloneDX.Models.EnvironmentVarChoices.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EnvironmentVarChoices",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Event.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Event.html",
-          "hash": "rGBLji890NSr4xhcZ96YVyQsuGaIMOGCTZz6QHPHEXQ="
+          "relative_path": "api/CycloneDX.Models.Event.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Event",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Evidence.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Evidence.html",
-          "hash": "N8YWwqj3T7GU2n67ANPDU9c2HcKAMmI5wa2GyRKX2GY="
+          "relative_path": "api/CycloneDX.Models.Evidence.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Evidence",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EvidenceCopyright.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EvidenceCopyright.html",
-          "hash": "agfOYyyb9t0xrR7eA6ZPKE6IRg2kaTROPt4BTYoeAuY="
+          "relative_path": "api/CycloneDX.Models.EvidenceCopyright.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EvidenceCopyright",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EvidenceIdentity.EvidenceFieldType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EvidenceIdentity.EvidenceFieldType.html",
-          "hash": "JhuX5Sm86oMKB+NPqiliCohdaPC7xMagTAPR8t0BtCg="
+          "relative_path": "api/CycloneDX.Models.EvidenceIdentity.EvidenceFieldType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EvidenceIdentity.EvidenceFieldType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EvidenceIdentity.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EvidenceIdentity.html",
-          "hash": "bN0e3yz4qp6cMhAyHa0BVudT0GMws+pocT+Kz4dqb9g="
+          "relative_path": "api/CycloneDX.Models.EvidenceIdentity.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EvidenceIdentity",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EvidenceIdentityList.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EvidenceIdentityList.html",
-          "hash": "3/ataMowELnozN49fkgpQaLEuBnguyf5IiMz6W8dYnw="
+          "relative_path": "api/CycloneDX.Models.EvidenceIdentityList.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EvidenceIdentityList",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EvidenceMethods.EvidenceTechnique.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EvidenceMethods.EvidenceTechnique.html",
-          "hash": "4oIebHeLYwTCYVioSjKrjvztrPE4LTeQeFtG8syHNQY="
+          "relative_path": "api/CycloneDX.Models.EvidenceMethods.EvidenceTechnique.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EvidenceMethods.EvidenceTechnique",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EvidenceMethods.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EvidenceMethods.html",
-          "hash": "ImwjMdp7qKLaFFpvWJaNYqtXjbfLj0u2vGdfT2mng0Q="
+          "relative_path": "api/CycloneDX.Models.EvidenceMethods.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EvidenceMethods",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EvidenceOccurrence.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EvidenceOccurrence.html",
-          "hash": "iPSUUX6hPwnSitczE/PkGS5S+hblgjfx7yZMmWXtLAY="
+          "relative_path": "api/CycloneDX.Models.EvidenceOccurrence.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EvidenceOccurrence",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EvidenceTools.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.EvidenceTools.html",
-          "hash": "gYIEmXtf+qXVzb8Nven4MgIRJUir4GF02tpqkVhJ9Rk="
+          "relative_path": "api/CycloneDX.Models.EvidenceTools.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.EvidenceTools",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ExternalReference.ExternalReferenceType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html",
-          "hash": "Tad59sCZjAcrwj2wPumnjqaf7nquBo/uMD2GlcEvZbU="
+          "relative_path": "api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ExternalReference.ExternalReferenceType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ExternalReference.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ExternalReference.html",
-          "hash": "0GXnI+rA2YyIQDwJ54IlBQhdR19lw9dFZadmkj/2tFs="
+          "relative_path": "api/CycloneDX.Models.ExternalReference.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ExternalReference",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Formula.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Formula.html",
-          "hash": "FzXZYboFpyY+r8xbd/6T6tTjsxRtXjCAoLbjxp2Z6zI="
+          "relative_path": "api/CycloneDX.Models.Formula.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Formula",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.GraphicsCollection.Graphic.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.GraphicsCollection.Graphic.html",
-          "hash": "ATBfysx9jzm1hdykwxMBFI3mpo5/Hwev2KbpAfroTUY="
+          "relative_path": "api/CycloneDX.Models.GraphicsCollection.Graphic.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.GraphicsCollection.Graphic",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.GraphicsCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.GraphicsCollection.html",
-          "hash": "5m1IXOKEyBOT81fLX6U9jwPzWELDQGDZQOb18YsJ0Gg="
+          "relative_path": "api/CycloneDX.Models.GraphicsCollection.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.GraphicsCollection",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Hash.HashAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Hash.HashAlgorithm.html",
-          "hash": "g27m+TgYL7c6UojRqrMpACZhDyw21vHIhA1OI7GtTYI="
+          "relative_path": "api/CycloneDX.Models.Hash.HashAlgorithm.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Hash.HashAlgorithm",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Hash.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Hash.html",
-          "hash": "Wkdhh2EUwJytX8KY4tVIRMvG0FpZ6h4Z+SIl+iNMs+A="
+          "relative_path": "api/CycloneDX.Models.Hash.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Hash",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.IHasBomRef.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.IHasBomRef.html",
-          "hash": "+9K1K3DfCfP6Svk0T/pDTULfxK0fCLqd8ma2KuVa0Vk="
+          "relative_path": "api/CycloneDX.Models.IHasBomRef.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.IHasBomRef",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.IdentifiableAction.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.IdentifiableAction.html",
-          "hash": "azL6DruTrFen2Uny0mxAE0snrLQGfMZgvAgIUhyHzaA="
+          "relative_path": "api/CycloneDX.Models.IdentifiableAction.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.IdentifiableAction",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Input.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Input.html",
-          "hash": "Xj6pbC8Rg1h1UJEOG0cwffFU4u5vj5Xi8FxpXoqP6wQ="
+          "relative_path": "api/CycloneDX.Models.Input.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Input",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Issue.IssueClassification.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Issue.IssueClassification.html",
-          "hash": "NblTDHokWZ9yyl94JG2tnFdzN7BhbZG2LZKvJMIzLjA="
+          "relative_path": "api/CycloneDX.Models.Issue.IssueClassification.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Issue.IssueClassification",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Issue.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Issue.html",
-          "hash": "X1D23zFbspUTSaGSWZK5bVq9CM5aHqRzhBUND0xksnQ="
+          "relative_path": "api/CycloneDX.Models.Issue.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Issue",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.KeyTypeIndicator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.KeyTypeIndicator.html",
-          "hash": "nwO7BNaOvPf+MEYhaUyvp7wgiltOKFQYYYQU4lafi/o="
+          "relative_path": "api/CycloneDX.Models.KeyTypeIndicator.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.KeyTypeIndicator",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Level.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Level.html",
-          "hash": "r+wpNZZ33K1wFLYZIwWxDm0ud2EWDG7qmR5c3N6H6uU="
+          "relative_path": "api/CycloneDX.Models.Level.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Level",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.License.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.License.html",
-          "hash": "5JOb9MXvUa6VfQrXMTNA+HF+V5s9ycq+fssawnVlg28="
+          "relative_path": "api/CycloneDX.Models.License.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.License",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.LicenseAcknowledgementEnumeration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.LicenseAcknowledgementEnumeration.html",
-          "hash": "HPERvws1f3noUi0UUYwiAdMgPlHbgdbfI838iAsF2Ds="
+          "relative_path": "api/CycloneDX.Models.LicenseAcknowledgementEnumeration.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.LicenseAcknowledgementEnumeration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.LicenseChoice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.LicenseChoice.html",
-          "hash": "PuEIeMNoaOiMUb3Vnz+xI2MlD6NTh4LnltvSn4WjLq0="
+          "relative_path": "api/CycloneDX.Models.LicenseChoice.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.LicenseChoice",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.LicenseChoiceList.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.LicenseChoiceList.html",
-          "hash": "52TKpQWdOOYfRVb3pyu9D9E01NeHhy1GnBC8zybF93o="
+          "relative_path": "api/CycloneDX.Models.LicenseChoiceList.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.LicenseChoiceList",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Licensing.LicenseType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Licensing.LicenseType.html",
-          "hash": "u7iqySk2HCrO3p/j2IlCPhcYiEDW2oU/j6YTwwQ64tk="
+          "relative_path": "api/CycloneDX.Models.Licensing.LicenseType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Licensing.LicenseType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Licensing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Licensing.html",
-          "hash": "M7TejgSd4e4mx8yOPIhEaUo9zws/VgVxGZ1Mk8CFPFg="
+          "relative_path": "api/CycloneDX.Models.Licensing.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Licensing",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Lifecycles.LifecyclePhase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Lifecycles.LifecyclePhase.html",
-          "hash": "SQ09kgW8PLWm5wOA1ohYZZ5VmBgLvOPmn++0jgxD5Kg="
+          "relative_path": "api/CycloneDX.Models.Lifecycles.LifecyclePhase.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Lifecycles.LifecyclePhase",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Lifecycles.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Lifecycles.html",
-          "hash": "qTFNEdYg6hi/JGJAtyqGz40jqFD6JEApW15uih1eM2c="
+          "relative_path": "api/CycloneDX.Models.Lifecycles.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Lifecycles",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Map.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Map.html",
-          "hash": "P9XqcyiMEUsiizeeJTSFjbAaXDSIHLbdxIsFNZaOHkU="
+          "relative_path": "api/CycloneDX.Models.Map.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Map",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Metadata.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Metadata.html",
-          "hash": "5GDrUqcVCDV8Btp2kxm11WRXgNdP0FoiRg6XvwG3XEg="
+          "relative_path": "api/CycloneDX.Models.Metadata.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Metadata",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.PerformanceMetricConfidenceInterval.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.PerformanceMetricConfidenceInterval.html",
-          "hash": "iqfrxEvyOZfdB9rE9cOM/skKu0GLKQkM6DGBa/Ccjqo="
+          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.PerformanceMetricConfidenceInterval.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.PerformanceMetricConfidenceInterval",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.html",
-          "hash": "YNQC0HeN/+6FkXo5D1283dv4EW7wlwQsg+Wl0ipv5Tg="
+          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.PerformanceMetric",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.html",
-          "hash": "7D+8I2WSzB1vNK4nfcTYM8m+hd0evfZwXbK5gXkBsIY="
+          "relative_path": "api/CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCard.ModelCardQuantitativeAnalysis",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCard.ModelParameterApproachType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCard.ModelParameterApproachType.html",
-          "hash": "BM6zbXTJBdx83mywD8CZqGYg7kXsw7Ez7G+EPyY1AKQ="
+          "relative_path": "api/CycloneDX.Models.ModelCard.ModelParameterApproachType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCard.ModelParameterApproachType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCard.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCard.html",
-          "hash": "Cz5bi7VS4a84u+zDCred4Zjf2GoTCgIJrRdeHyig4Lk="
+          "relative_path": "api/CycloneDX.Models.ModelCard.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCard",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardEnvironmentalConsideration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardEnvironmentalConsideration.html",
-          "hash": "WGKMBPsDqIiFTs55gY17RwaIekMDLmAafS2dcM4taSQ="
+          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardEnvironmentalConsideration.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCardConsiderations.ModelCardEnvironmentalConsideration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardEthicalConsideration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardEthicalConsideration.html",
-          "hash": "LFzAfDyl+YgrHBJuTwS9cKGJZVynweQfnqHY2+xPXuM="
+          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardEthicalConsideration.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCardConsiderations.ModelCardEthicalConsideration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardFairnessAssessment.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardFairnessAssessment.html",
-          "hash": "7X+HjyENDVNLoe7v9sS+c/9jTwCTZPf1BKjbrDjBn3A="
+          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.ModelCardFairnessAssessment.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCardConsiderations.ModelCardFairnessAssessment",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelCardConsiderations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.html",
-          "hash": "sB2X0SUgYKye9liAyF9CFItv9uthnBmK5YOigvbBAG4="
+          "relative_path": "api/CycloneDX.Models.ModelCardConsiderations.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelCardConsiderations",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelParameters.MachineLearningInputOutputParameter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelParameters.MachineLearningInputOutputParameter.html",
-          "hash": "ylSQyUw2N43gRXW9UGkrQMC2UNNyxuI+rZGxFVW+nOU="
+          "relative_path": "api/CycloneDX.Models.ModelParameters.MachineLearningInputOutputParameter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelParameters.MachineLearningInputOutputParameter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelParameters.ModelApproach.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelParameters.ModelApproach.html",
-          "hash": "YMIoTAZZSuc/SW+llobt4EKYO3cQrYsP5+bSS7/EmHM="
+          "relative_path": "api/CycloneDX.Models.ModelParameters.ModelApproach.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelParameters.ModelApproach",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelParameters.ModelDataset.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelParameters.ModelDataset.html",
-          "hash": "AiBOHl4JQxk+cvRNjzLhMl4rusp2Twv1uB+xkrs2tEQ="
+          "relative_path": "api/CycloneDX.Models.ModelParameters.ModelDataset.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelParameters.ModelDataset",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ModelParameters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ModelParameters.html",
-          "hash": "IA0H87GuTpk7Opm9+wk5FV1lbTbPK2BY8reVOQhv+SQ="
+          "relative_path": "api/CycloneDX.Models.ModelParameters.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ModelParameters",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Note.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Note.html",
-          "hash": "FE38WeVN9qtFeXHs/76rdGHimjQb+Fd1dRLxFE8Dx9Y="
+          "relative_path": "api/CycloneDX.Models.Note.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Note",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.OrganizationalContact.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.OrganizationalContact.html",
-          "hash": "tDU/lJQZSFzzeXrd0/rlid8SAYJIYm8GAjSSxiTPwrU="
+          "relative_path": "api/CycloneDX.Models.OrganizationalContact.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.OrganizationalContact",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.OrganizationalEntity.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.OrganizationalEntity.html",
-          "hash": "5jcwg8NNcT+XrkwKgsaUac5s7Kf4mMLb3guK3+4PR24="
+          "relative_path": "api/CycloneDX.Models.OrganizationalEntity.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.OrganizationalEntity",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.OrganizationalEntityOrContact.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.OrganizationalEntityOrContact.html",
-          "hash": "q13pL61/QM4lJ4mxbUXGmp+2vy3icB1J3LKJc3g+q/w="
+          "relative_path": "api/CycloneDX.Models.OrganizationalEntityOrContact.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.OrganizationalEntityOrContact",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Output.OutputType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Output.OutputType.html",
-          "hash": "jwsYxypdQBYhDCqU8mgCF3L2YdiZ9h8obI3roSwmkG4="
+          "relative_path": "api/CycloneDX.Models.Output.OutputType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Output.OutputType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Output.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Output.html",
-          "hash": "YnWFpH7SONqDqXq9Up2vD9NK4D5x/0hd9Ekd+O+nkH0="
+          "relative_path": "api/CycloneDX.Models.Output.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Output",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Parameter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Parameter.html",
-          "hash": "M/+MUQkRBxPGlU7UoYGAR6lJcbrNAwMTlypmwGWrzL8="
+          "relative_path": "api/CycloneDX.Models.Parameter.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Parameter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Patch.PatchClassification.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Patch.PatchClassification.html",
-          "hash": "mNUKWAUf7R9z61uqgERBdskuBrYRMQDMuh2BUsMLgq0="
+          "relative_path": "api/CycloneDX.Models.Patch.PatchClassification.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Patch.PatchClassification",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Patch.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Patch.html",
-          "hash": "ILRxf0o7EHWfxcYjKh8hng/P8NDrTXng4+u430C0utw="
+          "relative_path": "api/CycloneDX.Models.Patch.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Patch",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Pedigree.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Pedigree.html",
-          "hash": "4T0QwwGby3bL2viHIhSPW/Zhs54hoq40VBb4gPWdU30="
+          "relative_path": "api/CycloneDX.Models.Pedigree.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Pedigree",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.PostalAddress.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.PostalAddress.html",
-          "hash": "Ln+oq1mWW9B4UPAz6nJfov6wjH7SWxJvv6LGRRFx5ug="
+          "relative_path": "api/CycloneDX.Models.PostalAddress.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PostalAddress",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Property.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Property.html",
-          "hash": "G3yPkxPkFNks6nHn7Ct9cDmPA6Z9Pe4FwEM0AUTvmRw="
+          "relative_path": "api/CycloneDX.Models.Property.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Property",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ProtobufTools.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ProtobufTools.html",
-          "hash": "Xg28zPTqfnIqYWzb9298ZmTj6PJCgA8PSqgEUdeypFE="
+          "relative_path": "api/CycloneDX.Models.ProtobufTools.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ProtobufTools",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Provides.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Provides.html",
-          "hash": "0tX8wBFMjAYkiipU/grRlRHBv/wHm617tZmDY+bVlpQ="
+          "relative_path": "api/CycloneDX.Models.Provides.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Provides",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.PublicKey.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.PublicKey.html",
-          "hash": "3czltJsU0BbMepfIK5Q9QhJXlzCmSRckgzE2QaFAtEQ="
+          "relative_path": "api/CycloneDX.Models.PublicKey.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PublicKey",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ReleaseNotes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ReleaseNotes.html",
-          "hash": "vEhAlShDB02Llffdh+LM5+EMcBlSifCA5WRX0eOcWQk="
+          "relative_path": "api/CycloneDX.Models.ReleaseNotes.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ReleaseNotes",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Requirement.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Requirement.html",
-          "hash": "gDfbs87qZW4LB8helVd6dAXazAeRm4uQxHhgA/58c9Y="
+          "relative_path": "api/CycloneDX.Models.Requirement.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Requirement",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ResourceReferenceChoice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ResourceReferenceChoice.html",
-          "hash": "F6rdjKPSXSxoV5oCcsmm6CQCJWE3oXYmHQQcRxlrIhw="
+          "relative_path": "api/CycloneDX.Models.ResourceReferenceChoice.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ResourceReferenceChoice",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ResourceReferenceChoices.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ResourceReferenceChoices.html",
-          "hash": "uYbNhOlHGKnsubmFPNc7n82Wt0cyHlLblnv1KgV976A="
+          "relative_path": "api/CycloneDX.Models.ResourceReferenceChoices.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ResourceReferenceChoices",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Service.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Service.html",
-          "hash": "2jPvhKXJNpt15l+bkzwlZfUz7OFI1WxiHDuDwaJ/HTE="
+          "relative_path": "api/CycloneDX.Models.Service.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Service",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ServiceDataChoices.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ServiceDataChoices.html",
-          "hash": "PYpblWx4JJ46fe+7MsIaaR6vpX/TMk4XkfvWvJrUSsE="
+          "relative_path": "api/CycloneDX.Models.ServiceDataChoices.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ServiceDataChoices",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Signatory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Signatory.html",
-          "hash": "259nFDbuTTypgtGATC4oxr5wEdgAzVecj0RL0s3xhdU="
+          "relative_path": "api/CycloneDX.Models.Signatory.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Signatory",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Signature.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Signature.html",
-          "hash": "ABXxwamN8rL7ve/4j/fS2jmo2tRNGnwmgqI59RFLe5Q="
+          "relative_path": "api/CycloneDX.Models.Signature.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Signature",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.SignatureChoice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.SignatureChoice.html",
-          "hash": "RI/zada0ni+flCpNX5AS3UMr5uX7ofU+IW1ZsP0PQBw="
+          "relative_path": "api/CycloneDX.Models.SignatureChoice.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.SignatureChoice",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Source.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Source.html",
-          "hash": "Gl4C0snxwlwmETFCSQnAqEGJzPLLb7/tbv4vD4fBp0M="
+          "relative_path": "api/CycloneDX.Models.Source.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Source",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Standard.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Standard.html",
-          "hash": "znqEMf+pc9RVm4PtHckG6HzJ/p3db/etz2c9TnFkHVs="
+          "relative_path": "api/CycloneDX.Models.Standard.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Standard",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.StandardsType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.StandardsType.html",
-          "hash": "IQTFo7tG0bxO023o0vTbbv2xyj/mRR+SdzxB5XyvuU4="
+          "relative_path": "api/CycloneDX.Models.StandardsType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.StandardsType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Step.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Step.html",
-          "hash": "ldmxrV96nbmFPiimoYwnVgT90JXZMJJOZ5qssMLk+aM="
+          "relative_path": "api/CycloneDX.Models.Step.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Step",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Swid.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Swid.html",
-          "hash": "LpI1PEvvfraGsIkHR6NeT70EYzEpB5ULURgsK0oZu6o="
+          "relative_path": "api/CycloneDX.Models.Swid.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Swid",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Targets.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Targets.html",
-          "hash": "3OdE+Klkw2T8wDzx6qvtmG7SlyhQqP15Wr2fp6TbAtk="
+          "relative_path": "api/CycloneDX.Models.Targets.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Targets",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Tool.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Tool.html",
-          "hash": "ntabxiuV4uTc2GilUGxQDvBeFRgBlGgiI7MHdFaZVmQ="
+          "relative_path": "api/CycloneDX.Models.Tool.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Tool",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ToolChoices.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ToolChoices.html",
-          "hash": "VSBivcIrSSYoQg6YzffpaXLt1OM0yL2cwii4lcbw92o="
+          "relative_path": "api/CycloneDX.Models.ToolChoices.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ToolChoices",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Trigger.Condition.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Trigger.Condition.html",
-          "hash": "qZNexpv1FQBHOU62v6ZRlfr8gDEdHX9qCA0VP24L6Hg="
+          "relative_path": "api/CycloneDX.Models.Trigger.Condition.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Trigger.Condition",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Trigger.TriggerType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Trigger.TriggerType.html",
-          "hash": "JwM7mZt3RWT4GjZTzmSx2pfc3L1HvRxYkbh+YBOm7Ps="
+          "relative_path": "api/CycloneDX.Models.Trigger.TriggerType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Trigger.TriggerType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Trigger.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Trigger.html",
-          "hash": "/07rKGKczd5Ed74dy696VpxbWcUzRZ3D79PXV96OgvI="
+          "relative_path": "api/CycloneDX.Models.Trigger.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Trigger",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.ValidationResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.ValidationResult.html",
-          "hash": "TQUh5cFQ8cYgZcrKh8FIhK//P40IluzKIT7TK1tOSFs="
+          "relative_path": "api/CycloneDX.Models.ValidationResult.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ValidationResult",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Models.ValidationResult.yml\" sourcestartlinenumber=\"1\">The return type for all validation methods.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Volume.VolumeMode.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Volume.VolumeMode.html",
-          "hash": "Voowc+Ru8/Sl4F8/J/s49vo59atDS8RQSdeDElnZUw8="
+          "relative_path": "api/CycloneDX.Models.Volume.VolumeMode.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Volume.VolumeMode",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Volume.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Volume.html",
-          "hash": "I6BTgBPQ2pOG4F/4NVxS4WZ3ww4uoGQDPiTXrNCbpnQ="
+          "relative_path": "api/CycloneDX.Models.Volume.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Volume",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Advisory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Advisory.html",
-          "hash": "ycfFR8ldehRzmRbmIzW3+5ywNr7BIwyffp5Y2YKZwmU="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Advisory.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Advisory",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.AffectedVersions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.AffectedVersions.html",
-          "hash": "5g3trAmBsNXrjl4ir0hmAAmMcnruJxekbv+FgBtnju8="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.AffectedVersions.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.AffectedVersions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Affects.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Affects.html",
-          "hash": "KVjqe7zdby+2323bFj2ozayxPXqrV8A7Ycpd3CX0diY="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Affects.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Affects",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Analysis.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Analysis.html",
-          "hash": "hOCzr2ejNlPYuOda/I0xOsXhDNGeLQzuLVkqiS+l/EI="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Analysis.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Analysis",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Credits.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Credits.html",
-          "hash": "aExwhqImQU2fXwKJccNb3U8ZjxNh4orufXfpS8BMH4A="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Credits.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Credits",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.ImpactAnalysisJustification.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ImpactAnalysisJustification.html",
-          "hash": "1tZJuUWYv6k86RfmKOQSRp8XklI7vBUItCMHn1LKZCs="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ImpactAnalysisJustification.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.ImpactAnalysisJustification",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.ImpactAnalysisState.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ImpactAnalysisState.html",
-          "hash": "oeGzclOCPVrPYKpcfncWIOx1mPw91TLB7TLTWOr3jAg="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ImpactAnalysisState.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.ImpactAnalysisState",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.ProofOfConcept.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ProofOfConcept.html",
-          "hash": "IbTnUmf8PCI9lKXBRl3th1vUaZGuZ65SzRi7kNbGKZ4="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ProofOfConcept.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.ProofOfConcept",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Rating.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Rating.html",
-          "hash": "tfSS3KDZGyiXAXtB/wJBwpjER6xcqiLw7f+gIaj57Ng="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Rating.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Rating",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Reference.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Reference.html",
-          "hash": "jgUdee5OdwQFUYBlOPSef0lA+T7AnStUSpOLd9EwKmk="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Reference.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Reference",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Response.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Response.html",
-          "hash": "dDVc9S23UlV03km0R/VkTtKkLUPbXLp7/g1rovKfmBo="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Response.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Response",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.ScoreMethod.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ScoreMethod.html",
-          "hash": "SwQOL4ZyFV6yr7O8Ac+Nhv4KN/oSVlEK3njVvuK1RJc="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.ScoreMethod.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.ScoreMethod",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Severity.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Severity.html",
-          "hash": "Wj1nyZ151YG9i1/HmEdjCvs4m5guGQ+xxZzrotKKzXs="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Severity.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Severity",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Status.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Status.html",
-          "hash": "zvou+vQWLvkMo49f9FkIq+IsStddqnDr6i5lxOGnpVY="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Status.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Status",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.Vulnerability.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Vulnerability.html",
-          "hash": "+q5BgDoNcPnKzljqvhgM0en0Ec+whhIAlT1qcpnoFH8="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.Vulnerability.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities.Vulnerability",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Vulnerabilities.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Vulnerabilities.html",
-          "hash": "Y4NgEIT4rpZHhNdy8WYmC5fmWyjYzLyJz5B66cBj9g0="
+          "relative_path": "api/CycloneDX.Models.Vulnerabilities.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Vulnerabilities",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Workflow.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Workflow.html",
-          "hash": "qamWcbbLEFGok5LdFVhd26a+8UC4ApprWSPxG4igEwI="
+          "relative_path": "api/CycloneDX.Models.Workflow.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Workflow",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.WorkflowTask.TaskType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.WorkflowTask.TaskType.html",
-          "hash": "cLUQEadBzVENtypYpXMLE03eE0CMBz6WOIiUvkRTk14="
+          "relative_path": "api/CycloneDX.Models.WorkflowTask.TaskType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.WorkflowTask.TaskType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.WorkflowTask.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.WorkflowTask.html",
-          "hash": "K4PrgPbhOh/PmxZR2fNGnxsE5U7vRw5Q9Gb2VUtfQz0="
+          "relative_path": "api/CycloneDX.Models.WorkflowTask.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.WorkflowTask",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Workspace.AccessModeType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Workspace.AccessModeType.html",
-          "hash": "SL5FrViTCBYhRhJGxmg2XibBTOqyg6XkIlgD4jOMArg="
+          "relative_path": "api/CycloneDX.Models.Workspace.AccessModeType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Workspace.AccessModeType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Workspace.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.Workspace.html",
-          "hash": "uF9irpxrrLyNOquhN0B9s6/hRiS75MSrIfNz58vEcQw="
+          "relative_path": "api/CycloneDX.Models.Workspace.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Workspace",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Models.html",
-          "hash": "7dct0c+ftScwcpR9WArgqAcTiPObs9GdWcXzURkDQMQ="
+          "relative_path": "api/CycloneDX.Models.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models",
+      "Summary": "\n<p sourcefile=\"namespaces/CycloneDX.Models.md\" sourcestartlinenumber=\"5\">Namespace containing all CycloneDX data models.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Protobuf.Serializer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Protobuf.Serializer.html",
-          "hash": "xm3q2DTiByLDhysNwh6/0x5K0k2Fl3LJ8+CFQZK+vdw="
+          "relative_path": "api/CycloneDX.Protobuf.Serializer.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Protobuf.Serializer",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Protobuf.Serializer.yml\" sourcestartlinenumber=\"1\">Contains all Protobuf serialization methods.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Protobuf.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Protobuf.html",
-          "hash": "5/EGfeHgjGa3RSKa9gtnVYWvFap01WXop8kJcBlUVYo="
+          "relative_path": "api/CycloneDX.Protobuf.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Protobuf",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.SerializationFormat.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.SerializationFormat.html",
-          "hash": "rfUq/XCeYKXHX9znMdOx6G1tMhYD0Reo8n+LDdmVAAs="
+          "relative_path": "api/CycloneDX.SerializationFormat.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.SerializationFormat",
+      "Summary": "<p sourcefile=\"api/CycloneDX.SerializationFormat.yml\" sourcestartlinenumber=\"1\">Enum of all supported CycloneDX serialization formats.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html",
-          "hash": "xRN3mljqPMNw47z4vvTaGAa7QytjYT8q96PWI3B6Ej4="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.AttributionTexts.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers.AttributionTexts",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Checksums.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Checksums.html",
-          "hash": "x9QS6ScHJu/0O5V4VD8sZ0eYfNCNs4b4ZB8iyUf2JKI="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Checksums.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers.Checksums",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Creators.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Creators.html",
-          "hash": "DJieVrvY1rf/LZuJr5IUqohsQaTFryz1ossR5w60uLo="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Creators.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers.Creators",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.html",
-          "hash": "NIAPNBvQDCFavV9vLt4W+07LZbx0WKFZKXuIQoiNS8g="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers.CycloneDXBomHelpers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.html",
-          "hash": "u4Z749s7W0Y/85WbFy3tunMQVbDy2808oTvGVjyWvM0="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.ExternalRefs.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers.ExternalRefs",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Files.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Files.html",
-          "hash": "gR35RbB4qFS7vGbBj7mMvxkw1GE+1I8t0OjC/eAInDU="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.Files.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers.Files",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.General.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.General.html",
-          "hash": "7A7scvgzm+BAoNFfRx640FhaLbsNWEQdms3SKwZCnig="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.General.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers.General",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.html",
-          "hash": "jk0Cj3ZTkuJvCcHmqcNY/s8kd+mBA6F61CeqdmexdTY="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers.SpdxDocumentHelpers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.Helpers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.html",
-          "hash": "EGimLV08R0vMmQXk2NeM+egVkuStosIC3b7CfkEDs1M="
+          "relative_path": "api/CycloneDX.Spdx.Interop.Helpers.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.Helpers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.html",
-          "hash": "eY62GUJ6g33BYj48HRiASZ4IWBvFsgfOUjZsTU3XSHw="
+          "relative_path": "api/CycloneDX.Spdx.Interop.SpdxDocumentConverters.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop.SpdxDocumentConverters",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Interop.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Interop.html",
-          "hash": "RxlisOEhZfm5yBrgj5kV/SF7N6wumrG7JaW5khF6wIE="
+          "relative_path": "api/CycloneDX.Spdx.Interop.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Interop",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.ValidationResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.ValidationResult.html",
-          "hash": "xm+JWUgX/CzzlFgh4zwhyYaPwmAFjR5bpor0RY8qHTM="
+          "relative_path": "api/CycloneDX.Spdx.Models.ValidationResult.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.ValidationResult",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Spdx.Models.ValidationResult.yml\" sourcestartlinenumber=\"1\">The return type for all validation methods.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Annotation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Annotation.html",
-          "hash": "e4KjPSTXVRn8atG0dE/KnqI3WO+fWAdhtngBwVryVyc="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Annotation.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.Annotation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.AnnotationType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.AnnotationType.html",
-          "hash": "KjhozUrg6HN2VVuoqIu3VGfAgFyw8Ihx04PRJ4NakSw="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.AnnotationType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.AnnotationType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Checksum.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Checksum.html",
-          "hash": "WWfUAZeWsChlWzMHMbhg5mH0q9j1xCWLmtQWVS6SAc4="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Checksum.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.Checksum",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ChecksumAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ChecksumAlgorithm.html",
-          "hash": "x1vCjnVp4a9rfWxovpFuv/v51FiQhi9vUZVOTEyHd0E="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ChecksumAlgorithm.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.ChecksumAlgorithm",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.CreationInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.CreationInfo.html",
-          "hash": "pbFvi0uWnZIj6K6YQtqp92ZLqC+VE84HdmZ3kkTbGso="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.CreationInfo.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.CreationInfo",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.CrossRef.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.CrossRef.html",
-          "hash": "aCycoTV9f1ksoftSpkLXfWFV8kUqblfZzAtpo0eZZOI="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.CrossRef.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.CrossRef",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalDocumentRef.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalDocumentRef.html",
-          "hash": "oUDS4qddZwr4hKDeKD/Hr7/IkqVb+vQoFLtHiXne9W8="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalDocumentRef.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.ExternalDocumentRef",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRef.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRef.html",
-          "hash": "tIFoU1Q7cyZLu0j59XfxxuWinGlvn6B4J8xnaCZOOzs="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRef.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.ExternalRef",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRefCategory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRefCategory.html",
-          "hash": "pQ+c6SXbFvsiyXC5dOvh8wHP7+qJGGxo13JU93LQKzs="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRefCategory.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.ExternalRefCategory",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExtractedLicensingInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExtractedLicensingInfo.html",
-          "hash": "z+VYjruD4dbO3+f/h+7QrsekxLvmzOAnclz9nmlPdNs="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExtractedLicensingInfo.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.ExtractedLicensingInfo",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.File.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.File.html",
-          "hash": "viRQVS9QfClwlYu3ClFwFw2RFLyUsrtygTqbR9FQPV4="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.File.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.File",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.FileType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.FileType.html",
-          "hash": "JW+BaGt4cJh1JhZh2SsaYNExhusSZjuV4zv92WVeghg="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.FileType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.FileType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Package.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Package.html",
-          "hash": "9Auny5f0a3iCXAE8IE5Xd1MiQxqnKDcabAzsZUjC+do="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Package.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.Package",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.PackageVerificationCode.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.PackageVerificationCode.html",
-          "hash": "cXzWLNJnGFy5txikZrdQiPuVp27qZpk42Ipwryecp1I="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.PackageVerificationCode.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.PackageVerificationCode",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Range.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Range.html",
-          "hash": "XgaxGw8v0Ae9v2FUnfT7b3QoK/2XNNc8lHanYXIIbr0="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Range.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.Range",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.RangePointer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.RangePointer.html",
-          "hash": "KVxYNool459q0OVzYJiUWQhGMiLMbdZrYIKVIw0LAvE="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.RangePointer.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.RangePointer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Relationship.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Relationship.html",
-          "hash": "HWYgJA5bkLGDUmyJIYW2w77GCUhz09urGz13WK4V9lA="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Relationship.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.Relationship",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.RelationshipType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.RelationshipType.html",
-          "hash": "r2Qv2udAPPNxOtGdUtJ7zB4IVs7ICsNqPGgWRUHJy1k="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.RelationshipType.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.RelationshipType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ReviewInformation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ReviewInformation.html",
-          "hash": "xAtgzBMIKoCIBAr4L9wPZKeIMjdFGMZSAjoithDJvbw="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ReviewInformation.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.ReviewInformation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Snippet.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Snippet.html",
-          "hash": "gGq6JRuZ8SutHSweq/SJxkmdb86R7Q3DApabhWAidLg="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Snippet.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.Snippet",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.SpdxDocument.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.SpdxDocument.html",
-          "hash": "6g51flb+QI+s8IbWvm+x5qzAxp3mSgzODvaJTk9Ckxk="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.SpdxDocument.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2.SpdxDocument",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.html",
-          "hash": "wWFCCGEdsyiMp2sfGJRI4JXDOxNC+uTbDwm7zsNkYog="
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_2",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.html",
-          "hash": "Bcwo975Sb9yjzqM20RBTDzUxfoLGv9BkMzVOC/Z1QdQ="
+          "relative_path": "api/CycloneDX.Spdx.Models.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.PropertyTaxonomy.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.PropertyTaxonomy.html",
-          "hash": "+QKMv32cwAFOgeo7KSVMKQk255rQG4Kjn0HaePWs1R4="
+          "relative_path": "api/CycloneDX.Spdx.PropertyTaxonomy.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.PropertyTaxonomy",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Serialization.JsonSerializer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Serialization.JsonSerializer.html",
-          "hash": "R2E4xNDaBY3S/nR2/WMIB+XZdA4he3KpgoldUaiSlck="
+          "relative_path": "api/CycloneDX.Spdx.Serialization.JsonSerializer.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Serialization.JsonSerializer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Serialization.XmlSerializer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Serialization.XmlSerializer.html",
-          "hash": "MslummPvlFtDzVGKNlFuE9lU6FiljSQgK6vVmTvsEzw="
+          "relative_path": "api/CycloneDX.Spdx.Serialization.XmlSerializer.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Serialization.XmlSerializer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Serialization.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Serialization.html",
-          "hash": "Og4/0TLDlUD+hEdyZpA5nsDARKNk2umYkR3dnyD9Tc0="
+          "relative_path": "api/CycloneDX.Spdx.Serialization.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Serialization",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Validation.JsonValidator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Validation.JsonValidator.html",
-          "hash": "Yy+Vzi65g7oqytu7Ao1Hqu89clGUprVSlavzVP7b6u8="
+          "relative_path": "api/CycloneDX.Spdx.Validation.JsonValidator.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Validation.JsonValidator",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Validation.XmlValidator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Validation.XmlValidator.html",
-          "hash": "cj56PCSPhW9bSG+Rbuy6DDU8WirE9SjQpFJRDojEF1Y="
+          "relative_path": "api/CycloneDX.Spdx.Validation.XmlValidator.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Validation.XmlValidator",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Validation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Validation.html",
-          "hash": "mnJBgVaq9f8XuGYDUaq9ttgXQUBpwzqpeytlR9o5p3s="
+          "relative_path": "api/CycloneDX.Spdx.Validation.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Validation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.html",
-          "hash": "eRdM8NvJ+jRQp3ye+6Adr3Gyu9JXNMe985xLd+gZl+Y="
+          "relative_path": "api/CycloneDX.Spdx.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.SpecificationVersion.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.SpecificationVersion.html",
-          "hash": "ds9Hbz/DBiWvAezw5AYK0Rbb1TlZukbU7llaSkPN0E0="
+          "relative_path": "api/CycloneDX.SpecificationVersion.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.SpecificationVersion",
+      "Summary": "<p sourcefile=\"api/CycloneDX.SpecificationVersion.yml\" sourcestartlinenumber=\"1\">Enum of all supported CycloneDX specification versions.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.SpecificationVersionHelpers.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.SpecificationVersionHelpers.html",
-          "hash": "IFR8OKnEQbpsNTy3ZGxZd4l3KQtviuusg7TKx+iuL44="
+          "relative_path": "api/CycloneDX.SpecificationVersionHelpers.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.SpecificationVersionHelpers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Utils.CycloneDXUtils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Utils.CycloneDXUtils.html",
-          "hash": "j4e8yR1Hkm8okvN+2OF29xnJj1u2ctry3gobETDUVqk="
+          "relative_path": "api/CycloneDX.Utils.CycloneDXUtils.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Utils.CycloneDXUtils",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Utils.CycloneDXUtils.yml\" sourcestartlinenumber=\"1\">Class containing utility methods that operate on CycloneDX BOMs.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Utils.DiffItem-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Utils.DiffItem-1.html",
-          "hash": "TY7NALUdIS9a0PcnXeDdeaqxmvFtCK2zscqt10mnOEM="
+          "relative_path": "api/CycloneDX.Utils.DiffItem-1.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Utils.DiffItem<T>",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Utils.DiffItem-1.yml\" sourcestartlinenumber=\"1\">Generic class representing the diff of an item when generating a diff between BOMs.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Utils.Exceptions.MissingMetadataComponentException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Utils.Exceptions.MissingMetadataComponentException.html",
-          "hash": "dQFJ3tckVEotKWroaTMrTBatx6z6P7qEJ1B6xGNDZ0c="
+          "relative_path": "api/CycloneDX.Utils.Exceptions.MissingMetadataComponentException.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Utils.Exceptions.MissingMetadataComponentException",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Utils.Exceptions.MissingMetadataComponentException.yml\" sourcestartlinenumber=\"1\">Exception used when metadata required for a BOM operation is missing.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Utils.Exceptions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Utils.Exceptions.html",
-          "hash": "wLER1PFIE7Qmbz33PwfX3KMn+8UgOK57ap2gAWLyBNc="
+          "relative_path": "api/CycloneDX.Utils.Exceptions.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Utils.Exceptions",
+      "Summary": "\n<p sourcefile=\"namespaces/CycloneDX.Utils.Exceptions.md\" sourcestartlinenumber=\"5\">Namespace containing all custom exceptions the <code sourcefile=\"namespaces/CycloneDX.Utils.Exceptions.md\" sourcestartlinenumber=\"5\">CycloneDX.Utils</code> library uses.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Utils.ListExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Utils.ListExtensions.html",
-          "hash": "JhwuasbnSQAuR64do9t97y+ADiXsxjH14StkWGFWvcE="
+          "relative_path": "api/CycloneDX.Utils.ListExtensions.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Utils.ListExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Utils.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Utils.html",
-          "hash": "P44c24HXRytwCebCqHtUd4BQXhsNHo7x0R4/eTXDF3s="
+          "relative_path": "api/CycloneDX.Utils.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Utils",
+      "Summary": "\n<p sourcefile=\"namespaces/CycloneDX.Utils.md\" sourcestartlinenumber=\"5\">Namespace containing utility methods that operate on CycloneDX BOMs.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Xml.Serializer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Xml.Serializer.html",
-          "hash": "Zv9zFxmFeOOIOt+9Ctlf/DCDIJalcw0ukfsFmw3JGhI="
+          "relative_path": "api/CycloneDX.Xml.Serializer.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Xml.Serializer",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Xml.Serializer.yml\" sourcestartlinenumber=\"1\">Contains all XML serialization methods.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Xml.Validator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Xml.Validator.html",
-          "hash": "FPwrdLMkJqSd3kwGy4lXPqIbYYYMPmrIDVgTUGpbSB8="
+          "relative_path": "api/CycloneDX.Xml.Validator.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Xml.Validator",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Xml.Validator.yml\" sourcestartlinenumber=\"1\">Contains all XML validation methods.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Xml.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Xml.html",
-          "hash": "DL/ITOej+DsxJNIhsxDBQRrlrjWi+rBEdlhVma/jbo4="
+          "relative_path": "api/CycloneDX.Xml.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Xml",
+      "Summary": "\n<p sourcefile=\"namespaces/CycloneDX.Xml.md\" sourcestartlinenumber=\"5\">Namespace containing all XML specific functionality. Including serialization, deserialization, and validation.</p>\n"
     },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.html",
-          "hash": "TOM9bkoO2PeSad0ilivU1eCp2tldi2hzHG7pjUG94Kk="
+          "relative_path": "api/CycloneDX.html"
         }
       },
-      "is_incremental": false,
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX",
+      "Summary": "\n<p sourcefile=\"namespaces/CycloneDX.md\" sourcestartlinenumber=\"5\">The base CycloneDX namespace.</p>\n"
     },
     {
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
         ".html": {
-          "relative_path": "api/index.html",
-          "hash": "9+F6jY54yu3wCOq42fbi2V7if8v32EdggVgobNhhwJc="
+          "relative_path": "api/index.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3104,11 +3615,12 @@
       "source_relative_path": "api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "NOPTnqldD70zeo8hBZF8kDPnfL5eJ5W5KHkbGl2VhtQ="
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3116,11 +3628,9 @@
       "source_relative_path": "articles/getting-started.md",
       "output": {
         ".html": {
-          "relative_path": "articles/getting-started.html",
-          "hash": "gRwKhcv4hgdtMveuO0o+GgpKEnSwcM+rBoeL20NHGwY="
+          "relative_path": "articles/getting-started.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3128,11 +3638,12 @@
       "source_relative_path": "articles/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "articles/toc.html",
-          "hash": "+nyR3PJCRi3KnR8Xq3HJ8Nu+uV/xs+k/Bf/DVP6MQtM="
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3143,7 +3654,6 @@
           "relative_path": "favicon.ico"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3151,11 +3661,9 @@
       "source_relative_path": "index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html",
-          "hash": "RKG3q6yR9M5Z456lTFF0TFpax0DAXrK8JjccPswfTfU="
+          "relative_path": "index.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3166,7 +3674,6 @@
           "relative_path": "logo.svg"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3177,7 +3684,6 @@
           "relative_path": "styles/cyclonedx.css"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -3185,65 +3691,15 @@
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
-          "relative_path": "toc.html",
-          "hash": "joypKD+2HGa63nybCJXXveXY61vBd1zgjGyqqRCYQow="
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     }
   ],
-  "incremental_info": [
-    {
-      "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
-        "incrementalPhase": "build",
-        "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
-      },
-      "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 266,
-          "skipped_file_count": 0
-        },
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        }
-      }
-    },
-    {
-      "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
-        "incrementalPhase": "postProcessing",
-        "total_file_count": 0,
-        "skipped_file_count": 0
-      },
-      "processors": {}
-    }
-  ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"
