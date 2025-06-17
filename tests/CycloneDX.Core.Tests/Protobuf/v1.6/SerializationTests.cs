@@ -41,6 +41,7 @@ namespace CycloneDX.Core.Tests.Protobuf.v1_6
         [InlineData("valid-assembly-1.6.textproto")]
         [InlineData("valid-attestation-1.6.textproto")]
         [InlineData("valid-bom-1.6.textproto")]
+        [InlineData("valid-component-data-1.6.textproto")]
         [InlineData("valid-component-hashes-1.6.textproto")]
         [InlineData("valid-component-identifiers-1.6.textproto")]
         [InlineData("valid-component-ref-1.6.textproto")]

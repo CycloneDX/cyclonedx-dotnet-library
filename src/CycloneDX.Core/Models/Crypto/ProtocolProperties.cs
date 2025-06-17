@@ -40,6 +40,10 @@ namespace CycloneDX.Core.Models
         [XmlElement("ikev2TransformTypes")]
         [ProtoMember(4)]
         public Ikev2TransformTypes Ikev2TransformTypes { get; set; }
+
+        [XmlElement("cryptoRef")]
+        [ProtoMember(5)]
+        public List<string> CryptoRefArray { get; set; }
     }
 
 
