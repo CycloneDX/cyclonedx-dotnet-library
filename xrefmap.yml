@@ -106,6 +106,22 @@ references:
   isSpec: "True"
   fullName: CycloneDX.BomUtils.EnumerateAllEvidence
   nameWithType: BomUtils.EnumerateAllEvidence
+- uid: CycloneDX.BomUtils.EnumerateAllExternalReferences(CycloneDX.Models.Bom,System.Action{CycloneDX.Models.ExternalReference})
+  name: EnumerateAllExternalReferences(Bom, Action<ExternalReference>)
+  href: api/CycloneDX.BomUtils.html#CycloneDX_BomUtils_EnumerateAllExternalReferences_CycloneDX_Models_Bom_System_Action_CycloneDX_Models_ExternalReference__
+  commentId: M:CycloneDX.BomUtils.EnumerateAllExternalReferences(CycloneDX.Models.Bom,System.Action{CycloneDX.Models.ExternalReference})
+  name.vb: EnumerateAllExternalReferences(Bom, Action(Of ExternalReference))
+  fullName: CycloneDX.BomUtils.EnumerateAllExternalReferences(CycloneDX.Models.Bom, System.Action<CycloneDX.Models.ExternalReference>)
+  fullName.vb: CycloneDX.BomUtils.EnumerateAllExternalReferences(CycloneDX.Models.Bom, System.Action(Of CycloneDX.Models.ExternalReference))
+  nameWithType: BomUtils.EnumerateAllExternalReferences(Bom, Action<ExternalReference>)
+  nameWithType.vb: BomUtils.EnumerateAllExternalReferences(Bom, Action(Of ExternalReference))
+- uid: CycloneDX.BomUtils.EnumerateAllExternalReferences*
+  name: EnumerateAllExternalReferences
+  href: api/CycloneDX.BomUtils.html#CycloneDX_BomUtils_EnumerateAllExternalReferences_
+  commentId: Overload:CycloneDX.BomUtils.EnumerateAllExternalReferences
+  isSpec: "True"
+  fullName: CycloneDX.BomUtils.EnumerateAllExternalReferences
+  nameWithType: BomUtils.EnumerateAllExternalReferences
 - uid: CycloneDX.BomUtils.EnumerateAllLicenseChoices(CycloneDX.Models.Bom,System.Action{CycloneDX.Models.LicenseChoice})
   name: EnumerateAllLicenseChoices(Bom, Action<LicenseChoice>)
   href: api/CycloneDX.BomUtils.html#CycloneDX_BomUtils_EnumerateAllLicenseChoices_CycloneDX_Models_Bom_System_Action_CycloneDX_Models_LicenseChoice__
@@ -170,6 +186,22 @@ references:
   isSpec: "True"
   fullName: CycloneDX.BomUtils.EnumerateAllOrganizationalEntity
   nameWithType: BomUtils.EnumerateAllOrganizationalEntity
+- uid: CycloneDX.BomUtils.EnumerateAllResourceReferenceChoices(CycloneDX.Models.Bom,System.Action{CycloneDX.Models.ResourceReferenceChoice})
+  name: EnumerateAllResourceReferenceChoices(Bom, Action<ResourceReferenceChoice>)
+  href: api/CycloneDX.BomUtils.html#CycloneDX_BomUtils_EnumerateAllResourceReferenceChoices_CycloneDX_Models_Bom_System_Action_CycloneDX_Models_ResourceReferenceChoice__
+  commentId: M:CycloneDX.BomUtils.EnumerateAllResourceReferenceChoices(CycloneDX.Models.Bom,System.Action{CycloneDX.Models.ResourceReferenceChoice})
+  name.vb: EnumerateAllResourceReferenceChoices(Bom, Action(Of ResourceReferenceChoice))
+  fullName: CycloneDX.BomUtils.EnumerateAllResourceReferenceChoices(CycloneDX.Models.Bom, System.Action<CycloneDX.Models.ResourceReferenceChoice>)
+  fullName.vb: CycloneDX.BomUtils.EnumerateAllResourceReferenceChoices(CycloneDX.Models.Bom, System.Action(Of CycloneDX.Models.ResourceReferenceChoice))
+  nameWithType: BomUtils.EnumerateAllResourceReferenceChoices(Bom, Action<ResourceReferenceChoice>)
+  nameWithType.vb: BomUtils.EnumerateAllResourceReferenceChoices(Bom, Action(Of ResourceReferenceChoice))
+- uid: CycloneDX.BomUtils.EnumerateAllResourceReferenceChoices*
+  name: EnumerateAllResourceReferenceChoices
+  href: api/CycloneDX.BomUtils.html#CycloneDX_BomUtils_EnumerateAllResourceReferenceChoices_
+  commentId: Overload:CycloneDX.BomUtils.EnumerateAllResourceReferenceChoices
+  isSpec: "True"
+  fullName: CycloneDX.BomUtils.EnumerateAllResourceReferenceChoices
+  nameWithType: BomUtils.EnumerateAllResourceReferenceChoices
 - uid: CycloneDX.BomUtils.EnumerateAllServices(CycloneDX.Models.Bom,System.Action{CycloneDX.Models.Service})
   name: EnumerateAllServices(Bom, Action<Service>)
   href: api/CycloneDX.BomUtils.html#CycloneDX_BomUtils_EnumerateAllServices_CycloneDX_Models_Bom_System_Action_CycloneDX_Models_Service__
@@ -218,6 +250,22 @@ references:
   isSpec: "True"
   fullName: CycloneDX.BomUtils.EnumerateAllVulnerabilities
   nameWithType: BomUtils.EnumerateAllVulnerabilities
+- uid: CycloneDX.BomUtils.EnumerateAllWorkflows(CycloneDX.Models.Bom,System.Action{CycloneDX.Models.Workflow})
+  name: EnumerateAllWorkflows(Bom, Action<Workflow>)
+  href: api/CycloneDX.BomUtils.html#CycloneDX_BomUtils_EnumerateAllWorkflows_CycloneDX_Models_Bom_System_Action_CycloneDX_Models_Workflow__
+  commentId: M:CycloneDX.BomUtils.EnumerateAllWorkflows(CycloneDX.Models.Bom,System.Action{CycloneDX.Models.Workflow})
+  name.vb: EnumerateAllWorkflows(Bom, Action(Of Workflow))
+  fullName: CycloneDX.BomUtils.EnumerateAllWorkflows(CycloneDX.Models.Bom, System.Action<CycloneDX.Models.Workflow>)
+  fullName.vb: CycloneDX.BomUtils.EnumerateAllWorkflows(CycloneDX.Models.Bom, System.Action(Of CycloneDX.Models.Workflow))
+  nameWithType: BomUtils.EnumerateAllWorkflows(Bom, Action<Workflow>)
+  nameWithType.vb: BomUtils.EnumerateAllWorkflows(Bom, Action(Of Workflow))
+- uid: CycloneDX.BomUtils.EnumerateAllWorkflows*
+  name: EnumerateAllWorkflows
+  href: api/CycloneDX.BomUtils.html#CycloneDX_BomUtils_EnumerateAllWorkflows_
+  commentId: Overload:CycloneDX.BomUtils.EnumerateAllWorkflows
+  isSpec: "True"
+  fullName: CycloneDX.BomUtils.EnumerateAllWorkflows
+  nameWithType: BomUtils.EnumerateAllWorkflows
 - uid: CycloneDX.Core.Models
   name: CycloneDX.Core.Models
   href: api/CycloneDX.Core.Models.html
@@ -1495,6 +1543,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.ProtocolProperties.CipherSuites
   nameWithType: ProtocolProperties.CipherSuites
+- uid: CycloneDX.Core.Models.ProtocolProperties.CryptoRefArray
+  name: CryptoRefArray
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_CryptoRefArray
+  commentId: P:CycloneDX.Core.Models.ProtocolProperties.CryptoRefArray
+  fullName: CycloneDX.Core.Models.ProtocolProperties.CryptoRefArray
+  nameWithType: ProtocolProperties.CryptoRefArray
+- uid: CycloneDX.Core.Models.ProtocolProperties.CryptoRefArray*
+  name: CryptoRefArray
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_CryptoRefArray_
+  commentId: Overload:CycloneDX.Core.Models.ProtocolProperties.CryptoRefArray
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.ProtocolProperties.CryptoRefArray
+  nameWithType: ProtocolProperties.CryptoRefArray
 - uid: CycloneDX.Core.Models.ProtocolProperties.Ikev2TransformTypes
   name: Ikev2TransformTypes
   href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_Ikev2TransformTypes
