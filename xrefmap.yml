@@ -14502,12 +14502,12 @@ references:
   commentId: F:CycloneDX.Models.Vulnerabilities.Status.Affected
   fullName: CycloneDX.Models.Vulnerabilities.Status.Affected
   nameWithType: Status.Affected
-- uid: CycloneDX.Models.Vulnerabilities.Status.Not_Affected
-  name: Not_Affected
-  href: api/CycloneDX.Models.Vulnerabilities.Status.html#CycloneDX_Models_Vulnerabilities_Status_Not_Affected
-  commentId: F:CycloneDX.Models.Vulnerabilities.Status.Not_Affected
-  fullName: CycloneDX.Models.Vulnerabilities.Status.Not_Affected
-  nameWithType: Status.Not_Affected
+- uid: CycloneDX.Models.Vulnerabilities.Status.Unaffected
+  name: Unaffected
+  href: api/CycloneDX.Models.Vulnerabilities.Status.html#CycloneDX_Models_Vulnerabilities_Status_Unaffected
+  commentId: F:CycloneDX.Models.Vulnerabilities.Status.Unaffected
+  fullName: CycloneDX.Models.Vulnerabilities.Status.Unaffected
+  nameWithType: Status.Unaffected
 - uid: CycloneDX.Models.Vulnerabilities.Status.Unknown
   name: Unknown
   href: api/CycloneDX.Models.Vulnerabilities.Status.html#CycloneDX_Models_Vulnerabilities_Status_Unknown
