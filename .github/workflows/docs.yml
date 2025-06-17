@@ -19,12 +19,12 @@ jobs:
 
       - name: Download DocFX
         run: |
-          wget -O docfx.zip https://github.com/dotnet/docfx/releases/download/v2.58.4/docfx.zip
+          wget -O docfx.zip https://github.com/dotnet/docfx/releases/download/v2.78.3/docfx-linux-x64-v2.78.3.zip
           unzip docfx.zip -d docfx/
-          chmod +x docfx/docfx.exe
+          chmod +x docfx/docfx
       - name: Build documentation
         run: |
-          docfx/docfx.exe docs/docfx.json
+          docfx/docfx docs/docfx.json
       - name: Deploy documentation
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
