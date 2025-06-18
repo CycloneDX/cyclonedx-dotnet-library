@@ -2674,6 +2674,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Json.Utils.GetJsonSerializerOptions
   nameWithType: Utils.GetJsonSerializerOptions
+- uid: CycloneDX.Json.Utils.UseUnsafeRelaxedJsonEscaping
+  name: UseUnsafeRelaxedJsonEscaping
+  href: api/CycloneDX.Json.Utils.html#CycloneDX_Json_Utils_UseUnsafeRelaxedJsonEscaping
+  commentId: P:CycloneDX.Json.Utils.UseUnsafeRelaxedJsonEscaping
+  fullName: CycloneDX.Json.Utils.UseUnsafeRelaxedJsonEscaping
+  nameWithType: Utils.UseUnsafeRelaxedJsonEscaping
+- uid: CycloneDX.Json.Utils.UseUnsafeRelaxedJsonEscaping*
+  name: UseUnsafeRelaxedJsonEscaping
+  href: api/CycloneDX.Json.Utils.html#CycloneDX_Json_Utils_UseUnsafeRelaxedJsonEscaping_
+  commentId: Overload:CycloneDX.Json.Utils.UseUnsafeRelaxedJsonEscaping
+  isSpec: "True"
+  fullName: CycloneDX.Json.Utils.UseUnsafeRelaxedJsonEscaping
+  nameWithType: Utils.UseUnsafeRelaxedJsonEscaping
 - uid: CycloneDX.Json.Validator
   name: Validator
   href: api/CycloneDX.Json.Validator.html
