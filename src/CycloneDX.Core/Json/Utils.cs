@@ -29,10 +29,14 @@ namespace CycloneDX.Json
     /// </summary>
     public static class Utils
     {
+        public static bool UseUnsafeRelaxedJsonEscaping { get; set; } = false;  
         public static JsonSerializerOptions GetBaseJsonSerializerOptions()
         {
             return new JsonSerializerOptions
             {
+                Encoder = UseUnsafeRelaxedJsonEscaping
+                    ? System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                    : System.Text.Encodings.Web.JavaScriptEncoder.Default,
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
