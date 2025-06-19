@@ -32,10 +32,7 @@ namespace CycloneDX.Json
     /// </summary>
     public static partial class Serializer
     {
-        private static JsonSerializerOptions _options = Utils.GetJsonSerializerOptions();
-
-        public static JsonSerializerOptions SerializerOptions { get => _options; }
-
+        static Func<JsonSerializerOptions> getOption = () => Utils.GetJsonSerializerOptions();        
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.
         /// </summary>
@@ -45,7 +42,7 @@ namespace CycloneDX.Json
         public static async Task SerializeAsync(Bom bom, Stream outputStream)
         {            
             Contract.Requires(bom != null && outputStream != null);
-            await JsonSerializer.SerializeAsync<Bom>(outputStream, BomUtils.GetBomForSerialization(bom), _options).ConfigureAwait(false);
+            await JsonSerializer.SerializeAsync<Bom>(outputStream, BomUtils.GetBomForSerialization(bom), getOption()).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -56,80 +53,80 @@ namespace CycloneDX.Json
         public static string Serialize(Bom bom)
         {
             Contract.Requires(bom != null);
-            var jsonBom = JsonSerializer.Serialize(BomUtils.GetBomForSerialization(bom), _options);
+            var jsonBom = JsonSerializer.Serialize(BomUtils.GetBomForSerialization(bom), getOption());
             return jsonBom;
         }
 
         internal static string Serialize(Component component)
         {
             Contract.Requires(component != null);
-            return JsonSerializer.Serialize(component, _options);
+            return JsonSerializer.Serialize(component, getOption());
         }
 
         internal static string Serialize(Dependency dependency)
         {
             Contract.Requires(dependency != null);
-            return JsonSerializer.Serialize(dependency, _options);
+            return JsonSerializer.Serialize(dependency, getOption());
         }
 
         internal static string Serialize(Service service)
         {
             Contract.Requires(service != null);
-            return JsonSerializer.Serialize(service, _options);
+            return JsonSerializer.Serialize(service, getOption());
         }
 
         #pragma warning disable 618
         internal static string Serialize(Tool tool)
         {
             Contract.Requires(tool != null);
-            return JsonSerializer.Serialize(tool, _options);
+            return JsonSerializer.Serialize(tool, getOption());
         }
         #pragma warning restore 618
 
         internal static string Serialize(Models.Vulnerabilities.Vulnerability vulnerability)
         {
             Contract.Requires(vulnerability != null);
-            return JsonSerializer.Serialize(vulnerability, _options);
+            return JsonSerializer.Serialize(vulnerability, getOption());
         }
 
         internal static string Serialize(Models.Composition composition)
         {
             Contract.Requires(composition != null);
-            return JsonSerializer.Serialize(composition, _options);
+            return JsonSerializer.Serialize(composition, getOption());
         }
 
         internal static string Serialize(Models.ExternalReference externalReference)
         {
             Contract.Requires(externalReference != null);
-            return JsonSerializer.Serialize(externalReference, _options);
+            return JsonSerializer.Serialize(externalReference, getOption());
         }
 
         internal static string Serialize(Models.Standard standard)
         {
             Contract.Requires(standard != null);
-            return JsonSerializer.Serialize(standard, _options);
+            return JsonSerializer.Serialize(standard, getOption());
         }
 
         internal static string Serialize(Models.OrganizationalEntity organization)
         {
             Contract.Requires(organization != null);
-            return JsonSerializer.Serialize(organization, _options);
+            return JsonSerializer.Serialize(organization, getOption());
         }
 
         internal static string Serialize(Models.Claim obj)
         {
             Contract.Requires(obj != null);
-            return JsonSerializer.Serialize(obj, _options);
+            return JsonSerializer.Serialize(obj, getOption());
         }
         internal static string Serialize(Models.Assessor obj)
         {
             Contract.Requires(obj != null);
-            return JsonSerializer.Serialize(obj, _options);
+            return JsonSerializer.Serialize(obj, getOption());
         }
         internal static string Serialize(Models.Attestation obj)
         {
             Contract.Requires(obj != null);
-            return JsonSerializer.Serialize(obj, _options);
+            return JsonSerializer.Serialize(obj, getOption());
         }
     }
 }
