@@ -22,11 +22,16 @@ name: Release
 on:
   workflow_dispatch
 
+# see https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
+permissions: {}
+
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write  # needed for creating GH release and uploading release assets
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v4
