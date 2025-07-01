@@ -176,6 +176,36 @@ namespace CycloneDX.Utils.Tests
         }
 
         [Fact]
+        public void FlatMergeManufacturerTest()
+        {
+            var sbom1 = new Bom();
+            var sbom2 = new Bom()
+            {
+                Metadata = new Metadata()
+                {
+                    Manufacturer = new OrganizationalEntity()
+                    {
+                        Name = "Manufacturer2"
+                    }
+                }
+            };
+            var sbom3 = new Bom()
+            {
+                Metadata = new Metadata()
+                {
+                    Manufacturer = new OrganizationalEntity()
+                    {
+                        Name = "Manufacturer3"
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
         public void HierarchicalMergeComponentsTest()
         {
             var subject = new Component

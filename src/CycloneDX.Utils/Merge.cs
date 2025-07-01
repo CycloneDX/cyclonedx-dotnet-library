@@ -123,6 +123,25 @@ namespace CycloneDX.Utils
                 };
             }
 
+            if (bom1.Metadata?.Manufacturer != null)
+            {
+                if (result.Metadata == null)
+                {
+                    result.Metadata = new Metadata();
+                }
+
+                result.Metadata.Manufacturer = bom1.Metadata.Manufacturer;
+            }
+            else if (bom2.Metadata?.Manufacturer != null)
+            {
+                if (result.Metadata == null)
+                {
+                    result.Metadata = new Metadata();
+                }
+
+                result.Metadata.Manufacturer = bom2.Metadata.Manufacturer;
+            }
+
             var componentsMerger = new ListMergeHelper<Component>();
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
 
