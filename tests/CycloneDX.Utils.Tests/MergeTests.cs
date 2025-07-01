@@ -179,21 +179,21 @@ namespace CycloneDX.Utils.Tests
         public void FlatMergeManufacturerTest()
         {
             var sbom1 = new Bom();
-            var sbom2 = new Bom()
+            var sbom2 = new Bom
             {
-                Metadata = new Metadata()
+                Metadata = new Metadata
                 {
-                    Manufacturer = new OrganizationalEntity()
+                    Manufacturer = new OrganizationalEntity
                     {
                         Name = "Manufacturer2"
                     }
                 }
             };
-            var sbom3 = new Bom()
+            var sbom3 = new Bom
             {
-                Metadata = new Metadata()
+                Metadata = new Metadata
                 {
-                    Manufacturer = new OrganizationalEntity()
+                    Manufacturer = new OrganizationalEntity
                     {
                         Name = "Manufacturer3"
                     }
