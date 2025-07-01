@@ -200,7 +200,8 @@ namespace CycloneDX.Utils.Tests
                 }
             };
 
-            var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
+            var sbomMerged1 = CycloneDXUtils.FlatMerge(sbom1, sbom2);
+            var result = CycloneDXUtils.FlatMerge(sbomMerged1, sbom3);
 
             Snapshot.Match(result);
         }
