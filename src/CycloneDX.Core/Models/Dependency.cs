@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using CycloneDX.Core.Models;
@@ -74,17 +75,17 @@ namespace CycloneDX.Models
                 return false;
             }
 
-            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(other, Json.Serializer.SerializerOptionsForHash);
         }
 
         public bool Equals(Dependency obj)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(obj, Json.Serializer.SerializerOptionsForHash);
         }
 
         public override int GetHashCode()
         {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
         }
     }
 
