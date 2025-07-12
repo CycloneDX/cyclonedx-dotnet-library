@@ -28,10 +28,11 @@ namespace CycloneDX.Spdx.Tests
     public class XmlValidatorTests
     {
         [Theory]
-        [InlineData("document")]
-        public void ValidateXmlStringTest(string baseFilename)
+        //[InlineData("v2.2")]
+        [InlineData("v2.3")]
+        public void ValidateXmlStringTest(string version)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".xml");
+            var resourceFilename = Path.Join("Resources", version, "document" + ".xml");
             var document = File.ReadAllText(resourceFilename);
 
             var result = XmlValidator.Validate(document);

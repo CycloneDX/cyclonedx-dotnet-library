@@ -1,6 +1,6 @@
 ﻿{
   "SPDXID": "SPDXRef-DOCUMENT",
-  "spdxVersion": "SPDX-2.2",
+  "spdxVersion": "SPDX-2.3",
   "creationInfo": {
     "comment": "This SPDX document has been converted from CycloneDX format.",
     "created": "2021-12-24T12:00:00Z"
@@ -17,18 +17,14 @@
         "Copyright (C) 2005 William Pugh",
         "Copyright (C) 2004,2005 University of Maryland"
       ],
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "LGPL-3.0-or-later",
       "licenseInfoFromFiles": [
         "Apache-2.0",
         "LGPL-2.1-only"
       ],
       "name": "findbugs-project",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "APPLICATION",
       "versionInfo": "3.0.0"
     }
   ]

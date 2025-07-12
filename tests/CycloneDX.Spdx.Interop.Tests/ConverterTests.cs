@@ -22,16 +22,18 @@ using Snapshooter;
 using Snapshooter.Xunit;
 using CycloneDX.Models;
 using CycloneDX.Spdx.Serialization;
+using System.Reflection.Metadata;
 
 namespace CycloneDX.Spdx.Interop.Tests
 {
     public class ConverterTests
     {
         [Theory]
-        [InlineData("document")]
-        public void FromSpdxToCDXToSpdxRoundTripTest(string baseFilename)
+        [InlineData("v2.2")]
+        [InlineData("v2.3")]
+        public void FromSpdxToCDXToSpdxRoundTripTest(string version)
         {
-            var resourceFilename = Path.Join("Resources", "Spdx", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "Spdx", version, "document" + ".json");
             var fileContents = File.ReadAllText(resourceFilename);
 
             var spdxDocument = JsonSerializer.Deserialize(fileContents);
@@ -39,21 +41,22 @@ namespace CycloneDX.Spdx.Interop.Tests
             var result = cdxBom.ToSpdx();
             var resultString = JsonSerializer.Serialize(result);
 
-            Snapshot.Match(resultString, SnapshotNameExtension.Create(baseFilename));
+            Snapshot.Match(resultString, SnapshotNameExtension.Create($"{version}document"));
         }
 
         [Theory]
-        [InlineData("document")]
-        public void FromSpdxToCDXTest(string baseFilename)
+        [InlineData("v2.2")]
+        [InlineData("v2.3")]
+        public void FromSpdxToCDXTest(string version)
         {
-            var resourceFilename = Path.Join("Resources", "Spdx", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "Spdx",version, "document" + ".json");
             var fileContents = File.ReadAllText(resourceFilename);
 
             var spdxDocument = JsonSerializer.Deserialize(fileContents);
             var cdxBom = spdxDocument.ToCycloneDX();
             var resultString = CycloneDX.Json.Serializer.Serialize(cdxBom);
 
-            Snapshot.Match(resultString, SnapshotNameExtension.Create(baseFilename));
+            Snapshot.Match(resultString, SnapshotNameExtension.Create($"{version}document"));
         }
 
         [Theory]

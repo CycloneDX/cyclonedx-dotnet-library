@@ -1,6 +1,6 @@
 ﻿{
   "SPDXID": "SPDXRef-DOCUMENT",
-  "spdxVersion": "SPDX-2.2",
+  "spdxVersion": "SPDX-2.3",
   "creationInfo": {
     "comment": "This package has been shipped in source and binary form.\nThe binaries were created with gcc 4.5.1 and expect to link to\ncompatible system run time libraries.",
     "created": "2010-01-29T18:30:22Z",
@@ -9,11 +9,11 @@
       "Organization: ExampleCodeInspect ()",
       "Person: Jane Doe ()"
     ],
-    "licenseListVersion": "3.9"
+    "licenseListVersion": "3.17"
   },
   "name": "SPDX-Tools-v2.0",
   "dataLicense": "CC0-1.0",
-  "comment": "This document was created using CycloneDX.Spdx 2.0 using licenses from the web site.",
+  "comment": "This document was created using SPDX 2.0 using licenses from the web site.",
   "externalDocumentRefs": [
     {
       "externalDocumentId": "DocumentRef-spdx-tool-1.2",
@@ -31,7 +31,7 @@
     },
     {
       "licenseId": "LicenseRef-2",
-      "extractedText": "This package includes the GRDDL parser developed by Hewlett Packard under the following license:\n\uFFFD Copyright 2007 Hewlett-Packard Development Company, LP\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: \n\nRedistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. \nRedistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. \nThe name of the author may not be used to endorse or promote products derived from this software without specific prior written permission. \nTHIS SOFTWARE IS PROVIDED BY THE AUTHOR \u0060\u0060AS IS\u0027\u0027 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+      "extractedText": "This package includes the GRDDL parser developed by Hewlett Packard under the following license:\n\u00A9 Copyright 2007 Hewlett-Packard Development Company, LP\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: \n\nRedistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. \nRedistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. \nThe name of the author may not be used to endorse or promote products derived from this software without specific prior written permission. \nTHIS SOFTWARE IS PROVIDED BY THE AUTHOR \u0060\u0060AS IS\u0027\u0027 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
     },
     {
       "licenseId": "LicenseRef-4",
@@ -77,11 +77,11 @@
       "comment": "Another example reviewer."
     }
   ],
-  "documentNamespace": "http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301",
   "documentDescribes": [
     "SPDXRef-File",
     "SPDXRef-Package"
   ],
+  "documentNamespace": "http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301",
   "packages": [
     {
       "SPDXID": "SPDXRef-Package",
@@ -96,6 +96,7 @@
       "attributionTexts": [
         "The GNU C Library is free software.  See the file COPYING.LIB for copying conditions, and LICENSES for notices about a few contributions that require these additional notices to be distributed.  License copyright years may be listed using range notation, e.g., 1996-2015, indicating that every year in the range, inclusive, is a copyrightable year that would otherwise be listed individually."
       ],
+      "builtDate": "2011-01-29T18:30:22Z",
       "checksums": [
         {
           "algorithm": "MD5",
@@ -108,6 +109,10 @@
         {
           "algorithm": "SHA256",
           "checksumValue": "11b6d3ee554eedf79299905a98f9b9a04e498210b59f15094c916c91d150efcd"
+        },
+        {
+          "algorithm": "BLAKE2b_384",
+          "checksumValue": "aaabd89c926ab525c242e6621f2f5fa73aa4afe3d9e24aed727faaadd6af38b620bdb623dd2b4788b1c8086984af8706"
         }
       ],
       "copyrightText": "Copyright 2008-2010 John Smith",
@@ -121,17 +126,12 @@
         },
         {
           "comment": "This is the external ref for Acme",
-          "referenceCategory": "OTHER",
+          "referenceCategory": "PERSISTENT_ID",
           "referenceLocator": "acmecorp/acmenator/4.1.3-alpha",
           "referenceType": "http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301#LocationRef-acmeforge"
         }
       ],
       "filesAnalyzed": true,
-      "hasFiles": [
-        "SPDXRef-CommonsLangSrc",
-        "SPDXRef-JenaLib",
-        "SPDXRef-DoapSource"
-      ],
       "homepage": "http://ftp.gnu.org/gnu/glibc",
       "licenseComments": "The license for this project changed with the release of version x.y.  The version of the project included here post-dates the license change.",
       "licenseConcluded": "(LGPL-2.0-only OR LicenseRef-3)",
@@ -150,9 +150,28 @@
         ],
         "packageVerificationCodeValue": "d6a770ba38583ed4bb4525bd96e50461655d2758"
       },
+      "primaryPackagePurpose": "SOURCE",
+      "hasFiles": [
+        "SPDXRef-Specification",
+        "SPDXRef-Specification",
+        "SPDXRef-CommonsLangSrc",
+        "SPDXRef-Specification",
+        "SPDXRef-CommonsLangSrc",
+        "SPDXRef-JenaLib",
+        "SPDXRef-Specification",
+        "SPDXRef-CommonsLangSrc",
+        "SPDXRef-JenaLib",
+        "SPDXRef-DoapSource",
+        "SPDXRef-Specification",
+        "SPDXRef-CommonsLangSrc",
+        "SPDXRef-JenaLib",
+        "SPDXRef-DoapSource"
+      ],
+      "releaseDate": "2012-01-29T18:30:22Z",
       "sourceInfo": "uses glibc-2_11-branch from git://sourceware.org/git/glibc.git.",
       "summary": "GNU C library.",
       "supplier": "Person: Jane Doe (jane.doe@example.com)",
+      "validUntilDate": "2014-01-29T18:30:22Z",
       "versionInfo": "2.11.1"
     },
     {
@@ -167,7 +186,6 @@
     },
     {
       "SPDXID": "SPDXRef-fromDoap-0",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz",
       "externalRefs": [
         {
@@ -178,9 +196,8 @@
       ],
       "filesAnalyzed": false,
       "homepage": "http://www.openjena.org/",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
       "name": "Jena",
+      "primaryPackagePurpose": "APPLICATION",
       "versionInfo": "3.12.0"
     },
     {
@@ -278,6 +295,20 @@
       ]
     },
     {
+      "SPDXID": "SPDXRef-Specification",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "fff4e1c67a2d28fced849ee1bb76e7391b93f125"
+        }
+      ],
+      "comment": "Specification Documentation",
+      "fileName": "./docs/myspec.pdf",
+      "fileTypes": [
+        "DOCUMENTATION"
+      ]
+    },
+    {
       "SPDXID": "SPDXRef-File",
       "annotations": [
         {
@@ -314,7 +345,7 @@
         "GPL-2.0-only",
         "LicenseRef-2"
       ],
-      "noticeText": "Copyright (c) 2001 Aaron Lehmann aaroni@vitelus.com\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \uFFFDSoftware\uFFFD), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \uFFFDAS IS\u0027, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+      "noticeText": "Copyright (c) 2001 Aaron Lehmann aaroni@vitelus.com\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \u0022Software\u0022), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: \nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \u0022AS IS\u0022, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
     }
   ],
   "snippets": [
@@ -356,48 +387,38 @@
   "relationships": [
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "SPDXRef-Package",
-      "relationshipType": "CONTAINS"
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Package"
     },
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "DocumentRef-spdx-tool-1.2:SPDXRef-ToolsElement",
-      "relationshipType": "COPY_OF"
-    },
-    {
-      "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "SPDXRef-File",
-      "relationshipType": "DESCRIBES"
-    },
-    {
-      "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "SPDXRef-Package",
-      "relationshipType": "DESCRIBES"
+      "relationshipType": "COPY_OF",
+      "relatedSpdxElement": "DocumentRef-spdx-tool-1.2:SPDXRef-ToolsElement"
     },
     {
       "spdxElementId": "SPDXRef-Package",
-      "relatedSpdxElement": "SPDXRef-JenaLib",
-      "relationshipType": "CONTAINS"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package",
-      "relatedSpdxElement": "SPDXRef-Saxon",
-      "relationshipType": "DYNAMIC_LINK"
+      "relationshipType": "DYNAMIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Saxon"
     },
     {
       "spdxElementId": "SPDXRef-CommonsLangSrc",
-      "relatedSpdxElement": "NOASSERTION",
-      "relationshipType": "GENERATED_FROM"
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "NOASSERTION"
     },
     {
       "spdxElementId": "SPDXRef-JenaLib",
-      "relatedSpdxElement": "SPDXRef-Package",
-      "relationshipType": "CONTAINS"
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Specification",
+      "relationshipType": "SPECIFICATION_FOR",
+      "relatedSpdxElement": "SPDXRef-fromDoap-0"
     },
     {
       "spdxElementId": "SPDXRef-File",
-      "relatedSpdxElement": "SPDXRef-fromDoap-0",
-      "relationshipType": "GENERATED_FROM"
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-fromDoap-0"
     }
   ]
 }

@@ -35,7 +35,7 @@ namespace CycloneDX.Spdx.Validation
             var validationMessages = new List<string>();
 
             var assembly = typeof(XmlValidator).GetTypeInfo().Assembly;
-            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Spdx.Schemas.spdx-2.2.schema.xsd"))
+            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Spdx.Schemas.spdx-2.3.schema.xsd"))
             {
                 var settings = new XmlReaderSettings();
 

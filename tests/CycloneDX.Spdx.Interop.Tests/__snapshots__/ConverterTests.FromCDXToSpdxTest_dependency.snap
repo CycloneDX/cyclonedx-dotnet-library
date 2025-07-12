@@ -1,6 +1,6 @@
 ﻿{
   "SPDXID": "SPDXRef-DOCUMENT",
-  "spdxVersion": "SPDX-2.2",
+  "spdxVersion": "SPDX-2.3",
   "creationInfo": {
     "comment": "This SPDX document has been converted from CycloneDX format.",
     "created": "2021-12-24T12:00:00Z"
@@ -11,47 +11,23 @@
   "packages": [
     {
       "SPDXID": "SPDXRef-library-a",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "library-a",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     },
     {
       "SPDXID": "SPDXRef-library-b",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "library-b",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     },
     {
       "SPDXID": "SPDXRef-library-c",
-      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
-      "homepage": "NOASSERTION",
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "licenseInfoFromFiles": [
-        "NOASSERTION"
-      ],
       "name": "library-c",
-      "originator": "NOASSERTION",
-      "supplier": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0.0"
     }
   ]
