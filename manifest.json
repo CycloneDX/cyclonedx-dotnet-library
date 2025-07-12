@@ -3000,310 +3000,338 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Annotation.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.Annotation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Annotation.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.Annotation.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.Annotation",
+      "Title": "CycloneDX.Spdx.Models.v2_3.Annotation",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.AnnotationType.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.AnnotationType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.AnnotationType.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.AnnotationType.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.AnnotationType",
+      "Title": "CycloneDX.Spdx.Models.v2_3.AnnotationType",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Checksum.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.Checksum.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Checksum.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.Checksum.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.Checksum",
+      "Title": "CycloneDX.Spdx.Models.v2_3.Checksum",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ChecksumAlgorithm.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.ChecksumAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ChecksumAlgorithm.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.ChecksumAlgorithm.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.ChecksumAlgorithm",
+      "Title": "CycloneDX.Spdx.Models.v2_3.ChecksumAlgorithm",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.CreationInfo.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.CreationInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.CreationInfo.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.CreationInfo.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.CreationInfo",
+      "Title": "CycloneDX.Spdx.Models.v2_3.CreationInfo",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.CrossRef.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.CrossRef.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.CrossRef.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.CrossRef.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.CrossRef",
+      "Title": "CycloneDX.Spdx.Models.v2_3.CrossRef",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalDocumentRef.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.ExternalDocumentRef.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalDocumentRef.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.ExternalDocumentRef.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.ExternalDocumentRef",
+      "Title": "CycloneDX.Spdx.Models.v2_3.ExternalDocumentRef",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRef.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.ExternalRef.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRef.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.ExternalRef.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.ExternalRef",
+      "Title": "CycloneDX.Spdx.Models.v2_3.ExternalRef",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRefCategory.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.ExternalRefCategory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExternalRefCategory.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.ExternalRefCategory.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.ExternalRefCategory",
+      "Title": "CycloneDX.Spdx.Models.v2_3.ExternalRefCategory",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExtractedLicensingInfo.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.ExtractedLicensingInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ExtractedLicensingInfo.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.ExtractedLicensingInfo.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.ExtractedLicensingInfo",
+      "Title": "CycloneDX.Spdx.Models.v2_3.ExtractedLicensingInfo",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.File.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.File.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.File.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.File.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.File",
+      "Title": "CycloneDX.Spdx.Models.v2_3.File",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.FileType.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.FileType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.FileType.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.FileType.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.FileType",
+      "Title": "CycloneDX.Spdx.Models.v2_3.FileType",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Package.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.Package.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Package.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.Package.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.Package",
+      "Title": "CycloneDX.Spdx.Models.v2_3.Package",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.PackageVerificationCode.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.PackageVerificationCode.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.PackageVerificationCode.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.PackageVerificationCode.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.PackageVerificationCode",
+      "Title": "CycloneDX.Spdx.Models.v2_3.PackageVerificationCode",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Range.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.PrimaryPackagePurposeType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Range.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.PrimaryPackagePurposeType.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.Range",
+      "Title": "CycloneDX.Spdx.Models.v2_3.PrimaryPackagePurposeType",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.RangePointer.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.Range.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.RangePointer.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.Range.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.RangePointer",
+      "Title": "CycloneDX.Spdx.Models.v2_3.Range",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Relationship.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.RangePointer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Relationship.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.RangePointer.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.Relationship",
+      "Title": "CycloneDX.Spdx.Models.v2_3.RangePointer",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.RelationshipType.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.Relationship.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.RelationshipType.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.Relationship.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.RelationshipType",
+      "Title": "CycloneDX.Spdx.Models.v2_3.Relationship",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.ReviewInformation.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.RelationshipType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.ReviewInformation.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.RelationshipType.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.ReviewInformation",
+      "Title": "CycloneDX.Spdx.Models.v2_3.RelationshipType",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.Snippet.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.ReviewInformation.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.Snippet.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.ReviewInformation.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.Snippet",
+      "Title": "CycloneDX.Spdx.Models.v2_3.ReviewInformation",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.SpdxDocument.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.Snippet.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.SpdxDocument.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.Snippet.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2.SpdxDocument",
+      "Title": "CycloneDX.Spdx.Models.v2_3.Snippet",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_2.yml",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.SpdxDocument.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CycloneDX.Spdx.Models.v2_2.html"
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.SpdxDocument.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "CycloneDX.Spdx.Models.v2_2",
+      "Title": "CycloneDX.Spdx.Models.v2_3.SpdxDocument",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.UtcDateTimeConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.UtcDateTimeConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_3.UtcDateTimeConverter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Models.v2_3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Models.v2_3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Models.v2_3",
       "Summary": null
     },
     {
