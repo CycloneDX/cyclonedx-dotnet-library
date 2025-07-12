@@ -2629,6 +2629,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Json.Serializer.SerializeAsync
   nameWithType: Serializer.SerializeAsync
+- uid: CycloneDX.Json.Serializer.SerializerOptionsForHash
+  name: SerializerOptionsForHash
+  href: api/CycloneDX.Json.Serializer.html#CycloneDX_Json_Serializer_SerializerOptionsForHash
+  commentId: P:CycloneDX.Json.Serializer.SerializerOptionsForHash
+  fullName: CycloneDX.Json.Serializer.SerializerOptionsForHash
+  nameWithType: Serializer.SerializerOptionsForHash
+- uid: CycloneDX.Json.Serializer.SerializerOptionsForHash*
+  name: SerializerOptionsForHash
+  href: api/CycloneDX.Json.Serializer.html#CycloneDX_Json_Serializer_SerializerOptionsForHash_
+  commentId: Overload:CycloneDX.Json.Serializer.SerializerOptionsForHash
+  isSpec: "True"
+  fullName: CycloneDX.Json.Serializer.SerializerOptionsForHash
+  nameWithType: Serializer.SerializerOptionsForHash
 - uid: CycloneDX.Json.Utils
   name: Utils
   href: api/CycloneDX.Json.Utils.html
