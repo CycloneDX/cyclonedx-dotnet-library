@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Product>CycloneDX.Spdx</Product>
     <Description>A .NET Standard library for SPDX documents.</Description>
     <PackageId>CycloneDX.Spdx</PackageId>
@@ -17,7 +17,7 @@
 
   <!--The below packages are natively provided by the framework hence are not need for the frameworks which they are included in. What is included can be checked via https://apisof.net/-->
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
 
   <ItemGroup>

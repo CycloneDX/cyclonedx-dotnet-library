@@ -183,7 +183,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 }
                 if (component.Supplier != null)
                 {
-                    var supplierEmails = component.Supplier.Contact.Where(c => c.Email != null).ToList();
+                    var supplierEmails = component.Supplier.Contact?.Where(c => c.Email != null).ToList() ?? new List<OrganizationalContact>();
                     var supplierEmail = supplierEmails.Count > 0 ? supplierEmails.First().Email : "";
                     if (component.Supplier.Name == component.Properties?.GetSpdxElement(PropertyTaxonomy.PACKAGE_SUPPLIER_ORGANIZATION))
                     {

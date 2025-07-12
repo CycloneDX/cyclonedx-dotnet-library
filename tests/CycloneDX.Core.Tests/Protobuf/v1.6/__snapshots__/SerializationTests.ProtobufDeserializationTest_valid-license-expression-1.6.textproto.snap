@@ -1,0 +1,58 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": "Acme Inc",
+      "Group": "com.acme",
+      "Name": "tomcat-catalina",
+      "Version": "9.0.14",
+      "Description": null,
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": null,
+          "Expression": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+          "BomRef": "my-license",
+          "Acknowledgement": "Declared"
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": null,
+            "Expression": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+            "BomRef": "my-license",
+            "Acknowledgement": "Declared"
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

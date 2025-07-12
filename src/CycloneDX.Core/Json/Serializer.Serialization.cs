@@ -34,6 +34,8 @@ namespace CycloneDX.Json
     {
         private static JsonSerializerOptions _options = Utils.GetJsonSerializerOptions();
 
+        public static JsonSerializerOptions SerializerOptions { get => _options; }
+
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.
         /// </summary>
@@ -41,7 +43,7 @@ namespace CycloneDX.Json
         /// <param name="outputStream"></param>
         /// <returns></returns>
         public static async Task SerializeAsync(Bom bom, Stream outputStream)
-        {
+        {            
             Contract.Requires(bom != null && outputStream != null);
             await JsonSerializer.SerializeAsync<Bom>(outputStream, BomUtils.GetBomForSerialization(bom), _options).ConfigureAwait(false);
         }

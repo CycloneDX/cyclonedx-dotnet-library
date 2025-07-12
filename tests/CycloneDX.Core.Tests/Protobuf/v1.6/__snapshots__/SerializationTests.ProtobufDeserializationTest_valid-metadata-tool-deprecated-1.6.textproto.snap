@@ -1,0 +1,58 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": {
+    "Tools": {
+      "Tools": [
+        {
+          "Vendor": "Awesome Vendor",
+          "Name": "Awesome Tool",
+          "Version": "9.1.2",
+          "Hashes": [
+            {
+              "Alg": "SHA_1",
+              "Content": "25ed8e31b995bb927966616df2a42b979a2717f0"
+            },
+            {
+              "Alg": "SHA_256",
+              "Content": "a74f733635a19aefb1f73e5947cef59cd7440c6952ef0f03d09d974274cbd6df"
+            }
+          ]
+        }
+      ]
+    },
+    "ProtobufTools": [
+      {
+        "Vendor": "Awesome Vendor",
+        "Name": "Awesome Tool",
+        "Version": "9.1.2",
+        "Hashes": [
+          {
+            "Alg": "SHA_1",
+            "Content": "25ed8e31b995bb927966616df2a42b979a2717f0"
+          },
+          {
+            "Alg": "SHA_256",
+            "Content": "a74f733635a19aefb1f73e5947cef59cd7440c6952ef0f03d09d974274cbd6df"
+          }
+        ],
+        "ExternalReferences": null,
+        "Components": null,
+        "Services": null
+      }
+    ],
+    "Authors": null,
+    "Component": null,
+    "Manufacture": null,
+    "Supplier": null
+  },
+  "Components": null,
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

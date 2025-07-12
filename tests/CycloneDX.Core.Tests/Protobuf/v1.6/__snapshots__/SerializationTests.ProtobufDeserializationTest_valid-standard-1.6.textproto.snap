@@ -1,0 +1,175 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": null,
+  "Compositions": null,
+  "Definitions": {
+    "Standards_XML": {
+      "Standards": [
+        {
+          "BomRef": "standard-1",
+          "Name": "Sample Standard",
+          "Version": "1.0.0",
+          "Description": "Description here",
+          "Owner": "Acme Inc",
+          "Requirements": [
+            {
+              "BomRef": "requirement-1",
+              "Identifier": "v1",
+              "Title": "Title here",
+              "Text": null,
+              "OpenCre": null,
+              "Parent": null
+            },
+            {
+              "BomRef": "requirement-1.1",
+              "Identifier": "v1.1",
+              "Title": "Title here",
+              "Text": "Text here",
+              "Descriptions": [
+                "Requirement is described hereand here"
+              ],
+              "OpenCre": null,
+              "Parent": "requirement-1"
+            },
+            {
+              "BomRef": "requirement-1.1.1",
+              "Identifier": "v1.1.1",
+              "Title": null,
+              "Text": "Text of the requirement here",
+              "Descriptions": [
+                "Supplemental text here"
+              ],
+              "OpenCre": [
+                "CRE:616-305"
+              ],
+              "Parent": "requirement-1.1"
+            }
+          ],
+          "Levels": [
+            {
+              "BomRef": "level-1",
+              "Identifier": "Level 1",
+              "Title": null,
+              "Description": "Description here",
+              "Requirements": [
+                "requirement-1.1.1"
+              ],
+              "AnyAttr": null
+            },
+            {
+              "BomRef": "level-2",
+              "Identifier": "Level 2",
+              "Title": null,
+              "Description": "Description here",
+              "Requirements": [
+                "requirement-1.1.1"
+              ],
+              "AnyAttr": null
+            },
+            {
+              "BomRef": "level-3",
+              "Identifier": "Level 3",
+              "Title": null,
+              "Description": "Description here",
+              "Requirements": [
+                "requirement-1.1.1"
+              ],
+              "AnyAttr": null
+            }
+          ],
+          "Any": null,
+          "AnyAttr": null,
+          "Signature": null
+        }
+      ],
+      "Any": null,
+      "AnyAttr": null
+    },
+    "Standards": [
+      {
+        "BomRef": "standard-1",
+        "Name": "Sample Standard",
+        "Version": "1.0.0",
+        "Description": "Description here",
+        "Owner": "Acme Inc",
+        "Requirements": [
+          {
+            "BomRef": "requirement-1",
+            "Identifier": "v1",
+            "Title": "Title here",
+            "Text": null,
+            "OpenCre": null,
+            "Parent": null
+          },
+          {
+            "BomRef": "requirement-1.1",
+            "Identifier": "v1.1",
+            "Title": "Title here",
+            "Text": "Text here",
+            "Descriptions": [
+              "Requirement is described hereand here"
+            ],
+            "OpenCre": null,
+            "Parent": "requirement-1"
+          },
+          {
+            "BomRef": "requirement-1.1.1",
+            "Identifier": "v1.1.1",
+            "Title": null,
+            "Text": "Text of the requirement here",
+            "Descriptions": [
+              "Supplemental text here"
+            ],
+            "OpenCre": [
+              "CRE:616-305"
+            ],
+            "Parent": "requirement-1.1"
+          }
+        ],
+        "Levels": [
+          {
+            "BomRef": "level-1",
+            "Identifier": "Level 1",
+            "Title": null,
+            "Description": "Description here",
+            "Requirements": [
+              "requirement-1.1.1"
+            ],
+            "AnyAttr": null
+          },
+          {
+            "BomRef": "level-2",
+            "Identifier": "Level 2",
+            "Title": null,
+            "Description": "Description here",
+            "Requirements": [
+              "requirement-1.1.1"
+            ],
+            "AnyAttr": null
+          },
+          {
+            "BomRef": "level-3",
+            "Identifier": "Level 3",
+            "Title": null,
+            "Description": "Description here",
+            "Requirements": [
+              "requirement-1.1.1"
+            ],
+            "AnyAttr": null
+          }
+        ],
+        "Any": null,
+        "AnyAttr": null,
+        "Signature": null
+      }
+    ]
+  },
+  "XmlSignature": null,
+  "Signature": null
+}

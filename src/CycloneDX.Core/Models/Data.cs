@@ -83,7 +83,7 @@ namespace CycloneDX.Models
 
         [XmlElement("sensitiveData")]
         [ProtoMember(6)]
-        public string SensitiveData { get; set; }
+        public List<string> SensitiveData { get; set; }
 
         [XmlElement("graphics")]
         [ProtoMember(7)]

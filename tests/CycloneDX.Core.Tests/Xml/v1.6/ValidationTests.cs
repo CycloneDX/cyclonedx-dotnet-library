@@ -30,6 +30,7 @@ namespace CycloneDX.Core.Tests.Xml.v1_6
         [InlineData("valid-assembly-1.6.xml")]
         [InlineData("valid-attestation-1.6.xml")]
         [InlineData("valid-bom-1.6.xml")]
+        [InlineData("valid-component-data-1.6.xml")]
         [InlineData("valid-component-hashes-1.6.xml")]
         [InlineData("valid-component-identifiers-1.6.xml")]
         [InlineData("valid-component-ref-1.6.xml")]

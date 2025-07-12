@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '6.0.x'
 
@@ -48,7 +48,7 @@ jobs:
       if: matrix.os == 'windows-latest'
       run:  New-Item -ItemType SymbolicLink -Path "/_" -Target "$env:GITHUB_WORKSPACE"
       shell: pwsh
-    - uses: actions/setup-dotnet@v3
+    - uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
 
@@ -69,15 +69,15 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '6.0.x'
 
       - name: Download DocFX
         run: |
-          wget -O docfx.zip https://github.com/dotnet/docfx/releases/download/v2.58.4/docfx.zip
+          wget -O docfx.zip https://github.com/dotnet/docfx/releases/download/v2.78.3/docfx-linux-x64-v2.78.3.zip
           unzip docfx.zip -d docfx/
-          chmod +x docfx/docfx.exe
+          chmod +x docfx/docfx
       - name: Build documentation
         run: |
-          docfx/docfx.exe docs/docfx.json
+          docfx/docfx docs/docfx.json

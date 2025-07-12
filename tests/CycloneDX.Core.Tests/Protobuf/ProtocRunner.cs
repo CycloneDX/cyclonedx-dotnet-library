@@ -26,7 +26,7 @@ namespace CycloneDX.Core.Tests.Protobuf
 {
     public class ProtocRunner
     {
-        internal ProtocResult Run(string workingDirectory, byte[] input, string[] arguments)
+        internal ProtocTextResult Run(string workingDirectory, byte[] input, string[] arguments)
         {
             var protocFilename = "protoc";
 
@@ -77,7 +77,7 @@ namespace CycloneDX.Core.Tests.Protobuf
                 {
                     p.Kill();
 
-                    return new ProtocResult
+                    return new ProtocTextResult
                     {
                         Output = output.ToString(),
                         Errors = errors.ToString(),
@@ -87,7 +87,7 @@ namespace CycloneDX.Core.Tests.Protobuf
 
                 Task.WaitAll(outputTask, errorTask);
 
-                return new ProtocResult
+                return new ProtocTextResult
                 {
                     Output = output.ToString(),
                     Errors = errors.ToString(),
@@ -96,7 +96,7 @@ namespace CycloneDX.Core.Tests.Protobuf
             }
             catch
             {
-                return new ProtocResult
+                return new ProtocTextResult
                 {
                     Output = "",
                     Errors = "Unable to execute protoc, ensure you have the protobuf compiler installed",
@@ -109,6 +109,88 @@ namespace CycloneDX.Core.Tests.Protobuf
             }
         }
 
+        internal ProtocBinaryResult Run(string workingDirectory, string input, string[] arguments)
+        {
+            var protocFilename = "protoc";
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                var enviromentPath = Environment.GetEnvironmentVariable("PATH");
+                var paths = enviromentPath.Split(';');
+                foreach (var path in paths)
+                {
+                    var filename = Path.Combine(path, "protoc.exe");
+                    if (File.Exists(filename))
+                    {
+                        protocFilename = filename;
+                        break;
+                    }
+                }
+            }
+
+            var psi = new ProcessStartInfo(protocFilename, string.Join(" ", arguments))
+            {
+                WorkingDirectory = workingDirectory,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            var p = new Process();
+            try
+            {
+                p.StartInfo = psi;
+                p.Start();
+
+                var output = new MemoryStream();
+                var errors = new StringBuilder();
+                var outputTask = ConsumeStreamAsync(p.StandardOutput.BaseStream, output);
+                var errorTask = ConsumeStreamReaderAsync(p.StandardError, errors);
+
+                p.StandardInput.Write(input);
+                p.StandardInput.Close();
+
+                var processExited = p.WaitForExit(20000);
+
+                if (processExited == false)
+                {
+                    p.Kill();
+
+                    return new ProtocBinaryResult
+                    {
+                        Output = output,
+                        Errors = errors.ToString(),
+                        ExitCode = -1
+                    };
+                }
+
+                Task.WaitAll(outputTask, errorTask);
+
+                return new ProtocBinaryResult
+                {
+                    Output = output,
+                    Errors = errors.ToString(),
+                    ExitCode = p.ExitCode
+                };
+            }
+            catch
+            {
+                return new ProtocBinaryResult
+                {
+                    Output = null,
+                    Errors = "Unable to execute protoc, ensure you have the protobuf compiler installed",
+                    ExitCode = -1
+                };
+            }
+            finally
+            {
+                p.Dispose();
+            }
+        }
+
+
         private static async Task ConsumeStreamReaderAsync(StreamReader reader, StringBuilder lines)
         {
             await Task.Yield();
@@ -118,6 +200,13 @@ namespace CycloneDX.Core.Tests.Protobuf
             {
                 lines.AppendLine(line);
             }
+        }
+
+        private static async Task ConsumeStreamAsync(Stream reader, Stream output)
+        {
+            await Task.Yield();
+
+            reader.CopyTo(output);
         }
     }
 }
