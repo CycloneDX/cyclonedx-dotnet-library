@@ -143,6 +143,11 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             refPropValue = $"{extRef.ReferenceLocator} {extRef.Comment}";
                         }
                         component.Properties.AddSpdxElement(refPropName, refPropValue);
+
+                        if (refPropName == PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL)
+                        {
+                            component.Purl = refPropValue;
+                        }
                     }
                 }
             }
