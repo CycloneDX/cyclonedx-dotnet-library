@@ -159,6 +159,11 @@ namespace CycloneDX.Xml
             if (component.Properties?.Count == 0) { component.Properties = null; }
             if (component.Evidence?.Copyright?.Count == 0) { component.Evidence.Copyright = null; }
             if (component.Evidence?.Licenses?.Count == 0) { component.Evidence.Licenses = null; }
+            if (component.Data?.Count == 0) { component.Data = null; }
+            if (component.Authors?.Count == 0) { component.Authors = null; }
+            if (component.Tags?.Count == 0) { component.Tags = null; }
+            if (component.Swhid?.Count == 0) { component.Swhid = null; }
+            if (component.OmniborId?.Count == 0) { component.OmniborId = null; }
 
             if (component.Components != null)
             {

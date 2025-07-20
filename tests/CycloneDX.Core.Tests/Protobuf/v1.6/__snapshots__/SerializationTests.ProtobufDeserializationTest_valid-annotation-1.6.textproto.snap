@@ -28,7 +28,6 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": null,
       "XmlSignature": null,
       "Signature": null
@@ -128,7 +127,6 @@
           "Pedigree": null,
           "Evidence": null,
           "ModelCard": null,
-          "Data": null,
           "CryptoProperties": null,
           "XmlSignature": null,
           "Signature": null
