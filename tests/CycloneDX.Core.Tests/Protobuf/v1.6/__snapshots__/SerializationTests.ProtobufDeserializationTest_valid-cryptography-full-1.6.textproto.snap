@@ -28,7 +28,6 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": {
         "AssetType": "Algorithm",
         "AlgorithmProperties": {
@@ -85,7 +84,6 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": {
         "AssetType": "Certificate",
         "AlgorithmProperties": null,
@@ -127,7 +125,6 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": {
         "AssetType": "Protocol",
         "AlgorithmProperties": null,
@@ -176,7 +173,6 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": {
         "AssetType": "Related_Crypto_Material",
         "AlgorithmProperties": null,

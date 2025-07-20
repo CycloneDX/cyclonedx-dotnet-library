@@ -214,7 +214,6 @@
         }
       },
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": null,
       "XmlSignature": null,
       "Signature": null
@@ -329,7 +328,6 @@
         "Callstack": null
       },
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": null,
       "XmlSignature": null,
       "Signature": null
