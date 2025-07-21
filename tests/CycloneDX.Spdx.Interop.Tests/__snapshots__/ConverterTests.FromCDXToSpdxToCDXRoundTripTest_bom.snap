@@ -66,6 +66,7 @@
           "expression": "Apache-2.0"
         }
       ],
+      "purl": "pkg:npm/acme/component@1.0.0",
       "externalReferences": [
         {
           "url": "NOASSERTION",
