@@ -29,8 +29,58 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// <summary>
         /// Category for the external reference
         /// </summary>
-        [XmlElement("referenceCategory")]
+        [XmlIgnore]
         public ExternalRefCategory ReferenceCategory { get; set; }
+        
+        /// <summary>
+        /// Category for the external reference, adjusted to allow values with hyphens and underscores
+        /// </summary>
+        [XmlElement("referenceCategory")]
+        [JsonIgnore]
+        public string ReferenceCategoryAsString
+        {
+            get
+            {
+                string result;
+                switch (ReferenceCategory)
+                {
+                    case ExternalRefCategory.PACKAGE_MANAGER:
+                        result = "PACKAGE-MANAGER";
+                        break;
+                    case ExternalRefCategory.PERSISTENT_ID:
+                        result = "PERSISTENT-ID";
+                        break;
+                    default:
+                        result = ReferenceCategory.ToString();
+                        break;
+                }
+                return result;
+            }
+
+
+            set
+            {
+                switch (value.ToUpperInvariant())
+                {
+                    case "OTHER":
+                        ReferenceCategory = ExternalRefCategory.OTHER;
+                        break;
+                    case "SECURITY":
+                        ReferenceCategory = ExternalRefCategory.SECURITY;
+                        break;
+                    case "PACKAGE_MANAGER":
+                    case "PACKAGE-MANAGER":
+                        ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
+                        break;
+                    case "PERSISTENT_ID":
+                    case "PERSISTENT-ID":
+                        ReferenceCategory = ExternalRefCategory.PERSISTENT_ID;
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
+            }
+        }
 
         /// <summary>
         /// The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location. The format of the locator is subject to constraints defined by the &lt;type&gt;.
