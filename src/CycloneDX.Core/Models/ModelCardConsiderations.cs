@@ -39,7 +39,23 @@ namespace CycloneDX.Models
             [ProtoMember(2)]
             public string MitigationStrategy { get; set; }
         }
-        
+
+        [ProtoContract]
+        public class ModelCardEnvironmentalConsideration
+        {
+            [XmlArray("energyConsumptions")]
+            [XmlArrayItem("energyConsumption")]
+            [ProtoMember(1)]
+            public List<EnergyConsumption> EnergyConsumptions { get; set; }
+
+            [XmlArray("properties")]
+            [XmlArrayItem("property")]
+            [ProtoMember(2)]
+            public List<Property> Properties { get; set; }
+            public bool ShouldSerializeProperties() => Properties?.Count > 0;
+        }
+          
+
         [ProtoContract]
         public class ModelCardFairnessAssessment
         {
@@ -64,30 +80,41 @@ namespace CycloneDX.Models
         [XmlArrayItem("user")]
         [ProtoMember(1)]
         public List<string> Users { get; set; }
+        public bool ShouldSerializeUsers() => Users?.Count > 0;
 
         [XmlArray("useCases")]
         [XmlArrayItem("useCase")]
         [ProtoMember(2)]
         public List<string> UseCases { get; set; }
+        public bool ShouldSerializeUseCases() => UseCases?.Count > 0;
 
         [XmlArray("technicalLimitations")]
         [XmlArrayItem("technicalLimitation")]
         [ProtoMember(3)]
         public List<string> TechnicalLimitations { get; set; }
+        public bool ShouldSerializeTechnicalLimitations() => TechnicalLimitations?.Count > 0;
 
         [XmlArray("performanceTradeoffs")]
         [XmlArrayItem("performanceTradeoff")]
         [ProtoMember(4)]
         public List<string> PerformanceTradeoffs { get; set; }
+        public bool ShouldSerializePerformanceTradeoffs() => PerformanceTradeoffs?.Count > 0;
 
         [XmlArray("ethicalConsiderations")]
         [XmlArrayItem("ethicalConsideration")]
         [ProtoMember(5)]
         public List<ModelCardEthicalConsideration> EthicalConsiderations { get; set; }
+        public bool ShouldSerializeEthicalConsiderations() => EthicalConsiderations?.Count > 0;
 
         [XmlArray("fairnessAssessments")]
         [XmlArrayItem("fairnessAssessment")]
         [ProtoMember(6)]
         public List<ModelCardFairnessAssessment> FairnessAssessments { get; set; }
+
+        public bool ShouldSerializeFairnessAssessments() => FairnessAssessments?.Count > 0;
+
+        [XmlElement("environmentalConsiderations")]
+        [ProtoMember(7)]
+        public ModelCardEnvironmentalConsideration EnvironmentalConsiderations { get; set; }
     }
 }

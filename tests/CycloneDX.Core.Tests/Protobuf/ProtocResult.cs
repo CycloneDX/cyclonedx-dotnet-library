@@ -16,12 +16,20 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
+using System.IO;
 
 namespace CycloneDX.Core.Tests.Protobuf
 {
-    public class ProtocResult
+    public class ProtocTextResult
     {
         public string Output { get; set; }
+        public string Errors { get; set; }
+        public int ExitCode { get; set; }
+    }
+
+    public class ProtocBinaryResult
+    {
+        public Stream Output { get; set; }
         public string Errors { get; set; }
         public int ExitCode { get; set; }
     }

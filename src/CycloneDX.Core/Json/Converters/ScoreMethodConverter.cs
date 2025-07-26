@@ -61,10 +61,6 @@ namespace CycloneDX.Json.Converters
             {
                 writer.WriteStringValue("other");
             }
-            else if (value == ScoreMethod.CVSSV31)
-            {
-                writer.WriteStringValue("CVSSv3.1");
-            }
             else if (value.ToString().StartsWith("CVSSV"))
             {
                 writer.WriteStringValue("CVSSv" + value.ToString().Substring(5));

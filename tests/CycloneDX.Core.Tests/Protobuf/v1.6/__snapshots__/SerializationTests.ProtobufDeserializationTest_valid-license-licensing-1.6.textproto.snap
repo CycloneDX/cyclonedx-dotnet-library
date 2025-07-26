@@ -1,0 +1,162 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": "Acme Inc",
+      "Group": "com.acme",
+      "Name": "cryptographic-provider",
+      "Version": "2.2.0",
+      "Description": null,
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": {
+            "Name": "Acme Commercial License",
+            "Text": null,
+            "Url": null,
+            "BomRef": "acme-license-1",
+            "Licensing": {
+              "AltIds": [
+                "acme",
+                "acme-license"
+              ],
+              "Licensor": {
+                "Organization": {
+                  "Name": "Acme Inc",
+                  "Url": null,
+                  "Contact": [
+                    {
+                      "Name": "Acme Licensing Fulfillment",
+                      "Email": "licensing@example.com",
+                      "Phone": null,
+                      "BomRef": null
+                    }
+                  ],
+                  "BomRef": null,
+                  "Address": null
+                },
+                "Individual": null
+              },
+              "Licensee": {
+                "Organization": {
+                  "Name": "Example Co.",
+                  "Url": null,
+                  "Contact": null,
+                  "BomRef": null,
+                  "Address": null
+                },
+                "Individual": null
+              },
+              "Purchaser": {
+                "Organization": null,
+                "Individual": {
+                  "Name": "Samantha Wright",
+                  "Email": "samantha.wright@gmail.com",
+                  "Phone": "800-555-1212",
+                  "BomRef": null
+                }
+              },
+              "PurchaseOrder": "PO-12345",
+              "LicenseTypes": [
+                "Appliance"
+              ],
+              "LastRenewal": "2022-04-13T20:20:39Z",
+              "Expiration": "2023-04-13T20:20:39Z"
+            }
+          },
+          "Expression": null,
+          "BomRef": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Name": "Acme Commercial License",
+              "Text": null,
+              "Url": null,
+              "BomRef": "acme-license-1",
+              "Licensing": {
+                "AltIds": [
+                  "acme",
+                  "acme-license"
+                ],
+                "Licensor": {
+                  "Organization": {
+                    "Name": "Acme Inc",
+                    "Url": null,
+                    "Contact": [
+                      {
+                        "Name": "Acme Licensing Fulfillment",
+                        "Email": "licensing@example.com",
+                        "Phone": null,
+                        "BomRef": null
+                      }
+                    ],
+                    "BomRef": null,
+                    "Address": null
+                  },
+                  "Individual": null
+                },
+                "Licensee": {
+                  "Organization": {
+                    "Name": "Example Co.",
+                    "Url": null,
+                    "Contact": null,
+                    "BomRef": null,
+                    "Address": null
+                  },
+                  "Individual": null
+                },
+                "Purchaser": {
+                  "Organization": null,
+                  "Individual": {
+                    "Name": "Samantha Wright",
+                    "Email": "samantha.wright@gmail.com",
+                    "Phone": "800-555-1212",
+                    "BomRef": null
+                  }
+                },
+                "PurchaseOrder": "PO-12345",
+                "LicenseTypes": [
+                  "Appliance"
+                ],
+                "LastRenewal": "2022-04-13T20:20:39Z",
+                "Expiration": "2023-04-13T20:20:39Z"
+              }
+            },
+            "Expression": null,
+            "BomRef": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

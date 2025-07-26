@@ -34,7 +34,7 @@ namespace CycloneDX.Json
         public static async Task<Bom> DeserializeAsync(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
-            return await JsonSerializer.DeserializeAsync<Bom>(jsonStream, _options).ConfigureAwait(false);
+            return await JsonSerializer.DeserializeAsync<Bom>(jsonStream, getOption()).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -45,7 +45,8 @@ namespace CycloneDX.Json
         public static Bom Deserialize(string jsonString)
         {
             Contract.Requires(!string.IsNullOrEmpty(jsonString));
-            return JsonSerializer.Deserialize<Bom>(jsonString, _options);
+            return JsonSerializer.Deserialize<Bom>(jsonString, getOption());
         }
+
     }
 }

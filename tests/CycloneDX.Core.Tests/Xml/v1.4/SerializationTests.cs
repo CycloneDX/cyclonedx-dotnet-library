@@ -54,6 +54,7 @@ namespace CycloneDX.Core.Tests.Xml.v1_4
         [InlineData("valid-minimal-viable-1.4.xml")]
         [InlineData("valid-patch-1.4.xml")]
         [InlineData("valid-properties-1.4.xml")]
+        [InlineData("valid-properties-components-1.4.xml")]
         // [InlineData("valid-random-attributes-1.4.xml")]
         [InlineData("valid-release-notes-1.4.xml")]
         [InlineData("valid-service-1.4.xml")]

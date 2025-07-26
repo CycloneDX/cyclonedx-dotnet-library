@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -51,6 +52,14 @@ namespace CycloneDX.Models
                 BomUtils.EnumerateAllServices(this, (service) =>
                 {
                     service.SpecVersion = _specVersion;
+                    if (service.XmlData != null)
+                    {
+                        service.XmlData.SpecVersion = _specVersion;
+                    }
+                });
+                BomUtils.EnumerateAllDatasetChoices(this, (DatasetChoices) =>
+                {
+                    DatasetChoices.SpecVersion = _specVersion;
                 });
             }
         }
@@ -84,6 +93,9 @@ namespace CycloneDX.Models
                         break;
                     case "1.5":
                         SpecVersion = SpecificationVersion.v1_5;
+                        break;
+                    case "1.6":
+                        SpecVersion = SpecificationVersion.v1_6;
                         break;
                     default:
                         throw new ArgumentException($"Unsupported specification version: {value}");
@@ -168,5 +180,21 @@ namespace CycloneDX.Models
         [ProtoMember(13)]
         public List<Formula> Formulation { get; set; }
         public bool ShouldSerializeFormulation() { return Formulation?.Count > 0; }
+
+
+        [XmlElement("declarations")]
+        [ProtoMember(14)]
+        public Declarations Declarations { get; set; }
+        public bool ShouldSerializeDeclarations() { return Declarations != null; }
+
+        [XmlElement("definitions")]
+        [ProtoMember(15)]
+        public Definitions Definitions { get; set; }
+
+        [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        [JsonIgnore]
+        public XmlElement XmlSignature { get; set; }
+        [XmlIgnore]
+        public SignatureChoice Signature { get; set; }
     }
 }

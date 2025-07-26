@@ -62,7 +62,7 @@ namespace CycloneDX.Models
         [XmlArray("taskTypes")]
         [XmlArrayItem("taskType")]
         [ProtoMember(9)]
-        public List<WorkflowTaskType> TaskTypes { get; set; }
+        public List<WorkflowTask.TaskType> TaskTypes { get; set; }
 
         [XmlElement("trigger")]
         [ProtoMember(10)]
@@ -110,7 +110,7 @@ namespace CycloneDX.Models
         [XmlArray("runtimeTopology")]
         [XmlArrayItem("dependency")]
         [ProtoMember(17)]
-        public List<Dependency> RuntimeTopologies { get; set; }
+        public List<Dependency> RuntimeTopology { get; set; }
         
         [XmlArray("properties")]
         [XmlArrayItem("property")]

@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",
+  "specVersion": "1.6",
   "metadata": {
     "timestamp": "2021-12-24T12:00:00Z",
     "properties": [
@@ -10,7 +10,7 @@
       },
       {
         "name": "spdx:document:spdx-version",
-        "value": "SPDX-2.2"
+        "value": "SPDX-2.3"
       },
       {
         "name": "spdx:document:name",
@@ -28,7 +28,7 @@
   },
   "components": [
     {
-      "type": "library",
+      "type": "application",
       "name": "findbugs-project",
       "version": "3.0.0",
       "licenses": [
@@ -36,15 +36,10 @@
           "expression": "LGPL-3.0-or-later"
         }
       ],
-      "copyright": "NOASSERTION",
       "externalReferences": [
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -53,23 +48,7 @@
           "value": "SPDXRef-Package-1"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
           "value": "NOASSERTION"
         }
       ],

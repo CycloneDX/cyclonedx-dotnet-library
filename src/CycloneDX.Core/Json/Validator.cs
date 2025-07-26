@@ -102,7 +102,11 @@ namespace CycloneDX.Json
                 if (properties.Name == "specVersion")
                 {
                     var specVersion = properties.Value.GetString();
-                    if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_5))
+                    if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_6))
+                    {
+                        specificationVersion = SpecificationVersion.v1_6;
+                    }
+                    else if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_5))
                     {
                         specificationVersion = SpecificationVersion.v1_5;
                     }
@@ -173,13 +177,13 @@ namespace CycloneDX.Json
         private static ValidationResult Validate(JsonSchema schema, JsonDocument jsonDocument, string schemaVersionString)
         {
             var validationMessages = new List<string>();
-            var validationOptions = new ValidationOptions
+            var validationOptions = new EvaluationOptions
             {
-                OutputFormat = OutputFormat.Detailed,
+                OutputFormat = OutputFormat.List,
                 RequireFormatValidation = true
             };
 
-            var result = schema.Validate(jsonDocument.RootElement, validationOptions);
+            var result = schema.Evaluate(jsonDocument.RootElement, validationOptions);
 
             if (result.IsValid)
             {
@@ -197,34 +201,36 @@ namespace CycloneDX.Json
             }
             else
             {
-                validationMessages.Add($"Validation failed: {result.Message}");
-                validationMessages.Add(result.SchemaLocation.ToString());
-                validationMessages.Add($"On instance: {result.InstanceLocation}:");
-                validationMessages.Add(result.InstanceLocation.Evaluate(jsonDocument.RootElement).ToString());
-
-                if (result.NestedResults != null)
+                validationMessages.Add("Validation failed:");
+                // because we requested the results as a flat list
+                // there will be no nested results
+                foreach (var detail in result.Details)
                 {
-                    var nestedResults = new Queue<ValidationResults>(result.NestedResults);
-
-                    while (nestedResults.Count > 0)
+                    // avoid misleading error messages:
+                    // check if any ancestor is valid
+                    var currentItem = detail;
+                    while (currentItem.Parent != null)
                     {
-                        var nestedResult = nestedResults.Dequeue();
+                        currentItem = currentItem.Parent;
+                        if (currentItem.IsValid)
+                        {
+                            break;
+                        }
+                    }
+                    if (currentItem.IsValid)
+                    {
+                        continue;
+                    }
 
-                        if (
-                            !string.IsNullOrEmpty(nestedResult.Message)
-                            && nestedResult.NestedResults != null
-                            && nestedResult.NestedResults.Count > 0)
+                    if (detail.HasErrors)
+                    {
+                        foreach (var error in detail.Errors)
                         {
-                            validationMessages.Add($"{nestedResult.InstanceLocation}: {nestedResult.Message}");
+                            validationMessages.Add(error.Value);
                         }
-                        
-                        if (nestedResult.NestedResults != null)
-                        {
-                            foreach (var newNestedResult in nestedResult.NestedResults)
-                            {
-                                nestedResults.Enqueue(newNestedResult);
-                            }
-                        }
+                        validationMessages.Add(detail.SchemaLocation.ToString());
+                        validationMessages.Add($"On instance: {detail.InstanceLocation}:");
+                        validationMessages.Add(detail.InstanceLocation.Evaluate(jsonDocument.RootElement).ToString());
                     }
                 }
             }

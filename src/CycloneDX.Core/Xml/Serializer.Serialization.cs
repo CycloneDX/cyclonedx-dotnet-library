@@ -81,7 +81,20 @@ namespace CycloneDX.Xml
                 return _serializers[specificationVersion];
             }
         }
-        
+
+        // Todo: this is a workaround to set the correct namespace
+        // when writing licenses. Can this be avoided?
+        private readonly static Dictionary<XmlWriter, string> WriterToNamespace = new Dictionary<XmlWriter, string>();
+
+        public static string GetNamespace(XmlWriter writer)
+        {
+            string namespaceStr;
+            lock (WriterToNamespace) {
+                namespaceStr = WriterToNamespace[writer];
+            }
+            return namespaceStr;
+        }
+
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.
         /// </summary>
@@ -94,7 +107,15 @@ namespace CycloneDX.Xml
             var serializer = GetXmlSerializer(bom.SpecVersion);
             using (var xmlWriter = XmlWriter.Create(outputStream, WriterSettings))
             {
+                lock (WriterToNamespace)
+                {
+                    WriterToNamespace[xmlWriter] = SpecificationVersionHelpers.XmlNamespace(bom.SpecVersion);
+                }
                 serializer.Serialize(xmlWriter, BomUtils.GetBomForSerialization(bom));
+                lock (WriterToNamespace)
+                {
+                    WriterToNamespace.Remove(xmlWriter);
+                }
             }
         }
 
@@ -106,8 +127,7 @@ namespace CycloneDX.Xml
         public static string Serialize(Bom bom)
         {
             Contract.Requires(bom != null);
-
-            var serializer = GetXmlSerializer(bom.SpecVersion);
+  
             using (var ms = new MemoryStream())
             {
                 Serialize(bom, ms);
@@ -118,7 +138,9 @@ namespace CycloneDX.Xml
         internal static XmlSerializer GetElementSerializer<T>(SpecificationVersion specVersion, string elementName)
         {
             if (!_elementSerializers.ContainsKey(specVersion))
+            {
                 _elementSerializers[specVersion] = new Dictionary<string, XmlSerializer>();
+            }
             var serKey = $"{typeof(T).FullName}:{elementName}";
             if (!_elementSerializers[specVersion].ContainsKey(serKey))
             {

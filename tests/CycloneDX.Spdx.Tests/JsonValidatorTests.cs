@@ -32,7 +32,7 @@ namespace CycloneDX.Spdx.Tests
         [InlineData("document-with-hyphens-in-external-reference-category")]
         public void ValidateJsonStringTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
             var document = File.ReadAllText(resourceFilename);
 
             var result = JsonValidator.Validate(document);
@@ -45,7 +45,7 @@ namespace CycloneDX.Spdx.Tests
         [InlineData("document-with-hyphens-in-external-reference-category")]
         public async Task ValidateJsonStreamTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
             using (var jsonStream = File.OpenRead(resourceFilename))
             {
                 var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
@@ -53,5 +53,20 @@ namespace CycloneDX.Spdx.Tests
                 Assert.True(validationResult.Valid);
             }
         }
+
+        [Fact]
+        public async Task ValidateInvalidPrimaryPackagePurpose()
+        {
+            var resourceFilename = Path.Join("Resources", "v2.3", "invalidPrimaryPackagePurpose" + ".json");
+            using (var jsonStream = File.OpenRead(resourceFilename))
+            {
+                var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
+
+                Assert.False(validationResult.Valid);
+    }
+}
+
+
+
     }
 }

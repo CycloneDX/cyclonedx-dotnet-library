@@ -22,14 +22,19 @@ name: Release
 on:
   workflow_dispatch
 
+# see https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
+permissions: {}
+
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write  # needed for creating GH release and uploading release assets
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '6.0.x'
 
@@ -41,6 +46,11 @@ jobs:
           export PATH="$PATH:$HOME/.local/bin"
 
       # The tests should have already been run during the PR workflow, so this is really just a sanity check
+      # See issue #285 for info why the symlink is necessary.
+      - name: SnapshooterHotfixSymlinkLinux          
+        run: sudo ln -s "$GITHUB_WORKSPACE" /_
+        shell: bash
+      
       - name: Tests
         run: dotnet test
 

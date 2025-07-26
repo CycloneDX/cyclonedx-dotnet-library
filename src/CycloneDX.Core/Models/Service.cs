@@ -17,14 +17,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Service: IEquatable<Service>
+    public class Service: IEquatable<Service>, IHasBomRef
     {
         public Service()
         {
@@ -118,10 +121,10 @@ namespace CycloneDX.Models
         {
             get
             {
-                if (Data == null) return null;
+                if (Data == null) { return null; }
                 if (SpecVersion < SpecificationVersion.v1_5)
                 {
-                    var result = new ServiceDataChoices()
+                    var result = new ServiceDataChoices
                     {
                         SpecVersion = SpecVersion,
                         DataClassifications = new List<DataClassification>()
@@ -165,10 +168,22 @@ namespace CycloneDX.Models
             }
         }
         public bool ShouldSerializeXmlData() => ShouldSerializeData();
-        
-        [XmlElement("licenses")]
+
+        [XmlIgnore]
         [ProtoMember(11)]
         public List<LicenseChoice> Licenses { get; set; }
+
+        [XmlElement("licenses")]
+        [JsonIgnore, ProtoIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        // This is a serialization workaround
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
         [XmlArray("externalReferences")]
         [XmlArrayItem("reference")]
@@ -193,15 +208,36 @@ namespace CycloneDX.Models
         public List<Property> Properties { get; set; }
 
         public bool ShouldSerializeProperties() => Properties?.Count > 0;
+        [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public XmlElement XmlSignature { get; set; }
+        [XmlIgnore]
+        public SignatureChoice Signature { get; set; }
+
+        [XmlArray("tags")]
+        [XmlArrayItem("tag")]
+        [ProtoMember(17)]
+        public List<string> Tags { get; set; }
+        public bool ShouldSerializeTags() { return Tags?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Service;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(other, Json.Serializer.SerializerOptionsForHash);
+        }
 
         public bool Equals(Service obj)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(obj, Json.Serializer.SerializerOptionsForHash);
         }
-    
+
         public override int GetHashCode()
         {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
         }
     }
 }

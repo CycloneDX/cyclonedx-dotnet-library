@@ -6,25 +6,30 @@ on:
       - main
   workflow_dispatch:
 
+# see https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
+permissions: {}
+
 jobs:
   build-documentation:
     name: "Build documentation"
+    permissions:
+      contents: write  # needed for git-pushing to docs-branch
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '6.0.200'
 
       - name: Download DocFX
         run: |
-          wget -O docfx.zip https://github.com/dotnet/docfx/releases/download/v2.58.4/docfx.zip
+          wget -O docfx.zip https://github.com/dotnet/docfx/releases/download/v2.78.3/docfx-linux-x64-v2.78.3.zip
           unzip docfx.zip -d docfx/
-          chmod +x docfx/docfx.exe
+          chmod +x docfx/docfx
       - name: Build documentation
         run: |
-          docfx/docfx.exe docs/docfx.json
+          docfx/docfx docs/docfx.json
       - name: Deploy documentation
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:

@@ -1,6 +1,6 @@
 ﻿{
   "SPDXID": "SPDXRef-DOCUMENT",
-  "spdxVersion": "SPDX-2.2",
+  "spdxVersion": "SPDX-2.3",
   "creationInfo": {
     "comment": "This SPDX document has been converted from CycloneDX format.",
     "created": "2020-04-13T20:20:39Z"

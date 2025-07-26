@@ -17,9 +17,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Linq;
+using System.Security.Claims;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
+using static CycloneDX.Models.EvidenceIdentity;
 
 namespace CycloneDX
 {
@@ -69,7 +71,8 @@ namespace CycloneDX
                 bomCopy.SerialNumber = null;
                 bomCopy.ExternalReferences = null;
 
-                EnumerateAllComponents(bomCopy, (component) => {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
                     component.BomRef = null;
                     component.Pedigree = null;
                     component.ExternalReferences = null;
@@ -82,8 +85,11 @@ namespace CycloneDX
                 bomCopy.Dependencies = null;
                 bomCopy.Services = null;
 
-                EnumerateAllComponents(bomCopy, (component) => {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
+                    #pragma warning disable 618
                     component.Author = null;
+                    #pragma warning restore 618
                     component.MimeType = null;
                     component.Supplier = null;
                     component.Swid = null;
@@ -103,7 +109,8 @@ namespace CycloneDX
                     bomCopy.Metadata.Licenses = null;
                     bomCopy.Metadata.Properties = null;
                 }
-                EnumerateAllComponents(bomCopy, (component) => {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
                     component.Properties = null;
                     component.Evidence = null;
                     if (component.ExternalReferences != null)
@@ -114,7 +121,8 @@ namespace CycloneDX
                         }
                     }
                 });
-                EnumerateAllServices(bomCopy, (service) => {
+                EnumerateAllServices(bomCopy, (service) =>
+                {
                     service.Properties = null;
                     if (service.ExternalReferences != null)
                     {
@@ -128,14 +136,16 @@ namespace CycloneDX
 
             if (bomCopy.SpecVersion < SpecificationVersion.v1_4)
             {
-                EnumerateAllComponents(bomCopy, (component) => {
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
                     component.ReleaseNotes = null;
                     if (component.Version == null)
                     {
                         component.Version = "0.0.0";
                     }
                 });
-                EnumerateAllServices(bomCopy, (service) => {
+                EnumerateAllServices(bomCopy, (service) =>
+                {
                     service.ReleaseNotes = null;
                 });
                 bomCopy.Vulnerabilities = null;
@@ -147,7 +157,10 @@ namespace CycloneDX
                 bomCopy.Properties = null;
                 bomCopy.Formulation = null;
 
-                if (bomCopy.Metadata != null) bomCopy.Metadata.Lifecycles = null;
+                if (bomCopy.Metadata != null)
+                {
+                    bomCopy.Metadata.Lifecycles = null;
+                }
 
                 if (bomCopy.Compositions != null)
                 {
@@ -157,7 +170,7 @@ namespace CycloneDX
                         composition.Vulnerabilities = null;
                     }
                 }
-                
+
                 EnumerateAllToolChoices(bomCopy, (toolchoice) =>
                 {
                     toolchoice.Components = null;
@@ -168,9 +181,12 @@ namespace CycloneDX
                 {
                     component.ModelCard = null;
                     component.Data = null;
-                    if ((int)component.Type > 8) component.Type = Component.Classification.Library;
+                    if ((int)component.Type > 8)
+                    {
+                        component.Type = Component.Classification.Library;
+                    }
                 });
-                
+
                 EnumerateAllServices(bomCopy, (service) =>
                 {
                     service.TrustZone = null;
@@ -186,7 +202,7 @@ namespace CycloneDX
                         }
                     }
                 });
-                
+
                 EnumerateAllVulnerabilities(bomCopy, (vulnerability) =>
                 {
                     vulnerability.Rejected = null;
@@ -215,19 +231,19 @@ namespace CycloneDX
                         }
                     }
                 });
-                
+
                 EnumerateAllEvidence(bomCopy, (evidence) =>
                 {
                     evidence.Identity = null;
                     evidence.Occurrences = null;
                     evidence.Callstack = null;
                 });
-                
+
                 EnumerateAllLicenseChoices(bomCopy, (licenseChoice) =>
                 {
                     licenseChoice.BomRef = null;
                 });
-                
+
                 EnumerateAllLicenses(bomCopy, (license) =>
                 {
                     license.BomRef = null;
@@ -246,6 +262,93 @@ namespace CycloneDX
                 });
             }
 
+            if (bomCopy.SpecVersion < SpecificationVersion.v1_6)
+            {
+                bomCopy.Declarations = null;
+                bomCopy.Definitions = null;
+
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
+                    component.CryptoProperties = null;
+                    if (component.Type == Component.Classification.Cryptographic_Asset)
+                    {
+                        component.Type = Component.Classification.Library;
+                    }
+                    component.Tags = null;
+                    component.OmniborId = null;
+                    component.Swhid = null;
+                    component.Authors = null;
+                    component.Manufacturer = null;
+
+                    if (component.ModelCard?.Considerations != null)
+                    {
+                        component.ModelCard.Considerations.EnvironmentalConsiderations = null;
+                    }
+                });
+
+                EnumerateAllOrganizationalEntity(bomCopy, (oe) =>
+                {
+                    oe.Address = null;
+                });
+
+                EnumerateAllServices(bomCopy, (service) =>
+                {
+                    service.Tags = null;
+                });
+
+                if (bomCopy.Metadata != null)
+                {
+                    bomCopy.Metadata.Manufacturer = null;
+                }
+
+                EnumerateAllDependencies(bomCopy, (dependency) =>
+                {
+                    dependency.Provides = null;
+                });
+
+                EnumerateAllEvidence(bomCopy, (evidence) =>
+                {
+                    if (evidence?.Identity?.Count > 1)
+                    {
+                        evidence.Identity.RemoveRange(1, evidence.Identity.Count - 1);
+                    }
+                    if (evidence.Identity?.Count == 1 &&
+                        (evidence.Identity[0].Field == EvidenceFieldType.OmniborId
+                        || evidence.Identity[0].Field == EvidenceFieldType.Swhid))
+                    {
+                        evidence.Identity.Clear();
+                    }
+                    if (evidence.Identity?.Count == 1)
+                    {
+                        evidence.Identity[0].ConcludedValue = null;
+                    }
+                });
+
+                EnumerateAllLicenseChoices(bomCopy, (licenseChoice) =>
+                {
+                    if (licenseChoice.License != null)
+                    {
+                        licenseChoice.License.Acknowledgement = null;
+                    }
+                    licenseChoice.Acknowledgement = null;
+                });
+
+                EnumerateAllExternalReferences(bomCopy, (externalReference) =>
+                {
+                    if (externalReference != null)
+                    {
+                        if (externalReference.Type == ExternalReference.ExternalReferenceType.Source_Distribution
+                            || externalReference.Type == ExternalReference.ExternalReferenceType.Electronic_Signature
+                            || externalReference.Type == ExternalReference.ExternalReferenceType.Digital_Signature
+                            || externalReference.Type == ExternalReference.ExternalReferenceType.Rfc_9116)
+                        {
+                            externalReference.Type = ExternalReference.ExternalReferenceType.Other;
+                        }
+                    }
+                });
+
+            }
+
             // triggers a bunch of stuff, don't remove unless you know what you are doing
             bomCopy.SpecVersion = bomCopy.SpecVersion;
 
@@ -262,8 +365,12 @@ namespace CycloneDX
         public static void EnqueueMany<T>(this Queue<T> queue, IEnumerable<T> items)
         {
             if (items != null)
-                foreach (var item in items)
+            {
+                foreach (var item in items.Where(item => item != null))
+                {
                     queue.Enqueue(item);
+                }
+            }
         }
 
         public static void EnumerateAllComponents(Bom bom, Action<Component> callback)
@@ -273,6 +380,10 @@ namespace CycloneDX
             q.Enqueue(bom.Metadata?.Component);
             q.EnqueueMany(bom.Metadata?.Tools?.Components);
             q.EnqueueMany(bom.Components);
+            q.EnqueueMany(bom.Annotations?.Select(an => an.Annotator).Where(anor => anor.Component != null).Select(anor => anor.Component) ?? new List<Component>());
+            q.EnqueueMany(bom.Declarations?.Targets?.Components);
+            q.EnqueueMany(bom.Formulation?.Where(f => f.Components != null).SelectMany(f => f.Components));
+            q.EnqueueMany(bom.Vulnerabilities?.Where(v => v.Tools?.Components != null).SelectMany(v => v.Tools.Components));
 
             while (q.Count > 0)
             {
@@ -280,7 +391,7 @@ namespace CycloneDX
                 if (currentComponent != null)
                 {
                     callback(currentComponent);
-                    
+
                     q.EnqueueMany(currentComponent.Components);
                     q.EnqueueMany(currentComponent.Pedigree?.Ancestors);
                     q.EnqueueMany(currentComponent.Pedigree?.Descendants);
@@ -292,9 +403,13 @@ namespace CycloneDX
         public static void EnumerateAllServices(Bom bom, Action<Service> callback)
         {
             var q = new Queue<Service>();
-            
+
             q.EnqueueMany(bom.Metadata?.Tools?.Services);
             q.EnqueueMany(bom.Services);
+            q.EnqueueMany(bom.Annotations?.Select(an => an.Annotator).Where(anor => anor.Service != null).Select(anor => anor.Service) ?? new List<Service>());
+            q.EnqueueMany(bom.Declarations?.Targets?.Services);
+            q.EnqueueMany(bom.Formulation?.Where(f => f.Services != null).SelectMany(f => f.Services));
+            q.EnqueueMany(bom.Vulnerabilities?.Where(v => v.Tools?.Services != null).SelectMany(v => v.Tools.Services));
 
             while (q.Count > 0)
             {
@@ -323,7 +438,7 @@ namespace CycloneDX
             while (q.Count > 0)
             {
                 var currentVulnerability = q.Dequeue();
-                
+
                 callback(currentVulnerability);
             }
         }
@@ -331,15 +446,21 @@ namespace CycloneDX
         {
             EnumerateAllComponents(bom, (component) =>
             {
-                if (component.Evidence != null) callback(component.Evidence);
+                if (component.Evidence != null)
+                {
+                    callback(component.Evidence);
+                }
             });
         }
-        
+
         public static void EnumerateAllLicenses(Bom bom, Action<License> callback)
         {
             EnumerateAllLicenseChoices(bom, (licenseChoice) =>
             {
-                if (licenseChoice.License != null) callback(licenseChoice.License);
+                if (licenseChoice.License != null)
+                {
+                    callback(licenseChoice.License);
+                }
             });
         }
 
@@ -351,7 +472,7 @@ namespace CycloneDX
                 {
                     callback(license);
                 }
-                    
+
             }
             EnumerateAllComponents(bom, (component) =>
             {
@@ -363,7 +484,7 @@ namespace CycloneDX
                     }
                 }
             });
-            
+
             EnumerateAllServices(bom, (service) =>
             {
                 if (service.Licenses != null)
@@ -389,7 +510,12 @@ namespace CycloneDX
 
         public static void EnumerateAllOrganizationalEntity(Bom bom, Action<OrganizationalEntity> callback)
         {
-            if (bom.Metadata?.Manufacture != null) callback(bom.Metadata.Manufacture);
+            #pragma warning disable 618
+            if (bom.Metadata?.Manufacture != null)
+            {
+                callback(bom.Metadata.Manufacture);
+            }
+            #pragma warning restore 618
             if (bom.Metadata?.Supplier != null) callback(bom.Metadata.Supplier);
 
             if (bom.Annotations != null)
@@ -397,11 +523,14 @@ namespace CycloneDX
                 foreach (var annotation in bom.Annotations)
                 {
                     if (annotation.Annotator?.Organization != null)
+                    {
                         callback(annotation.Annotator.Organization);
+                    }
                 }
-                
             }
-                
+
+            bom.Declarations?.Targets?.Organizations?.ForEach(callback);
+
             EnumerateAllVulnerabilities(bom, (vulnerability) =>
             {
                 if (vulnerability.Credits?.Organizations != null)
@@ -411,11 +540,31 @@ namespace CycloneDX
             });
             EnumerateAllComponents(bom, (component) =>
             {
-                if (component.Supplier != null) callback(component.Supplier);
+                if (component.Supplier != null)
+                {
+                    callback(component.Supplier);
+                }
+
+
+                component.ModelCard?.Considerations?.EnvironmentalConsiderations?.EnergyConsumptions?
+                    .ForEach(energyConsumption =>
+                        energyConsumption?.EnergyProviders?
+                            .ForEach(energyProvider =>
+                            {
+                                if (energyProvider?.Organization != null)
+                                {
+                                    callback(energyProvider.Organization);
+                                }
+                            }));
+
+
             });
             EnumerateAllServices(bom, (service) =>
             {
-                if (service.Provider != null) callback(service.Provider);
+                if (service.Provider != null)
+                {
+                    callback(service.Provider);
+                }
             });
         }
 
@@ -431,7 +580,7 @@ namespace CycloneDX
                     }
                 }
             });
-            
+
             EnumerateAllVulnerabilities(bom, (vulnerability) =>
             {
                 if (vulnerability.Credits?.Individuals != null)
@@ -442,6 +591,18 @@ namespace CycloneDX
                     }
                 }
             });
+
+            if (bom.Declarations?.Evidence != null)
+            {
+                foreach (var item in bom.Declarations?.Evidence?.Select(x => x.Author))
+                {
+                    callback(item);
+                }
+                foreach (var item in bom.Declarations?.Evidence?.Select(x => x.Reviewer))
+                {
+                    callback(item);
+                }
+            }
         }
 
         public static void EnumerateAllToolChoices(Bom bom, Action<ToolChoices> callback)
@@ -451,7 +612,246 @@ namespace CycloneDX
             EnumerateAllVulnerabilities(bom, (vuln) =>
             {
                 if (vuln.Tools != null)
+                {
                     callback(vuln.Tools);
+                }
+            });
+        }
+
+        public static void EnumerateAllDependencies(Bom bom, Action<Dependency> callback)
+        {
+            var q = new Queue<Dependency>();
+
+
+            q.EnqueueMany(bom.Dependencies);
+
+
+            while (q.Count > 0)
+            {
+                var currentDependency = q.Dequeue();
+                if (currentDependency != null)
+                {
+                    callback(currentDependency);
+
+                    q.EnqueueMany(currentDependency.Dependencies);
+                }
+            }
+        }
+
+        public static void EnumerateAllDatasetChoices(Bom bom, Action<DatasetChoices> callback)
+        {
+            EnumerateAllComponents(bom, (component) =>
+            {
+                if (component?.ModelCard?.ModelParameters?.Datasets != null)
+                {
+                    callback(component.ModelCard.ModelParameters.Datasets);
+                }
+            });
+        }
+
+        public static void EnumerateAllExternalReferences(Bom bom, Action<ExternalReference> callback)
+        {
+            if (bom.ExternalReferences != null)
+            {
+                foreach (var item in bom.ExternalReferences)
+                {
+                    callback(item);
+                }
+            }
+
+            EnumerateAllComponents(bom, (component) =>
+            {
+                if (component?.ExternalReferences != null)
+                {
+                    foreach (var item in component.ExternalReferences)
+                    {
+                        callback(item);
+                    }
+                }
+                if (component?.ModelCard?.Considerations?.EnvironmentalConsiderations?.EnergyConsumptions != null)
+                {
+                    foreach (var energyConsumption in component.ModelCard.Considerations.EnvironmentalConsiderations.EnergyConsumptions)
+                    {
+                        if (energyConsumption?.EnergyProviders != null)
+                        {
+                            foreach (var energyProvider in energyConsumption.EnergyProviders)
+                            {
+                                if (energyProvider?.ExternalReferences != null)
+                                {
+                                    foreach (var item in energyProvider.ExternalReferences)
+                                    {
+                                        callback(item);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            EnumerateAllServices(bom, (service) =>
+            {
+                if (service?.ExternalReferences != null)
+                {
+                    foreach (var item in service.ExternalReferences)
+                    {
+                        callback(item);
+                    }
+                }
+            });
+
+
+            EnumerateAllToolChoices(bom, (toolsChoice) =>
+            {
+                if (toolsChoice?.Tools != null)
+                {
+                    foreach (var tool in toolsChoice.Tools)
+                    {
+                        if (tool.ExternalReferences != null)
+                        {
+                            foreach (var item in tool.ExternalReferences)
+                            {
+                                callback(item);
+                            }
+                        }
+                    }
+                }
+            });
+
+            if (bom.Declarations?.Claims != null)
+            {
+                foreach (var claim in bom.Declarations.Claims)
+                {
+                    if (claim?.ExternalReferences != null)
+                    {
+                        foreach (var item in claim.ExternalReferences)
+                        {
+                            callback(item);
+                        }
+                    }
+                }
+            }
+
+            if (bom.Declarations?.Affirmation?.Signatories != null)
+            {
+                foreach (var signatory in bom.Declarations?.Affirmation?.Signatories)
+                {
+                    if (signatory?.ExternalReference != null)
+                    {
+                        callback(signatory.ExternalReference);
+                    }
+                }
+            }
+
+            if (bom.Definitions?.Standards != null)
+            {
+                foreach (var standard in bom.Definitions.Standards)
+                {
+                    if (standard?.ExternalReferences != null)
+                    {
+                        foreach (var item in standard.ExternalReferences)
+                        {
+                            callback(item);
+                        }
+                    }
+                }
+            }
+
+            EnumerateAllResourceReferenceChoices(bom, (resoureReferenceChoice) =>
+            {
+                if (resoureReferenceChoice?.ExternalReference != null)
+                {
+                    callback(resoureReferenceChoice.ExternalReference);
+                }
+            });
+
+        }
+
+        public static void EnumerateAllWorkflows(Bom bom, Action<Workflow> callback)
+        {
+            if (bom.Formulation != null)
+            {
+                foreach (var formulation in bom.Formulation)
+                {
+                    if (formulation?.Workflows != null)
+                    {
+                        foreach (var workflow in formulation.Workflows)
+                        {
+                            callback(workflow);
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void EnumerateAllResourceReferenceChoices(Bom bom, Action<ResourceReferenceChoice> callback)
+        {
+            EnumerateAllWorkflows(bom, (workflow) =>
+            {
+                if (workflow?.ResourceReferences != null)
+                {
+                    foreach (var resourceReference in workflow.ResourceReferences)
+                    {
+                        callback(resourceReference);
+                    }
+                }
+                if (workflow?.Inputs != null)
+                {
+                    foreach (var input in workflow.Inputs)
+                    {
+                        if (input.Resource != null) { callback(input.Resource); }
+                        if (input.Source != null) { callback(input.Source); }
+                        if (input.Target != null) { callback(input.Target); }
+                    }
+                }
+                if (workflow?.Outputs != null)
+                {
+                    foreach (var output in workflow.Outputs)
+                    {
+                        if (output.Resource != null) { callback(output.Resource); }
+                        if (output.Source != null) { callback(output.Source); }
+                        if (output.Target != null) { callback(output.Target); }
+                    }
+                }
+                if (workflow?.Trigger?.Event != null)
+                {
+                    if (workflow.Trigger.Event.Source != null) { callback(workflow.Trigger.Event.Source); }
+                    if (workflow.Trigger.Event.Target != null) { callback(workflow.Trigger.Event.Target); }
+                }
+
+                foreach (var task in workflow.Tasks)
+                {
+                    if (task?.ResourceReferences != null)
+                    {
+                        foreach (var resourceReference in task.ResourceReferences)
+                        {
+                            callback(resourceReference);
+                        }
+                    }
+                    if (task?.Inputs != null)
+                    {
+                        foreach (var input in task.Inputs)
+                        {
+                            if (input.Resource != null) { callback(input.Resource); }
+                            if (input.Source != null) { callback(input.Source); }
+                            if (input.Target != null) { callback(input.Target); }
+                        }
+                    }
+                    if (task?.Outputs != null)
+                    {
+                        foreach (var output in task.Outputs)
+                        {
+                            if (output.Resource != null) { callback(output.Resource); }
+                            if (output.Source != null) { callback(output.Source); }
+                            if (output.Target != null) { callback(output.Target); }
+                        }
+                    }
+                    if (task?.Trigger?.Event != null)
+                    {
+                        if (task.Trigger.Event.Source != null) { callback(task.Trigger.Event.Source); }
+                        if (task.Trigger.Event.Target != null) { callback(task.Trigger.Event.Target); }
+                    }
+                }
             });
         }
     }

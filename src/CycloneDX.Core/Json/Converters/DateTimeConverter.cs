@@ -17,6 +17,7 @@
 
 using System;
 using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -40,7 +41,7 @@ namespace CycloneDX.Json.Converters
             }
 
             var valueString = reader.GetString();
-            var value = DateTime.Parse(valueString);
+            var value = DateTime.Parse(valueString, CultureInfo.InvariantCulture);
             return value;
         }
 
@@ -51,7 +52,7 @@ namespace CycloneDX.Json.Converters
         {
             Contract.Requires(writer != null);
 
-            writer.WriteStringValue(value?.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            writer.WriteStringValue(value?.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture));
         }
     }
 }

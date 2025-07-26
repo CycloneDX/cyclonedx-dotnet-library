@@ -17,6 +17,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -38,29 +40,88 @@ namespace CycloneDX.Models
 
         [XmlElement("tools")]
         public ToolChoices Tools { get; set; }
-        
-        // this is to support a bug in v1.5 of the protobuf spec
+
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(2)]
-        #pragma warning disable 618
-        public List<Tool> ProtobufTools
-        #pragma warning restore 618
+        public List<ProtobufTools> ProtobufTools
         {
-            get => Tools?.Tools;
+            get {
+                if (Tools == null)
+                {
+                    return null;
+                }
+                var protobufTools = new List<ProtobufTools>();
+                if (Tools.Tools != null)
+                {
+                    foreach(var tool in Tools.Tools)
+                    {
+                        protobufTools.Add(new ProtobufTools(tool));
+                    }
+                }
+                if (Tools.Components != null)
+                {
+                    if (protobufTools.Count == 0)
+                    {
+                        protobufTools.Add(new ProtobufTools());
+                    }
+                    protobufTools[0].Components = Tools.Components;
+                }
+                if (Tools.Services != null)
+                {
+                    if (protobufTools.Count == 0)
+                    {
+                        protobufTools.Add(new ProtobufTools());
+                    }
+                    protobufTools[0].Services = Tools.Services;
+                }
+                return protobufTools;
+            }
             set
             {
                 if (value == null)
                 {
                     Tools = null;
+                    return;
                 }
-                else
+                #pragma warning disable 618
+                List<Tool> tools = null;
+                #pragma warning restore 618
+                List<Component> components = null;
+                List<Service> services = null;
+                foreach (var protobufTools in value)
                 {
-                    Tools = new ToolChoices
+                    if (!(protobufTools.Components?.Count > 0 || (protobufTools.Services?.Count > 0)))
                     {
-                        Tools = value
-                    };
+                        if (tools == null)
+                        {
+                            #pragma warning disable 618
+                            tools = new List<Tool>();
+                            #pragma warning restore 618
+                        }
+                        tools.Add(protobufTools.ToTool());
+                    }
+                    if (protobufTools.Components != null)
+                    {
+                        if (components == null)
+                        {
+                            components = new List<Component>();
+                        }
+                        components.AddRange(protobufTools.Components);
+                    }
+                    if (protobufTools.Services != null)
+                    {
+                        if (services == null)
+                        {
+                            services = new List<Service>();
+                        }
+                        services.AddRange(protobufTools.Services);
+                    }
                 }
+                Tools = new ToolChoices
+                {
+                    Tools = tools, Components = components, Services = services
+                };
             }
         }
 
@@ -73,19 +134,47 @@ namespace CycloneDX.Models
         [ProtoMember(4)]
         public Component Component { get; set; }
 
-        [XmlElement("manufacture")]
+        [XmlElement("manufacturer")]
+        [ProtoMember(10)]
+        public OrganizationalEntity Manufacturer { get; set; }
+        public bool ShouldSerializeManufacturer() { return Manufacturer != null; }
+
+        [Obsolete("This will be removed in a future version.Use the @.component.manufacturer instead.")]
+        [XmlIgnore]
         [ProtoMember(5)]
         public OrganizationalEntity Manufacture { get; set; }
+
+        #pragma warning disable 618
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [XmlElement("manufacture")]
+        [JsonIgnore]
+        public OrganizationalEntity Manufacture_Xml { get { return Manufacture; } set { Manufacture = value; } }
+        public bool ShouldSerializeManufacture_Xml() { return Manufacture != null; }
+        #pragma warning restore 618
+
 
         [XmlElement("supplier")]
         [ProtoMember(6)]
         public OrganizationalEntity Supplier { get; set; }
-        
-        [XmlElement("licenses")]
+
+        [XmlIgnore]
         [ProtoMember(7)]
         public List<LicenseChoice> Licenses { get; set; }
         public bool ShouldSerializeLicenses() { return Licenses?.Count > 0; }
-        
+
+
+        [XmlElement("licenses")]
+        [JsonIgnore, ProtoIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        // This is a serialization workaround
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
+
         [XmlArray("properties")]
         [XmlArrayItem("property")]
         [ProtoMember(8)]

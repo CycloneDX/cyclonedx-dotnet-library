@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
@@ -30,26 +31,56 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class Evidence
     {
-        [XmlElement("licenses")]
+        [XmlIgnore]
         [ProtoMember(1)]
         public List<LicenseChoice> Licenses { get; set; }
+        
+        [XmlElement("licenses", Order = 3)]
+        [JsonIgnore, ProtoIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public LicenseChoiceList LicensesSerialized
+        {
+            get { return Licenses != null ? new LicenseChoiceList(Licenses) : null; }
+            set { Licenses = value.Licenses; }
+        }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicensesSerialized() { return Licenses?.Count > 0; }
 
-        [XmlArray("copyright")]
+        [XmlArray("copyright", Order = 4)]
         [XmlArrayItem("text")]
         [ProtoMember(2)]
         public List<EvidenceCopyright> Copyright { get; set; }
-        
-        [XmlElement("identity")]
-        [ProtoMember(3)]
-        public EvidenceIdentity Identity { get; set; }
 
-        [XmlArray("occurrences")]
+
+        [ProtoMember(3)]
+        [XmlElement("identity", Order = 0)]
+        [JsonIgnore]
+        public List<EvidenceIdentity> Identity { get; set; }
+
+
+        [JsonPropertyName("identity")]
+        [XmlIgnore]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public EvidenceIdentityList IdentitySerialized
+        {
+            get { return Identity != null ? new EvidenceIdentityList { Identities = Identity } : null; }
+            set { Identity = value.Identities; }
+        }
+
+        [XmlArray("occurrences", Order = 1)]
         [XmlArrayItem("occurrence")]
         [ProtoMember(4)]
         public List<EvidenceOccurrence> Occurrences { get; set; }
 
-        [XmlElement("callstack")]
+        [XmlElement("callstack", Order = 2)]
         [ProtoMember(5)]
         public Callstack Callstack { get; set; }
+    }
+
+
+    public class EvidenceIdentityList
+    {
+        public List<EvidenceIdentity> Identities { get; set; }
+
     }
 }

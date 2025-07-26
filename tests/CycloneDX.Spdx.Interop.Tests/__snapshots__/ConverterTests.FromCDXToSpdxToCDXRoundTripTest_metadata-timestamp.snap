@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",
+  "specVersion": "1.6",
   "metadata": {
     "timestamp": "2020-04-13T20:20:39Z",
     "properties": [
@@ -10,7 +10,7 @@
       },
       {
         "name": "spdx:document:spdx-version",
-        "value": "SPDX-2.2"
+        "value": "SPDX-2.3"
       },
       {
         "name": "spdx:document:name",

@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",
+  "specVersion": "1.6",
   "metadata": {
     "timestamp": "2021-12-24T12:00:00Z",
     "properties": [
@@ -10,7 +10,7 @@
       },
       {
         "name": "spdx:document:spdx-version",
-        "value": "SPDX-2.2"
+        "value": "SPDX-2.3"
       },
       {
         "name": "spdx:document:name",
@@ -28,18 +28,16 @@
   },
   "components": [
     {
-      "type": "library",
+      "type": "application",
       "name": "application-a",
       "version": "1.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -48,47 +46,22 @@
           "value": "SPDXRef-Package-1"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
-          "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     },
     {
       "type": "library",
       "name": "library-a",
       "version": "1.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -97,47 +70,22 @@
           "value": "SPDXRef-Package-2"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
-          "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     },
     {
-      "type": "library",
+      "type": "framework",
       "name": "framework-a",
       "version": "1.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -146,47 +94,22 @@
           "value": "SPDXRef-Package-3"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
-          "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     },
     {
-      "type": "library",
+      "type": "container",
       "name": "container-a",
       "version": "1.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -195,47 +118,22 @@
           "value": "SPDXRef-Package-4"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
-          "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     },
     {
-      "type": "library",
+      "type": "operating-system",
       "name": "operating-system-a",
       "version": "1.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -244,47 +142,22 @@
           "value": "SPDXRef-Package-5"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
-          "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     },
     {
-      "type": "library",
+      "type": "firmware",
       "name": "firmware-a",
       "version": "1.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -293,46 +166,18 @@
           "value": "SPDXRef-Package-6"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
-          "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     },
     {
       "type": "file",
       "name": "file-a",
-      "copyright": "NOASSERTION",
       "properties": [
         {
           "name": "spdx:spdxid",
           "value": "SPDXRef-File-1"
-        },
-        {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
         }
       ]
     }

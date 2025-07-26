@@ -1,0 +1,301 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "acme-example",
+      "Version": "1.0.0",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "ExternalReferences": [
+        {
+          "Url": "https://example.com/releases/1.0.0",
+          "Type": "Release_Notes",
+          "Comment": null
+        }
+      ],
+      "Evidence": null,
+      "ReleaseNotes": {
+        "Type": "major",
+        "Title": "My new release",
+        "FeaturedImage": "https://example.com/featured_image.png",
+        "SocialImage": "https://example.com/social_image.png",
+        "Description": "The main description of your release",
+        "Aliases": [
+          "Project Orion"
+        ],
+        "Tags": [
+          "CMS",
+          "SEO",
+          "wysiwyg"
+        ],
+        "Resolves": [
+          {
+            "Type": "Enhancement",
+            "Id": "JIRA-17240",
+            "Name": null,
+            "Description": "Great new feature that does something",
+            "Source": {
+              "Name": "Acme Org",
+              "Url": "https://issues.acme.org/17240"
+            },
+            "References": null
+          },
+          {
+            "Type": "Security",
+            "Id": "CVE-2019-9997",
+            "Name": "CVE-2019-9997",
+            "Description": "Great new feature that does something",
+            "Source": {
+              "Name": "NVD",
+              "Url": "https://nvd.nist.gov/vuln/detail/CVE-2019-9997"
+            },
+            "References": null
+          }
+        ],
+        "Notes": null,
+        "Properties": null
+      },
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Services": [
+    {
+      "BomRef": "b2a46a4b-8367-4bae-9820-95557cfe03a8",
+      "Provider": {
+        "Name": "Partner Org",
+        "Url": [
+          "https://partner.org"
+        ],
+        "Contact": [
+          {
+            "Name": "Support",
+            "Email": "support@partner",
+            "Phone": "800-555-1212",
+            "BomRef": null
+          }
+        ],
+        "BomRef": null,
+        "Address": null
+      },
+      "Group": "org.partner",
+      "Name": "Stock ticker service",
+      "Version": "2020-Q2",
+      "Description": "Provides real-time stock information",
+      "Endpoints": [
+        "https://partner.org/api/v1/lookup",
+        "https://partner.org/api/v1/stock"
+      ],
+      "Authenticated": true,
+      "NonNullableAuthenticated": true,
+      "XTrustBoundary": true,
+      "NonNullableXTrustBoundary": true,
+      "TrustZone": null,
+      "Data": [
+        {
+          "Flow": "Inbound",
+          "Classification": "PII",
+          "XmlClassification": {
+            "Flow": "Inbound",
+            "Classification": "PII"
+          },
+          "Name": null,
+          "Description": null,
+          "Governance": null
+        },
+        {
+          "Flow": "Outbound",
+          "Classification": "PIFI",
+          "XmlClassification": {
+            "Flow": "Outbound",
+            "Classification": "PIFI"
+          },
+          "Name": null,
+          "Description": null,
+          "Governance": null
+        },
+        {
+          "Flow": "Bi_Directional",
+          "Classification": "public",
+          "XmlClassification": {
+            "Flow": "Bi_Directional",
+            "Classification": "public"
+          },
+          "Name": null,
+          "Description": null,
+          "Governance": null
+        },
+        {
+          "Flow": "Unknown",
+          "Classification": "partner-data",
+          "XmlClassification": {
+            "Flow": "Unknown",
+            "Classification": "partner-data"
+          },
+          "Name": null,
+          "Description": null,
+          "Governance": null
+        }
+      ],
+      "XmlData": {
+        "DataClassifications": null,
+        "DataFlows": [
+          {
+            "Flow": "Inbound",
+            "Classification": "PII",
+            "XmlClassification": {
+              "Flow": "Inbound",
+              "Classification": "PII"
+            },
+            "Name": null,
+            "Description": null,
+            "Governance": null
+          },
+          {
+            "Flow": "Outbound",
+            "Classification": "PIFI",
+            "XmlClassification": {
+              "Flow": "Outbound",
+              "Classification": "PIFI"
+            },
+            "Name": null,
+            "Description": null,
+            "Governance": null
+          },
+          {
+            "Flow": "Bi_Directional",
+            "Classification": "public",
+            "XmlClassification": {
+              "Flow": "Bi_Directional",
+              "Classification": "public"
+            },
+            "Name": null,
+            "Description": null,
+            "Governance": null
+          },
+          {
+            "Flow": "Unknown",
+            "Classification": "partner-data",
+            "XmlClassification": {
+              "Flow": "Unknown",
+              "Classification": "partner-data"
+            },
+            "Name": null,
+            "Description": null,
+            "Governance": null
+          }
+        ]
+      },
+      "Licenses": [
+        {
+          "License": {
+            "Name": "Partner license",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          "Expression": null,
+          "BomRef": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Name": "Partner license",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null
+          }
+        ]
+      },
+      "ExternalReferences": [
+        {
+          "Url": "http://partner.org",
+          "Type": "Website",
+          "Comment": null
+        },
+        {
+          "Url": "http://api.partner.org/swagger",
+          "Type": "Documentation",
+          "Comment": null
+        }
+      ],
+      "ReleaseNotes": {
+        "Type": "major",
+        "Title": "My new release",
+        "FeaturedImage": "https://example.com/featured_image.png",
+        "SocialImage": "https://example.com/social_image.png",
+        "Description": "The main description of your release",
+        "Aliases": [
+          "Project Orion"
+        ],
+        "Tags": [
+          "CMS",
+          "SEO",
+          "wysiwyg"
+        ],
+        "Resolves": [
+          {
+            "Type": "Enhancement",
+            "Id": "JIRA-17240",
+            "Name": null,
+            "Description": "Great new feature that does something",
+            "Source": {
+              "Name": "Acme Org",
+              "Url": "https://issues.acme.org/17240"
+            },
+            "References": null
+          },
+          {
+            "Type": "Security",
+            "Id": "CVE-2019-9997",
+            "Name": "CVE-2019-9997",
+            "Description": "Great new feature that does something",
+            "Source": {
+              "Name": "NVD",
+              "Url": "https://nvd.nist.gov/vuln/detail/CVE-2019-9997"
+            },
+            "References": null
+          }
+        ],
+        "Notes": null,
+        "Properties": null
+      },
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

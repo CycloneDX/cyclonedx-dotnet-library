@@ -77,17 +77,32 @@ namespace CycloneDX.Models
         public ResourceReferenceChoices ResourceReferences { get; set; }
         public bool ShouldSerializeResourceReferences() { return ResourceReferences?.Count > 0; }
 
-        [XmlElement("accessMode")]
+        [XmlIgnore]
         [ProtoMember(8)]
-        public AccessModeType AccessMode { get; set; }
-        
+        public AccessModeType? AccessMode { get; set; }
+
+        [XmlElement("accessMode")]
+        [JsonIgnore]
+        public AccessModeType NonNullableAccessMode
+        {
+            get
+            {
+                return AccessMode.Value;
+            }
+            set
+            {
+                AccessMode = value;
+            }
+        }
+        public bool ShouldSerializeNonNullableAccessMode() { return AccessMode.HasValue; }
+
         [XmlElement("mountPath")]
         [ProtoMember(9)]
         public string MountPath { get; set; }
 
         [XmlElement("managedDataType")]
         [ProtoMember(10)]
-        public string ManagedDateType { get; set; }
+        public string ManagedDataType { get; set; }
 
         [XmlElement("volumeRequest")]
         [ProtoMember(11)]

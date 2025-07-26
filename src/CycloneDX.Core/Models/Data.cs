@@ -31,7 +31,7 @@ namespace CycloneDX.Models
         public enum DataType
         {
             [XmlEnum(Name = "source-code")]
-            SourceCode,
+            Source_Code,
             [XmlEnum(Name = "configuration")]
             Configuration,
             [XmlEnum(Name = "dataset")]
@@ -83,7 +83,7 @@ namespace CycloneDX.Models
 
         [XmlElement("sensitiveData")]
         [ProtoMember(6)]
-        public string SensitiveData { get; set; }
+        public List<string> SensitiveData { get; set; }
 
         [XmlElement("graphics")]
         [ProtoMember(7)]

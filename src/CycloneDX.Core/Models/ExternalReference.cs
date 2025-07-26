@@ -15,8 +15,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -24,7 +28,7 @@ namespace CycloneDX.Models
 {
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     [ProtoContract]
-    public class ExternalReference
+    public class ExternalReference : IEquatable<ExternalReference>
     {
         [ProtoContract]
         public enum ExternalReferenceType
@@ -105,6 +109,14 @@ namespace CycloneDX.Models
             Evidence,
             [XmlEnum(Name = "formulation")]
             Formulation,
+            [XmlEnum(Name = "source-distribution")]
+            Source_Distribution,
+            [XmlEnum(Name = "electronic-signature")]
+            Electronic_Signature,
+            [XmlEnum(Name = "digital-signature")]
+            Digital_Signature,
+            [XmlEnum(Name = "rfc-9116")]
+            Rfc_9116,
             [XmlEnum(Name = "release-notes")]
             Release_Notes,
         }
@@ -125,5 +137,26 @@ namespace CycloneDX.Models
         [ProtoMember(4)]
         public List<Hash> Hashes { get; set; }
         public bool ShouldSerializeHashes() { return Hashes?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as ExternalReference;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(other, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public bool Equals(ExternalReference obj)
+        {
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(obj, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public override int GetHashCode()
+        {
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
+        }
     }
 }

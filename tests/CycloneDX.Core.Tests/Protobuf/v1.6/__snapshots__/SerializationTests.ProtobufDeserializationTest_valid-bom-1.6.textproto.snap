@@ -1,0 +1,380 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": {
+    "Timestamp": "2070-07-26T16:41:18Z",
+    "Tools": {
+      "Tools": [
+        {
+          "Vendor": "Awesome Vendor",
+          "Name": "Awesome Tool",
+          "Version": "9.1.2",
+          "Hashes": [
+            {
+              "Alg": "SHA_1",
+              "Content": "25ed8e31b995bb927966616df2a42b979a2717f0"
+            },
+            {
+              "Alg": "SHA_256",
+              "Content": "a74f733635a19aefb1f73e5947cef59cd7440c6952ef0f03d09d974274cbd6df"
+            }
+          ]
+        }
+      ]
+    },
+    "ProtobufTools": [
+      {
+        "Vendor": "Awesome Vendor",
+        "Name": "Awesome Tool",
+        "Version": "9.1.2",
+        "Hashes": [
+          {
+            "Alg": "SHA_1",
+            "Content": "25ed8e31b995bb927966616df2a42b979a2717f0"
+          },
+          {
+            "Alg": "SHA_256",
+            "Content": "a74f733635a19aefb1f73e5947cef59cd7440c6952ef0f03d09d974274cbd6df"
+          }
+        ],
+        "ExternalReferences": null,
+        "Components": null,
+        "Services": null
+      }
+    ],
+    "Authors": [
+      {
+        "Name": "Samantha Wright",
+        "Email": "samantha.wright@example.com",
+        "Phone": "800-555-1212",
+        "BomRef": null
+      }
+    ],
+    "Component": {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": "Acme Super Heros",
+      "Author_Xml": "Acme Super Heros",
+      "Publisher": null,
+      "Group": null,
+      "Name": "Acme Application",
+      "Version": "9.1.1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": {
+        "TagId": "swidgen-242eb18a-503e-ca37-393b-cf156ef09691_9.1.1",
+        "Name": "Acme Application",
+        "Version": "9.1.1",
+        "TagVersion": 0,
+        "Patch": false,
+        "Text": {
+          "ContentType": "text/xml",
+          "Encoding": "base64",
+          "Content": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiID8+CjxTb2Z0d2FyZUlkZW50aXR5IHhtbDpsYW5nPSJFTiIgbmFtZT0iQWNtZSBBcHBsaWNhdGlvbiIgdmVyc2lvbj0iOS4xLjEiIAogdmVyc2lvblNjaGVtZT0ibXVsdGlwYXJ0bnVtZXJpYyIgCiB0YWdJZD0ic3dpZGdlbi1iNTk1MWFjOS00MmMwLWYzODItM2YxZS1iYzdhMmE0NDk3Y2JfOS4xLjEiIAogeG1sbnM9Imh0dHA6Ly9zdGFuZGFyZHMuaXNvLm9yZy9pc28vMTk3NzAvLTIvMjAxNS9zY2hlbWEueHNkIj4gCiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiAKIHhzaTpzY2hlbWFMb2NhdGlvbj0iaHR0cDovL3N0YW5kYXJkcy5pc28ub3JnL2lzby8xOTc3MC8tMi8yMDE1LWN1cnJlbnQvc2NoZW1hLnhzZCBzY2hlbWEueHNkIiA+CiAgPE1ldGEgZ2VuZXJhdG9yPSJTV0lEIFRhZyBPbmxpbmUgR2VuZXJhdG9yIHYwLjEiIC8+IAogIDxFbnRpdHkgbmFtZT0iQWNtZSwgSW5jLiIgcmVnaWQ9ImV4YW1wbGUuY29tIiByb2xlPSJ0YWdDcmVhdG9yIiAvPiAKPC9Tb2Z0d2FyZUlkZW50aXR5Pg=="
+        },
+        "Url": null
+      },
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    "Manufacturer": {
+      "Name": "Acme, Inc.",
+      "Url": [
+        "https://example.com"
+      ],
+      "Contact": [
+        {
+          "Name": "Acme Professional Services",
+          "Email": "professional.services@example.com",
+          "Phone": null,
+          "BomRef": null
+        }
+      ],
+      "BomRef": null,
+      "Address": null
+    },
+    "Manufacture": null,
+    "Supplier": {
+      "Name": "Acme, Inc.",
+      "Url": [
+        "https://example.com"
+      ],
+      "Contact": [
+        {
+          "Name": "Acme Distribution",
+          "Email": "distribution@example.com",
+          "Phone": null,
+          "BomRef": null
+        }
+      ],
+      "BomRef": null,
+      "Address": null
+    }
+  },
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": "pkg:npm/acme/component@1.0.0",
+      "Supplier": null,
+      "Author": "Joane Doe et al.",
+      "Author_Xml": "Joane Doe et al.",
+      "Publisher": "Acme Inc",
+      "Group": "com.acme",
+      "Name": "tomcat-catalina",
+      "Version": "9.0.14",
+      "Description": null,
+      "Scope": null,
+      "Hashes": [
+        {
+          "Alg": "MD5",
+          "Content": "3942447fac867ae5cdb3229b658f4d48"
+        },
+        {
+          "Alg": "SHA_1",
+          "Content": "e6b1000b94e835ffd37f4c6dcbdad43f4b48a02a"
+        },
+        {
+          "Alg": "SHA_256",
+          "Content": "f498a8ff2dd007e29c2074f5e4b01a9a01775c3ff3aeaf6906ea503bc5791b7b"
+        },
+        {
+          "Alg": "SHA_512",
+          "Content": "e8f33e424f3f4ed6db76a482fde1a5298970e442c531729119e37991884bdffab4f9426b7ee11fccd074eeda0634d71697d6f88a460dce0ac8d627a29f7d1282"
+        }
+      ],
+      "Licenses": [
+        {
+          "License": {
+            "Id": "Apache-2.0",
+            "Text": {
+              "ContentType": "text/plain",
+              "Encoding": "base64",
+              "Content": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiID8+CjxTb2Z0d2FyZUlkZW50aXR5IHhtbDpsYW5nPSJFTiIgbmFtZT0iQWNtZSBBcHBsaWNhdGlvbiIgdmVyc2lvbj0iOS4xLjEiIAogdmVyc2lvblNjaGVtZT0ibXVsdGlwYXJ0bnVtZXJpYyIgCiB0YWdJZD0ic3dpZGdlbi1iNTk1MWFjOS00MmMwLWYzODItM2YxZS1iYzdhMmE0NDk3Y2JfOS4xLjEiIAogeG1sbnM9Imh0dHA6Ly9zdGFuZGFyZHMuaXNvLm9yZy9pc28vMTk3NzAvLTIvMjAxNS9zY2hlbWEueHNkIj4gCiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiAKIHhzaTpzY2hlbWFMb2NhdGlvbj0iaHR0cDovL3N0YW5kYXJkcy5pc28ub3JnL2lzby8xOTc3MC8tMi8yMDE1LWN1cnJlbnQvc2NoZW1hLnhzZCBzY2hlbWEueHNkIiA+CiAgPE1ldGEgZ2VuZXJhdG9yPSJTV0lEIFRhZyBPbmxpbmUgR2VuZXJhdG9yIHYwLjEiIC8+IAogIDxFbnRpdHkgbmFtZT0iQWNtZSwgSW5jLiIgcmVnaWQ9ImV4YW1wbGUuY29tIiByb2xlPSJ0YWdDcmVhdG9yIiAvPiAKPC9Tb2Z0d2FyZUlkZW50aXR5Pg=="
+            },
+            "Url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+            "BomRef": null,
+            "Licensing": null
+          },
+          "Expression": null,
+          "BomRef": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Id": "Apache-2.0",
+              "Text": {
+                "ContentType": "text/plain",
+                "Encoding": "base64",
+                "Content": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiID8+CjxTb2Z0d2FyZUlkZW50aXR5IHhtbDpsYW5nPSJFTiIgbmFtZT0iQWNtZSBBcHBsaWNhdGlvbiIgdmVyc2lvbj0iOS4xLjEiIAogdmVyc2lvblNjaGVtZT0ibXVsdGlwYXJ0bnVtZXJpYyIgCiB0YWdJZD0ic3dpZGdlbi1iNTk1MWFjOS00MmMwLWYzODItM2YxZS1iYzdhMmE0NDk3Y2JfOS4xLjEiIAogeG1sbnM9Imh0dHA6Ly9zdGFuZGFyZHMuaXNvLm9yZy9pc28vMTk3NzAvLTIvMjAxNS9zY2hlbWEueHNkIj4gCiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiAKIHhzaTpzY2hlbWFMb2NhdGlvbj0iaHR0cDovL3N0YW5kYXJkcy5pc28ub3JnL2lzby8xOTc3MC8tMi8yMDE1LWN1cnJlbnQvc2NoZW1hLnhzZCBzY2hlbWEueHNkIiA+CiAgPE1ldGEgZ2VuZXJhdG9yPSJTV0lEIFRhZyBPbmxpbmUgR2VuZXJhdG9yIHYwLjEiIC8+IAogIDxFbnRpdHkgbmFtZT0iQWNtZSwgSW5jLiIgcmVnaWQ9ImV4YW1wbGUuY29tIiByb2xlPSJ0YWdDcmVhdG9yIiAvPiAKPC9Tb2Z0d2FyZUlkZW50aXR5Pg=="
+              },
+              "Url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": "pkg:npm/acme/component@1.0.0",
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": {
+        "Ancestors": [
+          {
+            "Type": "Library",
+            "MimeType": null,
+            "BomRef": null,
+            "Supplier": null,
+            "Author": null,
+            "Publisher": "Acme Inc",
+            "Group": "com.acme",
+            "Name": "tomcat-catalina",
+            "Version": "9.0.14",
+            "Description": null,
+            "Scope": null,
+            "Licenses": null,
+            "Copyright": null,
+            "Cpe": null,
+            "Purl": null,
+            "Swid": null,
+            "Modified": null,
+            "Pedigree": null,
+            "Evidence": null,
+            "ModelCard": null,
+            "Data": null,
+            "CryptoProperties": null,
+            "XmlSignature": null,
+            "Signature": null
+          },
+          {
+            "Type": "Library",
+            "MimeType": null,
+            "BomRef": null,
+            "Supplier": null,
+            "Author": null,
+            "Publisher": "Acme Inc",
+            "Group": "com.acme",
+            "Name": "tomcat-catalina",
+            "Version": "9.0.14",
+            "Description": null,
+            "Scope": null,
+            "Licenses": null,
+            "Copyright": null,
+            "Cpe": null,
+            "Purl": null,
+            "Swid": null,
+            "Modified": null,
+            "Pedigree": null,
+            "Evidence": null,
+            "ModelCard": null,
+            "Data": null,
+            "CryptoProperties": null,
+            "XmlSignature": null,
+            "Signature": null
+          }
+        ],
+        "Descendants": null,
+        "Variants": null,
+        "Commits": [
+          {
+            "Uid": "123",
+            "Url": "",
+            "Author": {
+              "Timestamp": "2067-09-26T16:41:18Z",
+              "Name": "",
+              "Email": ""
+            },
+            "Committer": null,
+            "Message": null
+          }
+        ],
+        "Notes": null
+      },
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": {
+        "Name": "Example, Inc.",
+        "Url": [
+          "https://example.com",
+          "https://example.net"
+        ],
+        "Contact": [
+          {
+            "Name": "Example Support AMER Distribution",
+            "Email": "support@example.com",
+            "Phone": "800-555-1212",
+            "BomRef": null
+          },
+          {
+            "Name": "Example Support APAC",
+            "Email": "support@apac.example.com",
+            "Phone": null,
+            "BomRef": null
+          }
+        ],
+        "BomRef": null,
+        "Address": null
+      },
+      "Manufacturer": {
+        "Name": "Example-2, Inc.",
+        "Url": [
+          "https://example.org"
+        ],
+        "Contact": [
+          {
+            "Name": null,
+            "Email": "support@example.org",
+            "Phone": null,
+            "BomRef": null
+          }
+        ],
+        "BomRef": null,
+        "Address": null
+      },
+      "Authors": [
+        {
+          "Name": "Anthony Edward Stark",
+          "Email": "ironman@example.org",
+          "Phone": "555-212-970-4133",
+          "BomRef": null
+        },
+        {
+          "Name": "Peter Benjamin Parker",
+          "Email": "spiderman@example.org",
+          "Phone": null,
+          "BomRef": null
+        }
+      ],
+      "Author": "Example Super Heros",
+      "Author_Xml": "Example Super Heros",
+      "Publisher": null,
+      "Group": "org.example",
+      "Name": "mylibrary",
+      "Version": "1.0.0",
+      "Description": null,
+      "Scope": "Required",
+      "NonNullableScope": "Required",
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Dependencies": [
+    {
+      "Ref": "pkg:npm/acme/component@1.0.0",
+      "Dependencies": [
+        {
+          "Ref": "pkg:npm/acme/component@1.0.0",
+          "Dependencies": null,
+          "Provides": null
+        }
+      ],
+      "Provides": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

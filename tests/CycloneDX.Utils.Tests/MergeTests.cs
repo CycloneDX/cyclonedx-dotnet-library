@@ -24,6 +24,8 @@ using CycloneDX;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
 using CycloneDX.Utils;
+using System.IO;
+using CycloneDX.Json;
 
 namespace CycloneDX.Utils.Tests
 {
@@ -32,7 +34,7 @@ namespace CycloneDX.Utils.Tests
         [Fact]
         public void FlatMergeToolsTest()
         {
-            #pragma warning disable 618
+#pragma warning disable 618
             var sbom1 = new Bom
             {
                 Metadata = new Metadata
@@ -67,7 +69,7 @@ namespace CycloneDX.Utils.Tests
                     }
                 }
             };
-            #pragma warning restore 618
+#pragma warning restore 618
 
             var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
 
@@ -104,6 +106,31 @@ namespace CycloneDX.Utils.Tests
 
             Snapshot.Match(result);
         }
+
+        [Fact]
+        public void FlatMergeDuplicatedComponentsTest()
+        {
+            var sboms = new List<Bom>();
+            for (int i = 0; i < 3; i++)
+            {
+                var bom = new Bom
+                {
+                    Components = new List<Component>
+                    {
+                        new Component
+                        {
+                            Name = "Component1",
+                            Version = "1"
+                        }
+                    }
+                };
+                sboms.Add(bom);
+            }
+            var result = CycloneDXUtils.FlatMerge(sboms);
+
+            Assert.Single(result.Components);
+        }
+
 
         [Fact]
         public void FlatMergeVulnerabilitiesTest()
@@ -258,7 +285,223 @@ namespace CycloneDX.Utils.Tests
                 }
             };
 
-            var result = CycloneDXUtils.HierarchicalMerge(new [] { sbom1, sbom2 }, subject);
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
+        public void HierarchicalMergeToolsComponentsTest()
+        {
+            var subject = new Component
+            {
+                Name = "Thing",
+                Version = "1",
+            };
+
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System1",
+                        Version = "1",
+                        BomRef = "System1@1"
+                    },
+                    Tools = new ToolChoices
+                    {
+                        Components = new List<Component>
+                        {
+                            new Component
+                            {
+                                Name = "ToolComponent1",
+                                Version = "1",
+                                BomRef = "ToolComponent1@1",
+                            }
+                        }
+                    }
+                },
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component1",
+                        Version = "1",
+                        BomRef = "Component1@1"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "System1@1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "Component1@1"
+                            }
+                        }
+                    }
+                },
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System2",
+                        Version = "1",
+                        BomRef = "System2@1"
+                    },
+                    Tools = new ToolChoices
+                    {
+                        Components = new List<Component>
+                        {
+                            new Component
+                            {
+                                Name = "ToolComponent2",
+                                Version = "1",
+                                BomRef = "ToolComponent2@1",
+                            }
+                        }
+                    }
+                },
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component2",
+                        Version = "1",
+                        BomRef = "Component2@1"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "System2@1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "Component2@1"
+                            }
+                        }
+                    }
+                },
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
+        public void HierarchicalMergeDuplicatedToolsComponentsTest()
+        {
+            var subject = new Component
+            {
+                Name = "Thing",
+                Version = "1",
+            };
+
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System1",
+                        Version = "1",
+                        BomRef = "System1@1"
+                    },
+                    Tools = new ToolChoices
+                    {
+                        Components = new List<Component>
+                        {
+                            new Component
+                            {
+                                Name = "ToolComponent1",
+                                Version = "1",
+                            }
+                        }
+                    }
+                },
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component1",
+                        Version = "1",
+                        BomRef = "Component1@1"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "System1@1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "Component1@1"
+                            }
+                        }
+                    }
+                },
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System2",
+                        Version = "1",
+                        BomRef = "System2@1"
+                    },
+                    Tools = new ToolChoices
+                    {
+                        Components = new List<Component>
+                        {
+                            new Component
+                            {
+                                Name = "ToolComponent1",
+                                Version = "1",
+                            }
+                        }
+                    }
+                },
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component2",
+                        Version = "1",
+                        BomRef = "Component2@1"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "System2@1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "Component2@1"
+                            }
+                        }
+                    }
+                },
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
 
             Snapshot.Match(result);
         }
@@ -325,9 +568,58 @@ namespace CycloneDX.Utils.Tests
                 }
             };
 
-            var result = CycloneDXUtils.HierarchicalMerge(new [] { sbom1, sbom2 }, subject);
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
 
             Snapshot.Match(result);
+        }
+
+        [Theory]
+        [InlineData("valid-attestation-1.6.json")]
+        [InlineData("valid-standard-1.6.json")]
+        public void HierarchicalMergeTest1_6(string filename)
+        {
+            var subject = new Component
+            {
+                Type = Component.Classification.Application,
+                Name = "Thing",
+                Version = "1",
+            };
+            var resourceFilename = Path.Join("MergeTests_Resources", filename);
+            var jsonString = File.ReadAllText(resourceFilename);
+
+            var bom1 = Serializer.Deserialize(jsonString);
+            var bom2 = Serializer.Deserialize(jsonString);
+
+            bom1.Metadata = new Metadata
+            {
+                Component = new Component
+                {
+                    Type = Component.Classification.Application,
+                    BomRef = "bom1",
+                    Name = "bom1name"
+                }
+            };
+
+            bom2.Metadata = new Metadata
+            {
+                Component = new Component
+                {
+                    Type = Component.Classification.Application,
+                    BomRef = "bom2",
+                    Name = "bom2name"
+                }
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { bom1, bom2 }, subject);
+            result.SpecVersion = SpecificationVersion.v1_6;
+
+            jsonString = Serializer.Serialize(result);
+
+
+            var validationResult = Validator.Validate(jsonString, SpecificationVersion.v1_6);
+            Assert.True(validationResult.Valid, string.Join(Environment.NewLine, validationResult.Messages));
+
+            Snapshot.Match(jsonString, SnapshotNameExtension.Create(filename));
         }
     }
 }

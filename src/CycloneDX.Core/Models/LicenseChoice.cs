@@ -15,12 +15,17 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
+
+
     [ProtoContract]
     public class LicenseChoice
     {
@@ -31,10 +36,123 @@ namespace CycloneDX.Models
         [XmlElement("expression")]
         [ProtoMember(2)]
         public string Expression { get; set; }
-        
-        [XmlElement("bom-ref")]
+
+        [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public string BomRef { get; set; }
+
+
+        [XmlAttribute("acknowledgement")]
+        [ProtoMember(3)]
+        public LicenseAcknowledgementEnumeration? Acknowledgement { get; set; }
+        public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue; }
+
+    }
+
+    // This is a workaround to serialize licenses correctly
+    public class LicenseChoiceList : IXmlSerializable
+    {
+        public LicenseChoiceList(List<LicenseChoice> licenses)
+        {
+            Licenses = licenses;
+        }
+
+        public LicenseChoiceList() { }
+
+        public List<LicenseChoice> Licenses { get; set; }
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            return (null);
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+
+            bool isEmptyElement = reader.IsEmptyElement;
+            reader.ReadStartElement();
+
+            if (!isEmptyElement)
+            {
+                XmlSerializer licenseSerializer = new XmlSerializer(typeof(License), reader.NamespaceURI);
+
+                Licenses = new List<LicenseChoice>();
+
+                bool finished = false;
+                while (!finished)
+                {
+                    finished = true;
+                    if (licenseSerializer.CanDeserialize(reader))
+                    {
+                        var license = (License)licenseSerializer.Deserialize(reader);
+                        Licenses.Add(new LicenseChoice { License = license });
+                        finished = false;
+                    }
+                    if (reader.LocalName == "expression")
+                    {
+                        string bomRef = null;
+                        LicenseAcknowledgementEnumeration? acknowledgement = null;
+                        if (reader.GetAttribute("bom-ref") != null)
+                        {
+                            bomRef = reader.GetAttribute("bom-ref");
+                        }
+                        if (reader.GetAttribute("acknowledgement") != null)
+                        {
+                            var acknowledgementStr = reader.GetAttribute("acknowledgement");
+                            LicenseAcknowledgementEnumeration acknowledgementNonNull;
+                            if (Enum.TryParse<LicenseAcknowledgementEnumeration>(acknowledgementStr, true, out acknowledgementNonNull))
+                            {
+                                acknowledgement = acknowledgementNonNull;
+                            }
+                        }
+                        reader.ReadStartElement();
+                        var expression = reader.ReadContentAsString();
+                        Licenses.Add(new LicenseChoice { Expression = expression, BomRef = bomRef, Acknowledgement = acknowledgement });                        
+                        finished = false;
+                        reader.ReadEndElement();
+                    }
+
+
+                }
+
+                reader.ReadEndElement();
+            }
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+
+            if (Licenses != null)
+            {
+                // todo: is there a way to feed in the namespace with having to introduce WriterToNamespace?
+                string defaultNamespace;
+                defaultNamespace = CycloneDX.Xml.Serializer.GetNamespace(writer);
+                XmlSerializer licenseSerializer = new XmlSerializer(typeof(License), defaultNamespace);
+
+                foreach (var license in Licenses)
+                {
+                    if (license.License != null)
+                    {
+                        licenseSerializer.Serialize(writer, license.License, new XmlSerializerNamespaces());
+                    }
+                    if (license.Expression != null)
+                    {
+                        writer.WriteStartElement("expression");
+                        if (license.BomRef != null)
+                        {
+                            writer.WriteAttributeString("bom-ref", license.BomRef);
+                        }
+                        if (license.Acknowledgement.HasValue)
+                        {
+                            writer.WriteAttributeString("acknowledgement", license.Acknowledgement.Value.ToString().ToLower());
+                        }
+                        writer.WriteString(license.Expression);
+                        writer.WriteEndElement();
+                    }
+                }
+            }
+
+        }
     }
 }

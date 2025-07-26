@@ -21,11 +21,12 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
 using ProtoBuf;
+using System.Text.Json;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Composition : IXmlSerializable
+    public class Composition : IXmlSerializable, IEquatable<Composition>
     {
         [ProtoContract]
         public enum AggregateType
@@ -67,6 +68,11 @@ namespace CycloneDX.Models
         [JsonPropertyName("bom-ref")]
         [ProtoMember(5)]
         public string BomRef { get; set; }
+        [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        [JsonIgnore]
+        public XmlElement XmlSignature { get; set; }
+        [XmlIgnore]
+        public SignatureChoice Signature { get; set; }
 
         public System.Xml.Schema.XmlSchema GetSchema() {
             return null;
@@ -193,6 +199,27 @@ namespace CycloneDX.Models
                 }
                 writer.WriteEndElement();
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Composition;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(other, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public bool Equals(Composition obj)
+        {
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(obj, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public override int GetHashCode()
+        {
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
         }
     }
 }

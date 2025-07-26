@@ -18,15 +18,18 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using CycloneDX.Core.Models;
 using ProtoBuf;
 
 namespace CycloneDX.Models
 {
     [XmlType("dependency")]
     [ProtoContract]
-    public class Dependency: IEquatable<Dependency>
+    public class Dependency : IEquatable<Dependency>
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]
@@ -36,14 +39,61 @@ namespace CycloneDX.Models
         [ProtoMember(2)]
         public List<Dependency> Dependencies { get; set; }
 
+        [XmlElement("provides")]
+        public List<Provides> Provides { get; set; }
+
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(3)]
+        public List<string> Provides_Protobuf
+        {
+            get
+            {
+                if (Provides == null)
+                {
+                    return null;
+                }
+                return Provides.Select((provides) => provides.Ref).ToList();
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Provides = null;
+                    return;
+                }
+                Provides = value.Select((reference) => new Provides { Ref = reference }).ToList();
+            }
+        }
+        public bool ShouldSerializeProvides_Protobuf() { return Provides?.Count > 0; }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Dependency;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(other, Json.Serializer.SerializerOptionsForHash);
+        }
+
         public bool Equals(Dependency obj)
         {
-            return CycloneDX.Json.Serializer.Serialize(this) == CycloneDX.Json.Serializer.Serialize(obj);
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(obj, Json.Serializer.SerializerOptionsForHash);
         }
-    
+
         public override int GetHashCode()
         {
-            return CycloneDX.Json.Serializer.Serialize(this).GetHashCode();
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
         }
+    }
+
+    [ProtoContract]
+    public class Provides
+    {
+        [XmlAttribute("ref")]
+        [ProtoMember(1)]
+        public string Ref { get; set; }
     }
 }

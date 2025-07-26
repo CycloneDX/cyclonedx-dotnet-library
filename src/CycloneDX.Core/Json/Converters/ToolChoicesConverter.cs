@@ -73,16 +73,19 @@ namespace CycloneDX.Json.Converters
             Contract.Requires(writer != null);
             Contract.Requires(value != null);
 
-            if (value.Tools != null)
+            if (value.Tools != null || value.SpecVersion < SpecificationVersion.v1_5)
             {
                 writer.WriteStartArray();
-                foreach (var tool in value.Tools)
+                if (value.Tools != null)
                 {
-                    JsonSerializer.Serialize(writer, tool, options);
+                    foreach (var tool in value.Tools)
+                    {
+                        JsonSerializer.Serialize(writer, tool, options);
+                    }
                 }
                 writer.WriteEndArray();
             }
-            else if (value.Components != null || value.Services != null)
+            else
             {
                 writer.WriteStartObject();
                 if (value.Components != null)
@@ -96,10 +99,6 @@ namespace CycloneDX.Json.Converters
                     JsonSerializer.Serialize(writer, value.Services, options);
                 }
                 writer.WriteEndObject();                
-            }
-            else
-            {
-                writer.WriteNullValue();
             }
         }
     }
