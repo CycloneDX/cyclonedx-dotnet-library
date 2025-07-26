@@ -28,11 +28,13 @@ namespace CycloneDX.Spdx.Tests
     public class JsonValidatorTests
     {
         [Theory]
-        [InlineData("document")]
-        [InlineData("document-with-hyphens-in-external-reference-category")]
-        public void ValidateJsonStringTest(string baseFilename)
+        [InlineData("v2.2", "document")]
+        [InlineData("v2.2", "document-with-hyphens-in-external-reference-category")]
+        [InlineData("v2.3", "document")]
+        [InlineData("v2.3", "document-with-hyphens-in-external-reference-category")]
+        public void ValidateJsonStringTest(string version, string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", version, baseFilename + ".json");
             var document = File.ReadAllText(resourceFilename);
 
             var result = JsonValidator.Validate(document);
@@ -41,11 +43,13 @@ namespace CycloneDX.Spdx.Tests
         }
 
         [Theory]
-        [InlineData("document")]
-        [InlineData("document-with-hyphens-in-external-reference-category")]
-        public async Task ValidateJsonStreamTest(string baseFilename)
+        [InlineData("v2.2", "document")]
+        [InlineData("v2.2", "document-with-hyphens-in-external-reference-category")]
+        [InlineData("v2.3", "document")]
+        [InlineData("v2.3", "document-with-hyphens-in-external-reference-category")]
+        public async Task ValidateJsonStreamTest(string version, string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", version, baseFilename + ".json");
             using (var jsonStream = File.OpenRead(resourceFilename))
             {
                 var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
@@ -63,8 +67,8 @@ namespace CycloneDX.Spdx.Tests
                 var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
 
                 Assert.False(validationResult.Valid);
-    }
-}
+            }
+        }
 
 
 

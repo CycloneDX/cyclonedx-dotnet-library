@@ -39,7 +39,25 @@ namespace CycloneDX.Spdx.Models.v2_3
         [JsonIgnore]
         public string ReferenceCategoryAsString
         {
-            get => ReferenceCategory.ToString();
+            get
+            {
+                string result;
+                switch (ReferenceCategory)
+                {
+                    case ExternalRefCategory.PACKAGE_MANAGER:
+                        result = "PACKAGE-MANAGER";
+                        break;
+                    case ExternalRefCategory.PERSISTENT_ID:
+                        result = "PERSISTENT-ID";
+                        break;
+                    default:
+                        result = ReferenceCategory.ToString();
+                        break;
+                }
+                return result;
+            }
+
+
             set
             {
                 switch (value.ToUpperInvariant())
@@ -53,6 +71,10 @@ namespace CycloneDX.Spdx.Models.v2_3
                     case "PACKAGE_MANAGER":
                     case "PACKAGE-MANAGER":
                         ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER;
+                        break;
+                    case "PERSISTENT_ID":
+                    case "PERSISTENT-ID":
+                        ReferenceCategory = ExternalRefCategory.PERSISTENT_ID;
                         break;
                     default:
                         throw new InvalidOperationException();
