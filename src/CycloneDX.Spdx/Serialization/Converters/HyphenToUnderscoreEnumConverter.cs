@@ -56,7 +56,7 @@ namespace CycloneDX.Spdx.Serialization.Converters
             JsonSerializerOptions options)
         {
             Contract.Requires(writer != null);
-            writer.WriteStringValue(value.ToString());
+            writer.WriteStringValue(value.ToString().Replace("_", "-"));
         }
     }
 }
