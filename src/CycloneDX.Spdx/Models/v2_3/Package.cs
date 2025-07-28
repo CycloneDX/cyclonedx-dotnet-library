@@ -43,12 +43,17 @@ namespace CycloneDX.Spdx.Models.v2_3
         [XmlElement("attributionTexts")]
         public List<string> AttributionTexts { get; set; }
 
-        /// <summary>
+        private DateTime? _builtDate;
+        /// <summary>0
         /// Provides a place for recording the actual date the package was built.
         /// </summary>
         [XmlElement("builtDate")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
-        public DateTime? BuiltDate { get; set; }
+        public DateTime? BuiltDate
+        {
+            get => _builtDate;
+            set { _builtDate = Utils.UtcifyDateTime(value); }
+        }
 
         /// <summary>
         /// The checksum property provides a mechanism that can be used to verify that the contents of a File or Package have not changed.
@@ -152,12 +157,17 @@ namespace CycloneDX.Spdx.Models.v2_3
         [XmlElement("hasFiles")]
         public List<string> HasFiles { get; set; }
 
+        private DateTime? _releaseDate;
         /// <summary>
         /// Provides a place for recording the date the package was released.
         /// </summary>
         [XmlElement("releaseDate")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
-        public DateTime? ReleaseDate { get; set; }
+        public DateTime? ReleaseDate
+        {
+            get => _releaseDate;
+            set { _releaseDate = Utils.UtcifyDateTime(value); }
+        }
 
         /// <summary>
         /// Allows the producer(s) of the SPDX document to describe how the package was acquired and/or changed from the original source.
@@ -177,12 +187,17 @@ namespace CycloneDX.Spdx.Models.v2_3
         [XmlElement("supplier")]
         public string Supplier { get; set; }
 
-       /// <summary>
+        private DateTime? _validUntilDate;
+        /// <summary>
         /// Provides a place for recording the end of the support period for a package from the supplier.
         /// </summary>
         [XmlElement("validUntilDate")]
         [JsonConverter(typeof(UtcDateTimeConverter))]
-        public DateTime? ValidUntilDate { get; set; }
+        public DateTime? ValidUntilDate
+        {
+            get => _validUntilDate;
+            set { _validUntilDate = Utils.UtcifyDateTime(value); }
+        }
 
         /// <summary>
         /// Provides an indication of the version of the package that is described by this SpdxDocument.

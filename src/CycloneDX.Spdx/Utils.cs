@@ -1,4 +1,4 @@
-// This file is part of CycloneDX Library for .NET
+﻿// This file is part of CycloneDX Library for .NET
 //
 // Licensed under the Apache License, Version 2.0 (the “License”);
 // you may not use this file except in compliance with the License.
@@ -16,28 +16,29 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using System;
-using System.IO;
-using System.Threading.Tasks;
-using Xunit;
-using Snapshooter;
-using Snapshooter.Xunit;
-using CycloneDX.Spdx.Validation;
 
-namespace CycloneDX.Spdx.Tests
+namespace CycloneDX.Spdx
 {
-    public class XmlValidatorTests
+    static internal class Utils
     {
-        [Theory]
-        [InlineData("document")]
-        [InlineData("document-with-hyphens-in-external-reference-category")]
-        public void ValidateXmlStringTest(string baseFilename)
+        internal static DateTime? UtcifyDateTime(DateTime? value)
         {
-            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".xml");
-            var document = File.ReadAllText(resourceFilename);
-
-            var result = XmlValidator.Validate(document);
-
-            Assert.True(result.Valid);
+            if (value is null)
+            {
+                return null;
+            }
+            else if (value.Value.Kind == DateTimeKind.Unspecified)
+            {
+                return DateTime.SpecifyKind(value.Value, DateTimeKind.Utc);
+            }
+            else if (value.Value.Kind == DateTimeKind.Local)
+            {
+                return value.Value.ToUniversalTime();
+            }
+            else
+            {
+                return value;
+            }
         }
     }
 }
