@@ -4743,6 +4743,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.ShouldSerializeComponents
   nameWithType: Component.ShouldSerializeComponents
+- uid: CycloneDX.Models.Component.ShouldSerializeData
+  name: ShouldSerializeData()
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeData
+  commentId: M:CycloneDX.Models.Component.ShouldSerializeData
+  fullName: CycloneDX.Models.Component.ShouldSerializeData()
+  nameWithType: Component.ShouldSerializeData()
+- uid: CycloneDX.Models.Component.ShouldSerializeData*
+  name: ShouldSerializeData
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeData_
+  commentId: Overload:CycloneDX.Models.Component.ShouldSerializeData
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.ShouldSerializeData
+  nameWithType: Component.ShouldSerializeData
 - uid: CycloneDX.Models.Component.ShouldSerializeExternalReferences
   name: ShouldSerializeExternalReferences()
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeExternalReferences
