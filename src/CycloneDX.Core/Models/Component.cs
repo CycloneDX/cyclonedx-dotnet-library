@@ -268,6 +268,7 @@ namespace CycloneDX.Models
         [XmlElement("data")]
         [ProtoMember(26)]
         public List<Data> Data { get; set; }
+        public bool ShouldSerializeData() { return Data?.Count > 0; }
 
         [XmlElement("cryptoProperties")]
         [ProtoMember(27)]
