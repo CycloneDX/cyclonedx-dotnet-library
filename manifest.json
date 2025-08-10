@@ -3364,6 +3364,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Spdx.Serialization.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Spdx.Serialization.Converters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Spdx.Serialization.Converters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Spdx.Serialization.JsonSerializer.yml",
       "output": {
         ".html": {

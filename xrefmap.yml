@@ -16775,6 +16775,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Spdx.Models.v2_3.ExternalRef.ReferenceCategory
   nameWithType: ExternalRef.ReferenceCategory
+- uid: CycloneDX.Spdx.Models.v2_3.ExternalRef.ReferenceCategoryAsString
+  name: ReferenceCategoryAsString
+  href: api/CycloneDX.Spdx.Models.v2_3.ExternalRef.html#CycloneDX_Spdx_Models_v2_3_ExternalRef_ReferenceCategoryAsString
+  commentId: P:CycloneDX.Spdx.Models.v2_3.ExternalRef.ReferenceCategoryAsString
+  fullName: CycloneDX.Spdx.Models.v2_3.ExternalRef.ReferenceCategoryAsString
+  nameWithType: ExternalRef.ReferenceCategoryAsString
+- uid: CycloneDX.Spdx.Models.v2_3.ExternalRef.ReferenceCategoryAsString*
+  name: ReferenceCategoryAsString
+  href: api/CycloneDX.Spdx.Models.v2_3.ExternalRef.html#CycloneDX_Spdx_Models_v2_3_ExternalRef_ReferenceCategoryAsString_
+  commentId: Overload:CycloneDX.Spdx.Models.v2_3.ExternalRef.ReferenceCategoryAsString
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Models.v2_3.ExternalRef.ReferenceCategoryAsString
+  nameWithType: ExternalRef.ReferenceCategoryAsString
 - uid: CycloneDX.Spdx.Models.v2_3.ExternalRef.ReferenceLocator
   name: ReferenceLocator
   href: api/CycloneDX.Spdx.Models.v2_3.ExternalRef.html#CycloneDX_Spdx_Models_v2_3_ExternalRef_ReferenceLocator
@@ -18939,6 +18952,56 @@ references:
   commentId: N:CycloneDX.Spdx.Serialization
   fullName: CycloneDX.Spdx.Serialization
   nameWithType: CycloneDX.Spdx.Serialization
+- uid: CycloneDX.Spdx.Serialization.Converters
+  name: CycloneDX.Spdx.Serialization.Converters
+  href: api/CycloneDX.Spdx.Serialization.Converters.html
+  commentId: N:CycloneDX.Spdx.Serialization.Converters
+  fullName: CycloneDX.Spdx.Serialization.Converters
+  nameWithType: CycloneDX.Spdx.Serialization.Converters
+- uid: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1
+  name: HyphenToUnderscoreEnumConverter<T>
+  href: api/CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter-1.html
+  commentId: T:CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1
+  name.vb: HyphenToUnderscoreEnumConverter(Of T)
+  fullName: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter<T>
+  fullName.vb: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter(Of T)
+  nameWithType: HyphenToUnderscoreEnumConverter<T>
+  nameWithType.vb: HyphenToUnderscoreEnumConverter(Of T)
+- uid: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  href: api/CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter-1.html#CycloneDX_Spdx_Serialization_Converters_HyphenToUnderscoreEnumConverter_1_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter<T>.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter(Of T).Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType: HyphenToUnderscoreEnumConverter<T>.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType.vb: HyphenToUnderscoreEnumConverter(Of T).Read(Utf8JsonReader, Type, JsonSerializerOptions)
+- uid: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1.Read*
+  name: Read
+  href: api/CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter-1.html#CycloneDX_Spdx_Serialization_Converters_HyphenToUnderscoreEnumConverter_1_Read_
+  commentId: Overload:CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1.Read
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter<T>.Read
+  fullName.vb: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter(Of T).Read
+  nameWithType: HyphenToUnderscoreEnumConverter<T>.Read
+  nameWithType.vb: HyphenToUnderscoreEnumConverter(Of T).Read
+- uid: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)
+  name: Write(Utf8JsonWriter, T, JsonSerializerOptions)
+  href: api/CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter-1.html#CycloneDX_Spdx_Serialization_Converters_HyphenToUnderscoreEnumConverter_1_Write_System_Text_Json_Utf8JsonWriter__0_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)
+  fullName: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter<T>.Write(System.Text.Json.Utf8JsonWriter, T, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter(Of T).Write(System.Text.Json.Utf8JsonWriter, T, System.Text.Json.JsonSerializerOptions)
+  nameWithType: HyphenToUnderscoreEnumConverter<T>.Write(Utf8JsonWriter, T, JsonSerializerOptions)
+  nameWithType.vb: HyphenToUnderscoreEnumConverter(Of T).Write(Utf8JsonWriter, T, JsonSerializerOptions)
+- uid: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1.Write*
+  name: Write
+  href: api/CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter-1.html#CycloneDX_Spdx_Serialization_Converters_HyphenToUnderscoreEnumConverter_1_Write_
+  commentId: Overload:CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter`1.Write
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter<T>.Write
+  fullName.vb: CycloneDX.Spdx.Serialization.Converters.HyphenToUnderscoreEnumConverter(Of T).Write
+  nameWithType: HyphenToUnderscoreEnumConverter<T>.Write
+  nameWithType.vb: HyphenToUnderscoreEnumConverter(Of T).Write
 - uid: CycloneDX.Spdx.Serialization.JsonSerializer
   name: JsonSerializer
   href: api/CycloneDX.Spdx.Serialization.JsonSerializer.html
