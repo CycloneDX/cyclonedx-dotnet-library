@@ -34,7 +34,7 @@ jobs:
       contents: write  # needed for creating GH release and uploading release assets
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '6.0.x'
 
