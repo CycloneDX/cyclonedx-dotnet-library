@@ -32,9 +32,6 @@
       "author": "Acme Super Heros",
       "name": "Acme Application",
       "version": "9.1.1",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
