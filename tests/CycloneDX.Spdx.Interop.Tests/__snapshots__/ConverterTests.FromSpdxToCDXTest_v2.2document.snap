@@ -113,6 +113,7 @@
         }
       ],
       "copyright": "Copyright 2008-2010 John Smith",
+      "cpe": "cpe:2.3:a:pivotal_software:spring_framework:4.1.0:*:*:*:*:*:*:*",
       "externalReferences": [
         {
           "url": "http://ftp.gnu.org/gnu/glibc/glibc-ports-2.15.tar.gz",
@@ -171,10 +172,6 @@
         {
           "name": "spdx:package:originator:email",
           "value": "contact@example.com"
-        },
-        {
-          "name": "spdx:external-reference:security:cpe23",
-          "value": "cpe:2.3:a:pivotal_software:spring_framework:4.1.0:*:*:*:*:*:*:*"
         },
         {
           "name": "spdx:external-reference:other:http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301#LocationRef-acmeforge",
