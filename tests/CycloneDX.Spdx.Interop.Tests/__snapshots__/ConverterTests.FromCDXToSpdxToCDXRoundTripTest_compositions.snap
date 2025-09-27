@@ -31,9 +31,6 @@
       "type": "library",
       "name": "Partner Shaded Library",
       "version": "1.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -55,9 +52,6 @@
       "type": "library",
       "name": "Acme Library",
       "version": "3.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",

@@ -31,9 +31,6 @@
       "type": "library",
       "name": "library-a",
       "version": "1.0.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -55,9 +52,6 @@
       "type": "library",
       "name": "library-b",
       "version": "1.0.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -79,9 +73,6 @@
       "type": "library",
       "name": "library-c",
       "version": "1.0.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",

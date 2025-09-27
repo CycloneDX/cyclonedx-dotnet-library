@@ -147,7 +147,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 {
                     component.Licenses = new List<LicenseChoice>();
                 }
-                else
+                else if (package.LicenseDeclared != null)
                 {
                     component.Licenses = new List<LicenseChoice> { new LicenseChoice { Expression = package.LicenseDeclared } };
                 }
