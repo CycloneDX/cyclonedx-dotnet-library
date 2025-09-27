@@ -41,6 +41,7 @@ namespace CycloneDX.Spdx.Serialization
                 
             };
             options.Converters.Add(new HyphenToUnderscoreEnumConverter<ExternalRefCategory>());
+            options.Converters.Add(new HyphenToUnderscoreEnumConverter<ChecksumAlgorithm>());
             options.Converters.Add(new JsonStringEnumConverter());
             return options;
         }
