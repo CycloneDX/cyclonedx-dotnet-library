@@ -147,6 +147,9 @@ namespace CycloneDX.Utils
             var vulnerabilitiesMerger = new ListMergeHelper<Vulnerability>();
             result.Vulnerabilities = vulnerabilitiesMerger.Merge(bom1.Vulnerabilities, bom2.Vulnerabilities);
 
+            var annotationsMerger = new ListMergeHelper<Annotation>();
+            result.Annotations = annotationsMerger.Merge(bom1.Annotations, bom2.Annotations);
+
             if (bom1.Definitions != null && bom2.Definitions != null)
             {
                 //this will not take a signature, but it probably makes sense to empty those after a merge anyways. 
@@ -285,6 +288,7 @@ namespace CycloneDX.Utils
             result.Dependencies = new List<Dependency>();
             result.Compositions = new List<Composition>();
             result.Vulnerabilities = new List<Vulnerability>();
+            result.Annotations = new List<Annotation>();
 
             result.Declarations = new Declarations
             {
@@ -401,6 +405,13 @@ namespace CycloneDX.Utils
                     result.Vulnerabilities.AddRange(bom.Vulnerabilities);
                 }
 
+                // annotations
+                if (bom.Annotations != null)
+                {
+                    NamespaceAnnotationsBomRefs(ComponentBomRefNamespace(bom.Metadata.Component), bom.Annotations);
+                    result.Annotations.AddRange(bom.Annotations);
+                }
+
                 void NamespaceBomRefs(IEnumerable<IHasBomRef> refs) => CycloneDXUtils.NamespaceBomRefs(thisComponent, refs);
                 void NamespaceReference(IEnumerable<object> refs, string name) => CycloneDXUtils.NamespaceProperty(thisComponent, refs, name);
                 
@@ -472,6 +483,7 @@ namespace CycloneDX.Utils
             if (result.Dependencies.Count == 0) { result.Dependencies = null; }
             if (result.Compositions.Count == 0) { result.Compositions = null; }
             if (result.Vulnerabilities.Count == 0) { result.Vulnerabilities = null; }
+            if (result.Annotations.Count == 0) { result.Annotations = null; }
 
             return result;
         }
@@ -628,6 +640,44 @@ namespace CycloneDX.Utils
                         affect.Ref = bomRefNamespace;
                     }
                 }
+            }
+        }
+
+        private static void NamespaceAnnotationsBomRefs(string bomRefNamespace, List<Annotation> annotations)
+        {
+            var pendingAnnotations = new Stack<Annotation>(annotations);
+
+            while (pendingAnnotations.Count > 0)
+            {
+                var annotation = pendingAnnotations.Pop();
+
+                annotation.BomRef = NamespacedBomRef(bomRefNamespace, annotation.BomRef);
+
+                if (annotation.Subjects != null)
+                {
+                    for (var i = 0; i < annotation.XmlSubjects.Count; i++)
+                    {
+                        annotation.XmlSubjects[i].Ref = NamespacedBomRef(bomRefNamespace, annotation.XmlSubjects[i].Ref);
+                    }
+                }
+                                
+                if (annotation.Annotator?.Component != null)
+                {
+                    NamespaceComponentBomRefs(bomRefNamespace, annotation.Annotator?.Component);
+                }
+                if (annotation.Annotator?.Individual != null)
+                {
+                    annotation.Annotator.Individual.BomRef = NamespacedBomRef(bomRefNamespace, annotation.Annotator.Individual.BomRef);
+                }
+                if (annotation.Annotator?.Organization != null)
+                {
+                    annotation.Annotator.Organization.BomRef = NamespacedBomRef(bomRefNamespace, annotation.Annotator.Organization.BomRef);
+                }
+                if (annotation.Annotator?.Service != null)
+                {
+                    annotation.Annotator.Service.BomRef = NamespacedBomRef(bomRefNamespace, annotation.Annotator.Service.BomRef);
+                }
+
             }
         }
 

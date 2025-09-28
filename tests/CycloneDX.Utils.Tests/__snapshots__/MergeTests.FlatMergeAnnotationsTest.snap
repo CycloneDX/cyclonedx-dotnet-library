@@ -1,0 +1,113 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": null,
+  "Version": null,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Component1",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Component2",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Annotations": [
+    {
+      "BomRef": "annotation1",
+      "Subjects": [
+        "Component1"
+      ],
+      "XmlSubjects": [
+        {
+          "Ref": "Component1"
+        }
+      ],
+      "Annotator": {
+        "Organization": null,
+        "Individual": {
+          "Name": "individual1",
+          "Email": null,
+          "Phone": null,
+          "BomRef": "individual1"
+        },
+        "Component": null,
+        "Service": null
+      },
+      "Text": "Annotation Text"
+    },
+    {
+      "BomRef": "annotation2",
+      "Subjects": [
+        "Component2"
+      ],
+      "XmlSubjects": [
+        {
+          "Ref": "Component2"
+        }
+      ],
+      "Annotator": {
+        "Organization": {
+          "Name": "organization1",
+          "Url": null,
+          "Contact": null,
+          "BomRef": "organization1",
+          "Address": null
+        },
+        "Individual": null,
+        "Component": null,
+        "Service": null
+      },
+      "Text": "Annotation Text 2"
+    }
+  ],
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}
