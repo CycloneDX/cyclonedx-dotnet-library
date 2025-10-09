@@ -123,24 +123,7 @@ namespace CycloneDX.Utils
                 };
             }
 
-            if (bom1.Metadata?.Manufacturer != null)
-            {
-                if (result.Metadata == null)
-                {
-                    result.Metadata = new Metadata();
-                }
-
-                result.Metadata.Manufacturer = bom1.Metadata.Manufacturer;
-            }
-            else if (bom2.Metadata?.Manufacturer != null)
-            {
-                if (result.Metadata == null)
-                {
-                    result.Metadata = new Metadata();
-                }
-
-                result.Metadata.Manufacturer = bom2.Metadata.Manufacturer;
-            }
+            PopulateManufacturer(bom1, bom2, result);
 
             var componentsMerger = new ListMergeHelper<Component>();
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
@@ -196,6 +179,27 @@ namespace CycloneDX.Utils
             return result;
         }
 
+        private static void PopulateManufacturer(Bom bom1, Bom bom2, Bom result)
+        {
+            if (bom1.Metadata?.Manufacturer != null)
+            {
+                if (result.Metadata == null)
+                {
+                    result.Metadata = new Metadata();
+                }
+
+                result.Metadata.Manufacturer = bom1.Metadata.Manufacturer;
+            }
+            else if (bom2.Metadata?.Manufacturer != null)
+            {
+                if (result.Metadata == null)
+                {
+                    result.Metadata = new Metadata();
+                }
+
+                result.Metadata.Manufacturer = bom2.Metadata.Manufacturer;
+            }
+        }
 
         /// <summary>
         /// Performs a flat merge of multiple BOMs.
