@@ -97,8 +97,9 @@ namespace CycloneDX.Utils
         /// </summary>
         /// <param name="bom1"></param>
         /// <param name="bom2"></param>
+        /// <param name="keepManufacturer"></param>
         /// <returns></returns>
-        public static Bom FlatMerge(Bom bom1, Bom bom2)
+        public static Bom FlatMerge(Bom bom1, Bom bom2, bool keepManufacturer = false)
         {
             var result = new Bom();
 
@@ -123,7 +124,10 @@ namespace CycloneDX.Utils
                 };
             }
 
-            PopulateManufacturer(bom1, bom2, result);
+            if (keepManufacturer)
+            {
+                PopulateManufacturer(bom1, bom2, result);
+            }
 
             var componentsMerger = new ListMergeHelper<Component>();
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
@@ -214,9 +218,9 @@ namespace CycloneDX.Utils
         /// <param name="bom1"></param>
         /// <param name="bom2"></param>
         /// <returns></returns>
-        public static Bom FlatMerge(IEnumerable<Bom> boms)
+        public static Bom FlatMerge(IEnumerable<Bom> boms, bool keepManufacturer = false)
         {
-            return FlatMerge(boms, null);
+            return FlatMerge(boms, null, keepManufacturer);
         }
 
         /// <summary>
@@ -232,13 +236,13 @@ namespace CycloneDX.Utils
         /// <param name="bom1"></param>
         /// <param name="bom2"></param>
         /// <returns></returns>
-        public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject)
+        public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject, bool keepManufacturer = false)
         {
             var result = new Bom();
 
             foreach (var bom in boms)
             {
-                result = FlatMerge(result, bom);
+                result = FlatMerge(result, bom, keepManufacturer);
             }
 
             if (bomSubject != null)
