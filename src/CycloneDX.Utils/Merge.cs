@@ -22,7 +22,6 @@ using System.Reflection;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
 using CycloneDX.Utils.Exceptions;
-using Json.Schema;
 
 namespace CycloneDX.Utils
 {
@@ -116,7 +115,10 @@ namespace CycloneDX.Utils
         /// </summary>
         /// <param name="bom1"></param>
         /// <param name="bom2"></param>
-        /// <param name="keepManufacturer"></param>
+        /// <param name="keepManufacturer">
+        /// Keep the first found manufacturer in a BOM. Without this option
+        /// all manufacturers are discarded.
+        /// </param>
         /// <returns></returns>
         public static Bom FlatMerge(Bom bom1, Bom bom2, bool keepManufacturer)
         {
@@ -253,7 +255,10 @@ namespace CycloneDX.Utils
         /// maintained refer to the <c>HierarchicalMerge</c> method.
         /// </summary>
         /// <param name="boms"></param>
-        /// <param name="keepManufacturer"></param>
+        /// <param name="keepManufacturer">
+        /// Keep the first found manufacturer in a BOM. Without this option
+        /// all manufacturers are discarded.
+        /// </param>
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms, bool keepManufacturer)
         {
@@ -291,7 +296,10 @@ namespace CycloneDX.Utils
         /// </summary>
         /// <param name="boms"></param>
         /// <param name="bomSubject"></param>
-        /// <param name="keepManufacturer"></param>
+        /// <param name="keepManufacturer">
+        /// Keep the first found manufacturer in a BOM. Without this option
+        /// all manufacturers are discarded.
+        /// </param>
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject, bool keepManufacturer)
         {
