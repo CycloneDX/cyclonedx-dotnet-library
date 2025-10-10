@@ -26,8 +26,289 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Spdx\v2.2\document.json" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_assembly.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_bom.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-hashes.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-ref.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-swid-full.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-swid.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-types.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_compositions.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_dependency.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_evidence.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_external-reference.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_license-expression.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_license-id.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_license-name.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_minimal-viable.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_patch.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_properties.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxTest_service.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_assembly.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_bom.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-hashes.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-ref.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-swid-full.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-swid.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-types.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_compositions.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_dependency.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_evidence.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_external-reference.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_license-expression.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_license-id.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_license-name.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_minimal-viable.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_patch.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_properties.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_service.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromSpdxToCDXTest_document.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromSpdxToCDXTest_v2.3document.snap" />
+    <None Remove="__snapshots__\ConverterTests.FromSpdxToCDXToSpdxRoundTripTest_v2.3document.snap" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\src\CycloneDX.Spdx\CycloneDX.Spdx.csproj" />
     <ProjectReference Include="..\..\src\CycloneDX.Spdx.Interop\CycloneDX.Spdx.Interop.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="__snapshots__\__mismatch__\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromSpdxToCDXTest_document.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-hashes.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-hashes.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_service.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_properties.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_patch.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_minimal-viable.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_license-name.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_license-id.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_license-expression.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_external-reference.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_evidence.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_dependency.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_compositions.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-types.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-swid-full.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-swid.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_component-ref.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_bom.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxToCDXRoundTripTest_assembly.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_service.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_properties.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_patch.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_minimal-viable.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_license-name.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_license-id.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_license-expression.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_external-reference.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_evidence.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_dependency.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_compositions.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-types.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-swid-full.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-swid.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_component-ref.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_bom.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromCDXToSpdxTest_assembly.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromSpdxToCDXToSpdxRoundTripTest_v2.3document.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="__snapshots__\ConverterTests.FromSpdxToCDXTest_v2.3document.snap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

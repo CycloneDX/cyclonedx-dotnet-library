@@ -29,9 +29,10 @@ namespace CycloneDX.Spdx.Tests
     {
         [Theory]
         [InlineData("document")]
+        [InlineData("document-with-hyphens-in-external-reference-category")]
         public void JsonRoundTripTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
             var document = File.ReadAllText(resourceFilename);
 
             var spdxDocument = JsonSerializer.Deserialize(document);
@@ -42,9 +43,10 @@ namespace CycloneDX.Spdx.Tests
 
         [Theory]
         [InlineData("document")]
+        [InlineData("document-with-hyphens-in-external-reference-category")]
         public async Task JsonAsyncRoundTripTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".json");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".json");
 
             using (var jsonStream = File.OpenRead(resourceFilename))
             using (var outputStream = new MemoryStream())
@@ -52,7 +54,7 @@ namespace CycloneDX.Spdx.Tests
                 var spdxDocument = await JsonSerializer.DeserializeAsync(jsonStream);
                 await JsonSerializer.SerializeAsync(spdxDocument, outputStream);
                 var result = System.Text.Encoding.UTF8.GetString(outputStream.ToArray());
-                Snapshot.Match(result, SnapshotNameExtension.Create(baseFilename));
+                 Snapshot.Match(result, SnapshotNameExtension.Create(baseFilename));
             }
         }
     }

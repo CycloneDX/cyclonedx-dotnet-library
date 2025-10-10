@@ -26,7 +26,7 @@
       },
       {
         "name": "spdx:document:spdx-version",
-        "value": "SPDX-2.2"
+        "value": "SPDX-2.3"
       },
       {
         "name": "spdx:comment",
@@ -80,7 +80,7 @@
   },
   "components": [
     {
-      "type": "library",
+      "type": "framework",
       "supplier": {
         "name": "Jane Doe",
         "contact": [
@@ -95,12 +95,8 @@
       "description": "The GNU C Library defines functions that are specified by the ISO C standard, as well as additional features specific to POSIX and other derivatives of the Unix operating system, and extensions specific to GNU systems.",
       "hashes": [
         {
-          "alg": "MD5",
+          "alg": "BLAKE2b-512",
           "content": "624c1abb3664f4b35547e7c73864ad24"
-        },
-        {
-          "alg": "SHA-1",
-          "content": "85ed0817af83a24ad8da68c2b5094de69833983c"
         },
         {
           "alg": "SHA-256",
@@ -165,6 +161,18 @@
           "value": "GNU C library."
         },
         {
+          "name": "spdx:package:built-date",
+          "value": "2011-01-29T18:30:22Z"
+        },
+        {
+          "name": "spdx:package:release-date",
+          "value": "2012-01-29T18:30:22Z"
+        },
+        {
+          "name": "spdx:package:valid-until-date",
+          "value": "2014-01-29T18:30:22Z"
+        },
+        {
           "name": "spdx:package:originator:organization",
           "value": "ExampleCodeInspect"
         },
@@ -173,11 +181,15 @@
           "value": "contact@example.com"
         },
         {
+          "name": "spdx:checksum:adler32",
+          "value": "85ed0817af83a24ad8da68c2b5094de69833983c"
+        },
+        {
           "name": "spdx:external-reference:security:cpe23",
           "value": "cpe:2.3:a:pivotal_software:spring_framework:4.1.0:*:*:*:*:*:*:*"
         },
         {
-          "name": "spdx:external-reference:other:http://spdx.org/spdxdocs/spdx-example-444504E0-4F89-41D3-9A0C-0305E82C3301#LocationRef-acmeforge",
+          "name": "spdx:external-reference:persistent-id:swh",
           "value": "acmecorp/acmenator/4.1.3-alpha This is the external ref for Acme"
         },
         {
@@ -264,7 +276,7 @@
       ]
     },
     {
-      "type": "library",
+      "type": "application",
       "name": "Jena",
       "version": "3.12.0",
       "copyright": "NOASSERTION",

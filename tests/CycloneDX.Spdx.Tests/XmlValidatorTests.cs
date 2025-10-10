@@ -29,9 +29,10 @@ namespace CycloneDX.Spdx.Tests
     {
         [Theory]
         [InlineData("document")]
+        [InlineData("document-with-hyphens-in-external-reference-category")]
         public void ValidateXmlStringTest(string baseFilename)
         {
-            var resourceFilename = Path.Join("Resources", "v2.2", baseFilename + ".xml");
+            var resourceFilename = Path.Join("Resources", "v2.3", baseFilename + ".xml");
             var document = File.ReadAllText(resourceFilename);
 
             var result = XmlValidator.Validate(document);

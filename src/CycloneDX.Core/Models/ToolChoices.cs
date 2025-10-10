@@ -54,6 +54,7 @@ namespace CycloneDX.Models
 
         public void ReadXml(XmlReader reader)
         {
+            bool toolsIsEmpty = reader.IsEmptyElement;
             reader.ReadStartElement();
             SpecVersion = SpecificationVersionHelpers.Version(SpecificationVersionHelpers.XmlNamespaceSpecificationVersion(reader.NamespaceURI));
             while (reader.LocalName == "tool" || reader.LocalName == "components" || reader.LocalName == "services")
@@ -77,13 +78,16 @@ namespace CycloneDX.Models
                         this.Components = new List<Component>();
                     }
                     var serializer = Xml.Serializer.GetElementSerializer<Component>(SpecVersion, "component");
+                    var isEmpty = reader.IsEmptyElement;
                     reader.ReadStartElement();
                     while (reader.LocalName == "component")
                     {
                         var component = (Component)serializer.Deserialize(reader);
                         this.Components.Add(component);
                     }
-                    reader.ReadEndElement();
+                    if (!isEmpty) {
+                        reader.ReadEndElement();
+                    }
                 }
                 if (reader.LocalName == "services")
                 {
@@ -92,16 +96,23 @@ namespace CycloneDX.Models
                         this.Services = new List<Service>();
                     }
                     var serializer = Xml.Serializer.GetElementSerializer<Service>(SpecVersion, "service");
+                    var isEmpty = reader.IsEmptyElement;
                     reader.ReadStartElement();
                     while (reader.LocalName == "service")
                     {
                         var service = (Service)serializer.Deserialize(reader);
                         this.Services.Add(service);
                     }
-                    reader.ReadEndElement();
+                    if (!isEmpty)
+                    {
+                        reader.ReadEndElement();
+                    }
                 }
             }
-            reader.ReadEndElement();
+            if (!toolsIsEmpty)
+            {
+                reader.ReadEndElement();
+            }
         }
         
         public void WriteXml(System.Xml.XmlWriter writer) {

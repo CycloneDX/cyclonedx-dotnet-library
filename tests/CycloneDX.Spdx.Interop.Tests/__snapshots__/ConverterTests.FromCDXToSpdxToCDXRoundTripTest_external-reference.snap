@@ -10,7 +10,7 @@
       },
       {
         "name": "spdx:document:spdx-version",
-        "value": "SPDX-2.2"
+        "value": "SPDX-2.3"
       },
       {
         "name": "spdx:document:name",
@@ -31,15 +31,13 @@
       "type": "library",
       "name": "mylibrary",
       "version": "1.0.0",
-      "copyright": "NOASSERTION",
+      "licenses": [
+        {}
+      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
           "type": "distribution"
-        },
-        {
-          "url": "NOASSERTION",
-          "type": "website"
         }
       ],
       "properties": [
@@ -48,33 +46,10 @@
           "value": "SPDXRef-Package-1"
         },
         {
-          "name": "spdx:license-concluded",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:license-declared",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:originator",
-          "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:package:supplier",
-          "value": "NOASSERTION"
-        },
-        {
           "name": "spdx:download-location",
           "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:homepage",
-          "value": "NOASSERTION"
         }
-      ],
-      "evidence": {
-        "licenses": []
-      }
+      ]
     }
   ]
 }
