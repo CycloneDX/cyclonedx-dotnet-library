@@ -1,0 +1,27 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": null,
+  "Version": null,
+  "Metadata": {
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": null,
+    "Component": null,
+    "Manufacturer": {
+      "Name": "Manufacturer2",
+      "Url": null,
+      "Contact": null,
+      "BomRef": null,
+      "Address": null
+    },
+    "Manufacture": null,
+    "Supplier": null
+  },
+  "Components": null,
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}
