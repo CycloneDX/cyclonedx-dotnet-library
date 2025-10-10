@@ -234,8 +234,7 @@ namespace CycloneDX.Utils
         /// For situations where system component hierarchy is required to be
         /// maintained refer to the <c>HierarchicalMerge</c> method.
         /// </summary>
-        /// <param name="bom1"></param>
-        /// <param name="bom2"></param>
+        /// <param name="boms"></param>
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms)
         {
@@ -253,8 +252,8 @@ namespace CycloneDX.Utils
         /// For situations where system component hierarchy is required to be
         /// maintained refer to the <c>HierarchicalMerge</c> method.
         /// </summary>
-        /// <param name="bom1"></param>
-        /// <param name="bom2"></param>
+        /// <param name="boms"></param>
+        /// <param name="keepManufacturer"></param>
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms, bool keepManufacturer)
         {
@@ -271,8 +270,8 @@ namespace CycloneDX.Utils
         /// For situations where system component hierarchy is required to be
         /// maintained refer to the <c>HierarchicalMerge</c> method.
         /// </summary>
-        /// <param name="bom1"></param>
-        /// <param name="bom2"></param>
+        /// <param name="boms"></param>
+        /// <param name="bomSubject"></param>
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject)
         {
@@ -290,8 +289,9 @@ namespace CycloneDX.Utils
         /// For situations where system component hierarchy is required to be
         /// maintained refer to the <c>HierarchicalMerge</c> method.
         /// </summary>
-        /// <param name="bom1"></param>
-        /// <param name="bom2"></param>
+        /// <param name="boms"></param>
+        /// <param name="bomSubject"></param>
+        /// <param name="keepManufacturer"></param>
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject, bool keepManufacturer)
         {
