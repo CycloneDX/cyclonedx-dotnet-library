@@ -176,6 +176,51 @@ namespace CycloneDX.Utils.Tests
         }
 
         [Fact]
+        public void FlatMergeLifecyclesTest()
+        {
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Lifecycles = new List<Lifecycles>
+                    {
+                        new Lifecycles
+                        {
+                            Phase = Lifecycles.LifecyclePhase.Design
+                        },
+                        new Lifecycles
+                        {
+                            Name = "custom-phase",
+                            Description = "This is a custom phase."
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Lifecycles = new List<Lifecycles>
+                    {
+                        new Lifecycles
+                        {
+                            Phase = Lifecycles.LifecyclePhase.Build
+                        },
+                        new Lifecycles
+                        {
+                            Name = "custom-phase",
+                            Description = "This is a custom phase."
+                        }
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
         public void HierarchicalMergeComponentsTest()
         {
             var subject = new Component
@@ -563,6 +608,69 @@ namespace CycloneDX.Utils.Tests
                             {
                                 Ref = "ref2"
                             }
+                        }
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
+        public void HierarchicalMergeLifecyclesTest()
+        {
+            var subject = new Component
+            {
+                Name = "Thing",
+                Version = "1",
+            };
+
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System1",
+                        Version = "1",
+                        BomRef = "System1@1"
+                    },
+                    Lifecycles = new List<Lifecycles>
+                    {
+                        new Lifecycles
+                        {
+                            Phase = Lifecycles.LifecyclePhase.Design
+                        },
+                        new Lifecycles
+                        {
+                            Name = "custom-phase",
+                            Description = "This is a custom phase."
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System2",
+                        Version = "1",
+                        BomRef = "System2@1"
+                    },
+                    Lifecycles = new List<Lifecycles>
+                    {
+                        new Lifecycles
+                        {
+                            Phase = Lifecycles.LifecyclePhase.Build
+                        },
+                        new Lifecycles
+                        {
+                            Name = "custom-phase",
+                            Description = "This is a custom phase."
                         }
                     }
                 }

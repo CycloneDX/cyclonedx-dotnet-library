@@ -1,0 +1,36 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": null,
+  "Version": null,
+  "Metadata": {
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": null,
+    "Component": null,
+    "Manufacture": null,
+    "Supplier": null,
+    "Lifecycles": [
+      {
+        "Phase": "Design",
+        "Name": null,
+        "Description": null
+      },
+      {
+        "Name": "custom-phase",
+        "Description": "This is a custom phase."
+      },
+      {
+        "Phase": "Build",
+        "Name": null,
+        "Description": null
+      }
+    ]
+  },
+  "Components": null,
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+  }
