@@ -319,6 +319,7 @@ namespace CycloneDX.Utils
                 Standards = new List<Standard>()
             };
 
+            var lifecyclesMerger = new ListMergeHelper<Lifecycles>();
             var bomSubjectDependencies = new List<Dependency>();
 
             foreach (var bom in boms)
@@ -364,6 +365,11 @@ namespace CycloneDX.Utils
                             result.Metadata.Tools.Services.Add(service);
                         }
                     }
+                }
+                if (bom.Metadata?.Lifecycles?.Count > 0)
+                {
+                    var lifecycles = lifecyclesMerger.Merge(result.Metadata.Lifecycles, bom.Metadata.Lifecycles);
+                    result.Metadata.Lifecycles = lifecycles;
                 }
 
                 var thisComponent = bom.Metadata.Component;
