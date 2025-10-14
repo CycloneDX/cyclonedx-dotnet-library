@@ -176,6 +176,51 @@ namespace CycloneDX.Utils.Tests
         }
 
         [Fact]
+        public void FlatMergeLifecyclesTest()
+        {
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Lifecycles = new List<Lifecycles>
+                    {
+                        new Lifecycles
+                        {
+                            Phase = Lifecycles.LifecyclePhase.Design
+                        },
+                        new Lifecycles
+                        {
+                            Name = "custom-phase",
+                            Description = "This is a custom phase."
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Lifecycles = new List<Lifecycles>
+                    {
+                        new Lifecycles
+                        {
+                            Phase = Lifecycles.LifecyclePhase.Build
+                        },
+                        new Lifecycles
+                        {
+                            Name = "custom-phase",
+                            Description = "This is a custom phase."
+                        }
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
         public void HierarchicalMergeComponentsTest()
         {
             var subject = new Component

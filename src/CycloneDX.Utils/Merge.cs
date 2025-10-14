@@ -123,6 +123,20 @@ namespace CycloneDX.Utils
                 };
             }
 
+            var lifecyclesMerger = new ListMergeHelper<Lifecycles>();
+            var lifecycles = lifecyclesMerger.Merge(bom1.Metadata?.Lifecycles, bom2.Metadata?.Lifecycles);
+            if (lifecycles != null && result.Metadata == null)
+            {
+                result.Metadata = new Metadata
+                {
+                    Lifecycles = lifecycles,
+                };
+            }
+            else if (lifecycles != null)
+            {
+                result.Metadata.Lifecycles = lifecycles;
+            }
+
             var componentsMerger = new ListMergeHelper<Component>();
             result.Components = componentsMerger.Merge(bom1.Components, bom2.Components);
 

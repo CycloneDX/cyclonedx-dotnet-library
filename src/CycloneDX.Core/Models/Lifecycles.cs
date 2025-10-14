@@ -23,7 +23,7 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Lifecycles
+    public class Lifecycles: IEquatable<Lifecycles>
     {
         [ProtoContract]
         public enum LifecyclePhase
@@ -59,5 +59,26 @@ namespace CycloneDX.Models
         [XmlElement("description")]
         [ProtoMember(3)]
         public string Description { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Lifecycles;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(other);
+        }
+
+        public bool Equals(Lifecycles obj)
+        {
+            return Json.Serializer.Serialize(this) == Json.Serializer.Serialize(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Json.Serializer.Serialize(this).GetHashCode();
+        }
     }
 }
