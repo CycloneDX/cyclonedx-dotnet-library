@@ -397,7 +397,7 @@ namespace CycloneDX.Utils
                 // vulnerabilities
                 if (bom.Vulnerabilities != null)
                 {
-                    NamespaceVulnerabilitiesRefs(ComponentBomRefNamespace(result.Metadata.Component), bom.Vulnerabilities);
+                    NamespaceVulnerabilitiesRefs(ComponentBomRefNamespace(bom.Metadata.Component), bom.Vulnerabilities);
                     result.Vulnerabilities.AddRange(bom.Vulnerabilities);
                 }
 
@@ -625,7 +625,7 @@ namespace CycloneDX.Utils
                 {
                     foreach (var affect in vulnerability.Affects)
                     {
-                        affect.Ref = bomRefNamespace;
+                        affect.Ref = NamespacedBomRef(bomRefNamespace, affect.Ref);
                     }
                 }
             }
