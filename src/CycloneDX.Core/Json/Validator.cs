@@ -174,6 +174,100 @@ namespace CycloneDX.Json
             }
         }
 
+        /// <summary>
+        /// Merge two dictionaries whose values are lists of JsonElements,
+        /// adding all entries from list in dict2 for the same key as in
+        /// dict1 (or adds a new entry for a new key). Manipulates a COPY
+        /// of dict1, then returns this copy.
+        /// </summary>
+        /// <param name="dict1">Dict with lists as values</param>
+        /// <param name="dict2">Dict with lists as values</param>
+        /// <returns>Copy of dict1+dict2</returns>
+        private static Dictionary<string, List<JsonElement>> addDictList(
+            Dictionary<string, List<JsonElement>> dict1,
+            Dictionary<string, List<JsonElement>> dict2)
+        {
+            if (dict2 == null || dict2.Count == 0)
+            {
+                return dict1;
+            }
+
+            if (dict1 == null || dict1.Count == 0)
+            {
+                return dict2;
+            }
+
+            foreach (KeyValuePair<string, List<JsonElement>> KVP in dict2)
+            {
+                if (dict1.ContainsKey(KVP.Key))
+                {
+                    // NOTE: Possibly different object, but same string representation!
+                    dict1[KVP.Key].AddRange(KVP.Value);
+                }
+                else
+                {
+                    dict1.Add(KVP.Key, KVP.Value);
+                }
+            }
+
+            return dict1;
+        }
+
+        /// <summary>
+        /// Iterate through the JSON document to find JSON objects whose property names
+        /// match the one we seek, and add such hits to returned list. Recurse and repeat.
+        /// </summary>
+        /// <param name="element">A JsonElement, starting from JsonDocument.RootElement
+        ///    for the original caller, probably. Then used to recurse.
+        /// </param>
+        /// <param name="name">The property name we seek.</param>
+        /// <returns>A Dictionary with distinct values of string representation of the
+        ///    seeked JsonElement as keys, and a List of actual JsonElement objects as
+        ///    mapped values.
+        /// </returns>
+        private static Dictionary<string, List<JsonElement>> findNamedElements(JsonElement element, string name)
+        {
+            Dictionary<string, List<JsonElement>> hits = new Dictionary<string, List<JsonElement>>();
+            Dictionary<string, List<JsonElement>> nestedHits = null;
+
+            // Can we iterate further?
+            switch (element.ValueKind) {
+                case JsonValueKind.Object:
+                    foreach (JsonProperty property in element.EnumerateObject())
+                    {
+                        if (property.Name == name) {
+                            string key = property.Value.ToString();
+                            if (!(hits.ContainsKey(key)))
+                            {
+                                hits.Add(key, new List<JsonElement>());
+                            }
+                            hits[key].Add(property.Value);
+                        }
+
+                        // Note: Here we can recurse into same property that
+                        // we've just listed, if it is not of a simple kind.
+                        nestedHits = findNamedElements(property.Value, name);
+                        hits = addDictList(hits, nestedHits);
+                    }
+                    break;
+
+                case JsonValueKind.Array:
+                    foreach (JsonElement nestedElem in element.EnumerateArray())
+                    {
+                        nestedHits = findNamedElements(nestedElem, name);
+                        hits = addDictList(hits, nestedHits);
+                    }
+                    break;
+
+                default:
+                    // No-op for simple types: these values per se have no name
+                    // to learn, and we can not iterate deeper into them.
+                    break;
+            }
+
+            return hits;
+        }
+
         private static ValidationResult Validate(JsonSchema schema, JsonDocument jsonDocument, string schemaVersionString)
         {
             var validationMessages = new List<string>();
@@ -196,6 +290,23 @@ namespace CycloneDX.Json
                         {
                             validationMessages.Add($"Incorrect schema version: expected {schemaVersionString} actual {specVersion}");
                         }
+                    }
+                }
+
+                // The JSON Schema, at least the ones defined by CycloneDX
+                // and handled by current parser in dotnet ecosystem, can
+                // not specify or check the uniqueness requirement for the
+                // "bom-ref" assignments in the overall document (e.g. in
+                // "metadata/component" and list of "components", as well
+                // as in "services" and "vulnerabilities", as of CycloneDX
+                // spec v1.4), so this is checked separately here if the
+                // document seems structurally intact otherwise.
+                // Note that this is not a problem for the XML schema with
+                // its explicit <xs:unique name="bom-ref"> constraint.
+                Dictionary<string, List<JsonElement>> bomRefs = findNamedElements(jsonDocument.RootElement, "bom-ref");
+                foreach (KeyValuePair<string, List<JsonElement>> KVP in bomRefs) {
+                    if (KVP.Value != null && KVP.Value.Count != 1) {
+                        validationMessages.Add($"'bom-ref' value of {KVP.Key}: expected 1 mention, actual {KVP.Value.Count}");
                     }
                 }
             }
