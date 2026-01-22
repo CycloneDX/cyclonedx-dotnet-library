@@ -176,6 +176,70 @@ namespace CycloneDX.Utils.Tests
         }
 
         [Fact]
+        public void FlatMergeKeepManufacturersTest()
+        {
+            var sbom1 = new Bom();
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Manufacturer = new OrganizationalEntity
+                    {
+                        Name = "Manufacturer2"
+                    }
+                }
+            };
+            var sbom3 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Manufacturer = new OrganizationalEntity
+                    {
+                        Name = "Manufacturer3"
+                    }
+                }
+            };
+
+            var keepManufacturer = true;
+            var sbomMerged1 = CycloneDXUtils.FlatMerge(sbom1, sbom2, keepManufacturer);
+            var result = CycloneDXUtils.FlatMerge(sbomMerged1, sbom3, keepManufacturer);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
+        public void FlatMergeDontKeepManufacturersTest()
+        {
+            var sbom1 = new Bom();
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Manufacturer = new OrganizationalEntity
+                    {
+                        Name = "Manufacturer2"
+                    }
+                }
+            };
+            var sbom3 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Manufacturer = new OrganizationalEntity
+                    {
+                        Name = "Manufacturer3"
+                    }
+                }
+            };
+
+            var keepManufacturer = false;
+            var sbomMerged1 = CycloneDXUtils.FlatMerge(sbom1, sbom2, keepManufacturer);
+            var result = CycloneDXUtils.FlatMerge(sbomMerged1, sbom3, keepManufacturer);
+
+            Snapshot.Match(result);
+        }
+
+        [Fact]
         public void HierarchicalMergeComponentsTest()
         {
             var subject = new Component

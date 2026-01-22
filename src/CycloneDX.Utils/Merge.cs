@@ -22,7 +22,6 @@ using System.Reflection;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
 using CycloneDX.Utils.Exceptions;
-using Json.Schema;
 
 namespace CycloneDX.Utils
 {
@@ -100,6 +99,29 @@ namespace CycloneDX.Utils
         /// <returns></returns>
         public static Bom FlatMerge(Bom bom1, Bom bom2)
         {
+            bool keepManufacturer = false;
+            return FlatMerge(bom1, bom2, keepManufacturer);
+        }
+
+        /// <summary>
+        /// Performs a flat merge of two BOMs.
+        /// 
+        /// Useful for situations like building a consolidated BOM for a web
+        /// application. Flat merge can combine the BOM for frontend code
+        /// with the BOM for backend code and return a single, combined BOM.
+        /// 
+        /// For situations where system component hierarchy is required to be
+        /// maintained refer to the <c>HierarchicalMerge</c> method.
+        /// </summary>
+        /// <param name="bom1"></param>
+        /// <param name="bom2"></param>
+        /// <param name="keepManufacturer">
+        /// Keep the first found manufacturer in a BOM. Without this option
+        /// all manufacturers are discarded.
+        /// </param>
+        /// <returns></returns>
+        public static Bom FlatMerge(Bom bom1, Bom bom2, bool keepManufacturer)
+        {
             var result = new Bom();
 
 #pragma warning disable 618
@@ -121,6 +143,11 @@ namespace CycloneDX.Utils
                         Services = toolsServices,
                     }
                 };
+            }
+
+            if (keepManufacturer)
+            {
+                PopulateManufacturer(bom1, bom2, result);
             }
 
             var componentsMerger = new ListMergeHelper<Component>();
@@ -177,23 +204,26 @@ namespace CycloneDX.Utils
             return result;
         }
 
-
-        /// <summary>
-        /// Performs a flat merge of multiple BOMs.
-        /// 
-        /// Useful for situations like building a consolidated BOM for a web
-        /// application. Flat merge can combine the BOM for frontend code
-        /// with the BOM for backend code and return a single, combined BOM.
-        /// 
-        /// For situations where system component hierarchy is required to be
-        /// maintained refer to the <c>HierarchicalMerge</c> method.
-        /// </summary>
-        /// <param name="bom1"></param>
-        /// <param name="bom2"></param>
-        /// <returns></returns>
-        public static Bom FlatMerge(IEnumerable<Bom> boms)
+        private static void PopulateManufacturer(Bom bom1, Bom bom2, Bom result)
         {
-            return FlatMerge(boms, null);
+            if (bom1.Metadata?.Manufacturer != null)
+            {
+                if (result.Metadata == null)
+                {
+                    result.Metadata = new Metadata();
+                }
+
+                result.Metadata.Manufacturer = bom1.Metadata.Manufacturer;
+            }
+            else if (bom2.Metadata?.Manufacturer != null)
+            {
+                if (result.Metadata == null)
+                {
+                    result.Metadata = new Metadata();
+                }
+
+                result.Metadata.Manufacturer = bom2.Metadata.Manufacturer;
+            }
         }
 
         /// <summary>
@@ -206,16 +236,78 @@ namespace CycloneDX.Utils
         /// For situations where system component hierarchy is required to be
         /// maintained refer to the <c>HierarchicalMerge</c> method.
         /// </summary>
-        /// <param name="bom1"></param>
-        /// <param name="bom2"></param>
+        /// <param name="boms"></param>
+        /// <returns></returns>
+        public static Bom FlatMerge(IEnumerable<Bom> boms)
+        {
+            bool keepManufacturer = false;
+            return FlatMerge(boms, keepManufacturer);
+        }
+
+        /// <summary>
+        /// Performs a flat merge of multiple BOMs.
+        /// 
+        /// Useful for situations like building a consolidated BOM for a web
+        /// application. Flat merge can combine the BOM for frontend code
+        /// with the BOM for backend code and return a single, combined BOM.
+        /// 
+        /// For situations where system component hierarchy is required to be
+        /// maintained refer to the <c>HierarchicalMerge</c> method.
+        /// </summary>
+        /// <param name="boms"></param>
+        /// <param name="keepManufacturer">
+        /// Keep the first found manufacturer in a BOM. Without this option
+        /// all manufacturers are discarded.
+        /// </param>
+        /// <returns></returns>
+        public static Bom FlatMerge(IEnumerable<Bom> boms, bool keepManufacturer)
+        {
+            return FlatMerge(boms, null, keepManufacturer);
+        }
+
+        /// <summary>
+        /// Performs a flat merge of multiple BOMs.
+        /// 
+        /// Useful for situations like building a consolidated BOM for a web
+        /// application. Flat merge can combine the BOM for frontend code
+        /// with the BOM for backend code and return a single, combined BOM.
+        /// 
+        /// For situations where system component hierarchy is required to be
+        /// maintained refer to the <c>HierarchicalMerge</c> method.
+        /// </summary>
+        /// <param name="boms"></param>
+        /// <param name="bomSubject"></param>
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject)
+        {
+            bool keepManufacturer = false;
+            return FlatMerge(boms, bomSubject, keepManufacturer);
+        }
+
+        /// <summary>
+        /// Performs a flat merge of multiple BOMs.
+        /// 
+        /// Useful for situations like building a consolidated BOM for a web
+        /// application. Flat merge can combine the BOM for frontend code
+        /// with the BOM for backend code and return a single, combined BOM.
+        /// 
+        /// For situations where system component hierarchy is required to be
+        /// maintained refer to the <c>HierarchicalMerge</c> method.
+        /// </summary>
+        /// <param name="boms"></param>
+        /// <param name="bomSubject"></param>
+        /// <param name="keepManufacturer">
+        /// Keep the first found manufacturer in a BOM. Without this option
+        /// all manufacturers are discarded.
+        /// </param>
+        /// <returns></returns>
+        public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject, bool keepManufacturer)
         {
             var result = new Bom();
 
             foreach (var bom in boms)
             {
-                result = FlatMerge(result, bom);
+                result = FlatMerge(result, bom, keepManufacturer);
             }
 
             if (bomSubject != null)
