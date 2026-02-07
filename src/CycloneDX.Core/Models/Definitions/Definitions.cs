@@ -88,14 +88,18 @@ namespace CycloneDX.Models
         {
             get
             {
-                if (XmlItems == null) return null;
+                if (XmlItems == null) { return null; }
                 var result = new List<PatentOrFamily>();
                 foreach (var item in XmlItems)
                 {
                     if (item is Patent patent)
+                    {
                         result.Add(new PatentOrFamily { Patent = patent });
+                    }
                     else if (item is PatentFamily family)
+                    {
                         result.Add(new PatentOrFamily { PatentFamily = family });
+                    }
                 }
                 return result;
             }
@@ -110,9 +114,13 @@ namespace CycloneDX.Models
                 foreach (var item in value)
                 {
                     if (item.Patent != null)
+                    {
                         XmlItems.Add(item.Patent);
+                    }
                     else if (item.PatentFamily != null)
+                    {
                         XmlItems.Add(item.PatentFamily);
+                    }
                 }
             }
         }

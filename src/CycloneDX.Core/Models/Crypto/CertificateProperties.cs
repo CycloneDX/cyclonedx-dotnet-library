@@ -127,7 +127,6 @@ namespace CycloneDX.Core.Models
         }
         public bool ShouldSerializeDestructionDate() { return DestructionDate.HasValue; }
 
-        // Protobuf wrapper: CertificateExtensions { repeated Extension extensions = 1; }
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(18)]
@@ -142,13 +141,12 @@ namespace CycloneDX.Core.Models
             set
             {
                 if (value == null) { CertificateExtensionsProto = null; return; }
-                if (CertificateExtensionsProto == null) CertificateExtensionsProto = new CertificateExtensionsProto();
+                if (CertificateExtensionsProto == null) { CertificateExtensionsProto = new CertificateExtensionsProto(); }
                 CertificateExtensionsProto.Extensions = value;
             }
         }
         public bool ShouldSerializeCertificateExtensions() { return CertificateExtensions?.Count > 0; }
 
-        // Protobuf wrapper: RelatedCryptographicAssets { repeated RelatedCryptographicAsset assets = 1; }
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(19)]
@@ -163,7 +161,7 @@ namespace CycloneDX.Core.Models
             set
             {
                 if (value == null) { RelatedCryptographicAssetsProto = null; return; }
-                if (RelatedCryptographicAssetsProto == null) RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto();
+                if (RelatedCryptographicAssetsProto == null) { RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto(); }
                 RelatedCryptographicAssetsProto.Assets = value;
             }
         }

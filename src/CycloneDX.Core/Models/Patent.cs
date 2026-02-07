@@ -75,16 +75,22 @@ namespace CycloneDX.Models
             get
             {
                 if (FilingDateProto.HasValue)
+                {
                     return FilingDateProto.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                }
                 return _filingDate;
             }
             set
             {
                 _filingDate = value;
                 if (value != null && DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out var dt))
+                {
                     FilingDateProto = dt;
+                }
                 else
+                {
                     FilingDateProto = null;
+                }
             }
         }
         private string _filingDate;
@@ -102,16 +108,22 @@ namespace CycloneDX.Models
             get
             {
                 if (GrantDateProto.HasValue)
+                {
                     return GrantDateProto.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                }
                 return _grantDate;
             }
             set
             {
                 _grantDate = value;
                 if (value != null && DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out var dt))
+                {
                     GrantDateProto = dt;
+                }
                 else
+                {
                     GrantDateProto = null;
+                }
             }
         }
         private string _grantDate;
@@ -129,16 +141,22 @@ namespace CycloneDX.Models
             get
             {
                 if (PatentExpirationDateProto.HasValue)
+                {
                     return PatentExpirationDateProto.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                }
                 return _patentExpirationDate;
             }
             set
             {
                 _patentExpirationDate = value;
                 if (value != null && DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out var dt))
+                {
                     PatentExpirationDateProto = dt;
+                }
                 else
+                {
                     PatentExpirationDateProto = null;
+                }
             }
         }
         private string _patentExpirationDate;

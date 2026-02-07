@@ -64,7 +64,7 @@ namespace CycloneDX.Models
             set
             {
                 if (value == null) { PointersProto = null; return; }
-                if (PointersProto == null) PointersProto = new CitationPointers();
+                if (PointersProto == null) { PointersProto = new CitationPointers(); }
                 PointersProto.Pointer = value;
             }
         }
@@ -79,7 +79,7 @@ namespace CycloneDX.Models
             set
             {
                 if (value == null) { ExpressionsProto = null; return; }
-                if (ExpressionsProto == null) ExpressionsProto = new CitationExpressions();
+                if (ExpressionsProto == null) { ExpressionsProto = new CitationExpressions(); }
                 ExpressionsProto.Expression = value;
             }
         }

@@ -110,7 +110,6 @@ namespace CycloneDX.Core.Models
         [XmlElement("customExtensionValue")]
         public string CustomExtensionValue { get; set; }
 
-        // Protobuf: oneof extension_type { CommonExtension=1; CustomExtension=2; }
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(1)]
@@ -118,7 +117,7 @@ namespace CycloneDX.Core.Models
         {
             get
             {
-                if (CommonExtensionName == null && CommonExtensionValue == null) return null;
+                if (CommonExtensionName == null && CommonExtensionValue == null) { return null; }
                 return new CertExtCommon
                 {
                     Name = CommonExtensionNameHelper.FromString(CommonExtensionName),
@@ -140,7 +139,7 @@ namespace CycloneDX.Core.Models
         {
             get
             {
-                if (CustomExtensionName == null && CustomExtensionValue == null) return null;
+                if (CustomExtensionName == null && CustomExtensionValue == null) { return null; }
                 return new CertExtCustom { Name = CustomExtensionName, Value = CustomExtensionValue };
             }
             set

@@ -79,7 +79,6 @@ namespace CycloneDX.Core.Models
         [ProtoMember(13)]
         public Hash Fingerprint { get; set; }
 
-        // Protobuf wrapper: RelatedCryptographicAssets { repeated RelatedCryptographicAsset assets = 1; }
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(14)]
@@ -94,7 +93,7 @@ namespace CycloneDX.Core.Models
             set
             {
                 if (value == null) { RelatedCryptographicAssetsProto = null; return; }
-                if (RelatedCryptographicAssetsProto == null) RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto();
+                if (RelatedCryptographicAssetsProto == null) { RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto(); }
                 RelatedCryptographicAssetsProto.Assets = value;
             }
         }

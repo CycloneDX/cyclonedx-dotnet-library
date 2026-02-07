@@ -51,7 +51,6 @@ namespace CycloneDX.Core.Models
         [ProtoMember(5)]
         public List<string> CryptoRefArray { get; set; }
 
-        // Protobuf wrapper: RelatedCryptographicAssets { repeated RelatedCryptographicAsset assets = 1; }
         [XmlIgnore]
         [JsonIgnore]
         [ProtoMember(6)]
@@ -66,7 +65,7 @@ namespace CycloneDX.Core.Models
             set
             {
                 if (value == null) { RelatedCryptographicAssetsProto = null; return; }
-                if (RelatedCryptographicAssetsProto == null) RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto();
+                if (RelatedCryptographicAssetsProto == null) { RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto(); }
                 RelatedCryptographicAssetsProto.Assets = value;
             }
         }

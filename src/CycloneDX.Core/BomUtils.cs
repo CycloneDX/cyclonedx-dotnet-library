@@ -407,10 +407,7 @@ namespace CycloneDX
                         var protoProps = component.CryptoProperties.ProtocolProperties;
                         protoProps.RelatedCryptographicAssets = null;
                         // Downgrade detailed IKEv2 transform types to null (v1.6 doesn't support the detailed format)
-                        if (protoProps.Ikev2TransformTypes != null)
-                        {
-                            protoProps.Ikev2TransformTypes = null;
-                        }
+                        protoProps.Ikev2TransformTypes = null;
                     }
                 });
 
@@ -562,7 +559,7 @@ namespace CycloneDX
 
         private static void DowngradeMixedLicenseChoiceList(List<LicenseChoice> licenses)
         {
-            if (licenses == null || licenses.Count <= 1) return;
+            if (licenses == null || licenses.Count <= 1) { return; }
             // v1.6 xs:choice only allows EITHER multiple licenses OR one expression.
             // When mixed, keep licenses and drop expressions.
             // When multiple expressions, keep only the first.
@@ -570,8 +567,8 @@ namespace CycloneDX
             bool hasExpression = false;
             foreach (var lc in licenses)
             {
-                if (lc.License != null) hasLicense = true;
-                if (lc.Expression != null) hasExpression = true;
+                if (lc.License != null) { hasLicense = true; }
+                if (lc.Expression != null) { hasExpression = true; }
             }
             if (hasLicense && hasExpression)
             {
@@ -596,7 +593,9 @@ namespace CycloneDX
         private static void DowngradeMixedLicenseChoiceLists(Bom bom)
         {
             if (bom.Metadata?.Licenses != null)
+            {
                 DowngradeMixedLicenseChoiceList(bom.Metadata.Licenses);
+            }
             EnumerateAllComponents(bom, (component) =>
             {
                 DowngradeMixedLicenseChoiceList(component.Licenses);

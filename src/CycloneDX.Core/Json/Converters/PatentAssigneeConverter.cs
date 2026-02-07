@@ -41,7 +41,9 @@ namespace CycloneDX.Json.Converters
                 while (reader.Read())
                 {
                     if (reader.TokenType == JsonTokenType.EndArray)
+                    {
                         break;
+                    }
 
                     if (reader.TokenType == JsonTokenType.StartObject)
                     {

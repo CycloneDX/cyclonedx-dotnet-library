@@ -28,17 +28,23 @@ namespace CycloneDX.Json.Converters
         public override Ikev2TransformTypes Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartObject)
+            {
                 throw new JsonException();
+            }
 
             var result = new Ikev2TransformTypes();
 
             while (reader.Read())
             {
                 if (reader.TokenType == JsonTokenType.EndObject)
+                {
                     return result;
+                }
 
                 if (reader.TokenType != JsonTokenType.PropertyName)
+                {
                     throw new JsonException();
+                }
 
                 var propertyName = reader.GetString();
                 reader.Read();
@@ -75,13 +81,17 @@ namespace CycloneDX.Json.Converters
         private List<Ikev2Encr> ReadEncrArray(ref Utf8JsonReader reader, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartArray)
+            {
                 throw new JsonException();
+            }
 
             var list = new List<Ikev2Encr>();
             while (reader.Read())
             {
                 if (reader.TokenType == JsonTokenType.EndArray)
+                {
                     return list;
+                }
 
                 if (reader.TokenType == JsonTokenType.String)
                 {
@@ -103,13 +113,17 @@ namespace CycloneDX.Json.Converters
         private List<Ikev2Prf> ReadPrfArray(ref Utf8JsonReader reader, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartArray)
+            {
                 throw new JsonException();
+            }
 
             var list = new List<Ikev2Prf>();
             while (reader.Read())
             {
                 if (reader.TokenType == JsonTokenType.EndArray)
+                {
                     return list;
+                }
 
                 if (reader.TokenType == JsonTokenType.String)
                 {
@@ -130,13 +144,17 @@ namespace CycloneDX.Json.Converters
         private List<Ikev2Integ> ReadIntegArray(ref Utf8JsonReader reader, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartArray)
+            {
                 throw new JsonException();
+            }
 
             var list = new List<Ikev2Integ>();
             while (reader.Read())
             {
                 if (reader.TokenType == JsonTokenType.EndArray)
+                {
                     return list;
+                }
 
                 if (reader.TokenType == JsonTokenType.String)
                 {
@@ -157,13 +175,17 @@ namespace CycloneDX.Json.Converters
         private List<Ikev2Ke> ReadKeArray(ref Utf8JsonReader reader, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartArray)
+            {
                 throw new JsonException();
+            }
 
             var list = new List<Ikev2Ke>();
             while (reader.Read())
             {
                 if (reader.TokenType == JsonTokenType.EndArray)
+                {
                     return list;
+                }
 
                 if (reader.TokenType == JsonTokenType.String)
                 {
@@ -184,13 +206,17 @@ namespace CycloneDX.Json.Converters
         private List<Ikev2Auth> ReadAuthArray(ref Utf8JsonReader reader, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartArray)
+            {
                 throw new JsonException();
+            }
 
             var list = new List<Ikev2Auth>();
             while (reader.Read())
             {
                 if (reader.TokenType == JsonTokenType.EndArray)
+                {
                     return list;
+                }
 
                 if (reader.TokenType == JsonTokenType.String)
                 {

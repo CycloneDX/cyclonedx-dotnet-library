@@ -159,7 +159,7 @@ namespace CycloneDX.Models
                             {
                                 if (reader.LocalName == "details")
                                 {
-                                    if (details == null) details = new List<ExpressionDetail>();
+                                    if (details == null) { details = new List<ExpressionDetail>(); }
                                     var detail = new ExpressionDetail();
                                     detail.LicenseIdentifier = reader.GetAttribute("license-identifier");
                                     detail.BomRef = reader.GetAttribute("bom-ref");
@@ -197,7 +197,6 @@ namespace CycloneDX.Models
                                 }
                                 else if (reader.LocalName == "properties")
                                 {
-                                    XmlSerializer propertiesSerializer = new XmlSerializer(typeof(List<Property>), new XmlRootAttribute("properties") { Namespace = reader.NamespaceURI });
                                     reader.ReadStartElement();
                                     properties = new List<Property>();
                                     var propertySerializer = new XmlSerializer(typeof(Property), reader.NamespaceURI);

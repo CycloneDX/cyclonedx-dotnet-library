@@ -46,16 +46,22 @@ namespace CycloneDX.Models
             get
             {
                 if (FilingDateProto.HasValue)
+                {
                     return FilingDateProto.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                }
                 return _filingDate;
             }
             set
             {
                 _filingDate = value;
                 if (value != null && DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out var dt))
+                {
                     FilingDateProto = dt;
+                }
                 else
+                {
                     FilingDateProto = null;
+                }
             }
         }
         private string _filingDate;
