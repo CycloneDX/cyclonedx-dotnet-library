@@ -34,10 +34,10 @@ components {
         value: "1e15e0fbd3ce95bde5945633ae96add551341b11e5bae7bba12e98ad84a5beb4"
       }
       creationDate {
-        seconds: 1479749400
+        seconds: 1479713400
       }
       activationDate {
-        seconds: 1479751200
+        seconds: 1479715200
       }
       relatedCryptographicAssets {
         assets {

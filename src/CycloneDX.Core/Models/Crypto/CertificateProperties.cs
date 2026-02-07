@@ -77,29 +77,54 @@ namespace CycloneDX.Core.Models
         public List<CertificateState> CertificateStates { get; set; }
         public bool ShouldSerializeCertificateStates() { return CertificateStates?.Count > 0; }
 
+        private DateTime? _creationDate;
         [XmlElement("creationDate")]
         [ProtoMember(13)]
-        public DateTime? CreationDate { get; set; }
+        public DateTime? CreationDate
+        {
+            get => _creationDate;
+            set { _creationDate = BomUtils.UtcifyDateTime(value); }
+        }
         public bool ShouldSerializeCreationDate() { return CreationDate.HasValue; }
 
+        private DateTime? _activationDate;
         [XmlElement("activationDate")]
         [ProtoMember(14)]
-        public DateTime? ActivationDate { get; set; }
+        public DateTime? ActivationDate
+        {
+            get => _activationDate;
+            set { _activationDate = BomUtils.UtcifyDateTime(value); }
+        }
         public bool ShouldSerializeActivationDate() { return ActivationDate.HasValue; }
 
+        private DateTime? _deactivationDate;
         [XmlElement("deactivationDate")]
         [ProtoMember(15)]
-        public DateTime? DeactivationDate { get; set; }
+        public DateTime? DeactivationDate
+        {
+            get => _deactivationDate;
+            set { _deactivationDate = BomUtils.UtcifyDateTime(value); }
+        }
         public bool ShouldSerializeDeactivationDate() { return DeactivationDate.HasValue; }
 
+        private DateTime? _revocationDate;
         [XmlElement("revocationDate")]
         [ProtoMember(16)]
-        public DateTime? RevocationDate { get; set; }
+        public DateTime? RevocationDate
+        {
+            get => _revocationDate;
+            set { _revocationDate = BomUtils.UtcifyDateTime(value); }
+        }
         public bool ShouldSerializeRevocationDate() { return RevocationDate.HasValue; }
 
+        private DateTime? _destructionDate;
         [XmlElement("destructionDate")]
         [ProtoMember(17)]
-        public DateTime? DestructionDate { get; set; }
+        public DateTime? DestructionDate
+        {
+            get => _destructionDate;
+            set { _destructionDate = BomUtils.UtcifyDateTime(value); }
+        }
         public bool ShouldSerializeDestructionDate() { return DestructionDate.HasValue; }
 
         // Protobuf wrapper: CertificateExtensions { repeated Extension extensions = 1; }
