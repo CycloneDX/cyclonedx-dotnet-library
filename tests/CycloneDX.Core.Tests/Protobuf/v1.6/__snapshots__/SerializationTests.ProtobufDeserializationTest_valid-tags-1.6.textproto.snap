@@ -17,6 +17,7 @@
       "Group": null,
       "Name": "my-json-parser",
       "Version": "1.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -29,6 +30,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "Tags": [
         "json-parser",
         "javascript",

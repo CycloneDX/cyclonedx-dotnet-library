@@ -1,0 +1,21 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serialNumber="urn:uuid:7dc07ac8-7fb8-4782-bf89-4762394e189d" version="1" xmlns="http://cyclonedx.org/schema/bom/1.7">
+  <metadata>
+    <component type="application" bom-ref="my-app">
+      <name>My Application</name>
+    </component>
+  </metadata>
+  <components>
+    <component type="operating-system" bom-ref="os" isExternal="true">
+      <name>Ubuntu</name>
+      <version>24H2</version>
+      <description>Windows 11 version 21H2</description>
+    </component>
+  </components>
+  <dependencies>
+    <dependency ref="my-app">
+      <dependency ref="os" />
+    </dependency>
+    <dependency ref="os" />
+  </dependencies>
+</bom>

@@ -1,0 +1,348 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": "com.google.code.findbugs",
+      "Name": "findbugs-project",
+      "Version": "3.0.0",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": {
+            "Id": "LGPL-3.0-or-later",
+            "Text": null,
+            "Url": "https://www.gnu.org/licenses/lgpl-3.0-standalone.html",
+            "BomRef": null,
+            "Licensing": null
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Id": "LGPL-3.0-or-later",
+              "Text": null,
+              "Url": "https://www.gnu.org/licenses/lgpl-3.0-standalone.html",
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": "pkg:maven/com.google.code.findbugs/findbugs-project@3.0.0",
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": {
+        "Licenses": [
+          {
+            "License": {
+              "Id": "Apache-2.0",
+              "Text": null,
+              "Url": "http://www.apache.org/licenses/LICENSE-2.0",
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": {
+              "Id": "LGPL-2.1-only",
+              "Text": null,
+              "Url": "https://opensource.org/licenses/LGPL-2.1",
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ],
+        "LicensesSerialized": {
+          "Licenses": [
+            {
+              "License": {
+                "Id": "Apache-2.0",
+                "Text": null,
+                "Url": "http://www.apache.org/licenses/LICENSE-2.0",
+                "BomRef": null,
+                "Licensing": null
+              },
+              "Expression": null,
+              "BomRef": null,
+              "Licensing": null
+            },
+            {
+              "License": {
+                "Id": "LGPL-2.1-only",
+                "Text": null,
+                "Url": "https://opensource.org/licenses/LGPL-2.1",
+                "BomRef": null,
+                "Licensing": null
+              },
+              "Expression": null,
+              "BomRef": null,
+              "Licensing": null
+            }
+          ]
+        },
+        "Copyright": [
+          {
+            "Text": "Copyright 2012 Google Inc. All Rights Reserved."
+          },
+          {
+            "Text": "Copyright (C) 2004,2005 Dave Brosius <dbrosius@users.sourceforge.net>"
+          },
+          {
+            "Text": "Copyright (C) 2005 William Pugh"
+          },
+          {
+            "Text": "Copyright (C) 2004,2005 University of Maryland"
+          }
+        ],
+        "Identity": [
+          {
+            "Field": "Purl",
+            "Confidence": 1.0,
+            "ConcludedValue": null,
+            "Methods": [
+              {
+                "Technique": "Filename",
+                "Confidence": 0.1,
+                "Value": "findbugs-project-3.0.0.jar"
+              },
+              {
+                "Technique": "Ast_Fingerprint",
+                "Confidence": 0.9,
+                "Value": "61e4bc08251761c3a73b606b9110a65899cb7d44f3b14c81ebc1e67c98e1d9ab"
+              },
+              {
+                "Technique": "Hash_Comparison",
+                "Confidence": 0.7,
+                "Value": "7c547a9d67cc7bc315c93b6e2ff8e4b6b41ae5be454ac249655ecb5ca2a85abf"
+              }
+            ],
+            "Tools": [
+              "bom-ref-of-tool-that-performed-analysis"
+            ]
+          }
+        ],
+        "IdentitySerialized": {
+          "Identities": [
+            {
+              "Field": "Purl",
+              "Confidence": 1.0,
+              "ConcludedValue": null,
+              "Methods": [
+                {
+                  "Technique": "Filename",
+                  "Confidence": 0.1,
+                  "Value": "findbugs-project-3.0.0.jar"
+                },
+                {
+                  "Technique": "Ast_Fingerprint",
+                  "Confidence": 0.9,
+                  "Value": "61e4bc08251761c3a73b606b9110a65899cb7d44f3b14c81ebc1e67c98e1d9ab"
+                },
+                {
+                  "Technique": "Hash_Comparison",
+                  "Confidence": 0.7,
+                  "Value": "7c547a9d67cc7bc315c93b6e2ff8e4b6b41ae5be454ac249655ecb5ca2a85abf"
+                }
+              ],
+              "Tools": [
+                "bom-ref-of-tool-that-performed-analysis"
+              ]
+            }
+          ]
+        },
+        "Occurrences": [
+          {
+            "BomRef": "d6bf237e-4e11-4713-9f62-56d18d5e2079",
+            "Location": "/path/to/component"
+          },
+          {
+            "BomRef": "b574d5d1-e3cf-4dcd-9ba5-f3507eb1b175",
+            "Location": "/another/path/to/component"
+          }
+        ],
+        "Callstack": {
+          "Frames": [
+            {
+              "Package": "com.apache.logging.log4j.core",
+              "Module": "Logger.class",
+              "Function": "logMessage",
+              "Parameters": [
+                "com.acme.HelloWorld",
+                "Level.INFO",
+                "null",
+                "Hello World"
+              ],
+              "Line": 150,
+              "Column": 17,
+              "FullFilename": "/path/to/log4j-core-2.14.0.jar!/org/apache/logging/log4j/core/Logger.class"
+            },
+            {
+              "Package": null,
+              "Module": "HelloWorld.class",
+              "Function": "main",
+              "Line": 20,
+              "Column": 12,
+              "FullFilename": "/path/to/HelloWorld.class"
+            }
+          ]
+        }
+      },
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": "com.example",
+      "Name": "example-project",
+      "Version": "1.0.0",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": "pkg:maven/com.example/example-project@1.0.0",
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": {
+        "Licenses": null,
+        "Copyright": null,
+        "Identity": [
+          {
+            "Field": "Group",
+            "Confidence": 0.1,
+            "ConcludedValue": "com.example",
+            "Methods": [
+              {
+                "Technique": "Filename",
+                "Confidence": 0.1,
+                "Value": "example-project-1.0.0.jar"
+              }
+            ],
+            "Tools": null
+          },
+          {
+            "Field": "Name",
+            "Confidence": 0.1,
+            "ConcludedValue": "example-project",
+            "Methods": [
+              {
+                "Technique": "Filename",
+                "Confidence": 0.1,
+                "Value": "example-project-1.0.0.jar"
+              }
+            ],
+            "Tools": null
+          },
+          {
+            "Field": "Version",
+            "Confidence": 0.1,
+            "ConcludedValue": "1.0.0",
+            "Methods": [
+              {
+                "Technique": "Filename",
+                "Confidence": 0.1,
+                "Value": "example-project-1.0.0.jar"
+              }
+            ],
+            "Tools": null
+          }
+        ],
+        "IdentitySerialized": {
+          "Identities": [
+            {
+              "Field": "Group",
+              "Confidence": 0.1,
+              "ConcludedValue": "com.example",
+              "Methods": [
+                {
+                  "Technique": "Filename",
+                  "Confidence": 0.1,
+                  "Value": "example-project-1.0.0.jar"
+                }
+              ],
+              "Tools": null
+            },
+            {
+              "Field": "Name",
+              "Confidence": 0.1,
+              "ConcludedValue": "example-project",
+              "Methods": [
+                {
+                  "Technique": "Filename",
+                  "Confidence": 0.1,
+                  "Value": "example-project-1.0.0.jar"
+                }
+              ],
+              "Tools": null
+            },
+            {
+              "Field": "Version",
+              "Confidence": 0.1,
+              "ConcludedValue": "1.0.0",
+              "Methods": [
+                {
+                  "Technique": "Filename",
+                  "Confidence": 0.1,
+                  "Value": "example-project-1.0.0.jar"
+                }
+              ],
+              "Tools": null
+            }
+          ]
+        },
+        "Occurrences": null,
+        "Callstack": null
+      },
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

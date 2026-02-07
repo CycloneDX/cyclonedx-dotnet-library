@@ -17,6 +17,7 @@
 
 using ProtoBuf;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Core.Models
@@ -38,12 +39,38 @@ namespace CycloneDX.Core.Models
         public List<CipherSuite> CipherSuites { get; set; }
 
         [XmlElement("ikev2TransformTypes")]
-        [ProtoMember(4)]
+        [ProtoMember(7)]
         public Ikev2TransformTypes Ikev2TransformTypes { get; set; }
+
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(4)]
+        public Ikev2TransformTypesLegacy Ikev2TransformTypesLegacy { get; set; }
 
         [XmlElement("cryptoRef")]
         [ProtoMember(5)]
         public List<string> CryptoRefArray { get; set; }
+
+        // Protobuf wrapper: RelatedCryptographicAssets { repeated RelatedCryptographicAsset assets = 1; }
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(6)]
+        public RelatedCryptographicAssetsProto RelatedCryptographicAssetsProto { get; set; }
+
+        [XmlArray("relatedCryptographicAssets")]
+        [XmlArrayItem("relatedCryptographicAsset")]
+        [JsonPropertyName("relatedCryptographicAssets")]
+        public List<RelatedCryptographicAsset> RelatedCryptographicAssets
+        {
+            get => RelatedCryptographicAssetsProto?.Assets;
+            set
+            {
+                if (value == null) { RelatedCryptographicAssetsProto = null; return; }
+                if (RelatedCryptographicAssetsProto == null) RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto();
+                RelatedCryptographicAssetsProto.Assets = value;
+            }
+        }
+        public bool ShouldSerializeRelatedCryptographicAssets() { return RelatedCryptographicAssets?.Count > 0; }
     }
 
 

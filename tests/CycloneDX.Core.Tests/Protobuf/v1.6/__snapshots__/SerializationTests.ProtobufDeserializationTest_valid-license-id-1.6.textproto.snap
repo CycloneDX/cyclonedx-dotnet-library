@@ -17,6 +17,7 @@
       "Group": "com.acme",
       "Name": "tomcat-catalina",
       "Version": "9.0.14",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": [
@@ -31,7 +32,8 @@
             "NonNullableAcknowledgement": "Declared"
           },
           "Expression": null,
-          "BomRef": null
+          "BomRef": null,
+          "Licensing": null
         }
       ],
       "LicensesSerialized": {
@@ -47,7 +49,8 @@
               "NonNullableAcknowledgement": "Declared"
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           }
         ]
       },
@@ -60,6 +63,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

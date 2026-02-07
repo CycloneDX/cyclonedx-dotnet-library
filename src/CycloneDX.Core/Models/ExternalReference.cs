@@ -119,6 +119,14 @@ namespace CycloneDX.Models
             Rfc_9116,
             [XmlEnum(Name = "release-notes")]
             Release_Notes,
+            [XmlEnum(Name = "patent")]
+            Patent,
+            [XmlEnum(Name = "patent-family")]
+            Patent_Family,
+            [XmlEnum(Name = "patent-assertion")]
+            Patent_Assertion,
+            [XmlEnum(Name = "citation")]
+            Citation,
         }
 
         [XmlElement("url")]

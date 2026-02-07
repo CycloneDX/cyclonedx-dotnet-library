@@ -17,7 +17,10 @@
 
 using ProtoBuf;
 using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using CycloneDX.Models;
 
 namespace CycloneDX.Core.Models
 {
@@ -72,7 +75,29 @@ namespace CycloneDX.Core.Models
         [ProtoMember(12)]
         public SecuredBy SecuredBy { get; set; }
 
+        [XmlElement("fingerprint")]
+        [ProtoMember(13)]
+        public Hash Fingerprint { get; set; }
+
+        // Protobuf wrapper: RelatedCryptographicAssets { repeated RelatedCryptographicAsset assets = 1; }
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(14)]
+        public RelatedCryptographicAssetsProto RelatedCryptographicAssetsProto { get; set; }
+
+        [XmlArray("relatedCryptographicAssets")]
+        [XmlArrayItem("relatedCryptographicAsset")]
+        [JsonPropertyName("relatedCryptographicAssets")]
+        public List<RelatedCryptographicAsset> RelatedCryptographicAssets
+        {
+            get => RelatedCryptographicAssetsProto?.Assets;
+            set
+            {
+                if (value == null) { RelatedCryptographicAssetsProto = null; return; }
+                if (RelatedCryptographicAssetsProto == null) RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto();
+                RelatedCryptographicAssetsProto.Assets = value;
+            }
+        }
+        public bool ShouldSerializeRelatedCryptographicAssets() { return RelatedCryptographicAssets?.Count > 0; }
     }
-
-
 }

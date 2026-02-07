@@ -29,5 +29,6 @@ namespace CycloneDX
         v1_4,
         v1_5,
         v1_6,
+        v1_7,
     }
 }

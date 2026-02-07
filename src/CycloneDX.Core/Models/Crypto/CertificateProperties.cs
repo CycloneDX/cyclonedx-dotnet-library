@@ -17,13 +17,20 @@
 
 using ProtoBuf;
 using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using CycloneDX.Models;
 
 namespace CycloneDX.Core.Models
 {
     [ProtoContract]
     public class CertificateProperties
     {
+        [XmlElement("serialNumber")]
+        [ProtoMember(9)]
+        public string SerialNumber { get; set; }
+
         [XmlElement("subjectName")]
         [ProtoMember(1)]
         public string SubjectName { get; set; }
@@ -52,10 +59,89 @@ namespace CycloneDX.Core.Models
         [ProtoMember(7)]
         public string CertificateFormat { get; set; }
 
+        [System.Obsolete("Use CertificateFileExtension instead.")]
         [XmlElement("certificateExtension")]
         [ProtoMember(8)]
         public string CertificateExtension { get; set; }
+
+        [XmlElement("certificateFileExtension")]
+        [ProtoMember(10)]
+        public string CertificateFileExtension { get; set; }
+
+        [XmlElement("fingerprint")]
+        [ProtoMember(11)]
+        public Hash Fingerprint { get; set; }
+
+        [XmlElement("certificateState")]
+        [ProtoMember(12)]
+        public List<CertificateState> CertificateStates { get; set; }
+        public bool ShouldSerializeCertificateStates() { return CertificateStates?.Count > 0; }
+
+        [XmlElement("creationDate")]
+        [ProtoMember(13)]
+        public DateTime? CreationDate { get; set; }
+        public bool ShouldSerializeCreationDate() { return CreationDate.HasValue; }
+
+        [XmlElement("activationDate")]
+        [ProtoMember(14)]
+        public DateTime? ActivationDate { get; set; }
+        public bool ShouldSerializeActivationDate() { return ActivationDate.HasValue; }
+
+        [XmlElement("deactivationDate")]
+        [ProtoMember(15)]
+        public DateTime? DeactivationDate { get; set; }
+        public bool ShouldSerializeDeactivationDate() { return DeactivationDate.HasValue; }
+
+        [XmlElement("revocationDate")]
+        [ProtoMember(16)]
+        public DateTime? RevocationDate { get; set; }
+        public bool ShouldSerializeRevocationDate() { return RevocationDate.HasValue; }
+
+        [XmlElement("destructionDate")]
+        [ProtoMember(17)]
+        public DateTime? DestructionDate { get; set; }
+        public bool ShouldSerializeDestructionDate() { return DestructionDate.HasValue; }
+
+        // Protobuf wrapper: CertificateExtensions { repeated Extension extensions = 1; }
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(18)]
+        public CertificateExtensionsProto CertificateExtensionsProto { get; set; }
+
+        [XmlArray("certificateExtensions")]
+        [XmlArrayItem("certificateExtension")]
+        [JsonPropertyName("certificateExtensions")]
+        public List<CertificateExtensionV2> CertificateExtensions
+        {
+            get => CertificateExtensionsProto?.Extensions;
+            set
+            {
+                if (value == null) { CertificateExtensionsProto = null; return; }
+                if (CertificateExtensionsProto == null) CertificateExtensionsProto = new CertificateExtensionsProto();
+                CertificateExtensionsProto.Extensions = value;
+            }
+        }
+        public bool ShouldSerializeCertificateExtensions() { return CertificateExtensions?.Count > 0; }
+
+        // Protobuf wrapper: RelatedCryptographicAssets { repeated RelatedCryptographicAsset assets = 1; }
+        [XmlIgnore]
+        [JsonIgnore]
+        [ProtoMember(19)]
+        public RelatedCryptographicAssetsProto RelatedCryptographicAssetsProto { get; set; }
+
+        [XmlArray("relatedCryptographicAssets")]
+        [XmlArrayItem("relatedCryptographicAsset")]
+        [JsonPropertyName("relatedCryptographicAssets")]
+        public List<RelatedCryptographicAsset> RelatedCryptographicAssets
+        {
+            get => RelatedCryptographicAssetsProto?.Assets;
+            set
+            {
+                if (value == null) { RelatedCryptographicAssetsProto = null; return; }
+                if (RelatedCryptographicAssetsProto == null) RelatedCryptographicAssetsProto = new RelatedCryptographicAssetsProto();
+                RelatedCryptographicAssetsProto.Assets = value;
+            }
+        }
+        public bool ShouldSerializeRelatedCryptographicAssets() { return RelatedCryptographicAssets?.Count > 0; }
     }
-
-
 }

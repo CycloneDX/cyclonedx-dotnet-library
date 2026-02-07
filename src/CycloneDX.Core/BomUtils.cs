@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using CycloneDX.Core.Models;
 using CycloneDX.Models;
 using CycloneDX.Models.Vulnerabilities;
 using static CycloneDX.Models.EvidenceIdentity;
@@ -63,6 +64,15 @@ namespace CycloneDX
         internal static Bom CopyBomAndDowngrade(Bom bom)
         {
             var bomCopy = bom.Copy();
+
+            // The protobuf deep copy does not preserve Signature/XmlSignature properties.
+            // Signatories require either a "signature" or "organization"+"externalReference"
+            // per the JSON schema oneOf constraint. Remove any that are now invalid.
+            if (bomCopy.Declarations?.Affirmation?.Signatories != null)
+            {
+                bomCopy.Declarations.Affirmation.Signatories.RemoveAll(s =>
+                    s.Signature == null && (s.Organization == null || s.ExternalReference == null));
+            }
 
             // we downgrade stuff starting with lowest spec first
             // this will remove entire classes of things and will save unnecessary processing further down
@@ -349,6 +359,92 @@ namespace CycloneDX
 
             }
 
+            if (bomCopy.SpecVersion < SpecificationVersion.v1_7)
+            {
+                bomCopy.Citations = null;
+
+                if (bomCopy.Metadata != null)
+                {
+                    bomCopy.Metadata.DistributionConstraints = null;
+                }
+
+                if (bomCopy.Definitions != null)
+                {
+                    bomCopy.Definitions.Patents = null;
+                }
+
+                EnumerateAllComponents(bomCopy, (component) =>
+                {
+                    component.VersionRange = null;
+                    component.IsExternal = null;
+                    component.PatentAssertions = null;
+
+                    if (component.CryptoProperties?.CertificateProperties != null)
+                    {
+                        var certProps = component.CryptoProperties.CertificateProperties;
+                        certProps.SerialNumber = null;
+                        certProps.CertificateFileExtension = null;
+                        certProps.Fingerprint = null;
+                        certProps.CertificateStates = null;
+                        certProps.CreationDate = null;
+                        certProps.ActivationDate = null;
+                        certProps.DeactivationDate = null;
+                        certProps.RevocationDate = null;
+                        certProps.DestructionDate = null;
+                        certProps.CertificateExtensions = null;
+                        certProps.RelatedCryptographicAssets = null;
+                    }
+
+                    if (component.CryptoProperties?.RelatedCryptoMaterialProperties != null)
+                    {
+                        var rcmProps = component.CryptoProperties.RelatedCryptoMaterialProperties;
+                        rcmProps.Fingerprint = null;
+                        rcmProps.RelatedCryptographicAssets = null;
+                    }
+
+                    if (component.CryptoProperties?.ProtocolProperties != null)
+                    {
+                        var protoProps = component.CryptoProperties.ProtocolProperties;
+                        protoProps.RelatedCryptographicAssets = null;
+                        // Downgrade detailed IKEv2 transform types to null (v1.6 doesn't support the detailed format)
+                        if (protoProps.Ikev2TransformTypes != null)
+                        {
+                            protoProps.Ikev2TransformTypes = null;
+                        }
+                    }
+                });
+
+                EnumerateAllServices(bomCopy, (service) =>
+                {
+                    service.PatentAssertions = null;
+                });
+
+                EnumerateAllLicenseChoices(bomCopy, (licenseChoice) =>
+                {
+                    licenseChoice.ExpressionDetails = null;
+                    licenseChoice.Licensing = null;
+                    licenseChoice.Properties = null;
+                });
+
+                // v1.6 xs:choice only allows EITHER licenses OR an expression, not both.
+                // v1.7 allows unbounded mixing. Strip expressions when mixed with licenses.
+                DowngradeMixedLicenseChoiceLists(bomCopy);
+
+                EnumerateAllExternalReferences(bomCopy, (externalReference) =>
+                {
+                    if (externalReference != null)
+                    {
+                        if (externalReference.Type == ExternalReference.ExternalReferenceType.Patent
+                            || externalReference.Type == ExternalReference.ExternalReferenceType.Patent_Family
+                            || externalReference.Type == ExternalReference.ExternalReferenceType.Patent_Assertion
+                            || externalReference.Type == ExternalReference.ExternalReferenceType.Citation)
+                        {
+                            externalReference.Type = ExternalReference.ExternalReferenceType.Other;
+                        }
+                    }
+                });
+            }
+
             // triggers a bunch of stuff, don't remove unless you know what you are doing
             bomCopy.SpecVersion = bomCopy.SpecVersion;
 
@@ -461,6 +557,53 @@ namespace CycloneDX
                 {
                     callback(licenseChoice.License);
                 }
+            });
+        }
+
+        private static void DowngradeMixedLicenseChoiceList(List<LicenseChoice> licenses)
+        {
+            if (licenses == null || licenses.Count <= 1) return;
+            // v1.6 xs:choice only allows EITHER multiple licenses OR one expression.
+            // When mixed, keep licenses and drop expressions.
+            // When multiple expressions, keep only the first.
+            bool hasLicense = false;
+            bool hasExpression = false;
+            foreach (var lc in licenses)
+            {
+                if (lc.License != null) hasLicense = true;
+                if (lc.Expression != null) hasExpression = true;
+            }
+            if (hasLicense && hasExpression)
+            {
+                licenses.RemoveAll(lc => lc.Expression != null && lc.License == null);
+            }
+            else if (hasExpression)
+            {
+                // Keep only the first expression
+                bool first = true;
+                licenses.RemoveAll(lc =>
+                {
+                    if (lc.Expression != null)
+                    {
+                        if (first) { first = false; return false; }
+                        return true;
+                    }
+                    return false;
+                });
+            }
+        }
+
+        private static void DowngradeMixedLicenseChoiceLists(Bom bom)
+        {
+            if (bom.Metadata?.Licenses != null)
+                DowngradeMixedLicenseChoiceList(bom.Metadata.Licenses);
+            EnumerateAllComponents(bom, (component) =>
+            {
+                DowngradeMixedLicenseChoiceList(component.Licenses);
+            });
+            EnumerateAllServices(bom, (service) =>
+            {
+                DowngradeMixedLicenseChoiceList(service.Licenses);
             });
         }
 
@@ -750,6 +893,27 @@ namespace CycloneDX
                     if (standard?.ExternalReferences != null)
                     {
                         foreach (var item in standard.ExternalReferences)
+                        {
+                            callback(item);
+                        }
+                    }
+                }
+            }
+
+            if (bom.Definitions?.Patents != null)
+            {
+                foreach (var patentOrFamily in bom.Definitions.Patents)
+                {
+                    if (patentOrFamily?.Patent?.ExternalReferences != null)
+                    {
+                        foreach (var item in patentOrFamily.Patent.ExternalReferences)
+                        {
+                            callback(item);
+                        }
+                    }
+                    if (patentOrFamily?.PatentFamily?.ExternalReferences != null)
+                    {
+                        foreach (var item in patentOrFamily.PatentFamily.ExternalReferences)
                         {
                             callback(item);
                         }
