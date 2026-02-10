@@ -1,0 +1,224 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": {
+    "Timestamp": "2025-05-01T17:03:00Z",
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": [
+      {
+        "Name": "Alice Example",
+        "Email": "alice@example.com",
+        "Phone": null,
+        "BomRef": "person-1"
+      }
+    ],
+    "Component": null,
+    "Manufacture": null,
+    "Supplier": null,
+    "DistributionConstraints": null
+  },
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": "component-1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "example-lib",
+      "Version": "1.2.3",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": {
+            "Id": "Apache-2.0",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Id": "Apache-2.0",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Formulation": [
+    {
+      "BomRef": "workflow-1",
+      "Components": [
+        {
+          "Type": "Application",
+          "MimeType": null,
+          "BomRef": "scan-tool-1",
+          "Supplier": null,
+          "Author": null,
+          "Publisher": null,
+          "Group": null,
+          "Name": "My Scan Tool",
+          "Version": null,
+          "VersionRange": null,
+          "Description": null,
+          "Scope": null,
+          "Licenses": null,
+          "Copyright": null,
+          "Cpe": null,
+          "Purl": null,
+          "Swid": null,
+          "Modified": null,
+          "Pedigree": null,
+          "Evidence": null,
+          "ModelCard": null,
+          "CryptoProperties": null,
+          "IsExternal": null,
+          "XmlSignature": null,
+          "Signature": null
+        }
+      ],
+      "Workflows": [
+        {
+          "BomRef": "workflow-1",
+          "Uid": "259bae74-5ec4-4de8-9386-c91b1f7719b8",
+          "Name": "My workflow",
+          "Description": null,
+          "ResourceReferences": null,
+          "Tasks": [
+            {
+              "BomRef": "task-license-scan",
+              "Uid": "6d75f8d6-a008-41cf-8b65-c4129fc249f9",
+              "Name": null,
+              "Description": "License scan of the source files using OpenSourceScanner v2.1",
+              "ResourceReferences": null,
+              "TaskTypes": [
+                "Scan"
+              ],
+              "Trigger": null,
+              "Steps": null,
+              "Inputs": null,
+              "Outputs": null,
+              "Workspaces": null,
+              "RuntimeTopology": null
+            }
+          ],
+          "TaskDependencies": null,
+          "TaskTypes": [
+            "Scan"
+          ],
+          "Trigger": null,
+          "Steps": null,
+          "Inputs": null,
+          "Outputs": null,
+          "Workspaces": null,
+          "RuntimeTopology": null
+        }
+      ]
+    }
+  ],
+  "Definitions": null,
+  "Citations": [
+    {
+      "BomRef": "citation-1",
+      "PointersProto": {
+        "Pointer": [
+          "/components/0/name"
+        ]
+      },
+      "ExpressionsProto": null,
+      "Pointers": [
+        "/components/0/name"
+      ],
+      "Timestamp": "2025-05-01T14:00:00Z",
+      "AttributedTo": "person-1",
+      "Process": null,
+      "Note": "Manually entered by Alice Example"
+    },
+    {
+      "BomRef": "citation-2",
+      "PointersProto": {
+        "Pointer": [
+          "/components/0/name"
+        ]
+      },
+      "ExpressionsProto": null,
+      "Pointers": [
+        "/components/0/name"
+      ],
+      "Timestamp": "2025-05-01T14:00:00Z",
+      "AttributedTo": null,
+      "Process": "task-license-scan",
+      "Note": "Semi-manually entered by Alice Example - with `process`"
+    },
+    {
+      "BomRef": "citation-3",
+      "PointersProto": null,
+      "ExpressionsProto": {
+        "Expression": [
+          "$..[?(bom_ref=='component-1')].version"
+        ]
+      },
+      "Expressions": [
+        "$..[?(bom_ref=='component-1')].version"
+      ],
+      "Timestamp": "2025-05-01T14:00:00Z",
+      "AttributedTo": null,
+      "Process": "task-license-scan",
+      "Note": "Semi-manually entered by Alice Example - with `process`"
+    },
+    {
+      "BomRef": "citation-4",
+      "PointersProto": null,
+      "ExpressionsProto": {
+        "Expression": [
+          "$.components[*].licenses[*].license.id"
+        ]
+      },
+      "Expressions": [
+        "$.components[*].licenses[*].license.id"
+      ],
+      "Timestamp": "2025-05-01T14:00:00Z",
+      "AttributedTo": "scan-tool-1",
+      "Process": "task-license-scan",
+      "Note": "Auto-detected by license scanner tool"
+    }
+  ],
+  "XmlSignature": null,
+  "Signature": null
+}

@@ -29,7 +29,8 @@
         "Name": "value-is-optional",
         "Value": null
       }
-    ]
+    ],
+    "DistributionConstraints": null
   },
   "Components": [
     {
@@ -42,6 +43,7 @@
       "Group": null,
       "Name": "acme-library",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": [
@@ -72,7 +74,8 @@
             ]
           },
           "Expression": null,
-          "BomRef": null
+          "BomRef": null,
+          "Licensing": null
         }
       ],
       "LicensesSerialized": {
@@ -104,7 +107,8 @@
               ]
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           }
         ]
       },
@@ -135,6 +139,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

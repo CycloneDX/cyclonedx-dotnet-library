@@ -66,15 +66,7 @@
               "requirement-1.1.1"
             ]
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       }
     ]
   }

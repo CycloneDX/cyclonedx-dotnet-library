@@ -1,0 +1,250 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": null,
+  "Compositions": null,
+  "Declarations": {
+    "Assessors": [
+      {
+        "BomRef": "assessor-1",
+        "ThirdParty": true,
+        "Organization": {
+          "Name": "Assessors Inc",
+          "Url": null,
+          "Contact": null,
+          "BomRef": null,
+          "Address": null
+        }
+      }
+    ],
+    "Attestations": [
+      {
+        "Summary": "Attestation summary here",
+        "Assessor": "assessor-1",
+        "Map": [
+          {
+            "Requirement": "requirement-1",
+            "Claims": [
+              "claim-1"
+            ],
+            "CounterClaims": [
+              "counterClaim-1"
+            ],
+            "Conformance": {
+              "Score": 0.8,
+              "Rationale": "Conformance rationale here",
+              "MitigationStrategies": [
+                "mitigationStrategy-1"
+              ]
+            },
+            "Confidence": {
+              "Score": 1.0,
+              "Rationale": "Confidence rationale here"
+            }
+          }
+        ],
+        "Any": null,
+        "Signature": null
+      }
+    ],
+    "Claims": [
+      {
+        "BomRef": "claim-1",
+        "Target": "acme-inc",
+        "Predicate": "Predicate here",
+        "MitigationStrategies": [
+          "mitigationStrategy-1"
+        ],
+        "Reasoning": "Reasoning here",
+        "Evidence": [
+          "evidence-1"
+        ],
+        "CounterEvidence": [
+          "counterEvidence-1"
+        ],
+        "ExternalReferences": [
+          {
+            "Url": "https://alm.example.com",
+            "Type": "Issue_Tracker",
+            "Comment": null
+          }
+        ],
+        "XmlSignature": null,
+        "Signature": null
+      }
+    ],
+    "Evidence": [
+      {
+        "BomRef": "evidence-1",
+        "PropertyName": "internal.com.acme.someProperty",
+        "Description": "Description here",
+        "Data": [
+          {
+            "Name": "Name of the data",
+            "Contents": {
+              "Attachment": {
+                "ContentType": "text/plain",
+                "Encoding": null,
+                "Content": "Evidence here"
+              },
+              "Url": null
+            },
+            "Classification": "PII",
+            "SensitiveData": [
+              "Describe sensitive data here"
+            ],
+            "Governance": null
+          }
+        ],
+        "Created": "2023-04-25T00:00:00Z",
+        "Expires": "2023-05-25T00:00:00Z",
+        "Author": {
+          "Name": "Mary",
+          "Email": null,
+          "Phone": null,
+          "BomRef": null
+        },
+        "Reviewer": {
+          "Name": "Jane",
+          "Email": null,
+          "Phone": null,
+          "BomRef": null
+        },
+        "XmlSignature": null,
+        "Signature": null
+      },
+      {
+        "BomRef": "counterEvidence-1",
+        "PropertyName": "internal.com.acme.someProperty",
+        "Description": "Description here",
+        "Data": [
+          {
+            "Name": "Name of the data",
+            "Contents": {
+              "Attachment": {
+                "ContentType": "text/plain",
+                "Encoding": null,
+                "Content": "Counter evidence here"
+              },
+              "Url": null
+            },
+            "Classification": "Public",
+            "SensitiveData": [
+              "Describe sensitive data here"
+            ],
+            "Governance": null
+          }
+        ],
+        "Created": "2023-04-25T00:00:00Z",
+        "Expires": "2023-05-25T00:00:00Z",
+        "Author": {
+          "Name": "Mary",
+          "Email": null,
+          "Phone": null,
+          "BomRef": null
+        },
+        "Reviewer": {
+          "Name": "Jane",
+          "Email": null,
+          "Phone": null,
+          "BomRef": null
+        },
+        "XmlSignature": null,
+        "Signature": null
+      },
+      {
+        "BomRef": "mitigationStrategy-1",
+        "PropertyName": "internal.com.acme.someProperty",
+        "Description": "Description here",
+        "Data": [
+          {
+            "Name": "Name of the data",
+            "Contents": {
+              "Attachment": {
+                "ContentType": "text/plain",
+                "Encoding": null,
+                "Content": "Mitigation strategy here"
+              },
+              "Url": null
+            },
+            "Classification": "Company Confidential",
+            "SensitiveData": [
+              "Describe sensitive data here"
+            ],
+            "Governance": null
+          }
+        ],
+        "Created": "2023-04-25T00:00:00Z",
+        "Expires": "2023-05-25T00:00:00Z",
+        "Author": {
+          "Name": "Mary",
+          "Email": null,
+          "Phone": null,
+          "BomRef": null
+        },
+        "Reviewer": {
+          "Name": "Jane",
+          "Email": null,
+          "Phone": null,
+          "BomRef": null
+        },
+        "XmlSignature": null,
+        "Signature": null
+      }
+    ],
+    "Targets": {
+      "Organizations": [
+        {
+          "Name": "Acme Inc",
+          "Url": null,
+          "Contact": null,
+          "BomRef": "acme-inc",
+          "Address": null
+        }
+      ]
+    },
+    "Affirmation": {
+      "Statement": "I certify, to the best of my knowledge, that all information is correct...",
+      "Signatories": [
+        {
+          "Name": "Tom",
+          "Role": "CEO",
+          "Organization": null,
+          "ExternalReference": null,
+          "XmlSignature": null,
+          "Signature": null
+        },
+        {
+          "Name": "Jerry",
+          "Role": "COO",
+          "Organization": {
+            "Name": "Acme Inc",
+            "Url": null,
+            "Contact": null,
+            "BomRef": null,
+            "Address": null
+          },
+          "ExternalReference": {
+            "Url": "https://example.com/coo-sig.png",
+            "Type": "Electronic_Signature",
+            "Comment": null
+          },
+          "XmlSignature": null,
+          "Signature": null
+        }
+      ],
+      "XmlSignature": null,
+      "Signature": null
+    },
+    "XmlSignature": null,
+    "Signature": null
+  },
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

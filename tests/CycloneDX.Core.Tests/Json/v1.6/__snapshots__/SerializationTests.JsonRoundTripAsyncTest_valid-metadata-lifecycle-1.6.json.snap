@@ -16,6 +16,5 @@
         "description": "Integration testing specific to the runtime platform"
       }
     ]
-  },
-  "components": []
+  }
 }

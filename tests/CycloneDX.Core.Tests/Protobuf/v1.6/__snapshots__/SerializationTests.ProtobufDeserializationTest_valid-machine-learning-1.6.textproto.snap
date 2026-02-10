@@ -17,6 +17,7 @@
       "Group": "CompVis",
       "Name": "stable-diffusion",
       "Version": "1.4",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -111,6 +112,7 @@
         }
       },
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

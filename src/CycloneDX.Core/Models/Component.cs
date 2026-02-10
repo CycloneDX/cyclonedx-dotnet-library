@@ -139,6 +139,10 @@ namespace CycloneDX.Models
         [ProtoMember(9)]
         public string Version { get; set; }
 
+        [XmlElement("versionRange")]
+        [ProtoMember(33)]
+        public string VersionRange { get; set; }
+
         [XmlElement("description")]
         [ProtoMember(10)]
         public string Description { get; set; }
@@ -186,6 +190,12 @@ namespace CycloneDX.Models
         [XmlElement("copyright")]
         [ProtoMember(14)]
         public string Copyright { get; set; }
+
+        [XmlArray("patentAssertions")]
+        [XmlArrayItem("patentAssertion")]
+        [ProtoMember(35)]
+        public List<PatentAssertion> PatentAssertions { get; set; }
+        public bool ShouldSerializePatentAssertions() { return PatentAssertions?.Count > 0; }
 
         [XmlElement("cpe")]
         [ProtoMember(15)]
@@ -273,6 +283,18 @@ namespace CycloneDX.Models
         [XmlElement("cryptoProperties")]
         [ProtoMember(27)]
         public CryptoProperties CryptoProperties { get; set; }
+
+        [XmlIgnore]
+        [ProtoMember(34)]
+        public bool? IsExternal { get; set; }
+        [XmlAttribute("isExternal")]
+        [System.Text.Json.Serialization.JsonIgnore]
+        public bool NonNullableIsExternal
+        {
+            get => IsExternal.HasValue && IsExternal.Value;
+            set => IsExternal = value;
+        }
+        public bool ShouldSerializeNonNullableIsExternal() { return IsExternal.HasValue; }
 
         [XmlArray("tags")]
         [XmlArrayItem("tag")]

@@ -18,6 +18,7 @@
       "Group": null,
       "Name": "Acme Application",
       "Version": "9.1.1",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -42,6 +43,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }
