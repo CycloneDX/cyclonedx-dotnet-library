@@ -78,7 +78,23 @@ Classes
 </h3>
       <h4><a class="xref" href="CycloneDX.Core.Models.AlgorithmProperties.html">AlgorithmProperties</a></h4>
       <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.CertExtCommon.html">CertExtCommon</a></h4>
+      <section><p>Proto: message CommonExtension { CommonExtensionName name = 1; string value = 2; }</p>
+</section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.CertExtCustom.html">CertExtCustom</a></h4>
+      <section><p>Proto: message CustomExtension { string name = 1; optional string value = 2; }</p>
+</section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.CertificateExtensionV2.html">CertificateExtensionV2</a></h4>
+      <section><p>Certificate extension for XML/JSON serialization.
+For protobuf, this maps to Extension { oneof { CommonExtension, CustomExtension } }</p>
+</section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.CertificateExtensionsProto.html">CertificateExtensionsProto</a></h4>
+      <section><p>Protobuf wrapper for CertificateExtensions.
+Proto: message CertificateExtensions { repeated Extension extensions = 1; }</p>
+</section>
       <h4><a class="xref" href="CycloneDX.Core.Models.CertificateProperties.html">CertificateProperties</a></h4>
+      <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.CertificateState.html">CertificateState</a></h4>
       <section></section>
       <h4><a class="xref" href="CycloneDX.Core.Models.CertificationLevelExtensions.html">CertificationLevelExtensions</a></h4>
       <section></section>
@@ -88,12 +104,32 @@ Classes
       <section></section>
       <h4><a class="xref" href="CycloneDX.Core.Models.CryptoProperties.html">CryptoProperties</a></h4>
       <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.Ikev2Auth.html">Ikev2Auth</a></h4>
+      <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.Ikev2Encr.html">Ikev2Encr</a></h4>
+      <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.Ikev2Integ.html">Ikev2Integ</a></h4>
+      <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.Ikev2Ke.html">Ikev2Ke</a></h4>
+      <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.Ikev2Prf.html">Ikev2Prf</a></h4>
+      <section></section>
       <h4><a class="xref" href="CycloneDX.Core.Models.Ikev2TransformTypes.html">Ikev2TransformTypes</a></h4>
       <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html">Ikev2TransformTypesLegacy</a></h4>
+      <section><p>DEPRECATED - This is the old format for IKEv2 transform types using simple string refs.
+Kept for backwards compatibility with protobuf field 4 on ProtocolProperties.</p>
+</section>
       <h4><a class="xref" href="CycloneDX.Core.Models.ProtocolProperties.html">ProtocolProperties</a></h4>
       <section></section>
       <h4><a class="xref" href="CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html">RelatedCryptoMaterialProperties</a></h4>
       <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.RelatedCryptographicAsset.html">RelatedCryptographicAsset</a></h4>
+      <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.RelatedCryptographicAssetsProto.html">RelatedCryptographicAssetsProto</a></h4>
+      <section><p>Protobuf wrapper for RelatedCryptographicAssets.
+Proto: message RelatedCryptographicAssets { repeated RelatedCryptographicAsset assets = 1; }</p>
+</section>
       <h4><a class="xref" href="CycloneDX.Core.Models.SecuredBy.html">SecuredBy</a></h4>
       <section></section>
     <h3 id="enums">
@@ -105,6 +141,9 @@ Enums
       <section></section>
       <h4><a class="xref" href="CycloneDX.Core.Models.CertificationLevel.html">CertificationLevel</a></h4>
       <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.CommonExtensionNameEnum.html">CommonExtensionNameEnum</a></h4>
+      <section><p>Proto enum matching CertificateExtensions.CommonExtensionName</p>
+</section>
       <h4><a class="xref" href="CycloneDX.Core.Models.CryptoFunction.html">CryptoFunction</a></h4>
       <section></section>
       <h4><a class="xref" href="CycloneDX.Core.Models.ExecutionEnvironment.html">ExecutionEnvironment</a></h4>
@@ -114,6 +153,8 @@ Enums
       <h4><a class="xref" href="CycloneDX.Core.Models.KeyState.html">KeyState</a></h4>
       <section></section>
       <h4><a class="xref" href="CycloneDX.Core.Models.PaddingScheme.html">PaddingScheme</a></h4>
+      <section></section>
+      <h4><a class="xref" href="CycloneDX.Core.Models.PredefinedCertificateState.html">PredefinedCertificateState</a></h4>
       <section></section>
       <h4><a class="xref" href="CycloneDX.Core.Models.Primitive.html">Primitive</a></h4>
       <section></section>

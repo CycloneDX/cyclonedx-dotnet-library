@@ -487,6 +487,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.AlgorithmProperties.Primitive
   nameWithType: AlgorithmProperties.Primitive
+- uid: CycloneDX.Core.Models.AlgorithmProperties.ShouldSerializeMode
+  name: ShouldSerializeMode()
+  href: api/CycloneDX.Core.Models.AlgorithmProperties.html#CycloneDX_Core_Models_AlgorithmProperties_ShouldSerializeMode
+  commentId: M:CycloneDX.Core.Models.AlgorithmProperties.ShouldSerializeMode
+  fullName: CycloneDX.Core.Models.AlgorithmProperties.ShouldSerializeMode()
+  nameWithType: AlgorithmProperties.ShouldSerializeMode()
+- uid: CycloneDX.Core.Models.AlgorithmProperties.ShouldSerializeMode*
+  name: ShouldSerializeMode
+  href: api/CycloneDX.Core.Models.AlgorithmProperties.html#CycloneDX_Core_Models_AlgorithmProperties_ShouldSerializeMode_
+  commentId: Overload:CycloneDX.Core.Models.AlgorithmProperties.ShouldSerializeMode
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.AlgorithmProperties.ShouldSerializeMode
+  nameWithType: AlgorithmProperties.ShouldSerializeMode
 - uid: CycloneDX.Core.Models.AssetType
   name: AssetType
   href: api/CycloneDX.Core.Models.AssetType.html
@@ -523,12 +536,192 @@ references:
   commentId: F:CycloneDX.Core.Models.AssetType.Related_Crypto_Material
   fullName: CycloneDX.Core.Models.AssetType.Related_Crypto_Material
   nameWithType: AssetType.Related_Crypto_Material
+- uid: CycloneDX.Core.Models.CertExtCommon
+  name: CertExtCommon
+  href: api/CycloneDX.Core.Models.CertExtCommon.html
+  commentId: T:CycloneDX.Core.Models.CertExtCommon
+  fullName: CycloneDX.Core.Models.CertExtCommon
+  nameWithType: CertExtCommon
+- uid: CycloneDX.Core.Models.CertExtCommon.Name
+  name: Name
+  href: api/CycloneDX.Core.Models.CertExtCommon.html#CycloneDX_Core_Models_CertExtCommon_Name
+  commentId: P:CycloneDX.Core.Models.CertExtCommon.Name
+  fullName: CycloneDX.Core.Models.CertExtCommon.Name
+  nameWithType: CertExtCommon.Name
+- uid: CycloneDX.Core.Models.CertExtCommon.Name*
+  name: Name
+  href: api/CycloneDX.Core.Models.CertExtCommon.html#CycloneDX_Core_Models_CertExtCommon_Name_
+  commentId: Overload:CycloneDX.Core.Models.CertExtCommon.Name
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertExtCommon.Name
+  nameWithType: CertExtCommon.Name
+- uid: CycloneDX.Core.Models.CertExtCommon.Value
+  name: Value
+  href: api/CycloneDX.Core.Models.CertExtCommon.html#CycloneDX_Core_Models_CertExtCommon_Value
+  commentId: P:CycloneDX.Core.Models.CertExtCommon.Value
+  fullName: CycloneDX.Core.Models.CertExtCommon.Value
+  nameWithType: CertExtCommon.Value
+- uid: CycloneDX.Core.Models.CertExtCommon.Value*
+  name: Value
+  href: api/CycloneDX.Core.Models.CertExtCommon.html#CycloneDX_Core_Models_CertExtCommon_Value_
+  commentId: Overload:CycloneDX.Core.Models.CertExtCommon.Value
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertExtCommon.Value
+  nameWithType: CertExtCommon.Value
+- uid: CycloneDX.Core.Models.CertExtCustom
+  name: CertExtCustom
+  href: api/CycloneDX.Core.Models.CertExtCustom.html
+  commentId: T:CycloneDX.Core.Models.CertExtCustom
+  fullName: CycloneDX.Core.Models.CertExtCustom
+  nameWithType: CertExtCustom
+- uid: CycloneDX.Core.Models.CertExtCustom.Name
+  name: Name
+  href: api/CycloneDX.Core.Models.CertExtCustom.html#CycloneDX_Core_Models_CertExtCustom_Name
+  commentId: P:CycloneDX.Core.Models.CertExtCustom.Name
+  fullName: CycloneDX.Core.Models.CertExtCustom.Name
+  nameWithType: CertExtCustom.Name
+- uid: CycloneDX.Core.Models.CertExtCustom.Name*
+  name: Name
+  href: api/CycloneDX.Core.Models.CertExtCustom.html#CycloneDX_Core_Models_CertExtCustom_Name_
+  commentId: Overload:CycloneDX.Core.Models.CertExtCustom.Name
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertExtCustom.Name
+  nameWithType: CertExtCustom.Name
+- uid: CycloneDX.Core.Models.CertExtCustom.Value
+  name: Value
+  href: api/CycloneDX.Core.Models.CertExtCustom.html#CycloneDX_Core_Models_CertExtCustom_Value
+  commentId: P:CycloneDX.Core.Models.CertExtCustom.Value
+  fullName: CycloneDX.Core.Models.CertExtCustom.Value
+  nameWithType: CertExtCustom.Value
+- uid: CycloneDX.Core.Models.CertExtCustom.Value*
+  name: Value
+  href: api/CycloneDX.Core.Models.CertExtCustom.html#CycloneDX_Core_Models_CertExtCustom_Value_
+  commentId: Overload:CycloneDX.Core.Models.CertExtCustom.Value
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertExtCustom.Value
+  nameWithType: CertExtCustom.Value
+- uid: CycloneDX.Core.Models.CertificateExtensionV2
+  name: CertificateExtensionV2
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html
+  commentId: T:CycloneDX.Core.Models.CertificateExtensionV2
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2
+  nameWithType: CertificateExtensionV2
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionName
+  name: CommonExtensionName
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CommonExtensionName
+  commentId: P:CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionName
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionName
+  nameWithType: CertificateExtensionV2.CommonExtensionName
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionName*
+  name: CommonExtensionName
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CommonExtensionName_
+  commentId: Overload:CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionName
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionName
+  nameWithType: CertificateExtensionV2.CommonExtensionName
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionProto
+  name: CommonExtensionProto
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CommonExtensionProto
+  commentId: P:CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionProto
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionProto
+  nameWithType: CertificateExtensionV2.CommonExtensionProto
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionProto*
+  name: CommonExtensionProto
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CommonExtensionProto_
+  commentId: Overload:CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionProto
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionProto
+  nameWithType: CertificateExtensionV2.CommonExtensionProto
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionValue
+  name: CommonExtensionValue
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CommonExtensionValue
+  commentId: P:CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionValue
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionValue
+  nameWithType: CertificateExtensionV2.CommonExtensionValue
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionValue*
+  name: CommonExtensionValue
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CommonExtensionValue_
+  commentId: Overload:CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionValue
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CommonExtensionValue
+  nameWithType: CertificateExtensionV2.CommonExtensionValue
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionName
+  name: CustomExtensionName
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CustomExtensionName
+  commentId: P:CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionName
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionName
+  nameWithType: CertificateExtensionV2.CustomExtensionName
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionName*
+  name: CustomExtensionName
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CustomExtensionName_
+  commentId: Overload:CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionName
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionName
+  nameWithType: CertificateExtensionV2.CustomExtensionName
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionProto
+  name: CustomExtensionProto
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CustomExtensionProto
+  commentId: P:CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionProto
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionProto
+  nameWithType: CertificateExtensionV2.CustomExtensionProto
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionProto*
+  name: CustomExtensionProto
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CustomExtensionProto_
+  commentId: Overload:CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionProto
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionProto
+  nameWithType: CertificateExtensionV2.CustomExtensionProto
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionValue
+  name: CustomExtensionValue
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CustomExtensionValue
+  commentId: P:CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionValue
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionValue
+  nameWithType: CertificateExtensionV2.CustomExtensionValue
+- uid: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionValue*
+  name: CustomExtensionValue
+  href: api/CycloneDX.Core.Models.CertificateExtensionV2.html#CycloneDX_Core_Models_CertificateExtensionV2_CustomExtensionValue_
+  commentId: Overload:CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionValue
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateExtensionV2.CustomExtensionValue
+  nameWithType: CertificateExtensionV2.CustomExtensionValue
+- uid: CycloneDX.Core.Models.CertificateExtensionsProto
+  name: CertificateExtensionsProto
+  href: api/CycloneDX.Core.Models.CertificateExtensionsProto.html
+  commentId: T:CycloneDX.Core.Models.CertificateExtensionsProto
+  fullName: CycloneDX.Core.Models.CertificateExtensionsProto
+  nameWithType: CertificateExtensionsProto
+- uid: CycloneDX.Core.Models.CertificateExtensionsProto.Extensions
+  name: Extensions
+  href: api/CycloneDX.Core.Models.CertificateExtensionsProto.html#CycloneDX_Core_Models_CertificateExtensionsProto_Extensions
+  commentId: P:CycloneDX.Core.Models.CertificateExtensionsProto.Extensions
+  fullName: CycloneDX.Core.Models.CertificateExtensionsProto.Extensions
+  nameWithType: CertificateExtensionsProto.Extensions
+- uid: CycloneDX.Core.Models.CertificateExtensionsProto.Extensions*
+  name: Extensions
+  href: api/CycloneDX.Core.Models.CertificateExtensionsProto.html#CycloneDX_Core_Models_CertificateExtensionsProto_Extensions_
+  commentId: Overload:CycloneDX.Core.Models.CertificateExtensionsProto.Extensions
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateExtensionsProto.Extensions
+  nameWithType: CertificateExtensionsProto.Extensions
 - uid: CycloneDX.Core.Models.CertificateProperties
   name: CertificateProperties
   href: api/CycloneDX.Core.Models.CertificateProperties.html
   commentId: T:CycloneDX.Core.Models.CertificateProperties
   fullName: CycloneDX.Core.Models.CertificateProperties
   nameWithType: CertificateProperties
+- uid: CycloneDX.Core.Models.CertificateProperties.ActivationDate
+  name: ActivationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ActivationDate
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.ActivationDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.ActivationDate
+  nameWithType: CertificateProperties.ActivationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.ActivationDate*
+  name: ActivationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ActivationDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ActivationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ActivationDate
+  nameWithType: CertificateProperties.ActivationDate
 - uid: CycloneDX.Core.Models.CertificateProperties.CertificateExtension
   name: CertificateExtension
   href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateExtension
@@ -542,6 +735,45 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.CertificateProperties.CertificateExtension
   nameWithType: CertificateProperties.CertificateExtension
+- uid: CycloneDX.Core.Models.CertificateProperties.CertificateExtensions
+  name: CertificateExtensions
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateExtensions
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.CertificateExtensions
+  fullName: CycloneDX.Core.Models.CertificateProperties.CertificateExtensions
+  nameWithType: CertificateProperties.CertificateExtensions
+- uid: CycloneDX.Core.Models.CertificateProperties.CertificateExtensions*
+  name: CertificateExtensions
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateExtensions_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.CertificateExtensions
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.CertificateExtensions
+  nameWithType: CertificateProperties.CertificateExtensions
+- uid: CycloneDX.Core.Models.CertificateProperties.CertificateExtensionsProto
+  name: CertificateExtensionsProto
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateExtensionsProto
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.CertificateExtensionsProto
+  fullName: CycloneDX.Core.Models.CertificateProperties.CertificateExtensionsProto
+  nameWithType: CertificateProperties.CertificateExtensionsProto
+- uid: CycloneDX.Core.Models.CertificateProperties.CertificateExtensionsProto*
+  name: CertificateExtensionsProto
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateExtensionsProto_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.CertificateExtensionsProto
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.CertificateExtensionsProto
+  nameWithType: CertificateProperties.CertificateExtensionsProto
+- uid: CycloneDX.Core.Models.CertificateProperties.CertificateFileExtension
+  name: CertificateFileExtension
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateFileExtension
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.CertificateFileExtension
+  fullName: CycloneDX.Core.Models.CertificateProperties.CertificateFileExtension
+  nameWithType: CertificateProperties.CertificateFileExtension
+- uid: CycloneDX.Core.Models.CertificateProperties.CertificateFileExtension*
+  name: CertificateFileExtension
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateFileExtension_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.CertificateFileExtension
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.CertificateFileExtension
+  nameWithType: CertificateProperties.CertificateFileExtension
 - uid: CycloneDX.Core.Models.CertificateProperties.CertificateFormat
   name: CertificateFormat
   href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateFormat
@@ -555,6 +787,71 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.CertificateProperties.CertificateFormat
   nameWithType: CertificateProperties.CertificateFormat
+- uid: CycloneDX.Core.Models.CertificateProperties.CertificateStates
+  name: CertificateStates
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateStates
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.CertificateStates
+  fullName: CycloneDX.Core.Models.CertificateProperties.CertificateStates
+  nameWithType: CertificateProperties.CertificateStates
+- uid: CycloneDX.Core.Models.CertificateProperties.CertificateStates*
+  name: CertificateStates
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CertificateStates_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.CertificateStates
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.CertificateStates
+  nameWithType: CertificateProperties.CertificateStates
+- uid: CycloneDX.Core.Models.CertificateProperties.CreationDate
+  name: CreationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CreationDate
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.CreationDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.CreationDate
+  nameWithType: CertificateProperties.CreationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.CreationDate*
+  name: CreationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_CreationDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.CreationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.CreationDate
+  nameWithType: CertificateProperties.CreationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.DeactivationDate
+  name: DeactivationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_DeactivationDate
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.DeactivationDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.DeactivationDate
+  nameWithType: CertificateProperties.DeactivationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.DeactivationDate*
+  name: DeactivationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_DeactivationDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.DeactivationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.DeactivationDate
+  nameWithType: CertificateProperties.DeactivationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.DestructionDate
+  name: DestructionDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_DestructionDate
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.DestructionDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.DestructionDate
+  nameWithType: CertificateProperties.DestructionDate
+- uid: CycloneDX.Core.Models.CertificateProperties.DestructionDate*
+  name: DestructionDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_DestructionDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.DestructionDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.DestructionDate
+  nameWithType: CertificateProperties.DestructionDate
+- uid: CycloneDX.Core.Models.CertificateProperties.Fingerprint
+  name: Fingerprint
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_Fingerprint
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.Fingerprint
+  fullName: CycloneDX.Core.Models.CertificateProperties.Fingerprint
+  nameWithType: CertificateProperties.Fingerprint
+- uid: CycloneDX.Core.Models.CertificateProperties.Fingerprint*
+  name: Fingerprint
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_Fingerprint_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.Fingerprint
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.Fingerprint
+  nameWithType: CertificateProperties.Fingerprint
 - uid: CycloneDX.Core.Models.CertificateProperties.IssuerName
   name: IssuerName
   href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_IssuerName
@@ -594,6 +891,162 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.CertificateProperties.NotValidBefore
   nameWithType: CertificateProperties.NotValidBefore
+- uid: CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssets
+  name: RelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_RelatedCryptographicAssets
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssets
+  fullName: CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssets
+  nameWithType: CertificateProperties.RelatedCryptographicAssets
+- uid: CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssets*
+  name: RelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_RelatedCryptographicAssets_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssets
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssets
+  nameWithType: CertificateProperties.RelatedCryptographicAssets
+- uid: CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssetsProto
+  name: RelatedCryptographicAssetsProto
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_RelatedCryptographicAssetsProto
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssetsProto
+  fullName: CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssetsProto
+  nameWithType: CertificateProperties.RelatedCryptographicAssetsProto
+- uid: CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssetsProto*
+  name: RelatedCryptographicAssetsProto
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_RelatedCryptographicAssetsProto_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssetsProto
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.RelatedCryptographicAssetsProto
+  nameWithType: CertificateProperties.RelatedCryptographicAssetsProto
+- uid: CycloneDX.Core.Models.CertificateProperties.RevocationDate
+  name: RevocationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_RevocationDate
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.RevocationDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.RevocationDate
+  nameWithType: CertificateProperties.RevocationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.RevocationDate*
+  name: RevocationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_RevocationDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.RevocationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.RevocationDate
+  nameWithType: CertificateProperties.RevocationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.SerialNumber
+  name: SerialNumber
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_SerialNumber
+  commentId: P:CycloneDX.Core.Models.CertificateProperties.SerialNumber
+  fullName: CycloneDX.Core.Models.CertificateProperties.SerialNumber
+  nameWithType: CertificateProperties.SerialNumber
+- uid: CycloneDX.Core.Models.CertificateProperties.SerialNumber*
+  name: SerialNumber
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_SerialNumber_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.SerialNumber
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.SerialNumber
+  nameWithType: CertificateProperties.SerialNumber
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeActivationDate
+  name: ShouldSerializeActivationDate()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeActivationDate
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeActivationDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeActivationDate()
+  nameWithType: CertificateProperties.ShouldSerializeActivationDate()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeActivationDate*
+  name: ShouldSerializeActivationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeActivationDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeActivationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeActivationDate
+  nameWithType: CertificateProperties.ShouldSerializeActivationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtensions
+  name: ShouldSerializeCertificateExtensions()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCertificateExtensions
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtensions
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtensions()
+  nameWithType: CertificateProperties.ShouldSerializeCertificateExtensions()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtensions*
+  name: ShouldSerializeCertificateExtensions
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCertificateExtensions_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtensions
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtensions
+  nameWithType: CertificateProperties.ShouldSerializeCertificateExtensions
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateStates
+  name: ShouldSerializeCertificateStates()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCertificateStates
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateStates
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateStates()
+  nameWithType: CertificateProperties.ShouldSerializeCertificateStates()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateStates*
+  name: ShouldSerializeCertificateStates
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCertificateStates_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateStates
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateStates
+  nameWithType: CertificateProperties.ShouldSerializeCertificateStates
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCreationDate
+  name: ShouldSerializeCreationDate()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCreationDate
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCreationDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCreationDate()
+  nameWithType: CertificateProperties.ShouldSerializeCreationDate()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCreationDate*
+  name: ShouldSerializeCreationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCreationDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCreationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCreationDate
+  nameWithType: CertificateProperties.ShouldSerializeCreationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDeactivationDate
+  name: ShouldSerializeDeactivationDate()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeDeactivationDate
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDeactivationDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDeactivationDate()
+  nameWithType: CertificateProperties.ShouldSerializeDeactivationDate()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDeactivationDate*
+  name: ShouldSerializeDeactivationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeDeactivationDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDeactivationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDeactivationDate
+  nameWithType: CertificateProperties.ShouldSerializeDeactivationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDestructionDate
+  name: ShouldSerializeDestructionDate()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeDestructionDate
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDestructionDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDestructionDate()
+  nameWithType: CertificateProperties.ShouldSerializeDestructionDate()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDestructionDate*
+  name: ShouldSerializeDestructionDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeDestructionDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDestructionDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeDestructionDate
+  nameWithType: CertificateProperties.ShouldSerializeDestructionDate
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRelatedCryptographicAssets
+  name: ShouldSerializeRelatedCryptographicAssets()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeRelatedCryptographicAssets
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRelatedCryptographicAssets
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRelatedCryptographicAssets()
+  nameWithType: CertificateProperties.ShouldSerializeRelatedCryptographicAssets()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRelatedCryptographicAssets*
+  name: ShouldSerializeRelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeRelatedCryptographicAssets_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRelatedCryptographicAssets
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRelatedCryptographicAssets
+  nameWithType: CertificateProperties.ShouldSerializeRelatedCryptographicAssets
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRevocationDate
+  name: ShouldSerializeRevocationDate()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeRevocationDate
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRevocationDate
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRevocationDate()
+  nameWithType: CertificateProperties.ShouldSerializeRevocationDate()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRevocationDate*
+  name: ShouldSerializeRevocationDate
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeRevocationDate_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRevocationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeRevocationDate
+  nameWithType: CertificateProperties.ShouldSerializeRevocationDate
 - uid: CycloneDX.Core.Models.CertificateProperties.SignatureAlgorithmRef
   name: SignatureAlgorithmRef
   href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_SignatureAlgorithmRef
@@ -633,6 +1086,77 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.CertificateProperties.SubjectPublicKeyRef
   nameWithType: CertificateProperties.SubjectPublicKeyRef
+- uid: CycloneDX.Core.Models.CertificateState
+  name: CertificateState
+  href: api/CycloneDX.Core.Models.CertificateState.html
+  commentId: T:CycloneDX.Core.Models.CertificateState
+  fullName: CycloneDX.Core.Models.CertificateState
+  nameWithType: CertificateState
+- uid: CycloneDX.Core.Models.CertificateState.Description
+  name: Description
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_Description
+  commentId: P:CycloneDX.Core.Models.CertificateState.Description
+  fullName: CycloneDX.Core.Models.CertificateState.Description
+  nameWithType: CertificateState.Description
+- uid: CycloneDX.Core.Models.CertificateState.Description*
+  name: Description
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_Description_
+  commentId: Overload:CycloneDX.Core.Models.CertificateState.Description
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateState.Description
+  nameWithType: CertificateState.Description
+- uid: CycloneDX.Core.Models.CertificateState.Name
+  name: Name
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_Name
+  commentId: P:CycloneDX.Core.Models.CertificateState.Name
+  fullName: CycloneDX.Core.Models.CertificateState.Name
+  nameWithType: CertificateState.Name
+- uid: CycloneDX.Core.Models.CertificateState.Name*
+  name: Name
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_Name_
+  commentId: Overload:CycloneDX.Core.Models.CertificateState.Name
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateState.Name
+  nameWithType: CertificateState.Name
+- uid: CycloneDX.Core.Models.CertificateState.Reason
+  name: Reason
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_Reason
+  commentId: P:CycloneDX.Core.Models.CertificateState.Reason
+  fullName: CycloneDX.Core.Models.CertificateState.Reason
+  nameWithType: CertificateState.Reason
+- uid: CycloneDX.Core.Models.CertificateState.Reason*
+  name: Reason
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_Reason_
+  commentId: Overload:CycloneDX.Core.Models.CertificateState.Reason
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateState.Reason
+  nameWithType: CertificateState.Reason
+- uid: CycloneDX.Core.Models.CertificateState.ShouldSerializeState
+  name: ShouldSerializeState()
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_ShouldSerializeState
+  commentId: M:CycloneDX.Core.Models.CertificateState.ShouldSerializeState
+  fullName: CycloneDX.Core.Models.CertificateState.ShouldSerializeState()
+  nameWithType: CertificateState.ShouldSerializeState()
+- uid: CycloneDX.Core.Models.CertificateState.ShouldSerializeState*
+  name: ShouldSerializeState
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_ShouldSerializeState_
+  commentId: Overload:CycloneDX.Core.Models.CertificateState.ShouldSerializeState
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateState.ShouldSerializeState
+  nameWithType: CertificateState.ShouldSerializeState
+- uid: CycloneDX.Core.Models.CertificateState.State
+  name: State
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_State
+  commentId: P:CycloneDX.Core.Models.CertificateState.State
+  fullName: CycloneDX.Core.Models.CertificateState.State
+  nameWithType: CertificateState.State
+- uid: CycloneDX.Core.Models.CertificateState.State*
+  name: State
+  href: api/CycloneDX.Core.Models.CertificateState.html#CycloneDX_Core_Models_CertificateState_State_
+  commentId: Overload:CycloneDX.Core.Models.CertificateState.State
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateState.State
+  nameWithType: CertificateState.State
 - uid: CycloneDX.Core.Models.CertificationLevel
   name: CertificationLevel
   href: api/CycloneDX.Core.Models.CertificationLevel.html
@@ -918,6 +1442,78 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.CipherSuiteCollection.CipherSuites
   nameWithType: CipherSuiteCollection.CipherSuites
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum
+  name: CommonExtensionNameEnum
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html
+  commentId: T:CycloneDX.Core.Models.CommonExtensionNameEnum
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum
+  nameWithType: CommonExtensionNameEnum
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.AuthorityInformationAccess
+  name: AuthorityInformationAccess
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_AuthorityInformationAccess
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.AuthorityInformationAccess
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.AuthorityInformationAccess
+  nameWithType: CommonExtensionNameEnum.AuthorityInformationAccess
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.AuthorityKeyIdentifier
+  name: AuthorityKeyIdentifier
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_AuthorityKeyIdentifier
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.AuthorityKeyIdentifier
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.AuthorityKeyIdentifier
+  nameWithType: CommonExtensionNameEnum.AuthorityKeyIdentifier
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.BasicConstraints
+  name: BasicConstraints
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_BasicConstraints
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.BasicConstraints
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.BasicConstraints
+  nameWithType: CommonExtensionNameEnum.BasicConstraints
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.CertificatePolicies
+  name: CertificatePolicies
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_CertificatePolicies
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.CertificatePolicies
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.CertificatePolicies
+  nameWithType: CommonExtensionNameEnum.CertificatePolicies
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.CrlDistributionPoints
+  name: CrlDistributionPoints
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_CrlDistributionPoints
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.CrlDistributionPoints
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.CrlDistributionPoints
+  nameWithType: CommonExtensionNameEnum.CrlDistributionPoints
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.ExtendedKeyUsage
+  name: ExtendedKeyUsage
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_ExtendedKeyUsage
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.ExtendedKeyUsage
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.ExtendedKeyUsage
+  nameWithType: CommonExtensionNameEnum.ExtendedKeyUsage
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.KeyUsage
+  name: KeyUsage
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_KeyUsage
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.KeyUsage
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.KeyUsage
+  nameWithType: CommonExtensionNameEnum.KeyUsage
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.SignedCertificateTimestamp
+  name: SignedCertificateTimestamp
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_SignedCertificateTimestamp
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.SignedCertificateTimestamp
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.SignedCertificateTimestamp
+  nameWithType: CommonExtensionNameEnum.SignedCertificateTimestamp
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.SubjectAlternativeName
+  name: SubjectAlternativeName
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_SubjectAlternativeName
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.SubjectAlternativeName
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.SubjectAlternativeName
+  nameWithType: CommonExtensionNameEnum.SubjectAlternativeName
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.SubjectKeyIdentifier
+  name: SubjectKeyIdentifier
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_SubjectKeyIdentifier
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.SubjectKeyIdentifier
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.SubjectKeyIdentifier
+  nameWithType: CommonExtensionNameEnum.SubjectKeyIdentifier
+- uid: CycloneDX.Core.Models.CommonExtensionNameEnum.Unspecified
+  name: Unspecified
+  href: api/CycloneDX.Core.Models.CommonExtensionNameEnum.html#CycloneDX_Core_Models_CommonExtensionNameEnum_Unspecified
+  commentId: F:CycloneDX.Core.Models.CommonExtensionNameEnum.Unspecified
+  fullName: CycloneDX.Core.Models.CommonExtensionNameEnum.Unspecified
+  nameWithType: CommonExtensionNameEnum.Unspecified
 - uid: CycloneDX.Core.Models.CryptoFunction
   name: CryptoFunction
   href: api/CycloneDX.Core.Models.CryptoFunction.html
@@ -1140,38 +1736,237 @@ references:
   commentId: F:CycloneDX.Core.Models.ExecutionEnvironment.Unknown
   fullName: CycloneDX.Core.Models.ExecutionEnvironment.Unknown
   nameWithType: ExecutionEnvironment.Unknown
+- uid: CycloneDX.Core.Models.Ikev2Auth
+  name: Ikev2Auth
+  href: api/CycloneDX.Core.Models.Ikev2Auth.html
+  commentId: T:CycloneDX.Core.Models.Ikev2Auth
+  fullName: CycloneDX.Core.Models.Ikev2Auth
+  nameWithType: Ikev2Auth
+- uid: CycloneDX.Core.Models.Ikev2Auth.Algorithm
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Auth.html#CycloneDX_Core_Models_Ikev2Auth_Algorithm
+  commentId: P:CycloneDX.Core.Models.Ikev2Auth.Algorithm
+  fullName: CycloneDX.Core.Models.Ikev2Auth.Algorithm
+  nameWithType: Ikev2Auth.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Auth.Algorithm*
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Auth.html#CycloneDX_Core_Models_Ikev2Auth_Algorithm_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Auth.Algorithm
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Auth.Algorithm
+  nameWithType: Ikev2Auth.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Auth.Name
+  name: Name
+  href: api/CycloneDX.Core.Models.Ikev2Auth.html#CycloneDX_Core_Models_Ikev2Auth_Name
+  commentId: P:CycloneDX.Core.Models.Ikev2Auth.Name
+  fullName: CycloneDX.Core.Models.Ikev2Auth.Name
+  nameWithType: Ikev2Auth.Name
+- uid: CycloneDX.Core.Models.Ikev2Auth.Name*
+  name: Name
+  href: api/CycloneDX.Core.Models.Ikev2Auth.html#CycloneDX_Core_Models_Ikev2Auth_Name_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Auth.Name
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Auth.Name
+  nameWithType: Ikev2Auth.Name
+- uid: CycloneDX.Core.Models.Ikev2Encr
+  name: Ikev2Encr
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html
+  commentId: T:CycloneDX.Core.Models.Ikev2Encr
+  fullName: CycloneDX.Core.Models.Ikev2Encr
+  nameWithType: Ikev2Encr
+- uid: CycloneDX.Core.Models.Ikev2Encr.Algorithm
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html#CycloneDX_Core_Models_Ikev2Encr_Algorithm
+  commentId: P:CycloneDX.Core.Models.Ikev2Encr.Algorithm
+  fullName: CycloneDX.Core.Models.Ikev2Encr.Algorithm
+  nameWithType: Ikev2Encr.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Encr.Algorithm*
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html#CycloneDX_Core_Models_Ikev2Encr_Algorithm_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Encr.Algorithm
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Encr.Algorithm
+  nameWithType: Ikev2Encr.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Encr.KeyLength
+  name: KeyLength
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html#CycloneDX_Core_Models_Ikev2Encr_KeyLength
+  commentId: P:CycloneDX.Core.Models.Ikev2Encr.KeyLength
+  fullName: CycloneDX.Core.Models.Ikev2Encr.KeyLength
+  nameWithType: Ikev2Encr.KeyLength
+- uid: CycloneDX.Core.Models.Ikev2Encr.KeyLength*
+  name: KeyLength
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html#CycloneDX_Core_Models_Ikev2Encr_KeyLength_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Encr.KeyLength
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Encr.KeyLength
+  nameWithType: Ikev2Encr.KeyLength
+- uid: CycloneDX.Core.Models.Ikev2Encr.Name
+  name: Name
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html#CycloneDX_Core_Models_Ikev2Encr_Name
+  commentId: P:CycloneDX.Core.Models.Ikev2Encr.Name
+  fullName: CycloneDX.Core.Models.Ikev2Encr.Name
+  nameWithType: Ikev2Encr.Name
+- uid: CycloneDX.Core.Models.Ikev2Encr.Name*
+  name: Name
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html#CycloneDX_Core_Models_Ikev2Encr_Name_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Encr.Name
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Encr.Name
+  nameWithType: Ikev2Encr.Name
+- uid: CycloneDX.Core.Models.Ikev2Encr.ShouldSerializeKeyLength
+  name: ShouldSerializeKeyLength()
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html#CycloneDX_Core_Models_Ikev2Encr_ShouldSerializeKeyLength
+  commentId: M:CycloneDX.Core.Models.Ikev2Encr.ShouldSerializeKeyLength
+  fullName: CycloneDX.Core.Models.Ikev2Encr.ShouldSerializeKeyLength()
+  nameWithType: Ikev2Encr.ShouldSerializeKeyLength()
+- uid: CycloneDX.Core.Models.Ikev2Encr.ShouldSerializeKeyLength*
+  name: ShouldSerializeKeyLength
+  href: api/CycloneDX.Core.Models.Ikev2Encr.html#CycloneDX_Core_Models_Ikev2Encr_ShouldSerializeKeyLength_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Encr.ShouldSerializeKeyLength
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Encr.ShouldSerializeKeyLength
+  nameWithType: Ikev2Encr.ShouldSerializeKeyLength
+- uid: CycloneDX.Core.Models.Ikev2Integ
+  name: Ikev2Integ
+  href: api/CycloneDX.Core.Models.Ikev2Integ.html
+  commentId: T:CycloneDX.Core.Models.Ikev2Integ
+  fullName: CycloneDX.Core.Models.Ikev2Integ
+  nameWithType: Ikev2Integ
+- uid: CycloneDX.Core.Models.Ikev2Integ.Algorithm
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Integ.html#CycloneDX_Core_Models_Ikev2Integ_Algorithm
+  commentId: P:CycloneDX.Core.Models.Ikev2Integ.Algorithm
+  fullName: CycloneDX.Core.Models.Ikev2Integ.Algorithm
+  nameWithType: Ikev2Integ.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Integ.Algorithm*
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Integ.html#CycloneDX_Core_Models_Ikev2Integ_Algorithm_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Integ.Algorithm
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Integ.Algorithm
+  nameWithType: Ikev2Integ.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Integ.Name
+  name: Name
+  href: api/CycloneDX.Core.Models.Ikev2Integ.html#CycloneDX_Core_Models_Ikev2Integ_Name
+  commentId: P:CycloneDX.Core.Models.Ikev2Integ.Name
+  fullName: CycloneDX.Core.Models.Ikev2Integ.Name
+  nameWithType: Ikev2Integ.Name
+- uid: CycloneDX.Core.Models.Ikev2Integ.Name*
+  name: Name
+  href: api/CycloneDX.Core.Models.Ikev2Integ.html#CycloneDX_Core_Models_Ikev2Integ_Name_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Integ.Name
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Integ.Name
+  nameWithType: Ikev2Integ.Name
+- uid: CycloneDX.Core.Models.Ikev2Ke
+  name: Ikev2Ke
+  href: api/CycloneDX.Core.Models.Ikev2Ke.html
+  commentId: T:CycloneDX.Core.Models.Ikev2Ke
+  fullName: CycloneDX.Core.Models.Ikev2Ke
+  nameWithType: Ikev2Ke
+- uid: CycloneDX.Core.Models.Ikev2Ke.Algorithm
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Ke.html#CycloneDX_Core_Models_Ikev2Ke_Algorithm
+  commentId: P:CycloneDX.Core.Models.Ikev2Ke.Algorithm
+  fullName: CycloneDX.Core.Models.Ikev2Ke.Algorithm
+  nameWithType: Ikev2Ke.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Ke.Algorithm*
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Ke.html#CycloneDX_Core_Models_Ikev2Ke_Algorithm_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Ke.Algorithm
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Ke.Algorithm
+  nameWithType: Ikev2Ke.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Ke.Group
+  name: Group
+  href: api/CycloneDX.Core.Models.Ikev2Ke.html#CycloneDX_Core_Models_Ikev2Ke_Group
+  commentId: P:CycloneDX.Core.Models.Ikev2Ke.Group
+  fullName: CycloneDX.Core.Models.Ikev2Ke.Group
+  nameWithType: Ikev2Ke.Group
+- uid: CycloneDX.Core.Models.Ikev2Ke.Group*
+  name: Group
+  href: api/CycloneDX.Core.Models.Ikev2Ke.html#CycloneDX_Core_Models_Ikev2Ke_Group_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Ke.Group
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Ke.Group
+  nameWithType: Ikev2Ke.Group
+- uid: CycloneDX.Core.Models.Ikev2Ke.ShouldSerializeGroup
+  name: ShouldSerializeGroup()
+  href: api/CycloneDX.Core.Models.Ikev2Ke.html#CycloneDX_Core_Models_Ikev2Ke_ShouldSerializeGroup
+  commentId: M:CycloneDX.Core.Models.Ikev2Ke.ShouldSerializeGroup
+  fullName: CycloneDX.Core.Models.Ikev2Ke.ShouldSerializeGroup()
+  nameWithType: Ikev2Ke.ShouldSerializeGroup()
+- uid: CycloneDX.Core.Models.Ikev2Ke.ShouldSerializeGroup*
+  name: ShouldSerializeGroup
+  href: api/CycloneDX.Core.Models.Ikev2Ke.html#CycloneDX_Core_Models_Ikev2Ke_ShouldSerializeGroup_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Ke.ShouldSerializeGroup
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Ke.ShouldSerializeGroup
+  nameWithType: Ikev2Ke.ShouldSerializeGroup
+- uid: CycloneDX.Core.Models.Ikev2Prf
+  name: Ikev2Prf
+  href: api/CycloneDX.Core.Models.Ikev2Prf.html
+  commentId: T:CycloneDX.Core.Models.Ikev2Prf
+  fullName: CycloneDX.Core.Models.Ikev2Prf
+  nameWithType: Ikev2Prf
+- uid: CycloneDX.Core.Models.Ikev2Prf.Algorithm
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Prf.html#CycloneDX_Core_Models_Ikev2Prf_Algorithm
+  commentId: P:CycloneDX.Core.Models.Ikev2Prf.Algorithm
+  fullName: CycloneDX.Core.Models.Ikev2Prf.Algorithm
+  nameWithType: Ikev2Prf.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Prf.Algorithm*
+  name: Algorithm
+  href: api/CycloneDX.Core.Models.Ikev2Prf.html#CycloneDX_Core_Models_Ikev2Prf_Algorithm_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Prf.Algorithm
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Prf.Algorithm
+  nameWithType: Ikev2Prf.Algorithm
+- uid: CycloneDX.Core.Models.Ikev2Prf.Name
+  name: Name
+  href: api/CycloneDX.Core.Models.Ikev2Prf.html#CycloneDX_Core_Models_Ikev2Prf_Name
+  commentId: P:CycloneDX.Core.Models.Ikev2Prf.Name
+  fullName: CycloneDX.Core.Models.Ikev2Prf.Name
+  nameWithType: Ikev2Prf.Name
+- uid: CycloneDX.Core.Models.Ikev2Prf.Name*
+  name: Name
+  href: api/CycloneDX.Core.Models.Ikev2Prf.html#CycloneDX_Core_Models_Ikev2Prf_Name_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2Prf.Name
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2Prf.Name
+  nameWithType: Ikev2Prf.Name
 - uid: CycloneDX.Core.Models.Ikev2TransformTypes
   name: Ikev2TransformTypes
   href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html
   commentId: T:CycloneDX.Core.Models.Ikev2TransformTypes
   fullName: CycloneDX.Core.Models.Ikev2TransformTypes
   nameWithType: Ikev2TransformTypes
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethods
-  name: AuthenticationMethods
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_AuthenticationMethods
-  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethods
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethods
-  nameWithType: Ikev2TransformTypes.AuthenticationMethods
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethods*
-  name: AuthenticationMethods
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_AuthenticationMethods_
-  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethods
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed
+  name: AuthenticationMethodsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_AuthenticationMethodsDetailed
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed
+  nameWithType: Ikev2TransformTypes.AuthenticationMethodsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed*
+  name: AuthenticationMethodsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_AuthenticationMethodsDetailed_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed
   isSpec: "True"
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethods
-  nameWithType: Ikev2TransformTypes.AuthenticationMethods
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithms
-  name: EncryptionAlgorithms
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_EncryptionAlgorithms
-  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithms
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithms
-  nameWithType: Ikev2TransformTypes.EncryptionAlgorithms
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithms*
-  name: EncryptionAlgorithms
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_EncryptionAlgorithms_
-  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithms
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed
+  nameWithType: Ikev2TransformTypes.AuthenticationMethodsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed
+  name: EncryptionAlgorithmsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_EncryptionAlgorithmsDetailed
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed
+  nameWithType: Ikev2TransformTypes.EncryptionAlgorithmsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed*
+  name: EncryptionAlgorithmsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_EncryptionAlgorithmsDetailed_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed
   isSpec: "True"
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithms
-  nameWithType: Ikev2TransformTypes.EncryptionAlgorithms
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed
+  nameWithType: Ikev2TransformTypes.EncryptionAlgorithmsDetailed
 - uid: CycloneDX.Core.Models.Ikev2TransformTypes.ExtendedSequenceNumbers
   name: ExtendedSequenceNumbers
   href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_ExtendedSequenceNumbers
@@ -1185,45 +1980,155 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.Ikev2TransformTypes.ExtendedSequenceNumbers
   nameWithType: Ikev2TransformTypes.ExtendedSequenceNumbers
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithms
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed
+  name: IntegrityAlgorithmsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_IntegrityAlgorithmsDetailed
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed
+  nameWithType: Ikev2TransformTypes.IntegrityAlgorithmsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed*
+  name: IntegrityAlgorithmsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_IntegrityAlgorithmsDetailed_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed
+  nameWithType: Ikev2TransformTypes.IntegrityAlgorithmsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed
+  name: KeyExchangeMethodsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_KeyExchangeMethodsDetailed
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed
+  nameWithType: Ikev2TransformTypes.KeyExchangeMethodsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed*
+  name: KeyExchangeMethodsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_KeyExchangeMethodsDetailed_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed
+  nameWithType: Ikev2TransformTypes.KeyExchangeMethodsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed
+  name: PseudorandomFunctionsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_PseudorandomFunctionsDetailed
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed
+  nameWithType: Ikev2TransformTypes.PseudorandomFunctionsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed*
+  name: PseudorandomFunctionsDetailed
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_PseudorandomFunctionsDetailed_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed
+  nameWithType: Ikev2TransformTypes.PseudorandomFunctionsDetailed
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers
+  name: ShouldSerializeExtendedSequenceNumbers()
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_ShouldSerializeExtendedSequenceNumbers
+  commentId: M:CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers()
+  nameWithType: Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers()
+- uid: CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers*
+  name: ShouldSerializeExtendedSequenceNumbers
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_ShouldSerializeExtendedSequenceNumbers_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers
+  nameWithType: Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy
+  name: Ikev2TransformTypesLegacy
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html
+  commentId: T:CycloneDX.Core.Models.Ikev2TransformTypesLegacy
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy
+  nameWithType: Ikev2TransformTypesLegacy
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods
+  name: AuthenticationMethods
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_AuthenticationMethods
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods
+  nameWithType: Ikev2TransformTypesLegacy.AuthenticationMethods
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods*
+  name: AuthenticationMethods
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_AuthenticationMethods_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods
+  nameWithType: Ikev2TransformTypesLegacy.AuthenticationMethods
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms
+  name: EncryptionAlgorithms
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_EncryptionAlgorithms
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms
+  nameWithType: Ikev2TransformTypesLegacy.EncryptionAlgorithms
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms*
+  name: EncryptionAlgorithms
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_EncryptionAlgorithms_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms
+  nameWithType: Ikev2TransformTypesLegacy.EncryptionAlgorithms
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers
+  name: ExtendedSequenceNumbers
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ExtendedSequenceNumbers
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers
+  nameWithType: Ikev2TransformTypesLegacy.ExtendedSequenceNumbers
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers*
+  name: ExtendedSequenceNumbers
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ExtendedSequenceNumbers_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers
+  nameWithType: Ikev2TransformTypesLegacy.ExtendedSequenceNumbers
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms
   name: IntegrityAlgorithms
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_IntegrityAlgorithms
-  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithms
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithms
-  nameWithType: Ikev2TransformTypes.IntegrityAlgorithms
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithms*
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_IntegrityAlgorithms
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms
+  nameWithType: Ikev2TransformTypesLegacy.IntegrityAlgorithms
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms*
   name: IntegrityAlgorithms
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_IntegrityAlgorithms_
-  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithms
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_IntegrityAlgorithms_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms
   isSpec: "True"
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithms
-  nameWithType: Ikev2TransformTypes.IntegrityAlgorithms
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethods
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms
+  nameWithType: Ikev2TransformTypesLegacy.IntegrityAlgorithms
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods
   name: KeyExchangeMethods
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_KeyExchangeMethods
-  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethods
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethods
-  nameWithType: Ikev2TransformTypes.KeyExchangeMethods
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethods*
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_KeyExchangeMethods
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods
+  nameWithType: Ikev2TransformTypesLegacy.KeyExchangeMethods
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods*
   name: KeyExchangeMethods
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_KeyExchangeMethods_
-  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethods
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_KeyExchangeMethods_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods
   isSpec: "True"
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethods
-  nameWithType: Ikev2TransformTypes.KeyExchangeMethods
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctions
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods
+  nameWithType: Ikev2TransformTypesLegacy.KeyExchangeMethods
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions
   name: PseudorandomFunctions
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_PseudorandomFunctions
-  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctions
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctions
-  nameWithType: Ikev2TransformTypes.PseudorandomFunctions
-- uid: CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctions*
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_PseudorandomFunctions
+  commentId: P:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions
+  nameWithType: Ikev2TransformTypesLegacy.PseudorandomFunctions
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions*
   name: PseudorandomFunctions
-  href: api/CycloneDX.Core.Models.Ikev2TransformTypes.html#CycloneDX_Core_Models_Ikev2TransformTypes_PseudorandomFunctions_
-  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctions
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_PseudorandomFunctions_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions
   isSpec: "True"
-  fullName: CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctions
-  nameWithType: Ikev2TransformTypes.PseudorandomFunctions
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions
+  nameWithType: Ikev2TransformTypesLegacy.PseudorandomFunctions
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers
+  name: ShouldSerializeExtendedSequenceNumbers()
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ShouldSerializeExtendedSequenceNumbers
+  commentId: M:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers()
+  nameWithType: Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers()
+- uid: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers*
+  name: ShouldSerializeExtendedSequenceNumbers
+  href: api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html#CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ShouldSerializeExtendedSequenceNumbers_
+  commentId: Overload:CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers
+  nameWithType: Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers
 - uid: CycloneDX.Core.Models.ImplementationPlatform
   name: ImplementationPlatform
   href: api/CycloneDX.Core.Models.ImplementationPlatform.html
@@ -1422,6 +2327,54 @@ references:
   commentId: F:CycloneDX.Core.Models.PaddingScheme.Unknown
   fullName: CycloneDX.Core.Models.PaddingScheme.Unknown
   nameWithType: PaddingScheme.Unknown
+- uid: CycloneDX.Core.Models.PredefinedCertificateState
+  name: PredefinedCertificateState
+  href: api/CycloneDX.Core.Models.PredefinedCertificateState.html
+  commentId: T:CycloneDX.Core.Models.PredefinedCertificateState
+  fullName: CycloneDX.Core.Models.PredefinedCertificateState
+  nameWithType: PredefinedCertificateState
+- uid: CycloneDX.Core.Models.PredefinedCertificateState.Active
+  name: Active
+  href: api/CycloneDX.Core.Models.PredefinedCertificateState.html#CycloneDX_Core_Models_PredefinedCertificateState_Active
+  commentId: F:CycloneDX.Core.Models.PredefinedCertificateState.Active
+  fullName: CycloneDX.Core.Models.PredefinedCertificateState.Active
+  nameWithType: PredefinedCertificateState.Active
+- uid: CycloneDX.Core.Models.PredefinedCertificateState.Deactivated
+  name: Deactivated
+  href: api/CycloneDX.Core.Models.PredefinedCertificateState.html#CycloneDX_Core_Models_PredefinedCertificateState_Deactivated
+  commentId: F:CycloneDX.Core.Models.PredefinedCertificateState.Deactivated
+  fullName: CycloneDX.Core.Models.PredefinedCertificateState.Deactivated
+  nameWithType: PredefinedCertificateState.Deactivated
+- uid: CycloneDX.Core.Models.PredefinedCertificateState.Destroyed
+  name: Destroyed
+  href: api/CycloneDX.Core.Models.PredefinedCertificateState.html#CycloneDX_Core_Models_PredefinedCertificateState_Destroyed
+  commentId: F:CycloneDX.Core.Models.PredefinedCertificateState.Destroyed
+  fullName: CycloneDX.Core.Models.PredefinedCertificateState.Destroyed
+  nameWithType: PredefinedCertificateState.Destroyed
+- uid: CycloneDX.Core.Models.PredefinedCertificateState.Null
+  name: "Null"
+  href: api/CycloneDX.Core.Models.PredefinedCertificateState.html#CycloneDX_Core_Models_PredefinedCertificateState_Null
+  commentId: F:CycloneDX.Core.Models.PredefinedCertificateState.Null
+  fullName: CycloneDX.Core.Models.PredefinedCertificateState.Null
+  nameWithType: PredefinedCertificateState.Null
+- uid: CycloneDX.Core.Models.PredefinedCertificateState.Pre_Activation
+  name: Pre_Activation
+  href: api/CycloneDX.Core.Models.PredefinedCertificateState.html#CycloneDX_Core_Models_PredefinedCertificateState_Pre_Activation
+  commentId: F:CycloneDX.Core.Models.PredefinedCertificateState.Pre_Activation
+  fullName: CycloneDX.Core.Models.PredefinedCertificateState.Pre_Activation
+  nameWithType: PredefinedCertificateState.Pre_Activation
+- uid: CycloneDX.Core.Models.PredefinedCertificateState.Revoked
+  name: Revoked
+  href: api/CycloneDX.Core.Models.PredefinedCertificateState.html#CycloneDX_Core_Models_PredefinedCertificateState_Revoked
+  commentId: F:CycloneDX.Core.Models.PredefinedCertificateState.Revoked
+  fullName: CycloneDX.Core.Models.PredefinedCertificateState.Revoked
+  nameWithType: PredefinedCertificateState.Revoked
+- uid: CycloneDX.Core.Models.PredefinedCertificateState.Suspended
+  name: Suspended
+  href: api/CycloneDX.Core.Models.PredefinedCertificateState.html#CycloneDX_Core_Models_PredefinedCertificateState_Suspended
+  commentId: F:CycloneDX.Core.Models.PredefinedCertificateState.Suspended
+  fullName: CycloneDX.Core.Models.PredefinedCertificateState.Suspended
+  nameWithType: PredefinedCertificateState.Suspended
 - uid: CycloneDX.Core.Models.Primitive
   name: Primitive
   href: api/CycloneDX.Core.Models.Primitive.html
@@ -1476,6 +2429,12 @@ references:
   commentId: F:CycloneDX.Core.Models.Primitive.Key_Agree
   fullName: CycloneDX.Core.Models.Primitive.Key_Agree
   nameWithType: Primitive.Key_Agree
+- uid: CycloneDX.Core.Models.Primitive.Key_Wrap
+  name: Key_Wrap
+  href: api/CycloneDX.Core.Models.Primitive.html#CycloneDX_Core_Models_Primitive_Key_Wrap
+  commentId: F:CycloneDX.Core.Models.Primitive.Key_Wrap
+  fullName: CycloneDX.Core.Models.Primitive.Key_Wrap
+  nameWithType: Primitive.Key_Wrap
 - uid: CycloneDX.Core.Models.Primitive.MAC
   name: MAC
   href: api/CycloneDX.Core.Models.Primitive.html#CycloneDX_Core_Models_Primitive_MAC
@@ -1569,6 +2528,58 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.ProtocolProperties.Ikev2TransformTypes
   nameWithType: ProtocolProperties.Ikev2TransformTypes
+- uid: CycloneDX.Core.Models.ProtocolProperties.Ikev2TransformTypesLegacy
+  name: Ikev2TransformTypesLegacy
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_Ikev2TransformTypesLegacy
+  commentId: P:CycloneDX.Core.Models.ProtocolProperties.Ikev2TransformTypesLegacy
+  fullName: CycloneDX.Core.Models.ProtocolProperties.Ikev2TransformTypesLegacy
+  nameWithType: ProtocolProperties.Ikev2TransformTypesLegacy
+- uid: CycloneDX.Core.Models.ProtocolProperties.Ikev2TransformTypesLegacy*
+  name: Ikev2TransformTypesLegacy
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_Ikev2TransformTypesLegacy_
+  commentId: Overload:CycloneDX.Core.Models.ProtocolProperties.Ikev2TransformTypesLegacy
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.ProtocolProperties.Ikev2TransformTypesLegacy
+  nameWithType: ProtocolProperties.Ikev2TransformTypesLegacy
+- uid: CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssets
+  name: RelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_RelatedCryptographicAssets
+  commentId: P:CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssets
+  fullName: CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssets
+  nameWithType: ProtocolProperties.RelatedCryptographicAssets
+- uid: CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssets*
+  name: RelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_RelatedCryptographicAssets_
+  commentId: Overload:CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssets
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssets
+  nameWithType: ProtocolProperties.RelatedCryptographicAssets
+- uid: CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssetsProto
+  name: RelatedCryptographicAssetsProto
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_RelatedCryptographicAssetsProto
+  commentId: P:CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssetsProto
+  fullName: CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssetsProto
+  nameWithType: ProtocolProperties.RelatedCryptographicAssetsProto
+- uid: CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssetsProto*
+  name: RelatedCryptographicAssetsProto
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_RelatedCryptographicAssetsProto_
+  commentId: Overload:CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssetsProto
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.ProtocolProperties.RelatedCryptographicAssetsProto
+  nameWithType: ProtocolProperties.RelatedCryptographicAssetsProto
+- uid: CycloneDX.Core.Models.ProtocolProperties.ShouldSerializeRelatedCryptographicAssets
+  name: ShouldSerializeRelatedCryptographicAssets()
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_ShouldSerializeRelatedCryptographicAssets
+  commentId: M:CycloneDX.Core.Models.ProtocolProperties.ShouldSerializeRelatedCryptographicAssets
+  fullName: CycloneDX.Core.Models.ProtocolProperties.ShouldSerializeRelatedCryptographicAssets()
+  nameWithType: ProtocolProperties.ShouldSerializeRelatedCryptographicAssets()
+- uid: CycloneDX.Core.Models.ProtocolProperties.ShouldSerializeRelatedCryptographicAssets*
+  name: ShouldSerializeRelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_ShouldSerializeRelatedCryptographicAssets_
+  commentId: Overload:CycloneDX.Core.Models.ProtocolProperties.ShouldSerializeRelatedCryptographicAssets
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.ProtocolProperties.ShouldSerializeRelatedCryptographicAssets
+  nameWithType: ProtocolProperties.ShouldSerializeRelatedCryptographicAssets
 - uid: CycloneDX.Core.Models.ProtocolProperties.Type
   name: Type
   href: api/CycloneDX.Core.Models.ProtocolProperties.html#CycloneDX_Core_Models_ProtocolProperties_Type
@@ -1601,6 +2612,30 @@ references:
   commentId: T:CycloneDX.Core.Models.ProtocolType
   fullName: CycloneDX.Core.Models.ProtocolType
   nameWithType: ProtocolType
+- uid: CycloneDX.Core.Models.ProtocolType.Dtls
+  name: Dtls
+  href: api/CycloneDX.Core.Models.ProtocolType.html#CycloneDX_Core_Models_ProtocolType_Dtls
+  commentId: F:CycloneDX.Core.Models.ProtocolType.Dtls
+  fullName: CycloneDX.Core.Models.ProtocolType.Dtls
+  nameWithType: ProtocolType.Dtls
+- uid: CycloneDX.Core.Models.ProtocolType.Eap_Aka
+  name: Eap_Aka
+  href: api/CycloneDX.Core.Models.ProtocolType.html#CycloneDX_Core_Models_ProtocolType_Eap_Aka
+  commentId: F:CycloneDX.Core.Models.ProtocolType.Eap_Aka
+  fullName: CycloneDX.Core.Models.ProtocolType.Eap_Aka
+  nameWithType: ProtocolType.Eap_Aka
+- uid: CycloneDX.Core.Models.ProtocolType.Eap_Aka_Prime
+  name: Eap_Aka_Prime
+  href: api/CycloneDX.Core.Models.ProtocolType.html#CycloneDX_Core_Models_ProtocolType_Eap_Aka_Prime
+  commentId: F:CycloneDX.Core.Models.ProtocolType.Eap_Aka_Prime
+  fullName: CycloneDX.Core.Models.ProtocolType.Eap_Aka_Prime
+  nameWithType: ProtocolType.Eap_Aka_Prime
+- uid: CycloneDX.Core.Models.ProtocolType.FiveG_Aka
+  name: FiveG_Aka
+  href: api/CycloneDX.Core.Models.ProtocolType.html#CycloneDX_Core_Models_ProtocolType_FiveG_Aka
+  commentId: F:CycloneDX.Core.Models.ProtocolType.FiveG_Aka
+  fullName: CycloneDX.Core.Models.ProtocolType.FiveG_Aka
+  nameWithType: ProtocolType.FiveG_Aka
 - uid: CycloneDX.Core.Models.ProtocolType.Ike
   name: Ike
   href: api/CycloneDX.Core.Models.ProtocolType.html#CycloneDX_Core_Models_ProtocolType_Ike
@@ -1625,6 +2660,18 @@ references:
   commentId: F:CycloneDX.Core.Models.ProtocolType.Other
   fullName: CycloneDX.Core.Models.ProtocolType.Other
   nameWithType: ProtocolType.Other
+- uid: CycloneDX.Core.Models.ProtocolType.Prins
+  name: Prins
+  href: api/CycloneDX.Core.Models.ProtocolType.html#CycloneDX_Core_Models_ProtocolType_Prins
+  commentId: F:CycloneDX.Core.Models.ProtocolType.Prins
+  fullName: CycloneDX.Core.Models.ProtocolType.Prins
+  nameWithType: ProtocolType.Prins
+- uid: CycloneDX.Core.Models.ProtocolType.Quic
+  name: Quic
+  href: api/CycloneDX.Core.Models.ProtocolType.html#CycloneDX_Core_Models_ProtocolType_Quic
+  commentId: F:CycloneDX.Core.Models.ProtocolType.Quic
+  fullName: CycloneDX.Core.Models.ProtocolType.Quic
+  nameWithType: ProtocolType.Quic
 - uid: CycloneDX.Core.Models.ProtocolType.Ssh
   name: Ssh
   href: api/CycloneDX.Core.Models.ProtocolType.html#CycloneDX_Core_Models_ProtocolType_Ssh
@@ -1713,6 +2760,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ExpirationDate
   nameWithType: RelatedCryptoMaterialProperties.ExpirationDate
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Fingerprint
+  name: Fingerprint
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_Fingerprint
+  commentId: P:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Fingerprint
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Fingerprint
+  nameWithType: RelatedCryptoMaterialProperties.Fingerprint
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Fingerprint*
+  name: Fingerprint
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_Fingerprint_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Fingerprint
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Fingerprint
+  nameWithType: RelatedCryptoMaterialProperties.Fingerprint
 - uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Format
   name: Format
   href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_Format
@@ -1739,6 +2799,32 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Id
   nameWithType: RelatedCryptoMaterialProperties.Id
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssets
+  name: RelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_RelatedCryptographicAssets
+  commentId: P:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssets
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssets
+  nameWithType: RelatedCryptoMaterialProperties.RelatedCryptographicAssets
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssets*
+  name: RelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_RelatedCryptographicAssets_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssets
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssets
+  nameWithType: RelatedCryptoMaterialProperties.RelatedCryptographicAssets
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssetsProto
+  name: RelatedCryptographicAssetsProto
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_RelatedCryptographicAssetsProto
+  commentId: P:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssetsProto
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssetsProto
+  nameWithType: RelatedCryptoMaterialProperties.RelatedCryptographicAssetsProto
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssetsProto*
+  name: RelatedCryptographicAssetsProto
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_RelatedCryptographicAssetsProto_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssetsProto
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.RelatedCryptographicAssetsProto
+  nameWithType: RelatedCryptoMaterialProperties.RelatedCryptographicAssetsProto
 - uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.SecuredBy
   name: SecuredBy
   href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_SecuredBy
@@ -1752,6 +2838,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.SecuredBy
   nameWithType: RelatedCryptoMaterialProperties.SecuredBy
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets
+  name: ShouldSerializeRelatedCryptographicAssets()
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeRelatedCryptographicAssets
+  commentId: M:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets()
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets()
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets*
+  name: ShouldSerializeRelatedCryptographicAssets
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeRelatedCryptographicAssets_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets
 - uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Size
   name: Size
   href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_Size
@@ -1943,6 +3042,57 @@ references:
   commentId: F:CycloneDX.Core.Models.RelatedCryptoMaterialType.Unknown
   fullName: CycloneDX.Core.Models.RelatedCryptoMaterialType.Unknown
   nameWithType: RelatedCryptoMaterialType.Unknown
+- uid: CycloneDX.Core.Models.RelatedCryptographicAsset
+  name: RelatedCryptographicAsset
+  href: api/CycloneDX.Core.Models.RelatedCryptographicAsset.html
+  commentId: T:CycloneDX.Core.Models.RelatedCryptographicAsset
+  fullName: CycloneDX.Core.Models.RelatedCryptographicAsset
+  nameWithType: RelatedCryptographicAsset
+- uid: CycloneDX.Core.Models.RelatedCryptographicAsset.Ref
+  name: Ref
+  href: api/CycloneDX.Core.Models.RelatedCryptographicAsset.html#CycloneDX_Core_Models_RelatedCryptographicAsset_Ref
+  commentId: P:CycloneDX.Core.Models.RelatedCryptographicAsset.Ref
+  fullName: CycloneDX.Core.Models.RelatedCryptographicAsset.Ref
+  nameWithType: RelatedCryptographicAsset.Ref
+- uid: CycloneDX.Core.Models.RelatedCryptographicAsset.Ref*
+  name: Ref
+  href: api/CycloneDX.Core.Models.RelatedCryptographicAsset.html#CycloneDX_Core_Models_RelatedCryptographicAsset_Ref_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptographicAsset.Ref
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptographicAsset.Ref
+  nameWithType: RelatedCryptographicAsset.Ref
+- uid: CycloneDX.Core.Models.RelatedCryptographicAsset.Type
+  name: Type
+  href: api/CycloneDX.Core.Models.RelatedCryptographicAsset.html#CycloneDX_Core_Models_RelatedCryptographicAsset_Type
+  commentId: P:CycloneDX.Core.Models.RelatedCryptographicAsset.Type
+  fullName: CycloneDX.Core.Models.RelatedCryptographicAsset.Type
+  nameWithType: RelatedCryptographicAsset.Type
+- uid: CycloneDX.Core.Models.RelatedCryptographicAsset.Type*
+  name: Type
+  href: api/CycloneDX.Core.Models.RelatedCryptographicAsset.html#CycloneDX_Core_Models_RelatedCryptographicAsset_Type_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptographicAsset.Type
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptographicAsset.Type
+  nameWithType: RelatedCryptographicAsset.Type
+- uid: CycloneDX.Core.Models.RelatedCryptographicAssetsProto
+  name: RelatedCryptographicAssetsProto
+  href: api/CycloneDX.Core.Models.RelatedCryptographicAssetsProto.html
+  commentId: T:CycloneDX.Core.Models.RelatedCryptographicAssetsProto
+  fullName: CycloneDX.Core.Models.RelatedCryptographicAssetsProto
+  nameWithType: RelatedCryptographicAssetsProto
+- uid: CycloneDX.Core.Models.RelatedCryptographicAssetsProto.Assets
+  name: Assets
+  href: api/CycloneDX.Core.Models.RelatedCryptographicAssetsProto.html#CycloneDX_Core_Models_RelatedCryptographicAssetsProto_Assets
+  commentId: P:CycloneDX.Core.Models.RelatedCryptographicAssetsProto.Assets
+  fullName: CycloneDX.Core.Models.RelatedCryptographicAssetsProto.Assets
+  nameWithType: RelatedCryptographicAssetsProto.Assets
+- uid: CycloneDX.Core.Models.RelatedCryptographicAssetsProto.Assets*
+  name: Assets
+  href: api/CycloneDX.Core.Models.RelatedCryptographicAssetsProto.html#CycloneDX_Core_Models_RelatedCryptographicAssetsProto_Assets_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptographicAssetsProto.Assets
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptographicAssetsProto.Assets
+  nameWithType: RelatedCryptographicAssetsProto.Assets
 - uid: CycloneDX.Core.Models.SecuredBy
   name: SecuredBy
   href: api/CycloneDX.Core.Models.SecuredBy.html
@@ -2036,6 +3186,41 @@ references:
   commentId: N:CycloneDX.Json.Converters
   fullName: CycloneDX.Json.Converters
   nameWithType: CycloneDX.Json.Converters
+- uid: CycloneDX.Json.Converters.AsserterConverter
+  name: AsserterConverter
+  href: api/CycloneDX.Json.Converters.AsserterConverter.html
+  commentId: T:CycloneDX.Json.Converters.AsserterConverter
+  fullName: CycloneDX.Json.Converters.AsserterConverter
+  nameWithType: AsserterConverter
+- uid: CycloneDX.Json.Converters.AsserterConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  href: api/CycloneDX.Json.Converters.AsserterConverter.html#CycloneDX_Json_Converters_AsserterConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Json.Converters.AsserterConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: CycloneDX.Json.Converters.AsserterConverter.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: CycloneDX.Json.Converters.AsserterConverter.Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType: AsserterConverter.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType.vb: AsserterConverter.Read(Utf8JsonReader, Type, JsonSerializerOptions)
+- uid: CycloneDX.Json.Converters.AsserterConverter.Read*
+  name: Read
+  href: api/CycloneDX.Json.Converters.AsserterConverter.html#CycloneDX_Json_Converters_AsserterConverter_Read_
+  commentId: Overload:CycloneDX.Json.Converters.AsserterConverter.Read
+  isSpec: "True"
+  fullName: CycloneDX.Json.Converters.AsserterConverter.Read
+  nameWithType: AsserterConverter.Read
+- uid: CycloneDX.Json.Converters.AsserterConverter.Write(System.Text.Json.Utf8JsonWriter,CycloneDX.Models.Asserter,System.Text.Json.JsonSerializerOptions)
+  name: Write(Utf8JsonWriter, Asserter, JsonSerializerOptions)
+  href: api/CycloneDX.Json.Converters.AsserterConverter.html#CycloneDX_Json_Converters_AsserterConverter_Write_System_Text_Json_Utf8JsonWriter_CycloneDX_Models_Asserter_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Json.Converters.AsserterConverter.Write(System.Text.Json.Utf8JsonWriter,CycloneDX.Models.Asserter,System.Text.Json.JsonSerializerOptions)
+  fullName: CycloneDX.Json.Converters.AsserterConverter.Write(System.Text.Json.Utf8JsonWriter, CycloneDX.Models.Asserter, System.Text.Json.JsonSerializerOptions)
+  nameWithType: AsserterConverter.Write(Utf8JsonWriter, Asserter, JsonSerializerOptions)
+- uid: CycloneDX.Json.Converters.AsserterConverter.Write*
+  name: Write
+  href: api/CycloneDX.Json.Converters.AsserterConverter.html#CycloneDX_Json_Converters_AsserterConverter_Write_
+  commentId: Overload:CycloneDX.Json.Converters.AsserterConverter.Write
+  isSpec: "True"
+  fullName: CycloneDX.Json.Converters.AsserterConverter.Write
+  nameWithType: AsserterConverter.Write
 - uid: CycloneDX.Json.Converters.DataflowSourceDestinationConverter
   name: DataflowSourceDestinationConverter
   href: api/CycloneDX.Json.Converters.DataflowSourceDestinationConverter.html
@@ -2356,6 +3541,41 @@ references:
   fullName.vb: CycloneDX.Json.Converters.HyphenEnumConverter(Of T).Write
   nameWithType: HyphenEnumConverter<T>.Write
   nameWithType.vb: HyphenEnumConverter(Of T).Write
+- uid: CycloneDX.Json.Converters.Ikev2TransformTypesConverter
+  name: Ikev2TransformTypesConverter
+  href: api/CycloneDX.Json.Converters.Ikev2TransformTypesConverter.html
+  commentId: T:CycloneDX.Json.Converters.Ikev2TransformTypesConverter
+  fullName: CycloneDX.Json.Converters.Ikev2TransformTypesConverter
+  nameWithType: Ikev2TransformTypesConverter
+- uid: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  href: api/CycloneDX.Json.Converters.Ikev2TransformTypesConverter.html#CycloneDX_Json_Converters_Ikev2TransformTypesConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType: Ikev2TransformTypesConverter.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType.vb: Ikev2TransformTypesConverter.Read(Utf8JsonReader, Type, JsonSerializerOptions)
+- uid: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Read*
+  name: Read
+  href: api/CycloneDX.Json.Converters.Ikev2TransformTypesConverter.html#CycloneDX_Json_Converters_Ikev2TransformTypesConverter_Read_
+  commentId: Overload:CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Read
+  isSpec: "True"
+  fullName: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Read
+  nameWithType: Ikev2TransformTypesConverter.Read
+- uid: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Write(System.Text.Json.Utf8JsonWriter,CycloneDX.Core.Models.Ikev2TransformTypes,System.Text.Json.JsonSerializerOptions)
+  name: Write(Utf8JsonWriter, Ikev2TransformTypes, JsonSerializerOptions)
+  href: api/CycloneDX.Json.Converters.Ikev2TransformTypesConverter.html#CycloneDX_Json_Converters_Ikev2TransformTypesConverter_Write_System_Text_Json_Utf8JsonWriter_CycloneDX_Core_Models_Ikev2TransformTypes_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Write(System.Text.Json.Utf8JsonWriter,CycloneDX.Core.Models.Ikev2TransformTypes,System.Text.Json.JsonSerializerOptions)
+  fullName: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Write(System.Text.Json.Utf8JsonWriter, CycloneDX.Core.Models.Ikev2TransformTypes, System.Text.Json.JsonSerializerOptions)
+  nameWithType: Ikev2TransformTypesConverter.Write(Utf8JsonWriter, Ikev2TransformTypes, JsonSerializerOptions)
+- uid: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Write*
+  name: Write
+  href: api/CycloneDX.Json.Converters.Ikev2TransformTypesConverter.html#CycloneDX_Json_Converters_Ikev2TransformTypesConverter_Write_
+  commentId: Overload:CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Write
+  isSpec: "True"
+  fullName: CycloneDX.Json.Converters.Ikev2TransformTypesConverter.Write
+  nameWithType: Ikev2TransformTypesConverter.Write
 - uid: CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter`1
   name: KeepCaseHyphenEnumConverter<T>
   href: api/CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter-1.html
@@ -2400,6 +3620,79 @@ references:
   fullName.vb: CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter(Of T).Write
   nameWithType: KeepCaseHyphenEnumConverter<T>.Write
   nameWithType.vb: KeepCaseHyphenEnumConverter(Of T).Write
+- uid: CycloneDX.Json.Converters.PatentAssigneeConverter
+  name: PatentAssigneeConverter
+  href: api/CycloneDX.Json.Converters.PatentAssigneeConverter.html
+  commentId: T:CycloneDX.Json.Converters.PatentAssigneeConverter
+  fullName: CycloneDX.Json.Converters.PatentAssigneeConverter
+  nameWithType: PatentAssigneeConverter
+- uid: CycloneDX.Json.Converters.PatentAssigneeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  href: api/CycloneDX.Json.Converters.PatentAssigneeConverter.html#CycloneDX_Json_Converters_PatentAssigneeConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Json.Converters.PatentAssigneeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: CycloneDX.Json.Converters.PatentAssigneeConverter.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: CycloneDX.Json.Converters.PatentAssigneeConverter.Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType: PatentAssigneeConverter.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType.vb: PatentAssigneeConverter.Read(Utf8JsonReader, Type, JsonSerializerOptions)
+- uid: CycloneDX.Json.Converters.PatentAssigneeConverter.Read*
+  name: Read
+  href: api/CycloneDX.Json.Converters.PatentAssigneeConverter.html#CycloneDX_Json_Converters_PatentAssigneeConverter_Read_
+  commentId: Overload:CycloneDX.Json.Converters.PatentAssigneeConverter.Read
+  isSpec: "True"
+  fullName: CycloneDX.Json.Converters.PatentAssigneeConverter.Read
+  nameWithType: PatentAssigneeConverter.Read
+- uid: CycloneDX.Json.Converters.PatentAssigneeConverter.Write(System.Text.Json.Utf8JsonWriter,System.Collections.Generic.List{CycloneDX.Models.OrganizationalEntityOrContact},System.Text.Json.JsonSerializerOptions)
+  name: Write(Utf8JsonWriter, List<OrganizationalEntityOrContact>, JsonSerializerOptions)
+  href: api/CycloneDX.Json.Converters.PatentAssigneeConverter.html#CycloneDX_Json_Converters_PatentAssigneeConverter_Write_System_Text_Json_Utf8JsonWriter_System_Collections_Generic_List_CycloneDX_Models_OrganizationalEntityOrContact__System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Json.Converters.PatentAssigneeConverter.Write(System.Text.Json.Utf8JsonWriter,System.Collections.Generic.List{CycloneDX.Models.OrganizationalEntityOrContact},System.Text.Json.JsonSerializerOptions)
+  name.vb: Write(Utf8JsonWriter, List(Of OrganizationalEntityOrContact), JsonSerializerOptions)
+  fullName: CycloneDX.Json.Converters.PatentAssigneeConverter.Write(System.Text.Json.Utf8JsonWriter, System.Collections.Generic.List<CycloneDX.Models.OrganizationalEntityOrContact>, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: CycloneDX.Json.Converters.PatentAssigneeConverter.Write(System.Text.Json.Utf8JsonWriter, System.Collections.Generic.List(Of CycloneDX.Models.OrganizationalEntityOrContact), System.Text.Json.JsonSerializerOptions)
+  nameWithType: PatentAssigneeConverter.Write(Utf8JsonWriter, List<OrganizationalEntityOrContact>, JsonSerializerOptions)
+  nameWithType.vb: PatentAssigneeConverter.Write(Utf8JsonWriter, List(Of OrganizationalEntityOrContact), JsonSerializerOptions)
+- uid: CycloneDX.Json.Converters.PatentAssigneeConverter.Write*
+  name: Write
+  href: api/CycloneDX.Json.Converters.PatentAssigneeConverter.html#CycloneDX_Json_Converters_PatentAssigneeConverter_Write_
+  commentId: Overload:CycloneDX.Json.Converters.PatentAssigneeConverter.Write
+  isSpec: "True"
+  fullName: CycloneDX.Json.Converters.PatentAssigneeConverter.Write
+  nameWithType: PatentAssigneeConverter.Write
+- uid: CycloneDX.Json.Converters.PatentOrFamilyConverter
+  name: PatentOrFamilyConverter
+  href: api/CycloneDX.Json.Converters.PatentOrFamilyConverter.html
+  commentId: T:CycloneDX.Json.Converters.PatentOrFamilyConverter
+  fullName: CycloneDX.Json.Converters.PatentOrFamilyConverter
+  nameWithType: PatentOrFamilyConverter
+- uid: CycloneDX.Json.Converters.PatentOrFamilyConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  href: api/CycloneDX.Json.Converters.PatentOrFamilyConverter.html#CycloneDX_Json_Converters_PatentOrFamilyConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Json.Converters.PatentOrFamilyConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: CycloneDX.Json.Converters.PatentOrFamilyConverter.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: CycloneDX.Json.Converters.PatentOrFamilyConverter.Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType: PatentOrFamilyConverter.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType.vb: PatentOrFamilyConverter.Read(Utf8JsonReader, Type, JsonSerializerOptions)
+- uid: CycloneDX.Json.Converters.PatentOrFamilyConverter.Read*
+  name: Read
+  href: api/CycloneDX.Json.Converters.PatentOrFamilyConverter.html#CycloneDX_Json_Converters_PatentOrFamilyConverter_Read_
+  commentId: Overload:CycloneDX.Json.Converters.PatentOrFamilyConverter.Read
+  isSpec: "True"
+  fullName: CycloneDX.Json.Converters.PatentOrFamilyConverter.Read
+  nameWithType: PatentOrFamilyConverter.Read
+- uid: CycloneDX.Json.Converters.PatentOrFamilyConverter.Write(System.Text.Json.Utf8JsonWriter,CycloneDX.Models.PatentOrFamily,System.Text.Json.JsonSerializerOptions)
+  name: Write(Utf8JsonWriter, PatentOrFamily, JsonSerializerOptions)
+  href: api/CycloneDX.Json.Converters.PatentOrFamilyConverter.html#CycloneDX_Json_Converters_PatentOrFamilyConverter_Write_System_Text_Json_Utf8JsonWriter_CycloneDX_Models_PatentOrFamily_System_Text_Json_JsonSerializerOptions_
+  commentId: M:CycloneDX.Json.Converters.PatentOrFamilyConverter.Write(System.Text.Json.Utf8JsonWriter,CycloneDX.Models.PatentOrFamily,System.Text.Json.JsonSerializerOptions)
+  fullName: CycloneDX.Json.Converters.PatentOrFamilyConverter.Write(System.Text.Json.Utf8JsonWriter, CycloneDX.Models.PatentOrFamily, System.Text.Json.JsonSerializerOptions)
+  nameWithType: PatentOrFamilyConverter.Write(Utf8JsonWriter, PatentOrFamily, JsonSerializerOptions)
+- uid: CycloneDX.Json.Converters.PatentOrFamilyConverter.Write*
+  name: Write
+  href: api/CycloneDX.Json.Converters.PatentOrFamilyConverter.html#CycloneDX_Json_Converters_PatentOrFamilyConverter_Write_
+  commentId: Overload:CycloneDX.Json.Converters.PatentOrFamilyConverter.Write
+  isSpec: "True"
+  fullName: CycloneDX.Json.Converters.PatentOrFamilyConverter.Write
+  nameWithType: PatentOrFamilyConverter.Write
 - uid: CycloneDX.Json.Converters.RefObject
   name: RefObject
   href: api/CycloneDX.Json.Converters.RefObject.html
@@ -3099,6 +4392,51 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.AnnotatorChoice.Service
   nameWithType: AnnotatorChoice.Service
+- uid: CycloneDX.Models.Asserter
+  name: Asserter
+  href: api/CycloneDX.Models.Asserter.html
+  commentId: T:CycloneDX.Models.Asserter
+  fullName: CycloneDX.Models.Asserter
+  nameWithType: Asserter
+- uid: CycloneDX.Models.Asserter.Individual
+  name: Individual
+  href: api/CycloneDX.Models.Asserter.html#CycloneDX_Models_Asserter_Individual
+  commentId: P:CycloneDX.Models.Asserter.Individual
+  fullName: CycloneDX.Models.Asserter.Individual
+  nameWithType: Asserter.Individual
+- uid: CycloneDX.Models.Asserter.Individual*
+  name: Individual
+  href: api/CycloneDX.Models.Asserter.html#CycloneDX_Models_Asserter_Individual_
+  commentId: Overload:CycloneDX.Models.Asserter.Individual
+  isSpec: "True"
+  fullName: CycloneDX.Models.Asserter.Individual
+  nameWithType: Asserter.Individual
+- uid: CycloneDX.Models.Asserter.Organization
+  name: Organization
+  href: api/CycloneDX.Models.Asserter.html#CycloneDX_Models_Asserter_Organization
+  commentId: P:CycloneDX.Models.Asserter.Organization
+  fullName: CycloneDX.Models.Asserter.Organization
+  nameWithType: Asserter.Organization
+- uid: CycloneDX.Models.Asserter.Organization*
+  name: Organization
+  href: api/CycloneDX.Models.Asserter.html#CycloneDX_Models_Asserter_Organization_
+  commentId: Overload:CycloneDX.Models.Asserter.Organization
+  isSpec: "True"
+  fullName: CycloneDX.Models.Asserter.Organization
+  nameWithType: Asserter.Organization
+- uid: CycloneDX.Models.Asserter.Ref
+  name: Ref
+  href: api/CycloneDX.Models.Asserter.html#CycloneDX_Models_Asserter_Ref
+  commentId: P:CycloneDX.Models.Asserter.Ref
+  fullName: CycloneDX.Models.Asserter.Ref
+  nameWithType: Asserter.Ref
+- uid: CycloneDX.Models.Asserter.Ref*
+  name: Ref
+  href: api/CycloneDX.Models.Asserter.html#CycloneDX_Models_Asserter_Ref_
+  commentId: Overload:CycloneDX.Models.Asserter.Ref
+  isSpec: "True"
+  fullName: CycloneDX.Models.Asserter.Ref
+  nameWithType: Asserter.Ref
 - uid: CycloneDX.Models.Assessor
   name: Assessor
   href: api/CycloneDX.Models.Assessor.html
@@ -3362,6 +4700,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Bom.BomFormat
   nameWithType: Bom.BomFormat
+- uid: CycloneDX.Models.Bom.Citations
+  name: Citations
+  href: api/CycloneDX.Models.Bom.html#CycloneDX_Models_Bom_Citations
+  commentId: P:CycloneDX.Models.Bom.Citations
+  fullName: CycloneDX.Models.Bom.Citations
+  nameWithType: Bom.Citations
+- uid: CycloneDX.Models.Bom.Citations*
+  name: Citations
+  href: api/CycloneDX.Models.Bom.html#CycloneDX_Models_Bom_Citations_
+  commentId: Overload:CycloneDX.Models.Bom.Citations
+  isSpec: "True"
+  fullName: CycloneDX.Models.Bom.Citations
+  nameWithType: Bom.Citations
 - uid: CycloneDX.Models.Bom.Components
   name: Components
   href: api/CycloneDX.Models.Bom.html#CycloneDX_Models_Bom_Components
@@ -3531,6 +4882,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Bom.ShouldSerializeAnnotations
   nameWithType: Bom.ShouldSerializeAnnotations
+- uid: CycloneDX.Models.Bom.ShouldSerializeCitations
+  name: ShouldSerializeCitations()
+  href: api/CycloneDX.Models.Bom.html#CycloneDX_Models_Bom_ShouldSerializeCitations
+  commentId: M:CycloneDX.Models.Bom.ShouldSerializeCitations
+  fullName: CycloneDX.Models.Bom.ShouldSerializeCitations()
+  nameWithType: Bom.ShouldSerializeCitations()
+- uid: CycloneDX.Models.Bom.ShouldSerializeCitations*
+  name: ShouldSerializeCitations
+  href: api/CycloneDX.Models.Bom.html#CycloneDX_Models_Bom_ShouldSerializeCitations_
+  commentId: Overload:CycloneDX.Models.Bom.ShouldSerializeCitations
+  isSpec: "True"
+  fullName: CycloneDX.Models.Bom.ShouldSerializeCitations
+  nameWithType: Bom.ShouldSerializeCitations
 - uid: CycloneDX.Models.Bom.ShouldSerializeDeclarations
   name: ShouldSerializeDeclarations()
   href: api/CycloneDX.Models.Bom.html#CycloneDX_Models_Bom_ShouldSerializeDeclarations
@@ -3860,6 +5224,206 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Callstack.Frames
   nameWithType: Callstack.Frames
+- uid: CycloneDX.Models.Citation
+  name: Citation
+  href: api/CycloneDX.Models.Citation.html
+  commentId: T:CycloneDX.Models.Citation
+  fullName: CycloneDX.Models.Citation
+  nameWithType: Citation
+- uid: CycloneDX.Models.Citation.AttributedTo
+  name: AttributedTo
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_AttributedTo
+  commentId: P:CycloneDX.Models.Citation.AttributedTo
+  fullName: CycloneDX.Models.Citation.AttributedTo
+  nameWithType: Citation.AttributedTo
+- uid: CycloneDX.Models.Citation.AttributedTo*
+  name: AttributedTo
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_AttributedTo_
+  commentId: Overload:CycloneDX.Models.Citation.AttributedTo
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.AttributedTo
+  nameWithType: Citation.AttributedTo
+- uid: CycloneDX.Models.Citation.BomRef
+  name: BomRef
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_BomRef
+  commentId: P:CycloneDX.Models.Citation.BomRef
+  fullName: CycloneDX.Models.Citation.BomRef
+  nameWithType: Citation.BomRef
+- uid: CycloneDX.Models.Citation.BomRef*
+  name: BomRef
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_BomRef_
+  commentId: Overload:CycloneDX.Models.Citation.BomRef
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.BomRef
+  nameWithType: Citation.BomRef
+- uid: CycloneDX.Models.Citation.Expressions
+  name: Expressions
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Expressions
+  commentId: P:CycloneDX.Models.Citation.Expressions
+  fullName: CycloneDX.Models.Citation.Expressions
+  nameWithType: Citation.Expressions
+- uid: CycloneDX.Models.Citation.Expressions*
+  name: Expressions
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Expressions_
+  commentId: Overload:CycloneDX.Models.Citation.Expressions
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.Expressions
+  nameWithType: Citation.Expressions
+- uid: CycloneDX.Models.Citation.ExpressionsProto
+  name: ExpressionsProto
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_ExpressionsProto
+  commentId: P:CycloneDX.Models.Citation.ExpressionsProto
+  fullName: CycloneDX.Models.Citation.ExpressionsProto
+  nameWithType: Citation.ExpressionsProto
+- uid: CycloneDX.Models.Citation.ExpressionsProto*
+  name: ExpressionsProto
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_ExpressionsProto_
+  commentId: Overload:CycloneDX.Models.Citation.ExpressionsProto
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.ExpressionsProto
+  nameWithType: Citation.ExpressionsProto
+- uid: CycloneDX.Models.Citation.Note
+  name: Note
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Note
+  commentId: P:CycloneDX.Models.Citation.Note
+  fullName: CycloneDX.Models.Citation.Note
+  nameWithType: Citation.Note
+- uid: CycloneDX.Models.Citation.Note*
+  name: Note
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Note_
+  commentId: Overload:CycloneDX.Models.Citation.Note
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.Note
+  nameWithType: Citation.Note
+- uid: CycloneDX.Models.Citation.Pointers
+  name: Pointers
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Pointers
+  commentId: P:CycloneDX.Models.Citation.Pointers
+  fullName: CycloneDX.Models.Citation.Pointers
+  nameWithType: Citation.Pointers
+- uid: CycloneDX.Models.Citation.Pointers*
+  name: Pointers
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Pointers_
+  commentId: Overload:CycloneDX.Models.Citation.Pointers
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.Pointers
+  nameWithType: Citation.Pointers
+- uid: CycloneDX.Models.Citation.PointersProto
+  name: PointersProto
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_PointersProto
+  commentId: P:CycloneDX.Models.Citation.PointersProto
+  fullName: CycloneDX.Models.Citation.PointersProto
+  nameWithType: Citation.PointersProto
+- uid: CycloneDX.Models.Citation.PointersProto*
+  name: PointersProto
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_PointersProto_
+  commentId: Overload:CycloneDX.Models.Citation.PointersProto
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.PointersProto
+  nameWithType: Citation.PointersProto
+- uid: CycloneDX.Models.Citation.Process
+  name: Process
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Process
+  commentId: P:CycloneDX.Models.Citation.Process
+  fullName: CycloneDX.Models.Citation.Process
+  nameWithType: Citation.Process
+- uid: CycloneDX.Models.Citation.Process*
+  name: Process
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Process_
+  commentId: Overload:CycloneDX.Models.Citation.Process
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.Process
+  nameWithType: Citation.Process
+- uid: CycloneDX.Models.Citation.ShouldSerializeExpressions
+  name: ShouldSerializeExpressions()
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_ShouldSerializeExpressions
+  commentId: M:CycloneDX.Models.Citation.ShouldSerializeExpressions
+  fullName: CycloneDX.Models.Citation.ShouldSerializeExpressions()
+  nameWithType: Citation.ShouldSerializeExpressions()
+- uid: CycloneDX.Models.Citation.ShouldSerializeExpressions*
+  name: ShouldSerializeExpressions
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_ShouldSerializeExpressions_
+  commentId: Overload:CycloneDX.Models.Citation.ShouldSerializeExpressions
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.ShouldSerializeExpressions
+  nameWithType: Citation.ShouldSerializeExpressions
+- uid: CycloneDX.Models.Citation.ShouldSerializePointers
+  name: ShouldSerializePointers()
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_ShouldSerializePointers
+  commentId: M:CycloneDX.Models.Citation.ShouldSerializePointers
+  fullName: CycloneDX.Models.Citation.ShouldSerializePointers()
+  nameWithType: Citation.ShouldSerializePointers()
+- uid: CycloneDX.Models.Citation.ShouldSerializePointers*
+  name: ShouldSerializePointers
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_ShouldSerializePointers_
+  commentId: Overload:CycloneDX.Models.Citation.ShouldSerializePointers
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.ShouldSerializePointers
+  nameWithType: Citation.ShouldSerializePointers
+- uid: CycloneDX.Models.Citation.ShouldSerializeTimestamp
+  name: ShouldSerializeTimestamp()
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_ShouldSerializeTimestamp
+  commentId: M:CycloneDX.Models.Citation.ShouldSerializeTimestamp
+  fullName: CycloneDX.Models.Citation.ShouldSerializeTimestamp()
+  nameWithType: Citation.ShouldSerializeTimestamp()
+- uid: CycloneDX.Models.Citation.ShouldSerializeTimestamp*
+  name: ShouldSerializeTimestamp
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_ShouldSerializeTimestamp_
+  commentId: Overload:CycloneDX.Models.Citation.ShouldSerializeTimestamp
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.ShouldSerializeTimestamp
+  nameWithType: Citation.ShouldSerializeTimestamp
+- uid: CycloneDX.Models.Citation.Timestamp
+  name: Timestamp
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Timestamp
+  commentId: P:CycloneDX.Models.Citation.Timestamp
+  fullName: CycloneDX.Models.Citation.Timestamp
+  nameWithType: Citation.Timestamp
+- uid: CycloneDX.Models.Citation.Timestamp*
+  name: Timestamp
+  href: api/CycloneDX.Models.Citation.html#CycloneDX_Models_Citation_Timestamp_
+  commentId: Overload:CycloneDX.Models.Citation.Timestamp
+  isSpec: "True"
+  fullName: CycloneDX.Models.Citation.Timestamp
+  nameWithType: Citation.Timestamp
+- uid: CycloneDX.Models.CitationExpressions
+  name: CitationExpressions
+  href: api/CycloneDX.Models.CitationExpressions.html
+  commentId: T:CycloneDX.Models.CitationExpressions
+  fullName: CycloneDX.Models.CitationExpressions
+  nameWithType: CitationExpressions
+- uid: CycloneDX.Models.CitationExpressions.Expression
+  name: Expression
+  href: api/CycloneDX.Models.CitationExpressions.html#CycloneDX_Models_CitationExpressions_Expression
+  commentId: P:CycloneDX.Models.CitationExpressions.Expression
+  fullName: CycloneDX.Models.CitationExpressions.Expression
+  nameWithType: CitationExpressions.Expression
+- uid: CycloneDX.Models.CitationExpressions.Expression*
+  name: Expression
+  href: api/CycloneDX.Models.CitationExpressions.html#CycloneDX_Models_CitationExpressions_Expression_
+  commentId: Overload:CycloneDX.Models.CitationExpressions.Expression
+  isSpec: "True"
+  fullName: CycloneDX.Models.CitationExpressions.Expression
+  nameWithType: CitationExpressions.Expression
+- uid: CycloneDX.Models.CitationPointers
+  name: CitationPointers
+  href: api/CycloneDX.Models.CitationPointers.html
+  commentId: T:CycloneDX.Models.CitationPointers
+  fullName: CycloneDX.Models.CitationPointers
+  nameWithType: CitationPointers
+- uid: CycloneDX.Models.CitationPointers.Pointer
+  name: Pointer
+  href: api/CycloneDX.Models.CitationPointers.html#CycloneDX_Models_CitationPointers_Pointer
+  commentId: P:CycloneDX.Models.CitationPointers.Pointer
+  fullName: CycloneDX.Models.CitationPointers.Pointer
+  nameWithType: CitationPointers.Pointer
+- uid: CycloneDX.Models.CitationPointers.Pointer*
+  name: Pointer
+  href: api/CycloneDX.Models.CitationPointers.html#CycloneDX_Models_CitationPointers_Pointer_
+  commentId: Overload:CycloneDX.Models.CitationPointers.Pointer
+  isSpec: "True"
+  fullName: CycloneDX.Models.CitationPointers.Pointer
+  nameWithType: CitationPointers.Pointer
 - uid: CycloneDX.Models.Claim
   name: Claim
   href: api/CycloneDX.Models.Claim.html
@@ -4509,6 +6073,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.Hashes
   nameWithType: Component.Hashes
+- uid: CycloneDX.Models.Component.IsExternal
+  name: IsExternal
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_IsExternal
+  commentId: P:CycloneDX.Models.Component.IsExternal
+  fullName: CycloneDX.Models.Component.IsExternal
+  nameWithType: Component.IsExternal
+- uid: CycloneDX.Models.Component.IsExternal*
+  name: IsExternal
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_IsExternal_
+  commentId: Overload:CycloneDX.Models.Component.IsExternal
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.IsExternal
+  nameWithType: Component.IsExternal
 - uid: CycloneDX.Models.Component.Licenses
   name: Licenses
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_Licenses
@@ -4587,6 +6164,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.Name
   nameWithType: Component.Name
+- uid: CycloneDX.Models.Component.NonNullableIsExternal
+  name: NonNullableIsExternal
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_NonNullableIsExternal
+  commentId: P:CycloneDX.Models.Component.NonNullableIsExternal
+  fullName: CycloneDX.Models.Component.NonNullableIsExternal
+  nameWithType: Component.NonNullableIsExternal
+- uid: CycloneDX.Models.Component.NonNullableIsExternal*
+  name: NonNullableIsExternal
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_NonNullableIsExternal_
+  commentId: Overload:CycloneDX.Models.Component.NonNullableIsExternal
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.NonNullableIsExternal
+  nameWithType: Component.NonNullableIsExternal
 - uid: CycloneDX.Models.Component.NonNullableModified
   name: NonNullableModified
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_NonNullableModified
@@ -4626,6 +6216,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.OmniborId
   nameWithType: Component.OmniborId
+- uid: CycloneDX.Models.Component.PatentAssertions
+  name: PatentAssertions
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_PatentAssertions
+  commentId: P:CycloneDX.Models.Component.PatentAssertions
+  fullName: CycloneDX.Models.Component.PatentAssertions
+  nameWithType: Component.PatentAssertions
+- uid: CycloneDX.Models.Component.PatentAssertions*
+  name: PatentAssertions
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_PatentAssertions_
+  commentId: Overload:CycloneDX.Models.Component.PatentAssertions
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.PatentAssertions
+  nameWithType: Component.PatentAssertions
 - uid: CycloneDX.Models.Component.Pedigree
   name: Pedigree
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_Pedigree
@@ -4795,6 +6398,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.ShouldSerializeManufacturer
   nameWithType: Component.ShouldSerializeManufacturer
+- uid: CycloneDX.Models.Component.ShouldSerializeNonNullableIsExternal
+  name: ShouldSerializeNonNullableIsExternal()
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeNonNullableIsExternal
+  commentId: M:CycloneDX.Models.Component.ShouldSerializeNonNullableIsExternal
+  fullName: CycloneDX.Models.Component.ShouldSerializeNonNullableIsExternal()
+  nameWithType: Component.ShouldSerializeNonNullableIsExternal()
+- uid: CycloneDX.Models.Component.ShouldSerializeNonNullableIsExternal*
+  name: ShouldSerializeNonNullableIsExternal
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeNonNullableIsExternal_
+  commentId: Overload:CycloneDX.Models.Component.ShouldSerializeNonNullableIsExternal
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.ShouldSerializeNonNullableIsExternal
+  nameWithType: Component.ShouldSerializeNonNullableIsExternal
 - uid: CycloneDX.Models.Component.ShouldSerializeNonNullableModified
   name: ShouldSerializeNonNullableModified()
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeNonNullableModified
@@ -4834,6 +6450,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.ShouldSerializeOmniborId
   nameWithType: Component.ShouldSerializeOmniborId
+- uid: CycloneDX.Models.Component.ShouldSerializePatentAssertions
+  name: ShouldSerializePatentAssertions()
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializePatentAssertions
+  commentId: M:CycloneDX.Models.Component.ShouldSerializePatentAssertions
+  fullName: CycloneDX.Models.Component.ShouldSerializePatentAssertions()
+  nameWithType: Component.ShouldSerializePatentAssertions()
+- uid: CycloneDX.Models.Component.ShouldSerializePatentAssertions*
+  name: ShouldSerializePatentAssertions
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializePatentAssertions_
+  commentId: Overload:CycloneDX.Models.Component.ShouldSerializePatentAssertions
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.ShouldSerializePatentAssertions
+  nameWithType: Component.ShouldSerializePatentAssertions
 - uid: CycloneDX.Models.Component.ShouldSerializeProperties
   name: ShouldSerializeProperties()
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_ShouldSerializeProperties
@@ -4977,6 +6606,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Component.Version
   nameWithType: Component.Version
+- uid: CycloneDX.Models.Component.VersionRange
+  name: VersionRange
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_VersionRange
+  commentId: P:CycloneDX.Models.Component.VersionRange
+  fullName: CycloneDX.Models.Component.VersionRange
+  nameWithType: Component.VersionRange
+- uid: CycloneDX.Models.Component.VersionRange*
+  name: VersionRange
+  href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_VersionRange_
+  commentId: Overload:CycloneDX.Models.Component.VersionRange
+  isSpec: "True"
+  fullName: CycloneDX.Models.Component.VersionRange
+  nameWithType: Component.VersionRange
 - uid: CycloneDX.Models.Component.XmlSignature
   name: XmlSignature
   href: api/CycloneDX.Models.Component.html#CycloneDX_Models_Component_XmlSignature
@@ -6331,6 +7973,58 @@ references:
   commentId: T:CycloneDX.Models.Definitions
   fullName: CycloneDX.Models.Definitions
   nameWithType: Definitions
+- uid: CycloneDX.Models.Definitions.Patents
+  name: Patents
+  href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_Patents
+  commentId: P:CycloneDX.Models.Definitions.Patents
+  fullName: CycloneDX.Models.Definitions.Patents
+  nameWithType: Definitions.Patents
+- uid: CycloneDX.Models.Definitions.Patents*
+  name: Patents
+  href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_Patents_
+  commentId: Overload:CycloneDX.Models.Definitions.Patents
+  isSpec: "True"
+  fullName: CycloneDX.Models.Definitions.Patents
+  nameWithType: Definitions.Patents
+- uid: CycloneDX.Models.Definitions.Patents_XML
+  name: Patents_XML
+  href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_Patents_XML
+  commentId: P:CycloneDX.Models.Definitions.Patents_XML
+  fullName: CycloneDX.Models.Definitions.Patents_XML
+  nameWithType: Definitions.Patents_XML
+- uid: CycloneDX.Models.Definitions.Patents_XML*
+  name: Patents_XML
+  href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_Patents_XML_
+  commentId: Overload:CycloneDX.Models.Definitions.Patents_XML
+  isSpec: "True"
+  fullName: CycloneDX.Models.Definitions.Patents_XML
+  nameWithType: Definitions.Patents_XML
+- uid: CycloneDX.Models.Definitions.ShouldSerializePatents
+  name: ShouldSerializePatents()
+  href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_ShouldSerializePatents
+  commentId: M:CycloneDX.Models.Definitions.ShouldSerializePatents
+  fullName: CycloneDX.Models.Definitions.ShouldSerializePatents()
+  nameWithType: Definitions.ShouldSerializePatents()
+- uid: CycloneDX.Models.Definitions.ShouldSerializePatents*
+  name: ShouldSerializePatents
+  href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_ShouldSerializePatents_
+  commentId: Overload:CycloneDX.Models.Definitions.ShouldSerializePatents
+  isSpec: "True"
+  fullName: CycloneDX.Models.Definitions.ShouldSerializePatents
+  nameWithType: Definitions.ShouldSerializePatents
+- uid: CycloneDX.Models.Definitions.ShouldSerializePatents_XML
+  name: ShouldSerializePatents_XML()
+  href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_ShouldSerializePatents_XML
+  commentId: M:CycloneDX.Models.Definitions.ShouldSerializePatents_XML
+  fullName: CycloneDX.Models.Definitions.ShouldSerializePatents_XML()
+  nameWithType: Definitions.ShouldSerializePatents_XML()
+- uid: CycloneDX.Models.Definitions.ShouldSerializePatents_XML*
+  name: ShouldSerializePatents_XML
+  href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_ShouldSerializePatents_XML_
+  commentId: Overload:CycloneDX.Models.Definitions.ShouldSerializePatents_XML
+  isSpec: "True"
+  fullName: CycloneDX.Models.Definitions.ShouldSerializePatents_XML
+  nameWithType: Definitions.ShouldSerializePatents_XML
 - uid: CycloneDX.Models.Definitions.Standards
   name: Standards
   href: api/CycloneDX.Models.Definitions.html#CycloneDX_Models_Definitions_Standards
@@ -6495,6 +8189,25 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Diff.Url
   nameWithType: Diff.Url
+- uid: CycloneDX.Models.DistributionConstraints
+  name: DistributionConstraints
+  href: api/CycloneDX.Models.DistributionConstraints.html
+  commentId: T:CycloneDX.Models.DistributionConstraints
+  fullName: CycloneDX.Models.DistributionConstraints
+  nameWithType: DistributionConstraints
+- uid: CycloneDX.Models.DistributionConstraints.Tlp
+  name: Tlp
+  href: api/CycloneDX.Models.DistributionConstraints.html#CycloneDX_Models_DistributionConstraints_Tlp
+  commentId: P:CycloneDX.Models.DistributionConstraints.Tlp
+  fullName: CycloneDX.Models.DistributionConstraints.Tlp
+  nameWithType: DistributionConstraints.Tlp
+- uid: CycloneDX.Models.DistributionConstraints.Tlp*
+  name: Tlp
+  href: api/CycloneDX.Models.DistributionConstraints.html#CycloneDX_Models_DistributionConstraints_Tlp_
+  commentId: Overload:CycloneDX.Models.DistributionConstraints.Tlp
+  isSpec: "True"
+  fullName: CycloneDX.Models.DistributionConstraints.Tlp
+  nameWithType: DistributionConstraints.Tlp
 - uid: CycloneDX.Models.EnergyConsumption
   name: EnergyConsumption
   href: api/CycloneDX.Models.EnergyConsumption.html
@@ -7451,6 +9164,64 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.EvidenceTools.WriteXml
   nameWithType: EvidenceTools.WriteXml
+- uid: CycloneDX.Models.ExpressionDetail
+  name: ExpressionDetail
+  href: api/CycloneDX.Models.ExpressionDetail.html
+  commentId: T:CycloneDX.Models.ExpressionDetail
+  fullName: CycloneDX.Models.ExpressionDetail
+  nameWithType: ExpressionDetail
+- uid: CycloneDX.Models.ExpressionDetail.BomRef
+  name: BomRef
+  href: api/CycloneDX.Models.ExpressionDetail.html#CycloneDX_Models_ExpressionDetail_BomRef
+  commentId: P:CycloneDX.Models.ExpressionDetail.BomRef
+  fullName: CycloneDX.Models.ExpressionDetail.BomRef
+  nameWithType: ExpressionDetail.BomRef
+- uid: CycloneDX.Models.ExpressionDetail.BomRef*
+  name: BomRef
+  href: api/CycloneDX.Models.ExpressionDetail.html#CycloneDX_Models_ExpressionDetail_BomRef_
+  commentId: Overload:CycloneDX.Models.ExpressionDetail.BomRef
+  isSpec: "True"
+  fullName: CycloneDX.Models.ExpressionDetail.BomRef
+  nameWithType: ExpressionDetail.BomRef
+- uid: CycloneDX.Models.ExpressionDetail.LicenseIdentifier
+  name: LicenseIdentifier
+  href: api/CycloneDX.Models.ExpressionDetail.html#CycloneDX_Models_ExpressionDetail_LicenseIdentifier
+  commentId: P:CycloneDX.Models.ExpressionDetail.LicenseIdentifier
+  fullName: CycloneDX.Models.ExpressionDetail.LicenseIdentifier
+  nameWithType: ExpressionDetail.LicenseIdentifier
+- uid: CycloneDX.Models.ExpressionDetail.LicenseIdentifier*
+  name: LicenseIdentifier
+  href: api/CycloneDX.Models.ExpressionDetail.html#CycloneDX_Models_ExpressionDetail_LicenseIdentifier_
+  commentId: Overload:CycloneDX.Models.ExpressionDetail.LicenseIdentifier
+  isSpec: "True"
+  fullName: CycloneDX.Models.ExpressionDetail.LicenseIdentifier
+  nameWithType: ExpressionDetail.LicenseIdentifier
+- uid: CycloneDX.Models.ExpressionDetail.Text
+  name: Text
+  href: api/CycloneDX.Models.ExpressionDetail.html#CycloneDX_Models_ExpressionDetail_Text
+  commentId: P:CycloneDX.Models.ExpressionDetail.Text
+  fullName: CycloneDX.Models.ExpressionDetail.Text
+  nameWithType: ExpressionDetail.Text
+- uid: CycloneDX.Models.ExpressionDetail.Text*
+  name: Text
+  href: api/CycloneDX.Models.ExpressionDetail.html#CycloneDX_Models_ExpressionDetail_Text_
+  commentId: Overload:CycloneDX.Models.ExpressionDetail.Text
+  isSpec: "True"
+  fullName: CycloneDX.Models.ExpressionDetail.Text
+  nameWithType: ExpressionDetail.Text
+- uid: CycloneDX.Models.ExpressionDetail.Url
+  name: Url
+  href: api/CycloneDX.Models.ExpressionDetail.html#CycloneDX_Models_ExpressionDetail_Url
+  commentId: P:CycloneDX.Models.ExpressionDetail.Url
+  fullName: CycloneDX.Models.ExpressionDetail.Url
+  nameWithType: ExpressionDetail.Url
+- uid: CycloneDX.Models.ExpressionDetail.Url*
+  name: Url
+  href: api/CycloneDX.Models.ExpressionDetail.html#CycloneDX_Models_ExpressionDetail_Url_
+  commentId: Overload:CycloneDX.Models.ExpressionDetail.Url
+  isSpec: "True"
+  fullName: CycloneDX.Models.ExpressionDetail.Url
+  nameWithType: ExpressionDetail.Url
 - uid: CycloneDX.Models.ExternalReference
   name: ExternalReference
   href: api/CycloneDX.Models.ExternalReference.html
@@ -7546,6 +9317,12 @@ references:
   commentId: F:CycloneDX.Models.ExternalReference.ExternalReferenceType.Chat
   fullName: CycloneDX.Models.ExternalReference.ExternalReferenceType.Chat
   nameWithType: ExternalReference.ExternalReferenceType.Chat
+- uid: CycloneDX.Models.ExternalReference.ExternalReferenceType.Citation
+  name: Citation
+  href: api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html#CycloneDX_Models_ExternalReference_ExternalReferenceType_Citation
+  commentId: F:CycloneDX.Models.ExternalReference.ExternalReferenceType.Citation
+  fullName: CycloneDX.Models.ExternalReference.ExternalReferenceType.Citation
+  nameWithType: ExternalReference.ExternalReferenceType.Citation
 - uid: CycloneDX.Models.ExternalReference.ExternalReferenceType.Codified_Infrastructure
   name: Codified_Infrastructure
   href: api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html#CycloneDX_Models_ExternalReference_ExternalReferenceType_Codified_Infrastructure
@@ -7660,6 +9437,24 @@ references:
   commentId: F:CycloneDX.Models.ExternalReference.ExternalReferenceType.Other
   fullName: CycloneDX.Models.ExternalReference.ExternalReferenceType.Other
   nameWithType: ExternalReference.ExternalReferenceType.Other
+- uid: CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent
+  name: Patent
+  href: api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html#CycloneDX_Models_ExternalReference_ExternalReferenceType_Patent
+  commentId: F:CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent
+  fullName: CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent
+  nameWithType: ExternalReference.ExternalReferenceType.Patent
+- uid: CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent_Assertion
+  name: Patent_Assertion
+  href: api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html#CycloneDX_Models_ExternalReference_ExternalReferenceType_Patent_Assertion
+  commentId: F:CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent_Assertion
+  fullName: CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent_Assertion
+  nameWithType: ExternalReference.ExternalReferenceType.Patent_Assertion
+- uid: CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent_Family
+  name: Patent_Family
+  href: api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html#CycloneDX_Models_ExternalReference_ExternalReferenceType_Patent_Family
+  commentId: F:CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent_Family
+  fullName: CycloneDX.Models.ExternalReference.ExternalReferenceType.Patent_Family
+  nameWithType: ExternalReference.ExternalReferenceType.Patent_Family
 - uid: CycloneDX.Models.ExternalReference.ExternalReferenceType.Pentest_Report
   name: Pentest_Report
   href: api/CycloneDX.Models.ExternalReference.ExternalReferenceType.html#CycloneDX_Models_ExternalReference_ExternalReferenceType_Pentest_Report
@@ -8098,6 +9893,18 @@ references:
   commentId: F:CycloneDX.Models.Hash.HashAlgorithm.SHA_512
   fullName: CycloneDX.Models.Hash.HashAlgorithm.SHA_512
   nameWithType: Hash.HashAlgorithm.SHA_512
+- uid: CycloneDX.Models.Hash.HashAlgorithm.Streebog_256
+  name: Streebog_256
+  href: api/CycloneDX.Models.Hash.HashAlgorithm.html#CycloneDX_Models_Hash_HashAlgorithm_Streebog_256
+  commentId: F:CycloneDX.Models.Hash.HashAlgorithm.Streebog_256
+  fullName: CycloneDX.Models.Hash.HashAlgorithm.Streebog_256
+  nameWithType: Hash.HashAlgorithm.Streebog_256
+- uid: CycloneDX.Models.Hash.HashAlgorithm.Streebog_512
+  name: Streebog_512
+  href: api/CycloneDX.Models.Hash.HashAlgorithm.html#CycloneDX_Models_Hash_HashAlgorithm_Streebog_512
+  commentId: F:CycloneDX.Models.Hash.HashAlgorithm.Streebog_512
+  fullName: CycloneDX.Models.Hash.HashAlgorithm.Streebog_512
+  nameWithType: Hash.HashAlgorithm.Streebog_512
 - uid: CycloneDX.Models.IHasBomRef
   name: IHasBomRef
   href: api/CycloneDX.Models.IHasBomRef.html
@@ -8790,6 +10597,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.LicenseChoice.Expression
   nameWithType: LicenseChoice.Expression
+- uid: CycloneDX.Models.LicenseChoice.ExpressionDetails
+  name: ExpressionDetails
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_ExpressionDetails
+  commentId: P:CycloneDX.Models.LicenseChoice.ExpressionDetails
+  fullName: CycloneDX.Models.LicenseChoice.ExpressionDetails
+  nameWithType: LicenseChoice.ExpressionDetails
+- uid: CycloneDX.Models.LicenseChoice.ExpressionDetails*
+  name: ExpressionDetails
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_ExpressionDetails_
+  commentId: Overload:CycloneDX.Models.LicenseChoice.ExpressionDetails
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoice.ExpressionDetails
+  nameWithType: LicenseChoice.ExpressionDetails
 - uid: CycloneDX.Models.LicenseChoice.License
   name: License
   href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_License
@@ -8803,6 +10623,32 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.LicenseChoice.License
   nameWithType: LicenseChoice.License
+- uid: CycloneDX.Models.LicenseChoice.Licensing
+  name: Licensing
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_Licensing
+  commentId: P:CycloneDX.Models.LicenseChoice.Licensing
+  fullName: CycloneDX.Models.LicenseChoice.Licensing
+  nameWithType: LicenseChoice.Licensing
+- uid: CycloneDX.Models.LicenseChoice.Licensing*
+  name: Licensing
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_Licensing_
+  commentId: Overload:CycloneDX.Models.LicenseChoice.Licensing
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoice.Licensing
+  nameWithType: LicenseChoice.Licensing
+- uid: CycloneDX.Models.LicenseChoice.Properties
+  name: Properties
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_Properties
+  commentId: P:CycloneDX.Models.LicenseChoice.Properties
+  fullName: CycloneDX.Models.LicenseChoice.Properties
+  nameWithType: LicenseChoice.Properties
+- uid: CycloneDX.Models.LicenseChoice.Properties*
+  name: Properties
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_Properties_
+  commentId: Overload:CycloneDX.Models.LicenseChoice.Properties
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoice.Properties
+  nameWithType: LicenseChoice.Properties
 - uid: CycloneDX.Models.LicenseChoice.ShouldSerializeAcknowledgement
   name: ShouldSerializeAcknowledgement()
   href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_ShouldSerializeAcknowledgement
@@ -8816,6 +10662,32 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.LicenseChoice.ShouldSerializeAcknowledgement
   nameWithType: LicenseChoice.ShouldSerializeAcknowledgement
+- uid: CycloneDX.Models.LicenseChoice.ShouldSerializeExpressionDetails
+  name: ShouldSerializeExpressionDetails()
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_ShouldSerializeExpressionDetails
+  commentId: M:CycloneDX.Models.LicenseChoice.ShouldSerializeExpressionDetails
+  fullName: CycloneDX.Models.LicenseChoice.ShouldSerializeExpressionDetails()
+  nameWithType: LicenseChoice.ShouldSerializeExpressionDetails()
+- uid: CycloneDX.Models.LicenseChoice.ShouldSerializeExpressionDetails*
+  name: ShouldSerializeExpressionDetails
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_ShouldSerializeExpressionDetails_
+  commentId: Overload:CycloneDX.Models.LicenseChoice.ShouldSerializeExpressionDetails
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoice.ShouldSerializeExpressionDetails
+  nameWithType: LicenseChoice.ShouldSerializeExpressionDetails
+- uid: CycloneDX.Models.LicenseChoice.ShouldSerializeProperties
+  name: ShouldSerializeProperties()
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_ShouldSerializeProperties
+  commentId: M:CycloneDX.Models.LicenseChoice.ShouldSerializeProperties
+  fullName: CycloneDX.Models.LicenseChoice.ShouldSerializeProperties()
+  nameWithType: LicenseChoice.ShouldSerializeProperties()
+- uid: CycloneDX.Models.LicenseChoice.ShouldSerializeProperties*
+  name: ShouldSerializeProperties
+  href: api/CycloneDX.Models.LicenseChoice.html#CycloneDX_Models_LicenseChoice_ShouldSerializeProperties_
+  commentId: Overload:CycloneDX.Models.LicenseChoice.ShouldSerializeProperties
+  isSpec: "True"
+  fullName: CycloneDX.Models.LicenseChoice.ShouldSerializeProperties
+  nameWithType: LicenseChoice.ShouldSerializeProperties
 - uid: CycloneDX.Models.LicenseChoiceList
   name: LicenseChoiceList
   href: api/CycloneDX.Models.LicenseChoiceList.html
@@ -9368,6 +11240,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Metadata.Component
   nameWithType: Metadata.Component
+- uid: CycloneDX.Models.Metadata.DistributionConstraints
+  name: DistributionConstraints
+  href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_DistributionConstraints
+  commentId: P:CycloneDX.Models.Metadata.DistributionConstraints
+  fullName: CycloneDX.Models.Metadata.DistributionConstraints
+  nameWithType: Metadata.DistributionConstraints
+- uid: CycloneDX.Models.Metadata.DistributionConstraints*
+  name: DistributionConstraints
+  href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_DistributionConstraints_
+  commentId: Overload:CycloneDX.Models.Metadata.DistributionConstraints
+  isSpec: "True"
+  fullName: CycloneDX.Models.Metadata.DistributionConstraints
+  nameWithType: Metadata.DistributionConstraints
 - uid: CycloneDX.Models.Metadata.Licenses
   name: Licenses
   href: api/CycloneDX.Models.Metadata.html#CycloneDX_Models_Metadata_Licenses
@@ -10788,6 +12673,693 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Patch.Type
   nameWithType: Patch.Type
+- uid: CycloneDX.Models.Patent
+  name: Patent
+  href: api/CycloneDX.Models.Patent.html
+  commentId: T:CycloneDX.Models.Patent
+  fullName: CycloneDX.Models.Patent
+  nameWithType: Patent
+- uid: CycloneDX.Models.Patent.Abstract
+  name: Abstract
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_Abstract
+  commentId: P:CycloneDX.Models.Patent.Abstract
+  fullName: CycloneDX.Models.Patent.Abstract
+  nameWithType: Patent.Abstract
+- uid: CycloneDX.Models.Patent.Abstract*
+  name: Abstract
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_Abstract_
+  commentId: Overload:CycloneDX.Models.Patent.Abstract
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.Abstract
+  nameWithType: Patent.Abstract
+- uid: CycloneDX.Models.Patent.ApplicationNumber
+  name: ApplicationNumber
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ApplicationNumber
+  commentId: P:CycloneDX.Models.Patent.ApplicationNumber
+  fullName: CycloneDX.Models.Patent.ApplicationNumber
+  nameWithType: Patent.ApplicationNumber
+- uid: CycloneDX.Models.Patent.ApplicationNumber*
+  name: ApplicationNumber
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ApplicationNumber_
+  commentId: Overload:CycloneDX.Models.Patent.ApplicationNumber
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.ApplicationNumber
+  nameWithType: Patent.ApplicationNumber
+- uid: CycloneDX.Models.Patent.BomRef
+  name: BomRef
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_BomRef
+  commentId: P:CycloneDX.Models.Patent.BomRef
+  fullName: CycloneDX.Models.Patent.BomRef
+  nameWithType: Patent.BomRef
+- uid: CycloneDX.Models.Patent.BomRef*
+  name: BomRef
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_BomRef_
+  commentId: Overload:CycloneDX.Models.Patent.BomRef
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.BomRef
+  nameWithType: Patent.BomRef
+- uid: CycloneDX.Models.Patent.ExternalReferences
+  name: ExternalReferences
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ExternalReferences
+  commentId: P:CycloneDX.Models.Patent.ExternalReferences
+  fullName: CycloneDX.Models.Patent.ExternalReferences
+  nameWithType: Patent.ExternalReferences
+- uid: CycloneDX.Models.Patent.ExternalReferences*
+  name: ExternalReferences
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ExternalReferences_
+  commentId: Overload:CycloneDX.Models.Patent.ExternalReferences
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.ExternalReferences
+  nameWithType: Patent.ExternalReferences
+- uid: CycloneDX.Models.Patent.FilingDate
+  name: FilingDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_FilingDate
+  commentId: P:CycloneDX.Models.Patent.FilingDate
+  fullName: CycloneDX.Models.Patent.FilingDate
+  nameWithType: Patent.FilingDate
+- uid: CycloneDX.Models.Patent.FilingDate*
+  name: FilingDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_FilingDate_
+  commentId: Overload:CycloneDX.Models.Patent.FilingDate
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.FilingDate
+  nameWithType: Patent.FilingDate
+- uid: CycloneDX.Models.Patent.FilingDateProto
+  name: FilingDateProto
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_FilingDateProto
+  commentId: P:CycloneDX.Models.Patent.FilingDateProto
+  fullName: CycloneDX.Models.Patent.FilingDateProto
+  nameWithType: Patent.FilingDateProto
+- uid: CycloneDX.Models.Patent.FilingDateProto*
+  name: FilingDateProto
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_FilingDateProto_
+  commentId: Overload:CycloneDX.Models.Patent.FilingDateProto
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.FilingDateProto
+  nameWithType: Patent.FilingDateProto
+- uid: CycloneDX.Models.Patent.GrantDate
+  name: GrantDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_GrantDate
+  commentId: P:CycloneDX.Models.Patent.GrantDate
+  fullName: CycloneDX.Models.Patent.GrantDate
+  nameWithType: Patent.GrantDate
+- uid: CycloneDX.Models.Patent.GrantDate*
+  name: GrantDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_GrantDate_
+  commentId: Overload:CycloneDX.Models.Patent.GrantDate
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.GrantDate
+  nameWithType: Patent.GrantDate
+- uid: CycloneDX.Models.Patent.GrantDateProto
+  name: GrantDateProto
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_GrantDateProto
+  commentId: P:CycloneDX.Models.Patent.GrantDateProto
+  fullName: CycloneDX.Models.Patent.GrantDateProto
+  nameWithType: Patent.GrantDateProto
+- uid: CycloneDX.Models.Patent.GrantDateProto*
+  name: GrantDateProto
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_GrantDateProto_
+  commentId: Overload:CycloneDX.Models.Patent.GrantDateProto
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.GrantDateProto
+  nameWithType: Patent.GrantDateProto
+- uid: CycloneDX.Models.Patent.Jurisdiction
+  name: Jurisdiction
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_Jurisdiction
+  commentId: P:CycloneDX.Models.Patent.Jurisdiction
+  fullName: CycloneDX.Models.Patent.Jurisdiction
+  nameWithType: Patent.Jurisdiction
+- uid: CycloneDX.Models.Patent.Jurisdiction*
+  name: Jurisdiction
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_Jurisdiction_
+  commentId: Overload:CycloneDX.Models.Patent.Jurisdiction
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.Jurisdiction
+  nameWithType: Patent.Jurisdiction
+- uid: CycloneDX.Models.Patent.PatentAssignee
+  name: PatentAssignee
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentAssignee
+  commentId: P:CycloneDX.Models.Patent.PatentAssignee
+  fullName: CycloneDX.Models.Patent.PatentAssignee
+  nameWithType: Patent.PatentAssignee
+- uid: CycloneDX.Models.Patent.PatentAssignee*
+  name: PatentAssignee
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentAssignee_
+  commentId: Overload:CycloneDX.Models.Patent.PatentAssignee
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.PatentAssignee
+  nameWithType: Patent.PatentAssignee
+- uid: CycloneDX.Models.Patent.PatentExpirationDate
+  name: PatentExpirationDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentExpirationDate
+  commentId: P:CycloneDX.Models.Patent.PatentExpirationDate
+  fullName: CycloneDX.Models.Patent.PatentExpirationDate
+  nameWithType: Patent.PatentExpirationDate
+- uid: CycloneDX.Models.Patent.PatentExpirationDate*
+  name: PatentExpirationDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentExpirationDate_
+  commentId: Overload:CycloneDX.Models.Patent.PatentExpirationDate
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.PatentExpirationDate
+  nameWithType: Patent.PatentExpirationDate
+- uid: CycloneDX.Models.Patent.PatentExpirationDateProto
+  name: PatentExpirationDateProto
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentExpirationDateProto
+  commentId: P:CycloneDX.Models.Patent.PatentExpirationDateProto
+  fullName: CycloneDX.Models.Patent.PatentExpirationDateProto
+  nameWithType: Patent.PatentExpirationDateProto
+- uid: CycloneDX.Models.Patent.PatentExpirationDateProto*
+  name: PatentExpirationDateProto
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentExpirationDateProto_
+  commentId: Overload:CycloneDX.Models.Patent.PatentExpirationDateProto
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.PatentExpirationDateProto
+  nameWithType: Patent.PatentExpirationDateProto
+- uid: CycloneDX.Models.Patent.PatentLegalStatus
+  name: PatentLegalStatus
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentLegalStatus
+  commentId: P:CycloneDX.Models.Patent.PatentLegalStatus
+  fullName: CycloneDX.Models.Patent.PatentLegalStatus
+  nameWithType: Patent.PatentLegalStatus
+- uid: CycloneDX.Models.Patent.PatentLegalStatus*
+  name: PatentLegalStatus
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentLegalStatus_
+  commentId: Overload:CycloneDX.Models.Patent.PatentLegalStatus
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.PatentLegalStatus
+  nameWithType: Patent.PatentLegalStatus
+- uid: CycloneDX.Models.Patent.PatentNumber
+  name: PatentNumber
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentNumber
+  commentId: P:CycloneDX.Models.Patent.PatentNumber
+  fullName: CycloneDX.Models.Patent.PatentNumber
+  nameWithType: Patent.PatentNumber
+- uid: CycloneDX.Models.Patent.PatentNumber*
+  name: PatentNumber
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PatentNumber_
+  commentId: Overload:CycloneDX.Models.Patent.PatentNumber
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.PatentNumber
+  nameWithType: Patent.PatentNumber
+- uid: CycloneDX.Models.Patent.PriorityApplication
+  name: PriorityApplication
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PriorityApplication
+  commentId: P:CycloneDX.Models.Patent.PriorityApplication
+  fullName: CycloneDX.Models.Patent.PriorityApplication
+  nameWithType: Patent.PriorityApplication
+- uid: CycloneDX.Models.Patent.PriorityApplication*
+  name: PriorityApplication
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PriorityApplication_
+  commentId: Overload:CycloneDX.Models.Patent.PriorityApplication
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.PriorityApplication
+  nameWithType: Patent.PriorityApplication
+- uid: CycloneDX.Models.Patent.PublicationNumber
+  name: PublicationNumber
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PublicationNumber
+  commentId: P:CycloneDX.Models.Patent.PublicationNumber
+  fullName: CycloneDX.Models.Patent.PublicationNumber
+  nameWithType: Patent.PublicationNumber
+- uid: CycloneDX.Models.Patent.PublicationNumber*
+  name: PublicationNumber
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_PublicationNumber_
+  commentId: Overload:CycloneDX.Models.Patent.PublicationNumber
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.PublicationNumber
+  nameWithType: Patent.PublicationNumber
+- uid: CycloneDX.Models.Patent.ShouldSerializeExternalReferences
+  name: ShouldSerializeExternalReferences()
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializeExternalReferences
+  commentId: M:CycloneDX.Models.Patent.ShouldSerializeExternalReferences
+  fullName: CycloneDX.Models.Patent.ShouldSerializeExternalReferences()
+  nameWithType: Patent.ShouldSerializeExternalReferences()
+- uid: CycloneDX.Models.Patent.ShouldSerializeExternalReferences*
+  name: ShouldSerializeExternalReferences
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializeExternalReferences_
+  commentId: Overload:CycloneDX.Models.Patent.ShouldSerializeExternalReferences
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.ShouldSerializeExternalReferences
+  nameWithType: Patent.ShouldSerializeExternalReferences
+- uid: CycloneDX.Models.Patent.ShouldSerializeFilingDate
+  name: ShouldSerializeFilingDate()
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializeFilingDate
+  commentId: M:CycloneDX.Models.Patent.ShouldSerializeFilingDate
+  fullName: CycloneDX.Models.Patent.ShouldSerializeFilingDate()
+  nameWithType: Patent.ShouldSerializeFilingDate()
+- uid: CycloneDX.Models.Patent.ShouldSerializeFilingDate*
+  name: ShouldSerializeFilingDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializeFilingDate_
+  commentId: Overload:CycloneDX.Models.Patent.ShouldSerializeFilingDate
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.ShouldSerializeFilingDate
+  nameWithType: Patent.ShouldSerializeFilingDate
+- uid: CycloneDX.Models.Patent.ShouldSerializeGrantDate
+  name: ShouldSerializeGrantDate()
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializeGrantDate
+  commentId: M:CycloneDX.Models.Patent.ShouldSerializeGrantDate
+  fullName: CycloneDX.Models.Patent.ShouldSerializeGrantDate()
+  nameWithType: Patent.ShouldSerializeGrantDate()
+- uid: CycloneDX.Models.Patent.ShouldSerializeGrantDate*
+  name: ShouldSerializeGrantDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializeGrantDate_
+  commentId: Overload:CycloneDX.Models.Patent.ShouldSerializeGrantDate
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.ShouldSerializeGrantDate
+  nameWithType: Patent.ShouldSerializeGrantDate
+- uid: CycloneDX.Models.Patent.ShouldSerializePatentAssignee
+  name: ShouldSerializePatentAssignee()
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializePatentAssignee
+  commentId: M:CycloneDX.Models.Patent.ShouldSerializePatentAssignee
+  fullName: CycloneDX.Models.Patent.ShouldSerializePatentAssignee()
+  nameWithType: Patent.ShouldSerializePatentAssignee()
+- uid: CycloneDX.Models.Patent.ShouldSerializePatentAssignee*
+  name: ShouldSerializePatentAssignee
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializePatentAssignee_
+  commentId: Overload:CycloneDX.Models.Patent.ShouldSerializePatentAssignee
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.ShouldSerializePatentAssignee
+  nameWithType: Patent.ShouldSerializePatentAssignee
+- uid: CycloneDX.Models.Patent.ShouldSerializePatentExpirationDate
+  name: ShouldSerializePatentExpirationDate()
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializePatentExpirationDate
+  commentId: M:CycloneDX.Models.Patent.ShouldSerializePatentExpirationDate
+  fullName: CycloneDX.Models.Patent.ShouldSerializePatentExpirationDate()
+  nameWithType: Patent.ShouldSerializePatentExpirationDate()
+- uid: CycloneDX.Models.Patent.ShouldSerializePatentExpirationDate*
+  name: ShouldSerializePatentExpirationDate
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_ShouldSerializePatentExpirationDate_
+  commentId: Overload:CycloneDX.Models.Patent.ShouldSerializePatentExpirationDate
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.ShouldSerializePatentExpirationDate
+  nameWithType: Patent.ShouldSerializePatentExpirationDate
+- uid: CycloneDX.Models.Patent.Title
+  name: Title
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_Title
+  commentId: P:CycloneDX.Models.Patent.Title
+  fullName: CycloneDX.Models.Patent.Title
+  nameWithType: Patent.Title
+- uid: CycloneDX.Models.Patent.Title*
+  name: Title
+  href: api/CycloneDX.Models.Patent.html#CycloneDX_Models_Patent_Title_
+  commentId: Overload:CycloneDX.Models.Patent.Title
+  isSpec: "True"
+  fullName: CycloneDX.Models.Patent.Title
+  nameWithType: Patent.Title
+- uid: CycloneDX.Models.PatentAssertion
+  name: PatentAssertion
+  href: api/CycloneDX.Models.PatentAssertion.html
+  commentId: T:CycloneDX.Models.PatentAssertion
+  fullName: CycloneDX.Models.PatentAssertion
+  nameWithType: PatentAssertion
+- uid: CycloneDX.Models.PatentAssertion.Asserter
+  name: Asserter
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_Asserter
+  commentId: P:CycloneDX.Models.PatentAssertion.Asserter
+  fullName: CycloneDX.Models.PatentAssertion.Asserter
+  nameWithType: PatentAssertion.Asserter
+- uid: CycloneDX.Models.PatentAssertion.Asserter*
+  name: Asserter
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_Asserter_
+  commentId: Overload:CycloneDX.Models.PatentAssertion.Asserter
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentAssertion.Asserter
+  nameWithType: PatentAssertion.Asserter
+- uid: CycloneDX.Models.PatentAssertion.AssertionType
+  name: AssertionType
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_AssertionType
+  commentId: P:CycloneDX.Models.PatentAssertion.AssertionType
+  fullName: CycloneDX.Models.PatentAssertion.AssertionType
+  nameWithType: PatentAssertion.AssertionType
+- uid: CycloneDX.Models.PatentAssertion.AssertionType*
+  name: AssertionType
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_AssertionType_
+  commentId: Overload:CycloneDX.Models.PatentAssertion.AssertionType
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentAssertion.AssertionType
+  nameWithType: PatentAssertion.AssertionType
+- uid: CycloneDX.Models.PatentAssertion.BomRef
+  name: BomRef
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_BomRef
+  commentId: P:CycloneDX.Models.PatentAssertion.BomRef
+  fullName: CycloneDX.Models.PatentAssertion.BomRef
+  nameWithType: PatentAssertion.BomRef
+- uid: CycloneDX.Models.PatentAssertion.BomRef*
+  name: BomRef
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_BomRef_
+  commentId: Overload:CycloneDX.Models.PatentAssertion.BomRef
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentAssertion.BomRef
+  nameWithType: PatentAssertion.BomRef
+- uid: CycloneDX.Models.PatentAssertion.Notes
+  name: Notes
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_Notes
+  commentId: P:CycloneDX.Models.PatentAssertion.Notes
+  fullName: CycloneDX.Models.PatentAssertion.Notes
+  nameWithType: PatentAssertion.Notes
+- uid: CycloneDX.Models.PatentAssertion.Notes*
+  name: Notes
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_Notes_
+  commentId: Overload:CycloneDX.Models.PatentAssertion.Notes
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentAssertion.Notes
+  nameWithType: PatentAssertion.Notes
+- uid: CycloneDX.Models.PatentAssertion.PatentRefs
+  name: PatentRefs
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_PatentRefs
+  commentId: P:CycloneDX.Models.PatentAssertion.PatentRefs
+  fullName: CycloneDX.Models.PatentAssertion.PatentRefs
+  nameWithType: PatentAssertion.PatentRefs
+- uid: CycloneDX.Models.PatentAssertion.PatentRefs*
+  name: PatentRefs
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_PatentRefs_
+  commentId: Overload:CycloneDX.Models.PatentAssertion.PatentRefs
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentAssertion.PatentRefs
+  nameWithType: PatentAssertion.PatentRefs
+- uid: CycloneDX.Models.PatentAssertion.ShouldSerializePatentRefs
+  name: ShouldSerializePatentRefs()
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_ShouldSerializePatentRefs
+  commentId: M:CycloneDX.Models.PatentAssertion.ShouldSerializePatentRefs
+  fullName: CycloneDX.Models.PatentAssertion.ShouldSerializePatentRefs()
+  nameWithType: PatentAssertion.ShouldSerializePatentRefs()
+- uid: CycloneDX.Models.PatentAssertion.ShouldSerializePatentRefs*
+  name: ShouldSerializePatentRefs
+  href: api/CycloneDX.Models.PatentAssertion.html#CycloneDX_Models_PatentAssertion_ShouldSerializePatentRefs_
+  commentId: Overload:CycloneDX.Models.PatentAssertion.ShouldSerializePatentRefs
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentAssertion.ShouldSerializePatentRefs
+  nameWithType: PatentAssertion.ShouldSerializePatentRefs
+- uid: CycloneDX.Models.PatentAssertionType
+  name: PatentAssertionType
+  href: api/CycloneDX.Models.PatentAssertionType.html
+  commentId: T:CycloneDX.Models.PatentAssertionType
+  fullName: CycloneDX.Models.PatentAssertionType
+  nameWithType: PatentAssertionType
+- uid: CycloneDX.Models.PatentAssertionType.Exclusive_Rights
+  name: Exclusive_Rights
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_Exclusive_Rights
+  commentId: F:CycloneDX.Models.PatentAssertionType.Exclusive_Rights
+  fullName: CycloneDX.Models.PatentAssertionType.Exclusive_Rights
+  nameWithType: PatentAssertionType.Exclusive_Rights
+- uid: CycloneDX.Models.PatentAssertionType.License
+  name: License
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_License
+  commentId: F:CycloneDX.Models.PatentAssertionType.License
+  fullName: CycloneDX.Models.PatentAssertionType.License
+  nameWithType: PatentAssertionType.License
+- uid: CycloneDX.Models.PatentAssertionType.Non_Assertion
+  name: Non_Assertion
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_Non_Assertion
+  commentId: F:CycloneDX.Models.PatentAssertionType.Non_Assertion
+  fullName: CycloneDX.Models.PatentAssertionType.Non_Assertion
+  nameWithType: PatentAssertionType.Non_Assertion
+- uid: CycloneDX.Models.PatentAssertionType.Null
+  name: "Null"
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_Null
+  commentId: F:CycloneDX.Models.PatentAssertionType.Null
+  fullName: CycloneDX.Models.PatentAssertionType.Null
+  nameWithType: PatentAssertionType.Null
+- uid: CycloneDX.Models.PatentAssertionType.Ownership
+  name: Ownership
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_Ownership
+  commentId: F:CycloneDX.Models.PatentAssertionType.Ownership
+  fullName: CycloneDX.Models.PatentAssertionType.Ownership
+  nameWithType: PatentAssertionType.Ownership
+- uid: CycloneDX.Models.PatentAssertionType.Prior_Art
+  name: Prior_Art
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_Prior_Art
+  commentId: F:CycloneDX.Models.PatentAssertionType.Prior_Art
+  fullName: CycloneDX.Models.PatentAssertionType.Prior_Art
+  nameWithType: PatentAssertionType.Prior_Art
+- uid: CycloneDX.Models.PatentAssertionType.Research_Or_Evaluation
+  name: Research_Or_Evaluation
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_Research_Or_Evaluation
+  commentId: F:CycloneDX.Models.PatentAssertionType.Research_Or_Evaluation
+  fullName: CycloneDX.Models.PatentAssertionType.Research_Or_Evaluation
+  nameWithType: PatentAssertionType.Research_Or_Evaluation
+- uid: CycloneDX.Models.PatentAssertionType.Standards_Inclusion
+  name: Standards_Inclusion
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_Standards_Inclusion
+  commentId: F:CycloneDX.Models.PatentAssertionType.Standards_Inclusion
+  fullName: CycloneDX.Models.PatentAssertionType.Standards_Inclusion
+  nameWithType: PatentAssertionType.Standards_Inclusion
+- uid: CycloneDX.Models.PatentAssertionType.Third_Party_Claim
+  name: Third_Party_Claim
+  href: api/CycloneDX.Models.PatentAssertionType.html#CycloneDX_Models_PatentAssertionType_Third_Party_Claim
+  commentId: F:CycloneDX.Models.PatentAssertionType.Third_Party_Claim
+  fullName: CycloneDX.Models.PatentAssertionType.Third_Party_Claim
+  nameWithType: PatentAssertionType.Third_Party_Claim
+- uid: CycloneDX.Models.PatentFamily
+  name: PatentFamily
+  href: api/CycloneDX.Models.PatentFamily.html
+  commentId: T:CycloneDX.Models.PatentFamily
+  fullName: CycloneDX.Models.PatentFamily
+  nameWithType: PatentFamily
+- uid: CycloneDX.Models.PatentFamily.BomRef
+  name: BomRef
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_BomRef
+  commentId: P:CycloneDX.Models.PatentFamily.BomRef
+  fullName: CycloneDX.Models.PatentFamily.BomRef
+  nameWithType: PatentFamily.BomRef
+- uid: CycloneDX.Models.PatentFamily.BomRef*
+  name: BomRef
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_BomRef_
+  commentId: Overload:CycloneDX.Models.PatentFamily.BomRef
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentFamily.BomRef
+  nameWithType: PatentFamily.BomRef
+- uid: CycloneDX.Models.PatentFamily.ExternalReferences
+  name: ExternalReferences
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_ExternalReferences
+  commentId: P:CycloneDX.Models.PatentFamily.ExternalReferences
+  fullName: CycloneDX.Models.PatentFamily.ExternalReferences
+  nameWithType: PatentFamily.ExternalReferences
+- uid: CycloneDX.Models.PatentFamily.ExternalReferences*
+  name: ExternalReferences
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_ExternalReferences_
+  commentId: Overload:CycloneDX.Models.PatentFamily.ExternalReferences
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentFamily.ExternalReferences
+  nameWithType: PatentFamily.ExternalReferences
+- uid: CycloneDX.Models.PatentFamily.FamilyId
+  name: FamilyId
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_FamilyId
+  commentId: P:CycloneDX.Models.PatentFamily.FamilyId
+  fullName: CycloneDX.Models.PatentFamily.FamilyId
+  nameWithType: PatentFamily.FamilyId
+- uid: CycloneDX.Models.PatentFamily.FamilyId*
+  name: FamilyId
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_FamilyId_
+  commentId: Overload:CycloneDX.Models.PatentFamily.FamilyId
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentFamily.FamilyId
+  nameWithType: PatentFamily.FamilyId
+- uid: CycloneDX.Models.PatentFamily.Members
+  name: Members
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_Members
+  commentId: P:CycloneDX.Models.PatentFamily.Members
+  fullName: CycloneDX.Models.PatentFamily.Members
+  nameWithType: PatentFamily.Members
+- uid: CycloneDX.Models.PatentFamily.Members*
+  name: Members
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_Members_
+  commentId: Overload:CycloneDX.Models.PatentFamily.Members
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentFamily.Members
+  nameWithType: PatentFamily.Members
+- uid: CycloneDX.Models.PatentFamily.PriorityApplication
+  name: PriorityApplication
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_PriorityApplication
+  commentId: P:CycloneDX.Models.PatentFamily.PriorityApplication
+  fullName: CycloneDX.Models.PatentFamily.PriorityApplication
+  nameWithType: PatentFamily.PriorityApplication
+- uid: CycloneDX.Models.PatentFamily.PriorityApplication*
+  name: PriorityApplication
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_PriorityApplication_
+  commentId: Overload:CycloneDX.Models.PatentFamily.PriorityApplication
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentFamily.PriorityApplication
+  nameWithType: PatentFamily.PriorityApplication
+- uid: CycloneDX.Models.PatentFamily.ShouldSerializeExternalReferences
+  name: ShouldSerializeExternalReferences()
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_ShouldSerializeExternalReferences
+  commentId: M:CycloneDX.Models.PatentFamily.ShouldSerializeExternalReferences
+  fullName: CycloneDX.Models.PatentFamily.ShouldSerializeExternalReferences()
+  nameWithType: PatentFamily.ShouldSerializeExternalReferences()
+- uid: CycloneDX.Models.PatentFamily.ShouldSerializeExternalReferences*
+  name: ShouldSerializeExternalReferences
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_ShouldSerializeExternalReferences_
+  commentId: Overload:CycloneDX.Models.PatentFamily.ShouldSerializeExternalReferences
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentFamily.ShouldSerializeExternalReferences
+  nameWithType: PatentFamily.ShouldSerializeExternalReferences
+- uid: CycloneDX.Models.PatentFamily.ShouldSerializeMembers
+  name: ShouldSerializeMembers()
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_ShouldSerializeMembers
+  commentId: M:CycloneDX.Models.PatentFamily.ShouldSerializeMembers
+  fullName: CycloneDX.Models.PatentFamily.ShouldSerializeMembers()
+  nameWithType: PatentFamily.ShouldSerializeMembers()
+- uid: CycloneDX.Models.PatentFamily.ShouldSerializeMembers*
+  name: ShouldSerializeMembers
+  href: api/CycloneDX.Models.PatentFamily.html#CycloneDX_Models_PatentFamily_ShouldSerializeMembers_
+  commentId: Overload:CycloneDX.Models.PatentFamily.ShouldSerializeMembers
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentFamily.ShouldSerializeMembers
+  nameWithType: PatentFamily.ShouldSerializeMembers
+- uid: CycloneDX.Models.PatentLegalStatus
+  name: PatentLegalStatus
+  href: api/CycloneDX.Models.PatentLegalStatus.html
+  commentId: T:CycloneDX.Models.PatentLegalStatus
+  fullName: CycloneDX.Models.PatentLegalStatus
+  nameWithType: PatentLegalStatus
+- uid: CycloneDX.Models.PatentLegalStatus.Abandoned
+  name: Abandoned
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Abandoned
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Abandoned
+  fullName: CycloneDX.Models.PatentLegalStatus.Abandoned
+  nameWithType: PatentLegalStatus.Abandoned
+- uid: CycloneDX.Models.PatentLegalStatus.Expired
+  name: Expired
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Expired
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Expired
+  fullName: CycloneDX.Models.PatentLegalStatus.Expired
+  nameWithType: PatentLegalStatus.Expired
+- uid: CycloneDX.Models.PatentLegalStatus.Granted
+  name: Granted
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Granted
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Granted
+  fullName: CycloneDX.Models.PatentLegalStatus.Granted
+  nameWithType: PatentLegalStatus.Granted
+- uid: CycloneDX.Models.PatentLegalStatus.In_Force
+  name: In_Force
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_In_Force
+  commentId: F:CycloneDX.Models.PatentLegalStatus.In_Force
+  fullName: CycloneDX.Models.PatentLegalStatus.In_Force
+  nameWithType: PatentLegalStatus.In_Force
+- uid: CycloneDX.Models.PatentLegalStatus.Invalidated
+  name: Invalidated
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Invalidated
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Invalidated
+  fullName: CycloneDX.Models.PatentLegalStatus.Invalidated
+  nameWithType: PatentLegalStatus.Invalidated
+- uid: CycloneDX.Models.PatentLegalStatus.Lapsed
+  name: Lapsed
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Lapsed
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Lapsed
+  fullName: CycloneDX.Models.PatentLegalStatus.Lapsed
+  nameWithType: PatentLegalStatus.Lapsed
+- uid: CycloneDX.Models.PatentLegalStatus.Null
+  name: "Null"
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Null
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Null
+  fullName: CycloneDX.Models.PatentLegalStatus.Null
+  nameWithType: PatentLegalStatus.Null
+- uid: CycloneDX.Models.PatentLegalStatus.Opposed
+  name: Opposed
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Opposed
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Opposed
+  fullName: CycloneDX.Models.PatentLegalStatus.Opposed
+  nameWithType: PatentLegalStatus.Opposed
+- uid: CycloneDX.Models.PatentLegalStatus.Pending
+  name: Pending
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Pending
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Pending
+  fullName: CycloneDX.Models.PatentLegalStatus.Pending
+  nameWithType: PatentLegalStatus.Pending
+- uid: CycloneDX.Models.PatentLegalStatus.Reinstated
+  name: Reinstated
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Reinstated
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Reinstated
+  fullName: CycloneDX.Models.PatentLegalStatus.Reinstated
+  nameWithType: PatentLegalStatus.Reinstated
+- uid: CycloneDX.Models.PatentLegalStatus.Revoked
+  name: Revoked
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Revoked
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Revoked
+  fullName: CycloneDX.Models.PatentLegalStatus.Revoked
+  nameWithType: PatentLegalStatus.Revoked
+- uid: CycloneDX.Models.PatentLegalStatus.Suspended
+  name: Suspended
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Suspended
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Suspended
+  fullName: CycloneDX.Models.PatentLegalStatus.Suspended
+  nameWithType: PatentLegalStatus.Suspended
+- uid: CycloneDX.Models.PatentLegalStatus.Terminated
+  name: Terminated
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Terminated
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Terminated
+  fullName: CycloneDX.Models.PatentLegalStatus.Terminated
+  nameWithType: PatentLegalStatus.Terminated
+- uid: CycloneDX.Models.PatentLegalStatus.Withdrawn
+  name: Withdrawn
+  href: api/CycloneDX.Models.PatentLegalStatus.html#CycloneDX_Models_PatentLegalStatus_Withdrawn
+  commentId: F:CycloneDX.Models.PatentLegalStatus.Withdrawn
+  fullName: CycloneDX.Models.PatentLegalStatus.Withdrawn
+  nameWithType: PatentLegalStatus.Withdrawn
+- uid: CycloneDX.Models.PatentOrFamily
+  name: PatentOrFamily
+  href: api/CycloneDX.Models.PatentOrFamily.html
+  commentId: T:CycloneDX.Models.PatentOrFamily
+  fullName: CycloneDX.Models.PatentOrFamily
+  nameWithType: PatentOrFamily
+- uid: CycloneDX.Models.PatentOrFamily.Patent
+  name: Patent
+  href: api/CycloneDX.Models.PatentOrFamily.html#CycloneDX_Models_PatentOrFamily_Patent
+  commentId: P:CycloneDX.Models.PatentOrFamily.Patent
+  fullName: CycloneDX.Models.PatentOrFamily.Patent
+  nameWithType: PatentOrFamily.Patent
+- uid: CycloneDX.Models.PatentOrFamily.Patent*
+  name: Patent
+  href: api/CycloneDX.Models.PatentOrFamily.html#CycloneDX_Models_PatentOrFamily_Patent_
+  commentId: Overload:CycloneDX.Models.PatentOrFamily.Patent
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentOrFamily.Patent
+  nameWithType: PatentOrFamily.Patent
+- uid: CycloneDX.Models.PatentOrFamily.PatentFamily
+  name: PatentFamily
+  href: api/CycloneDX.Models.PatentOrFamily.html#CycloneDX_Models_PatentOrFamily_PatentFamily
+  commentId: P:CycloneDX.Models.PatentOrFamily.PatentFamily
+  fullName: CycloneDX.Models.PatentOrFamily.PatentFamily
+  nameWithType: PatentOrFamily.PatentFamily
+- uid: CycloneDX.Models.PatentOrFamily.PatentFamily*
+  name: PatentFamily
+  href: api/CycloneDX.Models.PatentOrFamily.html#CycloneDX_Models_PatentOrFamily_PatentFamily_
+  commentId: Overload:CycloneDX.Models.PatentOrFamily.PatentFamily
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentOrFamily.PatentFamily
+  nameWithType: PatentOrFamily.PatentFamily
+- uid: CycloneDX.Models.PatentsType
+  name: PatentsType
+  href: api/CycloneDX.Models.PatentsType.html
+  commentId: T:CycloneDX.Models.PatentsType
+  fullName: CycloneDX.Models.PatentsType
+  nameWithType: PatentsType
+- uid: CycloneDX.Models.PatentsType.Items
+  name: Items
+  href: api/CycloneDX.Models.PatentsType.html#CycloneDX_Models_PatentsType_Items
+  commentId: P:CycloneDX.Models.PatentsType.Items
+  fullName: CycloneDX.Models.PatentsType.Items
+  nameWithType: PatentsType.Items
+- uid: CycloneDX.Models.PatentsType.Items*
+  name: Items
+  href: api/CycloneDX.Models.PatentsType.html#CycloneDX_Models_PatentsType_Items_
+  commentId: Overload:CycloneDX.Models.PatentsType.Items
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentsType.Items
+  nameWithType: PatentsType.Items
+- uid: CycloneDX.Models.PatentsType.XmlItems
+  name: XmlItems
+  href: api/CycloneDX.Models.PatentsType.html#CycloneDX_Models_PatentsType_XmlItems
+  commentId: P:CycloneDX.Models.PatentsType.XmlItems
+  fullName: CycloneDX.Models.PatentsType.XmlItems
+  nameWithType: PatentsType.XmlItems
+- uid: CycloneDX.Models.PatentsType.XmlItems*
+  name: XmlItems
+  href: api/CycloneDX.Models.PatentsType.html#CycloneDX_Models_PatentsType_XmlItems_
+  commentId: Overload:CycloneDX.Models.PatentsType.XmlItems
+  isSpec: "True"
+  fullName: CycloneDX.Models.PatentsType.XmlItems
+  nameWithType: PatentsType.XmlItems
 - uid: CycloneDX.Models.Pedigree
   name: Pedigree
   href: api/CycloneDX.Models.Pedigree.html
@@ -10982,6 +13554,77 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.PostalAddress.StreetAddress
   nameWithType: PostalAddress.StreetAddress
+- uid: CycloneDX.Models.PriorityApplication
+  name: PriorityApplication
+  href: api/CycloneDX.Models.PriorityApplication.html
+  commentId: T:CycloneDX.Models.PriorityApplication
+  fullName: CycloneDX.Models.PriorityApplication
+  nameWithType: PriorityApplication
+- uid: CycloneDX.Models.PriorityApplication.ApplicationNumber
+  name: ApplicationNumber
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_ApplicationNumber
+  commentId: P:CycloneDX.Models.PriorityApplication.ApplicationNumber
+  fullName: CycloneDX.Models.PriorityApplication.ApplicationNumber
+  nameWithType: PriorityApplication.ApplicationNumber
+- uid: CycloneDX.Models.PriorityApplication.ApplicationNumber*
+  name: ApplicationNumber
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_ApplicationNumber_
+  commentId: Overload:CycloneDX.Models.PriorityApplication.ApplicationNumber
+  isSpec: "True"
+  fullName: CycloneDX.Models.PriorityApplication.ApplicationNumber
+  nameWithType: PriorityApplication.ApplicationNumber
+- uid: CycloneDX.Models.PriorityApplication.FilingDate
+  name: FilingDate
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_FilingDate
+  commentId: P:CycloneDX.Models.PriorityApplication.FilingDate
+  fullName: CycloneDX.Models.PriorityApplication.FilingDate
+  nameWithType: PriorityApplication.FilingDate
+- uid: CycloneDX.Models.PriorityApplication.FilingDate*
+  name: FilingDate
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_FilingDate_
+  commentId: Overload:CycloneDX.Models.PriorityApplication.FilingDate
+  isSpec: "True"
+  fullName: CycloneDX.Models.PriorityApplication.FilingDate
+  nameWithType: PriorityApplication.FilingDate
+- uid: CycloneDX.Models.PriorityApplication.FilingDateProto
+  name: FilingDateProto
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_FilingDateProto
+  commentId: P:CycloneDX.Models.PriorityApplication.FilingDateProto
+  fullName: CycloneDX.Models.PriorityApplication.FilingDateProto
+  nameWithType: PriorityApplication.FilingDateProto
+- uid: CycloneDX.Models.PriorityApplication.FilingDateProto*
+  name: FilingDateProto
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_FilingDateProto_
+  commentId: Overload:CycloneDX.Models.PriorityApplication.FilingDateProto
+  isSpec: "True"
+  fullName: CycloneDX.Models.PriorityApplication.FilingDateProto
+  nameWithType: PriorityApplication.FilingDateProto
+- uid: CycloneDX.Models.PriorityApplication.Jurisdiction
+  name: Jurisdiction
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_Jurisdiction
+  commentId: P:CycloneDX.Models.PriorityApplication.Jurisdiction
+  fullName: CycloneDX.Models.PriorityApplication.Jurisdiction
+  nameWithType: PriorityApplication.Jurisdiction
+- uid: CycloneDX.Models.PriorityApplication.Jurisdiction*
+  name: Jurisdiction
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_Jurisdiction_
+  commentId: Overload:CycloneDX.Models.PriorityApplication.Jurisdiction
+  isSpec: "True"
+  fullName: CycloneDX.Models.PriorityApplication.Jurisdiction
+  nameWithType: PriorityApplication.Jurisdiction
+- uid: CycloneDX.Models.PriorityApplication.ShouldSerializeFilingDate
+  name: ShouldSerializeFilingDate()
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_ShouldSerializeFilingDate
+  commentId: M:CycloneDX.Models.PriorityApplication.ShouldSerializeFilingDate
+  fullName: CycloneDX.Models.PriorityApplication.ShouldSerializeFilingDate()
+  nameWithType: PriorityApplication.ShouldSerializeFilingDate()
+- uid: CycloneDX.Models.PriorityApplication.ShouldSerializeFilingDate*
+  name: ShouldSerializeFilingDate
+  href: api/CycloneDX.Models.PriorityApplication.html#CycloneDX_Models_PriorityApplication_ShouldSerializeFilingDate_
+  commentId: Overload:CycloneDX.Models.PriorityApplication.ShouldSerializeFilingDate
+  isSpec: "True"
+  fullName: CycloneDX.Models.PriorityApplication.ShouldSerializeFilingDate
+  nameWithType: PriorityApplication.ShouldSerializeFilingDate
 - uid: CycloneDX.Models.Property
   name: Property
   href: api/CycloneDX.Models.Property.html
@@ -11898,6 +14541,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Service.NonNullableXTrustBoundary
   nameWithType: Service.NonNullableXTrustBoundary
+- uid: CycloneDX.Models.Service.PatentAssertions
+  name: PatentAssertions
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_PatentAssertions
+  commentId: P:CycloneDX.Models.Service.PatentAssertions
+  fullName: CycloneDX.Models.Service.PatentAssertions
+  nameWithType: Service.PatentAssertions
+- uid: CycloneDX.Models.Service.PatentAssertions*
+  name: PatentAssertions
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_PatentAssertions_
+  commentId: Overload:CycloneDX.Models.Service.PatentAssertions
+  isSpec: "True"
+  fullName: CycloneDX.Models.Service.PatentAssertions
+  nameWithType: Service.PatentAssertions
 - uid: CycloneDX.Models.Service.Properties
   name: Properties
   href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_Properties
@@ -12002,6 +14658,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Service.ShouldSerializeNonNullableXTrustBoundary
   nameWithType: Service.ShouldSerializeNonNullableXTrustBoundary
+- uid: CycloneDX.Models.Service.ShouldSerializePatentAssertions
+  name: ShouldSerializePatentAssertions()
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_ShouldSerializePatentAssertions
+  commentId: M:CycloneDX.Models.Service.ShouldSerializePatentAssertions
+  fullName: CycloneDX.Models.Service.ShouldSerializePatentAssertions()
+  nameWithType: Service.ShouldSerializePatentAssertions()
+- uid: CycloneDX.Models.Service.ShouldSerializePatentAssertions*
+  name: ShouldSerializePatentAssertions
+  href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_ShouldSerializePatentAssertions_
+  commentId: Overload:CycloneDX.Models.Service.ShouldSerializePatentAssertions
+  isSpec: "True"
+  fullName: CycloneDX.Models.Service.ShouldSerializePatentAssertions
+  nameWithType: Service.ShouldSerializePatentAssertions
 - uid: CycloneDX.Models.Service.ShouldSerializeProperties
   name: ShouldSerializeProperties()
   href: api/CycloneDX.Models.Service.html#CycloneDX_Models_Service_ShouldSerializeProperties
@@ -13000,6 +15669,42 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Targets.ShouldSerializeServices
   nameWithType: Targets.ShouldSerializeServices
+- uid: CycloneDX.Models.TlpClassification
+  name: TlpClassification
+  href: api/CycloneDX.Models.TlpClassification.html
+  commentId: T:CycloneDX.Models.TlpClassification
+  fullName: CycloneDX.Models.TlpClassification
+  nameWithType: TlpClassification
+- uid: CycloneDX.Models.TlpClassification.AMBER
+  name: AMBER
+  href: api/CycloneDX.Models.TlpClassification.html#CycloneDX_Models_TlpClassification_AMBER
+  commentId: F:CycloneDX.Models.TlpClassification.AMBER
+  fullName: CycloneDX.Models.TlpClassification.AMBER
+  nameWithType: TlpClassification.AMBER
+- uid: CycloneDX.Models.TlpClassification.AMBER_AND_STRICT
+  name: AMBER_AND_STRICT
+  href: api/CycloneDX.Models.TlpClassification.html#CycloneDX_Models_TlpClassification_AMBER_AND_STRICT
+  commentId: F:CycloneDX.Models.TlpClassification.AMBER_AND_STRICT
+  fullName: CycloneDX.Models.TlpClassification.AMBER_AND_STRICT
+  nameWithType: TlpClassification.AMBER_AND_STRICT
+- uid: CycloneDX.Models.TlpClassification.CLEAR
+  name: CLEAR
+  href: api/CycloneDX.Models.TlpClassification.html#CycloneDX_Models_TlpClassification_CLEAR
+  commentId: F:CycloneDX.Models.TlpClassification.CLEAR
+  fullName: CycloneDX.Models.TlpClassification.CLEAR
+  nameWithType: TlpClassification.CLEAR
+- uid: CycloneDX.Models.TlpClassification.GREEN
+  name: GREEN
+  href: api/CycloneDX.Models.TlpClassification.html#CycloneDX_Models_TlpClassification_GREEN
+  commentId: F:CycloneDX.Models.TlpClassification.GREEN
+  fullName: CycloneDX.Models.TlpClassification.GREEN
+  nameWithType: TlpClassification.GREEN
+- uid: CycloneDX.Models.TlpClassification.RED
+  name: RED
+  href: api/CycloneDX.Models.TlpClassification.html#CycloneDX_Models_TlpClassification_RED
+  commentId: F:CycloneDX.Models.TlpClassification.RED
+  fullName: CycloneDX.Models.TlpClassification.RED
+  nameWithType: TlpClassification.RED
 - uid: CycloneDX.Models.Tool
   name: Tool
   href: api/CycloneDX.Models.Tool.html
@@ -19253,6 +21958,12 @@ references:
   commentId: F:CycloneDX.SpecificationVersion.v1_6
   fullName: CycloneDX.SpecificationVersion.v1_6
   nameWithType: SpecificationVersion.v1_6
+- uid: CycloneDX.SpecificationVersion.v1_7
+  name: v1_7
+  href: api/CycloneDX.SpecificationVersion.html#CycloneDX_SpecificationVersion_v1_7
+  commentId: F:CycloneDX.SpecificationVersion.v1_7
+  fullName: CycloneDX.SpecificationVersion.v1_7
+  nameWithType: SpecificationVersion.v1_7
 - uid: CycloneDX.SpecificationVersionHelpers
   name: SpecificationVersionHelpers
   href: api/CycloneDX.SpecificationVersionHelpers.html

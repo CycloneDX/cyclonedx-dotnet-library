@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Ikev2TransformTypes </title>
+    <title>Class Ikev2TransformTypesLegacy </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Ikev2TransformTypes ">
+    <meta name="title" content="Class Ikev2TransformTypesLegacy ">
     <meta name="generator" content="docfx ">
   
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,17 +67,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes">
+            <article class="content wrap" id="_content" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy">
 
 
 
-  <h1 id="CycloneDX_Core_Models_Ikev2TransformTypes" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes" class="text-break">Class Ikev2TransformTypes</h1>
-  <div class="markdown level0 summary"></div>
+  <h1 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy" class="text-break">Class Ikev2TransformTypesLegacy</h1>
+  <div class="markdown level0 summary"><p>DEPRECATED - This is the old format for IKEv2 transform types using simple string refs.
+Kept for backwards compatibility with protobuf field 4 on ProtocolProperties.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">Ikev2TransformTypes</span></div>
+    <div class="level1"><span class="xref">Ikev2TransformTypesLegacy</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -105,29 +107,29 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="CycloneDX.html">CycloneDX</a>.<a class="xref" href="CycloneDX.Core.html">Core</a>.<a class="xref" href="CycloneDX.Core.Models.html">Models</a></h6>
   <h6><strong>Assembly</strong>: CycloneDX.Core.dll</h6>
-  <h5 id="CycloneDX_Core_Models_Ikev2TransformTypes_syntax">Syntax</h5>
+  <h5 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoContract]
-public class Ikev2TransformTypes</code></pre>
+public class Ikev2TransformTypesLegacy</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypes_AuthenticationMethodsDetailed.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypesLegacy_AuthenticationMethods.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L120">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L159">View Source</a>
   </span>
-  <a id="CycloneDX_Core_Models_Ikev2TransformTypes_AuthenticationMethodsDetailed_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed*"></a>
-  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypes_AuthenticationMethodsDetailed" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.AuthenticationMethodsDetailed">AuthenticationMethodsDetailed</h4>
+  <a id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_AuthenticationMethods_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods*"></a>
+  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_AuthenticationMethods" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.AuthenticationMethods">AuthenticationMethods</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;auth&quot;)]
 [ProtoMember(6)]
-public List&lt;Ikev2Auth&gt; AuthenticationMethodsDetailed { get; set; }</code></pre>
+public List&lt;string&gt; AuthenticationMethods { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -139,27 +141,27 @@ public List&lt;Ikev2Auth&gt; AuthenticationMethodsDetailed { get; set; }</code><
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="CycloneDX.Core.Models.Ikev2Auth.html">Ikev2Auth</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypes_EncryptionAlgorithmsDetailed.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypesLegacy_EncryptionAlgorithms.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L94">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L133">View Source</a>
   </span>
-  <a id="CycloneDX_Core_Models_Ikev2TransformTypes_EncryptionAlgorithmsDetailed_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed*"></a>
-  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypes_EncryptionAlgorithmsDetailed" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.EncryptionAlgorithmsDetailed">EncryptionAlgorithmsDetailed</h4>
+  <a id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_EncryptionAlgorithms_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms*"></a>
+  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_EncryptionAlgorithms" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.EncryptionAlgorithms">EncryptionAlgorithms</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;encr&quot;)]
 [ProtoMember(1)]
-public List&lt;Ikev2Encr&gt; EncryptionAlgorithmsDetailed { get; set; }</code></pre>
+public List&lt;string&gt; EncryptionAlgorithms { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -171,20 +173,20 @@ public List&lt;Ikev2Encr&gt; EncryptionAlgorithmsDetailed { get; set; }</code></
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="CycloneDX.Core.Models.Ikev2Encr.html">Ikev2Encr</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypes_ExtendedSequenceNumbers.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypes.ExtendedSequenceNumbers%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ExtendedSequenceNumbers.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L114">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L153">View Source</a>
   </span>
-  <a id="CycloneDX_Core_Models_Ikev2TransformTypes_ExtendedSequenceNumbers_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.ExtendedSequenceNumbers*"></a>
-  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypes_ExtendedSequenceNumbers" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.ExtendedSequenceNumbers">ExtendedSequenceNumbers</h4>
+  <a id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ExtendedSequenceNumbers_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers*"></a>
+  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ExtendedSequenceNumbers" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ExtendedSequenceNumbers">ExtendedSequenceNumbers</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -210,20 +212,20 @@ public bool? ExtendedSequenceNumbers { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypes_IntegrityAlgorithmsDetailed.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypesLegacy_IntegrityAlgorithms.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L104">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L143">View Source</a>
   </span>
-  <a id="CycloneDX_Core_Models_Ikev2TransformTypes_IntegrityAlgorithmsDetailed_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed*"></a>
-  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypes_IntegrityAlgorithmsDetailed" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.IntegrityAlgorithmsDetailed">IntegrityAlgorithmsDetailed</h4>
+  <a id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_IntegrityAlgorithms_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms*"></a>
+  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_IntegrityAlgorithms" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.IntegrityAlgorithms">IntegrityAlgorithms</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;integ&quot;)]
 [ProtoMember(3)]
-public List&lt;Ikev2Integ&gt; IntegrityAlgorithmsDetailed { get; set; }</code></pre>
+public List&lt;string&gt; IntegrityAlgorithms { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -235,27 +237,27 @@ public List&lt;Ikev2Integ&gt; IntegrityAlgorithmsDetailed { get; set; }</code></
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="CycloneDX.Core.Models.Ikev2Integ.html">Ikev2Integ</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypes_KeyExchangeMethodsDetailed.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypesLegacy_KeyExchangeMethods.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L109">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L148">View Source</a>
   </span>
-  <a id="CycloneDX_Core_Models_Ikev2TransformTypes_KeyExchangeMethodsDetailed_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed*"></a>
-  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypes_KeyExchangeMethodsDetailed" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.KeyExchangeMethodsDetailed">KeyExchangeMethodsDetailed</h4>
+  <a id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_KeyExchangeMethods_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods*"></a>
+  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_KeyExchangeMethods" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.KeyExchangeMethods">KeyExchangeMethods</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;ke&quot;)]
 [ProtoMember(4)]
-public List&lt;Ikev2Ke&gt; KeyExchangeMethodsDetailed { get; set; }</code></pre>
+public List&lt;string&gt; KeyExchangeMethods { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -267,27 +269,27 @@ public List&lt;Ikev2Ke&gt; KeyExchangeMethodsDetailed { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="CycloneDX.Core.Models.Ikev2Ke.html">Ikev2Ke</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypes_PseudorandomFunctionsDetailed.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypesLegacy_PseudorandomFunctions.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L99">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L138">View Source</a>
   </span>
-  <a id="CycloneDX_Core_Models_Ikev2TransformTypes_PseudorandomFunctionsDetailed_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed*"></a>
-  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypes_PseudorandomFunctionsDetailed" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.PseudorandomFunctionsDetailed">PseudorandomFunctionsDetailed</h4>
+  <a id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_PseudorandomFunctions_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions*"></a>
+  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_PseudorandomFunctions" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.PseudorandomFunctions">PseudorandomFunctions</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;prf&quot;)]
 [ProtoMember(2)]
-public List&lt;Ikev2Prf&gt; PseudorandomFunctionsDetailed { get; set; }</code></pre>
+public List&lt;string&gt; PseudorandomFunctions { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -299,7 +301,7 @@ public List&lt;Ikev2Prf&gt; PseudorandomFunctionsDetailed { get; set; }</code></
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="CycloneDX.Core.Models.Ikev2Prf.html">Ikev2Prf</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -308,13 +310,13 @@ public List&lt;Ikev2Prf&gt; PseudorandomFunctionsDetailed { get; set; }</code></
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypes_ShouldSerializeExtendedSequenceNumbers.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ShouldSerializeExtendedSequenceNumbers.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L118">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L157">View Source</a>
   </span>
-  <a id="CycloneDX_Core_Models_Ikev2TransformTypes_ShouldSerializeExtendedSequenceNumbers_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers*"></a>
-  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypes_ShouldSerializeExtendedSequenceNumbers" data-uid="CycloneDX.Core.Models.Ikev2TransformTypes.ShouldSerializeExtendedSequenceNumbers">ShouldSerializeExtendedSequenceNumbers()</h4>
+  <a id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ShouldSerializeExtendedSequenceNumbers_" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers*"></a>
+  <h4 id="CycloneDX_Core_Models_Ikev2TransformTypesLegacy_ShouldSerializeExtendedSequenceNumbers" data-uid="CycloneDX.Core.Models.Ikev2TransformTypesLegacy.ShouldSerializeExtendedSequenceNumbers">ShouldSerializeExtendedSequenceNumbers()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -345,10 +347,10 @@ public List&lt;Ikev2Prf&gt; PseudorandomFunctionsDetailed { get; set; }</code></
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypes.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Core_Models_Ikev2TransformTypesLegacy.md&amp;value=---%0Auid%3A%20CycloneDX.Core.Models.Ikev2TransformTypesLegacy%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L91" class="contribution-link">View Source</a>
+                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Crypto/Ikev2TransformTypes.cs/#L130" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

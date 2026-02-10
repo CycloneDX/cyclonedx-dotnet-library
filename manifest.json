@@ -60,6 +60,62 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.CertExtCommon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.CertExtCommon.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CertExtCommon",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Core.Models.CertExtCommon.yml\" sourcestartlinenumber=\"1\">Proto: message CommonExtension { CommonExtensionName name = 1; string value = 2; }</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.CertExtCustom.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.CertExtCustom.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CertExtCustom",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Core.Models.CertExtCustom.yml\" sourcestartlinenumber=\"1\">Proto: message CustomExtension { string name = 1; optional string value = 2; }</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.CertificateExtensionV2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.CertificateExtensionV2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CertificateExtensionV2",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Core.Models.CertificateExtensionV2.yml\" sourcestartlinenumber=\"1\">Certificate extension for XML/JSON serialization.\nFor protobuf, this maps to Extension { oneof { CommonExtension, CustomExtension } }</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.CertificateExtensionsProto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.CertificateExtensionsProto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CertificateExtensionsProto",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Core.Models.CertificateExtensionsProto.yml\" sourcestartlinenumber=\"1\">Protobuf wrapper for CertificateExtensions.\nProto: message CertificateExtensions { repeated Extension extensions = 1; }</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CertificateProperties.yml",
       "output": {
         ".html": {
@@ -70,6 +126,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "CycloneDX.Core.Models.CertificateProperties",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.CertificateState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.CertificateState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CertificateState",
       "Summary": null
     },
     {
@@ -130,6 +200,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.CommonExtensionNameEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.CommonExtensionNameEnum.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.CommonExtensionNameEnum",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Core.Models.CommonExtensionNameEnum.yml\" sourcestartlinenumber=\"1\">Proto enum matching CertificateExtensions.CommonExtensionName</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.CryptoFunction.yml",
       "output": {
         ".html": {
@@ -172,6 +256,76 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.Ikev2Auth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.Ikev2Auth.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.Ikev2Auth",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.Ikev2Encr.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.Ikev2Encr.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.Ikev2Encr",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.Ikev2Integ.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.Ikev2Integ.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.Ikev2Integ",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.Ikev2Ke.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.Ikev2Ke.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.Ikev2Ke",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.Ikev2Prf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.Ikev2Prf.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.Ikev2Prf",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.Ikev2TransformTypes.yml",
       "output": {
         ".html": {
@@ -183,6 +337,20 @@
       "IsMRef": true,
       "Title": "CycloneDX.Core.Models.Ikev2TransformTypes",
       "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.Ikev2TransformTypesLegacy",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Core.Models.Ikev2TransformTypesLegacy.yml\" sourcestartlinenumber=\"1\">DEPRECATED - This is the old format for IKEv2 transform types using simple string refs.\nKept for backwards compatibility with protobuf field 4 on ProtocolProperties.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -224,6 +392,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "CycloneDX.Core.Models.PaddingScheme",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.PredefinedCertificateState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.PredefinedCertificateState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.PredefinedCertificateState",
       "Summary": null
     },
     {
@@ -298,6 +480,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.RelatedCryptographicAsset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.RelatedCryptographicAsset.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.RelatedCryptographicAsset",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Core.Models.RelatedCryptographicAssetsProto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Core.Models.RelatedCryptographicAssetsProto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Core.Models.RelatedCryptographicAssetsProto",
+      "Summary": "<p sourcefile=\"api/CycloneDX.Core.Models.RelatedCryptographicAssetsProto.yml\" sourcestartlinenumber=\"1\">Protobuf wrapper for RelatedCryptographicAssets.\nProto: message RelatedCryptographicAssets { repeated RelatedCryptographicAsset assets = 1; }</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Core.Models.SecuredBy.yml",
       "output": {
         ".html": {
@@ -351,6 +561,20 @@
       "IsMRef": true,
       "Title": "CycloneDX.Exceptions",
       "Summary": "\n<p sourcefile=\"namespaces/CycloneDX.Exceptions.md\" sourcestartlinenumber=\"5\">Namespace containing all custom exceptions the <code sourcefile=\"namespaces/CycloneDX.Exceptions.md\" sourcestartlinenumber=\"5\">CycloneDX.Core</code> library uses.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Json.Converters.AsserterConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Json.Converters.AsserterConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.AsserterConverter",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -466,6 +690,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Json.Converters.Ikev2TransformTypesConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Json.Converters.Ikev2TransformTypesConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.Ikev2TransformTypesConverter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter-1.yml",
       "output": {
         ".html": {
@@ -476,6 +714,34 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "CycloneDX.Json.Converters.KeepCaseHyphenEnumConverter<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Json.Converters.PatentAssigneeConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Json.Converters.PatentAssigneeConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.PatentAssigneeConverter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Json.Converters.PatentOrFamilyConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Json.Converters.PatentOrFamilyConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Json.Converters.PatentOrFamilyConverter",
       "Summary": null
     },
     {
@@ -704,6 +970,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Asserter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Asserter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Asserter",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Assessor.yml",
       "output": {
         ".html": {
@@ -798,6 +1078,48 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "CycloneDX.Models.Callstack",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Citation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Citation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Citation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.CitationExpressions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.CitationExpressions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.CitationExpressions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.CitationPointers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.CitationPointers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.CitationPointers",
       "Summary": null
     },
     {
@@ -1194,6 +1516,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.DistributionConstraints.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.DistributionConstraints.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.DistributionConstraints",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.EnergyConsumption.yml",
       "output": {
         ".html": {
@@ -1428,6 +1764,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "CycloneDX.Models.EvidenceTools",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.ExpressionDetail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.ExpressionDetail.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.ExpressionDetail",
       "Summary": null
     },
     {
@@ -2076,6 +2426,104 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.Patent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.Patent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.Patent",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.PatentAssertion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.PatentAssertion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PatentAssertion",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.PatentAssertionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.PatentAssertionType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PatentAssertionType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.PatentFamily.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.PatentFamily.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PatentFamily",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.PatentLegalStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.PatentLegalStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PatentLegalStatus",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.PatentOrFamily.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.PatentOrFamily.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PatentOrFamily",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.PatentsType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.PatentsType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PatentsType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CycloneDX.Models.Pedigree.yml",
       "output": {
         ".html": {
@@ -2100,6 +2548,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "CycloneDX.Models.PostalAddress",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.PriorityApplication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.PriorityApplication.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.PriorityApplication",
       "Summary": null
     },
     {
@@ -2366,6 +2828,20 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "CycloneDX.Models.Targets",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CycloneDX.Models.TlpClassification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CycloneDX.Models.TlpClassification.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CycloneDX.Models.TlpClassification",
       "Summary": null
     },
     {
