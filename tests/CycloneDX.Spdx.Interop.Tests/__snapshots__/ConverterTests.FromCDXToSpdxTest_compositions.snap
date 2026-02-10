@@ -12,6 +12,13 @@
     {
       "SPDXID": "SPDXRef-pkg:maven/partner/shaded-library@1.0",
       "downloadLocation": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE_MANAGER",
+          "referenceLocator": "pkg:maven/partner/shaded-library@1.0",
+          "referenceType": "purl"
+        }
+      ],
       "name": "Partner Shaded Library",
       "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "1.0"
@@ -19,6 +26,13 @@
     {
       "SPDXID": "SPDXRef-Package-2",
       "downloadLocation": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE_MANAGER",
+          "referenceLocator": "pkg:maven/acme/library@3.0",
+          "referenceType": "purl"
+        }
+      ],
       "name": "Acme Library",
       "primaryPackagePurpose": "LIBRARY",
       "versionInfo": "3.0"
