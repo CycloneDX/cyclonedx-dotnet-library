@@ -84,10 +84,12 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         if (nonToolMatch.Success)
                         {
                             if (bom.Metadata.Authors == null) { bom.Metadata.Authors = new List<OrganizationalContact>(); }
+                            var email = nonToolMatch.Groups["email"].ToString();
                             bom.Metadata.Authors.Add(new OrganizationalContact
                             {
                                 Name = nonToolMatch.Groups["name"].ToString(),
-                                Email = nonToolMatch.Groups["email"].ToString(),
+                                // email is optional
+                                Email = email != "" ? email: null,
                             });
                             if (creator.StartsWith("Organization:"))
                             {
