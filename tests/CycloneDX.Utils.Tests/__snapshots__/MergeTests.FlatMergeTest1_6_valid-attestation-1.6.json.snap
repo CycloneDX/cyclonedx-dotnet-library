@@ -1,0 +1,111 @@
+﻿{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "metadata": {
+    "component": {
+      "type": "application",
+      "bom-ref": "Thing@1",
+      "name": "Thing",
+      "version": "1"
+    }
+  },
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "bom2",
+      "name": "bom2name"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "Thing@1",
+      "dependsOn": []
+    }
+  ],
+  "declarations": {
+    "assessors": [
+      {
+        "bom-ref": "assessor-1",
+        "thirdParty": true,
+        "organization": {
+          "name": "Assessors Inc"
+        }
+      }
+    ],
+    "attestations": [
+      {
+        "summary": "Attestation summary here",
+        "assessor": "assessor-1",
+        "map": [
+          {
+            "requirement": "requirement-1",
+            "claims": [
+              "claim-1"
+            ],
+            "counterClaims": [
+              "counterClaim-1"
+            ],
+            "conformance": {
+              "score": 0.8,
+              "rationale": "Conformance rationale here",
+              "mitigationStrategies": [
+                "mitigationStrategy-1"
+              ]
+            },
+            "confidence": {
+              "score": 1,
+              "rationale": "Confidence rationale here"
+            }
+          }
+        ],
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      }
+    ],
+    "claims": [
+      {
+        "bom-ref": "claim-1",
+        "target": "acme-inc",
+        "predicate": "Predicate here",
+        "mitigationStrategies": [
+          "mitigationStrategy-1"
+        ],
+        "reasoning": "Reasoning here",
+        "evidence": [
+          "evidence-1"
+        ],
+        "counterEvidence": [
+          "counterEvidence-1"
+        ],
+        "externalReferences": [
+          {
+            "url": "https://alm.example.com",
+            "type": "issue-tracker"
+          }
+        ],
+        "signature": {
+          "algorithm": "ES256",
+          "certificatePath": [
+            "MIIB...",
+            "MIID..."
+          ],
+          "value": "tqIT..."
+        }
+      }
+    ],
+    "targets": {
+      "organizations": [
+        {
+          "name": "Acme Inc",
+          "bom-ref": "acme-inc"
+        }
+      ]
+    }
+  }
+}
