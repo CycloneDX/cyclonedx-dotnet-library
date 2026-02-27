@@ -83,7 +83,8 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// </summary>
         [Obsolete("Revieweds is deprecated, use Annotation instead")]
         public List<ReviewInformation> Revieweds { get; set; }
-        
+        public bool ShouldSerializeRevieweds() => Revieweds?.Count > 0;
+
         /// <summary>
         /// Packages, files and/or Snippets described by this SPDX document
         /// </summary>

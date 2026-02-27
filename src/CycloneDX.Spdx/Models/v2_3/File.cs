@@ -80,6 +80,7 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// </summary>
         [Obsolete("Artifacts Of is deprecated, use Relationships instead")]
         public List<string> ArtifactOfs { get; set; }
+        public bool ShouldSerializeArtifactOfs() => ArtifactOfs?.Count > 0;
 
         /// <summary>
         /// The licenseComments property allows the preparer of the SPDX document to describe why the licensing in spdx:licenseConcluded was chosen.
@@ -107,5 +108,6 @@ namespace CycloneDX.Spdx.Models.v2_3
 
         [Obsolete("File Dependencies is deprecated, use Relationships instead")]
         public List<string> FileDependencies { get; set; }
+        public bool ShouldSerializeFileDependencies() => FileDependencies?.Count > 0;
     }
 }

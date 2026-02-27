@@ -37,6 +37,7 @@
           <signatureAlgorithmRef>bom-ref-to-algorithm</signatureAlgorithmRef>
           <subjectPublicKeyRef>bom-ref-to-public-key</subjectPublicKeyRef>
           <certificateFormat>X.509</certificateFormat>
+          <certificateExtension>crt</certificateExtension>
           <certificateFileExtension>crt</certificateFileExtension>
           <fingerprint alg="SHA-256">3942447fac867ae5cdb3229b658f4d48</fingerprint>
           <certificateState>
