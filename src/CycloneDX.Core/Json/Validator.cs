@@ -31,11 +31,13 @@ namespace CycloneDX.Json
     /// </summary>
     public static class Validator
     {
+        private static readonly Dictionary<SpecificationVersion, JsonSchema> _bomSchemas = new Dictionary<SpecificationVersion, JsonSchema>();
+
         static Validator()
         {
-            // I think the global schema registry is not thread safe
-            // well, I'm pretty sure, it's the only thing I can think of that would explain the sporadic test failures
-            // might as well just do it once on initialisation
+            // The global schema registry is not thread safe, and JsonSchema.FromText
+            // registers schemas internally. Pre-load everything once at initialisation
+            // to avoid concurrent registration conflicts during parallel test execution.
             var assembly = typeof(Validator).GetTypeInfo().Assembly;
             using (var spdxStream = assembly.GetManifestResourceStream("CycloneDX.Core.Schemas.spdx.schema.json"))
             using (var spdxStreamReader = new StreamReader(spdxStream))
@@ -55,6 +57,26 @@ namespace CycloneDX.Json
                 var cryptoDefsSchema = JsonSchema.FromText(cryptoDefsStreamReader.ReadToEnd());
                 SchemaRegistry.Global.Register(new Uri("http://cyclonedx.org/schema/cryptography-defs.schema.json"), cryptoDefsSchema);
             }
+
+            // Pre-load all BOM schemas (v1.2+) so they are never parsed concurrently
+            var jsonVersions = new[]
+            {
+                SpecificationVersion.v1_2,
+                SpecificationVersion.v1_3,
+                SpecificationVersion.v1_4,
+                SpecificationVersion.v1_5,
+                SpecificationVersion.v1_6,
+                SpecificationVersion.v1_7,
+            };
+            foreach (var version in jsonVersions)
+            {
+                var versionString = SchemaVersionResourceFilenameString(version);
+                using (var stream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{versionString}.schema.json"))
+                using (var reader = new StreamReader(stream))
+                {
+                    _bomSchemas[version] = JsonSchema.FromText(reader.ReadToEnd());
+                }
+            }
         }
 
         /// <summary>
@@ -71,14 +93,9 @@ namespace CycloneDX.Json
             }
 
             var schemaVersionString = SchemaVersionResourceFilenameString(specificationVersion);
-            var assembly = typeof(Validator).GetTypeInfo().Assembly;
-            
-            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{schemaVersionString}.schema.json"))
-            {
-                var jsonSchema = await JsonSchema.FromStream(schemaStream).ConfigureAwait(false);
-                var jsonDocument = await JsonDocument.ParseAsync(jsonStream).ConfigureAwait(false);
-                return Validate(jsonSchema, jsonDocument, schemaVersionString);
-            }
+            var jsonSchema = _bomSchemas[specificationVersion];
+            var jsonDocument = await JsonDocument.ParseAsync(jsonStream).ConfigureAwait(false);
+            return Validate(jsonSchema, jsonDocument, schemaVersionString);
         }
 
         /// <summary>
@@ -162,25 +179,19 @@ namespace CycloneDX.Json
             }
 
             var schemaVersionString = SchemaVersionResourceFilenameString(specificationVersion);
-            var assembly = typeof(Validator).GetTypeInfo().Assembly;
-            
-            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Core.Schemas.bom-{schemaVersionString}.schema.json"))
-            using (var schemaStreamReader = new StreamReader(schemaStream))
+            var jsonSchema = _bomSchemas[specificationVersion];
+            try
             {
-                var jsonSchema = JsonSchema.FromText(schemaStreamReader.ReadToEnd());
-                try
+                var jsonDocument = JsonDocument.Parse(jsonString);
+                return Validate(jsonSchema, jsonDocument, schemaVersionString);
+            }
+            catch (JsonException exc)
+            {
+                return new ValidationResult
                 {
-                    var jsonDocument = JsonDocument.Parse(jsonString);
-                    return Validate(jsonSchema, jsonDocument, schemaVersionString);
-                }
-                catch (JsonException exc)
-                {
-                    return new ValidationResult
-                    {
-                        Valid = false,
-                        Messages = new List<string> { exc.Message }
-                    };
-                }
+                    Valid = false,
+                    Messages = new List<string> { exc.Message }
+                };
             }
         }
 
@@ -232,7 +243,7 @@ namespace CycloneDX.Json
                         continue;
                     }
 
-                    if (detail.HasErrors)
+                    if (detail.Errors != null)
                     {
                         foreach (var error in detail.Errors)
                         {
