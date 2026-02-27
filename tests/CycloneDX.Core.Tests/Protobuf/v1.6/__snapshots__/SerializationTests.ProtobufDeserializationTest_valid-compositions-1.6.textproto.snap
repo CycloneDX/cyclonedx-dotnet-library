@@ -19,6 +19,7 @@
       "Group": null,
       "Name": "Acme Application",
       "Version": "1.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -31,11 +32,13 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
     "Manufacture": null,
-    "Supplier": null
+    "Supplier": null,
+    "DistributionConstraints": null
   },
   "Components": [
     {
@@ -48,6 +51,7 @@
       "Group": null,
       "Name": "Partner Shaded Library",
       "Version": "1.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -68,6 +72,7 @@
           "Group": null,
           "Name": "Some Opensource Library",
           "Version": "2.0",
+          "VersionRange": null,
           "Description": null,
           "Scope": null,
           "Licenses": null,
@@ -80,6 +85,7 @@
           "Evidence": null,
           "ModelCard": null,
           "CryptoProperties": null,
+          "IsExternal": null,
           "XmlSignature": null,
           "Signature": null
         }
@@ -87,6 +93,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -100,6 +107,7 @@
       "Group": null,
       "Name": "Acme Library",
       "Version": "3.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -112,6 +120,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

@@ -133,10 +133,6 @@ declarations {
   affirmation {
     statement: "I certify, to the best of my knowledge, that all information is correct..."
     signatories {
-      name: "Tom"
-      role: "CEO"
-    }
-    signatories {
       name: "Jerry"
       role: "COO"
       organization {

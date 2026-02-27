@@ -101,7 +101,7 @@ namespace CycloneDX.Spdx.Interop.Helpers
                             {
                                 License = new License
                                 {
-                                    Name = license.Name,
+                                    Name = license.Name ?? licenseInfo,
                                     Text = new AttachedText
                                     {
                                         ContentType = "text/plain",

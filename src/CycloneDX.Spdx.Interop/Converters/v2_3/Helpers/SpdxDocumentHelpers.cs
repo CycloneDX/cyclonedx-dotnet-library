@@ -217,6 +217,22 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         ReferenceLocator = component.Cpe,
                     });
                 }
+              
+                if (component.Purl != null)
+                {
+                    if (package.ExternalRefs == null)
+                    {
+                        package.ExternalRefs = new List<ExternalRef>();
+                    }
+
+                    // multiple PURLs, always pick the first as the component's PURL.
+                    package.ExternalRefs.Insert(0, new ExternalRef
+                    {
+                        ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER,
+                        ReferenceType = "purl",
+                        ReferenceLocator = component.Purl,
+                    });
+                }
 
                 package.DownloadLocation = component.Properties?.GetSpdxElement(PropertyTaxonomy.DOWNLOAD_LOCATION) ?? "NOASSERTION";
                 package.Homepage = component.Properties?.GetSpdxElement(PropertyTaxonomy.HOMEPAGE);

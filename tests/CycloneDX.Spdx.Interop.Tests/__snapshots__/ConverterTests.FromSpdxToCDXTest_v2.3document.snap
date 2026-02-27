@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
+  "specVersion": "1.7",
   "metadata": {
     "timestamp": "2010-01-29T18:30:22Z",
     "tools": [
@@ -11,12 +11,10 @@
     ],
     "authors": [
       {
-        "name": "ExampleCodeInspect",
-        "email": ""
+        "name": "ExampleCodeInspect"
       },
       {
-        "name": "Jane Doe",
-        "email": ""
+        "name": "Jane Doe"
       }
     ],
     "properties": [
@@ -207,6 +205,7 @@
           },
           {
             "license": {
+              "name": "LicenseRef-2",
               "text": {
                 "contentType": "text/plain",
                 "encoding": "base64",
@@ -216,6 +215,7 @@
           },
           {
             "license": {
+              "name": "LicenseRef-1",
               "text": {
                 "contentType": "text/plain",
                 "encoding": "base64",
@@ -277,6 +277,7 @@
       "name": "Jena",
       "version": "3.12.0",
       "copyright": "NOASSERTION",
+      "purl": "pkg:maven/org.apache.jena/apache-jena@3.12.0",
       "externalReferences": [
         {
           "url": "https://search.maven.org/remotecontent?filepath=org/apache/jena/apache-jena/3.12.0/apache-jena-3.12.0.tar.gz",
@@ -299,10 +300,6 @@
         {
           "name": "spdx:license-declared",
           "value": "NOASSERTION"
-        },
-        {
-          "name": "spdx:external-reference:package-manager:purl",
-          "value": "pkg:maven/org.apache.jena/apache-jena@3.12.0"
         },
         {
           "name": "spdx:download-location",
