@@ -133,7 +133,7 @@
       "Analysis": null,
       "Affects": [
         {
-          "Ref": "Thing@1",
+          "Ref": "System1@1:ref1",
           "Versions": null
         }
       ]
@@ -154,7 +154,7 @@
       "Analysis": null,
       "Affects": [
         {
-          "Ref": "Thing@1",
+          "Ref": "System2@1:ref2",
           "Versions": null
         }
       ]
