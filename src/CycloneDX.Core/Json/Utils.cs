@@ -102,8 +102,15 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<EnergySource>());
             options.Converters.Add(new SignatureChoiceConverter());
 
+            options.Converters.Add(new AsserterConverter());
+            options.Converters.Add(new PatentOrFamilyConverter());
+            options.Converters.Add(new HyphenEnumConverter<PatentLegalStatus>());
+            options.Converters.Add(new HyphenEnumConverter<PatentAssertionType>());
+            options.Converters.Add(new HyphenEnumConverter<PredefinedCertificateState>());
+
             options.Converters.Add(new JsonStringEnumConverter());
-            
+
+            options.Converters.Add(new Ikev2TransformTypesConverter());
             options.Converters.Add(new DataflowSourceDestinationConverter());
             
             return options;

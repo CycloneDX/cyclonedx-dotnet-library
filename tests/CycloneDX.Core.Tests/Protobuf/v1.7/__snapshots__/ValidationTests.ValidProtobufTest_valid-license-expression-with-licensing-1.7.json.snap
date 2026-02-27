@@ -1,0 +1,47 @@
+﻿spec_version: "1.7"
+version: 1
+serial_number: "urn:uuid:78a32681-a31f-4097-b151-7b771cc58157"
+components {
+  type: CLASSIFICATION_LIBRARY
+  publisher: "Acme Inc"
+  group: "com.acme"
+  name: "cryptographic-provider"
+  version: "2.2.0"
+  licenses {
+    expression: "LicenseRef-AcmeCommercialLicense"
+    bom_ref: "acme-license-1"
+    7 {
+      1: "acme"
+      1: "acme-license"
+      2 {
+        1 {
+          1: "Acme Inc"
+          3 {
+            1: "Acme Licensing Fulfillment"
+            2: "licensing@example.com"
+          }
+        }
+      }
+      3 {
+        1 {
+          1: "Example Co."
+        }
+      }
+      4 {
+        2 {
+          1: "Samantha Wright"
+          2: "samantha.wright@gmail.com"
+          3: "800-555-1212"
+        }
+      }
+      5: "PO-12345"
+      6: 2
+      7 {
+        1: 1649881239
+      }
+      8 {
+        1: 1681417239
+      }
+    }
+  }
+}

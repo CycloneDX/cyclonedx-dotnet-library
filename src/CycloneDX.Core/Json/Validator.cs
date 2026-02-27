@@ -49,6 +49,12 @@ namespace CycloneDX.Json
                 var jsfSchema = JsonSchema.FromText(jsfStreamReader.ReadToEnd());
                 SchemaRegistry.Global.Register(new Uri("file://jsf-0.82.schema.json"), jsfSchema);
             }
+            using (var cryptoDefsStream = assembly.GetManifestResourceStream("CycloneDX.Core.Schemas.cryptography-defs.schema.json"))
+            using (var cryptoDefsStreamReader = new StreamReader(cryptoDefsStream))
+            {
+                var cryptoDefsSchema = JsonSchema.FromText(cryptoDefsStreamReader.ReadToEnd());
+                SchemaRegistry.Global.Register(new Uri("http://cyclonedx.org/schema/cryptography-defs.schema.json"), cryptoDefsSchema);
+            }
         }
 
         /// <summary>
@@ -102,7 +108,11 @@ namespace CycloneDX.Json
                 if (properties.Name == "specVersion")
                 {
                     var specVersion = properties.Value.GetString();
-                    if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_6))
+                    if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_7))
+                    {
+                        specificationVersion = SpecificationVersion.v1_7;
+                    }
+                    else if (specVersion == SchemaVersionResourceFilenameString(SpecificationVersion.v1_6))
                     {
                         specificationVersion = SpecificationVersion.v1_6;
                     }

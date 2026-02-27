@@ -1,0 +1,34 @@
+﻿{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:bdd25550-f1c1-4cb4-b406-0c8d05ad6382",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "bom-ref": "my-app",
+      "name": "My Application"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "libcurl",
+      "name": "libcurl",
+      "versionRange": "vers:generic/\u003E=8.7.1|\u003C9.0.0",
+      "description": "libcurl ^8.7.1",
+      "isExternal": true
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "my-app",
+      "dependsOn": [
+        "libcurl"
+      ]
+    },
+    {
+      "ref": "libcurl"
+    }
+  ]
+}

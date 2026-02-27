@@ -18,6 +18,13 @@
         }
       ],
       "downloadLocation": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:maven/com.acme/stock-java-client@1.0.12",
+          "referenceType": "purl"
+        }
+      ],
       "licenseDeclared": "Apache-2.0",
       "name": "stock-java-client",
       "primaryPackagePurpose": "LIBRARY",

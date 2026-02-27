@@ -38,15 +38,7 @@
               "rationale": "Confidence rationale here"
             }
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       }
     ],
     "claims": [
@@ -69,15 +61,7 @@
             "url": "https://alm.example.com",
             "type": "issue-tracker"
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       }
     ],
     "evidence": [
@@ -107,14 +91,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       },
       {
@@ -143,14 +119,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       },
       {
@@ -179,14 +147,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       }
     ],
@@ -202,18 +162,6 @@
       "statement": "I certify, to the best of my knowledge, that all information is correct...",
       "signatories": [
         {
-          "name": "Tom",
-          "role": "CEO",
-          "signature": {
-            "algorithm": "ES256",
-            "certificatePath": [
-              "MIIB...",
-              "MIID..."
-            ],
-            "value": "tqIT..."
-          }
-        },
-        {
           "name": "Jerry",
           "role": "COO",
           "organization": {
@@ -224,31 +172,7 @@
             "type": "electronic-signature"
           }
         }
-      ],
-      "signature": {
-        "algorithm": "ES256",
-        "certificatePath": [
-          "MIIB...",
-          "MIID..."
-        ],
-        "value": "tqIT..."
-      }
-    },
-    "signature": {
-      "algorithm": "ES256",
-      "certificatePath": [
-        "MIIB...",
-        "MIID..."
-      ],
-      "value": "tqIT..."
+      ]
     }
-  },
-  "signature": {
-    "algorithm": "ES256",
-    "certificatePath": [
-      "MIIB...",
-      "MIID..."
-    ],
-    "value": "tqIT..."
   }
 }

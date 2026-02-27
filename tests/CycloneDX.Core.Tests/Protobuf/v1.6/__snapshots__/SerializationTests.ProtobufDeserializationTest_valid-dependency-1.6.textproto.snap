@@ -17,6 +17,7 @@
       "Group": null,
       "Name": "library-a",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -29,6 +30,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -42,6 +44,7 @@
       "Group": null,
       "Name": "library-b",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -54,6 +57,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -67,6 +71,7 @@
       "Group": null,
       "Name": "library-c",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -79,6 +84,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

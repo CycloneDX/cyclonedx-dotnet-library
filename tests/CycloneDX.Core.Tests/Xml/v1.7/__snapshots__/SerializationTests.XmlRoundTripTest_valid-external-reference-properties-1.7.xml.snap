@@ -1,0 +1,14 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<bom xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serialNumber="urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79" version="1" xmlns="http://cyclonedx.org/schema/bom/1.7">
+  <components>
+    <component type="application">
+      <name>dummy</name>
+      <description>this component has an external reference with properties</description>
+      <externalReferences>
+        <reference type="component-analysis-report">
+          <url>http://example.com/extref/component-analysis-report</url>
+        </reference>
+      </externalReferences>
+    </component>
+  </components>
+</bom>

@@ -213,6 +213,12 @@ namespace CycloneDX.Models
         [XmlIgnore]
         public SignatureChoice Signature { get; set; }
 
+        [XmlArray("patentAssertions")]
+        [XmlArrayItem("patentAssertion")]
+        [ProtoMember(18)]
+        public List<PatentAssertion> PatentAssertions { get; set; }
+        public bool ShouldSerializePatentAssertions() { return PatentAssertions?.Count > 0; }
+
         [XmlArray("tags")]
         [XmlArrayItem("tag")]
         [ProtoMember(17)]

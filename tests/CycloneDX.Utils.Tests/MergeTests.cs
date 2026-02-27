@@ -176,6 +176,72 @@ namespace CycloneDX.Utils.Tests
         }
 
         [Fact]
+        public void FlatMergeAnnotationsTest()
+        {
+            var sbom1 = new Bom
+            {
+                Components = new List<Component>
+                    {
+                        new Component
+                        {
+                            Name = "Component1",
+                            Version = "1"
+                        }
+                    },
+                Annotations = new List<Annotation>
+                {
+                    new Annotation
+                    {
+                        BomRef = "annotation1",
+                        Subjects = new List<string> { "Component1" },
+                        Text = "Annotation Text",
+                        Annotator = new AnnotatorChoice
+                        {
+                            Individual = new OrganizationalContact
+                            {
+                                BomRef = "individual1",
+                                Name = "individual1",
+                            }
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Components = new List<Component>
+                    {
+                        new Component
+                        {
+                            Name = "Component2",
+                            Version = "1"
+                        }
+                    },
+                Annotations = new List<Annotation>
+                {
+                    new Annotation
+                    {
+                        BomRef = "annotation2",
+                        Subjects = new List<string> { "Component2" },
+                        Text = "Annotation Text 2",
+                        Annotator = new AnnotatorChoice
+                        {
+                            Organization = new OrganizationalEntity
+                            {
+                                BomRef = "organization1",
+                                Name = "organization1",
+                            }
+                        }
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.FlatMerge(sbom1, sbom2);
+
+            Snapshot.Match(result);
+        }
+
+
+        [Fact]
         public void HierarchicalMergeComponentsTest()
         {
             var subject = new Component
@@ -621,5 +687,119 @@ namespace CycloneDX.Utils.Tests
 
             Snapshot.Match(jsonString, SnapshotNameExtension.Create(filename));
         }
+
+        [Theory]
+        [InlineData("valid-attestation-1.6.json")]
+        [InlineData("valid-standard-1.6.json")]
+        public void FlatMergeTest1_6(string filename)
+        {
+            var subject = new Component
+            {
+                Type = Component.Classification.Application,
+                Name = "Thing",
+                Version = "1",
+            };
+            var resourceFilename = Path.Join("MergeTests_Resources", filename);
+            var jsonString = File.ReadAllText(resourceFilename);
+
+            var bom1 = Serializer.Deserialize(jsonString);
+            var bom2 = new Bom
+            {
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Type = Component.Classification.Application,
+                        BomRef = "bom2",
+                        Name = "bom2name"
+                    }
+                }
+            };
+
+
+            var result = CycloneDXUtils.FlatMerge(new[] { bom1, bom2 }, subject);
+            result.SpecVersion = SpecificationVersion.v1_6;
+
+            jsonString = Serializer.Serialize(result);
+
+            var validationResult = Validator.Validate(jsonString, SpecificationVersion.v1_6);
+            Assert.True(validationResult.Valid, string.Join(Environment.NewLine, validationResult.Messages));
+
+            Snapshot.Match(jsonString, SnapshotNameExtension.Create(filename));
+        }
+      
+        [Fact]
+        public void HierarchicalMergeAnnotationsTest()
+        {
+            var subject = new Component
+            {
+                Name = "Thing",
+                Version = "1",
+            };
+
+            var sbom1 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System1",
+                        Version = "1",
+                        BomRef = "System1@1"
+                    }
+                },
+                Annotations = new List<Annotation>
+                {
+                    new Annotation
+                    {
+                        BomRef = "annotation1",
+                        Subjects = new List<string> { "System1@1" },
+                        Text = "Annotation Text",
+                        Annotator = new AnnotatorChoice
+                        {
+                            Individual = new OrganizationalContact
+                            {
+                                BomRef = "individual1",
+                                Name = "individual1",
+                            }
+                        }
+                    }
+                }
+            };
+            var sbom2 = new Bom
+            {
+                Metadata = new Metadata
+                {
+                    Component = new Component
+                    {
+                        Name = "System2",
+                        Version = "1",
+                        BomRef = "System2@1"
+                    }
+                },
+                Annotations = new List<Annotation>
+                {
+                    new Annotation
+                    {
+                        BomRef = "annotation2",
+                        Subjects = new List<string> { "System2@1" },
+                        Text = "Annotation Text 2",
+                        Annotator = new AnnotatorChoice
+                        {
+                            Organization = new OrganizationalEntity
+                            {
+                                BomRef = "organization1",
+                                Name = "organization1",
+                            }
+                        }
+                    }
+                }
+            };
+
+            var result = CycloneDXUtils.HierarchicalMerge(new[] { sbom1, sbom2 }, subject);
+
+            Snapshot.Match(result);
+        }
+
     }
 }

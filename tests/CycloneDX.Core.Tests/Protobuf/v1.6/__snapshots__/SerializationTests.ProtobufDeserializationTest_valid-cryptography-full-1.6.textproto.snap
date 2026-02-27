@@ -17,6 +17,7 @@
       "Group": null,
       "Name": "Name here",
       "Version": null,
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -60,6 +61,7 @@
         "ProtocolProperties": null,
         "ObjectIdentifier": "oid:1.2.3.4.5.6.7.8.9"
       },
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -73,6 +75,7 @@
       "Group": null,
       "Name": "Name here",
       "Version": null,
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -88,6 +91,7 @@
         "AssetType": "Certificate",
         "AlgorithmProperties": null,
         "CertificateProperties": {
+          "SerialNumber": null,
           "SubjectName": "Subject name here",
           "IssuerName": "Issuer name here",
           "NotValidBefore": "2070-07-26T16:41:18Z",
@@ -95,12 +99,17 @@
           "SignatureAlgorithmRef": "bom-ref-to-algorithm",
           "SubjectPublicKeyRef": "bom-ref-to-public-key",
           "CertificateFormat": "X.509",
-          "CertificateExtension": "crt"
+          "CertificateExtension": "crt",
+          "CertificateFileExtension": null,
+          "Fingerprint": null,
+          "CertificateExtensionsProto": null,
+          "RelatedCryptographicAssetsProto": null
         },
         "RelatedCryptoMaterialProperties": null,
         "ProtocolProperties": null,
         "ObjectIdentifier": "oid:1.2.3.4.5.6.7.8.9"
       },
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -114,6 +123,7 @@
       "Group": null,
       "Name": "Name here",
       "Version": null,
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -145,10 +155,13 @@
             }
           ],
           "Ikev2TransformTypes": null,
-          "CryptoRefArray": null
+          "Ikev2TransformTypesLegacy": null,
+          "CryptoRefArray": null,
+          "RelatedCryptographicAssetsProto": null
         },
         "ObjectIdentifier": "oid:1.2.3.4.5.6.7.8.9"
       },
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -162,6 +175,7 @@
       "Group": null,
       "Name": "Name here",
       "Version": null,
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -192,11 +206,14 @@
           "SecuredBy": {
             "Mechanism": "HSM",
             "AlgorithmRef": "bom-ref-to-algorithm"
-          }
+          },
+          "Fingerprint": null,
+          "RelatedCryptographicAssetsProto": null
         },
         "ProtocolProperties": null,
         "ObjectIdentifier": "oid:1.2.3.4.5.6.7.8.9"
       },
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }
