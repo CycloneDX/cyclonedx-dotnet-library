@@ -36,7 +36,7 @@
       "downloadLocation": "NOASSERTION",
       "externalRefs": [
         {
-          "referenceCategory": "PACKAGE_MANAGER",
+          "referenceCategory": "PACKAGE-MANAGER",
           "referenceLocator": "pkg:npm/acme/component@1.0.0",
           "referenceType": "purl"
         }
