@@ -688,6 +688,46 @@ namespace CycloneDX.Utils.Tests
             Snapshot.Match(jsonString, SnapshotNameExtension.Create(filename));
         }
 
+        [Theory]
+        [InlineData("valid-attestation-1.6.json")]
+        [InlineData("valid-standard-1.6.json")]
+        public void FlatMergeTest1_6(string filename)
+        {
+            var subject = new Component
+            {
+                Type = Component.Classification.Application,
+                Name = "Thing",
+                Version = "1",
+            };
+            var resourceFilename = Path.Join("MergeTests_Resources", filename);
+            var jsonString = File.ReadAllText(resourceFilename);
+
+            var bom1 = Serializer.Deserialize(jsonString);
+            var bom2 = new Bom
+            {
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Type = Component.Classification.Application,
+                        BomRef = "bom2",
+                        Name = "bom2name"
+                    }
+                }
+            };
+
+
+            var result = CycloneDXUtils.FlatMerge(new[] { bom1, bom2 }, subject);
+            result.SpecVersion = SpecificationVersion.v1_6;
+
+            jsonString = Serializer.Serialize(result);
+
+            var validationResult = Validator.Validate(jsonString, SpecificationVersion.v1_6);
+            Assert.True(validationResult.Valid, string.Join(Environment.NewLine, validationResult.Messages));
+
+            Snapshot.Match(jsonString, SnapshotNameExtension.Create(filename));
+        }
+      
         [Fact]
         public void HierarchicalMergeAnnotationsTest()
         {

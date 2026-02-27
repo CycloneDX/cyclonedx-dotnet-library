@@ -150,30 +150,31 @@ namespace CycloneDX.Utils
             var annotationsMerger = new ListMergeHelper<Annotation>();
             result.Annotations = annotationsMerger.Merge(bom1.Annotations, bom2.Annotations);
 
-            if (bom1.Definitions != null && bom2.Definitions != null)
+            if (bom1.Definitions != null || bom2.Definitions != null)
             {
                 //this will not take a signature, but it probably makes sense to empty those after a merge anyways. 
                 result.Definitions = new Definitions();
                 var standardMerger = new ListMergeHelper<Standard>();
-                result.Definitions.Standards = standardMerger.Merge(bom1.Definitions.Standards, bom2.Definitions.Standards);
+                result.Definitions.Standards = standardMerger.Merge(bom1.Definitions?.Standards, bom2.Definitions?.Standards);
             }
 
-            if (bom1.Declarations != null && bom2.Declarations != null)
+            if (bom1.Declarations != null || bom2.Declarations != null)
             {
                 //dont merge higher level signatures or the affirmation. The previously signed/affirmed data likely is changed.
                 result.Declarations = new Declarations();
                 var AssesorMerger = new ListMergeHelper<Assessor>();
-                result.Declarations.Assessors = AssesorMerger.Merge(bom1.Declarations.Assessors, bom2.Declarations.Assessors);
+                result.Declarations.Assessors = AssesorMerger.Merge(bom1.Declarations?.Assessors, bom2.Declarations?.Assessors);
                 var attestationMerger = new ListMergeHelper<Attestation>();
-                result.Declarations.Attestations = attestationMerger.Merge(bom1.Declarations.Attestations, bom2.Declarations.Attestations);
-                var claimmerger = new ListMergeHelper<Claim>();
-                result.Declarations.Claims = claimmerger.Merge(bom1.Declarations.Claims, bom2.Declarations.Claims);
+                result.Declarations.Attestations = attestationMerger.Merge(bom1.Declarations?.Attestations, bom2.Declarations?.Attestations);
+                var claimMerger = new ListMergeHelper<Claim>();
+                result.Declarations.Claims = claimMerger.Merge(bom1.Declarations?.Claims, bom2.Declarations?.Claims);
 
-                if (bom1.Declarations?.Targets != null && bom2.Declarations?.Targets != null)
+                if (bom1.Declarations?.Targets != null || bom2.Declarations?.Targets != null)
                 {
-                    result.Declarations.Targets.Organizations = new ListMergeHelper<OrganizationalEntity>().Merge(bom1.Declarations.Targets.Organizations, bom2.Declarations.Targets.Organizations);
-                    result.Declarations.Targets.Components = new ListMergeHelper<Component>().Merge(bom1.Declarations.Targets.Components, bom2.Declarations.Targets.Components);
-                    result.Declarations.Targets.Services = new ListMergeHelper<Service>().Merge(bom1.Declarations.Targets.Services, bom2.Declarations.Targets.Services);
+                    result.Declarations.Targets = new Targets();
+                    result.Declarations.Targets.Organizations = new ListMergeHelper<OrganizationalEntity>().Merge(bom1.Declarations?.Targets?.Organizations, bom2.Declarations?.Targets?.Organizations);
+                    result.Declarations.Targets.Components = new ListMergeHelper<Component>().Merge(bom1.Declarations?.Targets?.Components, bom2.Declarations?.Targets?.Components);
+                    result.Declarations.Targets.Services = new ListMergeHelper<Service>().Merge(bom1.Declarations?.Targets?.Services, bom2.Declarations?.Targets?.Services);
                 }
             }
 
@@ -223,6 +224,10 @@ namespace CycloneDX.Utils
 
             if (bomSubject != null)
             {
+                if (result.Metadata == null)
+                {
+                    result.Metadata = new Metadata();
+                }
                 // use the params provided if possible
                 result.Metadata.Component = bomSubject;
                 result.Metadata.Component.BomRef = ComponentBomRefNamespace(result.Metadata.Component);
@@ -240,6 +245,11 @@ namespace CycloneDX.Utils
 
                         mainDependency.Dependencies.Add(dep);
                     }
+                }
+
+                if (result.Dependencies == null)
+                {
+                    result.Dependencies = new List<Dependency>();
                 }
 
                 result.Dependencies.Add(mainDependency);
