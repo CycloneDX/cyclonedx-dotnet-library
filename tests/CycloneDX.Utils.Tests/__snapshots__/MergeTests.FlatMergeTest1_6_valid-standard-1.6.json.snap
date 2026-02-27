@@ -18,8 +18,7 @@
   ],
   "dependencies": [
     {
-      "ref": "Thing@1",
-      "dependsOn": []
+      "ref": "Thing@1"
     }
   ],
   "definitions": {
@@ -80,15 +79,7 @@
               "requirement-1.1.1"
             ]
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       }
     ]
   }

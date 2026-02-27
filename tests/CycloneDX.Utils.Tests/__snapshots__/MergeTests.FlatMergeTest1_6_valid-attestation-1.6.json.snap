@@ -18,8 +18,7 @@
   ],
   "dependencies": [
     {
-      "ref": "Thing@1",
-      "dependsOn": []
+      "ref": "Thing@1"
     }
   ],
   "declarations": {
@@ -57,15 +56,7 @@
               "rationale": "Confidence rationale here"
             }
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       }
     ],
     "claims": [
@@ -88,15 +79,7 @@
             "url": "https://alm.example.com",
             "type": "issue-tracker"
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       }
     ],
     "targets": {

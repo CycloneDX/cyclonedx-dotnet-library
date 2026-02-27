@@ -43,21 +43,45 @@ namespace CycloneDX.Core.Models
         [ProtoMember(4)]
         public string AlgorithmRef { get; set; }
 
+        private DateTime? _creationDate;
         [XmlElement("creationDate")]
         [ProtoMember(5)]
-        public DateTime CreationDate { get; set; }
+        public DateTime? CreationDate
+        {
+            get => _creationDate;
+            set { _creationDate = BomUtils.UtcifyDateTime(value); }
+        }
+        public bool ShouldSerializeCreationDate() { return CreationDate != null; }
 
+        private DateTime? _activationDate;
         [XmlElement("activationDate")]
         [ProtoMember(6)]
-        public DateTime ActivationDate { get; set; }
+        public DateTime? ActivationDate
+        {
+            get => _activationDate;
+            set { _activationDate = BomUtils.UtcifyDateTime(value); }
+        }
+        public bool ShouldSerializeActivationDate() { return ActivationDate != null; }
 
+        private DateTime? _updateDate;
         [XmlElement("updateDate")]
         [ProtoMember(7)]
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate
+        {
+            get => _updateDate;
+            set { _updateDate = BomUtils.UtcifyDateTime(value); }
+        }
+        public bool ShouldSerializeUpdateDate() { return UpdateDate != null; }
 
+        private DateTime? _expirationDate;
         [XmlElement("expirationDate")]
         [ProtoMember(8)]
-        public DateTime ExpirationDate { get; set; }
+        public DateTime? ExpirationDate
+        {
+            get => _expirationDate;
+            set { _expirationDate = BomUtils.UtcifyDateTime(value); }
+        }
+        public bool ShouldSerializeExpirationDate() { return ExpirationDate != null; }
 
         [XmlElement("value")]
         [ProtoMember(9)]
