@@ -53,6 +53,10 @@ namespace CycloneDX.Models
             BLAKE2b_512,
             [XmlEnum(Name = "BLAKE3")]
             BLAKE3,
+            [XmlEnum(Name = "Streebog-256")]
+            Streebog_256,
+            [XmlEnum(Name = "Streebog-512")]
+            Streebog_512,
         }
 
         [XmlAttribute("alg")]

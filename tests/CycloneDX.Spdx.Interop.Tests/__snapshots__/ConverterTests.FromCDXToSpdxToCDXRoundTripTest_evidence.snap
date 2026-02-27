@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
+  "specVersion": "1.7",
   "metadata": {
     "timestamp": "2021-12-24T12:00:00Z",
     "properties": [
@@ -36,6 +36,7 @@
           "expression": "LGPL-3.0-or-later"
         }
       ],
+      "purl": "pkg:maven/com.google.code.findbugs/findbugs-project@3.0.0",
       "externalReferences": [
         {
           "url": "NOASSERTION",

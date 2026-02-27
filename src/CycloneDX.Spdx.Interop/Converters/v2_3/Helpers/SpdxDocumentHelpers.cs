@@ -200,6 +200,40 @@ namespace CycloneDX.Spdx.Interop.Helpers
                 package.Checksums = component.GetSpdxChecksums();
                 package.ExternalRefs = component.GetSpdxExternalRefs();
 
+                if (component.Cpe != null)
+                {
+                    if (package.ExternalRefs == null)
+                    {
+                        package.ExternalRefs = new List<ExternalRef>();
+                    }
+
+                    // Insert at the start, so that this correctly roundtrips, i.e. if there are
+                    // multiple CPEs, always pick the first as the component's cpe.
+                    var referenceType = component.Cpe.StartsWith("cpe:/", true, culture: System.Globalization.CultureInfo.InvariantCulture) ? "cpe22Type" : "cpe23Type";
+                    package.ExternalRefs.Insert(0, new ExternalRef
+                    {
+                        ReferenceCategory = ExternalRefCategory.SECURITY,
+                        ReferenceType = referenceType,
+                        ReferenceLocator = component.Cpe,
+                    });
+                }
+              
+                if (component.Purl != null)
+                {
+                    if (package.ExternalRefs == null)
+                    {
+                        package.ExternalRefs = new List<ExternalRef>();
+                    }
+
+                    // multiple PURLs, always pick the first as the component's PURL.
+                    package.ExternalRefs.Insert(0, new ExternalRef
+                    {
+                        ReferenceCategory = ExternalRefCategory.PACKAGE_MANAGER,
+                        ReferenceType = "purl",
+                        ReferenceLocator = component.Purl,
+                    });
+                }
+
                 package.DownloadLocation = component.Properties?.GetSpdxElement(PropertyTaxonomy.DOWNLOAD_LOCATION) ?? "NOASSERTION";
                 package.Homepage = component.Properties?.GetSpdxElement(PropertyTaxonomy.HOMEPAGE);
 

@@ -34,6 +34,13 @@
         }
       ],
       "downloadLocation": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE_MANAGER",
+          "referenceLocator": "pkg:npm/acme/component@1.0.0",
+          "referenceType": "purl"
+        }
+      ],
       "licenseDeclared": "Apache-2.0",
       "name": "tomcat-catalina",
       "primaryPackagePurpose": "LIBRARY",

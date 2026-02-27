@@ -51,6 +51,8 @@ namespace CycloneDX.Core.Models
         [XmlEnum("ae")]
         AE,
         [XmlEnum("combiner")]
-        Combiner
+        Combiner,
+        [XmlEnum("key-wrap")]
+        Key_Wrap
     }
 }

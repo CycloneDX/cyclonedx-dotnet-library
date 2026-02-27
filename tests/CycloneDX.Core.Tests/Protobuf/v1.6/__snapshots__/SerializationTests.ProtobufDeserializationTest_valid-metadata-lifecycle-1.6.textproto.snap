@@ -27,7 +27,8 @@
         "Name": "platform-integration-testing",
         "Description": "Integration testing specific to the runtime platform"
       }
-    ]
+    ],
+    "DistributionConstraints": null
   },
   "Components": null,
   "Compositions": null,

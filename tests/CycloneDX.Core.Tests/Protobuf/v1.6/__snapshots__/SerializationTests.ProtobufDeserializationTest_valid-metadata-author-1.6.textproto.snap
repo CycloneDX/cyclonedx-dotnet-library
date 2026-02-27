@@ -18,7 +18,8 @@
     ],
     "Component": null,
     "Manufacture": null,
-    "Supplier": null
+    "Supplier": null,
+    "DistributionConstraints": null
   },
   "Components": null,
   "Compositions": null,
