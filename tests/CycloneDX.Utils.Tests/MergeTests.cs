@@ -131,6 +131,126 @@ namespace CycloneDX.Utils.Tests
             Assert.Single(result.Components);
         }
 
+        [Fact]
+        public void FlatMergeDuplicatedComponentsDependenciesTest()
+        {
+            var sboms = new List<Bom>();
+            var bom1 = new Bom
+            {
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component1",
+                        Version = "1",
+                        BomRef = "Component1",
+                    },
+                    new Component
+                    {
+                        Name = "CommonDependencyComponent",
+                        Version = "1",
+                        BomRef = "CommonDependencyComponent"
+                    },
+                    new Component
+                    {
+                        Name = "OtherDependencyComponent",
+                        Version = "1",
+                        BomRef = "OtherDependencyComponent"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "Component1",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "CommonDependencyComponent"
+                            },
+                            new Dependency
+                            {
+                                Ref = "OtherDependencyComponent"
+                            }
+                        }
+                    },
+                    new Dependency
+                    {
+                        Ref = "CommonDependencyComponent",
+                        Dependencies = new List<Dependency>{}
+                    },
+                    new Dependency
+                    {
+                        Ref = "OtherDependencyComponent",
+                        Dependencies = new List<Dependency>{}
+                    }
+                }
+            };
+            sboms.Add(bom1);
+            var bom2 = new Bom
+            {
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "Component2",
+                        Version = "1",
+                        BomRef = "Component2",
+                    },
+                    new Component
+                    {
+                        Name = "CommonDependencyComponent",
+                        Version = "1",
+                        BomRef = "CommonDependencyComponent"
+                    },
+                    new Component
+                    {
+                        Name = "OtherDependencyComponent2",
+                        Version = "1",
+                        BomRef = "OtherDependencyComponent2"
+                    }
+                },
+                Dependencies = new List<Dependency>
+                {
+                    new Dependency
+                    {
+                        Ref = "Component2",
+                        Dependencies = new List<Dependency>
+                        {
+                            new Dependency
+                            {
+                                Ref = "CommonDependencyComponent"
+                            },
+                            new Dependency
+                            {
+                                Ref = "OtherDependencyComponent2"
+                            }
+                        }
+                    },
+                    new Dependency
+                    {
+                        Ref = "CommonDependencyComponent",
+                        Dependencies = new List<Dependency>{}
+                    },
+                    new Dependency
+                    {
+                        Ref = "OtherDependencyComponent2",
+                        Dependencies = new List<Dependency>{}
+                    }
+                }
+            };
+            sboms.Add(bom2);
+            var result = CycloneDXUtils.FlatMerge(sboms);
+
+            // there are 5 involved components:
+            // Component1, Component2, CommonDependencyComponent,
+            // OtherDependencyComponent, OtherDependencyComponent2
+            Assert.Equal(5, result.Dependencies.Count);
+            Snapshot.Match(result);
+        }
+
+
 
         [Fact]
         public void FlatMergeVulnerabilitiesTest()
