@@ -208,6 +208,7 @@
           },
           {
             "license": {
+              "name": "LicenseRef-2",
               "text": {
                 "contentType": "text/plain",
                 "encoding": "base64",
@@ -217,6 +218,7 @@
           },
           {
             "license": {
+              "name": "LicenseRef-1",
               "text": {
                 "contentType": "text/plain",
                 "encoding": "base64",
