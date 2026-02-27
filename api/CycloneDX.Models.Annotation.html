@@ -79,16 +79,14 @@
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><span class="xref">Annotation</span></div>
   </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="CycloneDX.Models.Annotation.html">Annotation</a>&gt;</div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
@@ -108,7 +106,7 @@
   <h5 id="CycloneDX_Models_Annotation_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoContract]
-public class Annotation</code></pre>
+public class Annotation : IEquatable&lt;Annotation&gt;</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
@@ -117,7 +115,7 @@ public class Annotation</code></pre>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_Annotator.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.Annotator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L78">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L79">View Source</a>
   </span>
   <a id="CycloneDX_Models_Annotation_Annotator_" data-uid="CycloneDX.Models.Annotation.Annotator*"></a>
   <h4 id="CycloneDX_Models_Annotation_Annotator" data-uid="CycloneDX.Models.Annotation.Annotator">Annotator</h4>
@@ -148,7 +146,7 @@ public AnnotatorChoice Annotator { get; set; }</code></pre>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_BomRef.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.BomRef%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L36">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L37">View Source</a>
   </span>
   <a id="CycloneDX_Models_Annotation_BomRef_" data-uid="CycloneDX.Models.Annotation.BomRef*"></a>
   <h4 id="CycloneDX_Models_Annotation_BomRef" data-uid="CycloneDX.Models.Annotation.BomRef">BomRef</h4>
@@ -180,7 +178,7 @@ public string BomRef { get; set; }</code></pre>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_Subjects.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.Subjects%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L41">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L42">View Source</a>
   </span>
   <a id="CycloneDX_Models_Annotation_Subjects_" data-uid="CycloneDX.Models.Annotation.Subjects*"></a>
   <h4 id="CycloneDX_Models_Annotation_Subjects" data-uid="CycloneDX.Models.Annotation.Subjects">Subjects</h4>
@@ -212,7 +210,7 @@ public List&lt;string&gt; Subjects { get; set; }</code></pre>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_Text.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.Text%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L91">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L92">View Source</a>
   </span>
   <a id="CycloneDX_Models_Annotation_Text_" data-uid="CycloneDX.Models.Annotation.Text*"></a>
   <h4 id="CycloneDX_Models_Annotation_Text" data-uid="CycloneDX.Models.Annotation.Text">Text</h4>
@@ -243,7 +241,7 @@ public string Text { get; set; }</code></pre>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_Timestamp.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.Timestamp%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L82">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L83">View Source</a>
   </span>
   <a id="CycloneDX_Models_Annotation_Timestamp_" data-uid="CycloneDX.Models.Annotation.Timestamp*"></a>
   <h4 id="CycloneDX_Models_Annotation_Timestamp" data-uid="CycloneDX.Models.Annotation.Timestamp">Timestamp</h4>
@@ -274,7 +272,7 @@ public DateTime? Timestamp { get; set; }</code></pre>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_XmlSubjects.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.XmlSubjects%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L73">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L74">View Source</a>
   </span>
   <a id="CycloneDX_Models_Annotation_XmlSubjects_" data-uid="CycloneDX.Models.Annotation.XmlSubjects*"></a>
   <h4 id="CycloneDX_Models_Annotation_XmlSubjects" data-uid="CycloneDX.Models.Annotation.XmlSubjects">XmlSubjects</h4>
@@ -304,10 +302,138 @@ public List&lt;Annotation.XmlAnnotationSubject&gt; XmlSubjects { get; set; }</co
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_Equals_CycloneDX_Models_Annotation_.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.Equals(CycloneDX.Models.Annotation)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L108">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Annotation_Equals_" data-uid="CycloneDX.Models.Annotation.Equals*"></a>
+  <h4 id="CycloneDX_Models_Annotation_Equals_CycloneDX_Models_Annotation_" data-uid="CycloneDX.Models.Annotation.Equals(CycloneDX.Models.Annotation)">Equals(Annotation)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(Annotation obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CycloneDX.Models.Annotation.html">Annotation</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_Equals_System_Object_.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.Equals(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L97">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Annotation_Equals_" data-uid="CycloneDX.Models.Annotation.Equals*"></a>
+  <h4 id="CycloneDX_Models_Annotation_Equals_System_Object_" data-uid="CycloneDX.Models.Annotation.Equals(System.Object)">Equals(object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_GetHashCode.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L113">View Source</a>
+  </span>
+  <a id="CycloneDX_Models_Annotation_GetHashCode_" data-uid="CycloneDX.Models.Annotation.GetHashCode*"></a>
+  <h4 id="CycloneDX_Models_Annotation_GetHashCode" data-uid="CycloneDX.Models.Annotation.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation_ShouldSerializeTimestamp.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation.ShouldSerializeTimestamp%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L89">View Source</a>
+    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L90">View Source</a>
   </span>
   <a id="CycloneDX_Models_Annotation_ShouldSerializeTimestamp_" data-uid="CycloneDX.Models.Annotation.ShouldSerializeTimestamp*"></a>
   <h4 id="CycloneDX_Models_Annotation_ShouldSerializeTimestamp" data-uid="CycloneDX.Models.Annotation.ShouldSerializeTimestamp">ShouldSerializeTimestamp()</h4>
@@ -332,6 +458,10 @@ public List&lt;Annotation.XmlAnnotationSubject&gt; XmlSubjects { get; set; }</co
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>
+  </div>
 
 </article>
           </div>
@@ -344,7 +474,7 @@ public List&lt;Annotation.XmlAnnotationSubject&gt; XmlSubjects { get; set; }</co
                     <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/new/main/apiSpec/new?filename=CycloneDX_Models_Annotation.md&amp;value=---%0Auid%3A%20CycloneDX.Models.Annotation%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L26" class="contribution-link">View Source</a>
+                    <a href="https://github.com/CycloneDX/cyclonedx-dotnet-library/blob/main/src/CycloneDX.Core/Models/Annotation.cs/#L27" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

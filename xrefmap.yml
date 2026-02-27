@@ -4250,6 +4250,41 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Models.Annotation.BomRef
   nameWithType: Annotation.BomRef
+- uid: CycloneDX.Models.Annotation.Equals(CycloneDX.Models.Annotation)
+  name: Equals(Annotation)
+  href: api/CycloneDX.Models.Annotation.html#CycloneDX_Models_Annotation_Equals_CycloneDX_Models_Annotation_
+  commentId: M:CycloneDX.Models.Annotation.Equals(CycloneDX.Models.Annotation)
+  fullName: CycloneDX.Models.Annotation.Equals(CycloneDX.Models.Annotation)
+  nameWithType: Annotation.Equals(Annotation)
+- uid: CycloneDX.Models.Annotation.Equals(System.Object)
+  name: Equals(object)
+  href: api/CycloneDX.Models.Annotation.html#CycloneDX_Models_Annotation_Equals_System_Object_
+  commentId: M:CycloneDX.Models.Annotation.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: CycloneDX.Models.Annotation.Equals(object)
+  fullName.vb: CycloneDX.Models.Annotation.Equals(Object)
+  nameWithType: Annotation.Equals(object)
+  nameWithType.vb: Annotation.Equals(Object)
+- uid: CycloneDX.Models.Annotation.Equals*
+  name: Equals
+  href: api/CycloneDX.Models.Annotation.html#CycloneDX_Models_Annotation_Equals_
+  commentId: Overload:CycloneDX.Models.Annotation.Equals
+  isSpec: "True"
+  fullName: CycloneDX.Models.Annotation.Equals
+  nameWithType: Annotation.Equals
+- uid: CycloneDX.Models.Annotation.GetHashCode
+  name: GetHashCode()
+  href: api/CycloneDX.Models.Annotation.html#CycloneDX_Models_Annotation_GetHashCode
+  commentId: M:CycloneDX.Models.Annotation.GetHashCode
+  fullName: CycloneDX.Models.Annotation.GetHashCode()
+  nameWithType: Annotation.GetHashCode()
+- uid: CycloneDX.Models.Annotation.GetHashCode*
+  name: GetHashCode
+  href: api/CycloneDX.Models.Annotation.html#CycloneDX_Models_Annotation_GetHashCode_
+  commentId: Overload:CycloneDX.Models.Annotation.GetHashCode
+  isSpec: "True"
+  fullName: CycloneDX.Models.Annotation.GetHashCode
+  nameWithType: Annotation.GetHashCode
 - uid: CycloneDX.Models.Annotation.ShouldSerializeTimestamp
   name: ShouldSerializeTimestamp()
   href: api/CycloneDX.Models.Annotation.html#CycloneDX_Models_Annotation_ShouldSerializeTimestamp
