@@ -31,9 +31,6 @@
       "type": "library",
       "name": "tomcat-catalina",
       "version": "9.0.14",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",

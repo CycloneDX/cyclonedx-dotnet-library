@@ -97,9 +97,6 @@
       "author": "Example Super Heros",
       "name": "mylibrary",
       "version": "1.0.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
