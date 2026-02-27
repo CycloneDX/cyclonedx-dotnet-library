@@ -2838,6 +2838,45 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.SecuredBy
   nameWithType: RelatedCryptoMaterialProperties.SecuredBy
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeActivationDate
+  name: ShouldSerializeActivationDate()
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeActivationDate
+  commentId: M:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeActivationDate
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeActivationDate()
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeActivationDate()
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeActivationDate*
+  name: ShouldSerializeActivationDate
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeActivationDate_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeActivationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeActivationDate
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeActivationDate
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeCreationDate
+  name: ShouldSerializeCreationDate()
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeCreationDate
+  commentId: M:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeCreationDate
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeCreationDate()
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeCreationDate()
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeCreationDate*
+  name: ShouldSerializeCreationDate
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeCreationDate_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeCreationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeCreationDate
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeCreationDate
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeExpirationDate
+  name: ShouldSerializeExpirationDate()
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeExpirationDate
+  commentId: M:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeExpirationDate
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeExpirationDate()
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeExpirationDate()
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeExpirationDate*
+  name: ShouldSerializeExpirationDate
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeExpirationDate_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeExpirationDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeExpirationDate
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeExpirationDate
 - uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets
   name: ShouldSerializeRelatedCryptographicAssets()
   href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeRelatedCryptographicAssets
@@ -2851,6 +2890,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets
   nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeRelatedCryptographicAssets
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeUpdateDate
+  name: ShouldSerializeUpdateDate()
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeUpdateDate
+  commentId: M:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeUpdateDate
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeUpdateDate()
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeUpdateDate()
+- uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeUpdateDate*
+  name: ShouldSerializeUpdateDate
+  href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_ShouldSerializeUpdateDate_
+  commentId: Overload:CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeUpdateDate
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.ShouldSerializeUpdateDate
+  nameWithType: RelatedCryptoMaterialProperties.ShouldSerializeUpdateDate
 - uid: CycloneDX.Core.Models.RelatedCryptoMaterialProperties.Size
   name: Size
   href: api/CycloneDX.Core.Models.RelatedCryptoMaterialProperties.html#CycloneDX_Core_Models_RelatedCryptoMaterialProperties_Size
