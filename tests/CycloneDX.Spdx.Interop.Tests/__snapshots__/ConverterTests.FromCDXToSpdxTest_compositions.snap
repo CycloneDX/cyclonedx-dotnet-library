@@ -14,7 +14,7 @@
       "downloadLocation": "NOASSERTION",
       "externalRefs": [
         {
-          "referenceCategory": "PACKAGE_MANAGER",
+          "referenceCategory": "PACKAGE-MANAGER",
           "referenceLocator": "pkg:maven/partner/shaded-library@1.0",
           "referenceType": "purl"
         }
@@ -28,7 +28,7 @@
       "downloadLocation": "NOASSERTION",
       "externalRefs": [
         {
-          "referenceCategory": "PACKAGE_MANAGER",
+          "referenceCategory": "PACKAGE-MANAGER",
           "referenceLocator": "pkg:maven/acme/library@3.0",
           "referenceType": "purl"
         }

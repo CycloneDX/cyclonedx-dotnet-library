@@ -20,7 +20,7 @@
       "downloadLocation": "NOASSERTION",
       "externalRefs": [
         {
-          "referenceCategory": "PACKAGE_MANAGER",
+          "referenceCategory": "PACKAGE-MANAGER",
           "referenceLocator": "pkg:maven/com.acme/stock-java-client@1.0.12",
           "referenceType": "purl"
         }
