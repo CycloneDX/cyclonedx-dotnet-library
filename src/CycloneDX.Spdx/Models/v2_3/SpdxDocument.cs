@@ -83,7 +83,9 @@ namespace CycloneDX.Spdx.Models.v2_3
         /// </summary>
         [Obsolete("Revieweds is deprecated, use Annotation instead")]
         public List<ReviewInformation> Revieweds { get; set; }
+        #pragma warning disable CS0618 // Intentional access to obsolete member for serialization control
         public bool ShouldSerializeRevieweds() => Revieweds?.Count > 0;
+        #pragma warning restore CS0618
 
         /// <summary>
         /// Packages, files and/or Snippets described by this SPDX document
