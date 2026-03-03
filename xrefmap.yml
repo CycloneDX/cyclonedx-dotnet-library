@@ -956,6 +956,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeActivationDate
   nameWithType: CertificateProperties.ShouldSerializeActivationDate
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtension_Xml
+  name: ShouldSerializeCertificateExtension_Xml()
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCertificateExtension_Xml
+  commentId: M:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtension_Xml
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtension_Xml()
+  nameWithType: CertificateProperties.ShouldSerializeCertificateExtension_Xml()
+- uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtension_Xml*
+  name: ShouldSerializeCertificateExtension_Xml
+  href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCertificateExtension_Xml_
+  commentId: Overload:CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtension_Xml
+  isSpec: "True"
+  fullName: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtension_Xml
+  nameWithType: CertificateProperties.ShouldSerializeCertificateExtension_Xml
 - uid: CycloneDX.Core.Models.CertificateProperties.ShouldSerializeCertificateExtensions
   name: ShouldSerializeCertificateExtensions()
   href: api/CycloneDX.Core.Models.CertificateProperties.html#CycloneDX_Core_Models_CertificateProperties_ShouldSerializeCertificateExtensions
@@ -19934,6 +19947,32 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Spdx.Models.v2_3.File.SPDXID
   nameWithType: File.SPDXID
+- uid: CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeArtifactOfs
+  name: ShouldSerializeArtifactOfs()
+  href: api/CycloneDX.Spdx.Models.v2_3.File.html#CycloneDX_Spdx_Models_v2_3_File_ShouldSerializeArtifactOfs
+  commentId: M:CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeArtifactOfs
+  fullName: CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeArtifactOfs()
+  nameWithType: File.ShouldSerializeArtifactOfs()
+- uid: CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeArtifactOfs*
+  name: ShouldSerializeArtifactOfs
+  href: api/CycloneDX.Spdx.Models.v2_3.File.html#CycloneDX_Spdx_Models_v2_3_File_ShouldSerializeArtifactOfs_
+  commentId: Overload:CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeArtifactOfs
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeArtifactOfs
+  nameWithType: File.ShouldSerializeArtifactOfs
+- uid: CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeFileDependencies
+  name: ShouldSerializeFileDependencies()
+  href: api/CycloneDX.Spdx.Models.v2_3.File.html#CycloneDX_Spdx_Models_v2_3_File_ShouldSerializeFileDependencies
+  commentId: M:CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeFileDependencies
+  fullName: CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeFileDependencies()
+  nameWithType: File.ShouldSerializeFileDependencies()
+- uid: CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeFileDependencies*
+  name: ShouldSerializeFileDependencies
+  href: api/CycloneDX.Spdx.Models.v2_3.File.html#CycloneDX_Spdx_Models_v2_3_File_ShouldSerializeFileDependencies_
+  commentId: Overload:CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeFileDependencies
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Models.v2_3.File.ShouldSerializeFileDependencies
+  nameWithType: File.ShouldSerializeFileDependencies
 - uid: CycloneDX.Spdx.Models.v2_3.FileType
   name: FileType
   href: api/CycloneDX.Spdx.Models.v2_3.FileType.html
@@ -21357,6 +21396,19 @@ references:
   isSpec: "True"
   fullName: CycloneDX.Spdx.Models.v2_3.SpdxDocument.SPDXID
   nameWithType: SpdxDocument.SPDXID
+- uid: CycloneDX.Spdx.Models.v2_3.SpdxDocument.ShouldSerializeRevieweds
+  name: ShouldSerializeRevieweds()
+  href: api/CycloneDX.Spdx.Models.v2_3.SpdxDocument.html#CycloneDX_Spdx_Models_v2_3_SpdxDocument_ShouldSerializeRevieweds
+  commentId: M:CycloneDX.Spdx.Models.v2_3.SpdxDocument.ShouldSerializeRevieweds
+  fullName: CycloneDX.Spdx.Models.v2_3.SpdxDocument.ShouldSerializeRevieweds()
+  nameWithType: SpdxDocument.ShouldSerializeRevieweds()
+- uid: CycloneDX.Spdx.Models.v2_3.SpdxDocument.ShouldSerializeRevieweds*
+  name: ShouldSerializeRevieweds
+  href: api/CycloneDX.Spdx.Models.v2_3.SpdxDocument.html#CycloneDX_Spdx_Models_v2_3_SpdxDocument_ShouldSerializeRevieweds_
+  commentId: Overload:CycloneDX.Spdx.Models.v2_3.SpdxDocument.ShouldSerializeRevieweds
+  isSpec: "True"
+  fullName: CycloneDX.Spdx.Models.v2_3.SpdxDocument.ShouldSerializeRevieweds
+  nameWithType: SpdxDocument.ShouldSerializeRevieweds
 - uid: CycloneDX.Spdx.Models.v2_3.SpdxDocument.Snippets
   name: Snippets
   href: api/CycloneDX.Spdx.Models.v2_3.SpdxDocument.html#CycloneDX_Spdx_Models_v2_3_SpdxDocument_Snippets
