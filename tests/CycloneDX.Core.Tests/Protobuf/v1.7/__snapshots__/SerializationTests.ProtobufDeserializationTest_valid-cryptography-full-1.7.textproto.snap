@@ -98,6 +98,7 @@
           "SubjectPublicKeyRef": "bom_ref-to-public-key",
           "CertificateFormat": "X.509",
           "CertificateExtension": "crt",
+          "CertificateExtension_Json": null,
           "CertificateFileExtension": "crt",
           "Fingerprint": {
             "Alg": "SHA_256",

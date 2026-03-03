@@ -45,7 +45,6 @@
           "signatureAlgorithmRef": "bom-ref-to-algorithm",
           "subjectPublicKeyRef": "bom-ref-to-public-key",
           "certificateFormat": "X.509",
-          "certificateExtension": "crt",
           "certificateFileExtension": "crt",
           "fingerprint": {
             "alg": "SHA-256",

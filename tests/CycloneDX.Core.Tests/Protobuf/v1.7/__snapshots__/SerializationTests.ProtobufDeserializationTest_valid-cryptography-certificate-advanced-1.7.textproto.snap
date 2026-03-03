@@ -77,6 +77,7 @@
           "SubjectPublicKeyRef": null,
           "CertificateFormat": "X.509",
           "CertificateExtension": null,
+          "CertificateExtension_Json": null,
           "CertificateFileExtension": "pem",
           "Fingerprint": {
             "Alg": "SHA_256",
@@ -429,6 +430,7 @@
           "SubjectPublicKeyRef": null,
           "CertificateFormat": "X.509",
           "CertificateExtension": null,
+          "CertificateExtension_Json": null,
           "CertificateFileExtension": "crt",
           "Fingerprint": {
             "Alg": "SHA_256",

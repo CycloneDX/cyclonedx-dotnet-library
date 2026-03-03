@@ -45,6 +45,7 @@ components {
       subjectPublicKeyRef: "bom-ref-to-public-key"
       certificateFormat: "X.509"
       certificateExtension: "crt"
+      certificateFileExtension: "crt"
     }
     oid: "oid:1.2.3.4.5.6.7.8.9"
   }
