@@ -18,6 +18,7 @@
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using CycloneDX.Models;
@@ -60,9 +61,17 @@ namespace CycloneDX.Core.Models
         public string CertificateFormat { get; set; }
 
         [System.Obsolete("Use CertificateFileExtension instead.")]
-        [XmlElement("certificateExtension")]
+        [XmlIgnore]
         [ProtoMember(8)]
         public string CertificateExtension { get; set; }
+
+#pragma warning disable 618
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [XmlElement("certificateExtension")]
+        [JsonIgnore]
+        public string CertificateExtension_Xml { get => CertificateExtension; set => CertificateExtension = value; }
+        public bool ShouldSerializeCertificateExtension_Xml() { return CertificateExtension != null; }
+#pragma warning restore 618
 
         [XmlElement("certificateFileExtension")]
         [ProtoMember(10)]
