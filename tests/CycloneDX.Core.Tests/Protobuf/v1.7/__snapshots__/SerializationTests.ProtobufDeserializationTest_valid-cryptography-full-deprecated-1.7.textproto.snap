@@ -100,8 +100,8 @@
           "SubjectPublicKeyRef": "bom-ref-to-public-key",
           "CertificateFormat": "X.509",
           "CertificateExtension": "crt",
-          "CertificateExtension_Xml": "crt",
-          "CertificateFileExtension": null,
+          "CertificateExtension_Json": null,
+          "CertificateFileExtension": "crt",
           "Fingerprint": null,
           "CertificateExtensionsProto": null,
           "RelatedCryptographicAssetsProto": null

@@ -38,7 +38,7 @@
           <signatureAlgorithmRef>bom-ref-to-algorithm</signatureAlgorithmRef>
           <subjectPublicKeyRef>bom-ref-to-public-key</subjectPublicKeyRef>
           <certificateFormat>X.509</certificateFormat>
-          <certificateExtension>crt</certificateExtension>
+          <certificateFileExtension>crt</certificateFileExtension>
         </certificateProperties>
         <protocolProperties>
           <type>tls</type>

@@ -383,6 +383,12 @@ namespace CycloneDX
                     {
                         var certProps = component.CryptoProperties.CertificateProperties;
                         certProps.SerialNumber = null;
+#pragma warning disable 618
+                        if (certProps.CertificateExtension == null && certProps.CertificateFileExtension != null)
+                        {
+                            certProps.CertificateExtension = certProps.CertificateFileExtension;
+                        }
+#pragma warning restore 618
                         certProps.CertificateFileExtension = null;
                         certProps.Fingerprint = null;
                         certProps.CertificateStates = null;
