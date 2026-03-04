@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
-      contents: write  # needed for creating GH release and uploading release assets
+      contents: write  # needed for creating GH release, uploading release assets, and GitHub OIDC token issuance
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-dotnet@v5
@@ -64,14 +64,19 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           dotnet pack --configuration Release /p:Version=$VERSION --output ./nupkgs
 
+      # Get a short-lived NuGet API key
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Publish packages to NuGet
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
-          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Core.${{ steps.package_release.outputs.version }}.nupkg
-          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
-          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Spdx.${{ steps.package_release.outputs.version }}.nupkg
-          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{steps.login.outputs.NUGET_API_KEY}} ./nupkgs/CycloneDX.Core.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{steps.login.outputs.NUGET_API_KEY}} ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{steps.login.outputs.NUGET_API_KEY}} ./nupkgs/CycloneDX.Spdx.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{steps.login.outputs.NUGET_API_KEY}} ./nupkgs/CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.nupkg
 
       - name: Create github release and git tag for release
         id: create_release
