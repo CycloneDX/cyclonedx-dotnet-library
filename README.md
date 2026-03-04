@@ -39,6 +39,7 @@ minimising data loss during conversion, pull requests are welcome :)
 | License information in files | Needs review, the way SPDX and CycloneDX handle license information evidence is slightly different. |
 | Snippet Information | Snippets are not currently supported by CycloneDX |
 | Non-SPDX licenses | Implementation pending |
+| Package URL for Component Identity | SPDX supports multiple PURLs for a package. But doesn't support specifying if any are a component identifier. The first one is used as component purl.|
 | CPE for Component Identity | SPDX supports multiple CPEs for a package. But doesn't support specifying if any are a component identifier. The first one is used as component CPE.|
 
 #### CycloneDX -> SPDX
