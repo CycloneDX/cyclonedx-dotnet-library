@@ -36,8 +36,20 @@ namespace CycloneDX.Utils
 
             var componentCache = new Dictionary<string, List<Component>>();
 
-            foreach (var component in bom.Components)
+            var toVisit = new List<Component>(bom.Components);
+
+            while (toVisit.Count > 0)
             {
+                var component = toVisit.Last();
+                toVisit.RemoveAt(toVisit.Count - 1);
+                if (component.Components != null)
+                {
+                    foreach (var subComponent in component.Components)
+                    {
+                        toVisit.Add(subComponent);
+                    }
+                }
+
                 var componentIdentifier = ComponentAnalysisIdentifier(component);
                 if (!componentCache.ContainsKey(componentIdentifier))
                 {
@@ -45,6 +57,7 @@ namespace CycloneDX.Utils
                 }
                 componentCache[componentIdentifier].Add(component);
             }
+
 
             foreach (var componentEntry in componentCache)
             {
