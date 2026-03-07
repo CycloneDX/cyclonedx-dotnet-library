@@ -35,5 +35,43 @@ namespace CycloneDX.Utils.Tests
 
             Assert.Equal(2, result["component"].Count);
         }
+
+        [Fact]
+        public void MultipleNestedComponentVersionTest()
+        {
+            var bom = new Bom
+            {
+                Components = new List<Component>
+                {
+                    new Component
+                    {
+                        Name = "ComponentA",
+                        Version = "1",
+                        BomRef = "ComponentA@1"
+                    },
+                    new Component
+                    {
+                        Name = "ComponentB",
+                        Version = "1",
+                        BomRef = "ComponentB@1",
+                        Components = new List<Component>
+                        {
+                            new Component
+                            {
+                                Name = "ComponentA",
+                                Version = "2",
+                                BomRef = "ComponentA@2"
+                            }
+                        }
+                    }
+                },
+            };
+
+            var result = CycloneDXUtils.MultipleComponentVersions(bom);
+
+            Assert.Equal(2, result["ComponentA"].Count);
+            Assert.Equal("1", result["ComponentA"][0].Version);
+            Assert.Equal("2", result["ComponentA"][1].Version);
+        }
     }
 }
