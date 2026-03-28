@@ -25,6 +25,7 @@ using CycloneDX.Models;
 
 namespace CycloneDX.Core.Benchmark
 {
+    [MemoryDiagnoser]
     public class Serialization
     {
         private readonly Bom _bom;
@@ -35,10 +36,9 @@ namespace CycloneDX.Core.Benchmark
         public Serialization()
         {
             _xmlBom = File.ReadAllText(Path.Join("Resources", "valid-bom-1.4.xml"));
+            _bom = Xml.Serializer.Deserialize(_xmlBom);
             _jsonBom = Json.Serializer.Serialize(_bom);
             _protobufBom = Protobuf.Serializer.Serialize(_bom);
-
-            _bom = Xml.Serializer.Deserialize(_xmlBom);
         }
 
         [Benchmark]
@@ -98,8 +98,8 @@ namespace CycloneDX.Core.Benchmark
     {
         public static void Main(string[] args)
         {
-            // BenchmarkRunner.Run<Serialization>();
-            BenchmarkRunner.Run<Validation>();
+            var switcher = new BenchmarkSwitcher(typeof(Program).Assembly);
+            switcher.Run(args);
         }
     }
 }
