@@ -39,7 +39,7 @@ namespace CycloneDX.Json.Converters
             else if (reader.TokenType == JsonTokenType.StartObject)
             {
                 // need to remove _this_ converter from the options to prevent recursion below
-                var serializerOptions = Utils.GetJsonSerializerOptions();
+                var serializerOptions = new JsonSerializerOptions(options);
                 for (var i = 0; i < serializerOptions.Converters.Count; i++)
                 {
                     if (serializerOptions.Converters[i].CanConvert(typeof(ToolChoices)))
