@@ -17,6 +17,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using CycloneDX.Core.Models;
 using CycloneDX.Json.Converters;
 using CycloneDX.Models;
@@ -29,7 +30,21 @@ namespace CycloneDX.Json
     /// </summary>
     public static class Utils
     {
-        public static bool UseUnsafeRelaxedJsonEscaping { get; set; } = false;  
+        private static bool useUnsafeRelaxedJsonEscaping;
+
+        public static bool UseUnsafeRelaxedJsonEscaping
+        {
+            get
+            {
+                return useUnsafeRelaxedJsonEscaping;
+            }
+            set
+            {
+                useUnsafeRelaxedJsonEscaping = value;
+                Serializer.ResetSerializerOptions();
+            }
+        }
+
         public static JsonSerializerOptions GetBaseJsonSerializerOptions()
         {
             return new JsonSerializerOptions
