@@ -30,7 +30,7 @@ namespace CycloneDX.Json
     /// </summary>
     public static class Utils
     {
-        private static bool useUnsafeRelaxedJsonEscaping = false;
+        private static bool useUnsafeRelaxedJsonEscaping;
 
         public static bool UseUnsafeRelaxedJsonEscaping
         {
