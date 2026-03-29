@@ -32,8 +32,13 @@ namespace CycloneDX.Json
     /// </summary>
     public static partial class Serializer
     {
-        private static readonly JsonSerializerOptions _options = Utils.GetJsonSerializerOptions();
+        private static JsonSerializerOptions _options = Utils.GetJsonSerializerOptions();
         public static JsonSerializerOptions SerializerOptionsForHash { get => _options; }
+
+        internal static void ResetSerializerOptions()
+        {
+            _options = Utils.GetJsonSerializerOptions();
+        }
 
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.
