@@ -84,6 +84,25 @@ namespace CycloneDX.Models
             return (null);
         }
 
+        private static readonly Dictionary<string, XmlSerializer> _attachedTextSerializers = new Dictionary<string, XmlSerializer>();
+
+        private static XmlSerializer GetAttachedTextXmlSerializer(string namespaceURI)
+        {
+            // This XmlSerializer caching is important,
+            // otherwise you continue to emit dynamic libraries
+            // which can't be unloaded; compare Serializer.GetXmlSerializer
+
+            lock (_attachedTextSerializers)
+            {
+                if (!_attachedTextSerializers.ContainsKey(namespaceURI))
+                {
+                    _attachedTextSerializers[namespaceURI] = new XmlSerializer(typeof(AttachedText), new XmlRootAttribute("text") { Namespace = namespaceURI });
+                }
+                return _attachedTextSerializers[namespaceURI];
+            }
+        }
+
+
         public void ReadXml(System.Xml.XmlReader reader)
         {
 
@@ -94,7 +113,7 @@ namespace CycloneDX.Models
             {
                 XmlSerializer licenseSerializer = new XmlSerializer(typeof(License), reader.NamespaceURI);
                 XmlSerializer licensingSerializer = new XmlSerializer(typeof(Licensing), reader.NamespaceURI);
-                XmlSerializer attachedTextSerializer = new XmlSerializer(typeof(AttachedText), new XmlRootAttribute("text") { Namespace = reader.NamespaceURI });
+                XmlSerializer attachedTextSerializer = GetAttachedTextXmlSerializer(reader.NamespaceURI);
 
                 Licenses = new List<LicenseChoice>();
 
@@ -266,7 +285,7 @@ namespace CycloneDX.Models
 
                         if (license.ExpressionDetails != null)
                         {
-                            XmlSerializer attachedTextSerializer = new XmlSerializer(typeof(AttachedText), new XmlRootAttribute("text") { Namespace = defaultNamespace });
+                            XmlSerializer attachedTextSerializer = GetAttachedTextXmlSerializer(defaultNamespace);
                             foreach (var detail in license.ExpressionDetails)
                             {
                                 writer.WriteStartElement("details");

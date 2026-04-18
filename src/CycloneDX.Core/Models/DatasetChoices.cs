@@ -33,13 +33,26 @@ namespace CycloneDX.Models
             SpecVersion = SpecificationVersionHelpers.CurrentVersion; 
         }
 
+        private static readonly Dictionary<string, XmlSerializer> _datasetSerializers = new Dictionary<string, XmlSerializer>();
+
         private XmlSerializer GetDatasetSerializer(string namespaceUri)
         {
-            var rootAttr = new XmlRootAttribute("dataset")
+            // This XmlSerializer caching is important,
+            // otherwise you continue to emit dynamic libraries
+            // which can't be unloaded; compare Serializer.GetXmlSerializer
+
+            lock (_datasetSerializers)
             {
-                Namespace = namespaceUri
-            };
-            return new XmlSerializer(typeof(Data), rootAttr);
+                if (!_datasetSerializers.ContainsKey(namespaceUri))
+                {
+                    var rootAttr = new XmlRootAttribute("dataset")
+                    {
+                        Namespace = namespaceUri
+                    };
+                    _datasetSerializers[namespaceUri] = new XmlSerializer(typeof(Data), rootAttr);
+                }
+                return _datasetSerializers[namespaceUri];
+            }
         }
 
         public System.Xml.Schema.XmlSchema GetSchema() => null;

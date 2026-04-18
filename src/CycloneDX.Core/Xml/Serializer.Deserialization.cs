@@ -36,11 +36,13 @@ namespace CycloneDX.Xml
             Contract.Requires(xmlString != null);
             using (var stream = new MemoryStream())
             {
-                var writer = new StreamWriter(stream);
-                writer.Write(xmlString);
-                writer.Flush();
-                stream.Position = 0;
-                return Deserialize(stream);
+                using (var writer = new StreamWriter(stream))
+                {
+                    writer.Write(xmlString);
+                    writer.Flush();
+                    stream.Position = 0;
+                    return Deserialize(stream);
+                }
             }
         }
 
