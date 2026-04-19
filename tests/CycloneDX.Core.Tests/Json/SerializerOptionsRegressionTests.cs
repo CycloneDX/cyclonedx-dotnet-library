@@ -23,6 +23,7 @@ using Xunit;
 
 namespace CycloneDX.Core.Tests.Json
 {
+    #pragma warning disable 612, 618 // Tests intentionally exercise the obsolete global flag
     public class SerializerOptionsRegressionTests
     {
         [Fact]

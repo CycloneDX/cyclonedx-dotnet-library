@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using CycloneDX.Core.Models;
@@ -33,6 +34,7 @@ namespace CycloneDX.Json
         /// Global fallback for JSON escaping behavior. Prefer passing the
         /// <c>unsafeRelaxedJsonEscaping</c> parameter to <see cref="Serializer.Serialize(Bom, bool?)"/> instead.
         /// </summary>
+        [Obsolete("Use the unsafeRelaxedJsonEscaping parameter on Serializer.Serialize() instead. This global flag will be removed in a future major version.")]
         public static bool UseUnsafeRelaxedJsonEscaping { get; set; }
 
         public static JsonSerializerOptions GetBaseJsonSerializerOptions()

@@ -42,6 +42,7 @@ namespace CycloneDX.Json
         // reconstructing options (see PR #437). Callers should prefer the explicit parameter
         // on Serialize(); the global Utils.UseUnsafeRelaxedJsonEscaping fallback is kept for
         // backward compatibility but is not thread-safe and should be phased out.
+        #pragma warning disable 612, 618 // Intentional use of obsolete UseUnsafeRelaxedJsonEscaping for backward compat
         private static JsonSerializerOptions GetOptions(bool? unsafeRelaxedJsonEscaping = null)
         {
             switch (unsafeRelaxedJsonEscaping)
@@ -54,6 +55,7 @@ namespace CycloneDX.Json
                 default:    return Utils.UseUnsafeRelaxedJsonEscaping ? _unsafeRelaxedOptions : _defaultOptions;
             }
         }
+        #pragma warning restore 612, 618
 
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.
