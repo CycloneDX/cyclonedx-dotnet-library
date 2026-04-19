@@ -33,9 +33,8 @@ namespace CycloneDX.Json
     {
         private static readonly JsonSerializerOptions _defaultOptions = Utils.GetJsonSerializerOptions(useUnsafeRelaxedJsonEscaping: false);
         private static readonly JsonSerializerOptions _unsafeRelaxedOptions = Utils.GetJsonSerializerOptions(useUnsafeRelaxedJsonEscaping: true);
-        private static readonly JsonSerializerOptions _optionsForHash = _defaultOptions;
 
-        public static JsonSerializerOptions SerializerOptionsForHash { get => _optionsForHash; }
+        public static JsonSerializerOptions SerializerOptionsForHash { get => _defaultOptions; }
 
         // Two pre-built, immutable JsonSerializerOptions are cached at startup - one for
         // default escaping, one for unsafe/relaxed. This avoids the massive per-call cost of
