@@ -24,6 +24,7 @@ using Xunit;
 
 namespace CycloneDX.Core.Tests.Xml
 {
+    [Collection("XmlMemoryRegression")]
     public class MemoryRegressionTests
     {
         [Fact]

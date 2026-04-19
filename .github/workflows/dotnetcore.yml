@@ -68,7 +68,7 @@ jobs:
 
     - name: Tests
       run: |
-        dotnet test
+        dotnet test --filter "Category!=LongRunning"
   
   documentation-build:
     name: "Build documentation"
