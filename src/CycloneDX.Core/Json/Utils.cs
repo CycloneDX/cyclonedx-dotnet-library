@@ -33,9 +33,14 @@ namespace CycloneDX.Json
         /// Global fallback for JSON escaping behavior. Prefer passing the
         /// <c>unsafeRelaxedJsonEscaping</c> parameter to <see cref="Serializer.Serialize(Bom, bool?)"/> instead.
         /// </summary>
-        public static bool UseUnsafeRelaxedJsonEscaping { get; set; } = false;
+        public static bool UseUnsafeRelaxedJsonEscaping { get; set; }
 
-        public static JsonSerializerOptions GetBaseJsonSerializerOptions(bool useUnsafeRelaxedJsonEscaping = false)
+        public static JsonSerializerOptions GetBaseJsonSerializerOptions()
+        {
+            return GetBaseJsonSerializerOptions(false);
+        }
+
+        public static JsonSerializerOptions GetBaseJsonSerializerOptions(bool useUnsafeRelaxedJsonEscaping)
         {
             return new JsonSerializerOptions
             {
@@ -52,7 +57,12 @@ namespace CycloneDX.Json
         /// deserialize CycloneDX JSON documents.
         /// </summary>
         /// <returns></returns>
-        public static JsonSerializerOptions GetJsonSerializerOptions(bool useUnsafeRelaxedJsonEscaping = false)
+        public static JsonSerializerOptions GetJsonSerializerOptions()
+        {
+            return GetJsonSerializerOptions(false);
+        }
+
+        public static JsonSerializerOptions GetJsonSerializerOptions(bool useUnsafeRelaxedJsonEscaping)
         {
             var options = GetBaseJsonSerializerOptions(useUnsafeRelaxedJsonEscaping);
             

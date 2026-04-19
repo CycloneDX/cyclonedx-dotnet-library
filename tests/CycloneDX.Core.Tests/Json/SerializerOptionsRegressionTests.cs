@@ -261,6 +261,8 @@ namespace CycloneDX.Core.Tests.Json
         }
 
         [Fact]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2001:AvoidCallingProblematicMethods",
+            Justification = "GC.Collect is intentional here to measure allocation behavior")]
         public void SerializeRepeatedlyStaysWithinAllocationBudget()
         {
             var bom = new Bom

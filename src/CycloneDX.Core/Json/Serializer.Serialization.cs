@@ -57,15 +57,33 @@ namespace CycloneDX.Json
 
         /// <summary>
         /// Serializes a CycloneDX BOM writing the output to a stream.
+        /// Uses <see cref="Utils.UseUnsafeRelaxedJsonEscaping"/> for escaping behavior.
+        /// </summary>
+        public static Task SerializeAsync(Bom bom, Stream outputStream)
+        {
+            return SerializeAsync(bom, outputStream, null);
+        }
+
+        /// <summary>
+        /// Serializes a CycloneDX BOM writing the output to a stream.
         /// </summary>
         /// <param name="bom"></param>
         /// <param name="outputStream"></param>
         /// <param name="unsafeRelaxedJsonEscaping">Use relaxed JSON escaping. When null, falls back to <see cref="Utils.UseUnsafeRelaxedJsonEscaping"/>.</param>
         /// <returns></returns>
-        public static async Task SerializeAsync(Bom bom, Stream outputStream, bool? unsafeRelaxedJsonEscaping = null)
+        public static async Task SerializeAsync(Bom bom, Stream outputStream, bool? unsafeRelaxedJsonEscaping)
         {            
             Contract.Requires(bom != null && outputStream != null);
             await JsonSerializer.SerializeAsync<Bom>(outputStream, BomUtils.GetBomForSerialization(bom), GetOptions(unsafeRelaxedJsonEscaping)).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Serializes a CycloneDX BOM returning the output as a string.
+        /// Uses <see cref="Utils.UseUnsafeRelaxedJsonEscaping"/> for escaping behavior.
+        /// </summary>
+        public static string Serialize(Bom bom)
+        {
+            return Serialize(bom, null);
         }
 
         /// <summary>
@@ -74,7 +92,7 @@ namespace CycloneDX.Json
         /// <param name="bom"></param>
         /// <param name="unsafeRelaxedJsonEscaping">Use relaxed JSON escaping. When null, falls back to <see cref="Utils.UseUnsafeRelaxedJsonEscaping"/>.</param>
         /// <returns></returns>
-        public static string Serialize(Bom bom, bool? unsafeRelaxedJsonEscaping = null)
+        public static string Serialize(Bom bom, bool? unsafeRelaxedJsonEscaping)
         {
             Contract.Requires(bom != null);
             var jsonBom = JsonSerializer.Serialize(BomUtils.GetBomForSerialization(bom), GetOptions(unsafeRelaxedJsonEscaping));
