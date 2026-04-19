@@ -29,12 +29,17 @@ namespace CycloneDX.Json
     /// </summary>
     public static class Utils
     {
-        public static bool UseUnsafeRelaxedJsonEscaping { get; set; } = false;  
-        public static JsonSerializerOptions GetBaseJsonSerializerOptions()
+        /// <summary>
+        /// Global fallback for JSON escaping behavior. Prefer passing the
+        /// <c>unsafeRelaxedJsonEscaping</c> parameter to <see cref="Serializer.Serialize(Bom, bool?)"/> instead.
+        /// </summary>
+        public static bool UseUnsafeRelaxedJsonEscaping { get; set; } = false;
+
+        public static JsonSerializerOptions GetBaseJsonSerializerOptions(bool useUnsafeRelaxedJsonEscaping = false)
         {
             return new JsonSerializerOptions
             {
-                Encoder = UseUnsafeRelaxedJsonEscaping
+                Encoder = useUnsafeRelaxedJsonEscaping
                     ? System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                     : System.Text.Encodings.Web.JavaScriptEncoder.Default,
                 WriteIndented = true,
@@ -47,9 +52,9 @@ namespace CycloneDX.Json
         /// deserialize CycloneDX JSON documents.
         /// </summary>
         /// <returns></returns>
-        public static JsonSerializerOptions GetJsonSerializerOptions()
+        public static JsonSerializerOptions GetJsonSerializerOptions(bool useUnsafeRelaxedJsonEscaping = false)
         {
-            var options = GetBaseJsonSerializerOptions();
+            var options = GetBaseJsonSerializerOptions(useUnsafeRelaxedJsonEscaping);
             
             options.Converters.Add(new UnderscoreEnumConverter<Composition.AggregateType>());
             options.Converters.Add(new HyphenEnumConverter<Component.ComponentScope>());
