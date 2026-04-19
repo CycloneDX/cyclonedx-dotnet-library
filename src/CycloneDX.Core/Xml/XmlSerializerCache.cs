@@ -22,6 +22,15 @@ using System.Xml.Serialization;
 
 namespace CycloneDX.Xml
 {
+    // XmlSerializer can generate dynamic assemblies for constructor shapes that are
+    // not internally cached by .NET (for example, XmlRootAttribute-based overloads).
+    // Those assemblies are not unloaded, so repeated serializer creation causes
+    // long-running processes to keep growing memory.
+    //
+    // Reference: https://learn.microsoft.com/dotnet/fundamentals/runtime-libraries/system-xml-serialization-xmlserializer
+    // Context: https://github.com/CycloneDX/cyclonedx-dotnet-library/issues/438
+    //
+    // Keep serializer creation centralized here so each shape is created once and reused.
     internal static class XmlSerializerCache
     {
         private readonly struct CacheKey : IEquatable<CacheKey>
