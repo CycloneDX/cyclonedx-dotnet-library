@@ -42,9 +42,16 @@ namespace CycloneDX.Core.Tests.Xml
             var tasks = new Task[taskCount];
             for (var i = 0; i < taskCount; i++)
             {
+                var taskIndex = i;
                 tasks[i] = Task.Run(() =>
                 {
-                    var input = i % 3 == 0 ? licenseXml : i % 3 == 1 ? toolXml : serviceXml;
+                    var selector = taskIndex % 3;
+                    if (selector < 0)
+                    {
+                        selector += 3;
+                    }
+
+                    var input = selector == 0 ? licenseXml : selector == 1 ? toolXml : serviceXml;
 
                     for (var j = 0; j < iterationsPerTask; j++)
                     {
