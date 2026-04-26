@@ -19,7 +19,6 @@ using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Xml;
-using System.Xml.Serialization;
 using CycloneDX.Models;
 
 namespace CycloneDX.Xml
@@ -36,11 +35,13 @@ namespace CycloneDX.Xml
             Contract.Requires(xmlString != null);
             using (var stream = new MemoryStream())
             {
-                var writer = new StreamWriter(stream);
-                writer.Write(xmlString);
-                writer.Flush();
-                stream.Position = 0;
-                return Deserialize(stream);
+                using (var writer = new StreamWriter(stream))
+                {
+                    writer.Write(xmlString);
+                    writer.Flush();
+                    stream.Position = 0;
+                    return Deserialize(stream);
+                }
             }
         }
 
@@ -93,7 +94,7 @@ namespace CycloneDX.Xml
                 xmlns = null;
             }
 
-            var serializer = new XmlSerializer(typeof(Bom), xmlns);
+            var serializer = XmlSerializerCache.Get(typeof(Bom), xmlns);
             var bom = (Bom)serializer.Deserialize(xmlStream);
 
             bom.SpecVersionString = SpecificationVersionHelpers.XmlNamespaceSpecificationVersion(xmlns);

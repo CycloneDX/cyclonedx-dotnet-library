@@ -18,6 +18,7 @@
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
+using CycloneDX.Xml;
 using ProtoBuf;
 
 namespace CycloneDX.Models
@@ -25,16 +26,8 @@ namespace CycloneDX.Models
     [ProtoContract]
     public class ResourceReferenceChoice : IXmlSerializable
     {
-        private static XmlSerializer _extRefSerializer;
-        private static XmlSerializer GetExternalReferenceSerializer()
-        {
-            if (_extRefSerializer == null)
-            {
-                _extRefSerializer = new XmlSerializer(typeof(ExternalReference), new XmlRootAttribute("externalReference"));
-            }
-
-            return _extRefSerializer;
-        }
+        private static XmlSerializer GetExternalReferenceSerializer() =>
+            XmlSerializerCache.Get(typeof(ExternalReference), "externalReference", null);
         
         [ProtoMember(1)]
         public string Ref { get; set; }
