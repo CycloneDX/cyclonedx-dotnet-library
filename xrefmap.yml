@@ -3967,6 +3967,15 @@ references:
   commentId: M:CycloneDX.Json.Serializer.Serialize(CycloneDX.Models.Bom)
   fullName: CycloneDX.Json.Serializer.Serialize(CycloneDX.Models.Bom)
   nameWithType: Serializer.Serialize(Bom)
+- uid: CycloneDX.Json.Serializer.Serialize(CycloneDX.Models.Bom,System.Nullable{System.Boolean})
+  name: Serialize(Bom, bool?)
+  href: api/CycloneDX.Json.Serializer.html#CycloneDX_Json_Serializer_Serialize_CycloneDX_Models_Bom_System_Nullable_System_Boolean__
+  commentId: M:CycloneDX.Json.Serializer.Serialize(CycloneDX.Models.Bom,System.Nullable{System.Boolean})
+  name.vb: Serialize(Bom, Boolean?)
+  fullName: CycloneDX.Json.Serializer.Serialize(CycloneDX.Models.Bom, bool?)
+  fullName.vb: CycloneDX.Json.Serializer.Serialize(CycloneDX.Models.Bom, Boolean?)
+  nameWithType: Serializer.Serialize(Bom, bool?)
+  nameWithType.vb: Serializer.Serialize(Bom, Boolean?)
 - uid: CycloneDX.Json.Serializer.Serialize*
   name: Serialize
   href: api/CycloneDX.Json.Serializer.html#CycloneDX_Json_Serializer_Serialize_
@@ -3980,6 +3989,15 @@ references:
   commentId: M:CycloneDX.Json.Serializer.SerializeAsync(CycloneDX.Models.Bom,System.IO.Stream)
   fullName: CycloneDX.Json.Serializer.SerializeAsync(CycloneDX.Models.Bom, System.IO.Stream)
   nameWithType: Serializer.SerializeAsync(Bom, Stream)
+- uid: CycloneDX.Json.Serializer.SerializeAsync(CycloneDX.Models.Bom,System.IO.Stream,System.Nullable{System.Boolean})
+  name: SerializeAsync(Bom, Stream, bool?)
+  href: api/CycloneDX.Json.Serializer.html#CycloneDX_Json_Serializer_SerializeAsync_CycloneDX_Models_Bom_System_IO_Stream_System_Nullable_System_Boolean__
+  commentId: M:CycloneDX.Json.Serializer.SerializeAsync(CycloneDX.Models.Bom,System.IO.Stream,System.Nullable{System.Boolean})
+  name.vb: SerializeAsync(Bom, Stream, Boolean?)
+  fullName: CycloneDX.Json.Serializer.SerializeAsync(CycloneDX.Models.Bom, System.IO.Stream, bool?)
+  fullName.vb: CycloneDX.Json.Serializer.SerializeAsync(CycloneDX.Models.Bom, System.IO.Stream, Boolean?)
+  nameWithType: Serializer.SerializeAsync(Bom, Stream, bool?)
+  nameWithType.vb: Serializer.SerializeAsync(Bom, Stream, Boolean?)
 - uid: CycloneDX.Json.Serializer.SerializeAsync*
   name: SerializeAsync
   href: api/CycloneDX.Json.Serializer.html#CycloneDX_Json_Serializer_SerializeAsync_
@@ -4012,6 +4030,15 @@ references:
   commentId: M:CycloneDX.Json.Utils.GetBaseJsonSerializerOptions
   fullName: CycloneDX.Json.Utils.GetBaseJsonSerializerOptions()
   nameWithType: Utils.GetBaseJsonSerializerOptions()
+- uid: CycloneDX.Json.Utils.GetBaseJsonSerializerOptions(System.Boolean)
+  name: GetBaseJsonSerializerOptions(bool)
+  href: api/CycloneDX.Json.Utils.html#CycloneDX_Json_Utils_GetBaseJsonSerializerOptions_System_Boolean_
+  commentId: M:CycloneDX.Json.Utils.GetBaseJsonSerializerOptions(System.Boolean)
+  name.vb: GetBaseJsonSerializerOptions(Boolean)
+  fullName: CycloneDX.Json.Utils.GetBaseJsonSerializerOptions(bool)
+  fullName.vb: CycloneDX.Json.Utils.GetBaseJsonSerializerOptions(Boolean)
+  nameWithType: Utils.GetBaseJsonSerializerOptions(bool)
+  nameWithType.vb: Utils.GetBaseJsonSerializerOptions(Boolean)
 - uid: CycloneDX.Json.Utils.GetBaseJsonSerializerOptions*
   name: GetBaseJsonSerializerOptions
   href: api/CycloneDX.Json.Utils.html#CycloneDX_Json_Utils_GetBaseJsonSerializerOptions_
@@ -4025,6 +4052,15 @@ references:
   commentId: M:CycloneDX.Json.Utils.GetJsonSerializerOptions
   fullName: CycloneDX.Json.Utils.GetJsonSerializerOptions()
   nameWithType: Utils.GetJsonSerializerOptions()
+- uid: CycloneDX.Json.Utils.GetJsonSerializerOptions(System.Boolean)
+  name: GetJsonSerializerOptions(bool)
+  href: api/CycloneDX.Json.Utils.html#CycloneDX_Json_Utils_GetJsonSerializerOptions_System_Boolean_
+  commentId: M:CycloneDX.Json.Utils.GetJsonSerializerOptions(System.Boolean)
+  name.vb: GetJsonSerializerOptions(Boolean)
+  fullName: CycloneDX.Json.Utils.GetJsonSerializerOptions(bool)
+  fullName.vb: CycloneDX.Json.Utils.GetJsonSerializerOptions(Boolean)
+  nameWithType: Utils.GetJsonSerializerOptions(bool)
+  nameWithType.vb: Utils.GetJsonSerializerOptions(Boolean)
 - uid: CycloneDX.Json.Utils.GetJsonSerializerOptions*
   name: GetJsonSerializerOptions
   href: api/CycloneDX.Json.Utils.html#CycloneDX_Json_Utils_GetJsonSerializerOptions_
