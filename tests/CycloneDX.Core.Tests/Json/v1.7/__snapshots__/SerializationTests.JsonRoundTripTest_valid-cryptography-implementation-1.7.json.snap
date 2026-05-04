@@ -1,0 +1,143 @@
+﻿{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:e8c355aa-2142-4084-a8c7-6d42c8610ba2",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-07-09T12:00:00Z",
+    "component": {
+      "type": "application",
+      "name": "my application",
+      "version": "1.0"
+    }
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128-GCM-128-12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "parameterSetIdentifier": "128",
+          "executionEnvironment": "software-plain-ram",
+          "implementationPlatform": "x86_64",
+          "certificationLevel": [
+            "none"
+          ],
+          "mode": "gcm",
+          "cryptoFunctions": [
+            "keygen",
+            "encrypt",
+            "decrypt",
+            "tag"
+          ],
+          "classicalSecurityLevel": 128,
+          "nistQuantumSecurityLevel": 1
+        },
+        "oid": "2.16.840.1.101.3.4.1.6"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-PKCS1-1.5-SHA512-2048",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "parameterSetIdentifier": "512",
+          "executionEnvironment": "software-plain-ram",
+          "implementationPlatform": "x86_64",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "sign",
+            "verify"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.2.840.113549.1.1.13"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ecdhsecp521r1",
+      "name": "ECDH-secp521r1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "executionEnvironment": "software-plain-ram",
+          "implementationPlatform": "x86_64",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "keygen",
+            "keyderive"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.3.132.0.35"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "mlkem1024",
+      "name": "ML-KEM-1024",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kem",
+          "executionEnvironment": "software-plain-ram",
+          "implementationPlatform": "x86_64",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "keygen",
+            "keyderive"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 5
+        },
+        "oid": "2.16.840.1.101.3.4.1.48"
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "draftietftlshybriddesign13",
+      "name": "draft-ietf-tls-hybrid-design-13",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "combiner",
+          "executionEnvironment": "software-plain-ram",
+          "implementationPlatform": "x86_64",
+          "certificationLevel": [
+            "none"
+          ],
+          "cryptoFunctions": [
+            "keygen",
+            "keyderive"
+          ],
+          "classicalSecurityLevel": 0,
+          "nistQuantumSecurityLevel": 0
+        },
+        "oid": "1.3.101.110"
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "draftietftlshybriddesign13",
+      "dependsOn": [
+        "mlkem1024",
+        "ecdhsecp521r1"
+      ]
+    }
+  ]
+}

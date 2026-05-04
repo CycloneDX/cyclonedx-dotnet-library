@@ -1,0 +1,34 @@
+﻿{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:7dc07ac8-7fb8-4782-bf89-4762394e189d",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "bom-ref": "my-app",
+      "name": "My Application"
+    }
+  },
+  "components": [
+    {
+      "type": "operating-system",
+      "bom-ref": "os",
+      "name": "Ubuntu",
+      "version": "24.04",
+      "description": "Ubuntu 24.04",
+      "isExternal": true
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "my-app",
+      "dependsOn": [
+        "os"
+      ]
+    },
+    {
+      "ref": "os"
+    }
+  ]
+}

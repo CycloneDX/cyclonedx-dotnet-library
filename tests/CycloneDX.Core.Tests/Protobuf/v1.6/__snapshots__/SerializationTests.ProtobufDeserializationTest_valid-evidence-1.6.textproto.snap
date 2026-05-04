@@ -17,6 +17,7 @@
       "Group": "com.google.code.findbugs",
       "Name": "findbugs-project",
       "Version": "3.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": [
@@ -29,7 +30,8 @@
             "Licensing": null
           },
           "Expression": null,
-          "BomRef": null
+          "BomRef": null,
+          "Licensing": null
         }
       ],
       "LicensesSerialized": {
@@ -43,7 +45,8 @@
               "Licensing": null
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           }
         ]
       },
@@ -64,7 +67,8 @@
               "Licensing": null
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           },
           {
             "License": {
@@ -75,7 +79,8 @@
               "Licensing": null
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           }
         ],
         "LicensesSerialized": {
@@ -89,7 +94,8 @@
                 "Licensing": null
               },
               "Expression": null,
-              "BomRef": null
+              "BomRef": null,
+              "Licensing": null
             },
             {
               "License": {
@@ -100,7 +106,8 @@
                 "Licensing": null
               },
               "Expression": null,
-              "BomRef": null
+              "BomRef": null,
+              "Licensing": null
             }
           ]
         },
@@ -215,6 +222,7 @@
       },
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -228,6 +236,7 @@
       "Group": "com.example",
       "Name": "example-project",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -329,6 +338,7 @@
       },
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

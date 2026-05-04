@@ -142,6 +142,21 @@ namespace CycloneDX.Spdx.Interop.Helpers
                         {
                             refPropValue = $"{extRef.ReferenceLocator} {extRef.Comment}";
                         }
+                        if ((refPropName == PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE22 ||
+                            refPropName == PropertyTaxonomy.EXTERNAL_REFERENCE_SECURITY_CPE23) && component.Cpe == null)
+                        {
+                            // For the first seen cpe, assume it is the component's cpe.
+                            component.Cpe = refPropValue;
+                            continue;
+                        }
+
+                        if (refPropName == PropertyTaxonomy.EXTERNAL_REFERENCE_PACKAGE_MANAGER_PURL && component.Purl == null)
+                        {
+                            // For the first seen purl, assume it is the component's purl.
+                            component.Purl = refPropValue;
+                            continue;
+                        }
+
                         component.Properties.AddSpdxElement(refPropName, refPropValue);
                     }
                 }

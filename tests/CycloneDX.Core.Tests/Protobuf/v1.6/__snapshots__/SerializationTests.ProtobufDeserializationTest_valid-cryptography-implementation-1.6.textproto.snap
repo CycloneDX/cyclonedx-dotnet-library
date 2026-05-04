@@ -19,6 +19,7 @@
       "Group": null,
       "Name": "Acme Application",
       "Version": "1.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -31,11 +32,13 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
     "Manufacture": null,
-    "Supplier": null
+    "Supplier": null,
+    "DistributionConstraints": null
   },
   "Components": [
     {
@@ -48,6 +51,7 @@
       "Group": null,
       "Name": "AES",
       "Version": null,
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -90,6 +94,7 @@
         "ProtocolProperties": null,
         "ObjectIdentifier": "oid:2.16.840.1.101.3.4.1.6"
       },
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -103,6 +108,7 @@
       "Group": null,
       "Name": "Crypto library",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -115,6 +121,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -128,6 +135,7 @@
       "Group": null,
       "Name": "Some library",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -140,6 +148,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

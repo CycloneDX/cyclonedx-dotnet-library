@@ -27,7 +27,6 @@
                   <name>Acme Org</name>
                   <url>https://issues.acme.org/17240</url>
                 </source>
-                <references />
               </issue>
             </resolves>
           </patch>

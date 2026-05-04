@@ -1,0 +1,95 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:7dc07ac8-7fb8-4782-bf89-4762394e189d",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": {
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": null,
+    "Component": {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": "my-app",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "My Application",
+      "Version": null,
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    "Manufacture": null,
+    "Supplier": null,
+    "DistributionConstraints": null
+  },
+  "Components": [
+    {
+      "Type": "Operating_System",
+      "MimeType": null,
+      "BomRef": "os",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Ubuntu",
+      "Version": "24.04",
+      "VersionRange": null,
+      "Description": "Ubuntu 24.04",
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": true,
+      "NonNullableIsExternal": true,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Dependencies": [
+    {
+      "Ref": "my-app",
+      "Dependencies": [
+        {
+          "Ref": "os",
+          "Dependencies": null,
+          "Provides": null
+        }
+      ],
+      "Provides": null
+    },
+    {
+      "Ref": "os",
+      "Dependencies": null,
+      "Provides": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

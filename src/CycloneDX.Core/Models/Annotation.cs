@@ -20,11 +20,12 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
 using ProtoBuf;
+using System.Text.Json;
 
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class Annotation
+    public class Annotation : IEquatable<Annotation>
     {
         [XmlType("subject")]
         public class XmlAnnotationSubject
@@ -91,5 +92,27 @@ namespace CycloneDX.Models
         [XmlElement("text")]
         [ProtoMember(5)]
         public string Text { get; set; }
+
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Annotation;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(other, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public bool Equals(Annotation obj)
+        {
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(obj, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public override int GetHashCode()
+        {
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
+        }
     }
 }

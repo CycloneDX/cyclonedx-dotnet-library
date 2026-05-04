@@ -1,0 +1,72 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:1b1bff0e-fdb9-4088-8b9a-1a9f2d9006da",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Data",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "my-configs",
+      "Version": "1337",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": [
+        {
+          "BomRef": null,
+          "Type": "Configuration",
+          "Name": "app.data",
+          "Contents": {
+            "Attachment": null,
+            "Url": "https://example.com/cfg/1337/app.ini"
+          },
+          "Classification": null,
+          "SensitiveData": null,
+          "Graphics": null,
+          "Description": null,
+          "Governance": null
+        },
+        {
+          "BomRef": null,
+          "Type": "Other",
+          "Name": ".env",
+          "Contents": {
+            "Attachment": null,
+            "Url": "https://example.com/cfg/1337/env"
+          },
+          "Classification": null,
+          "SensitiveData": null,
+          "Graphics": null,
+          "Description": null,
+          "Governance": null
+        }
+      ],
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

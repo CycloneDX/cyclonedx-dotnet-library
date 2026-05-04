@@ -15,12 +15,10 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
-using System.Threading;
 using System.Xml;
 using System.Xml.Serialization;
 using CycloneDX.Models;
@@ -32,7 +30,6 @@ namespace CycloneDX.Xml
     /// </summary>
     public static partial class Serializer
     {
-        private static readonly Dictionary<SpecificationVersion, Dictionary<string, XmlSerializer>> _elementSerializers = new Dictionary<SpecificationVersion, Dictionary<string, XmlSerializer>>();
         private static readonly Dictionary<SpecificationVersion, XmlSerializer> _serializers = new Dictionary<SpecificationVersion, XmlSerializer>();
 
         private static readonly XmlWriterSettings WriterSettings = new XmlWriterSettings
@@ -137,19 +134,8 @@ namespace CycloneDX.Xml
 
         internal static XmlSerializer GetElementSerializer<T>(SpecificationVersion specVersion, string elementName)
         {
-            if (!_elementSerializers.ContainsKey(specVersion))
-            {
-                _elementSerializers[specVersion] = new Dictionary<string, XmlSerializer>();
-            }
-            var serKey = $"{typeof(T).FullName}:{elementName}";
-            if (!_elementSerializers[specVersion].ContainsKey(serKey))
-            {
-                var rootAttr = new XmlRootAttribute(elementName);
-                rootAttr.Namespace = SpecificationVersionHelpers.XmlNamespace(specVersion);
-                _elementSerializers[specVersion][serKey] = new XmlSerializer(typeof(T), rootAttr);
-            }
-
-            return _elementSerializers[specVersion][serKey];
+            var namespaceUri = SpecificationVersionHelpers.XmlNamespace(specVersion);
+            return XmlSerializerCache.Get(typeof(T), elementName, namespaceUri);
         }
     }
 }

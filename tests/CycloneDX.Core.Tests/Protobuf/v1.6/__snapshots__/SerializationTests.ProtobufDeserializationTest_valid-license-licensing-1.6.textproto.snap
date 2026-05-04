@@ -17,6 +17,7 @@
       "Group": "com.acme",
       "Name": "cryptographic-provider",
       "Version": "2.2.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": [
@@ -76,7 +77,8 @@
             }
           },
           "Expression": null,
-          "BomRef": null
+          "BomRef": null,
+          "Licensing": null
         }
       ],
       "LicensesSerialized": {
@@ -137,7 +139,8 @@
               }
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           }
         ]
       },
@@ -150,6 +153,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

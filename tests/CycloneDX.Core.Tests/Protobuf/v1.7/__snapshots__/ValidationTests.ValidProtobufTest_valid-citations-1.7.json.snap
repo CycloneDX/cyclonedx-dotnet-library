@@ -1,0 +1,89 @@
+﻿spec_version: "1.7"
+version: 1
+serial_number: "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
+metadata {
+  timestamp {
+    seconds: 1746109380
+  }
+  authors {
+    name: "Alice Example"
+    email: "alice@example.com"
+    bom_ref: "person-1"
+  }
+}
+components {
+  type: CLASSIFICATION_LIBRARY
+  bom_ref: "component-1"
+  name: "example-lib"
+  version: "1.2.3"
+  licenses {
+    license {
+      id: "Apache-2.0"
+    }
+  }
+}
+formulation {
+  bom_ref: "workflow-1"
+  components {
+    type: CLASSIFICATION_APPLICATION
+    bom_ref: "scan-tool-1"
+    name: "My Scan Tool"
+  }
+  workflows {
+    bom_ref: "workflow-1"
+    uid: "259bae74-5ec4-4de8-9386-c91b1f7719b8"
+    name: "My workflow"
+    tasks {
+      bom_ref: "task-license-scan"
+      uid: "6d75f8d6-a008-41cf-8b65-c4129fc249f9"
+      description: "License scan of the source files using OpenSourceScanner v2.1"
+      taskTypes: TASK_TYPE_SCAN
+    }
+    taskTypes: TASK_TYPE_SCAN
+  }
+}
+citations {
+  bom_ref: "citation-1"
+  pointers {
+    pointer: "/components/0/name"
+  }
+  timestamp {
+    seconds: 1746108000
+  }
+  attributed_to: "person-1"
+  note: "Manually entered by Alice Example - with `attributedTo`"
+}
+citations {
+  bom_ref: "citation-2"
+  pointers {
+    pointer: "/components/0/name"
+  }
+  timestamp {
+    seconds: 1746108000
+  }
+  process: "task-license-scan"
+  note: "Semi-manually entered by Alice Example - with `process`"
+}
+citations {
+  bom_ref: "citation-3"
+  expressions {
+    expression: "$..[?(@.bom-ref==\'component-1\')].version"
+  }
+  timestamp {
+    seconds: 1746108000
+  }
+  process: "task-license-scan"
+  note: "Semi-manually entered by Alice Example - with `process`"
+}
+citations {
+  bom_ref: "citation-4"
+  expressions {
+    expression: "$.components[*].licenses[*].license.id"
+  }
+  timestamp {
+    seconds: 1746108300
+  }
+  attributed_to: "scan-tool-1"
+  process: "task-license-scan"
+  note: "Auto-detected by license scanner tool - with both, \'attributedTo\' and \'process\'"
+}

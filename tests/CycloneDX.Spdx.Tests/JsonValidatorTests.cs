@@ -52,7 +52,7 @@ namespace CycloneDX.Spdx.Tests
             var resourceFilename = Path.Join("Resources", version, baseFilename + ".json");
             using (var jsonStream = File.OpenRead(resourceFilename))
             {
-                var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
+                var validationResult = await JsonValidator.ValidateAsync(jsonStream);
 
                 Assert.True(validationResult.Valid);
             }
@@ -64,7 +64,7 @@ namespace CycloneDX.Spdx.Tests
             var resourceFilename = Path.Join("Resources", "v2.3", "invalidPrimaryPackagePurpose" + ".json");
             using (var jsonStream = File.OpenRead(resourceFilename))
             {
-                var validationResult = await JsonValidator.ValidateAsync(jsonStream).ConfigureAwait(false);
+                var validationResult = await JsonValidator.ValidateAsync(jsonStream);
 
                 Assert.False(validationResult.Valid);
             }

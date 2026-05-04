@@ -1,7 +1,7 @@
 ﻿{
   "BomFormat": "CycloneDX",
-  "SpecVersion": "v1_6",
-  "SpecVersionString": "1.6",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
   "SerialNumber": null,
   "Version": null,
   "Metadata": {
@@ -20,6 +20,7 @@
       "Group": null,
       "Name": "Thing",
       "Version": "1",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -32,11 +33,13 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
     "Manufacture": null,
-    "Supplier": null
+    "Supplier": null,
+    "DistributionConstraints": null
   },
   "Components": [
     {
@@ -49,6 +52,7 @@
       "Group": null,
       "Name": "System1",
       "Version": "1",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -69,6 +73,7 @@
           "Group": null,
           "Name": "Component1",
           "Version": "1",
+          "VersionRange": null,
           "Description": null,
           "Scope": null,
           "Licenses": null,
@@ -81,6 +86,7 @@
           "Evidence": null,
           "ModelCard": null,
           "CryptoProperties": null,
+          "IsExternal": null,
           "XmlSignature": null,
           "Signature": null
         }
@@ -88,6 +94,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -101,6 +108,7 @@
       "Group": null,
       "Name": "System2",
       "Version": "1",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -121,6 +129,7 @@
           "Group": null,
           "Name": "Component2",
           "Version": "1",
+          "VersionRange": null,
           "Description": null,
           "Scope": null,
           "Licenses": null,
@@ -133,6 +142,7 @@
           "Evidence": null,
           "ModelCard": null,
           "CryptoProperties": null,
+          "IsExternal": null,
           "XmlSignature": null,
           "Signature": null
         }
@@ -140,6 +150,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

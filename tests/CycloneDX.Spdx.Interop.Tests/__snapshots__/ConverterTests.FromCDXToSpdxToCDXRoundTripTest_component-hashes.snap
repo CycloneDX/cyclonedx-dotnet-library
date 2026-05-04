@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
+  "specVersion": "1.7",
   "metadata": {
     "timestamp": "2021-12-24T12:00:00Z",
     "properties": [
@@ -80,9 +80,6 @@
           "alg": "BLAKE3",
           "content": "26cdc7fb3fd65fc3b621a4ef70bc7d2489d5c19e70c76cf7ec20e538df0047cf"
         }
-      ],
-      "licenses": [
-        {}
       ],
       "externalReferences": [
         {

@@ -65,6 +65,7 @@
       "Group": null,
       "Name": "Acme Application",
       "Version": "9.1.1",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -89,6 +90,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -124,7 +126,8 @@
       ],
       "BomRef": null,
       "Address": null
-    }
+    },
+    "DistributionConstraints": null
   },
   "Components": [
     {
@@ -138,6 +141,7 @@
       "Group": "com.acme",
       "Name": "tomcat-catalina",
       "Version": "9.0.14",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Hashes": [
@@ -172,7 +176,8 @@
             "Licensing": null
           },
           "Expression": null,
-          "BomRef": null
+          "BomRef": null,
+          "Licensing": null
         }
       ],
       "LicensesSerialized": {
@@ -190,7 +195,8 @@
               "Licensing": null
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           }
         ]
       },
@@ -211,6 +217,7 @@
             "Group": "com.acme",
             "Name": "tomcat-catalina",
             "Version": "9.0.14",
+            "VersionRange": null,
             "Description": null,
             "Scope": null,
             "Licenses": null,
@@ -223,6 +230,7 @@
             "Evidence": null,
             "ModelCard": null,
             "CryptoProperties": null,
+            "IsExternal": null,
             "XmlSignature": null,
             "Signature": null
           },
@@ -236,6 +244,7 @@
             "Group": "com.acme",
             "Name": "tomcat-catalina",
             "Version": "9.0.14",
+            "VersionRange": null,
             "Description": null,
             "Scope": null,
             "Licenses": null,
@@ -248,6 +257,7 @@
             "Evidence": null,
             "ModelCard": null,
             "CryptoProperties": null,
+            "IsExternal": null,
             "XmlSignature": null,
             "Signature": null
           }
@@ -272,6 +282,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -338,6 +349,7 @@
       "Group": "org.example",
       "Name": "mylibrary",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": "Required",
       "NonNullableScope": "Required",
@@ -351,6 +363,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

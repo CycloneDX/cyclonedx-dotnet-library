@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
+  "specVersion": "1.7",
   "metadata": {
     "timestamp": "2021-12-24T12:00:00Z",
     "properties": [
@@ -31,9 +31,6 @@
       "type": "library",
       "name": "acme-library",
       "version": "1.0.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -55,9 +52,6 @@
       "type": "library",
       "name": "acme-library",
       "version": "1.0.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",

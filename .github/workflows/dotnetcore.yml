@@ -22,10 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: |
+            8.0.x
+            10.0.x
 
       - name: Build
         run: dotnet build /WarnAsError
@@ -42,7 +44,7 @@ jobs:
     timeout-minutes: 30
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v6
     - name: SnapshooterHotfixSymlinkLinux    
       if: matrix.os == 'ubuntu-latest'
       run: sudo ln -s "$GITHUB_WORKSPACE" /_
@@ -51,9 +53,11 @@ jobs:
       if: matrix.os == 'windows-latest'
       run:  New-Item -ItemType SymbolicLink -Path "/_" -Target "$env:GITHUB_WORKSPACE"
       shell: pwsh
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: |
+          8.0.x
+          10.0.x
 
     - name: Install protocol buffers compiler on Linux
       if: matrix.os == 'ubuntu-latest'
@@ -71,10 +75,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: |
+            8.0.x
+            10.0.x
 
       - name: Download DocFX
         run: |

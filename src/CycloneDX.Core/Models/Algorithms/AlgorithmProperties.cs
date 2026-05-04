@@ -100,6 +100,7 @@ namespace CycloneDX.Core.Models
         [ProtoMember(7)]
         [XmlElement("mode")]
         public AlgorithmMode? Mode { get; set; }
+        public bool ShouldSerializeMode() { return Mode.HasValue && Mode.Value != AlgorithmMode.Null; }
 
         #region Padding
         [XmlIgnore]

@@ -132,7 +132,7 @@ namespace CycloneDX.Core.Tests.Json.v1_6
             var resourceFilename = Path.Join("Resources", "v1.6", filename);
             using (var jsonStream = File.OpenRead(resourceFilename))
             {
-                var validationResult = await Validator.ValidateAsync(jsonStream, SpecificationVersion.v1_6).ConfigureAwait(false);
+                var validationResult = await Validator.ValidateAsync(jsonStream, SpecificationVersion.v1_6);
 
                 Assert.True(validationResult.Valid);
             }

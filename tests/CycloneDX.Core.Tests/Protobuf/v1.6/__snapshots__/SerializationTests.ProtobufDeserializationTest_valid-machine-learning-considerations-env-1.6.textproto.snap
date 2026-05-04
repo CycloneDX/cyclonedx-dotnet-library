@@ -23,6 +23,7 @@
       "Group": "meta-llama",
       "Name": "Llama-2-7b",
       "Version": null,
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -93,6 +94,7 @@
         }
       },
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

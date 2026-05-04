@@ -1,0 +1,168 @@
+﻿{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "serialNumber": "urn:uuid:123e4567-e89b-12d3-a456-426614174000",
+  "version": 1,
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "component-1",
+      "manufacturer": {
+        "name": "Acme Inc",
+        "url": [
+          "https://example.com"
+        ],
+        "bom-ref": "org-acme-inc"
+      },
+      "name": "High-Efficiency Processor",
+      "version": "1.0",
+      "patentAssertions": [
+        {
+          "bom-ref": "patent-assertion-1",
+          "assertionType": "ownership",
+          "patentRefs": [
+            "patent-1"
+          ],
+          "asserter": "org-acme-inc",
+          "notes": "Covers the core processing architecture for advanced computation."
+        },
+        {
+          "bom-ref": "patent-assertion-2",
+          "assertionType": "license",
+          "patentRefs": [
+            "patent-3"
+          ],
+          "asserter": "org-acme-inc",
+          "notes": "Licensed for use in North America."
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "bom-ref": "service-1",
+      "name": "Data Analysis Service",
+      "patentAssertions": [
+        {
+          "bom-ref": "patent-assertion-3",
+          "assertionType": "exclusive-rights",
+          "patentRefs": [
+            "patent-2"
+          ],
+          "asserter": {
+            "name": "Partner Company",
+            "contact": [
+              {
+                "name": "Sam Smith",
+                "phone": "800-555-1212"
+              }
+            ]
+          },
+          "notes": "Exclusive rights for machine learning integration."
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "patents": [
+      {
+        "bom-ref": "patent-1",
+        "patentNumber": "US1234567890",
+        "applicationNumber": "12345",
+        "jurisdiction": "US",
+        "publicationNumber": "US-12345",
+        "title": "Efficient Data Processing Algorithm",
+        "abstract": "A novel system and method for improving data processing efficiency.",
+        "filingDate": "2021-01-15",
+        "grantDate": "2022-06-01",
+        "patentExpirationDate": "2042-01-15",
+        "patentLegalStatus": "in-force",
+        "patentAssignee": [
+          {
+            "name": "Tech Innovators Inc.",
+            "url": [
+              "https://techinnovators.com"
+            ]
+          }
+        ],
+        "externalReferences": [
+          {
+            "url": "https://uspto.gov/patent/US12345678B1",
+            "type": "patent",
+            "comment": "Official USPTO page for the patent."
+          }
+        ]
+      },
+      {
+        "bom-ref": "patent-2",
+        "patentNumber": "EU1234567890",
+        "applicationNumber": "12345",
+        "jurisdiction": "EU",
+        "priorityApplication": {
+          "applicationNumber": "US1234567890",
+          "jurisdiction": "US",
+          "filingDate": "2021-01-15"
+        },
+        "publicationNumber": "EU-12345",
+        "title": "Efficient Data Processing Algorithm",
+        "abstract": "A novel system and method for improving data processing efficiency.",
+        "filingDate": "2021-01-15",
+        "grantDate": "2022-06-01",
+        "patentExpirationDate": "2042-01-15",
+        "patentLegalStatus": "in-force",
+        "patentAssignee": [
+          {
+            "name": "Tech Innovators Inc.",
+            "url": [
+              "https://techinnovators.com"
+            ]
+          }
+        ]
+      },
+      {
+        "bom-ref": "patent-3",
+        "patentNumber": "EP987654321A1",
+        "jurisdiction": "EP",
+        "title": "Data Processing Optimisation",
+        "abstract": "An optimised approach to data processing for scalable systems.",
+        "filingDate": "2021-02-10",
+        "grantDate": "2023-03-15",
+        "patentExpirationDate": "2043-02-10",
+        "patentLegalStatus": "in-force",
+        "patentAssignee": [
+          {
+            "name": "Jane Smith",
+            "email": "jane.smith@techinnovators.com"
+          }
+        ],
+        "externalReferences": [
+          {
+            "url": "https://euipo.europa.eu/ep987654321A1",
+            "type": "patent",
+            "comment": "Official EUIPO page for the patent."
+          }
+        ]
+      },
+      {
+        "bom-ref": "patent-family-1",
+        "familyId": "PF-2023001",
+        "priorityApplication": {
+          "applicationNumber": "12345",
+          "jurisdiction": "US",
+          "filingDate": "2021-01-15"
+        },
+        "members": [
+          "patent-1",
+          "patent-2"
+        ],
+        "externalReferences": [
+          {
+            "url": "https://uspto.gov/patent-family-5678",
+            "type": "patent-family",
+            "comment": "Official record of the patent family."
+          }
+        ]
+      }
+    ]
+  }
+}

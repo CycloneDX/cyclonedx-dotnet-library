@@ -37,7 +37,19 @@ namespace CycloneDX.Core.Models
         [XmlEnum("sstp")]
         Sstp,
         [XmlEnum("wpa")]
-        Wpa
+        Wpa,
+        [XmlEnum("dtls")]
+        Dtls,
+        [XmlEnum("quic")]
+        Quic,
+        [XmlEnum("eap-aka")]
+        Eap_Aka,
+        [XmlEnum("eap-aka-prime")]
+        Eap_Aka_Prime,
+        [XmlEnum("prins")]
+        Prins,
+        [XmlEnum("5g-aka")]
+        FiveG_Aka
     }
 
 

@@ -52,6 +52,7 @@ namespace CycloneDX.Models.Vulnerabilities
         public Severity? Severity { get; set; }
 
         [XmlElement("method")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(4)]
         public ScoreMethod Method { get; set; }
         public bool ShouldSerializeMethod() { return Method != ScoreMethod.Null; }

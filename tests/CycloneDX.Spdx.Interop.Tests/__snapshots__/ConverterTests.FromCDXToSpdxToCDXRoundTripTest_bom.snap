@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
+  "specVersion": "1.7",
   "metadata": {
     "timestamp": "2020-04-13T20:20:39Z",
     "tools": [
@@ -66,6 +66,7 @@
           "expression": "Apache-2.0"
         }
       ],
+      "purl": "pkg:npm/acme/component@1.0.0",
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -96,9 +97,6 @@
       "author": "Example Super Heros",
       "name": "mylibrary",
       "version": "1.0.0",
-      "licenses": [
-        {}
-      ],
       "externalReferences": [
         {
           "url": "NOASSERTION",

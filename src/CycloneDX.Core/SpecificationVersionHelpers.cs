@@ -24,9 +24,9 @@ namespace CycloneDX
 {
     public static class SpecificationVersionHelpers
     {
-        public static readonly SpecificationVersion CurrentVersion = SpecificationVersion.v1_6;
+        public static readonly SpecificationVersion CurrentVersion = SpecificationVersion.v1_7;
 
-        public static readonly string XmlNamespaceRegexString = @"http:\/\/cyclonedx\.org\/schema\/bom\/(?<SpecificationVersionString>1\.[0-6])";
+        public static readonly string XmlNamespaceRegexString = @"http:\/\/cyclonedx\.org\/schema\/bom\/(?<SpecificationVersionString>1\.[0-7])";
 
         public static readonly Regex XmlNamespaceRegex = new Regex(XmlNamespaceRegexString);
 

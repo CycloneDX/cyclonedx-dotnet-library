@@ -1,0 +1,27 @@
+﻿spec_version: "1.7"
+version: 1
+serial_number: "urn:uuid:7dc07ac8-7fb8-4782-bf89-4762394e189d"
+metadata {
+  component {
+    type: CLASSIFICATION_APPLICATION
+    bom_ref: "my-app"
+    name: "My Application"
+  }
+}
+components {
+  type: CLASSIFICATION_OPERATING_SYSTEM
+  bom_ref: "os"
+  name: "Ubuntu"
+  version: "24.04"
+  description: "Ubuntu 24.04"
+  isExternal: true
+}
+dependencies {
+  ref: "my-app"
+  dependencies {
+    ref: "os"
+  }
+}
+dependencies {
+  ref: "os"
+}

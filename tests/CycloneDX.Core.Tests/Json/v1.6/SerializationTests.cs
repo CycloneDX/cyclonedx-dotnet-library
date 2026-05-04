@@ -137,8 +137,8 @@ namespace CycloneDX.Core.Tests.Json.v1_6
             using (var ms = new MemoryStream())
             using (var sr = new StreamReader(ms))
             {
-                var bom = await Serializer.DeserializeAsync(jsonBomStream).ConfigureAwait(false);
-                await Serializer.SerializeAsync(bom, ms).ConfigureAwait(false);
+                var bom = await Serializer.DeserializeAsync(jsonBomStream);
+                await Serializer.SerializeAsync(bom, ms);
                 ms.Position = 0;
                 Snapshot.Match(sr.ReadToEnd(), SnapshotNameExtension.Create(filename));
             }

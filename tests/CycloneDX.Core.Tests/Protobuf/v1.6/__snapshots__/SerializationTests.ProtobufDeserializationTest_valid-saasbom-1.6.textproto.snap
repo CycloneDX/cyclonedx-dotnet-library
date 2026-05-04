@@ -20,6 +20,7 @@
       "Group": null,
       "Name": "Acme SaaSBOM Example",
       "Version": "2022-1",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -32,11 +33,13 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
     "Manufacture": null,
-    "Supplier": null
+    "Supplier": null,
+    "DistributionConstraints": null
   },
   "Components": null,
   "Services": [

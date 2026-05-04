@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using CycloneDX.Core.Models;
@@ -29,12 +30,23 @@ namespace CycloneDX.Json
     /// </summary>
     public static class Utils
     {
-        public static bool UseUnsafeRelaxedJsonEscaping { get; set; } = false;  
+        /// <summary>
+        /// Global fallback for JSON escaping behavior. Prefer passing the
+        /// <c>unsafeRelaxedJsonEscaping</c> parameter to <see cref="Serializer.Serialize(Bom, bool?)"/> instead.
+        /// </summary>
+        [Obsolete("Use the unsafeRelaxedJsonEscaping parameter on Serializer.Serialize() instead. This global flag will be removed in a future major version.")]
+        public static bool UseUnsafeRelaxedJsonEscaping { get; set; }
+
         public static JsonSerializerOptions GetBaseJsonSerializerOptions()
+        {
+            return GetBaseJsonSerializerOptions(false);
+        }
+
+        public static JsonSerializerOptions GetBaseJsonSerializerOptions(bool useUnsafeRelaxedJsonEscaping)
         {
             return new JsonSerializerOptions
             {
-                Encoder = UseUnsafeRelaxedJsonEscaping
+                Encoder = useUnsafeRelaxedJsonEscaping
                     ? System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                     : System.Text.Encodings.Web.JavaScriptEncoder.Default,
                 WriteIndented = true,
@@ -49,7 +61,12 @@ namespace CycloneDX.Json
         /// <returns></returns>
         public static JsonSerializerOptions GetJsonSerializerOptions()
         {
-            var options = GetBaseJsonSerializerOptions();
+            return GetJsonSerializerOptions(false);
+        }
+
+        public static JsonSerializerOptions GetJsonSerializerOptions(bool useUnsafeRelaxedJsonEscaping)
+        {
+            var options = GetBaseJsonSerializerOptions(useUnsafeRelaxedJsonEscaping);
             
             options.Converters.Add(new UnderscoreEnumConverter<Composition.AggregateType>());
             options.Converters.Add(new HyphenEnumConverter<Component.ComponentScope>());
@@ -102,8 +119,15 @@ namespace CycloneDX.Json
             options.Converters.Add(new HyphenEnumConverter<EnergySource>());
             options.Converters.Add(new SignatureChoiceConverter());
 
+            options.Converters.Add(new AsserterConverter());
+            options.Converters.Add(new PatentOrFamilyConverter());
+            options.Converters.Add(new HyphenEnumConverter<PatentLegalStatus>());
+            options.Converters.Add(new HyphenEnumConverter<PatentAssertionType>());
+            options.Converters.Add(new HyphenEnumConverter<PredefinedCertificateState>());
+
             options.Converters.Add(new JsonStringEnumConverter());
-            
+
+            options.Converters.Add(new Ikev2TransformTypesConverter());
             options.Converters.Add(new DataflowSourceDestinationConverter());
             
             return options;

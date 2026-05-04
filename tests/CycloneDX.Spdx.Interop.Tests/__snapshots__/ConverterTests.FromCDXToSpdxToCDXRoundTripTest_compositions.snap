@@ -1,6 +1,6 @@
 ﻿{
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
+  "specVersion": "1.7",
   "metadata": {
     "timestamp": "2021-12-24T12:00:00Z",
     "properties": [
@@ -31,9 +31,7 @@
       "type": "library",
       "name": "Partner Shaded Library",
       "version": "1.0",
-      "licenses": [
-        {}
-      ],
+      "purl": "pkg:maven/partner/shaded-library@1.0",
       "externalReferences": [
         {
           "url": "NOASSERTION",
@@ -55,9 +53,7 @@
       "type": "library",
       "name": "Acme Library",
       "version": "3.0",
-      "licenses": [
-        {}
-      ],
+      "purl": "pkg:maven/acme/library@3.0",
       "externalReferences": [
         {
           "url": "NOASSERTION",

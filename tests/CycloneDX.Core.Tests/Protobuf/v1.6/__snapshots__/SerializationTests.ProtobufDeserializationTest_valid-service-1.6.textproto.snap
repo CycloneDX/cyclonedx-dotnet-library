@@ -17,6 +17,7 @@
       "Group": "com.acme",
       "Name": "stock-java-client",
       "Version": "1.0.12",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Hashes": [
@@ -35,7 +36,8 @@
             "Licensing": null
           },
           "Expression": null,
-          "BomRef": null
+          "BomRef": null,
+          "Licensing": null
         }
       ],
       "LicensesSerialized": {
@@ -49,7 +51,8 @@
               "Licensing": null
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           }
         ]
       },
@@ -62,6 +65,7 @@
       "Evidence": null,
       "ModelCard": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }
@@ -203,7 +207,8 @@
             "Licensing": null
           },
           "Expression": null,
-          "BomRef": null
+          "BomRef": null,
+          "Licensing": null
         }
       ],
       "LicensesSerialized": {
@@ -217,7 +222,8 @@
               "Licensing": null
             },
             "Expression": null,
-            "BomRef": null
+            "BomRef": null,
+            "Licensing": null
           }
         ]
       },

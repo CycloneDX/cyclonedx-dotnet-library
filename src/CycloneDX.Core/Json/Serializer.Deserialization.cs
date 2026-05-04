@@ -15,7 +15,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
-using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text.Json;
@@ -34,7 +33,7 @@ namespace CycloneDX.Json
         public static async Task<Bom> DeserializeAsync(Stream jsonStream)
         {
             Contract.Requires(jsonStream != null);
-            return await JsonSerializer.DeserializeAsync<Bom>(jsonStream, getOption()).ConfigureAwait(false);
+            return await JsonSerializer.DeserializeAsync<Bom>(jsonStream, _defaultOptions).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -45,7 +44,7 @@ namespace CycloneDX.Json
         public static Bom Deserialize(string jsonString)
         {
             Contract.Requires(!string.IsNullOrEmpty(jsonString));
-            return JsonSerializer.Deserialize<Bom>(jsonString, getOption());
+            return JsonSerializer.Deserialize<Bom>(jsonString, _defaultOptions);
         }
 
     }

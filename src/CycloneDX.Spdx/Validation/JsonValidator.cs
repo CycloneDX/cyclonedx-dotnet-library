@@ -28,6 +28,20 @@ namespace CycloneDX.Spdx.Validation
 {
     public static class JsonValidator
     {
+        private static readonly JsonSchema _spdxSchema;
+
+        static JsonValidator()
+        {
+            // Pre-load the SPDX schema once to avoid concurrent JsonSchema.FromText
+            // calls registering schemas in the global registry in parallel.
+            var assembly = typeof(JsonValidator).GetTypeInfo().Assembly;
+            using (var schemaStream = assembly.GetManifestResourceStream("CycloneDX.Spdx.Schemas.spdx-2.3.schema.json"))
+            using (var schemaStreamReader = new StreamReader(schemaStream))
+            {
+                _spdxSchema = JsonSchema.FromText(schemaStreamReader.ReadToEnd());
+            }
+        }
+
         /// <summary>
         /// Validate the stream contents represent a valid SPDX JSON document.
         /// </summary>
@@ -36,16 +50,10 @@ namespace CycloneDX.Spdx.Validation
         /// <returns></returns>
         public static async Task<ValidationResult> ValidateAsync(Stream jsonStream)
         {
-            var assembly = typeof(JsonValidator).GetTypeInfo().Assembly;
-            
-            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Spdx.Schemas.spdx-2.3.schema.json"))
-            {
-                var jsonSchema = await JsonSchema.FromStream(schemaStream).ConfigureAwait(false);
-                var jsonDocument = await JsonDocument.ParseAsync(jsonStream).ConfigureAwait(false);
-                return Validate(jsonSchema, jsonDocument);
-            }
+            var jsonDocument = await JsonDocument.ParseAsync(jsonStream).ConfigureAwait(false);
+            return Validate(_spdxSchema, jsonDocument);
         }
-        
+
         /// <summary>
         /// Validate the string contents represent a valid SPDX JSON document.
         /// </summary>
@@ -53,25 +61,18 @@ namespace CycloneDX.Spdx.Validation
         /// <returns></returns>
         public static ValidationResult Validate(string jsonString)
         {
-            var assembly = typeof(JsonValidator).GetTypeInfo().Assembly;
-            
-            using (var schemaStream = assembly.GetManifestResourceStream($"CycloneDX.Spdx.Schemas.spdx-2.3.schema.json"))
-            using (var schemaStreamReader = new StreamReader(schemaStream))
+            try
             {
-                var jsonSchema = JsonSchema.FromText(schemaStreamReader.ReadToEnd());
-                try
+                var jsonDocument = JsonDocument.Parse(jsonString);
+                return Validate(_spdxSchema, jsonDocument);
+            }
+            catch (JsonException exc)
+            {
+                return new ValidationResult
                 {
-                    var jsonDocument = JsonDocument.Parse(jsonString);
-                    return Validate(jsonSchema, jsonDocument);
-                }
-                catch (JsonException exc)
-                {
-                    return new ValidationResult
-                    {
-                        Valid = false,
-                        Messages = new List<string> { exc.Message }
-                    };
-                }
+                    Valid = false,
+                    Messages = new List<string> { exc.Message }
+                };
             }
         }
 
@@ -93,7 +94,7 @@ namespace CycloneDX.Spdx.Validation
                 // there will be no nested results
                 foreach (var detail in result.Details)
                 {
-                    if (detail.HasErrors)
+                    if (detail.Errors != null)
                     {
                         foreach (var error in detail.Errors)
                         {

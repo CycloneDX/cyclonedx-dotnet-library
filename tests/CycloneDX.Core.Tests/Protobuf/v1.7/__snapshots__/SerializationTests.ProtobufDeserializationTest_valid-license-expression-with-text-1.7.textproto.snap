@@ -1,0 +1,59 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:8ad91ceb-1741-4d58-8d22-4488a0f68dbe",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "my-application",
+      "Version": "1.33.7",
+      "VersionRange": null,
+      "Description": "This application is composed of multiple things, and therefore has multiple licenses applied:\n* custom code - custom license\n* component A - EPL or GPL\n* component B - MIT\n* component C - MIT",
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": null,
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": null,
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

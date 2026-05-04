@@ -2,7 +2,6 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
   "metadata": {
-    "tools": {},
     "component": {
       "type": "application",
       "bom-ref": "Thing@1",
@@ -14,14 +13,12 @@
     {
       "type": "application",
       "bom-ref": "bom1name@:bom1",
-      "name": "bom1name",
-      "components": []
+      "name": "bom1name"
     },
     {
       "type": "application",
       "bom-ref": "bom2name@:bom2",
-      "name": "bom2name",
-      "components": []
+      "name": "bom2name"
     }
   ],
   "dependencies": [
@@ -75,15 +72,7 @@
               "rationale": "Confidence rationale here"
             }
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       },
       {
         "summary": "Attestation summary here",
@@ -109,15 +98,7 @@
               "rationale": "Confidence rationale here"
             }
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       }
     ],
     "claims": [
@@ -140,15 +121,7 @@
             "url": "https://alm.example.com",
             "type": "issue-tracker"
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       },
       {
         "bom-ref": "bom2name@:claim-1",
@@ -169,15 +142,7 @@
             "url": "https://alm.example.com",
             "type": "issue-tracker"
           }
-        ],
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
-        }
+        ]
       }
     ],
     "evidence": [
@@ -207,14 +172,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       },
       {
@@ -243,14 +200,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       },
       {
@@ -279,14 +228,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       },
       {
@@ -315,14 +256,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       },
       {
@@ -351,14 +284,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       },
       {
@@ -387,14 +312,6 @@
         },
         "reviewer": {
           "name": "Jane"
-        },
-        "signature": {
-          "algorithm": "ES256",
-          "certificatePath": [
-            "MIIB...",
-            "MIID..."
-          ],
-          "value": "tqIT..."
         }
       }
     ],
@@ -408,12 +325,8 @@
           "name": "Acme Inc",
           "bom-ref": "acme-inc"
         }
-      ],
-      "components": [],
-      "services": []
+      ]
     }
   },
-  "definitions": {
-    "standards": []
-  }
+  "definitions": {}
 }

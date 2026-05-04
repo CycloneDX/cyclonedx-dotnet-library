@@ -1,0 +1,263 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": "pkg:maven/com.acme/stock-java-client@1.0.12",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": "Acme Inc",
+      "Group": "com.acme",
+      "Name": "stock-java-client",
+      "Version": "1.0.12",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Hashes": [
+        {
+          "Alg": "SHA_1",
+          "Content": "e6b1000b94e835ffd37f4c6dcbdad43f4b48a02a"
+        }
+      ],
+      "Licenses": [
+        {
+          "License": {
+            "Id": "Apache-2.0",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Id": "Apache-2.0",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": "pkg:maven/com.acme/stock-java-client@1.0.12",
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Services": [
+    {
+      "BomRef": "b2a46a4b-8367-4bae-9820-95557cfe03a8",
+      "Provider": {
+        "Name": "Partner Org",
+        "Url": [
+          "https://partner.org"
+        ],
+        "Contact": [
+          {
+            "Name": "Support",
+            "Email": "support@partner.org",
+            "Phone": "800-555-1212",
+            "BomRef": null
+          }
+        ],
+        "BomRef": null,
+        "Address": null
+      },
+      "Group": "org.partner",
+      "Name": "Stock ticker service",
+      "Version": "2020-Q2",
+      "Description": "Provides real-time stock information",
+      "Endpoints": [
+        "https://partner.org/api/v1/lookup",
+        "https://partner.org/api/v1/stock"
+      ],
+      "Authenticated": true,
+      "NonNullableAuthenticated": true,
+      "XTrustBoundary": true,
+      "NonNullableXTrustBoundary": true,
+      "TrustZone": null,
+      "Data": [
+        {
+          "Flow": "Inbound",
+          "Classification": "PII",
+          "XmlClassification": {
+            "Flow": "Inbound",
+            "Classification": "PII"
+          },
+          "Name": null,
+          "Description": null,
+          "Governance": null
+        },
+        {
+          "Flow": "Outbound",
+          "Classification": "PIFI",
+          "XmlClassification": {
+            "Flow": "Outbound",
+            "Classification": "PIFI"
+          },
+          "Name": null,
+          "Description": null,
+          "Governance": null
+        },
+        {
+          "Flow": "Bi_Directional",
+          "Classification": "public",
+          "XmlClassification": {
+            "Flow": "Bi_Directional",
+            "Classification": "public"
+          },
+          "Name": null,
+          "Description": null,
+          "Governance": null
+        },
+        {
+          "Flow": "Unknown",
+          "Classification": "partner-data",
+          "XmlClassification": {
+            "Flow": "Unknown",
+            "Classification": "partner-data"
+          },
+          "Name": null,
+          "Description": null,
+          "Governance": null
+        }
+      ],
+      "XmlData": {
+        "DataClassifications": null,
+        "DataFlows": [
+          {
+            "Flow": "Inbound",
+            "Classification": "PII",
+            "XmlClassification": {
+              "Flow": "Inbound",
+              "Classification": "PII"
+            },
+            "Name": null,
+            "Description": null,
+            "Governance": null
+          },
+          {
+            "Flow": "Outbound",
+            "Classification": "PIFI",
+            "XmlClassification": {
+              "Flow": "Outbound",
+              "Classification": "PIFI"
+            },
+            "Name": null,
+            "Description": null,
+            "Governance": null
+          },
+          {
+            "Flow": "Bi_Directional",
+            "Classification": "public",
+            "XmlClassification": {
+              "Flow": "Bi_Directional",
+              "Classification": "public"
+            },
+            "Name": null,
+            "Description": null,
+            "Governance": null
+          },
+          {
+            "Flow": "Unknown",
+            "Classification": "partner-data",
+            "XmlClassification": {
+              "Flow": "Unknown",
+              "Classification": "partner-data"
+            },
+            "Name": null,
+            "Description": null,
+            "Governance": null
+          }
+        ]
+      },
+      "Licenses": [
+        {
+          "License": {
+            "Name": "Partner license",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Name": "Partner license",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "ExternalReferences": [
+        {
+          "Url": "http://partner.org",
+          "Type": "Website",
+          "Comment": null
+        },
+        {
+          "Url": "http://api.partner.org/swagger",
+          "Type": "Documentation",
+          "Comment": null
+        }
+      ],
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Dependencies": [
+    {
+      "Ref": "pkg:maven/com.acme/stock-java-client@1.0.12",
+      "Dependencies": [
+        {
+          "Ref": "b2a46a4b-8367-4bae-9820-95557cfe03a8",
+          "Dependencies": null,
+          "Provides": null
+        }
+      ],
+      "Provides": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

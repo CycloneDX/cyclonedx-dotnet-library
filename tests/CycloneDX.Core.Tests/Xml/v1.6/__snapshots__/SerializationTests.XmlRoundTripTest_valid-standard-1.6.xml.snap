@@ -55,9 +55,6 @@
             </requirements>
           </level>
         </levels>
-        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-          <!-- XML signature here -->
-        </ds:Signature>
       </standard>
     </standards>
   </definitions>
