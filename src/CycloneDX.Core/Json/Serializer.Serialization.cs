@@ -112,6 +112,12 @@ namespace CycloneDX.Json
             return JsonSerializer.Serialize(dependency, GetOptions());
         }
 
+        internal static string Serialize(Lifecycles lifecycles)
+        {
+            Contract.Requires(lifecycles != null);
+            return JsonSerializer.Serialize(lifecycles, getOption());
+        }
+
         internal static string Serialize(Service service)
         {
             Contract.Requires(service != null);
