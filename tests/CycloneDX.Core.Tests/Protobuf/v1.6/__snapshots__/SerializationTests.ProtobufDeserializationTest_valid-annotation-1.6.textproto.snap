@@ -17,6 +17,7 @@
       "Group": null,
       "Name": "Component A",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -28,8 +29,8 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }
@@ -117,6 +118,7 @@
           "Group": null,
           "Name": "Awesome Tool",
           "Version": "9.1.2",
+          "VersionRange": null,
           "Description": null,
           "Scope": null,
           "Licenses": null,
@@ -128,8 +130,8 @@
           "Pedigree": null,
           "Evidence": null,
           "ModelCard": null,
-          "Data": null,
           "CryptoProperties": null,
+          "IsExternal": null,
           "XmlSignature": null,
           "Signature": null
         },

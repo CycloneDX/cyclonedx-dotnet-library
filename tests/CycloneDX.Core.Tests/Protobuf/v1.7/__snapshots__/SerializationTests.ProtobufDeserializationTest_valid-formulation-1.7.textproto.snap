@@ -1,0 +1,453 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": "Acme Inc",
+      "Group": "org.example",
+      "Name": "mylibrary",
+      "Version": "1.0.0",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Formulation": [
+    {
+      "BomRef": "formula-1",
+      "Components": [
+        {
+          "Type": "Platform",
+          "MimeType": null,
+          "BomRef": "component-1",
+          "Supplier": null,
+          "Author": null,
+          "Publisher": null,
+          "Group": null,
+          "Name": "Pipeline controller image",
+          "Version": "v0.47.0",
+          "VersionRange": null,
+          "Description": null,
+          "Scope": null,
+          "Licenses": null,
+          "Copyright": null,
+          "Cpe": null,
+          "Purl": null,
+          "Swid": null,
+          "Modified": null,
+          "Pedigree": null,
+          "Evidence": null,
+          "ModelCard": null,
+          "CryptoProperties": null,
+          "IsExternal": null,
+          "XmlSignature": null,
+          "Signature": null
+        }
+      ],
+      "Workflows": [
+        {
+          "BomRef": "workflow-1",
+          "Uid": "8edb2b08-e2c7-11ed-b5ea-0242ac120002",
+          "Name": "My workflow",
+          "Description": "Workflow description here",
+          "ResourceReferences": [
+            {
+              "Ref": "component-a",
+              "ExternalReference": null
+            }
+          ],
+          "Tasks": [
+            {
+              "BomRef": "task-1",
+              "Uid": "task-uid-1",
+              "Name": "fetch-repository",
+              "Description": "Description here",
+              "ResourceReferences": [
+                {
+                  "Ref": "component-a",
+                  "ExternalReference": null
+                }
+              ],
+              "TaskTypes": [
+                "Clone",
+                "Build"
+              ],
+              "Trigger": {
+                "BomRef": "trigger-1",
+                "Uid": "trigger-1",
+                "Name": null,
+                "Description": null,
+                "Type": "Api",
+                "Event": null
+              },
+              "Steps": [
+                {
+                  "Name": "My step",
+                  "Description": null
+                }
+              ],
+              "Inputs": [
+                {
+                  "Resource": {
+                    "Ref": "component-a",
+                    "ExternalReference": null
+                  },
+                  "Source": null,
+                  "Target": null,
+                  "Data": null
+                }
+              ],
+              "Outputs": [
+                {
+                  "Resource": {
+                    "Ref": "component-b",
+                    "ExternalReference": null
+                  },
+                  "Source": null,
+                  "Target": null,
+                  "Data": null
+                }
+              ],
+              "TimeStart": "2023-01-01T00:00:00Z",
+              "TimeEnd": "2023-01-01T00:00:00Z",
+              "Workspaces": [
+                {
+                  "BomRef": "workspace-1",
+                  "Uid": "workspace-uid-1",
+                  "Name": "workspace",
+                  "Description": null,
+                  "AccessMode": null,
+                  "MountPath": null,
+                  "ManagedDataType": null,
+                  "VolumeRequest": null,
+                  "Volume": null
+                }
+              ],
+              "RuntimeTopology": [
+                {
+                  "Ref": "task-1",
+                  "Dependencies": [
+                    {
+                      "Ref": "task-2",
+                      "Dependencies": null,
+                      "Provides": null
+                    }
+                  ],
+                  "Provides": null
+                }
+              ]
+            }
+          ],
+          "TaskDependencies": [
+            {
+              "Ref": "task-1",
+              "Dependencies": [
+                {
+                  "Ref": "task-2",
+                  "Dependencies": null,
+                  "Provides": null
+                }
+              ],
+              "Provides": null
+            }
+          ],
+          "TaskTypes": [
+            "Clone",
+            "Build"
+          ],
+          "Trigger": {
+            "BomRef": "trigger-2",
+            "Uid": "trigger-uid-2",
+            "Name": "My trigger",
+            "Description": "Description here",
+            "ResourceReferences": [
+              {
+                "Ref": "component-a",
+                "ExternalReference": null
+              }
+            ],
+            "Type": "Api",
+            "Event": {
+              "Uid": "event-1",
+              "Description": "Description here",
+              "TimeReceived": "2023-01-01T00:00:00Z",
+              "Data": {
+                "ContentType": "text/plain",
+                "Encoding": null,
+                "Content": "Foo/Bar"
+              },
+              "Source": {
+                "Ref": "component-g",
+                "ExternalReference": null
+              },
+              "Target": {
+                "Ref": "component-h",
+                "ExternalReference": null
+              },
+              "Properties": [
+                {
+                  "Name": "Foo",
+                  "Value": "Bar"
+                }
+              ]
+            },
+            "Conditions": [
+              {
+                "Description": "Description here",
+                "Expression": "1 == 1",
+                "Properties": [
+                  {
+                    "Name": "Foo",
+                    "Value": "Bar"
+                  }
+                ]
+              }
+            ],
+            "TimeActivated": "2023-01-01T00:00:00Z",
+            "Inputs": [
+              {
+                "Resource": {
+                  "Ref": "component-10",
+                  "ExternalReference": null
+                },
+                "Source": {
+                  "Ref": "component-11",
+                  "ExternalReference": null
+                },
+                "Target": {
+                  "Ref": "component-12",
+                  "ExternalReference": null
+                },
+                "Data": null
+              }
+            ],
+            "Outputs": [
+              {
+                "Resource": {
+                  "Ref": "component-14",
+                  "ExternalReference": null
+                },
+                "Type": "Artifact",
+                "Source": {
+                  "Ref": "component-15",
+                  "ExternalReference": null
+                },
+                "Target": {
+                  "Ref": "component-16",
+                  "ExternalReference": null
+                },
+                "Data": null
+              }
+            ],
+            "Properties": [
+              {
+                "Name": "Foo",
+                "Value": "Bar"
+              }
+            ]
+          },
+          "Steps": [
+            {
+              "Name": "My step",
+              "Description": "Description here",
+              "Commands": [
+                {
+                  "Executed": "ls -las",
+                  "Properties": [
+                    {
+                      "Name": "Foo",
+                      "Value": "Bar"
+                    }
+                  ]
+                }
+              ],
+              "Properties": [
+                {
+                  "Name": "Foo",
+                  "Value": "Bar"
+                }
+              ]
+            }
+          ],
+          "Inputs": [
+            {
+              "Resource": null,
+              "Source": null,
+              "Target": null,
+              "EnvironmentVars": [
+                {
+                  "Property": {
+                    "Name": "Foo",
+                    "Value": "Bar"
+                  },
+                  "Value": null
+                }
+              ],
+              "Data": null
+            },
+            {
+              "Resource": null,
+              "Source": null,
+              "Target": null,
+              "EnvironmentVars": [
+                {
+                  "Property": null,
+                  "Value": "FooBar"
+                }
+              ],
+              "Data": null
+            },
+            {
+              "Resource": null,
+              "Source": null,
+              "Target": null,
+              "EnvironmentVars": [
+                {
+                  "Property": {
+                    "Name": "Foo",
+                    "Value": "Bar"
+                  },
+                  "Value": null
+                },
+                {
+                  "Property": null,
+                  "Value": "FooBar"
+                }
+              ],
+              "Data": null
+            }
+          ],
+          "Outputs": [
+            {
+              "Resource": null,
+              "Source": null,
+              "Target": null,
+              "Data": null,
+              "EnvironmentVars": [
+                {
+                  "Property": {
+                    "Name": "Foo",
+                    "Value": "Bar"
+                  },
+                  "Value": null
+                }
+              ]
+            },
+            {
+              "Resource": null,
+              "Source": null,
+              "Target": null,
+              "Data": null,
+              "EnvironmentVars": [
+                {
+                  "Property": null,
+                  "Value": "FooBar"
+                }
+              ]
+            },
+            {
+              "Resource": null,
+              "Source": null,
+              "Target": null,
+              "Data": null,
+              "EnvironmentVars": [
+                {
+                  "Property": {
+                    "Name": "Foo",
+                    "Value": "Bar"
+                  },
+                  "Value": null
+                },
+                {
+                  "Property": null,
+                  "Value": "FooBar"
+                }
+              ]
+            }
+          ],
+          "TimeStart": "2023-01-01T00:00:00Z",
+          "TimeEnd": "2023-01-01T00:00:10Z",
+          "Workspaces": [
+            {
+              "BomRef": "workspace-2",
+              "Uid": "workspace-1",
+              "Name": "My workspace",
+              "Aliases": [
+                "default-workspace"
+              ],
+              "Description": "Description here",
+              "ResourceReferences": [
+                {
+                  "Ref": "component-t",
+                  "ExternalReference": null
+                }
+              ],
+              "AccessMode": "Read_Write",
+              "NonNullableAccessMode": "Read_Write",
+              "MountPath": "/tmp/workspace",
+              "ManagedDataType": "ConfigMap",
+              "VolumeRequest": "requestedVolumeClaim",
+              "Volume": {
+                "Uid": "volume-1",
+                "Name": "My volume",
+                "Mode": "Filesystem",
+                "Path": "/",
+                "SizeAllocated": "10GB",
+                "Persistent": true,
+                "NonNullablePersistent": true,
+                "Remote": false,
+                "NonNullableRemote": false
+              }
+            }
+          ],
+          "RuntimeTopology": [
+            {
+              "Ref": "component-s",
+              "Dependencies": [
+                {
+                  "Ref": "component-r",
+                  "Dependencies": null,
+                  "Provides": null
+                }
+              ],
+              "Provides": null
+            }
+          ],
+          "Properties": [
+            {
+              "Name": "Foo",
+              "Value": "Bar"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

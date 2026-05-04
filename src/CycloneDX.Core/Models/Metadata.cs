@@ -186,5 +186,9 @@ namespace CycloneDX.Models
         [ProtoMember(9)]
         public List<Lifecycles> Lifecycles { get; set; }
         public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
+
+        [XmlElement("distributionConstraints")]
+        [ProtoMember(11)]
+        public DistributionConstraints DistributionConstraints { get; set; }
     }
 }

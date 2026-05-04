@@ -1,0 +1,53 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": {
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": null,
+    "Component": null,
+    "Manufacture": {
+      "Name": "Acme, Inc. // deprecated",
+      "Url": [
+        "https://example.com"
+      ],
+      "Contact": [
+        {
+          "Name": "Acme Professional Services",
+          "Email": "professional.services@example.com",
+          "Phone": null,
+          "BomRef": "contact-1"
+        }
+      ],
+      "BomRef": "manufacturer-1",
+      "Address": null
+    },
+    "Manufacture_Xml": {
+      "Name": "Acme, Inc. // deprecated",
+      "Url": [
+        "https://example.com"
+      ],
+      "Contact": [
+        {
+          "Name": "Acme Professional Services",
+          "Email": "professional.services@example.com",
+          "Phone": null,
+          "BomRef": "contact-1"
+        }
+      ],
+      "BomRef": "manufacturer-1",
+      "Address": null
+    },
+    "Supplier": null,
+    "DistributionConstraints": null
+  },
+  "Components": null,
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

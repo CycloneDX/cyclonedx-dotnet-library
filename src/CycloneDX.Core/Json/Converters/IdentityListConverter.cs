@@ -34,8 +34,7 @@ namespace CycloneDX.Json.Converters
         {
             if (reader.TokenType == JsonTokenType.StartObject)
             {
-                var serializerOptions = Utils.GetJsonSerializerOptions();                
-                var identity = JsonSerializer.Deserialize<EvidenceIdentity>(ref reader, serializerOptions);
+                var identity = JsonSerializer.Deserialize<EvidenceIdentity>(ref reader, options);
                 return new EvidenceIdentityList { Identities = new List<EvidenceIdentity> { identity } };
             }
             else if (reader.TokenType == JsonTokenType.StartArray)

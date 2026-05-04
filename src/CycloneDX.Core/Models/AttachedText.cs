@@ -24,8 +24,10 @@ namespace CycloneDX.Models
     public class AttachedText
     {
         [XmlAttribute("content-type")]
+        #pragma warning disable PBN0020 // DefaultValue would change protobuf serialization behavior
         [ProtoMember(1)]
         public string ContentType { get; set; } = "text/plain";
+        #pragma warning restore PBN0020
         
         [XmlAttribute("encoding")]
         [ProtoMember(2)]

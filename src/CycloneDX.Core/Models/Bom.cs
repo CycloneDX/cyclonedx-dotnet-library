@@ -97,6 +97,9 @@ namespace CycloneDX.Models
                     case "1.6":
                         SpecVersion = SpecificationVersion.v1_6;
                         break;
+                    case "1.7":
+                        SpecVersion = SpecificationVersion.v1_7;
+                        break;
                     default:
                         throw new ArgumentException($"Unsupported specification version: {value}");
                 }
@@ -190,6 +193,12 @@ namespace CycloneDX.Models
         [XmlElement("definitions")]
         [ProtoMember(15)]
         public Definitions Definitions { get; set; }
+
+        [XmlArray("citations")]
+        [XmlArrayItem("citation")]
+        [ProtoMember(16)]
+        public List<Citation> Citations { get; set; }
+        public bool ShouldSerializeCitations() { return Citations?.Count > 0; }
 
         [XmlAnyElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         [JsonIgnore]

@@ -1,0 +1,504 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:df628836-6b9b-41c9-a724-b44743c54d42",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": {
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": null,
+    "Component": null,
+    "Manufacture": null,
+    "Supplier": null,
+    "Lifecycles": [
+      {
+        "Phase": "Design",
+        "Name": null,
+        "Description": null
+      }
+    ],
+    "DistributionConstraints": null
+  },
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": "com.example",
+      "Name": "situation-A",
+      "Version": "1",
+      "VersionRange": null,
+      "Description": "Multiple licenses: declared ids/names, and a concluded expression",
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": {
+            "Id": "MIT",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null,
+            "Acknowledgement": "Declared",
+            "NonNullableAcknowledgement": "Declared"
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": {
+            "Id": "PostgreSQL",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null,
+            "Acknowledgement": "Declared",
+            "NonNullableAcknowledgement": "Declared"
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": {
+            "Name": "Apache Software License",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null,
+            "Acknowledgement": "Declared",
+            "NonNullableAcknowledgement": "Declared"
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": null,
+          "Expression": "(MIT OR PostgreSQL OR Apache-2.0)",
+          "BomRef": null,
+          "Acknowledgement": "Concluded",
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Id": "MIT",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null,
+              "Acknowledgement": "Declared",
+              "NonNullableAcknowledgement": "Declared"
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": {
+              "Id": "PostgreSQL",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null,
+              "Acknowledgement": "Declared",
+              "NonNullableAcknowledgement": "Declared"
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": {
+              "Name": "Apache Software License",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null,
+              "Acknowledgement": "Declared",
+              "NonNullableAcknowledgement": "Declared"
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": null,
+            "Expression": "(MIT OR PostgreSQL OR Apache-2.0)",
+            "BomRef": null,
+            "Acknowledgement": "Concluded",
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": "com.example",
+      "Name": "situation-B",
+      "Version": "1",
+      "VersionRange": null,
+      "Description": "Multiple license expressions: one declared, one concluded",
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": null,
+          "Expression": "MIT OR (GPL-3.0 OR GPL-2.0)",
+          "BomRef": null,
+          "Acknowledgement": "Declared",
+          "Licensing": null
+        },
+        {
+          "License": null,
+          "Expression": "(GPL-3.0-only AND LGPL-2.0-only)",
+          "BomRef": null,
+          "Acknowledgement": "Concluded",
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": null,
+            "Expression": "MIT OR (GPL-3.0 OR GPL-2.0)",
+            "BomRef": null,
+            "Acknowledgement": "Declared",
+            "Licensing": null
+          },
+          {
+            "License": null,
+            "Expression": "(GPL-3.0-only AND LGPL-2.0-only)",
+            "BomRef": null,
+            "Acknowledgement": "Concluded",
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": "com.example",
+      "Name": "situation-C",
+      "Version": "1",
+      "VersionRange": null,
+      "Description": "Multiple license: one declared expression, one concluded id",
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": null,
+          "Expression": "GPL-3.0-or-later OR GPL-2.0",
+          "BomRef": null,
+          "Acknowledgement": "Declared",
+          "Licensing": null
+        },
+        {
+          "License": {
+            "Id": "GPL-3.0-only",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null,
+            "Acknowledgement": "Concluded",
+            "NonNullableAcknowledgement": "Concluded"
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": null,
+            "Expression": "GPL-3.0-or-later OR GPL-2.0",
+            "BomRef": null,
+            "Acknowledgement": "Declared",
+            "Licensing": null
+          },
+          {
+            "License": {
+              "Id": "GPL-3.0-only",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null,
+              "Acknowledgement": "Concluded",
+              "NonNullableAcknowledgement": "Concluded"
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": "com.example",
+      "Name": "situation-D",
+      "Version": "1",
+      "VersionRange": null,
+      "Description": "Multiple license with texts: one declared expression, one concluded id",
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": null,
+          "Expression": null,
+          "BomRef": null,
+          "Acknowledgement": "Declared",
+          "Licensing": null
+        },
+        {
+          "License": {
+            "Id": "GPL-3.0-only",
+            "Text": {
+              "ContentType": "text/plain",
+              "Encoding": null,
+              "Content": "specific GPL-3.0-or-later license text"
+            },
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null,
+            "Acknowledgement": "Concluded",
+            "NonNullableAcknowledgement": "Concluded"
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": null,
+            "Expression": null,
+            "BomRef": null,
+            "Acknowledgement": "Declared",
+            "Licensing": null
+          },
+          {
+            "License": {
+              "Id": "GPL-3.0-only",
+              "Text": {
+                "ContentType": "text/plain",
+                "Encoding": null,
+                "Content": "specific GPL-3.0-or-later license text"
+              },
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null,
+              "Acknowledgement": "Concluded",
+              "NonNullableAcknowledgement": "Concluded"
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": "com.example",
+      "Name": "situation-E",
+      "Version": "1",
+      "VersionRange": null,
+      "Description": "Multiple licenses with urls: declared ids/names, and a concluded expression",
+      "Scope": null,
+      "Licenses": [
+        {
+          "License": {
+            "Id": "MIT",
+            "Text": null,
+            "Url": "https://example.com/licenses/MIT",
+            "BomRef": null,
+            "Licensing": null,
+            "Acknowledgement": "Declared",
+            "NonNullableAcknowledgement": "Declared"
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": {
+            "Id": "PostgreSQL",
+            "Text": null,
+            "Url": "https://example.com/licenses/PostgreSQL",
+            "BomRef": null,
+            "Licensing": null,
+            "Acknowledgement": "Declared",
+            "NonNullableAcknowledgement": "Declared"
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": {
+            "Name": "Apache Software License",
+            "Text": null,
+            "Url": "https://example.com/licenses/Apache-2.0",
+            "BomRef": null,
+            "Licensing": null,
+            "Acknowledgement": "Declared",
+            "NonNullableAcknowledgement": "Declared"
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": null,
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Id": "MIT",
+              "Text": null,
+              "Url": "https://example.com/licenses/MIT",
+              "BomRef": null,
+              "Licensing": null,
+              "Acknowledgement": "Declared",
+              "NonNullableAcknowledgement": "Declared"
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": {
+              "Id": "PostgreSQL",
+              "Text": null,
+              "Url": "https://example.com/licenses/PostgreSQL",
+              "BomRef": null,
+              "Licensing": null,
+              "Acknowledgement": "Declared",
+              "NonNullableAcknowledgement": "Declared"
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": {
+              "Name": "Apache Software License",
+              "Text": null,
+              "Url": "https://example.com/licenses/Apache-2.0",
+              "BomRef": null,
+              "Licensing": null,
+              "Acknowledgement": "Declared",
+              "NonNullableAcknowledgement": "Declared"
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": null,
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

@@ -22,16 +22,24 @@ name: Release
 on:
   workflow_dispatch
 
+# see https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
+permissions: {}
+
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write  # needed for creating GH release and uploading release assets
+      id-token: write  # needed GitHub OIDC token issuance
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: |
+            8.0.x
+            10.0.x
 
       # For the following tests
       - name: Install protocol buffers compiler
@@ -54,17 +62,22 @@ jobs:
         id: package_release
         run: |
           VERSION=`cat semver.txt`
-          echo "##[set-output name=version;]$VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
           dotnet pack --configuration Release /p:Version=$VERSION --output ./nupkgs
 
+      # Get a short-lived NuGet API key
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Publish packages to NuGet
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
-          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Core.${{ steps.package_release.outputs.version }}.nupkg
-          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
-          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Spdx.${{ steps.package_release.outputs.version }}.nupkg
-          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" ./nupkgs/CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{steps.login.outputs.NUGET_API_KEY}} ./nupkgs/CycloneDX.Core.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{steps.login.outputs.NUGET_API_KEY}} ./nupkgs/CycloneDX.Utils.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{steps.login.outputs.NUGET_API_KEY}} ./nupkgs/CycloneDX.Spdx.${{ steps.package_release.outputs.version }}.nupkg
+          dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{steps.login.outputs.NUGET_API_KEY}} ./nupkgs/CycloneDX.Spdx.Interop.${{ steps.package_release.outputs.version }}.nupkg
 
       - name: Create github release and git tag for release
         id: create_release

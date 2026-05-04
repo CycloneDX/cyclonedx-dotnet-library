@@ -17,6 +17,7 @@
       "Group": "com.example",
       "Name": "acme-example",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -36,8 +37,8 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

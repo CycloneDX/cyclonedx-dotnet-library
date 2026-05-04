@@ -1,0 +1,51 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": "Acme Super Heros",
+      "Author_Xml": "Acme Super Heros",
+      "Publisher": null,
+      "Group": null,
+      "Name": "Acme Application",
+      "Version": "9.1.1",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": {
+        "TagId": "swidgen-242eb18a-503e-ca37-393b-cf156ef09691_9.1.1",
+        "Name": "Acme Application",
+        "Version": "9.1.1",
+        "TagVersion": 0,
+        "Patch": false,
+        "Text": null,
+        "Url": null
+      },
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+using CycloneDX.Xml;
 using ProtoBuf;
 
 namespace CycloneDX.Models
@@ -48,6 +49,23 @@ namespace CycloneDX.Models
         public LicenseAcknowledgementEnumeration? Acknowledgement { get; set; }
         public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue; }
 
+        [JsonPropertyName("expressionDetails")]
+        [XmlIgnore]
+        [ProtoMember(6)]
+        public List<ExpressionDetail> ExpressionDetails { get; set; }
+        public bool ShouldSerializeExpressionDetails() { return ExpressionDetails?.Count > 0; }
+
+        [JsonPropertyName("licensing")]
+        [XmlIgnore]
+        [ProtoMember(7)]
+        public Licensing Licensing { get; set; }
+
+        [JsonPropertyName("properties")]
+        [XmlIgnore]
+        [ProtoMember(8)]
+        public List<Property> Properties { get; set; }
+        public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
+
     }
 
     // This is a workaround to serialize licenses correctly
@@ -67,6 +85,10 @@ namespace CycloneDX.Models
             return (null);
         }
 
+        private static XmlSerializer GetAttachedTextXmlSerializer(string namespaceURI) =>
+            XmlSerializerCache.Get(typeof(AttachedText), "text", namespaceURI);
+
+
         public void ReadXml(System.Xml.XmlReader reader)
         {
 
@@ -75,7 +97,9 @@ namespace CycloneDX.Models
 
             if (!isEmptyElement)
             {
-                XmlSerializer licenseSerializer = new XmlSerializer(typeof(License), reader.NamespaceURI);
+                XmlSerializer licenseSerializer = XmlSerializerCache.Get(typeof(License), reader.NamespaceURI);
+                XmlSerializer licensingSerializer = XmlSerializerCache.Get(typeof(Licensing), reader.NamespaceURI);
+                XmlSerializer attachedTextSerializer = GetAttachedTextXmlSerializer(reader.NamespaceURI);
 
                 Licenses = new List<LicenseChoice>();
 
@@ -108,9 +132,104 @@ namespace CycloneDX.Models
                         }
                         reader.ReadStartElement();
                         var expression = reader.ReadContentAsString();
-                        Licenses.Add(new LicenseChoice { Expression = expression, BomRef = bomRef, Acknowledgement = acknowledgement });                        
+                        Licenses.Add(new LicenseChoice { Expression = expression, BomRef = bomRef, Acknowledgement = acknowledgement });
                         finished = false;
                         reader.ReadEndElement();
+                    }
+                    if (reader.LocalName == "expression-detailed")
+                    {
+                        string bomRef = reader.GetAttribute("bom-ref");
+                        string expression = reader.GetAttribute("expression");
+                        LicenseAcknowledgementEnumeration? acknowledgement = null;
+                        if (reader.GetAttribute("acknowledgement") != null)
+                        {
+                            var acknowledgementStr = reader.GetAttribute("acknowledgement");
+                            LicenseAcknowledgementEnumeration acknowledgementNonNull;
+                            if (Enum.TryParse<LicenseAcknowledgementEnumeration>(acknowledgementStr, true, out acknowledgementNonNull))
+                            {
+                                acknowledgement = acknowledgementNonNull;
+                            }
+                        }
+
+                        bool isEmptyExprDetailed = reader.IsEmptyElement;
+                        reader.ReadStartElement();
+
+                        List<ExpressionDetail> details = null;
+                        Licensing licensing = null;
+                        List<Property> properties = null;
+
+                        if (!isEmptyExprDetailed)
+                        {
+                            while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+                            {
+                                if (reader.LocalName == "details")
+                                {
+                                    if (details == null) { details = new List<ExpressionDetail>(); }
+                                    var detail = new ExpressionDetail();
+                                    detail.LicenseIdentifier = reader.GetAttribute("license-identifier");
+                                    detail.BomRef = reader.GetAttribute("bom-ref");
+
+                                    bool isEmptyDetail = reader.IsEmptyElement;
+                                    reader.ReadStartElement();
+
+                                    if (!isEmptyDetail)
+                                    {
+                                        while (reader.NodeType != System.Xml.XmlNodeType.EndElement)
+                                        {
+                                            if (reader.LocalName == "text")
+                                            {
+                                                detail.Text = (AttachedText)attachedTextSerializer.Deserialize(reader);
+                                            }
+                                            else if (reader.LocalName == "url")
+                                            {
+                                                reader.ReadStartElement();
+                                                detail.Url = reader.ReadContentAsString();
+                                                reader.ReadEndElement();
+                                            }
+                                            else
+                                            {
+                                                reader.Skip();
+                                            }
+                                        }
+                                        reader.ReadEndElement();
+                                    }
+
+                                    details.Add(detail);
+                                }
+                                else if (reader.LocalName == "licensing")
+                                {
+                                    licensing = (Licensing)licensingSerializer.Deserialize(reader);
+                                }
+                                else if (reader.LocalName == "properties")
+                                {
+                                    reader.ReadStartElement();
+                                    properties = new List<Property>();
+                                    var propertySerializer = XmlSerializerCache.Get(typeof(Property), reader.NamespaceURI);
+                                    while (reader.LocalName == "property")
+                                    {
+                                        var prop = (Property)propertySerializer.Deserialize(reader);
+                                        properties.Add(prop);
+                                    }
+                                    reader.ReadEndElement();
+                                }
+                                else
+                                {
+                                    reader.Skip();
+                                }
+                            }
+                            reader.ReadEndElement();
+                        }
+
+                        Licenses.Add(new LicenseChoice
+                        {
+                            Expression = expression,
+                            BomRef = bomRef,
+                            Acknowledgement = acknowledgement,
+                            ExpressionDetails = details,
+                            Licensing = licensing,
+                            Properties = properties
+                        });
+                        finished = false;
                     }
 
 
@@ -128,7 +247,7 @@ namespace CycloneDX.Models
                 // todo: is there a way to feed in the namespace with having to introduce WriterToNamespace?
                 string defaultNamespace;
                 defaultNamespace = CycloneDX.Xml.Serializer.GetNamespace(writer);
-                XmlSerializer licenseSerializer = new XmlSerializer(typeof(License), defaultNamespace);
+                XmlSerializer licenseSerializer = XmlSerializerCache.Get(typeof(License), defaultNamespace);
 
                 foreach (var license in Licenses)
                 {
@@ -136,7 +255,66 @@ namespace CycloneDX.Models
                     {
                         licenseSerializer.Serialize(writer, license.License, new XmlSerializerNamespaces());
                     }
-                    if (license.Expression != null)
+                    if (license.Expression != null && (license.ExpressionDetails != null || license.Licensing != null || license.Properties != null))
+                    {
+                        // expression-detailed element
+                        writer.WriteStartElement("expression-detailed");
+                        if (license.BomRef != null)
+                        {
+                            writer.WriteAttributeString("bom-ref", license.BomRef);
+                        }
+                        if (license.Acknowledgement.HasValue)
+                        {
+                            writer.WriteAttributeString("acknowledgement", license.Acknowledgement.Value.ToString().ToLower());
+                        }
+                        writer.WriteAttributeString("expression", license.Expression);
+
+                        if (license.ExpressionDetails != null)
+                        {
+                            XmlSerializer attachedTextSerializer = GetAttachedTextXmlSerializer(defaultNamespace);
+                            foreach (var detail in license.ExpressionDetails)
+                            {
+                                writer.WriteStartElement("details");
+                                if (detail.LicenseIdentifier != null)
+                                {
+                                    writer.WriteAttributeString("license-identifier", detail.LicenseIdentifier);
+                                }
+                                if (detail.BomRef != null)
+                                {
+                                    writer.WriteAttributeString("bom-ref", detail.BomRef);
+                                }
+                                if (detail.Text != null)
+                                {
+                                    attachedTextSerializer.Serialize(writer, detail.Text, new XmlSerializerNamespaces());
+                                }
+                                if (detail.Url != null)
+                                {
+                                    writer.WriteElementString("url", defaultNamespace, detail.Url);
+                                }
+                                writer.WriteEndElement();
+                            }
+                        }
+
+                        if (license.Licensing != null)
+                        {
+                            XmlSerializer licensingSerializer = XmlSerializerCache.Get(typeof(Licensing), defaultNamespace);
+                            licensingSerializer.Serialize(writer, license.Licensing, new XmlSerializerNamespaces());
+                        }
+
+                        if (license.Properties != null)
+                        {
+                            writer.WriteStartElement("properties");
+                            XmlSerializer propertySerializer = XmlSerializerCache.Get(typeof(Property), defaultNamespace);
+                            foreach (var prop in license.Properties)
+                            {
+                                propertySerializer.Serialize(writer, prop, new XmlSerializerNamespaces());
+                            }
+                            writer.WriteEndElement();
+                        }
+
+                        writer.WriteEndElement();
+                    }
+                    else if (license.Expression != null)
                     {
                         writer.WriteStartElement("expression");
                         if (license.BomRef != null)

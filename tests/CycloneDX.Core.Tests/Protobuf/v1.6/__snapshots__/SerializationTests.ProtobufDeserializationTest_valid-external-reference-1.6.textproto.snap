@@ -17,6 +17,7 @@
       "Group": "org.example",
       "Name": "mylibrary",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -51,8 +52,8 @@
       ],
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     },
@@ -66,6 +67,7 @@
       "Group": null,
       "Name": "dummy",
       "Version": null,
+      "VersionRange": null,
       "Description": "this component has all external reference types possible",
       "Scope": null,
       "Licenses": null,
@@ -294,8 +296,8 @@
       ],
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

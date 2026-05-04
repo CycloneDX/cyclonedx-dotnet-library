@@ -1,0 +1,128 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:b1ef52c6-7cd8-43d5-9e42-5e69044bbe9e",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": "Acme Inc",
+      "Group": "com.acme",
+      "Name": "tomcat-catalina",
+      "Version": "9.0.14",
+      "VersionRange": null,
+      "Description": "Modified version of Apache Catalina",
+      "Scope": "Required",
+      "NonNullableScope": "Required",
+      "Licenses": [
+        {
+          "License": {
+            "Id": "Apache-2.0",
+            "Text": null,
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": null,
+          "Expression": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": {
+            "Name": "My Own License",
+            "Text": {
+              "ContentType": "text/plain",
+              "Encoding": null,
+              "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            },
+            "Url": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        },
+        {
+          "License": null,
+          "Expression": null,
+          "BomRef": null,
+          "Licensing": null
+        }
+      ],
+      "LicensesSerialized": {
+        "Licenses": [
+          {
+            "License": {
+              "Id": "Apache-2.0",
+              "Text": null,
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": null,
+            "Expression": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": {
+              "Name": "My Own License",
+              "Text": {
+                "ContentType": "text/plain",
+                "Encoding": null,
+                "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              },
+              "Url": null,
+              "BomRef": null,
+              "Licensing": null
+            },
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          },
+          {
+            "License": null,
+            "Expression": null,
+            "BomRef": null,
+            "Licensing": null
+          }
+        ]
+      },
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

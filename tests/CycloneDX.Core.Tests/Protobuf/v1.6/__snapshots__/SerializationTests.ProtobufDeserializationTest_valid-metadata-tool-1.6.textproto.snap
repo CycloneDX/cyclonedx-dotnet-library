@@ -19,6 +19,7 @@
           "Group": "Awesome Vendor",
           "Name": "Awesome Tool",
           "Version": "9.1.2",
+          "VersionRange": null,
           "Description": null,
           "Scope": null,
           "Hashes": [
@@ -40,8 +41,8 @@
           "Pedigree": null,
           "Evidence": null,
           "ModelCard": null,
-          "Data": null,
           "CryptoProperties": null,
+          "IsExternal": null,
           "XmlSignature": null,
           "Signature": null
         }
@@ -94,6 +95,7 @@
             "Group": "Awesome Vendor",
             "Name": "Awesome Tool",
             "Version": "9.1.2",
+            "VersionRange": null,
             "Description": null,
             "Scope": null,
             "Hashes": [
@@ -115,8 +117,8 @@
             "Pedigree": null,
             "Evidence": null,
             "ModelCard": null,
-            "Data": null,
             "CryptoProperties": null,
+            "IsExternal": null,
             "XmlSignature": null,
             "Signature": null
           }
@@ -155,7 +157,8 @@
     "Authors": null,
     "Component": null,
     "Manufacture": null,
-    "Supplier": null
+    "Supplier": null,
+    "DistributionConstraints": null
   },
   "Components": null,
   "Compositions": null,

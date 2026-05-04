@@ -11,7 +11,7 @@
 
 The CycloneDX libraries for .NET support programmatically consuming and producing CycloneDX bill-of-materials. CycloneDX is a lightweight BOM specification that is easily created, human readable, and simple to parse.
 
-The libraries support .NET Standard 2.0.
+The libraries support .NET Standard 2.0, .NET 8 and .NET 10.
 
 ## Getting Started
 
@@ -20,7 +20,7 @@ For help getting started using the CycloneDX .NET Library refer to the [document
 ## SPDX Interop
 
 The `CycloneDX.Spdx.Interop` library includes methods for converting between
-CycloneDX and SPDX formats. (Currently only SPDX v2.2 JSON format is supported.)
+CycloneDX and SPDX formats. (Currently only SPDX v2.3 JSON format is supported.)
 
 ### High level overview of information lost during conversion:
 
@@ -39,15 +39,15 @@ minimising data loss during conversion, pull requests are welcome :)
 | License information in files | Needs review, the way SPDX and CycloneDX handle license information evidence is slightly different. |
 | Snippet Information | Snippets are not currently supported by CycloneDX |
 | Non-SPDX licenses | Implementation pending |
+| Package URL for Component Identity | SPDX supports multiple PURLs for a package. But doesn't support specifying if any are a component identifier. The first one is used as component purl.|
+| CPE for Component Identity | SPDX supports multiple CPEs for a package. But doesn't support specifying if any are a component identifier. The first one is used as component CPE.|
 
 #### CycloneDX -> SPDX
 
 | Feature | Notes |
 | --- | --- |
 | Component assemblies | Implementation pending - related to SPDX Relationship Information |
-| Hashes | SPDX documents are unable to represent the following hash algorithms: SHA3-256, SHA3-384, SHA3-512, BLAKE2b-256, BLAKE2b-384, BLAKE2b-512, BLAKE3. |
 | SWID Tags | SPDX doesn't support SWID tags. |
-| Component Type Information | SPDX doesn't support designating a component as a particular type (i.e. library, framework, container). |
 | CPE and Package URL for Component Identity | SPDX supports multiple CPEs and PURLs for a package. But doesn't support specifying if any are a component identifier. |
 | Device & Hardware Components | SPDX does not support devices or hardware as components. |
 | Composition | Implementation pending - related to SPDX Relationship Information |

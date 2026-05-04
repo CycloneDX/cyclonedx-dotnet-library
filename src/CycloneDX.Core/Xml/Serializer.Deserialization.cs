@@ -19,7 +19,6 @@ using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Xml;
-using System.Xml.Serialization;
 using CycloneDX.Models;
 
 namespace CycloneDX.Xml
@@ -36,11 +35,13 @@ namespace CycloneDX.Xml
             Contract.Requires(xmlString != null);
             using (var stream = new MemoryStream())
             {
-                var writer = new StreamWriter(stream);
-                writer.Write(xmlString);
-                writer.Flush();
-                stream.Position = 0;
-                return Deserialize(stream);
+                using (var writer = new StreamWriter(stream))
+                {
+                    writer.Write(xmlString);
+                    writer.Flush();
+                    stream.Position = 0;
+                    return Deserialize(stream);
+                }
             }
         }
 
@@ -93,7 +94,7 @@ namespace CycloneDX.Xml
                 xmlns = null;
             }
 
-            var serializer = new XmlSerializer(typeof(Bom), xmlns);
+            var serializer = XmlSerializerCache.Get(typeof(Bom), xmlns);
             var bom = (Bom)serializer.Deserialize(xmlStream);
 
             bom.SpecVersionString = SpecificationVersionHelpers.XmlNamespaceSpecificationVersion(xmlns);
@@ -159,6 +160,11 @@ namespace CycloneDX.Xml
             if (component.Properties?.Count == 0) { component.Properties = null; }
             if (component.Evidence?.Copyright?.Count == 0) { component.Evidence.Copyright = null; }
             if (component.Evidence?.Licenses?.Count == 0) { component.Evidence.Licenses = null; }
+            if (component.Data?.Count == 0) { component.Data = null; }
+            if (component.Authors?.Count == 0) { component.Authors = null; }
+            if (component.Tags?.Count == 0) { component.Tags = null; }
+            if (component.Swhid?.Count == 0) { component.Swhid = null; }
+            if (component.OmniborId?.Count == 0) { component.OmniborId = null; }
 
             if (component.Components != null)
             {

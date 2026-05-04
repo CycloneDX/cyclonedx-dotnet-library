@@ -304,8 +304,7 @@
       ]
     },
     {
-      "ref": "ms-2.example.com",
-      "dependsOn": []
+      "ref": "ms-2.example.com"
     },
     {
       "ref": "ms-3.example.com",

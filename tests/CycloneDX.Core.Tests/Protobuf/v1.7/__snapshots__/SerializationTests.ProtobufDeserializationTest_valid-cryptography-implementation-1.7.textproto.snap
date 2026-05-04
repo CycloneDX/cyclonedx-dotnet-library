@@ -1,0 +1,340 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "Version": 1,
+  "NonNullableVersion": 1,
+  "Metadata": {
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": null,
+    "Component": {
+      "Type": "Application",
+      "MimeType": null,
+      "BomRef": "acme-application",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Acme Application",
+      "Version": "1.0",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    "Manufacture": null,
+    "Supplier": null,
+    "DistributionConstraints": null
+  },
+  "Components": [
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "AES-128-GCM-128-12",
+      "Version": null,
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": {
+        "AssetType": "Algorithm",
+        "AlgorithmProperties": {
+          "Primitive": "AE",
+          "Primitive_XML": "AE",
+          "ParameterSetIdentifier": "128",
+          "Curve": null,
+          "ExecutionEnvironment": "Software_Plain_Ram",
+          "ImplementationPlatform": "x86_64",
+          "CertificationLevel": [
+            "None"
+          ],
+          "CertificationLevel_Protobuf": [
+            "none"
+          ],
+          "Mode": "Gcm",
+          "Padding": null,
+          "CryptoFunctions": [
+            "Keygen",
+            "Encrypt",
+            "Decrypt",
+            "Tag"
+          ],
+          "ClassicalSecurityLevel": 128,
+          "NistQuantumSecurityLevel": 1
+        },
+        "CertificateProperties": null,
+        "RelatedCryptoMaterialProperties": null,
+        "ProtocolProperties": null,
+        "ObjectIdentifier": "2.16.840.1.101.3.4.1.6"
+      },
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": null,
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "RSA-PKCS1-1.5-SHA512-2048",
+      "Version": null,
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": {
+        "AssetType": "Algorithm",
+        "AlgorithmProperties": {
+          "Primitive": "Signature",
+          "Primitive_XML": "Signature",
+          "ParameterSetIdentifier": "512",
+          "Curve": null,
+          "ExecutionEnvironment": "Software_Plain_Ram",
+          "ImplementationPlatform": "x86_64",
+          "CertificationLevel": [
+            "None"
+          ],
+          "CertificationLevel_Protobuf": [
+            "none"
+          ],
+          "Padding": null,
+          "CryptoFunctions": [
+            "Sign",
+            "Verify"
+          ],
+          "ClassicalSecurityLevel": 0,
+          "NistQuantumSecurityLevel": 0
+        },
+        "CertificateProperties": null,
+        "RelatedCryptoMaterialProperties": null,
+        "ProtocolProperties": null,
+        "ObjectIdentifier": "1.2.840.113549.1.1.13"
+      },
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": "ecdhsecp521r1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "ECDH-secp521r1",
+      "Version": null,
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": {
+        "AssetType": "Algorithm",
+        "AlgorithmProperties": {
+          "Primitive": "Key_Agree",
+          "Primitive_XML": "Key_Agree",
+          "ParameterSetIdentifier": null,
+          "Curve": null,
+          "ExecutionEnvironment": "Software_Plain_Ram",
+          "ImplementationPlatform": "x86_64",
+          "CertificationLevel": [
+            "None"
+          ],
+          "CertificationLevel_Protobuf": [
+            "none"
+          ],
+          "Padding": null,
+          "CryptoFunctions": [
+            "Keygen",
+            "KeyDerive"
+          ],
+          "ClassicalSecurityLevel": 0,
+          "NistQuantumSecurityLevel": 0
+        },
+        "CertificateProperties": null,
+        "RelatedCryptoMaterialProperties": null,
+        "ProtocolProperties": null,
+        "ObjectIdentifier": "1.3.132.0.35"
+      },
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": "mlkem1024",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "ML-KEM-1024",
+      "Version": null,
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": {
+        "AssetType": "Algorithm",
+        "AlgorithmProperties": {
+          "Primitive": "KEM",
+          "Primitive_XML": "KEM",
+          "ParameterSetIdentifier": null,
+          "Curve": null,
+          "ExecutionEnvironment": "Software_Plain_Ram",
+          "ImplementationPlatform": "x86_64",
+          "CertificationLevel": [
+            "None"
+          ],
+          "CertificationLevel_Protobuf": [
+            "none"
+          ],
+          "Padding": null,
+          "CryptoFunctions": [
+            "Keygen",
+            "KeyDerive"
+          ],
+          "ClassicalSecurityLevel": 0,
+          "NistQuantumSecurityLevel": 5
+        },
+        "CertificateProperties": null,
+        "RelatedCryptoMaterialProperties": null,
+        "ProtocolProperties": null,
+        "ObjectIdentifier": "2.16.840.1.101.3.4.1.48"
+      },
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Cryptographic_Asset",
+      "MimeType": null,
+      "BomRef": "draftietftlshybriddesign13",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "draft-ietf-tls-hybrid-design-13",
+      "Version": null,
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": {
+        "AssetType": "Algorithm",
+        "AlgorithmProperties": {
+          "Primitive": "Combiner",
+          "Primitive_XML": "Combiner",
+          "ParameterSetIdentifier": null,
+          "Curve": null,
+          "ExecutionEnvironment": "Software_Plain_Ram",
+          "ImplementationPlatform": "x86_64",
+          "CertificationLevel": [
+            "None"
+          ],
+          "CertificationLevel_Protobuf": [
+            "none"
+          ],
+          "Padding": null,
+          "CryptoFunctions": [
+            "Keygen",
+            "KeyDerive"
+          ],
+          "ClassicalSecurityLevel": 0,
+          "NistQuantumSecurityLevel": 0
+        },
+        "CertificateProperties": null,
+        "RelatedCryptoMaterialProperties": null,
+        "ProtocolProperties": null,
+        "ObjectIdentifier": "1.3.101.110"
+      },
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Dependencies": [
+    {
+      "Ref": "draftietftlshybriddesign13",
+      "Dependencies": [
+        {
+          "Ref": "mlkem1024",
+          "Dependencies": null,
+          "Provides": null
+        },
+        {
+          "Ref": "ecdhsecp521r1",
+          "Dependencies": null,
+          "Provides": null
+        }
+      ],
+      "Provides": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}

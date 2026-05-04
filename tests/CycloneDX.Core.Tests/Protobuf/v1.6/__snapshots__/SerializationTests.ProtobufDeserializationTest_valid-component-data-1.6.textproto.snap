@@ -17,6 +17,7 @@
       "Group": null,
       "Name": "my-configs",
       "Version": "1337",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -59,6 +60,7 @@
         }
       ],
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }

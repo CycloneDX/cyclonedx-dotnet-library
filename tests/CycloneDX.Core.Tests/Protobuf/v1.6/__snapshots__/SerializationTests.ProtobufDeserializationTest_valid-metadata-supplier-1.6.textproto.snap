@@ -26,7 +26,8 @@
       ],
       "BomRef": "supplier-1",
       "Address": null
-    }
+    },
+    "DistributionConstraints": null
   },
   "Components": null,
   "Compositions": null,

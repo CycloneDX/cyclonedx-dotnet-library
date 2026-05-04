@@ -17,6 +17,7 @@
       "Group": "org.example",
       "Name": "mylibrary",
       "Version": "1.0.0",
+      "VersionRange": null,
       "Description": null,
       "Scope": null,
       "Licenses": null,
@@ -28,8 +29,8 @@
       "Pedigree": null,
       "Evidence": null,
       "ModelCard": null,
-      "Data": null,
       "CryptoProperties": null,
+      "IsExternal": null,
       "XmlSignature": null,
       "Signature": null
     }
@@ -49,6 +50,7 @@
           "Group": null,
           "Name": "Pipeline controller image",
           "Version": "v0.47.0",
+          "VersionRange": null,
           "Description": null,
           "Scope": null,
           "Licenses": null,
@@ -60,8 +62,8 @@
           "Pedigree": null,
           "Evidence": null,
           "ModelCard": null,
-          "Data": null,
           "CryptoProperties": null,
+          "IsExternal": null,
           "XmlSignature": null,
           "Signature": null
         }

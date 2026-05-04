@@ -34,8 +34,10 @@ namespace CycloneDX.Models
         public string Name { get; set; }
 
         [XmlAttribute("version")]
+        #pragma warning disable PBN0020 // DefaultValue would change protobuf serialization behavior
         [ProtoMember(3)]
         public string Version { get; set; } = "0.0";
+        #pragma warning restore PBN0020
 
         [XmlAttribute("tagVersion")]
         [ProtoMember(4)]

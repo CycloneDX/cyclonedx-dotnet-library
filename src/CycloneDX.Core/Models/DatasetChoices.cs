@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
+using CycloneDX.Xml;
 using ProtoBuf;
 
 namespace CycloneDX.Models
@@ -35,11 +36,7 @@ namespace CycloneDX.Models
 
         private XmlSerializer GetDatasetSerializer(string namespaceUri)
         {
-            var rootAttr = new XmlRootAttribute("dataset")
-            {
-                Namespace = namespaceUri
-            };
-            return new XmlSerializer(typeof(Data), rootAttr);
+            return XmlSerializerCache.Get(typeof(Data), "dataset", namespaceUri);
         }
 
         public System.Xml.Schema.XmlSchema GetSchema() => null;

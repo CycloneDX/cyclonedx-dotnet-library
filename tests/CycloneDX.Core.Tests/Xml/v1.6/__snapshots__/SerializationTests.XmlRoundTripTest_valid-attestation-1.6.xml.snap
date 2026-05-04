@@ -33,9 +33,6 @@
             <rationale>Confidence rationale here</rationale>
           </confidence>
         </map>
-        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-          <!-- XML signature here -->
-        </ds:Signature>
       </attestation>
     </attestations>
     <claims>
@@ -53,9 +50,6 @@
             <url>https://alm.example.com</url>
           </reference>
         </externalReferences>
-        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-          <!-- XML signature here -->
-        </ds:Signature>
       </claim>
     </claims>
     <evidence>
@@ -78,9 +72,6 @@
         <reviewer>
           <name>Jane</name>
         </reviewer>
-        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-          <!-- XML signature here -->
-        </ds:Signature>
       </evidence>
       <evidence bom-ref="counterEvidence-1">
         <propertyName>internal.com.acme.someProperty</propertyName>
@@ -134,13 +125,6 @@
       <statement>I certify, to the best of my knowledge, that all information is correct...</statement>
       <signatories>
         <signatory>
-          <name>Tom</name>
-          <role>CEO</role>
-          <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-            <!-- XML signature here -->
-          </ds:Signature>
-        </signatory>
-        <signatory>
           <name>Jerry</name>
           <role>COO</role>
           <organization>
@@ -151,15 +135,6 @@
           </externalReference>
         </signatory>
       </signatories>
-      <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-        <!-- XML signature here -->
-      </ds:Signature>
     </affirmation>
-    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-      <!-- XML signature here -->
-    </ds:Signature>
   </declarations>
-  <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-    <!-- XML signature here -->
-  </ds:Signature>
 </bom>

@@ -1,0 +1,548 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_7",
+  "SpecVersionString": "1.7",
+  "SerialNumber": null,
+  "Version": null,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Library",
+      "MimeType": null,
+      "BomRef": "component-1",
+      "Supplier": null,
+      "Manufacturer": {
+        "Name": "Acme Inc",
+        "Url": [
+          "https://example.com"
+        ],
+        "Contact": null,
+        "BomRef": "org-acme-inc",
+        "Address": null
+      },
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "High-Efficiency Processor",
+      "Version": "1.0",
+      "VersionRange": null,
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "PatentAssertions": [
+        {
+          "BomRef": "patent-assertion-1",
+          "AssertionType": "Ownership",
+          "PatentRefs": [
+            "patent-1"
+          ],
+          "Asserter": {
+            "Organization": null,
+            "Individual": null,
+            "Ref": "org-acme-inc"
+          },
+          "Notes": "Covers the core processing architecture for advanced computation."
+        },
+        {
+          "BomRef": "patent-assertion-2",
+          "AssertionType": "License",
+          "PatentRefs": [
+            "patent-3"
+          ],
+          "Asserter": {
+            "Organization": null,
+            "Individual": null,
+            "Ref": "org-acme-inc"
+          },
+          "Notes": "Licensed for use in North America."
+        }
+      ],
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "IsExternal": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Services": [
+    {
+      "BomRef": "service-1",
+      "Provider": null,
+      "Group": null,
+      "Name": "Data Analysis Service",
+      "Version": null,
+      "Description": null,
+      "Endpoints": null,
+      "Authenticated": null,
+      "XTrustBoundary": null,
+      "TrustZone": null,
+      "Licenses": null,
+      "XmlSignature": null,
+      "Signature": null,
+      "PatentAssertions": [
+        {
+          "BomRef": "patent-assertion-3",
+          "AssertionType": "Exclusive_Rights",
+          "PatentRefs": [
+            "patent-2"
+          ],
+          "Asserter": {
+            "Organization": {
+              "Name": "Partner Company",
+              "Url": null,
+              "Contact": [
+                {
+                  "Name": "Sam Smith",
+                  "Email": null,
+                  "Phone": "800-555-1212",
+                  "BomRef": null
+                }
+              ],
+              "BomRef": null,
+              "Address": null
+            },
+            "Individual": null,
+            "Ref": null
+          },
+          "Notes": "Exclusive rights for machine learning integration."
+        }
+      ]
+    }
+  ],
+  "Compositions": null,
+  "Definitions": {
+    "Standards_XML": null,
+    "Standards": null,
+    "Patents_XML": {
+      "XmlItems": [
+        {
+          "BomRef": "patent-1",
+          "PatentNumber": "US1234567890",
+          "ApplicationNumber": "12345",
+          "Jurisdiction": "US",
+          "PriorityApplication": null,
+          "PublicationNumber": "US-12345",
+          "Title": "Efficient Data Processing Algorithm",
+          "Abstract": "A novel system and method for improving data processing efficiency.",
+          "FilingDateProto": "2021-01-15T00:00:00Z",
+          "FilingDate": "2021-01-15",
+          "GrantDateProto": "2022-06-01T00:00:00Z",
+          "GrantDate": "2022-06-01",
+          "PatentExpirationDateProto": "2042-05-20T21:20:00Z",
+          "PatentExpirationDate": "2042-05-20",
+          "PatentLegalStatus": "In_Force",
+          "PatentAssignee": [
+            {
+              "Organization": {
+                "Name": "Tech Innovators Inc.",
+                "Url": [
+                  "https://techinnovators.com"
+                ],
+                "Contact": null,
+                "BomRef": null,
+                "Address": null
+              },
+              "Individual": null
+            }
+          ],
+          "ExternalReferences": [
+            {
+              "Url": "https://uspto.gov/patent/US12345678B1",
+              "Type": "Patent",
+              "Comment": "Official USPTO page for the patent."
+            }
+          ]
+        },
+        {
+          "BomRef": "patent-2",
+          "PatentNumber": "EU1234567890",
+          "ApplicationNumber": "12345",
+          "Jurisdiction": "EU",
+          "PriorityApplication": {
+            "ApplicationNumber": "US1234567890",
+            "Jurisdiction": "US",
+            "FilingDateProto": "2021-01-15T00:00:00Z",
+            "FilingDate": "2021-01-15"
+          },
+          "PublicationNumber": "EU-12345",
+          "Title": "Efficient Data Processing Algorithm",
+          "Abstract": "A novel system and method for improving data processing efficiency.",
+          "FilingDateProto": "2021-01-15T00:00:00Z",
+          "FilingDate": "2021-01-15",
+          "GrantDateProto": "2022-06-01T00:00:00Z",
+          "GrantDate": "2022-06-01",
+          "PatentExpirationDateProto": "2042-05-20T21:20:00Z",
+          "PatentExpirationDate": "2042-05-20",
+          "PatentLegalStatus": "In_Force",
+          "PatentAssignee": [
+            {
+              "Organization": {
+                "Name": "Tech Innovators Inc.",
+                "Url": [
+                  "https://techinnovators.com"
+                ],
+                "Contact": null,
+                "BomRef": null,
+                "Address": null
+              },
+              "Individual": null
+            }
+          ]
+        },
+        {
+          "BomRef": "patent-3",
+          "PatentNumber": "EP987654321A1",
+          "ApplicationNumber": null,
+          "Jurisdiction": "EP",
+          "PriorityApplication": null,
+          "PublicationNumber": null,
+          "Title": "Data Processing Optimisation",
+          "Abstract": "An optimised approach to data processing for scalable systems.",
+          "FilingDateProto": "2021-02-10T00:00:00Z",
+          "FilingDate": "2021-02-10",
+          "GrantDateProto": "2023-03-15T00:00:00Z",
+          "GrantDate": "2023-03-15",
+          "PatentExpirationDateProto": "2043-02-14T05:20:00Z",
+          "PatentExpirationDate": "2043-02-14",
+          "PatentLegalStatus": "In_Force",
+          "PatentAssignee": [
+            {
+              "Organization": null,
+              "Individual": {
+                "Name": "Jane Smith",
+                "Email": "jane.smith@techinnovators.com",
+                "Phone": null,
+                "BomRef": null
+              }
+            }
+          ],
+          "ExternalReferences": [
+            {
+              "Url": "https://euipo.europa.eu/ep987654321A1",
+              "Type": "Patent",
+              "Comment": "Official EUIPO page for the patent."
+            }
+          ]
+        },
+        {
+          "BomRef": "patent-family-1",
+          "FamilyId": "PF-2023001",
+          "PriorityApplication": {
+            "ApplicationNumber": "12345",
+            "Jurisdiction": "US",
+            "FilingDateProto": "2021-01-15T00:00:00Z",
+            "FilingDate": "2021-01-15"
+          },
+          "Members": [
+            "patent-1",
+            "patent-2"
+          ],
+          "ExternalReferences": [
+            {
+              "Url": "https://uspto.gov/patent-family-5678",
+              "Type": "Patent_Family",
+              "Comment": "Official record of the patent family."
+            }
+          ]
+        }
+      ],
+      "Items": [
+        {
+          "Patent": {
+            "BomRef": "patent-1",
+            "PatentNumber": "US1234567890",
+            "ApplicationNumber": "12345",
+            "Jurisdiction": "US",
+            "PriorityApplication": null,
+            "PublicationNumber": "US-12345",
+            "Title": "Efficient Data Processing Algorithm",
+            "Abstract": "A novel system and method for improving data processing efficiency.",
+            "FilingDateProto": "2021-01-15T00:00:00Z",
+            "FilingDate": "2021-01-15",
+            "GrantDateProto": "2022-06-01T00:00:00Z",
+            "GrantDate": "2022-06-01",
+            "PatentExpirationDateProto": "2042-05-20T21:20:00Z",
+            "PatentExpirationDate": "2042-05-20",
+            "PatentLegalStatus": "In_Force",
+            "PatentAssignee": [
+              {
+                "Organization": {
+                  "Name": "Tech Innovators Inc.",
+                  "Url": [
+                    "https://techinnovators.com"
+                  ],
+                  "Contact": null,
+                  "BomRef": null,
+                  "Address": null
+                },
+                "Individual": null
+              }
+            ],
+            "ExternalReferences": [
+              {
+                "Url": "https://uspto.gov/patent/US12345678B1",
+                "Type": "Patent",
+                "Comment": "Official USPTO page for the patent."
+              }
+            ]
+          },
+          "PatentFamily": null
+        },
+        {
+          "Patent": {
+            "BomRef": "patent-2",
+            "PatentNumber": "EU1234567890",
+            "ApplicationNumber": "12345",
+            "Jurisdiction": "EU",
+            "PriorityApplication": {
+              "ApplicationNumber": "US1234567890",
+              "Jurisdiction": "US",
+              "FilingDateProto": "2021-01-15T00:00:00Z",
+              "FilingDate": "2021-01-15"
+            },
+            "PublicationNumber": "EU-12345",
+            "Title": "Efficient Data Processing Algorithm",
+            "Abstract": "A novel system and method for improving data processing efficiency.",
+            "FilingDateProto": "2021-01-15T00:00:00Z",
+            "FilingDate": "2021-01-15",
+            "GrantDateProto": "2022-06-01T00:00:00Z",
+            "GrantDate": "2022-06-01",
+            "PatentExpirationDateProto": "2042-05-20T21:20:00Z",
+            "PatentExpirationDate": "2042-05-20",
+            "PatentLegalStatus": "In_Force",
+            "PatentAssignee": [
+              {
+                "Organization": {
+                  "Name": "Tech Innovators Inc.",
+                  "Url": [
+                    "https://techinnovators.com"
+                  ],
+                  "Contact": null,
+                  "BomRef": null,
+                  "Address": null
+                },
+                "Individual": null
+              }
+            ]
+          },
+          "PatentFamily": null
+        },
+        {
+          "Patent": {
+            "BomRef": "patent-3",
+            "PatentNumber": "EP987654321A1",
+            "ApplicationNumber": null,
+            "Jurisdiction": "EP",
+            "PriorityApplication": null,
+            "PublicationNumber": null,
+            "Title": "Data Processing Optimisation",
+            "Abstract": "An optimised approach to data processing for scalable systems.",
+            "FilingDateProto": "2021-02-10T00:00:00Z",
+            "FilingDate": "2021-02-10",
+            "GrantDateProto": "2023-03-15T00:00:00Z",
+            "GrantDate": "2023-03-15",
+            "PatentExpirationDateProto": "2043-02-14T05:20:00Z",
+            "PatentExpirationDate": "2043-02-14",
+            "PatentLegalStatus": "In_Force",
+            "PatentAssignee": [
+              {
+                "Organization": null,
+                "Individual": {
+                  "Name": "Jane Smith",
+                  "Email": "jane.smith@techinnovators.com",
+                  "Phone": null,
+                  "BomRef": null
+                }
+              }
+            ],
+            "ExternalReferences": [
+              {
+                "Url": "https://euipo.europa.eu/ep987654321A1",
+                "Type": "Patent",
+                "Comment": "Official EUIPO page for the patent."
+              }
+            ]
+          },
+          "PatentFamily": null
+        },
+        {
+          "Patent": null,
+          "PatentFamily": {
+            "BomRef": "patent-family-1",
+            "FamilyId": "PF-2023001",
+            "PriorityApplication": {
+              "ApplicationNumber": "12345",
+              "Jurisdiction": "US",
+              "FilingDateProto": "2021-01-15T00:00:00Z",
+              "FilingDate": "2021-01-15"
+            },
+            "Members": [
+              "patent-1",
+              "patent-2"
+            ],
+            "ExternalReferences": [
+              {
+                "Url": "https://uspto.gov/patent-family-5678",
+                "Type": "Patent_Family",
+                "Comment": "Official record of the patent family."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Patents": [
+      {
+        "Patent": {
+          "BomRef": "patent-1",
+          "PatentNumber": "US1234567890",
+          "ApplicationNumber": "12345",
+          "Jurisdiction": "US",
+          "PriorityApplication": null,
+          "PublicationNumber": "US-12345",
+          "Title": "Efficient Data Processing Algorithm",
+          "Abstract": "A novel system and method for improving data processing efficiency.",
+          "FilingDateProto": "2021-01-15T00:00:00Z",
+          "FilingDate": "2021-01-15",
+          "GrantDateProto": "2022-06-01T00:00:00Z",
+          "GrantDate": "2022-06-01",
+          "PatentExpirationDateProto": "2042-05-20T21:20:00Z",
+          "PatentExpirationDate": "2042-05-20",
+          "PatentLegalStatus": "In_Force",
+          "PatentAssignee": [
+            {
+              "Organization": {
+                "Name": "Tech Innovators Inc.",
+                "Url": [
+                  "https://techinnovators.com"
+                ],
+                "Contact": null,
+                "BomRef": null,
+                "Address": null
+              },
+              "Individual": null
+            }
+          ],
+          "ExternalReferences": [
+            {
+              "Url": "https://uspto.gov/patent/US12345678B1",
+              "Type": "Patent",
+              "Comment": "Official USPTO page for the patent."
+            }
+          ]
+        },
+        "PatentFamily": null
+      },
+      {
+        "Patent": {
+          "BomRef": "patent-2",
+          "PatentNumber": "EU1234567890",
+          "ApplicationNumber": "12345",
+          "Jurisdiction": "EU",
+          "PriorityApplication": {
+            "ApplicationNumber": "US1234567890",
+            "Jurisdiction": "US",
+            "FilingDateProto": "2021-01-15T00:00:00Z",
+            "FilingDate": "2021-01-15"
+          },
+          "PublicationNumber": "EU-12345",
+          "Title": "Efficient Data Processing Algorithm",
+          "Abstract": "A novel system and method for improving data processing efficiency.",
+          "FilingDateProto": "2021-01-15T00:00:00Z",
+          "FilingDate": "2021-01-15",
+          "GrantDateProto": "2022-06-01T00:00:00Z",
+          "GrantDate": "2022-06-01",
+          "PatentExpirationDateProto": "2042-05-20T21:20:00Z",
+          "PatentExpirationDate": "2042-05-20",
+          "PatentLegalStatus": "In_Force",
+          "PatentAssignee": [
+            {
+              "Organization": {
+                "Name": "Tech Innovators Inc.",
+                "Url": [
+                  "https://techinnovators.com"
+                ],
+                "Contact": null,
+                "BomRef": null,
+                "Address": null
+              },
+              "Individual": null
+            }
+          ]
+        },
+        "PatentFamily": null
+      },
+      {
+        "Patent": {
+          "BomRef": "patent-3",
+          "PatentNumber": "EP987654321A1",
+          "ApplicationNumber": null,
+          "Jurisdiction": "EP",
+          "PriorityApplication": null,
+          "PublicationNumber": null,
+          "Title": "Data Processing Optimisation",
+          "Abstract": "An optimised approach to data processing for scalable systems.",
+          "FilingDateProto": "2021-02-10T00:00:00Z",
+          "FilingDate": "2021-02-10",
+          "GrantDateProto": "2023-03-15T00:00:00Z",
+          "GrantDate": "2023-03-15",
+          "PatentExpirationDateProto": "2043-02-14T05:20:00Z",
+          "PatentExpirationDate": "2043-02-14",
+          "PatentLegalStatus": "In_Force",
+          "PatentAssignee": [
+            {
+              "Organization": null,
+              "Individual": {
+                "Name": "Jane Smith",
+                "Email": "jane.smith@techinnovators.com",
+                "Phone": null,
+                "BomRef": null
+              }
+            }
+          ],
+          "ExternalReferences": [
+            {
+              "Url": "https://euipo.europa.eu/ep987654321A1",
+              "Type": "Patent",
+              "Comment": "Official EUIPO page for the patent."
+            }
+          ]
+        },
+        "PatentFamily": null
+      },
+      {
+        "Patent": null,
+        "PatentFamily": {
+          "BomRef": "patent-family-1",
+          "FamilyId": "PF-2023001",
+          "PriorityApplication": {
+            "ApplicationNumber": "12345",
+            "Jurisdiction": "US",
+            "FilingDateProto": "2021-01-15T00:00:00Z",
+            "FilingDate": "2021-01-15"
+          },
+          "Members": [
+            "patent-1",
+            "patent-2"
+          ],
+          "ExternalReferences": [
+            {
+              "Url": "https://uspto.gov/patent-family-5678",
+              "Type": "Patent_Family",
+              "Comment": "Official record of the patent family."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "XmlSignature": null,
+  "Signature": null
+}
