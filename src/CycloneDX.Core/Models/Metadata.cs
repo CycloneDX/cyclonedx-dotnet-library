@@ -162,6 +162,11 @@ namespace CycloneDX.Models
         public List<LicenseChoice> Licenses { get; set; }
         public bool ShouldSerializeLicenses() { return Licenses?.Count > 0; }
 
+        [XmlArray("lifecycles")]
+        [XmlArrayItem("lifecycle")]
+        [ProtoMember(9)]
+        public List<Lifecycles> Lifecycles { get; set; }
+        public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
 
         [XmlElement("licenses")]
         [JsonIgnore, ProtoIgnore]
@@ -180,12 +185,6 @@ namespace CycloneDX.Models
         [ProtoMember(8)]
         public List<Property> Properties { get; set; }
         public bool ShouldSerializeProperties() { return Properties?.Count > 0; }
-        
-        [XmlArray("lifecycles")]
-        [XmlArrayItem("lifecycle")]
-        [ProtoMember(9)]
-        public List<Lifecycles> Lifecycles { get; set; }
-        public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
 
         [XmlElement("distributionConstraints")]
         [ProtoMember(11)]
