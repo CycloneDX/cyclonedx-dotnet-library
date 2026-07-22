@@ -59,6 +59,8 @@ namespace CycloneDX.Core.Tests.Xml.v1_6
         [InlineData("valid-metadata-author-1.6.xml")]
         [InlineData("valid-metadata-license-1.6.xml")]
         [InlineData("valid-metadata-lifecycle-1.6.xml")]
+        [InlineData("valid-metadata-lifecycle-and-tool-1.6.xml")]
+        [InlineData("valid-metadata-full-order-1.6.xml")]
         [InlineData("valid-metadata-manufacture-1.6.xml")]
         [InlineData("valid-metadata-manufacturer-1.6.xml")]
         [InlineData("valid-metadata-supplier-1.6.xml")]

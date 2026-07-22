@@ -38,6 +38,12 @@ namespace CycloneDX.Models
         }
         public bool ShouldSerializeTimestamp() { return Timestamp != null; }
 
+        [XmlArray("lifecycles")]
+        [XmlArrayItem("lifecycle")]
+        [ProtoMember(9)]
+        public List<Lifecycles> Lifecycles { get; set; }
+        public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
+
         [XmlElement("tools")]
         public ToolChoices Tools { get; set; }
 
@@ -161,12 +167,6 @@ namespace CycloneDX.Models
         [ProtoMember(7)]
         public List<LicenseChoice> Licenses { get; set; }
         public bool ShouldSerializeLicenses() { return Licenses?.Count > 0; }
-
-        [XmlArray("lifecycles")]
-        [XmlArrayItem("lifecycle")]
-        [ProtoMember(9)]
-        public List<Lifecycles> Lifecycles { get; set; }
-        public bool ShouldSerializeLifecycles() { return Lifecycles?.Count > 0; }
 
         [XmlElement("licenses")]
         [JsonIgnore, ProtoIgnore]

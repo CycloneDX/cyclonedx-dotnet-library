@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<bom serialNumber="urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79" version="1" xmlns="http://cyclonedx.org/schema/bom/1.6">
+    <metadata>
+        <timestamp>2020-04-07T07:01:00Z</timestamp>
+        <lifecycles>
+            <lifecycle>
+                <phase>build</phase>
+            </lifecycle>
+        </lifecycles>
+        <tools>
+            <components>
+                <component type="application">
+                    <name>Example Tool</name>
+                </component>
+            </components>
+        </tools>
+        <authors>
+            <author>
+                <name>Example Author</name>
+            </author>
+        </authors>
+        <component type="application">
+            <name>Example Application</name>
+        </component>
+        <manufacturer>
+            <name>Example Manufacturer</name>
+        </manufacturer>
+        <manufacture>
+            <name>Example Manufacture</name>
+        </manufacture>
+        <supplier>
+            <name>Example Supplier</name>
+        </supplier>
+        <licenses>
+            <license>
+                <id>Apache-2.0</id>
+            </license>
+        </licenses>
+        <properties>
+            <property name="example:property">value</property>
+        </properties>
+    </metadata>
+    <components />
+</bom>

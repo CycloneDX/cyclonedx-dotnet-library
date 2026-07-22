@@ -6,12 +6,6 @@
   "Version": 1,
   "NonNullableVersion": 1,
   "Metadata": {
-    "Tools": null,
-    "ProtobufTools": null,
-    "Authors": null,
-    "Component": null,
-    "Manufacture": null,
-    "Supplier": null,
     "Lifecycles": [
       {
         "Phase": "Design",
@@ -19,6 +13,12 @@
         "Description": null
       }
     ],
+    "Tools": null,
+    "ProtobufTools": null,
+    "Authors": null,
+    "Component": null,
+    "Manufacture": null,
+    "Supplier": null,
     "DistributionConstraints": null
   },
   "Components": [
