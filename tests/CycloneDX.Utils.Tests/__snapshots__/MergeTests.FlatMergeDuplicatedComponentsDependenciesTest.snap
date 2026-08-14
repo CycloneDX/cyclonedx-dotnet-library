@@ -1,0 +1,188 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": null,
+  "Version": null,
+  "Metadata": null,
+  "Components": [
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "Component1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Component1",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "CommonDependencyComponent",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "CommonDependencyComponent",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "OtherDependencyComponent",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "OtherDependencyComponent",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "Component2",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Component2",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "OtherDependencyComponent2",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "OtherDependencyComponent2",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Dependencies": [
+    {
+      "Ref": "Component1",
+      "Dependencies": [
+        {
+          "Ref": "CommonDependencyComponent",
+          "Dependencies": null,
+          "Provides": null
+        },
+        {
+          "Ref": "OtherDependencyComponent",
+          "Dependencies": null,
+          "Provides": null
+        }
+      ],
+      "Provides": null
+    },
+    {
+      "Ref": "CommonDependencyComponent",
+      "Dependencies": [],
+      "Provides": null
+    },
+    {
+      "Ref": "OtherDependencyComponent",
+      "Dependencies": [],
+      "Provides": null
+    },
+    {
+      "Ref": "Component2",
+      "Dependencies": [
+        {
+          "Ref": "CommonDependencyComponent",
+          "Dependencies": null,
+          "Provides": null
+        },
+        {
+          "Ref": "OtherDependencyComponent2",
+          "Dependencies": null,
+          "Provides": null
+        }
+      ],
+      "Provides": null
+    },
+    {
+      "Ref": "OtherDependencyComponent2",
+      "Dependencies": [],
+      "Provides": null
+    }
+  ],
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}
