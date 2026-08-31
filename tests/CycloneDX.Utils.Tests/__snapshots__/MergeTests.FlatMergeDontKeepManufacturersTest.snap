@@ -1,0 +1,13 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": null,
+  "Version": null,
+  "Metadata": null,
+  "Components": null,
+  "Compositions": null,
+  "Definitions": null,
+  "XmlSignature": null,
+  "Signature": null
+}
