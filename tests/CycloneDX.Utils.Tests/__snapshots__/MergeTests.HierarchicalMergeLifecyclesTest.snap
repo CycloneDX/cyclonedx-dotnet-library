@@ -1,0 +1,153 @@
+﻿{
+  "BomFormat": "CycloneDX",
+  "SpecVersion": "v1_6",
+  "SpecVersionString": "1.6",
+  "SerialNumber": null,
+  "Version": null,
+  "Metadata": {
+    "Tools": {
+      "Tools": null
+    },
+    "ProtobufTools": [],
+    "Authors": null,
+    "Component": {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "Thing@1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "Thing",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    "Manufacture": null,
+    "Supplier": null,
+    "Lifecycles": [
+      {
+        "Phase": "Design",
+        "Name": null,
+        "Description": null
+      },
+      {
+        "Name": "custom-phase",
+        "Description": "This is a custom phase."
+      },
+      {
+        "Phase": "Build",
+        "Name": null,
+        "Description": null
+      }
+    ]
+  },
+  "Components": [
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "System1@1:System1@1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "System1",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    },
+    {
+      "Type": "Null",
+      "MimeType": null,
+      "BomRef": "System2@1:System2@1",
+      "Supplier": null,
+      "Author": null,
+      "Publisher": null,
+      "Group": null,
+      "Name": "System2",
+      "Version": "1",
+      "Description": null,
+      "Scope": null,
+      "Licenses": null,
+      "Copyright": null,
+      "Cpe": null,
+      "Purl": null,
+      "Swid": null,
+      "Modified": null,
+      "Pedigree": null,
+      "Evidence": null,
+      "ModelCard": null,
+      "Data": null,
+      "CryptoProperties": null,
+      "XmlSignature": null,
+      "Signature": null
+    }
+  ],
+  "Dependencies": [
+    {
+      "Ref": "Thing@1",
+      "Dependencies": [
+        {
+          "Ref": "System1@1:System1@1",
+          "Dependencies": null,
+          "Provides": null
+        },
+        {
+          "Ref": "System2@1:System2@1",
+          "Dependencies": null,
+          "Provides": null
+        }
+      ],
+      "Provides": null
+    }
+  ],
+  "Compositions": null,
+  "Declarations": {
+    "Assessors": [],
+    "Attestations": [],
+    "Claims": [],
+    "Evidence": [],
+    "Targets": {
+      "Organizations": []
+    },
+    "Affirmation": null,
+    "XmlSignature": null,
+    "Signature": null
+  },
+  "Definitions": {
+    "Standards_XML": {
+      "Standards": [],
+      "Any": null,
+      "AnyAttr": null
+    },
+    "Standards": []
+  },
+  "XmlSignature": null,
+  "Signature": null
+}
