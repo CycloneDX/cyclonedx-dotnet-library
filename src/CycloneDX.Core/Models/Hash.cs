@@ -15,6 +15,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
+using System.Text.Json;
 using System.Xml.Serialization;
 using ProtoBuf;
 
@@ -22,7 +24,10 @@ namespace CycloneDX.Models
 {
     [XmlType("hash")]
     [ProtoContract]
-    public class Hash
+    public class Hash : IEquatable<Hash>
+#if NET8_0_OR_GREATER
+        , IMergeable<Hash>, IEquivalent<Hash>
+#endif
     {
         [ProtoContract]
         public enum HashAlgorithm
@@ -66,5 +71,64 @@ namespace CycloneDX.Models
         [XmlText]
         [ProtoMember(2)]
         public string Content { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Hash;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(other, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public bool Equals(Hash obj)
+        {
+            return obj != null && JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(obj, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public override int GetHashCode()
+        {
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
+        }
+
+#if NET8_0_OR_GREATER
+        public bool Equivalent(Hash obj, MergeStrategy strategy)
+        {
+            return obj != null && Alg == obj.Alg;
+        }
+
+        /// <summary>
+        /// Two hashes of the same algorithm should carry the same content;
+        /// if one side is missing content (e.g. partially populated by a
+        /// producer), fill it in from the other. A genuine content mismatch
+        /// for the same algorithm is a real conflict, not something this
+        /// merge silently resolves.
+        /// </summary>
+        public bool MergeWith(Hash obj, MergeStrategy strategy)
+        {
+            if (obj is null)
+            {
+                return false;
+            }
+            if (Equals(obj))
+            {
+                return true;
+            }
+            if (!Equivalent(obj, strategy))
+            {
+                return false;
+            }
+
+            if (Content is null && !(obj.Content is null))
+            {
+                Content = obj.Content;
+                return true;
+            }
+
+            return Content == obj.Content;
+        }
+#endif
     }
 }

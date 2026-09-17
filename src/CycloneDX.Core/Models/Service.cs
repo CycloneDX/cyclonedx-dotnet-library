@@ -28,6 +28,9 @@ namespace CycloneDX.Models
 {
     [ProtoContract]
     public class Service: IEquatable<Service>, IHasBomRef
+#if NET8_0_OR_GREATER
+        , IMergeable<Service>, IEquivalent<Service>
+#endif
     {
         public Service()
         {

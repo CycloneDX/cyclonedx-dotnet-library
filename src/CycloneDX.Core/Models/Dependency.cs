@@ -30,6 +30,9 @@ namespace CycloneDX.Models
     [XmlType("dependency")]
     [ProtoContract]
     public class Dependency : IEquatable<Dependency>
+#if NET8_0_OR_GREATER
+        , IMergeable<Dependency>, IEquivalent<Dependency>
+#endif
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]
@@ -87,6 +90,60 @@ namespace CycloneDX.Models
         {
             return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
         }
+
+#if NET8_0_OR_GREATER
+        /// <summary>Two Dependency entries describe the same graph node if they share a Ref.</summary>
+        public bool Equivalent(Dependency other, MergeStrategy strategy)
+        {
+            return other != null && !string.IsNullOrEmpty(Ref) && Ref == other.Ref;
+        }
+
+        /// <summary>
+        /// Without this override, Dependency only merges via the
+        /// IMergeable&lt;T&gt; default (exact equality) -- so two BOMs
+        /// describing the same component with different direct-dependency
+        /// lists (e.g. a module built standalone vs. as part of a larger
+        /// build) would each contribute their own `&lt;dependency ref="X"&gt;`
+        /// entry, leaving the merged document with two different entries
+        /// for the same Ref instead of one combined entry. This unions the
+        /// two Dependencies (sub-)lists instead, gated by
+        /// <see cref="MergeStrategy.MergeSubsetDependencies"/>: when that's
+        /// false, a genuine difference in dependsOn contents is treated as
+        /// a conflict (refuse, keep both entries) rather than silently
+        /// combined.
+        /// </summary>
+        public bool MergeWith(Dependency other, MergeStrategy strategy)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+            if (Equals(other))
+            {
+                return true;
+            }
+            if (!Equivalent(other, strategy))
+            {
+                return false;
+            }
+
+            if (!strategy.MergeSubsetDependencies && !DependsOnSetsEqual(Dependencies, other.Dependencies))
+            {
+                return false;
+            }
+
+            Dependencies = MergeableListHelper.Merge(Dependencies, other.Dependencies, strategy);
+            Provides = MergeableListHelper.MergeSingle(Provides, other.Provides);
+            return true;
+        }
+
+        private static bool DependsOnSetsEqual(List<Dependency> a, List<Dependency> b)
+        {
+            var aRefs = a?.Select(d => d.Ref).ToHashSet() ?? new HashSet<string>();
+            var bRefs = b?.Select(d => d.Ref).ToHashSet() ?? new HashSet<string>();
+            return aRefs.SetEquals(bRefs);
+        }
+#endif
     }
 
     [ProtoContract]

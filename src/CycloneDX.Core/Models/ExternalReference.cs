@@ -29,6 +29,9 @@ namespace CycloneDX.Models
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     [ProtoContract]
     public class ExternalReference : IEquatable<ExternalReference>
+#if NET8_0_OR_GREATER
+        , IMergeable<ExternalReference>, IEquivalent<ExternalReference>
+#endif
     {
         [ProtoContract]
         public enum ExternalReferenceType

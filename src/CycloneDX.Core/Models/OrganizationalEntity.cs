@@ -26,6 +26,9 @@ namespace CycloneDX.Models
 {
     [ProtoContract]
     public class OrganizationalEntity : IEquatable<OrganizationalEntity>, IHasBomRef
+#if NET8_0_OR_GREATER
+        , IMergeable<OrganizationalEntity>, IEquivalent<OrganizationalEntity>
+#endif
     {
         [XmlElement("name")]
         [ProtoMember(1)]
