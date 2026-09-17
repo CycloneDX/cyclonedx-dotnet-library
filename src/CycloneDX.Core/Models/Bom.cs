@@ -205,5 +205,127 @@ namespace CycloneDX.Models
         public XmlElement XmlSignature { get; set; }
         [XmlIgnore]
         public SignatureChoice Signature { get; set; }
+
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Rename a "bom-ref" identifier and every back-reference to it
+        /// throughout this document (Dependency.Ref, Composition
+        /// assemblies/dependencies, Vulnerability.Affects[].Ref, annotation
+        /// subjects, ...), via <see cref="BomRefWalker"/>.
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if <paramref name="oldRef"/> was found and rewritten
+        /// somewhere in the document; <c>false</c> if it was not present
+        /// (a non-fatal no-op) or the arguments were invalid.
+        /// </returns>
+        public bool RenameRef(string oldRef, string newRef)
+        {
+            if (string.IsNullOrEmpty(oldRef) || string.IsNullOrEmpty(newRef) || oldRef == newRef)
+            {
+                return false;
+            }
+
+            bool found = false;
+            BomRefWalker.RewriteRefs(this, r =>
+            {
+                if (r == oldRef)
+                {
+                    found = true;
+                    return newRef;
+                }
+                return r;
+            });
+            return found;
+        }
+
+        /// <summary>
+        /// Add a reference to this running build of cyclonedx-dotnet-library
+        /// (and, if different, the entry assembly -- typically a consuming
+        /// tool like cyclonedx-cli) into this document's Metadata/Tools.
+        /// Intended for use after processing that creates or modifies a
+        /// document, so any bugs in the processing are traceable to the
+        /// tool/library versions that produced the result. Avoids adding
+        /// exact-duplicate entries.
+        /// </summary>
+        public void BomMetadataReferThisToolkit()
+        {
+#pragma warning disable 618
+            var toolThisLibrary = new Tool
+            {
+                Vendor = "OWASP Foundation",
+                Name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
+                Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            };
+#pragma warning restore 618
+
+            if (Metadata is null)
+            {
+                Metadata = new Metadata();
+            }
+
+            if (Metadata.Tools is null || Metadata.Tools.Tools is null)
+            {
+#pragma warning disable 618
+                Metadata.Tools = new ToolChoices
+                {
+                    Tools = new List<Tool>(new[] { toolThisLibrary }),
+                };
+#pragma warning restore 618
+            }
+            else if (!Metadata.Tools.Tools.Contains(toolThisLibrary))
+            {
+                Metadata.Tools.Tools.Add(toolThisLibrary);
+            }
+
+            var entryAssembly = System.Reflection.Assembly.GetEntryAssembly();
+            var toolThisScriptName = entryAssembly?.GetName()?.Name;
+            if (!string.IsNullOrEmpty(toolThisScriptName) && toolThisScriptName != toolThisLibrary.Name)
+            {
+#pragma warning disable 618
+                var toolThisScript = new Tool
+                {
+                    Name = toolThisScriptName,
+                    Vendor = toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx", StringComparison.Ordinal) ? "OWASP Foundation" : null,
+                    Version = entryAssembly.GetName().Version.ToString()
+                };
+#pragma warning restore 618
+
+                if (!Metadata.Tools.Tools.Contains(toolThisScript))
+                {
+                    Metadata.Tools.Tools.Add(toolThisScript);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Refresh this document's own identity: Version/SerialNumber and
+        /// Metadata/Timestamp. Typically called after content
+        /// manipulations such as a merge or rename. Callers usually also
+        /// want <see cref="BomMetadataReferThisToolkit"/> separately.
+        /// </summary>
+        public void BomMetadataUpdate(bool generateNewSerialNumber)
+        {
+            if (Version is null || Version < 1 || string.IsNullOrEmpty(SerialNumber))
+            {
+                generateNewSerialNumber = true;
+            }
+
+            if (generateNewSerialNumber)
+            {
+                Version = 1;
+                SerialNumber = "urn:uuid:" + Guid.NewGuid().ToString();
+            }
+            else
+            {
+                Version++;
+            }
+
+            if (Metadata is null)
+            {
+                Metadata = new Metadata();
+            }
+            Metadata.Timestamp = DateTime.Now;
+        }
+#endif
     }
 }

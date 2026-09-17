@@ -30,6 +30,9 @@ namespace CycloneDX.Models
     [XmlType("dependency")]
     [ProtoContract]
     public class Dependency : IEquatable<Dependency>
+#if NET8_0_OR_GREATER
+        , IMergeable<Dependency>, IEquivalent<Dependency>
+#endif
     {
         [XmlAttribute("ref")]
         [ProtoMember(1)]

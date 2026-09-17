@@ -181,6 +181,136 @@ namespace CycloneDX.Utils
             return result;
         }
 
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Flat-merges two BOMs using a <see cref="MergeStrategy"/>: unlike
+        /// the plain <see cref="FlatMerge(Bom, Bom)"/> overload (which only
+        /// dedupes exactly-equal list entries), this attempts to reconcile
+        /// equivalent-but-not-equal entries (see <see cref="IMergeable{T}"/>)
+        /// -- most notably Components differing only by Scope -- instead of
+        /// keeping every near-duplicate as a separate entry.
+        /// </summary>
+        public static Bom FlatMerge(Bom bom1, Bom bom2, MergeStrategy strategy)
+        {
+            strategy ??= MergeStrategy.Default();
+
+            if (strategy.RenameConflictingComponents)
+            {
+                RenameBomRefCollisions(bom1, bom2);
+            }
+
+            var result = new Bom();
+
+#pragma warning disable 618
+            var tools = MergeableListHelper.Merge(bom1.Metadata?.Tools?.Tools, bom2.Metadata?.Tools?.Tools, strategy);
+#pragma warning restore 618
+            var toolsComponents = MergeableListHelper.Merge(bom1.Metadata?.Tools?.Components, bom2.Metadata?.Tools?.Components, strategy);
+            var toolsServices = MergeableListHelper.Merge(bom1.Metadata?.Tools?.Services, bom2.Metadata?.Tools?.Services, strategy);
+            if (tools != null || toolsComponents != null || toolsServices != null)
+            {
+                result.Metadata = new Metadata
+                {
+                    Tools = new ToolChoices
+                    {
+                        Tools = tools,
+                        Components = toolsComponents,
+                        Services = toolsServices,
+                    }
+                };
+            }
+
+            result.Components = MergeableListHelper.Merge(bom1.Components, bom2.Components, strategy);
+
+            if (result.Components != null && !(bom2.Metadata?.Component is null) && !result.Components.Contains(bom2.Metadata.Component))
+            {
+                result.Components.Add(bom2.Metadata.Component);
+            }
+
+            result.Services = MergeableListHelper.Merge(bom1.Services, bom2.Services, strategy);
+            result.ExternalReferences = MergeableListHelper.Merge(bom1.ExternalReferences, bom2.ExternalReferences, strategy);
+            // Dependency reconciliation beyond exact-match (e.g. treating one
+            // side's dependency list as a subset of the other's, per
+            // strategy.MergeSubsetDependencies) is not yet implemented --
+            // Dependency currently only merges via its IMergeable<T> default
+            // (exact equality), same as the non-strategy overload.
+            result.Dependencies = MergeableListHelper.Merge(bom1.Dependencies, bom2.Dependencies, strategy);
+            result.Compositions = MergeableListHelper.Merge(bom1.Compositions, bom2.Compositions, strategy);
+            result.Vulnerabilities = MergeableListHelper.Merge(bom1.Vulnerabilities, bom2.Vulnerabilities, strategy);
+            result.Annotations = MergeableListHelper.Merge(bom1.Annotations, bom2.Annotations, strategy);
+
+            if (bom1.Definitions != null || bom2.Definitions != null)
+            {
+                result.Definitions = new Definitions
+                {
+                    Standards = MergeableListHelper.Merge(bom1.Definitions?.Standards, bom2.Definitions?.Standards, strategy)
+                };
+            }
+
+            if (bom1.Declarations != null || bom2.Declarations != null)
+            {
+                result.Declarations = new Declarations
+                {
+                    Assessors = MergeableListHelper.Merge(bom1.Declarations?.Assessors, bom2.Declarations?.Assessors, strategy),
+                    Attestations = MergeableListHelper.Merge(bom1.Declarations?.Attestations, bom2.Declarations?.Attestations, strategy),
+                    Claims = MergeableListHelper.Merge(bom1.Declarations?.Claims, bom2.Declarations?.Claims, strategy),
+                };
+
+                if (bom1.Declarations?.Targets != null || bom2.Declarations?.Targets != null)
+                {
+                    result.Declarations.Targets = new Targets
+                    {
+                        Organizations = MergeableListHelper.Merge(bom1.Declarations?.Targets?.Organizations, bom2.Declarations?.Targets?.Organizations, strategy),
+                        Components = MergeableListHelper.Merge(bom1.Declarations?.Targets?.Components, bom2.Declarations?.Targets?.Components, strategy),
+                        Services = MergeableListHelper.Merge(bom1.Declarations?.Targets?.Services, bom2.Declarations?.Targets?.Services, strategy),
+                    };
+                }
+            }
+
+            if (strategy.DoBomMetadataUpdate)
+            {
+                result.BomMetadataUpdate(strategy.DoBomMetadataUpdateNewSerialNumber);
+                if (strategy.DoBomMetadataUpdateReferThisToolkit)
+                {
+                    result.BomMetadataReferThisToolkit();
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// If the same non-null bom-ref identifies two different (not
+        /// IEquatable-equal) components across <paramref name="bom1"/> and
+        /// <paramref name="bom2"/>, rename bom2's copy (and its
+        /// back-references, via <see cref="BomRefWalker"/>) before merging,
+        /// so the merged document never ends up with one bom-ref value
+        /// silently pointing at two unrelated components.
+        /// </summary>
+        private static void RenameBomRefCollisions(Bom bom1, Bom bom2)
+        {
+            if (bom1?.Components is null || bom2?.Components is null)
+            {
+                return;
+            }
+
+            foreach (var c1 in bom1.Components)
+            {
+                if (string.IsNullOrEmpty(c1.BomRef))
+                {
+                    continue;
+                }
+                foreach (var c2 in bom2.Components)
+                {
+                    if (c2.BomRef == c1.BomRef && !c1.Equals(c2))
+                    {
+                        var conflictingRef = c2.BomRef;
+                        var renamedRef = conflictingRef + ":2";
+                        BomRefWalker.RewriteRefs(bom2, r => r == conflictingRef ? renamedRef : r);
+                    }
+                }
+            }
+        }
+#endif
 
         /// <summary>
         /// Performs a flat merge of multiple BOMs.
@@ -197,7 +327,7 @@ namespace CycloneDX.Utils
         /// <returns></returns>
         public static Bom FlatMerge(IEnumerable<Bom> boms)
         {
-            return FlatMerge(boms, null);
+            return FlatMerge(boms, (Component)null);
         }
 
         /// <summary>
@@ -259,6 +389,67 @@ namespace CycloneDX.Utils
 
             return result;
         }
+
+#if NET8_0_OR_GREATER
+        /// <summary>Strategy-aware equivalent of <see cref="FlatMerge(IEnumerable{Bom})"/>.</summary>
+        public static Bom FlatMerge(IEnumerable<Bom> boms, MergeStrategy strategy)
+        {
+            return FlatMerge(boms, null, strategy);
+        }
+
+        /// <summary>Strategy-aware equivalent of <see cref="FlatMerge(IEnumerable{Bom}, Component)"/>.</summary>
+        public static Bom FlatMerge(IEnumerable<Bom> boms, Component bomSubject, MergeStrategy strategy)
+        {
+            strategy ??= MergeStrategy.Default();
+            var result = new Bom();
+
+            foreach (var bom in boms)
+            {
+                result = FlatMerge(result, bom, strategy);
+            }
+
+            if (bomSubject != null)
+            {
+                if (result.Metadata == null)
+                {
+                    result.Metadata = new Metadata();
+                }
+                result.Metadata.Component = bomSubject;
+                result.Metadata.Component.BomRef = ComponentBomRefNamespace(result.Metadata.Component);
+
+                var mainDependency = new Dependency
+                {
+                    Ref = result.Metadata.Component.BomRef,
+                    Dependencies = new List<Dependency>()
+                };
+
+                foreach (var bom in boms)
+                {
+                    if (!(bom.Metadata?.Component is null))
+                    {
+                        mainDependency.Dependencies.Add(new Dependency { Ref = bom.Metadata.Component.BomRef });
+                    }
+                }
+
+                if (result.Dependencies == null)
+                {
+                    result.Dependencies = new List<Dependency>();
+                }
+                result.Dependencies.Add(mainDependency);
+            }
+
+            if (strategy.DoBomMetadataUpdate)
+            {
+                result.BomMetadataUpdate(strategy.DoBomMetadataUpdateNewSerialNumber);
+                if (strategy.DoBomMetadataUpdateReferThisToolkit)
+                {
+                    result.BomMetadataReferThisToolkit();
+                }
+            }
+
+            return result;
+        }
+#endif
 
         /// <summary>
         /// Performs a hierarchical merge for multiple BOMs.
@@ -497,6 +688,34 @@ namespace CycloneDX.Utils
 
             return result;
         }
+
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Hierarchical merge with a <see cref="MergeStrategy"/>. Hierarchical
+        /// merge already keeps each source BOM's component subtree separate
+        /// (via bom-ref namespacing rather than deduplication), which is
+        /// what most of MergeStrategy's component-conflict-resolution
+        /// concern exists to handle for FlatMerge -- so this overload's
+        /// only behavioral addition today is applying the metadata-update
+        /// toggles afterwards.
+        /// </summary>
+        public static Bom HierarchicalMerge(IEnumerable<Bom> boms, Component bomSubject, MergeStrategy strategy)
+        {
+            strategy ??= MergeStrategy.Default();
+            var result = HierarchicalMerge(boms, bomSubject);
+
+            if (strategy.DoBomMetadataUpdate)
+            {
+                result.BomMetadataUpdate(strategy.DoBomMetadataUpdateNewSerialNumber);
+                if (strategy.DoBomMetadataUpdateReferThisToolkit)
+                {
+                    result.BomMetadataReferThisToolkit();
+                }
+            }
+
+            return result;
+        }
+#endif
 
         private static void NamespaceBomRefs(Component bomSubject, IEnumerable<IHasBomRef> references)
         {

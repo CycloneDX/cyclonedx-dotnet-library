@@ -27,6 +27,9 @@ namespace CycloneDX.Models
 {
     [ProtoContract]
     public class Attestation : IEquatable<Attestation>
+#if NET8_0_OR_GREATER
+        , IMergeable<Attestation>, IEquivalent<Attestation>
+#endif
     {
         [XmlElement("summary")]
         [ProtoMember(1)]
