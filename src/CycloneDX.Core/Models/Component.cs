@@ -33,6 +33,9 @@ namespace CycloneDX.Models
     [XmlType("component")]
     [ProtoContract]
     public class Component: IEquatable<Component>, IHasBomRef
+#if NET8_0_OR_GREATER
+        , IMergeable<Component>, IEquivalent<Component>
+#endif
     {
         [ProtoContract]
         public enum Classification
@@ -328,5 +331,180 @@ namespace CycloneDX.Models
         {
             return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
         }
+
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Cheap pre-check for "plausibly the same real-world component,
+        /// worth attempting MergeWith on" -- not full equality. By spec,
+        /// "type" and "name" are the two required identifying properties;
+        /// "version"/"group"/"purl" are treated as equal-if-both-present
+        /// (so two components with the identical type/name but only one
+        /// side specifying a version are still considered equivalent,
+        /// rather than assumed to be different versions of the same
+        /// thing). bom-ref is deliberately NOT part of this check -- two
+        /// components can describe the same real-world thing under
+        /// different bom-ref values in different source documents, and
+        /// reconciling bom-ref identity is the merge orchestration's job
+        /// (see BomRefWalker), not this per-field check's.
+        /// </summary>
+        public bool Equivalent(Component other, MergeStrategy strategy)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+
+            return Type == other.Type
+                && !(Name is null) && !(other.Name is null) && Name == other.Name
+                && (Version is null || other.Version is null || Version == other.Version)
+                && (Group is null || other.Group is null || Group == other.Group)
+                && (Purl is null || other.Purl is null || Purl == other.Purl);
+        }
+
+        /// <summary>
+        /// Attempt to fold <paramref name="other"/>'s data into this
+        /// component. Scalar fields prefer this instance's own value and
+        /// fall back to <paramref name="other"/>'s only when unset; list
+        /// fields are merged via <see cref="MergeableListHelper"/>; Scope
+        /// is reconciled via <see cref="MergeScope"/>, which is the one
+        /// place this can still refuse to merge (an Excluded/Required
+        /// clash is a genuine conflict, not something to silently paper
+        /// over) -- see <see cref="MergeStrategy.ComponentConflictResolution"/>.
+        /// </summary>
+        public bool MergeWith(Component other, MergeStrategy strategy)
+        {
+            if (other is null)
+            {
+                return false;
+            }
+            if (Equals(other))
+            {
+                return true;
+            }
+            if (!Equivalent(other, strategy))
+            {
+                return false;
+            }
+
+            if (strategy.ComponentConflictResolution == ComponentConflictResolution.KeepSeparate)
+            {
+                return false;
+            }
+
+            if (!TryMergeScope(Scope, other.Scope, strategy.ComponentConflictResolution, out var mergedScope))
+            {
+                // Scope reconciliation refused (e.g. Excluded vs. Required) --
+                // these are different enough real-world things to keep separate.
+                return false;
+            }
+
+            Scope = mergedScope;
+            MimeType ??= other.MimeType;
+            Supplier = MergeableListHelper.MergeSingle(Supplier, other.Supplier);
+            Manufacturer = MergeableListHelper.MergeSingle(Manufacturer, other.Manufacturer);
+            Authors = MergeableListHelper.Merge(Authors, other.Authors, strategy);
+#pragma warning disable 618
+            Author ??= other.Author;
+#pragma warning restore 618
+            Publisher ??= other.Publisher;
+            VersionRange ??= other.VersionRange;
+            Description ??= other.Description;
+            Hashes = MergeableListHelper.Merge(Hashes, other.Hashes, strategy);
+            Licenses = MergeableListHelper.Merge(Licenses, other.Licenses, strategy);
+            Copyright ??= other.Copyright;
+            PatentAssertions = MergeableListHelper.Merge(PatentAssertions, other.PatentAssertions, strategy);
+            Cpe ??= other.Cpe;
+            Purl ??= other.Purl;
+            OmniborId = MergeableListHelper.MergeStringList(OmniborId, other.OmniborId);
+            Swhid = MergeableListHelper.MergeStringList(Swhid, other.Swhid);
+            Swid = MergeableListHelper.MergeSingle(Swid, other.Swid);
+            Modified = MergeableListHelper.MergeNullableBoolOr(Modified, other.Modified);
+            Pedigree = MergeableListHelper.MergeSingle(Pedigree, other.Pedigree);
+            ExternalReferences = MergeableListHelper.Merge(ExternalReferences, other.ExternalReferences, strategy);
+            Properties = MergeableListHelper.Merge(Properties, other.Properties, strategy);
+            Components = MergeableListHelper.Merge(Components, other.Components, strategy);
+            Evidence = MergeableListHelper.MergeSingle(Evidence, other.Evidence);
+            ReleaseNotes = MergeableListHelper.MergeSingle(ReleaseNotes, other.ReleaseNotes);
+            ModelCard = MergeableListHelper.MergeSingle(ModelCard, other.ModelCard);
+            Data = MergeableListHelper.MergeSingle(Data, other.Data);
+            CryptoProperties = MergeableListHelper.MergeSingle(CryptoProperties, other.CryptoProperties);
+            IsExternal = MergeableListHelper.MergeNullableBoolOr(IsExternal, other.IsExternal);
+            Tags = MergeableListHelper.MergeStringList(Tags, other.Tags);
+            XmlSignature = MergeableListHelper.MergeSingle(XmlSignature, other.XmlSignature);
+            Signature = MergeableListHelper.MergeSingle(Signature, other.Signature);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Reconcile two Scope values for components that are otherwise
+        /// being merged into one (see MergeStrategy.ComponentConflictResolution's
+        /// XML docs for the domain rules). "Both sides already equal" is
+        /// handled uniformly first, including the both-Excluded case: two
+        /// components that are both Excluded-scope but differ in some
+        /// unrelated field should still merge, not be treated as a scope
+        /// conflict just because neither side is Optional.
+        /// </summary>
+        /// <returns>
+        /// <c>false</c> if the two scopes genuinely conflict (Excluded vs.
+        /// Required/unset) and the caller should not merge these two
+        /// components at all.
+        /// </returns>
+        private static bool TryMergeScope(ComponentScope? a, ComponentScope? b, ComponentConflictResolution resolution, out ComponentScope? merged)
+        {
+            if (a == b)
+            {
+                merged = a;
+                return true;
+            }
+
+            if (resolution == ComponentConflictResolution.Squash_RenameByScope)
+            {
+                // Scope partitioning under this strategy is handled by a
+                // dedicated pre-pass (CycloneDXUtils' RenameByScope pass)
+                // that splits differently-scoped components into separate,
+                // suffixed bom-refs *before* the generic per-field merge
+                // ever runs -- so by the time two Components reach here with
+                // different Scope values, they should not be merged at all;
+                // treat it as a refusal rather than silently squashing.
+                merged = null;
+                return false;
+            }
+
+            bool aExcluded = a == ComponentScope.Excluded;
+            bool bExcluded = b == ComponentScope.Excluded;
+
+            if (!aExcluded && !bExcluded)
+            {
+                // Neither side excludes the component. Per the spec, an absent
+                // (null/unset) Scope SHOULD be treated as required -- so unless
+                // both sides agree on "optional", the safe reading is whichever
+                // is more inclusive. Squash_UpgradeScope (the default) always
+                // resolves to Required; Squash_DowngradeScope keeps the
+                // narrower "optional" reading when either side actually said so.
+                merged = resolution == ComponentConflictResolution.Squash_UpgradeScope
+                    ? ComponentScope.Required
+                    : (a == ComponentScope.Optional || b == ComponentScope.Optional)
+                        ? ComponentScope.Optional
+                        : (ComponentScope?)null;
+                return true;
+            }
+
+            // Exactly one side is Excluded (a == b above already handled both-Excluded).
+            var other = aExcluded ? b : a;
+            if (other == ComponentScope.Optional || other is null)
+            {
+                // Excluded dominates over a merely-optional/unspecified reading.
+                merged = ComponentScope.Excluded;
+                return true;
+            }
+
+            // Excluded vs. Required is a genuine conflict: these describe
+            // different real-world usages of the same component and should
+            // not be silently squashed into one.
+            merged = null;
+            return false;
+        }
+#endif
     }
 }

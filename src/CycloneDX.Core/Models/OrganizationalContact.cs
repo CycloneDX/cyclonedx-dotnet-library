@@ -15,6 +15,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using System;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using ProtoBuf;
@@ -22,7 +24,10 @@ using ProtoBuf;
 namespace CycloneDX.Models
 {
     [ProtoContract]
-    public class OrganizationalContact
+    public class OrganizationalContact : IEquatable<OrganizationalContact>, IHasBomRef
+#if NET8_0_OR_GREATER
+        , IMergeable<OrganizationalContact>, IEquivalent<OrganizationalContact>
+#endif
     {
         [XmlElement("name")]
         [ProtoMember(1)]
@@ -40,5 +45,26 @@ namespace CycloneDX.Models
         [XmlAttribute("bom-ref")]
         [ProtoMember(4)]
         public string BomRef { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as OrganizationalContact;
+            if (other == null)
+            {
+                return false;
+            }
+
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(other, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public bool Equals(OrganizationalContact obj)
+        {
+            return obj != null && JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash) == JsonSerializer.Serialize(obj, Json.Serializer.SerializerOptionsForHash);
+        }
+
+        public override int GetHashCode()
+        {
+            return JsonSerializer.Serialize(this, Json.Serializer.SerializerOptionsForHash).GetHashCode();
+        }
     }
 }

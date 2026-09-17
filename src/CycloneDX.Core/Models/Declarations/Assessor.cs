@@ -27,6 +27,9 @@ namespace CycloneDX.Models
 {
     [ProtoContract]
     public class Assessor : IEquatable<Assessor>, IHasBomRef
+#if NET8_0_OR_GREATER
+        , IMergeable<Assessor>, IEquivalent<Assessor>
+#endif
     {
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]

@@ -205,5 +205,158 @@ namespace CycloneDX.Models
         public XmlElement XmlSignature { get; set; }
         [XmlIgnore]
         public SignatureChoice Signature { get; set; }
+
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Rename a "bom-ref" identifier and every back-reference to it
+        /// throughout this document (Dependency.Ref, Composition
+        /// assemblies/dependencies, Vulnerability.Affects[].Ref, annotation
+        /// subjects, ...), via <see cref="BomRefWalker"/>.
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if <paramref name="oldRef"/> was found and rewritten
+        /// somewhere in the document; <c>false</c> if it was not present
+        /// (a non-fatal no-op) or the arguments were invalid.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        /// <paramref name="newRef"/> is already used as a bom-ref identifier
+        /// or back-reference somewhere else in this document. Renaming
+        /// anyway would silently make two different entities share one
+        /// bom-ref (or repoint an existing back-reference at the wrong
+        /// entity) -- refused rather than done.
+        /// </exception>
+        public bool RenameRef(string oldRef, string newRef)
+        {
+            if (string.IsNullOrEmpty(oldRef) || string.IsNullOrEmpty(newRef) || oldRef == newRef)
+            {
+                return false;
+            }
+
+            // Read-only pass (rewrite function returns its input unchanged,
+            // just records it) to check for a collision before touching
+            // anything -- reuses the same traversal RewriteRefs uses for
+            // the real rewrite, so "what counts as a ref" can't drift
+            // between the check and the actual rename.
+            var existingRefs = new HashSet<string>();
+            BomRefWalker.RewriteRefs(this, r =>
+            {
+                if (!string.IsNullOrEmpty(r))
+                {
+                    existingRefs.Add(r);
+                }
+                return r;
+            });
+
+            if (!existingRefs.Contains(oldRef))
+            {
+                return false;
+            }
+            if (existingRefs.Contains(newRef))
+            {
+                throw new InvalidOperationException($"Cannot rename \"{oldRef}\" to \"{newRef}\": \"{newRef}\" is already used as a bom-ref (or a reference to one) elsewhere in this document.");
+            }
+
+            bool found = false;
+            BomRefWalker.RewriteRefs(this, r =>
+            {
+                if (r == oldRef)
+                {
+                    found = true;
+                    return newRef;
+                }
+                return r;
+            });
+            return found;
+        }
+
+        /// <summary>
+        /// Add a reference to this running build of cyclonedx-dotnet-library
+        /// (and, if different, the entry assembly -- typically a consuming
+        /// tool like cyclonedx-cli) into this document's Metadata/Tools.
+        /// Intended for use after processing that creates or modifies a
+        /// document, so any bugs in the processing are traceable to the
+        /// tool/library versions that produced the result. Avoids adding
+        /// exact-duplicate entries.
+        /// </summary>
+        public void BomMetadataReferThisToolkit()
+        {
+#pragma warning disable 618
+            var toolThisLibrary = new Tool
+            {
+                Vendor = "OWASP Foundation",
+                Name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
+                Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            };
+#pragma warning restore 618
+
+            if (Metadata is null)
+            {
+                Metadata = new Metadata();
+            }
+
+            if (Metadata.Tools is null || Metadata.Tools.Tools is null)
+            {
+#pragma warning disable 618
+                Metadata.Tools = new ToolChoices
+                {
+                    Tools = new List<Tool>(new[] { toolThisLibrary }),
+                };
+#pragma warning restore 618
+            }
+            else if (!Metadata.Tools.Tools.Contains(toolThisLibrary))
+            {
+                Metadata.Tools.Tools.Add(toolThisLibrary);
+            }
+
+            var entryAssembly = System.Reflection.Assembly.GetEntryAssembly();
+            var toolThisScriptName = entryAssembly?.GetName()?.Name;
+            if (!string.IsNullOrEmpty(toolThisScriptName) && toolThisScriptName != toolThisLibrary.Name)
+            {
+#pragma warning disable 618
+                var toolThisScript = new Tool
+                {
+                    Name = toolThisScriptName,
+                    Vendor = toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx", StringComparison.Ordinal) ? "OWASP Foundation" : null,
+                    Version = entryAssembly.GetName().Version.ToString()
+                };
+#pragma warning restore 618
+
+                if (!Metadata.Tools.Tools.Contains(toolThisScript))
+                {
+                    Metadata.Tools.Tools.Add(toolThisScript);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Refresh this document's own identity: Version/SerialNumber and
+        /// Metadata/Timestamp. Typically called after content
+        /// manipulations such as a merge or rename. Callers usually also
+        /// want <see cref="BomMetadataReferThisToolkit"/> separately.
+        /// </summary>
+        public void BomMetadataUpdate(bool generateNewSerialNumber)
+        {
+            if (Version is null || Version < 1 || string.IsNullOrEmpty(SerialNumber))
+            {
+                generateNewSerialNumber = true;
+            }
+
+            if (generateNewSerialNumber)
+            {
+                Version = 1;
+                SerialNumber = "urn:uuid:" + Guid.NewGuid().ToString();
+            }
+            else
+            {
+                Version++;
+            }
+
+            if (Metadata is null)
+            {
+                Metadata = new Metadata();
+            }
+            Metadata.Timestamp = DateTime.Now;
+        }
+#endif
     }
 }
