@@ -26,6 +26,9 @@ namespace CycloneDX.Models
     [Obsolete("Tool is deprecated and will be removed in a future version")]
     [ProtoContract]
     public class Tool: IEquatable<Tool>
+#if NET8_0_OR_GREATER
+        , IMergeable<Tool>, IEquivalent<Tool>
+#endif
     {
         [XmlElement("vendor")]
         [ProtoMember(1)]

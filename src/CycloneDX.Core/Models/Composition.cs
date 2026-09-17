@@ -27,6 +27,9 @@ namespace CycloneDX.Models
 {
     [ProtoContract]
     public class Composition : IXmlSerializable, IEquatable<Composition>
+#if NET8_0_OR_GREATER
+        , IMergeable<Composition>, IEquivalent<Composition>
+#endif
     {
         [ProtoContract]
         public enum AggregateType

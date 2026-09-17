@@ -26,6 +26,9 @@ namespace CycloneDX.Models
 {
     [ProtoContract]
     public class Annotation : IEquatable<Annotation>
+#if NET8_0_OR_GREATER
+        , IMergeable<Annotation>, IEquivalent<Annotation>
+#endif
     {
         [XmlType("subject")]
         public class XmlAnnotationSubject
