@@ -205,5 +205,308 @@ namespace CycloneDX.Models
         public XmlElement XmlSignature { get; set; }
         [XmlIgnore]
         public SignatureChoice Signature { get; set; }
+
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Rename a "bom-ref" identifier and every back-reference to it
+        /// throughout this document (Dependency.Ref, Composition
+        /// assemblies/dependencies, Vulnerability.Affects[].Ref, annotation
+        /// subjects, ...), via <see cref="BomRefWalker"/>.
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if <paramref name="oldRef"/> was found and rewritten
+        /// somewhere in the document; <c>false</c> if it was not present
+        /// (a non-fatal no-op) or the arguments were invalid.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        /// <paramref name="newRef"/> is already used as a bom-ref identifier
+        /// or back-reference somewhere else in this document. Renaming
+        /// anyway would silently make two different entities share one
+        /// bom-ref (or repoint an existing back-reference at the wrong
+        /// entity) -- refused rather than done.
+        /// </exception>
+        public bool RenameRef(string oldRef, string newRef)
+        {
+            if (string.IsNullOrEmpty(oldRef) || string.IsNullOrEmpty(newRef) || oldRef == newRef)
+            {
+                return false;
+            }
+
+            // Read-only pass (rewrite function returns its input unchanged,
+            // just records it) to check for a collision before touching
+            // anything -- reuses the same traversal RewriteRefs uses for
+            // the real rewrite, so "what counts as a ref" can't drift
+            // between the check and the actual rename.
+            var existingRefs = new HashSet<string>();
+            BomRefWalker.RewriteRefs(this, r =>
+            {
+                if (!string.IsNullOrEmpty(r))
+                {
+                    existingRefs.Add(r);
+                }
+                return r;
+            });
+
+            if (!existingRefs.Contains(oldRef))
+            {
+                return false;
+            }
+            if (existingRefs.Contains(newRef))
+            {
+                throw new InvalidOperationException($"Cannot rename \"{oldRef}\" to \"{newRef}\": \"{newRef}\" is already used as a bom-ref (or a reference to one) elsewhere in this document.");
+            }
+
+            bool found = false;
+            BomRefWalker.RewriteRefs(this, r =>
+            {
+                if (r == oldRef)
+                {
+                    found = true;
+                    return newRef;
+                }
+                return r;
+            });
+            return found;
+        }
+
+        /// <summary>
+        /// Add a reference to this running build of cyclonedx-dotnet-library
+        /// (and, if different, the entry assembly -- typically a consuming
+        /// tool like cyclonedx-cli) into this document's Metadata/Tools.
+        /// Intended for use after processing that creates or modifies a
+        /// document, so any bugs in the processing are traceable to the
+        /// tool/library versions that produced the result. Avoids adding
+        /// exact-duplicate entries.
+        /// </summary>
+        public void BomMetadataReferThisToolkit()
+        {
+#pragma warning disable 618
+            var toolThisLibrary = new Tool
+            {
+                Vendor = "OWASP Foundation",
+                Name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
+                Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            };
+#pragma warning restore 618
+
+            if (Metadata is null)
+            {
+                Metadata = new Metadata();
+            }
+
+            if (Metadata.Tools is null || Metadata.Tools.Tools is null)
+            {
+#pragma warning disable 618
+                Metadata.Tools = new ToolChoices
+                {
+                    Tools = new List<Tool>(new[] { toolThisLibrary }),
+                };
+#pragma warning restore 618
+            }
+            else if (!Metadata.Tools.Tools.Contains(toolThisLibrary))
+            {
+                Metadata.Tools.Tools.Add(toolThisLibrary);
+            }
+
+            var entryAssembly = System.Reflection.Assembly.GetEntryAssembly();
+            var toolThisScriptName = entryAssembly?.GetName()?.Name;
+            if (!string.IsNullOrEmpty(toolThisScriptName) && toolThisScriptName != toolThisLibrary.Name)
+            {
+#pragma warning disable 618
+                var toolThisScript = new Tool
+                {
+                    Name = toolThisScriptName,
+                    Vendor = toolThisScriptName.ToLowerInvariant().StartsWith("cyclonedx", StringComparison.Ordinal) ? "OWASP Foundation" : null,
+                    Version = entryAssembly.GetName().Version.ToString()
+                };
+#pragma warning restore 618
+
+                if (!Metadata.Tools.Tools.Contains(toolThisScript))
+                {
+                    Metadata.Tools.Tools.Add(toolThisScript);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Refresh this document's own identity: Version/SerialNumber and
+        /// Metadata/Timestamp. Typically called after content
+        /// manipulations such as a merge or rename. Callers usually also
+        /// want <see cref="BomMetadataReferThisToolkit"/> separately.
+        /// </summary>
+        public void BomMetadataUpdate(bool generateNewSerialNumber)
+        {
+            if (Version is null || Version < 1 || string.IsNullOrEmpty(SerialNumber))
+            {
+                generateNewSerialNumber = true;
+            }
+
+            if (generateNewSerialNumber)
+            {
+                Version = 1;
+                SerialNumber = "urn:uuid:" + Guid.NewGuid().ToString();
+            }
+            else
+            {
+                Version++;
+            }
+
+            if (Metadata is null)
+            {
+                Metadata = new Metadata();
+            }
+            Metadata.Timestamp = DateTime.Now;
+        }
+
+        /// <summary>
+        /// Find every top-level Component (in Metadata.Component and
+        /// Components) that no dependsOn edge anywhere in the document's
+        /// Dependencies tree ever targets. These are structurally valid
+        /// per the JSON/XML schema, but invisible to any consumer that
+        /// walks the dependency graph from the document's subject rather
+        /// than scanning the flat Components list (e.g. Dependency-Track).
+        /// A flat merge of many independently-generated documents can
+        /// easily leave some of them like this: FlatMerge unions each
+        /// input's own Dependencies, but never guarantees the union stays
+        /// one connected graph -- that depends entirely on dependsOn edges
+        /// the inputs already had.
+        ///
+        /// Buckets whatever is found by Scope (Excluded, Optional,
+        /// Required, unspecified) and gives each non-empty bucket its own
+        /// synthetic "attachment" Component, wired into the dependency
+        /// graph as a child of the existing dependency-list entry named by
+        /// <paramref name="attachmentRef"/> (or this document's own
+        /// subject, Metadata.Component.BomRef, if
+        /// <paramref name="attachmentRef"/> is null or doesn't identify an
+        /// existing entry).
+        /// </summary>
+        /// <returns>
+        /// The bom-refs of newly-created attachment Components, each
+        /// mapped to the dangling bom-refs attached under it. Empty if
+        /// none were found, or if there was no subject to attach under.
+        /// </returns>
+        public Dictionary<string, List<string>> AttachDanglingComponents(string attachmentRef = null)
+        {
+            var known = new Dictionary<string, Component>();
+            if (Metadata?.Component != null && !string.IsNullOrEmpty(Metadata.Component.BomRef))
+            {
+                known[Metadata.Component.BomRef] = Metadata.Component;
+            }
+            if (Components != null)
+            {
+                foreach (var c in Components)
+                {
+                    if (!string.IsNullOrEmpty(c.BomRef))
+                    {
+                        known[c.BomRef] = c;
+                    }
+                }
+            }
+
+            var referenced = new HashSet<string>();
+            void WalkReferenced(List<Dependency> deps, bool isTopLevel)
+            {
+                if (deps is null)
+                {
+                    return;
+                }
+                foreach (var d in deps)
+                {
+                    if (!isTopLevel && !string.IsNullOrEmpty(d.Ref))
+                    {
+                        referenced.Add(d.Ref);
+                    }
+                    WalkReferenced(d.Dependencies, false);
+                }
+            }
+            WalkReferenced(Dependencies, true);
+
+            var rootRef = Metadata?.Component?.BomRef;
+            var dangling = new Dictionary<string, List<string>>();
+            foreach (var kvp in known)
+            {
+                if (kvp.Key == rootRef || referenced.Contains(kvp.Key))
+                {
+                    continue;
+                }
+                var scopeLabel = kvp.Value.Scope?.ToString() ?? "Unspecified";
+                if (!dangling.TryGetValue(scopeLabel, out var list))
+                {
+                    list = new List<string>();
+                    dangling[scopeLabel] = list;
+                }
+                list.Add(kvp.Key);
+            }
+
+            var result = new Dictionary<string, List<string>>();
+            if (dangling.Count == 0)
+            {
+                return result;
+            }
+
+            if (Dependencies is null)
+            {
+                Dependencies = new List<Dependency>();
+            }
+
+            var attachmentEntry = string.IsNullOrEmpty(attachmentRef)
+                ? null
+                : Dependencies.FirstOrDefault(d => d.Ref == attachmentRef);
+            if (attachmentEntry is null)
+            {
+                attachmentEntry = string.IsNullOrEmpty(rootRef)
+                    ? null
+                    : Dependencies.FirstOrDefault(d => d.Ref == rootRef);
+                if (attachmentEntry is null && !string.IsNullOrEmpty(rootRef))
+                {
+                    attachmentEntry = new Dependency { Ref = rootRef };
+                    Dependencies.Add(attachmentEntry);
+                }
+            }
+            if (attachmentEntry is null)
+            {
+                // No subject at all to attach under -- nothing safe to do.
+                return result;
+            }
+            attachmentEntry.Dependencies ??= new List<Dependency>();
+
+            if (Components is null)
+            {
+                Components = new List<Component>();
+            }
+
+            var usedRefs = new HashSet<string>(known.Keys);
+            foreach (var kvp in dangling)
+            {
+                var scopeLabel = kvp.Key;
+                var baseRef = $"unreferenced-components:scope={scopeLabel}";
+                var newRef = baseRef;
+                var suffix = 2;
+                while (usedRefs.Contains(newRef))
+                {
+                    newRef = $"{baseRef}:{suffix}";
+                    suffix++;
+                }
+                usedRefs.Add(newRef);
+
+                Components.Add(new Component
+                {
+                    BomRef = newRef,
+                    Type = Component.Classification.Application,
+                    Name = $"unreferenced-components (scope={scopeLabel})",
+                });
+                Dependencies.Add(new Dependency
+                {
+                    Ref = newRef,
+                    Dependencies = kvp.Value.Select(r => new Dependency { Ref = r }).ToList(),
+                });
+                attachmentEntry.Dependencies.Add(new Dependency { Ref = newRef });
+
+                result[newRef] = kvp.Value;
+            }
+
+            return result;
+        }
+#endif
     }
 }

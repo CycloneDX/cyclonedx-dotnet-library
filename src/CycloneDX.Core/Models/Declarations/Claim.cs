@@ -29,6 +29,9 @@ namespace CycloneDX.Models
 {
     [ProtoContract]
     public class Claim : IEquatable<Claim>, IHasBomRef
+#if NET8_0_OR_GREATER
+        , IMergeable<Claim>, IEquivalent<Claim>
+#endif
     {
         [XmlAttribute("bom-ref")]
         [JsonPropertyName("bom-ref")]
