@@ -15,10 +15,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Core.Models;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
-using ProtoBuf;
 
 namespace CycloneDX.Models.Vulnerabilities
 {
@@ -26,12 +28,16 @@ namespace CycloneDX.Models.Vulnerabilities
     public class Analysis
     {
         [XmlElement("state")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(1)]
         public ImpactAnalysisState State { get; set; }
+        public bool ShouldSerializeState() { return State != ImpactAnalysisState.Null; }
 
         [XmlElement("justification")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(2)]
         public ImpactAnalysisJustification Justification { get; set; }
+        public bool ShouldSerializeJustification() { return Justification != ImpactAnalysisJustification.Null; }
 
         [XmlArray("responses")]
         [XmlArrayItem("response")]

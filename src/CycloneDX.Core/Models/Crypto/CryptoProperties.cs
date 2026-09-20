@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models.Vulnerabilities;
 using ProtoBuf;
 using System.Net.Sockets;
 using System.Text;
@@ -28,8 +29,10 @@ namespace CycloneDX.Core.Models
     public class CryptoProperties
     {
         [XmlElement("assetType")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(1)]
         public AssetType AssetType { get; set; }
+        public bool ShouldSerializeAssetType() { return AssetType != AssetType.Null; }
 
         [XmlElement("algorithmProperties")]
         [ProtoMember(2)]

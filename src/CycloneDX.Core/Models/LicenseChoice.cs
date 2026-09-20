@@ -47,7 +47,7 @@ namespace CycloneDX.Models
         [XmlAttribute("acknowledgement")]
         [ProtoMember(3)]
         public LicenseAcknowledgementEnumeration? Acknowledgement { get; set; }
-        public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue; }
+        public bool ShouldSerializeAcknowledgement() { return Acknowledgement.HasValue && Acknowledgement.Value != LicenseAcknowledgementEnumeration.Null; }
 
         [JsonPropertyName("expressionDetails")]
         [XmlIgnore]

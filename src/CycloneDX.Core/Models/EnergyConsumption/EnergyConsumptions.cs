@@ -15,10 +15,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models.Vulnerabilities;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace CycloneDX.Models
@@ -27,8 +29,10 @@ namespace CycloneDX.Models
     public class EnergyConsumption
     {
         [XmlElement("activity")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(1)]
         public ActivityType Activity { get; set; }
+        public bool ShouldSerializeActivity() { return Activity != ActivityType.Null; }
 
         [XmlElement("energyProviders")]
         [ProtoMember(2)]

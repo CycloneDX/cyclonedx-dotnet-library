@@ -15,10 +15,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models.Vulnerabilities;
+using ProtoBuf;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
-using ProtoBuf;
 
 namespace CycloneDX.Models
 {
@@ -28,8 +29,10 @@ namespace CycloneDX.Models
     public class DataClassification
     {
         [XmlAttribute("flow")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(1, IsRequired=true)]
         public DataFlowDirection Flow { get; set; }
+        public bool ShouldSerializeFlow() { return Flow != DataFlowDirection.Null; }
 
         [XmlText]
         [ProtoMember(2)]

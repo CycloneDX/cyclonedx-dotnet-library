@@ -15,12 +15,13 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models.Vulnerabilities;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
-using ProtoBuf;
 
 namespace CycloneDX.Models
 {
@@ -163,8 +164,10 @@ namespace CycloneDX.Models
         public bool ShouldSerializePatentExpirationDate() { return PatentExpirationDate != null; }
 
         [XmlElement("patentLegalStatus")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(12)]
         public PatentLegalStatus PatentLegalStatus { get; set; }
+        public bool ShouldSerializePatentLegalStatus() { return PatentLegalStatus != PatentLegalStatus.Null; }
 
         [XmlElement("patentAssignee")]
         [ProtoMember(13)]

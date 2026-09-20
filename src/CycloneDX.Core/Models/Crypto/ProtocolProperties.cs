@@ -15,6 +15,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models.Vulnerabilities;
 using ProtoBuf;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -26,8 +27,10 @@ namespace CycloneDX.Core.Models
     public class ProtocolProperties
     {
         [XmlElement("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(1)]
         public ProtocolType Type { get; set; }
+        public bool ShouldSerializeType() { return Type != ProtocolType.Null; }
 
         [XmlElement("version")]
         [ProtoMember(2)]

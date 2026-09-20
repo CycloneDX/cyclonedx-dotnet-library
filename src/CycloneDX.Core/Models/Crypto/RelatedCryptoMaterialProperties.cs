@@ -15,12 +15,13 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models;
+using CycloneDX.Models.Vulnerabilities;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
-using CycloneDX.Models;
 
 namespace CycloneDX.Core.Models
 {
@@ -28,16 +29,20 @@ namespace CycloneDX.Core.Models
     public class RelatedCryptoMaterialProperties
     {
         [XmlElement("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(1)]
         public RelatedCryptoMaterialType Type { get; set; }
+        public bool ShouldSerializeType() { return Type != RelatedCryptoMaterialType.Null; }
 
         [XmlElement("id")]
         [ProtoMember(2)]
         public string Id { get; set; }
 
         [XmlElement("state")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(3)]
         public KeyState State { get; set; }
+        public bool ShouldSerializeState() { return State != KeyState.Null; }
 
         [XmlElement("algorithmRef")]
         [ProtoMember(4)]

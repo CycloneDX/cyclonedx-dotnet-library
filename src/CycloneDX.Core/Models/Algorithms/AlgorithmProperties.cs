@@ -16,6 +16,7 @@
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
 using CycloneDX.Models;
+using CycloneDX.Models.Vulnerabilities;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -58,10 +59,12 @@ namespace CycloneDX.Core.Models
         [XmlElement("executionEnvironment")]
         [ProtoMember(4)]
         public ExecutionEnvironment? ExecutionEnvironment { get; set; }
+        public bool ShouldSerializeExecutionEnvironment() { return ExecutionEnvironment.HasValue && ExecutionEnvironment.Value != Models.ExecutionEnvironment.Null; }
 
         [XmlElement("implementationPlatform")]
         [ProtoMember(5)]
         public ImplementationPlatform? ImplementationPlatform { get; set; }
+        public bool ShouldSerializeImplementationPlatform() { return ImplementationPlatform.HasValue && ImplementationPlatform.Value != Models.ImplementationPlatform.Null; }
 
         [XmlElement("certificationLevel")]
         public List<CertificationLevel> CertificationLevel { get; set; }

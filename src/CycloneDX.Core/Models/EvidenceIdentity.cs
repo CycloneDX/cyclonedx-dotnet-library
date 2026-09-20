@@ -15,6 +15,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models.Vulnerabilities;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -23,7 +25,6 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
-using ProtoBuf;
 
 namespace CycloneDX.Models
 {
@@ -58,8 +59,10 @@ namespace CycloneDX.Models
         }
 
         [XmlElement("field")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(1)]
         public EvidenceFieldType Field { get; set; }
+        public bool ShouldSerializeField() { return Field != EvidenceFieldType.Null; }
 
         [XmlElement("confidence")]
         [ProtoMember(2)]

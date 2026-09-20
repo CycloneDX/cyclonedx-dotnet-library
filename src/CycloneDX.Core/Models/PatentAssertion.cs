@@ -15,10 +15,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright (c) OWASP Foundation. All Rights Reserved.
 
+using CycloneDX.Models.Vulnerabilities;
+using ProtoBuf;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
-using ProtoBuf;
 
 namespace CycloneDX.Models
 {
@@ -31,8 +32,10 @@ namespace CycloneDX.Models
         public string BomRef { get; set; }
 
         [XmlElement("assertionType")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [ProtoMember(2)]
         public PatentAssertionType AssertionType { get; set; }
+        public bool ShouldSerializeAssertionType() { return AssertionType != PatentAssertionType.Null; }
 
         [XmlArray("patentRefs")]
         [XmlArrayItem("bom-ref")]
