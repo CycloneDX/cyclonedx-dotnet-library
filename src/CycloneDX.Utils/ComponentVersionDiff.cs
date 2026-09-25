@@ -46,15 +46,17 @@ namespace CycloneDX.Utils
             var result = new Dictionary<string, DiffItem<Component>>();
 
             // make a copy of components that are still to be processed
-            var fromComponents = new List<Component>(fromBom.Components);
-            var toComponents = new List<Component>(toBom.Components);
+            var fromBomComponents = EnumerateComponentTree(fromBom.Components).ToList();
+            var toBomComponents = EnumerateComponentTree(toBom.Components).ToList();
+            var fromComponents = new List<Component>(fromBomComponents);
+            var toComponents = new List<Component>(toBomComponents);
             
             // unchanged component versions
-            // loop over the toBom and fromBom Components list as we will be modifying the fromComponents list
-            foreach (var fromComponent in fromBom.Components)
+            // loop over the complete lists as we will be modifying the remaining components
+            foreach (var fromComponent in fromBomComponents)
             {
                 // if component version is in both SBOMs
-                if (toBom.Components.Count(toComponent =>
+                if (toBomComponents.Count(toComponent =>
                         toComponent.Group == fromComponent.Group
                         && toComponent.Name == fromComponent.Name
                         && toComponent.Version == fromComponent.Version
@@ -99,6 +101,23 @@ namespace CycloneDX.Utils
             }
 
             return result;
+        }
+
+        private static IEnumerable<Component> EnumerateComponentTree(IEnumerable<Component> components)
+        {
+            var toVisit = new Stack<Component>(components.Reverse());
+            while (toVisit.Count > 0)
+            {
+                var component = toVisit.Pop();
+                yield return component;
+                if (component.Components != null)
+                {
+                    foreach (var child in component.Components.Reverse<Component>())
+                    {
+                        toVisit.Push(child);
+                    }
+                }
+            }
         }
     }
 }
