@@ -18,6 +18,9 @@ components {
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_KEYGEN
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_KEYDERIVE
       classicalSecurityLevel: 96
+      nistQuantumSecurityLevel: 0
+      algorithmFamily: "ECDH"
+      ellipticCurve: "brainpool/brainpoolP160r1"
     }
     oid: "oid:1.2.3.4.5.6.7.8.9"
   }
@@ -162,6 +165,20 @@ components {
         algorithms: "aes-128-gcm-ref"
         algorithms: "sha256-ref"
         identifiers: "0x1301"
+        tlsGroups: "x25519"
+        tlsGroups: "secp256r1"
+        tlsGroups: "secp384r1"
+        tlsGroups: "secp521r1"
+        tlsGroups: "ffdhe2048"
+        tlsGroups: "ffdhe3072"
+        tlsSignatureSchemes: "ecdsa_secp256r1_sha256"
+        tlsSignatureSchemes: "ecdsa_secp384r1_sha384"
+        tlsSignatureSchemes: "ecdsa_secp521r1_sha512"
+        tlsSignatureSchemes: "rsa_pss_rsae_sha256"
+        tlsSignatureSchemes: "rsa_pss_rsae_sha384"
+        tlsSignatureSchemes: "rsa_pss_rsae_sha512"
+        tlsSignatureSchemes: "ed25519"
+        tlsSignatureSchemes: "ed448"
       }
       cipherSuites {
         name: "TLS_AES_256_GCM_SHA384"

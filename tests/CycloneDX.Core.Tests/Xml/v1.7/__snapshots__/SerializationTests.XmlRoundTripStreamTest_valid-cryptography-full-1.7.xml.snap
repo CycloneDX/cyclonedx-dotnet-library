@@ -7,8 +7,10 @@
         <assetType>algorithm</assetType>
         <algorithmProperties>
           <primitive>key-agree</primitive>
+          <algorithmFamily>ECDH</algorithmFamily>
           <parameterSetIdentifier>128</parameterSetIdentifier>
           <curve>brainpool/brainpoolP160r1</curve>
+          <ellipticCurve>brainpool/brainpoolP160r1</ellipticCurve>
           <executionEnvironment>software-plain-ram</executionEnvironment>
           <implementationPlatform>x86_64</implementationPlatform>
           <certificationLevel>fips140-3-l4</certificationLevel>
@@ -150,6 +152,24 @@
               <identifiers>
                 <identifier>0x1301</identifier>
               </identifiers>
+              <tlsGroups>
+                <group>x25519</group>
+                <group>secp256r1</group>
+                <group>secp384r1</group>
+                <group>secp521r1</group>
+                <group>ffdhe2048</group>
+                <group>ffdhe3072</group>
+              </tlsGroups>
+              <tlsSignatureSchemes>
+                <signatureScheme>ecdsa_secp256r1_sha256</signatureScheme>
+                <signatureScheme>ecdsa_secp384r1_sha384</signatureScheme>
+                <signatureScheme>ecdsa_secp521r1_sha512</signatureScheme>
+                <signatureScheme>rsa_pss_rsae_sha256</signatureScheme>
+                <signatureScheme>rsa_pss_rsae_sha384</signatureScheme>
+                <signatureScheme>rsa_pss_rsae_sha512</signatureScheme>
+                <signatureScheme>ed25519</signatureScheme>
+                <signatureScheme>ed448</signatureScheme>
+              </tlsSignatureSchemes>
             </cipherSuite>
             <cipherSuite>
               <name>TLS_AES_256_GCM_SHA384</name>

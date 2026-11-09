@@ -663,8 +663,10 @@
         "AlgorithmProperties": {
           "Primitive": "Signature",
           "Primitive_XML": "Signature",
+          "AlgorithmFamily": null,
           "ParameterSetIdentifier": null,
           "Curve": null,
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": null,
@@ -674,9 +676,7 @@
           "CryptoFunctions": [
             "Sign",
             "Verify"
-          ],
-          "ClassicalSecurityLevel": 0,
-          "NistQuantumSecurityLevel": 0
+          ]
         },
         "CertificateProperties": null,
         "RelatedCryptoMaterialProperties": null,
@@ -714,8 +714,10 @@
         "AlgorithmProperties": {
           "Primitive": "Signature",
           "Primitive_XML": "Signature",
+          "AlgorithmFamily": null,
           "ParameterSetIdentifier": null,
           "Curve": "secp256r1",
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -728,9 +730,7 @@
           "CryptoFunctions": [
             "Sign",
             "Verify"
-          ],
-          "ClassicalSecurityLevel": 0,
-          "NistQuantumSecurityLevel": 0
+          ]
         },
         "CertificateProperties": null,
         "RelatedCryptoMaterialProperties": null,

@@ -152,8 +152,10 @@
         "AlgorithmProperties": {
           "Primitive": "Signature",
           "Primitive_XML": "Signature",
+          "AlgorithmFamily": null,
           "ParameterSetIdentifier": null,
           "Curve": null,
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -167,9 +169,7 @@
           "CryptoFunctions": [
             "Sign",
             "Verify"
-          ],
-          "ClassicalSecurityLevel": 0,
-          "NistQuantumSecurityLevel": 0
+          ]
         },
         "CertificateProperties": null,
         "RelatedCryptoMaterialProperties": null,
@@ -275,8 +275,10 @@
         "AlgorithmProperties": {
           "Primitive": "PKE",
           "Primitive_XML": "PKE",
+          "AlgorithmFamily": "RSAES-OAEP",
           "ParameterSetIdentifier": "2048",
           "Curve": null,
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -290,9 +292,7 @@
           "CryptoFunctions": [
             "Encrypt",
             "Decrypt"
-          ],
-          "ClassicalSecurityLevel": 0,
-          "NistQuantumSecurityLevel": 0
+          ]
         },
         "CertificateProperties": null,
         "RelatedCryptoMaterialProperties": null,

@@ -68,8 +68,10 @@
         "AlgorithmProperties": {
           "Primitive": "AE",
           "Primitive_XML": "AE",
+          "AlgorithmFamily": "AES",
           "ParameterSetIdentifier": "128",
           "Curve": null,
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -125,8 +127,10 @@
         "AlgorithmProperties": {
           "Primitive": "Signature",
           "Primitive_XML": "Signature",
+          "AlgorithmFamily": "RSASSA-PKCS1",
           "ParameterSetIdentifier": "512",
           "Curve": null,
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -140,7 +144,6 @@
             "Sign",
             "Verify"
           ],
-          "ClassicalSecurityLevel": 0,
           "NistQuantumSecurityLevel": 0
         },
         "CertificateProperties": null,
@@ -179,8 +182,10 @@
         "AlgorithmProperties": {
           "Primitive": "Key_Agree",
           "Primitive_XML": "Key_Agree",
+          "AlgorithmFamily": "ECDH",
           "ParameterSetIdentifier": null,
           "Curve": null,
+          "EllipticCurve": "secg/secp521r1",
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -194,7 +199,6 @@
             "Keygen",
             "KeyDerive"
           ],
-          "ClassicalSecurityLevel": 0,
           "NistQuantumSecurityLevel": 0
         },
         "CertificateProperties": null,
@@ -233,8 +237,10 @@
         "AlgorithmProperties": {
           "Primitive": "KEM",
           "Primitive_XML": "KEM",
+          "AlgorithmFamily": "ML-KEM",
           "ParameterSetIdentifier": null,
           "Curve": null,
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -248,7 +254,6 @@
             "Keygen",
             "KeyDerive"
           ],
-          "ClassicalSecurityLevel": 0,
           "NistQuantumSecurityLevel": 5
         },
         "CertificateProperties": null,
@@ -287,8 +292,10 @@
         "AlgorithmProperties": {
           "Primitive": "Combiner",
           "Primitive_XML": "Combiner",
+          "AlgorithmFamily": null,
           "ParameterSetIdentifier": null,
           "Curve": null,
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -302,7 +309,6 @@
             "Keygen",
             "KeyDerive"
           ],
-          "ClassicalSecurityLevel": 0,
           "NistQuantumSecurityLevel": 0
         },
         "CertificateProperties": null,
