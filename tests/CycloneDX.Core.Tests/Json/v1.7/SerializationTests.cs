@@ -17,6 +17,7 @@
 
 using System;
 using System.IO;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Xunit;
 using Snapshooter;
@@ -174,6 +175,63 @@ namespace CycloneDX.Core.Tests.Json.v1_7
                 ms.Position = 0;
                 Snapshot.Match(sr.ReadToEnd(), SnapshotNameExtension.Create(filename));
             }
+        }
+
+        [Fact]
+        public void JsonRoundTripPreservesCryptoFieldsTest()
+        {
+            // https://github.com/CycloneDX/cyclonedx-dotnet-library/issues/455
+            var jsonBomInput = """
+                {
+                  "bomFormat": "CycloneDX",
+                  "specVersion": "1.7",
+                  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+                  "version": 1,
+                  "components": [
+                    {
+                      "type": "cryptographic-asset",
+                      "bom-ref": "alg-ecdh-p256",
+                      "name": "ECDH-P-256",
+                      "cryptoProperties": {
+                        "assetType": "algorithm",
+                        "algorithmProperties": {
+                          "primitive": "key-agree",
+                          "algorithmFamily": "ECDH",
+                          "ellipticCurve": "nist/P-256",
+                          "cryptoFunctions": ["keygen"]
+                        }
+                      }
+                    },
+                    {
+                      "type": "cryptographic-asset",
+                      "bom-ref": "proto-tls13",
+                      "name": "TLSv1.3",
+                      "cryptoProperties": {
+                        "assetType": "protocol",
+                        "protocolProperties": {
+                          "type": "tls",
+                          "version": "1.3",
+                          "cipherSuites": [
+                            {
+                              "name": "TLS_AES_128_GCM_SHA256",
+                              "identifiers": ["0x13,0x01"],
+                              "tlsGroups": ["X25519MLKEM768", "x25519", "secp256r1"],
+                              "tlsSignatureSchemes": ["ecdsa_secp256r1_sha256"]
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+                """;
+
+            var bom = Serializer.Deserialize(jsonBomInput);
+            var jsonBomOutput = Serializer.Serialize(bom);
+
+            Assert.True(
+                JsonNode.DeepEquals(JsonNode.Parse(jsonBomInput), JsonNode.Parse(jsonBomOutput)),
+                $"Round trip changed the BOM:{Environment.NewLine}{jsonBomOutput}");
         }
 
         [Theory]

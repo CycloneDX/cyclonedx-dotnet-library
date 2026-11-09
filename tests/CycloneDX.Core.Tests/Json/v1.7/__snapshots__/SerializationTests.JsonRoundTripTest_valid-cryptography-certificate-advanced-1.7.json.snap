@@ -175,9 +175,7 @@
           "cryptoFunctions": [
             "sign",
             "verify"
-          ],
-          "classicalSecurityLevel": 0,
-          "nistQuantumSecurityLevel": 0
+          ]
         },
         "oid": "1.2.840.113549.1.1.11"
       }
@@ -199,9 +197,7 @@
           "cryptoFunctions": [
             "sign",
             "verify"
-          ],
-          "classicalSecurityLevel": 0,
-          "nistQuantumSecurityLevel": 0
+          ]
         },
         "oid": "1.2.840.10045.4.3.2"
       }

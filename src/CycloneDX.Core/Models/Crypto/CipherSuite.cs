@@ -37,6 +37,18 @@ namespace CycloneDX.Core.Models
         [XmlArrayItem("identifier")]
         [ProtoMember(3)]
         public List<string> Identifiers { get; set; }
+
+        [XmlArray("tlsGroups")]
+        [XmlArrayItem("group")]
+        [ProtoMember(4)]
+        public List<string> TlsGroups { get; set; }
+        public bool ShouldSerializeTlsGroups() { return TlsGroups?.Count > 0; }
+
+        [XmlArray("tlsSignatureSchemes")]
+        [XmlArrayItem("signatureScheme")]
+        [ProtoMember(5)]
+        public List<string> TlsSignatureSchemes { get; set; }
+        public bool ShouldSerializeTlsSignatureSchemes() { return TlsSignatureSchemes?.Count > 0; }
         
     }
 

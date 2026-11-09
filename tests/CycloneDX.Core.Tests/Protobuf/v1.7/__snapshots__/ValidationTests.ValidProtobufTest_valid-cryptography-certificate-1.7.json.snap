@@ -128,6 +128,7 @@ components {
       padding: CRYPTO_ALGORITHM_PADDING_OAEP
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_ENCRYPT
       cryptoFunctions: CRYPTO_ALGORITHM_FUNCTION_DECRYPT
+      algorithmFamily: "RSAES-OAEP"
     }
     oid: "1.2.840.113549.1.1.1"
   }

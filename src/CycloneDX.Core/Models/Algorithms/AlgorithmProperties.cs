@@ -47,6 +47,10 @@ namespace CycloneDX.Core.Models
         }
         #endregion
 
+        [XmlElement("algorithmFamily")]
+        [ProtoMember(12)]
+        public string AlgorithmFamily { get; set; }
+
         [XmlElement("parameterSetIdentifier")]
         [ProtoMember(2)]
         public string ParameterSetIdentifier { get; set; }
@@ -54,6 +58,10 @@ namespace CycloneDX.Core.Models
         [XmlElement("curve")]
         [ProtoMember(3)]
         public string Curve { get; set; }
+
+        [XmlElement("ellipticCurve")]
+        [ProtoMember(13)]
+        public string EllipticCurve { get; set; }
 
         [XmlElement("executionEnvironment")]
         [ProtoMember(4)]
@@ -124,11 +132,13 @@ namespace CycloneDX.Core.Models
 
         [XmlElement("classicalSecurityLevel")]
         [ProtoMember(10)]
-        public int ClassicalSecurityLevel { get; set; }
+        public int? ClassicalSecurityLevel { get; set; }
+        public bool ShouldSerializeClassicalSecurityLevel() { return ClassicalSecurityLevel.HasValue; }
 
         [XmlElement("nistQuantumSecurityLevel")]
         [ProtoMember(11)]
-        public int NistQuantumSecurityLevel { get; set; }
+        public int? NistQuantumSecurityLevel { get; set; }
+        public bool ShouldSerializeNistQuantumSecurityLevel() { return NistQuantumSecurityLevel.HasValue; }
         
     }
 }

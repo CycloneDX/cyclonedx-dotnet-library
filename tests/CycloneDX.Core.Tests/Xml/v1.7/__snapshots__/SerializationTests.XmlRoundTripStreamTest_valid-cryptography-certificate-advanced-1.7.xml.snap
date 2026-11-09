@@ -169,8 +169,6 @@
             <cryptoFunction>sign</cryptoFunction>
             <cryptoFunction>verify</cryptoFunction>
           </cryptoFunctions>
-          <classicalSecurityLevel>0</classicalSecurityLevel>
-          <nistQuantumSecurityLevel>0</nistQuantumSecurityLevel>
         </algorithmProperties>
         <oid>1.2.840.113549.1.1.11</oid>
       </cryptoProperties>
@@ -189,8 +187,6 @@
             <cryptoFunction>sign</cryptoFunction>
             <cryptoFunction>verify</cryptoFunction>
           </cryptoFunctions>
-          <classicalSecurityLevel>0</classicalSecurityLevel>
-          <nistQuantumSecurityLevel>0</nistQuantumSecurityLevel>
         </algorithmProperties>
         <oid>1.2.840.10045.4.3.2</oid>
       </cryptoProperties>

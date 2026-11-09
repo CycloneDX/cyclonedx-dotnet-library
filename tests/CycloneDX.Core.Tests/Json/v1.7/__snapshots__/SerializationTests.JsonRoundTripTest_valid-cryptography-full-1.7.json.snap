@@ -12,7 +12,9 @@
         "assetType": "algorithm",
         "algorithmProperties": {
           "primitive": "key-agree",
+          "algorithmFamily": "ECDH",
           "parameterSetIdentifier": "128",
+          "ellipticCurve": "brainpool/brainpoolP160r1",
           "executionEnvironment": "software-plain-ram",
           "implementationPlatform": "x86_64",
           "certificationLevel": [
@@ -137,6 +139,24 @@
               ],
               "identifiers": [
                 "0x1301"
+              ],
+              "tlsGroups": [
+                "x25519",
+                "secp256r1",
+                "secp384r1",
+                "secp521r1",
+                "ffdhe2048",
+                "ffdhe3072"
+              ],
+              "tlsSignatureSchemes": [
+                "ecdsa_secp256r1_sha256",
+                "ecdsa_secp384r1_sha384",
+                "ecdsa_secp521r1_sha512",
+                "rsa_pss_rsae_sha256",
+                "rsa_pss_rsae_sha384",
+                "rsa_pss_rsae_sha512",
+                "ed25519",
+                "ed448"
               ]
             },
             {

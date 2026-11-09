@@ -379,6 +379,17 @@ namespace CycloneDX
                     component.IsExternal = null;
                     component.PatentAssertions = null;
 
+                    if (component.CryptoProperties?.AlgorithmProperties != null)
+                    {
+                        var algProps = component.CryptoProperties.AlgorithmProperties;
+                        if (algProps.Curve == null && algProps.EllipticCurve != null)
+                        {
+                            algProps.Curve = algProps.EllipticCurve;
+                        }
+                        algProps.AlgorithmFamily = null;
+                        algProps.EllipticCurve = null;
+                    }
+
                     if (component.CryptoProperties?.CertificateProperties != null)
                     {
                         var certProps = component.CryptoProperties.CertificateProperties;
@@ -412,6 +423,14 @@ namespace CycloneDX
                     {
                         var protoProps = component.CryptoProperties.ProtocolProperties;
                         protoProps.RelatedCryptographicAssets = null;
+                        if (protoProps.CipherSuites != null)
+                        {
+                            foreach (var cipherSuite in protoProps.CipherSuites)
+                            {
+                                cipherSuite.TlsGroups = null;
+                                cipherSuite.TlsSignatureSchemes = null;
+                            }
+                        }
                         // Downgrade detailed IKEv2 transform types to null (v1.6 doesn't support the detailed format)
                         protoProps.Ikev2TransformTypes = null;
                     }

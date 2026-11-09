@@ -68,8 +68,10 @@
         "AlgorithmProperties": {
           "Primitive": "AE",
           "Primitive_XML": "AE",
+          "AlgorithmFamily": null,
           "ParameterSetIdentifier": "128",
           "Curve": null,
+          "EllipticCurve": null,
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [

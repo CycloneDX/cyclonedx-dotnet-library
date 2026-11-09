@@ -34,8 +34,10 @@
         "AlgorithmProperties": {
           "Primitive": "Key_Agree",
           "Primitive_XML": "Key_Agree",
+          "AlgorithmFamily": "ECDH",
           "ParameterSetIdentifier": "128",
           "Curve": "brainpool/brainpoolP160r1",
+          "EllipticCurve": "brainpool/brainpoolP160r1",
           "ExecutionEnvironment": "Software_Plain_Ram",
           "ImplementationPlatform": "x86_64",
           "CertificationLevel": [
@@ -473,6 +475,24 @@
               ],
               "Identifiers": [
                 "0x1301"
+              ],
+              "TlsGroups": [
+                "x25519",
+                "secp256r1",
+                "secp384r1",
+                "secp521r1",
+                "ffdhe2048",
+                "ffdhe3072"
+              ],
+              "TlsSignatureSchemes": [
+                "ecdsa_secp256r1_sha256",
+                "ecdsa_secp384r1_sha384",
+                "ecdsa_secp521r1_sha512",
+                "rsa_pss_rsae_sha256",
+                "rsa_pss_rsae_sha384",
+                "rsa_pss_rsae_sha512",
+                "ed25519",
+                "ed448"
               ]
             },
             {

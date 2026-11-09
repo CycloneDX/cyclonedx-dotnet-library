@@ -63,9 +63,7 @@
           "cryptoFunctions": [
             "sign",
             "verify"
-          ],
-          "classicalSecurityLevel": 0,
-          "nistQuantumSecurityLevel": 0
+          ]
         },
         "oid": "1.2.840.113549.1.1.13"
       }
@@ -112,6 +110,7 @@
         "assetType": "algorithm",
         "algorithmProperties": {
           "primitive": "pke",
+          "algorithmFamily": "RSAES-OAEP",
           "parameterSetIdentifier": "2048",
           "executionEnvironment": "software-plain-ram",
           "implementationPlatform": "x86_64",
@@ -122,9 +121,7 @@
           "cryptoFunctions": [
             "encrypt",
             "decrypt"
-          ],
-          "classicalSecurityLevel": 0,
-          "nistQuantumSecurityLevel": 0
+          ]
         },
         "oid": "1.2.840.113549.1.1.1"
       }
